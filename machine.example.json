@@ -1,0 +1,13 @@
+{
+  "owner": "Muhammad Haseeb Younas",
+  "preqc_script": "C:/Users/Haseeb Mirza/Downloads/Harbor-Shannon-QC/harbor_shannon_qc.py",
+  "preqc_config": "C:/Users/Haseeb Mirza/Downloads/Harbor-Shannon-QC/config.json",
+  "setup_session_ps1": "C:/Users/Haseeb Mirza/Documents/Codex/Tools/TuringHarbor/setup-session.ps1",
+  "harbor_exe": "C:/Users/Haseeb Mirza/Documents/Codex/Tools/bin/harbor.exe",
+  "api_key_env": "WANDB_GLM_API_KEY",
+  "glm_credential_name": "TuringGLM",
+  "downloads_dir": "C:/Users/Haseeb Mirza/Downloads",
+  "qc_out_root": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out",
+  "v2_trainer_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+  "notes": "Copy to machine.json and edit paths after clone on another PC. Never commit machine.json or API keys."
+}

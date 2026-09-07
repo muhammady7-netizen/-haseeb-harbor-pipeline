@@ -1,0 +1,29 @@
+# Machine-local (paths + secrets)
+machine.json
+.env
+*.pem
+*.key
+
+# QC / Harbor outputs
+qc-out/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Do not ship heavy or sensitive artifacts
+**/*.zip
+**/harbor-jobs/
+**/UPLOAD-THIS-TO-QC*.zip
+**/DRIVE-*.zip
+**/*-submission.zip
+
+# Editor
+.cursor/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Canonical upload zips ARE tracked
+!canonical-zips/
+!canonical-zips/*.zip
+
