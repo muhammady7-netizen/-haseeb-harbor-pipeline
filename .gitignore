@@ -27,3 +27,9 @@ Thumbs.db
 !canonical-zips/
 !canonical-zips/*.zip
 
+# Per-chat session zips ARE tracked
+!sessions/
+!sessions/*/
+!sessions/*/zips/
+!sessions/*/zips/*.zip
+

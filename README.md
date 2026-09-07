@@ -45,3 +45,12 @@ Portal steps (upload / Dismiss PreQC / Oracle+GLM×4 / Accept) are **manual**; m
 - **Not automated:** editing task to fix findings, V2 browser upload/Dismiss/Accept  
 
 See `TAKE-TO-OTHER-PC.md` and `HANDOFF.md`.
+
+## Sessions (3-task chats)
+See [sessions/README.md](sessions/README.md). Example:
+```powershell
+git pull
+# open sessions/A/PROMPT.md and paste into a new chat
+.\resume.ps1 assign --session A --tasks gen-g1205,fin-f39,the-thread
+.\resume.ps1 loop --session A --package
+```
