@@ -3,8 +3,8 @@
 ## 1. Get this repo
 
 ```powershell
-git clone https://github.com/muhammady7-netizen/haseeb-harbor-pipeline.git
-cd haseeb-harbor-pipeline
+git clone https://github.com/muhammady7-netizen/-haseeb-harbor-pipeline.git
+cd -haseeb-harbor-pipeline
 copy machine.example.json machine.json
 ```
 

@@ -5,8 +5,8 @@
   "updated_at": "2026-09-07T22:15:00Z",
   "github": {
     "owner": "muhammady7-netizen",
-    "repo": "haseeb-harbor-pipeline",
-    "url": "https://github.com/muhammady7-netizen/haseeb-harbor-pipeline"
+    "repo": "-haseeb-harbor-pipeline",
+    "url": "https://github.com/muhammady7-netizen/-haseeb-harbor-pipeline"
   },
   "workflow": [
     "pending → preqc → fix until preqc_clean",

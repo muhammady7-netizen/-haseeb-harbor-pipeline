@@ -2,7 +2,7 @@
 
 Multi-session tracker + local PreQC → package → **ready_final** automation.
 
-**GitHub:** https://github.com/muhammady7-netizen/haseeb-harbor-pipeline  
+**GitHub:** https://github.com/muhammady7-netizen/-haseeb-harbor-pipeline  
 **Owner:** Muhammad Haseeb Younas (`muhammad.y7@turing.com`)
 
 ## Quick start (this PC)

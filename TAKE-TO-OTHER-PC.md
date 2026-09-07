@@ -2,7 +2,7 @@
 
 ## Minimum (no big zips)
 
-1. This repo: `haseeb-harbor-pipeline` (clone from GitHub `muhammady7-netizen`)
+1. This repo: `-haseeb-harbor-pipeline` (clone from GitHub `muhammady7-netizen`)
 2. Each **task pack** you will work on (folder with `task.toml`) — via git submodule / separate task repos / OneDrive / zip of **source only**
 3. Tools once per machine:
    - `Harbor-Shannon-QC\` (`harbor_shannon_qc.py` + `config.json`)
@@ -19,8 +19,8 @@
 ## On the other PC
 
 ```powershell
-git clone https://github.com/muhammady7-netizen/haseeb-harbor-pipeline.git
-cd haseeb-harbor-pipeline
+git clone https://github.com/muhammady7-netizen/-haseeb-harbor-pipeline.git
+cd -haseeb-harbor-pipeline
 copy machine.example.json machine.json
 # edit machine.json paths + registry.json pack_path/work_root for this PC
 .\resume.ps1 doctor
