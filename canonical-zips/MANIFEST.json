@@ -1,121 +1,104 @@
 ﻿[
     {
         "short":  "fin-f33",
-        "dest":  "UPLOAD-THIS-TO-QC-fin-f33.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\NONC-B1-1000064\\UPLOAD-THIS-TO-QC-fin-f33.zip",
+        "source":  "UPLOAD-THIS-TO-QC-fin-f33.zip",
         "kb":  295,
         "mtime":  "2026-09-07T23:20:57"
     },
     {
         "short":  "fin-f39",
-        "dest":  "UPLOAD-THIS-TO-QC-fin-f39.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39 (2).zip",
-        "kb":  94,
-        "mtime":  "2026-09-03T02:19:26"
+        "source":  "UPLOAD-THIS-TO-QC-fin-f39-v16.zip",
+        "kb":  64,
+        "mtime":  "2026-09-08T02:20:07"
     },
     {
         "short":  "fin-f44",
-        "dest":  "UPLOAD-THIS-TO-QC-fin-f44.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f44 (1).zip",
-        "kb":  105,
-        "mtime":  "2026-09-02T23:49:02"
+        "source":  "UPLOAD-THIS-TO-QC-fin-f44.zip",
+        "kb":  84,
+        "mtime":  "2026-09-04T00:12:15"
     },
     {
         "short":  "fin-f53",
-        "dest":  "UPLOAD-THIS-TO-QC-fin-f53.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f53-62197a-v18-delivery-33d49d81.zip",
-        "kb":  642,
-        "mtime":  "2026-08-28T03:43:01"
+        "source":  "UPLOAD-THIS-TO-QC-fin-f53-f00622-v31-delivery-01f09090.zip",
+        "kb":  547,
+        "mtime":  "2026-09-01T03:59:25"
     },
     {
         "short":  "fin-f55",
-        "dest":  "UPLOAD-THIS-TO-QC-fin-f55.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f55-v20.zip",
+        "source":  "UPLOAD-THIS-TO-QC-fin-f55-v20.zip",
         "kb":  218,
         "mtime":  "2026-09-03T02:31:38"
     },
     {
         "short":  "health-h34",
-        "dest":  "UPLOAD-THIS-TO-QC-health-h34.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\health-h34-randomisation-balance-v11.zip",
+        "source":  "health-h34-randomisation-balance-v11.zip",
         "kb":  66,
         "mtime":  "2026-09-07T23:16:11"
     },
     {
         "short":  "health-h40",
-        "dest":  "UPLOAD-THIS-TO-QC-health-h40.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\NONC-B1-1000151\\UPLOAD-THIS-TO-QC-health-h40.zip",
+        "source":  "UPLOAD-THIS-TO-QC-health-h40.zip",
         "kb":  312,
         "mtime":  "2026-09-01T02:12:11"
     },
     {
         "short":  "code-c227",
-        "dest":  "UPLOAD-THIS-TO-QC-code-c227.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintenance-audit.zip",
-        "kb":  279,
-        "mtime":  "2026-09-03T04:03:10"
+        "source":  "UPLOAD-THIS-TO-QC-code-c227-v3.zip",
+        "kb":  588,
+        "mtime":  "2026-09-07T23:55:54"
     },
     {
         "short":  "code-c249",
-        "dest":  "UPLOAD-THIS-TO-QC-code-c249.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
+        "source":  "UPLOAD-THIS-TO-QC-code-c249.zip",
         "kb":  59,
         "mtime":  "2026-09-03T02:26:25"
     },
     {
         "short":  "code-c251",
-        "dest":  "UPLOAD-THIS-TO-QC-code-c251.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c251-4562c8-v10-delivery-d5185983.zip",
-        "kb":  608,
-        "mtime":  "2026-09-01T04:10:55"
+        "source":  "UPLOAD-THIS-TO-QC-code-c251.zip",
+        "kb":  64,
+        "mtime":  "2026-09-08T01:32:20"
     },
     {
         "short":  "gen-g734",
-        "dest":  "UPLOAD-THIS-TO-QC-gen-g734.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g734.zip",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g734.zip",
         "kb":  373,
         "mtime":  "2026-09-07T23:21:03"
     },
     {
         "short":  "gen-g806",
-        "dest":  "UPLOAD-THIS-TO-QC-gen-g806.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\NONC-B1-1001634\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-        "kb":  313,
-        "mtime":  "2026-09-03T02:25:33"
+        "source":  "UPLOAD-THIS-TO-QC-gen-g806.zip",
+        "kb":  72,
+        "mtime":  "2026-09-08T02:18:40"
     },
     {
         "short":  "gen-g826",
-        "dest":  "UPLOAD-THIS-TO-QC-gen-g826.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g826.zip",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g826.zip",
         "kb":  64,
         "mtime":  "2026-09-08T02:17:19"
     },
     {
         "short":  "gen-g857",
-        "dest":  "UPLOAD-THIS-TO-QC-gen-g857.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\NONC-B1-1001684\\UPLOAD-THIS-TO-QC-gen-g857.zip",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g857.zip",
         "kb":  284,
         "mtime":  "2026-09-07T23:19:44"
     },
     {
         "short":  "gen-g986",
-        "dest":  "UPLOAD-THIS-TO-QC-gen-g986.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g986.zip",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g986.zip",
         "kb":  244,
         "mtime":  "2026-09-03T03:44:39"
     },
     {
         "short":  "gen-g1205",
-        "dest":  "UPLOAD-THIS-TO-QC-gen-g1205.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\NONC-B1-1002016\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g1205.zip",
         "kb":  239,
         "mtime":  "2026-09-08T02:28:05"
     },
     {
         "short":  "the-thread",
-        "dest":  "UPLOAD-THIS-TO-QC-the-thread.zip",
-        "source":  "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener-v3.zip",
+        "source":  "UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener-v4.zip",
         "kb":  1001,
-        "mtime":  "2026-09-03T01:14:04"
+        "mtime":  "2026-09-08T01:17:17"
     }
 ]
