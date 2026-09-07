@@ -171,6 +171,61 @@ def cmd_mark_zip(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_watch_portal(args: argparse.Namespace) -> int:
+    from pipeline.portal_watch import record_portal_check
+
+    result = record_portal_check(
+        args.task,
+        phase=args.phase,
+        running=not args.done,
+        note=args.note or "",
+        version=args.version,
+        glm_pass=args.glm,
+        oracle=args.oracle,
+        task_url=args.url,
+    )
+    print(json.dumps(result, indent=2))
+    return 0
+
+
+def cmd_portal_status(args: argparse.Namespace) -> int:
+    reg = load_registry()
+    tasks = reg["tasks"] if not args.task else [find_task(reg, args.task)]
+    rows = []
+    for t in tasks:
+        portal = t.get("portal") or {}
+        if not portal and not args.all:
+            continue
+        rows.append(
+            {
+                "id": t["id"],
+                "short": t.get("short"),
+                "status": t.get("status"),
+                "watch": portal.get("watch"),
+                "phase": portal.get("phase"),
+                "last_check_at": portal.get("last_check_at"),
+                "glm_pass": portal.get("glm_pass"),
+                "oracle": portal.get("oracle"),
+                "version": portal.get("version"),
+                "url": portal.get("task_url"),
+            }
+        )
+    if not rows:
+        # still show final_running even without portal blob
+        rows = [
+            {
+                "id": t["id"],
+                "short": t.get("short"),
+                "status": t.get("status"),
+                "next_action": t.get("next_action"),
+            }
+            for t in tasks
+            if t.get("status") in ("final_running", "ready_accept", "needs_densify", "ready_final")
+        ]
+    print(json.dumps(rows, indent=2))
+    return 0
+
+
 def cmd_doctor(_: argparse.Namespace) -> int:
     machine = load_machine()
     reg = load_registry()
@@ -248,6 +303,22 @@ def build_parser() -> argparse.ArgumentParser:
     mz.add_argument("--task", required=True)
     mz.add_argument("--zip", required=True)
     mz.set_defaults(func=cmd_mark_zip)
+
+    wp = sub.add_parser("watch-portal", help="Record a portal eval poll into registry")
+    wp.add_argument("--task", required=True)
+    wp.add_argument("--phase", required=True, help="e.g. oracle_waiting, glm_running, complete")
+    wp.add_argument("--note", default="")
+    wp.add_argument("--version", default=None)
+    wp.add_argument("--glm", default=None, help="e.g. 2/4")
+    wp.add_argument("--oracle", default=None, help="e.g. 1.0")
+    wp.add_argument("--url", default=None)
+    wp.add_argument("--done", action="store_true", help="Eval finished (not running)")
+    wp.set_defaults(func=cmd_watch_portal)
+
+    ps = sub.add_parser("portal-status", help="Show watched / in-flight portal evals")
+    ps.add_argument("--task", default=None)
+    ps.add_argument("--all", action="store_true")
+    ps.set_defaults(func=cmd_portal_status)
 
     return p
 

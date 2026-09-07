@@ -1,4 +1,4 @@
-# Haseeb Harbor pipeline — bootstrap then run resume CLI
+# Haseeb Harbor pipeline - bootstrap then run resume CLI
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $Root
@@ -10,7 +10,7 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 $machine = Join-Path $Root "machine.json"
 if (-not (Test-Path $machine)) {
   Copy-Item (Join-Path $Root "machine.example.json") $machine
-  Write-Host "Created machine.json from example — edit paths if needed."
+  Write-Host "Created machine.json from example - edit paths if needed."
 }
 
 $setup = $null
