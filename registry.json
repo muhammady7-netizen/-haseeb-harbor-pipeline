@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-08T22:32:56Z",
+  "updated_at": "2026-09-08T22:34:50Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -601,11 +601,11 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work/code-c251-pdf-form-field-conversion-audit",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Portal: QC-Oracle-GLM started for code-c251 v1 (content-381312e8a)",
+      "next_action": "Densify task, PreQC, package, re-upload",
+      "notes": "GLM 4/4 too easy",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -626,9 +626,14 @@
           "at": "2026-09-08T21:57:39Z",
           "status": "final_running",
           "note": "Portal: QC-Oracle-GLM started for code-c251 v1 (content-381312e8a)"
+        },
+        {
+          "at": "2026-09-08T22:34:50Z",
+          "status": "needs_densify",
+          "note": "GLM 4/4 too easy"
         }
       ],
-      "updated_at": "2026-09-08T21:57:39Z",
+      "updated_at": "2026-09-08T22:34:50Z",
       "last_preqc": {
         "at": "2026-09-08T19:11:57Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T191156Z",
@@ -648,8 +653,8 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-08T21:57:39Z",
-        "phase": "glm_or_oracle_running",
+        "last_check_at": "2026-09-08T22:34:50Z",
+        "phase": "complete",
         "checks": [
           {
             "at": "2026-09-08T21:57:39Z",
@@ -658,8 +663,18 @@
             "note": "Portal: QC-Oracle-GLM started for code-c251 v1 (content-381312e8a)",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-08T22:34:50Z",
+            "phase": "complete",
+            "running": false,
+            "note": "Trainer changes required - likely TOO_EASY 4/4",
+            "glm_pass": "4/4",
+            "oracle": "1.0"
           }
-        ]
+        ],
+        "glm_pass": "4/4",
+        "oracle": "1.0"
       }
     },
     {
