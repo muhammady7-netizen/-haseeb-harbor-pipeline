@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-08T23:20:01Z",
+  "updated_at": "2026-09-08T23:19:46Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -76,11 +76,11 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "ready_final",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v9: 25 findings dismissed as false_positive via API (can_submit=true). PreQC 'did not finish'. Submit blocked by eval slot limit (gen-g1205 using 3 slots). Will submit when slots free.",
+      "notes": "Portal v9: 25 findings dismissed as false_positive via API; can_submit=true; submit button aria-disabled (needs PreQC run)",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -161,14 +161,9 @@
           "at": "2026-09-08T20:41:57Z",
           "status": "final_running",
           "note": "Portal v9: 25 findings dismissed as false_positive via API; can_submit=true; submit button aria-disabled (needs PreQC run)"
-        },
-        {
-          "at": "2026-09-08T23:20:01Z",
-          "status": "ready_final",
-          "note": "Portal v9: 25 findings dismissed as false_positive via API (can_submit=true). PreQC 'did not finish'. Submit blocked by eval slot limit (gen-g1205 using 3 slots). Will submit when slots free."
         }
       ],
-      "updated_at": "2026-09-08T23:20:01Z",
+      "updated_at": "2026-09-08T20:41:57Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -224,11 +219,11 @@
       "pack_name": "fin-f44-facility-interest-review",
       "work_root": "C:/Users/Haseeb Mirza/Documents/f44-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/f44-work/fin-f44-facility-interest-review",
-      "status": "final_running",
+      "status": "blocked",
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f44.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Oracle done, GLM x4 running",
+      "next_action": "Read portal QC report, fix findings, rebuild zip, re-upload v3",
+      "notes": "Portal eval FAIL: 20 blocking findings. Need to read findings and fix source.",
       "history": [
         {
           "at": "2026-09-08T19:08:20Z",
@@ -304,9 +299,19 @@
           "at": "2026-09-08T22:55:17Z",
           "status": "final_running",
           "note": "Oracle done, GLM x4 running"
+        },
+        {
+          "at": "2026-09-08T23:19:46Z",
+          "status": "final_running",
+          "note": "Eval DONE (29min): FAIL 20 blocking findings. Oracle+GLM x4 completed; Harbor Check found 20 issues. Needs source fixes before re-upload."
+        },
+        {
+          "at": "2026-09-08T23:19:46Z",
+          "status": "blocked",
+          "note": "Portal eval FAIL: 20 blocking findings. Need to read findings and fix source."
         }
       ],
-      "updated_at": "2026-09-08T22:55:17Z",
+      "updated_at": "2026-09-08T23:19:46Z",
       "last_preqc": {
         "at": "2026-09-08T22:27:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z",
@@ -325,8 +330,8 @@
       "packaged_at": "2026-09-08T22:27:17Z",
       "portal": {
         "watch": true,
-        "last_check_at": "2026-09-08T22:55:17Z",
-        "phase": "glm_running",
+        "last_check_at": "2026-09-08T23:19:46Z",
+        "phase": "complete",
         "checks": [
           {
             "at": "2026-09-08T22:29:25Z",
@@ -349,6 +354,14 @@
             "phase": "glm_running",
             "running": true,
             "note": "Oracle done, GLM x4 running",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-08T23:19:46Z",
+            "phase": "complete",
+            "running": false,
+            "note": "Eval DONE (29min): FAIL 20 blocking findings. Oracle+GLM x4 completed; Harbor Check found 20 issues. Needs source fixes before re-upload.",
             "glm_pass": null,
             "oracle": null
           }
@@ -1419,11 +1432,11 @@
       "pack_name": "gen-g1205-meal-prep-cost-claim-recompute-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1002016",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1002016/gen-g1205-meal-prep-cost-claim-recompute-audit",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "V9 densified 150 recipes. First eval: Oracle Passed, GLM 0/4 (TOO HARD - need 1-2/4 for solvability). 3 more evals still running on portal. v9 traps too aggressive - need to soften some traps so GLM gets 1/4.",
+      "notes": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started",
       "history": [
         {
           "at": "2026-09-08T01:01:58Z",
@@ -1549,14 +1562,9 @@
           "at": "2026-09-08T20:41:57Z",
           "status": "final_running",
           "note": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started"
-        },
-        {
-          "at": "2026-09-08T23:20:01Z",
-          "status": "needs_densify",
-          "note": "V9 densified 150 recipes. First eval: Oracle Passed, GLM 0/4 (TOO HARD - need 1-2/4 for solvability). 3 more evals still running on portal. v9 traps too aggressive - need to soften some traps so GLM gets 1/4."
         }
       ],
-      "updated_at": "2026-09-08T23:20:01Z",
+      "updated_at": "2026-09-08T20:41:57Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
@@ -1580,11 +1588,11 @@
       "pack_name": "the-thread-hands-back-its-own-opener",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/cb3_100381",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/cb3_100381/the-thread-hands-back-its-own-opener",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v2 eval: Oracle Passed, GLM 4/4 TOO_EASY. Needs densification (Connector task with Docker MCP gym). Harder to modify than NonConnector.",
+      "notes": "Portal v2 uploaded; PreQC 5 findings (advisory); QC-Oracle-GLM starting",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -1690,14 +1698,9 @@
           "at": "2026-09-08T20:44:49Z",
           "status": "final_running",
           "note": "Portal v2 uploaded; PreQC 5 findings (advisory); QC-Oracle-GLM starting"
-        },
-        {
-          "at": "2026-09-08T23:20:01Z",
-          "status": "needs_densify",
-          "note": "Portal v2 eval: Oracle Passed, GLM 4/4 TOO_EASY. Needs densification (Connector task with Docker MCP gym). Harder to modify than NonConnector."
         }
       ],
-      "updated_at": "2026-09-08T23:20:01Z",
+      "updated_at": "2026-09-08T20:44:49Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
