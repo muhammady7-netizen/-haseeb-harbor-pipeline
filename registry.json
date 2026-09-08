@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-08T22:27:42Z",
+  "updated_at": "2026-09-08T22:34:24Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1256,7 +1256,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started",
+      "notes": "V9 densified (150 recipes). Uploaded v4. First eval completed (1020s). Multiple evals accidentally triggered. Waiting for current eval to finish to check difficulty.",
       "history": [
         {
           "at": "2026-09-08T01:01:58Z",
@@ -1382,9 +1382,14 @@
           "at": "2026-09-08T20:41:57Z",
           "status": "final_running",
           "note": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started"
+        },
+        {
+          "at": "2026-09-08T22:34:24Z",
+          "status": "final_running",
+          "note": "V9 densified (150 recipes). Uploaded v4. First eval completed (1020s). Multiple evals accidentally triggered. Waiting for current eval to finish to check difficulty."
         }
       ],
-      "updated_at": "2026-09-08T20:41:57Z",
+      "updated_at": "2026-09-08T22:34:24Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
