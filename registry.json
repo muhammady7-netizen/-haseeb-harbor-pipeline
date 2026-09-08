@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-08T20:44:49Z",
+  "updated_at": "2026-09-08T21:53:23Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -939,7 +939,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started",
+      "notes": "Portal eval started via API (run_id: evaluation-ada6fc27dbe04e7c). review.csv fixed (all 5 fields, correct area names). PreQC 0 findings.",
       "history": [
         {
           "at": "2026-09-08T01:01:58Z",
@@ -1065,9 +1065,14 @@
           "at": "2026-09-08T20:41:57Z",
           "status": "final_running",
           "note": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started"
+        },
+        {
+          "at": "2026-09-08T21:53:22Z",
+          "status": "final_running",
+          "note": "Portal eval started via API (run_id: evaluation-ada6fc27dbe04e7c). review.csv fixed (all 5 fields, correct area names). PreQC 0 findings."
         }
       ],
-      "updated_at": "2026-09-08T20:41:57Z",
+      "updated_at": "2026-09-08T21:53:22Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
@@ -1091,11 +1096,11 @@
       "pack_name": "the-thread-hands-back-its-own-opener",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/cb3_100381",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/cb3_100381/the-thread-hands-back-its-own-opener",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v2 uploaded; PreQC 5 findings (advisory); QC-Oracle-GLM starting",
+      "notes": "Portal eval completed: TOO_EASY 4/4 passed. Needs densification.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -1201,9 +1206,14 @@
           "at": "2026-09-08T20:44:49Z",
           "status": "final_running",
           "note": "Portal v2 uploaded; PreQC 5 findings (advisory); QC-Oracle-GLM starting"
+        },
+        {
+          "at": "2026-09-08T21:53:23Z",
+          "status": "needs_densify",
+          "note": "Portal eval completed: TOO_EASY 4/4 passed. Needs densification."
         }
       ],
-      "updated_at": "2026-09-08T20:44:49Z",
+      "updated_at": "2026-09-08T21:53:23Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
