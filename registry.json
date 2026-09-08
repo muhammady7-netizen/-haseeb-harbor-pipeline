@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-08T22:39:30Z",
+  "updated_at": "2026-09-08T22:47:54Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -787,8 +787,8 @@
       "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f55.zip",
-      "next_action": "Wait for Oracle+GLM evaluation (run_id: evaluation-bfb38b4c76454d72). Dismiss PreQC finding before submission.",
-      "notes": "Portal: PreQC FAIL (1 blocking, advisory). Delivery started despite PreQC FAIL.",
+      "next_action": "Wait for delivery eval (run_id: evaluation-e08f4aad8c074959). Fixed: reverted audit_has_15_rows regex + memo T9/T14 labels.",
+      "notes": "Re-uploaded v2: reverted verifier anchor (fairness fix), fixed memo T9/T14 summary table labels. Previous v1 had 8 blocking (4 fixed, 4 stability remain).",
       "history": [
         {
           "at": "2026-09-08T03:16:46Z",
@@ -824,9 +824,14 @@
           "at": "2026-09-08T22:02:19Z",
           "status": "final_running",
           "note": "Delivery started, run_id=evaluation-bfb38b4c76454d72"
+        },
+        {
+          "at": "2026-09-08T22:47:54Z",
+          "status": "final_running",
+          "note": "v2 uploaded with memo+verifier fixes, delivery eval started"
         }
       ],
-      "updated_at": "2026-09-08T22:02:19Z",
+      "updated_at": "2026-09-08T22:47:54Z",
       "last_preqc": {
         "at": "2026-09-08T19:31:54Z",
         "qc_verdict": "NEEDS_REVIEW",
@@ -835,14 +840,13 @@
       },
       "packaged_at": "2026-09-08T19:31:54Z",
       "portal": {
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-e00c26836e265ee0bb4d0b6aa7554c70-v1",
-        "version": "v1",
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-bee4025dddbd241355c950a0e748855d-v1",
+        "version": "v2",
         "watch": true,
-        "last_check_at": "2026-09-08T22:02:19Z",
+        "last_check_at": "2026-09-08T22:47:54Z",
         "phase": "delivery_running",
-        "run_id": "evaluation-bfb38b4c76454d72",
-        "preqc_verdict": "FAIL",
-        "preqc_blocking": 1
+        "run_id": "evaluation-e08f4aad8c074959",
+        "preqc_run_id": "af21beae4c264c4a8286ea717df0381b"
       }
     },
     {
