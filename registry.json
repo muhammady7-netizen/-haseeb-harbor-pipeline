@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-08T22:29:32Z",
+  "updated_at": "2026-09-08T22:32:56Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -969,11 +969,11 @@
       "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
-      "status": "preqc_clean",
+      "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Package zip: python -m pipeline.resume package --task NONC-B1-1001634",
-      "notes": "PreQC PASS; ready to package",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-0b62409e79b14e70)",
       "history": [
         {
           "at": "2026-09-08T19:09:10Z",
@@ -1014,9 +1014,19 @@
           "at": "2026-09-08T22:29:32Z",
           "status": "preqc_clean",
           "note": "PreQC PASS; ready to package"
+        },
+        {
+          "at": "2026-09-08T22:30:15Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
+        },
+        {
+          "at": "2026-09-08T22:32:56Z",
+          "status": "final_running",
+          "note": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-0b62409e79b14e70)"
         }
       ],
-      "updated_at": "2026-09-08T22:29:32Z",
+      "updated_at": "2026-09-08T22:32:56Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -1032,7 +1042,24 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\findings.csv"
       },
-      "packaged_at": "2026-09-08T21:41:48Z"
+      "packaged_at": "2026-09-08T22:30:15Z",
+      "portal": {
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-06987b8bd1445033de18b055245a724c-v1",
+        "version": "v1",
+        "watch": true,
+        "last_check_at": "2026-09-08T22:32:56Z",
+        "phase": "oracle_running",
+        "checks": [
+          {
+            "at": "2026-09-08T22:32:56Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-0b62409e79b14e70)",
+            "glm_pass": null,
+            "oracle": null
+          }
+        ]
+      }
     },
     {
       "id": "NONC-B1-1001654",
@@ -1226,11 +1253,11 @@
       "pack_name": "gen-g986-festival-key-art-billing-parity-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812/gen-g986-festival-key-art-billing-parity-audit",
-      "status": "ready_final",
+      "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g986.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g986.zip",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-f39b448029f541ee)",
       "history": [
         {
           "at": "2026-09-08T19:09:11Z",
@@ -1261,12 +1288,32 @@
           "at": "2026-09-08T21:42:24Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-gen-g986.zip"
+        },
+        {
+          "at": "2026-09-08T22:30:15Z",
+          "status": "preqc_running",
+          "note": ""
+        },
+        {
+          "at": "2026-09-08T22:30:16Z",
+          "status": "preqc_clean",
+          "note": "PreQC NEEDS_REVIEW; ready to package"
+        },
+        {
+          "at": "2026-09-08T22:30:50Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g986.zip"
+        },
+        {
+          "at": "2026-09-08T22:32:56Z",
+          "status": "final_running",
+          "note": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-f39b448029f541ee)"
         }
       ],
-      "updated_at": "2026-09-08T21:42:24Z",
+      "updated_at": "2026-09-08T22:32:56Z",
       "last_preqc": {
-        "at": "2026-09-08T21:41:49Z",
-        "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T214148Z",
+        "at": "2026-09-08T22:30:16Z",
+        "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z",
         "qc_verdict": "NEEDS_REVIEW",
         "full_model": false,
         "must_fix_count": 0,
@@ -1276,10 +1323,27 @@
           "P1": 0,
           "P2": 2
         },
-        "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T214148Z\\verdict.md",
-        "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T214148Z\\findings.csv"
+        "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z\\verdict.md",
+        "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z\\findings.csv"
       },
-      "packaged_at": "2026-09-08T21:42:24Z"
+      "packaged_at": "2026-09-08T22:30:50Z",
+      "portal": {
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-e11d8d755c6c2fe0f9f007b9f064cdab-v1",
+        "version": "v1",
+        "watch": true,
+        "last_check_at": "2026-09-08T22:32:56Z",
+        "phase": "oracle_running",
+        "checks": [
+          {
+            "at": "2026-09-08T22:32:56Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-f39b448029f541ee)",
+            "glm_pass": null,
+            "oracle": null
+          }
+        ]
+      }
     },
     {
       "id": "NONC-B1-1002016",
