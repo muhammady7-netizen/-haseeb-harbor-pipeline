@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-08T22:11:10Z",
+  "updated_at": "2026-09-08T22:11:44Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -543,7 +543,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Portal: QC-Oracle-GLM started for code-c251 v1 (content-381312e8a)",
+      "notes": "QC-Oracle-GLM running for code-c251 v1 (content-381312e8a)",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -564,9 +564,14 @@
           "at": "2026-09-08T21:57:39Z",
           "status": "final_running",
           "note": "Portal: QC-Oracle-GLM started for code-c251 v1 (content-381312e8a)"
+        },
+        {
+          "at": "2026-09-08T22:11:44Z",
+          "status": "final_running",
+          "note": "QC-Oracle-GLM running for code-c251 v1 (content-381312e8a)"
         }
       ],
-      "updated_at": "2026-09-08T21:57:39Z",
+      "updated_at": "2026-09-08T22:11:44Z",
       "last_preqc": {
         "at": "2026-09-08T19:11:57Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T191156Z",
@@ -586,7 +591,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-08T21:57:39Z",
+        "last_check_at": "2026-09-08T22:11:44Z",
         "phase": "glm_or_oracle_running",
         "checks": [
           {
@@ -596,8 +601,18 @@
             "note": "Portal: QC-Oracle-GLM started for code-c251 v1 (content-381312e8a)",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-08T22:11:44Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "QC-Oracle-GLM running for code-c251 v1 (content-381312e8a)",
+            "glm_pass": "null",
+            "oracle": "null"
           }
-        ]
+        ],
+        "glm_pass": "null",
+        "oracle": "null"
       }
     },
     {
@@ -759,11 +774,11 @@
       "pack_name": "gen-g734-cms-publish-readiness-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562/gen-g734-cms-publish-readiness-audit",
-      "status": "ready_final",
+      "status": "preqc_clean",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g734.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip",
+      "next_action": "Package zip: python -m pipeline.resume package --task NONC-B1-1001562",
+      "notes": "PreQC NEEDS_REVIEW; ready to package",
       "history": [
         {
           "at": "2026-09-08T19:09:08Z",
@@ -829,12 +844,22 @@
           "at": "2026-09-08T22:07:38Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip"
+        },
+        {
+          "at": "2026-09-08T22:11:32Z",
+          "status": "preqc_running",
+          "note": ""
+        },
+        {
+          "at": "2026-09-08T22:11:34Z",
+          "status": "preqc_clean",
+          "note": "PreQC NEEDS_REVIEW; ready to package"
         }
       ],
-      "updated_at": "2026-09-08T22:07:38Z",
+      "updated_at": "2026-09-08T22:11:34Z",
       "last_preqc": {
-        "at": "2026-09-08T22:06:57Z",
-        "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T220655Z",
+        "at": "2026-09-08T22:11:34Z",
+        "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221132Z",
         "qc_verdict": "NEEDS_REVIEW",
         "full_model": false,
         "must_fix_count": 0,
@@ -844,8 +869,8 @@
           "P1": 0,
           "P2": 1
         },
-        "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T220655Z\\verdict.md",
-        "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T220655Z\\findings.csv"
+        "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221132Z\\verdict.md",
+        "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221132Z\\findings.csv"
       },
       "packaged_at": "2026-09-08T22:07:38Z"
     },
