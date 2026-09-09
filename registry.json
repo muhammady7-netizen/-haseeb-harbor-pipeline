@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T17:48:32Z",
+  "updated_at": "2026-09-09T17:51:34Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -219,11 +219,11 @@
       "pack_name": "fin-f44-facility-interest-review",
       "work_root": "C:/Users/Haseeb Mirza/Documents/f44-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/f44-work/fin-f44-facility-interest-review",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f44.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Submitted to pipeline; verdict running",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip",
       "history": [
         {
           "at": "2026-09-08T19:08:20Z",
@@ -319,9 +319,14 @@
           "at": "2026-09-09T17:38:15Z",
           "status": "final_running",
           "note": "Submitted to pipeline; verdict running"
+        },
+        {
+          "at": "2026-09-09T17:50:37Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip"
         }
       ],
-      "updated_at": "2026-09-09T17:38:15Z",
+      "updated_at": "2026-09-09T17:50:37Z",
       "last_preqc": {
         "at": "2026-09-08T22:27:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z",
@@ -337,7 +342,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z\\findings.csv"
       },
-      "packaged_at": "2026-09-08T22:27:17Z",
+      "packaged_at": "2026-09-09T17:50:37Z",
       "portal": {
         "watch": true,
         "last_check_at": "2026-09-09T17:38:15Z",
@@ -683,7 +688,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v8 uploaded: fixed golden_results.json, README, review.csv, trajectory, loosened memo regexes, fixed gold memo. eval-4ccfd880a14f4792 running.",
+      "notes": "v8 eval queued (evaluation-4ccfd880a14f4792). Fixed: golden_results, README, review.csv, trajectory, memo regexes, gold memo.",
       "history": [
         {
           "at": "2026-09-08T19:06:34Z",
@@ -844,9 +849,14 @@
           "at": "2026-09-09T17:45:57Z",
           "status": "final_running",
           "note": "v8 uploaded: fixed golden_results.json, README, review.csv, trajectory, loosened memo regexes, fixed gold memo. eval-4ccfd880a14f4792 running."
+        },
+        {
+          "at": "2026-09-09T17:51:34Z",
+          "status": "final_running",
+          "note": "v8 eval queued (evaluation-4ccfd880a14f4792). Fixed: golden_results, README, review.csv, trajectory, memo regexes, gold memo."
         }
       ],
-      "updated_at": "2026-09-09T17:45:57Z",
+      "updated_at": "2026-09-09T17:51:34Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -909,7 +919,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v4 fixing: loosened memo regexes (allow punctuation), fixed test.sh, golden_results.json, trajectory. Upload pending.",
+      "notes": "v4 uploaded (#9337dc). eval-24d671b674ca4aa2 running. Fixed: memo regexes (allow punctuation), test.sh, golden_results, trajectory.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -985,9 +995,14 @@
           "at": "2026-09-09T17:45:58Z",
           "status": "final_running",
           "note": "v4 fixing: loosened memo regexes (allow punctuation), fixed test.sh, golden_results.json, trajectory. Upload pending."
+        },
+        {
+          "at": "2026-09-09T17:51:34Z",
+          "status": "final_running",
+          "note": "v4 uploaded (#9337dc). eval-24d671b674ca4aa2 running. Fixed: memo regexes (allow punctuation), test.sh, golden_results, trajectory."
         }
       ],
-      "updated_at": "2026-09-09T17:45:58Z",
+      "updated_at": "2026-09-09T17:51:34Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
