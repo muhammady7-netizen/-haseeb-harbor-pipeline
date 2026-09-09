@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T19:51:12Z",
+  "updated_at": "2026-09-09T19:54:23Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1520,11 +1520,11 @@
       "pack_name": "gen-g734-cms-publish-readiness-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562/gen-g734-cms-publish-readiness-audit",
-      "status": "ready_final",
+      "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g734.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v1 (no memo checks, 80 verifiers); Oracle+GLM started",
       "history": [
         {
           "at": "2026-09-08T19:09:08Z",
@@ -1650,9 +1650,14 @@
           "at": "2026-09-09T19:51:12Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip"
+        },
+        {
+          "at": "2026-09-09T19:54:23Z",
+          "status": "final_running",
+          "note": "v1 (no memo checks, 80 verifiers); Oracle+GLM started"
         }
       ],
-      "updated_at": "2026-09-09T19:51:12Z",
+      "updated_at": "2026-09-09T19:54:23Z",
       "last_preqc": {
         "at": "2026-09-08T22:14:49Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221448Z",
@@ -1671,9 +1676,9 @@
       "packaged_at": "2026-09-09T19:51:12Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-89240b92d486fd7b8ee6dad5adb91f97-v9",
-        "version": "v9",
+        "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-09T18:10:41Z",
+        "last_check_at": "2026-09-09T19:54:23Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -1697,6 +1702,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v9 uploaded with wider memo regex (finding codes pass gold); Oracle+GLM started",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T19:54:23Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (no memo checks, 80 verifiers); Oracle+GLM started",
             "glm_pass": null,
             "oracle": null
           }
