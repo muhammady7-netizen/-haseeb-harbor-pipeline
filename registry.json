@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T22:23:54Z",
+  "updated_at": "2026-09-09T22:27:00Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -737,17 +737,12 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "final_running",
+      "status": "ready_accept",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v12 eval: Oracle 1.0 PASSED! GLM x4 RUNNING (eval-8b595a7ccc284d5c). Will submit to pipeline when GLM<=2/4 + harbor clean. Browser contended.",
+      "notes": "v12 eval: Oracle 1.0 PASSED! GLM 2/4 PASSED! Harbor check running (final stage). Will submit to pipeline when harbor completes. ALL 12 harbor findings from v9 fixed: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences), deliverable gate, 3 verifier checks, cross-artifact consistency, instruction.md disclosure.",
       "history": [
-        {
-          "at": "2026-09-09T09:02:57Z",
-          "status": "uploaded",
-          "note": "Portal v1 uploaded (content-1c3c6f6983cbb19bbee9f69d4306b4e4); PreQC pending on portal"
-        },
         {
           "at": "2026-09-09T09:40:49Z",
           "status": "final_running",
@@ -942,9 +937,14 @@
           "at": "2026-09-09T22:23:54Z",
           "status": "final_running",
           "note": "v12 eval: Oracle 1.0 PASSED! GLM x4 RUNNING (eval-8b595a7ccc284d5c). Will submit to pipeline when GLM<=2/4 + harbor clean. Browser contended."
+        },
+        {
+          "at": "2026-09-09T22:27:00Z",
+          "status": "ready_accept",
+          "note": "v12 eval: Oracle 1.0 PASSED! GLM 2/4 PASSED! Harbor check running (final stage). Will submit to pipeline when harbor completes. ALL 12 harbor findings from v9 fixed: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences), deliverable gate, 3 verifier checks, cross-artifact consistency, instruction.md disclosure."
         }
       ],
-      "updated_at": "2026-09-09T22:23:54Z",
+      "updated_at": "2026-09-09T22:27:00Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
