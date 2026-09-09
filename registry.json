@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T13:01:22Z",
+  "updated_at": "2026-09-09T17:32:10Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1026,7 +1026,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v4 (45ae46b0) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions deprecated rule. Waiting for eval slot (3 in use).",
+      "notes": "code-c251 v4 QC-Oracle-GLM started (content-45ae46b0)",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -1097,9 +1097,14 @@
           "at": "2026-09-09T13:01:14Z",
           "status": "final_running",
           "note": "v4 (45ae46b0) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions deprecated rule. Waiting for eval slot (3 in use)."
+        },
+        {
+          "at": "2026-09-09T17:32:10Z",
+          "status": "final_running",
+          "note": "code-c251 v4 QC-Oracle-GLM started (content-45ae46b0)"
         }
       ],
-      "updated_at": "2026-09-09T13:01:14Z",
+      "updated_at": "2026-09-09T17:32:10Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1117,10 +1122,10 @@
       },
       "packaged_at": "2026-09-08T22:39:30Z",
       "portal": {
-        "version": "v1",
+        "version": "v4",
         "watch": true,
-        "last_check_at": "2026-09-09T13:01:14Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-09T17:32:10Z",
+        "phase": "glm_or_oracle_running",
         "checks": [
           {
             "at": "2026-09-08T21:57:39Z",
@@ -1167,6 +1172,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v4 (45ae46b0) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions deprecated rule. Waiting for eval slot (3 in use).",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T17:32:10Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "code-c251 v4 QC-Oracle-GLM started (content-45ae46b0)",
             "glm_pass": null,
             "oracle": null
           }
@@ -1770,7 +1783,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v7 (2a489be4) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions legacy rule. QC-Oracle-GLM running.",
+      "notes": "gen-g857 v7 re-run QC-Oracle-GLM (content-2a489be4)",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -1936,9 +1949,14 @@
           "at": "2026-09-09T13:01:14Z",
           "status": "final_running",
           "note": "v7 (2a489be4) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions legacy rule. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-09T17:32:10Z",
+          "status": "final_running",
+          "note": "gen-g857 v7 re-run QC-Oracle-GLM (content-2a489be4)"
         }
       ],
-      "updated_at": "2026-09-09T13:01:14Z",
+      "updated_at": "2026-09-09T17:32:10Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -1956,10 +1974,10 @@
       },
       "packaged_at": "2026-09-09T08:27:30Z",
       "portal": {
-        "version": "v1",
+        "version": "v7",
         "watch": true,
-        "last_check_at": "2026-09-09T13:01:14Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-09T17:32:10Z",
+        "phase": "glm_or_oracle_running",
         "checks": [
           {
             "at": "2026-09-08T21:57:39Z",
@@ -2102,6 +2120,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v7 (2a489be4) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions legacy rule. QC-Oracle-GLM running.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T17:32:10Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "gen-g857 v7 re-run QC-Oracle-GLM (content-2a489be4)",
             "glm_pass": null,
             "oracle": null
           }
