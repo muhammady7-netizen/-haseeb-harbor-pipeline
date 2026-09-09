@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T22:47:41Z",
+  "updated_at": "2026-09-09T22:53:49Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1923,7 +1923,7 @@
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Densified v1 (15 new scripts, 114 verifiers); Oracle+GLM started",
+      "notes": "v1 (129 scripts, 144 verifiers); Oracle+GLM started",
       "history": [
         {
           "at": "2026-09-08T19:09:10Z",
@@ -2014,9 +2014,19 @@
           "at": "2026-09-09T21:14:07Z",
           "status": "final_running",
           "note": "Densified v1 (15 new scripts, 114 verifiers); Oracle+GLM started"
+        },
+        {
+          "at": "2026-09-09T22:52:13Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
+        },
+        {
+          "at": "2026-09-09T22:53:49Z",
+          "status": "final_running",
+          "note": "v1 (129 scripts, 144 verifiers); Oracle+GLM started"
         }
       ],
-      "updated_at": "2026-09-09T21:14:07Z",
+      "updated_at": "2026-09-09T22:53:49Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2032,12 +2042,12 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\findings.csv"
       },
-      "packaged_at": "2026-09-09T21:09:14Z",
+      "packaged_at": "2026-09-09T22:52:13Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-d181a0518c9e07d970b4149e69bb9ba2-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-09T21:14:07Z",
+        "last_check_at": "2026-09-09T22:53:49Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -2069,6 +2079,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "Densified v1 (15 new scripts, 114 verifiers); Oracle+GLM started",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T22:53:49Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (129 scripts, 144 verifiers); Oracle+GLM started",
             "glm_pass": null,
             "oracle": null
           }
