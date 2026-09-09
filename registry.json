@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T20:12:44Z",
+  "updated_at": "2026-09-09T21:10:42Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -80,7 +80,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v9: 25 findings dismissed as false_positive via API; can_submit=true; submit button aria-disabled (needs PreQC run)",
+      "notes": "V19 uploaded + eval started (806e3626b7f449f0). Fixed: artifacts+collect enabled, test.sh PYTHONPATH=/tests, sign-aware CSV checks, case-insensitive memo, loosened labels, disclosed all requirements.",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -161,9 +161,14 @@
           "at": "2026-09-08T20:41:57Z",
           "status": "final_running",
           "note": "Portal v9: 25 findings dismissed as false_positive via API; can_submit=true; submit button aria-disabled (needs PreQC run)"
+        },
+        {
+          "at": "2026-09-09T21:10:41Z",
+          "status": "final_running",
+          "note": "V19 uploaded + eval started (806e3626b7f449f0). Fixed: artifacts+collect enabled, test.sh PYTHONPATH=/tests, sign-aware CSV checks, case-insensitive memo, loosened labels, disclosed all requirements."
         }
       ],
-      "updated_at": "2026-09-08T20:41:57Z",
+      "updated_at": "2026-09-09T21:10:41Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -2561,7 +2566,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started",
+      "notes": "V10 fixed: removed 5 exists checks, added 50 per-recipe checks (R-101-R-150), fixed R-114 tab, updated row count to 150, updated counts to 150-recipe totals, enabled artifacts+collect, fixed test.sh. Zip ready.",
       "history": [
         {
           "at": "2026-09-08T01:01:58Z",
@@ -2687,9 +2692,14 @@
           "at": "2026-09-08T20:41:57Z",
           "status": "final_running",
           "note": "Portal v15 uploaded; PreQC done 0 findings; QC-Oracle-GLM eval started"
+        },
+        {
+          "at": "2026-09-09T21:10:42Z",
+          "status": "final_running",
+          "note": "V10 fixed: removed 5 exists checks, added 50 per-recipe checks (R-101-R-150), fixed R-114 tab, updated row count to 150, updated counts to 150-recipe totals, enabled artifacts+collect, fixed test.sh. Zip ready."
         }
       ],
-      "updated_at": "2026-09-08T20:41:57Z",
+      "updated_at": "2026-09-09T21:10:42Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
@@ -2717,7 +2727,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Portal v2 uploaded; PreQC 5 findings (advisory); QC-Oracle-GLM starting",
+      "notes": "V4 uploaded + eval started (e9cdefae13f34c8a). Added 3 new metrics: openers_who_also_replied=12, threads_with_no_replies=14, replies_from_openers=21. 19 verifier configs.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -2823,9 +2833,14 @@
           "at": "2026-09-08T20:44:49Z",
           "status": "final_running",
           "note": "Portal v2 uploaded; PreQC 5 findings (advisory); QC-Oracle-GLM starting"
+        },
+        {
+          "at": "2026-09-09T21:10:42Z",
+          "status": "final_running",
+          "note": "V4 uploaded + eval started (e9cdefae13f34c8a). Added 3 new metrics: openers_who_also_replied=12, threads_with_no_replies=14, replies_from_openers=21. 19 verifier configs."
         }
       ],
-      "updated_at": "2026-09-08T20:44:49Z",
+      "updated_at": "2026-09-09T21:10:42Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
