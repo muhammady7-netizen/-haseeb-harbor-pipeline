@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T20:12:44Z",
+  "updated_at": "2026-09-09T20:28:53Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -716,13 +716,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v10 eval running (evaluation-98329bf1a3f14d46). v9 had Oracle 1.0 + GLM 2/4 (PASS!). v10 fixes: missing deliverable gate, removed 77 dead verifier.json (->3), strengthened memo checks (8+ word sentences), cross-artifact consistency. Waiting for eval.",
+      "notes": "v11 fixing ALL 12 harbor findings: memo rejects CSV dumps (line-based, 10+ words), instruction.md discloses memo requirements, no no-op tests, no double-penalization, missing deliverable gate, 3 file-existence checks, cross-artifact consistency. Upload pending (browser contended).",
       "history": [
-        {
-          "at": "2026-09-08T19:31:34Z",
-          "status": "preqc_running",
-          "note": ""
-        },
         {
           "at": "2026-09-08T19:31:35Z",
           "status": "preqc_needs_fix",
@@ -917,9 +912,14 @@
           "at": "2026-09-09T20:08:42Z",
           "status": "final_running",
           "note": "v10 eval running (evaluation-98329bf1a3f14d46). v9 had Oracle 1.0 + GLM 2/4 (PASS!). v10 fixes: missing deliverable gate, removed 77 dead verifier.json (->3), strengthened memo checks (8+ word sentences), cross-artifact consistency. Waiting for eval."
+        },
+        {
+          "at": "2026-09-09T20:28:53Z",
+          "status": "final_running",
+          "note": "v11 fixing ALL 12 harbor findings: memo rejects CSV dumps (line-based, 10+ words), instruction.md discloses memo requirements, no no-op tests, no double-penalization, missing deliverable gate, 3 file-existence checks, cross-artifact consistency. Upload pending (browser contended)."
         }
       ],
-      "updated_at": "2026-09-09T20:08:42Z",
+      "updated_at": "2026-09-09T20:28:53Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
