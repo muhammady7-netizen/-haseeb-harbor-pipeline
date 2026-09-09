@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T08:38:10Z",
+  "updated_at": "2026-09-09T08:44:03Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -727,11 +727,11 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work/code-c251-pdf-form-field-conversion-audit",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
-      "next_action": "Keep polling portal until Oracle+GLMÃ—4 finishes",
-      "notes": "v2 Oracle passes; GLM 4/4 too easy; needs harder traps",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v1 (c31e35b5) NEW family with deprecated-field exclusion rule + 6 trap fields. QC-Oracle-GLM starting.",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -792,9 +792,14 @@
           "at": "2026-09-09T07:25:08Z",
           "status": "needs_densify",
           "note": "v2 Oracle passes; GLM 4/4 too easy; needs harder traps"
+        },
+        {
+          "at": "2026-09-09T08:44:03Z",
+          "status": "final_running",
+          "note": "v1 (c31e35b5) NEW family with deprecated-field exclusion rule + 6 trap fields. QC-Oracle-GLM starting."
         }
       ],
-      "updated_at": "2026-09-09T07:25:08Z",
+      "updated_at": "2026-09-09T08:44:03Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -812,9 +817,9 @@
       },
       "packaged_at": "2026-09-08T22:39:30Z",
       "portal": {
-        "version": "v2",
+        "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-09T06:25:28Z",
+        "last_check_at": "2026-09-09T08:44:03Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -848,11 +853,19 @@
             "note": "v2 QC-Oracle-GLM started (first attempt didn't persist)",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-09T08:44:03Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (c31e35b5) NEW family with deprecated-field exclusion rule + 6 trap fields. QC-Oracle-GLM starting.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "4/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-381312e8a06548485d216526ac3e11d1-v2"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-c31e35b579f0149b2b51849c15eca5e8-v1"
       }
     },
     {
@@ -1339,7 +1352,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (36fa5f0b) NEW content family with legacy-exclusion rule + 15 new trap depts. PreQC done (1 advisory). QC-Oracle-GLM running.",
+      "notes": "v6 Oracle PASSED! GLM×4 running 659s. 5 trap depts (121-125) should trip GLM. Waiting for difficulty result.",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -1480,9 +1493,14 @@
           "at": "2026-09-09T08:38:10Z",
           "status": "final_running",
           "note": "v1 (36fa5f0b) NEW content family with legacy-exclusion rule + 15 new trap depts. PreQC done (1 advisory). QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-09T08:43:31Z",
+          "status": "final_running",
+          "note": "v6 Oracle PASSED! GLM×4 running 659s. 5 trap depts (121-125) should trip GLM. Waiting for difficulty result."
         }
       ],
-      "updated_at": "2026-09-09T08:38:10Z",
+      "updated_at": "2026-09-09T08:43:31Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -1500,10 +1518,10 @@
       },
       "packaged_at": "2026-09-09T08:27:30Z",
       "portal": {
-        "version": "v1",
+        "version": "v6",
         "watch": true,
-        "last_check_at": "2026-09-09T08:38:10Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-09T08:43:31Z",
+        "phase": "glm_running",
         "checks": [
           {
             "at": "2026-09-08T21:57:39Z",
@@ -1608,6 +1626,14 @@
             "note": "v1 (36fa5f0b) NEW content family with legacy-exclusion rule + 15 new trap depts. PreQC done (1 advisory). QC-Oracle-GLM running.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-09T08:43:31Z",
+            "phase": "glm_running",
+            "running": true,
+            "note": "v6 Oracle PASSED! GLM×4 running 659s. 5 trap depts (121-125) should trip GLM. Waiting for difficulty result.",
+            "glm_pass": null,
+            "oracle": "1.0"
           }
         ],
         "glm_pass": "4/4",
