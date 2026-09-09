@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T10:45:33Z",
+  "updated_at": "2026-09-09T10:53:02Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1607,7 +1607,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (ed239145) fixed verifier regex (15 assertions). PreQC done. QC-Oracle-GLM starting.",
+      "notes": "v1 (ed239145) re-running QC-Oracle-GLM after previous eval ERRORED (infrastructure failure, not difficulty). Oracle passed, GLM 0/4 was due to error. 3 PreQC findings advisory (legacy rule, sort-order, regex permissiveness).",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -1763,9 +1763,14 @@
           "at": "2026-09-09T09:39:05Z",
           "status": "final_running",
           "note": "v1 (ed239145) fixed verifier regex (15 assertions). PreQC done. QC-Oracle-GLM starting."
+        },
+        {
+          "at": "2026-09-09T10:53:02Z",
+          "status": "final_running",
+          "note": "v1 (ed239145) re-running QC-Oracle-GLM after previous eval ERRORED (infrastructure failure, not difficulty). Oracle passed, GLM 0/4 was due to error. 3 PreQC findings advisory (legacy rule, sort-order, regex permissiveness)."
         }
       ],
-      "updated_at": "2026-09-09T09:39:05Z",
+      "updated_at": "2026-09-09T10:53:02Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -1785,7 +1790,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-09T09:39:05Z",
+        "last_check_at": "2026-09-09T10:53:02Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -1913,6 +1918,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v1 (ed239145) fixed verifier regex (15 assertions). PreQC done. QC-Oracle-GLM starting.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T10:53:02Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (ed239145) re-running QC-Oracle-GLM after previous eval ERRORED (infrastructure failure, not difficulty). Oracle passed, GLM 0/4 was due to error. 3 PreQC findings advisory (legacy rule, sort-order, regex permissiveness).",
             "glm_pass": null,
             "oracle": null
           }
