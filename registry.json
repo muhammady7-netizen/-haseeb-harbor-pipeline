@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T22:27:00Z",
+  "updated_at": "2026-09-09T22:36:41Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -741,13 +741,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v12 eval: Oracle 1.0 PASSED! GLM 2/4 PASSED! Harbor check running (final stage). Will submit to pipeline when harbor completes. ALL 12 harbor findings from v9 fixed: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences), deliverable gate, 3 verifier checks, cross-artifact consistency, instruction.md disclosure.",
+      "notes": "v12 eval: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running ~50 min (long — server load). Will submit to pipeline when harbor completes. ALL 12 harbor findings fixed. Browser contended.",
       "history": [
-        {
-          "at": "2026-09-09T09:40:49Z",
-          "status": "final_running",
-          "note": "Portal v1 uploaded (content-1c3c6f6983cbb19b); PreQC 4 findings dismissed as false_positive; QC-Oracle-GLM eval started (evaluation-f913c579db254c0e)"
-        },
         {
           "at": "2026-09-09T09:40:49Z",
           "status": "final_running",
@@ -942,9 +937,14 @@
           "at": "2026-09-09T22:27:00Z",
           "status": "ready_accept",
           "note": "v12 eval: Oracle 1.0 PASSED! GLM 2/4 PASSED! Harbor check running (final stage). Will submit to pipeline when harbor completes. ALL 12 harbor findings from v9 fixed: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences), deliverable gate, 3 verifier checks, cross-artifact consistency, instruction.md disclosure."
+        },
+        {
+          "at": "2026-09-09T22:36:41Z",
+          "status": "ready_accept",
+          "note": "v12 eval: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running ~50 min (long — server load). Will submit to pipeline when harbor completes. ALL 12 harbor findings fixed. Browser contended."
         }
       ],
-      "updated_at": "2026-09-09T22:27:00Z",
+      "updated_at": "2026-09-09T22:36:41Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
