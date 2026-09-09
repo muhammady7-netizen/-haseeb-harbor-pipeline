@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T22:07:00Z",
+  "updated_at": "2026-09-09T22:10:04Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -219,11 +219,11 @@
       "pack_name": "fin-f44-facility-interest-review",
       "work_root": "C:/Users/Haseeb Mirza/Documents/f44-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/f44-work/fin-f44-facility-interest-review",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f44.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v5 uploaded (content-40e2ed1): fixed gold CSV (empty total ref), fixed total_row regex, disclosed memo format in instruction. Eval triggered (evaluation-01906e94fb4441d7).",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip",
       "history": [
         {
           "at": "2026-09-08T19:08:20Z",
@@ -364,9 +364,19 @@
           "at": "2026-09-09T21:15:45Z",
           "status": "final_running",
           "note": "v5 uploaded (content-40e2ed1): fixed gold CSV (empty total ref), fixed total_row regex, disclosed memo format in instruction. Eval triggered (evaluation-01906e94fb4441d7)."
+        },
+        {
+          "at": "2026-09-09T22:09:09Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip"
+        },
+        {
+          "at": "2026-09-09T22:10:04Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip"
         }
       ],
-      "updated_at": "2026-09-09T21:15:45Z",
+      "updated_at": "2026-09-09T22:10:04Z",
       "last_preqc": {
         "at": "2026-09-08T22:27:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z",
@@ -382,7 +392,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z\\findings.csv"
       },
-      "packaged_at": "2026-09-09T21:14:53Z",
+      "packaged_at": "2026-09-09T22:10:04Z",
       "portal": {
         "watch": true,
         "last_check_at": "2026-09-09T20:12:44Z",
