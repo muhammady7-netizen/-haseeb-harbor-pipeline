@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T18:57:58Z",
+  "updated_at": "2026-09-09T19:00:55Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1052,11 +1052,11 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work/code-c251-pdf-form-field-conversion-audit",
-      "status": "accepted",
+      "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "code-c251 v2 submitted on portal (Submit clicked)",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "code-c251 v2 QC-Oracle-GLM started (content-45ae46b0-v2)",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -1147,9 +1147,14 @@
           "at": "2026-09-09T18:29:25Z",
           "status": "accepted",
           "note": "code-c251 v2 submitted on portal (Submit clicked)"
+        },
+        {
+          "at": "2026-09-09T19:00:55Z",
+          "status": "final_running",
+          "note": "code-c251 v2 QC-Oracle-GLM started (content-45ae46b0-v2)"
         }
       ],
-      "updated_at": "2026-09-09T18:29:25Z",
+      "updated_at": "2026-09-09T19:00:55Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1167,9 +1172,9 @@
       },
       "packaged_at": "2026-09-09T18:15:37Z",
       "portal": {
-        "version": "v4",
+        "version": "v2",
         "watch": true,
-        "last_check_at": "2026-09-09T17:32:10Z",
+        "last_check_at": "2026-09-09T19:00:55Z",
         "phase": "glm_or_oracle_running",
         "checks": [
           {
@@ -1225,6 +1230,14 @@
             "phase": "glm_or_oracle_running",
             "running": true,
             "note": "code-c251 v4 QC-Oracle-GLM started (content-45ae46b0)",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T19:00:55Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "code-c251 v2 QC-Oracle-GLM started (content-45ae46b0-v2)",
             "glm_pass": null,
             "oracle": null
           }
