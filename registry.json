@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T12:00:47Z",
+  "updated_at": "2026-09-09T12:08:17Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -502,7 +502,7 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Dismiss remaining PreQC if needed, then Accept on portal",
-      "notes": "GLM 2/4 within difficulty gate",
+      "notes": "READY_FOR_FINALIZATION. All findings dismissed. Submit button clicked but SPA redirect prevents completion. Needs manual Submit click on portal.",
       "history": [
         {
           "at": "2026-09-08T03:16:44Z",
@@ -593,9 +593,14 @@
           "at": "2026-09-09T11:02:52Z",
           "status": "ready_accept",
           "note": "GLM 2/4 within difficulty gate"
+        },
+        {
+          "at": "2026-09-09T12:08:17Z",
+          "status": "ready_accept",
+          "note": "READY_FOR_FINALIZATION. All findings dismissed. Submit button clicked but SPA redirect prevents completion. Needs manual Submit click on portal."
         }
       ],
-      "updated_at": "2026-09-09T11:02:52Z",
+      "updated_at": "2026-09-09T12:08:17Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
