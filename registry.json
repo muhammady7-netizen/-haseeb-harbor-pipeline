@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T19:00:55Z",
+  "updated_at": "2026-09-09T19:04:32Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -507,8 +507,8 @@
       "status": "ready_accept",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
-      "next_action": "Pipeline running (state=error, checking). GLM 0/4, Oracle 1.0.",
-      "notes": "Submitted to pipeline (GLM 0/4, Oracle 1.0, findings dismissed). Pipeline state=error.",
+      "next_action": "Pipeline running. Waiting for acceptance.",
+      "notes": "Submitted run2 (GLM 0/4, Oracle 1.0). 25 findings dismissed as false_positive.",
       "history": [
         {
           "at": "2026-09-08T03:16:44Z",
@@ -624,9 +624,14 @@
           "at": "2026-09-09T17:48:32Z",
           "status": "ready_accept",
           "note": "Submitted to pipeline"
+        },
+        {
+          "at": "2026-09-09T19:04:32Z",
+          "status": "ready_accept",
+          "note": "Submitted run2 to pipeline"
         }
       ],
-      "updated_at": "2026-09-09T17:48:32Z",
+      "updated_at": "2026-09-09T19:04:32Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
@@ -645,12 +650,12 @@
       "packaged_at": "2026-09-09T13:00:12Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-337c2e4a7b1f05978ec32a80bf0afa2f-v1",
-        "version": "v1",
+        "version": "v2",
         "watch": true,
-        "last_check_at": "2026-09-09T17:48:32Z",
+        "last_check_at": "2026-09-09T19:04:32Z",
         "phase": "pipeline_running",
-        "run_id": "evaluation-9a15103a9dd94c9a",
-        "pipeline_batch_id": "auto-pipeline-evaluation-9a15103a9dd94c9a",
+        "run_id": "evaluation-0411e16ec4134511",
+        "pipeline_batch_id": "auto-pipeline-evaluation-0411e16ec4134511",
         "oracle": "1.0",
         "glm_pass": "0/4"
       }
