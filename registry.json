@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T22:15:46Z",
+  "updated_at": "2026-09-09T22:16:21Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -741,13 +741,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v12 eval RUNNING at Oracle (eval-8b595a7ccc284d5c). v12 fixes: memo accepts Markdown tables + test_memo_has_prose. v9 proved Oracle 1.0 + GLM 2/4. ALL fixes pushed. Will submit to pipeline when eval completes + harbor clean.",
+      "notes": "v12 eval RUNNING: Oracle PASSED 1.0! GLM x4 running (eval-8b595a7ccc284d5c). Waiting for GLM results. v12 fixes: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences). v9 had Oracle 1.0 + GLM 2/4. Will submit to pipeline if GLM<=2/4 + harbor clean.",
       "history": [
-        {
-          "at": "2026-09-09T08:56:05Z",
-          "status": "preqc_running",
-          "note": ""
-        },
         {
           "at": "2026-09-09T08:56:17Z",
           "status": "preqc_needs_fix",
@@ -942,9 +937,14 @@
           "at": "2026-09-09T22:07:00Z",
           "status": "final_running",
           "note": "v12 eval RUNNING at Oracle (eval-8b595a7ccc284d5c). v12 fixes: memo accepts Markdown tables + test_memo_has_prose. v9 proved Oracle 1.0 + GLM 2/4. ALL fixes pushed. Will submit to pipeline when eval completes + harbor clean."
+        },
+        {
+          "at": "2026-09-09T22:16:21Z",
+          "status": "final_running",
+          "note": "v12 eval RUNNING: Oracle PASSED 1.0! GLM x4 running (eval-8b595a7ccc284d5c). Waiting for GLM results. v12 fixes: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences). v9 had Oracle 1.0 + GLM 2/4. Will submit to pipeline if GLM<=2/4 + harbor clean."
         }
       ],
-      "updated_at": "2026-09-09T22:07:00Z",
+      "updated_at": "2026-09-09T22:16:21Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -1007,7 +1007,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v6 eval RUNNING at Oracle (eval-484e797e5d514311). Densified 7 edge-case runs. Will submit to pipeline when eval completes + harbor clean.",
+      "notes": "v6 eval RUNNING: Oracle running (eval-484e797e5d514311). Densified 7 edge-case runs. Waiting for Oracle to pass.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -1173,9 +1173,14 @@
           "at": "2026-09-09T22:07:00Z",
           "status": "final_running",
           "note": "v6 eval RUNNING at Oracle (eval-484e797e5d514311). Densified 7 edge-case runs. Will submit to pipeline when eval completes + harbor clean."
+        },
+        {
+          "at": "2026-09-09T22:16:21Z",
+          "status": "final_running",
+          "note": "v6 eval RUNNING: Oracle running (eval-484e797e5d514311). Densified 7 edge-case runs. Waiting for Oracle to pass."
         }
       ],
-      "updated_at": "2026-09-09T22:07:00Z",
+      "updated_at": "2026-09-09T22:16:21Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
