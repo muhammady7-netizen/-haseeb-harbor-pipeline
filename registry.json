@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T17:51:34Z",
+  "updated_at": "2026-09-09T17:54:11Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -324,9 +324,14 @@
           "at": "2026-09-09T17:50:37Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip"
+        },
+        {
+          "at": "2026-09-09T17:51:56Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip"
         }
       ],
-      "updated_at": "2026-09-09T17:50:37Z",
+      "updated_at": "2026-09-09T17:51:56Z",
       "last_preqc": {
         "at": "2026-09-08T22:27:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z",
@@ -342,7 +347,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z\\findings.csv"
       },
-      "packaged_at": "2026-09-09T17:50:37Z",
+      "packaged_at": "2026-09-09T17:51:56Z",
       "portal": {
         "watch": true,
         "last_check_at": "2026-09-09T17:38:15Z",
@@ -397,11 +402,11 @@
       "pack_name": "health-h34-randomisation-balance",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h34",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h34/health-h34-randomisation-balance",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-health-h34.zip",
-      "next_action": "Densify more aggressively. GLM still 4/4 after first densification (62->91 subjects).",
-      "notes": "Delivery FAIL: GLM 4/4 too easy even after densification. Need harder traps.",
+      "next_action": "Wait for delivery eval (run_id: evaluation-423ec4b9fc004f09). Densified v3: 121 subjects, 24 OOS, 9 blocks assessed, 4 outside.",
+      "notes": "Densified v3: 121 subjects (was 91), 24 OOS, 9 assessed blocks, 4 outside, severe stratum outside tolerance. Target: GLM <=2/4.",
       "history": [
         {
           "at": "2026-09-08T03:16:41Z",
@@ -467,9 +472,14 @@
           "at": "2026-09-09T17:48:32Z",
           "status": "needs_densify",
           "note": "Still 4/4 after densify v2"
+        },
+        {
+          "at": "2026-09-09T17:54:11Z",
+          "status": "final_running",
+          "note": "v3 densified uploaded, delivery eval started"
         }
       ],
-      "updated_at": "2026-09-09T17:48:32Z",
+      "updated_at": "2026-09-09T17:54:11Z",
       "last_preqc": {
         "at": "2026-09-08T19:31:54Z",
         "qc_verdict": "NEEDS_REVIEW",
@@ -478,47 +488,14 @@
       },
       "packaged_at": "2026-09-08T19:31:54Z",
       "portal": {
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-d7a2812f327f1e6f56e119f922b4ada9-v1",
-        "version": "v2",
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-0d6290193a96451b1b0ff4fd685704c4-v1",
+        "version": "v3-densified",
         "watch": true,
-        "last_check_at": "2026-09-09T17:48:32Z",
-        "phase": "delivery_done",
-        "run_id": "evaluation-91f5398ee52a4c94",
-        "checks": [
-          {
-            "at": "2026-09-09T09:39:13Z",
-            "phase": "preqc_running",
-            "running": true,
-            "note": "h34 v1 (content-ed23914) on portal. Clicked Run QC-Oracle-GLM. Waiting for eval to start.",
-            "glm_pass": null,
-            "oracle": null
-          },
-          {
-            "at": "2026-09-09T09:50:54Z",
-            "phase": "preqc_running",
-            "running": true,
-            "note": "h34 PreQC started on portal. Waiting for completion.",
-            "glm_pass": null,
-            "oracle": null
-          },
-          {
-            "at": "2026-09-09T11:45:32Z",
-            "phase": "final_running",
-            "running": true,
-            "note": "h34 old PreQC+eval findings dismissed. New densified v2 eval (evaluation-1ee3ab) still running. Waiting for Oracle+GLM×4 result.",
-            "glm_pass": null,
-            "oracle": null
-          },
-          {
-            "at": "2026-09-09T12:00:47Z",
-            "phase": "ready_accept",
-            "running": false,
-            "note": "h34 new eval (evaluation-1ee3ab) done. 23 findings dismissed as false_positive. READY_FOR_FINALIZATION, can_submit=true. Ready to submit with h40 and f55.",
-            "glm_pass": null,
-            "oracle": null
-          }
-        ],
-        "glm_pass": "4/4"
+        "last_check_at": "2026-09-09T17:54:11Z",
+        "phase": "delivery_running",
+        "run_id": "evaluation-423ec4b9fc004f09",
+        "oracle": null,
+        "glm_pass": null
       }
     },
     {
@@ -1575,11 +1552,11 @@
       "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Keep polling portal until Oracle+GLMÃ—4 finishes",
-      "notes": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-0b62409e79b14e70)",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip",
       "history": [
         {
           "at": "2026-09-08T19:09:10Z",
@@ -1630,9 +1607,14 @@
           "at": "2026-09-08T22:32:56Z",
           "status": "final_running",
           "note": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-0b62409e79b14e70)"
+        },
+        {
+          "at": "2026-09-09T17:52:13Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
         }
       ],
-      "updated_at": "2026-09-08T22:32:56Z",
+      "updated_at": "2026-09-09T17:52:13Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -1648,7 +1630,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\findings.csv"
       },
-      "packaged_at": "2026-09-08T22:30:15Z",
+      "packaged_at": "2026-09-09T17:52:13Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-06987b8bd1445033de18b055245a724c-v1",
         "version": "v1",
