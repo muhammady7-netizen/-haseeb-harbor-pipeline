@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T06:57:10Z",
+  "updated_at": "2026-09-09T07:25:08Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -722,11 +722,11 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work/code-c251-pdf-form-field-conversion-audit",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v2 QC-Oracle-GLM started (first attempt didn't persist)",
+      "notes": "v2 Oracle passes; GLM 4/4 too easy; needs harder traps",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -782,9 +782,14 @@
           "at": "2026-09-09T06:25:28Z",
           "status": "final_running",
           "note": "v2 QC-Oracle-GLM started (first attempt didn't persist)"
+        },
+        {
+          "at": "2026-09-09T07:25:08Z",
+          "status": "needs_densify",
+          "note": "v2 Oracle passes; GLM 4/4 too easy; needs harder traps"
         }
       ],
-      "updated_at": "2026-09-09T06:25:28Z",
+      "updated_at": "2026-09-09T07:25:08Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1325,11 +1330,11 @@
       "pack_name": "gen-g857-department-directory-categorization-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001684",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001684/gen-g857-department-directory-categorization-audit",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running — Oracle should pass now.",
+      "next_action": "Densify task, PreQC, package, re-upload",
+      "notes": "v4 Oracle passes (gold fixed 64->121 depts); GLM 4/4 too easy; needs harder traps",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -1415,9 +1420,24 @@
           "at": "2026-09-09T06:57:10Z",
           "status": "final_running",
           "note": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running — Oracle should pass now."
+        },
+        {
+          "at": "2026-09-09T07:24:40Z",
+          "status": "final_running",
+          "note": "v3 eval started (CRLF fix); Oracle waiting; ~50min total"
+        },
+        {
+          "at": "2026-09-09T07:25:08Z",
+          "status": "needs_densify",
+          "note": "GLM 4/4 too easy"
+        },
+        {
+          "at": "2026-09-09T07:25:08Z",
+          "status": "needs_densify",
+          "note": "v4 Oracle passes (gold fixed 64->121 depts); GLM 4/4 too easy; needs harder traps"
         }
       ],
-      "updated_at": "2026-09-09T06:57:10Z",
+      "updated_at": "2026-09-09T07:25:08Z",
       "last_preqc": {
         "at": "2026-09-08T22:18:50Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-08T221849Z",
@@ -1437,8 +1457,8 @@
       "portal": {
         "version": "v4",
         "watch": true,
-        "last_check_at": "2026-09-09T06:57:10Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-09T07:25:08Z",
+        "phase": "complete",
         "checks": [
           {
             "at": "2026-09-08T21:57:39Z",
@@ -1503,6 +1523,22 @@
             "note": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running — Oracle should pass now.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-09T07:24:40Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v3 eval started (CRLF fix); Oracle waiting; ~50min total",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T07:25:08Z",
+            "phase": "complete",
+            "running": false,
+            "note": "v4 Oracle PASSES (fixed stale gold). GLM 4/4 too easy. Needs densification to trip GLM.",
+            "glm_pass": "4/4",
+            "oracle": "1.0"
           }
         ],
         "glm_pass": "4/4",
