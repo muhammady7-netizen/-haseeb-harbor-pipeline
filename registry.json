@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T19:54:23Z",
+  "updated_at": "2026-09-09T19:56:56Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -703,7 +703,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v9 BREAKTHROUGH: Oracle 1.0 PASS, GLM 2/4 PASS! Harbor check still running. Will submit to pipeline when done.",
+      "notes": "v9 eval still running at harbor stage. Oracle 1.0 PASS, GLM 2/4 PASS. Harbor check taking very long (>2hrs). Will submit to pipeline when it completes.",
       "history": [
         {
           "at": "2026-09-08T19:06:34Z",
@@ -894,9 +894,14 @@
           "at": "2026-09-09T19:50:06Z",
           "status": "final_running",
           "note": "v9 BREAKTHROUGH: Oracle 1.0 PASS, GLM 2/4 PASS! Harbor check still running. Will submit to pipeline when done."
+        },
+        {
+          "at": "2026-09-09T19:56:56Z",
+          "status": "final_running",
+          "note": "v9 eval still running at harbor stage. Oracle 1.0 PASS, GLM 2/4 PASS. Harbor check taking very long (>2hrs). Will submit to pipeline when it completes."
         }
       ],
-      "updated_at": "2026-09-09T19:50:06Z",
+      "updated_at": "2026-09-09T19:56:56Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
