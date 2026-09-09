@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T20:04:56Z",
+  "updated_at": "2026-09-09T20:08:42Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -703,13 +703,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v10 eval started (evaluation-98329bf1a3f14d46). Fixes: missing deliverable gate, 3 file-existence checks (removed 77 dead), strengthened memo checks (8+ word sentences), updated README/review.csv/trajectory. v9 had Oracle 1.0 + GLM 2/4.",
+      "notes": "v10 eval running (evaluation-98329bf1a3f14d46). v9 had Oracle 1.0 + GLM 2/4 (PASS!). v10 fixes: missing deliverable gate, removed 77 dead verifier.json (->3), strengthened memo checks (8+ word sentences), cross-artifact consistency. Waiting for eval.",
       "history": [
-        {
-          "at": "2026-09-08T19:06:37Z",
-          "status": "preqc_needs_fix",
-          "note": "PreQC FAIL; 12 must-fix"
-        },
         {
           "at": "2026-09-08T19:31:34Z",
           "status": "preqc_running",
@@ -904,9 +899,14 @@
           "at": "2026-09-09T20:04:56Z",
           "status": "final_running",
           "note": "v10 eval started (evaluation-98329bf1a3f14d46). Fixes: missing deliverable gate, 3 file-existence checks (removed 77 dead), strengthened memo checks (8+ word sentences), updated README/review.csv/trajectory. v9 had Oracle 1.0 + GLM 2/4."
+        },
+        {
+          "at": "2026-09-09T20:08:42Z",
+          "status": "final_running",
+          "note": "v10 eval running (evaluation-98329bf1a3f14d46). v9 had Oracle 1.0 + GLM 2/4 (PASS!). v10 fixes: missing deliverable gate, removed 77 dead verifier.json (->3), strengthened memo checks (8+ word sentences), cross-artifact consistency. Waiting for eval."
         }
       ],
-      "updated_at": "2026-09-09T20:04:56Z",
+      "updated_at": "2026-09-09T20:08:42Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -969,7 +969,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v5 done: Oracle PASS, GLM 4/4 (too easy). Proximity-based memo regexes still too permissive for GLM. Need harder computation traps, not memo checks.",
+      "notes": "v5 done: Oracle pass, GLM 4/4 (too easy). Proximity memo regexes too permissive. Need harder computation traps.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -1075,9 +1075,14 @@
           "at": "2026-09-09T19:32:19Z",
           "status": "needs_densify",
           "note": "v5 done: Oracle PASS, GLM 4/4 (too easy). Proximity-based memo regexes still too permissive for GLM. Need harder computation traps, not memo checks."
+        },
+        {
+          "at": "2026-09-09T20:08:42Z",
+          "status": "needs_densify",
+          "note": "v5 done: Oracle pass, GLM 4/4 (too easy). Proximity memo regexes too permissive. Need harder computation traps."
         }
       ],
-      "updated_at": "2026-09-09T19:32:19Z",
+      "updated_at": "2026-09-09T20:08:42Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
@@ -1870,7 +1875,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g826.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v5 uploaded by other PC with Unicode traps. Still 4/4. Needs fundamentally harder trap.",
+      "notes": "v5 (other PC) still 4/4. GLM too good at deterministic CSV audits. Needs fundamental redesign.",
       "history": [
         {
           "at": "2026-09-08T19:06:38Z",
@@ -1966,9 +1971,14 @@
           "at": "2026-09-09T17:45:58Z",
           "status": "needs_densify",
           "note": "v5 uploaded by other PC with Unicode traps. Still 4/4. Needs fundamentally harder trap."
+        },
+        {
+          "at": "2026-09-09T20:08:42Z",
+          "status": "needs_densify",
+          "note": "v5 (other PC) still 4/4. GLM too good at deterministic CSV audits. Needs fundamental redesign."
         }
       ],
-      "updated_at": "2026-09-09T17:45:58Z",
+      "updated_at": "2026-09-09T20:08:42Z",
       "last_preqc": {
         "at": "2026-09-08T19:27:44Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001654\\2026-09-08T192743Z",
