@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T19:45:02Z",
+  "updated_at": "2026-09-09T19:50:06Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -703,7 +703,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v9 queued pos 1 (eval-27130cf8249145e1). Next in line — will start when c249v5 or another eval finishes.",
+      "notes": "v9 BREAKTHROUGH: Oracle 1.0 PASS, GLM 2/4 PASS! Harbor check still running. Will submit to pipeline when done.",
       "history": [
         {
           "at": "2026-09-08T19:06:34Z",
@@ -889,9 +889,14 @@
           "at": "2026-09-09T19:16:27Z",
           "status": "final_running",
           "note": "v9 queued pos 1 (eval-27130cf8249145e1). Next in line — will start when c249v5 or another eval finishes."
+        },
+        {
+          "at": "2026-09-09T19:50:06Z",
+          "status": "final_running",
+          "note": "v9 BREAKTHROUGH: Oracle 1.0 PASS, GLM 2/4 PASS! Harbor check still running. Will submit to pipeline when done."
         }
       ],
-      "updated_at": "2026-09-09T19:16:27Z",
+      "updated_at": "2026-09-09T19:50:06Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
