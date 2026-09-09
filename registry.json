@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T22:39:27Z",
+  "updated_at": "2026-09-09T22:43:35Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -737,17 +737,12 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "ready_accept",
+      "status": "final_running",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v12: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running 60+ min (very long — server overload). Pipeline submission returns 409 (harbor not done). Will submit when harbor completes.",
+      "notes": "v13 built: fixed test_results_txn_count (was no-op), strengthened test_memo_has_prose (requires table ID + finding keyword), removed 8 memo checks for 'none' tables, README declares ~180 pytest checks, instruction.md discloses memo requirements. Harbor found findings on v12: gold memo wrong T-14/T-16, CSV dump passes memo checks, results.json not compared. v13 fixes these.",
       "history": [
-        {
-          "at": "2026-09-09T10:21:52Z",
-          "status": "needs_densify",
-          "note": "Portal v1 eval DONE: Oracle 1.0 PASS, GLM 4/4 (TOO EASY). Needs densification - add harder traps."
-        },
         {
           "at": "2026-09-09T10:21:53Z",
           "status": "needs_densify",
@@ -942,9 +937,14 @@
           "at": "2026-09-09T22:39:27Z",
           "status": "ready_accept",
           "note": "v12: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running 60+ min (very long — server overload). Pipeline submission returns 409 (harbor not done). Will submit when harbor completes."
+        },
+        {
+          "at": "2026-09-09T22:43:35Z",
+          "status": "final_running",
+          "note": "v13 built: fixed test_results_txn_count (was no-op), strengthened test_memo_has_prose (requires table ID + finding keyword), removed 8 memo checks for 'none' tables, README declares ~180 pytest checks, instruction.md discloses memo requirements. Harbor found findings on v12: gold memo wrong T-14/T-16, CSV dump passes memo checks, results.json not compared. v13 fixes these."
         }
       ],
-      "updated_at": "2026-09-09T22:39:27Z",
+      "updated_at": "2026-09-09T22:43:35Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
