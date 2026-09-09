@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T21:22:56Z",
+  "updated_at": "2026-09-09T21:28:30Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -726,13 +726,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v11 eval RUNNING at Oracle stage (evaluation-27f32a5f98ac4830). ALL 12 harbor findings fixed. v9 proved Oracle 1.0 + GLM 2/4. v11 strengthens memo checks (line-based, reject CSV/Markdown, 10+ words) + instruction.md disclosure.",
+      "notes": "v12 eval queued (evaluation-8b595a7ccc284d5c, pos 4). Fixed Oracle failure: memo checks now accept Markdown tables + prose (proximity 200 chars). Added test_memo_has_prose (5+ prose sentences). v11 Oracle failed 0.771 (rejected gold memo's Markdown table rows). v12 fixes this.",
       "history": [
-        {
-          "at": "2026-09-08T21:03:55Z",
-          "status": "final_running",
-          "note": "Portal v1 uploaded; Oracle+GLM running (evaluation-07351037be8b4a77)"
-        },
         {
           "at": "2026-09-08T22:11:10Z",
           "status": "needs_densify",
@@ -927,9 +922,14 @@
           "at": "2026-09-09T21:17:42Z",
           "status": "final_running",
           "note": "v11 eval RUNNING at Oracle stage (evaluation-27f32a5f98ac4830). ALL 12 harbor findings fixed. v9 proved Oracle 1.0 + GLM 2/4. v11 strengthens memo checks (line-based, reject CSV/Markdown, 10+ words) + instruction.md disclosure."
+        },
+        {
+          "at": "2026-09-09T21:28:30Z",
+          "status": "final_running",
+          "note": "v12 eval queued (evaluation-8b595a7ccc284d5c, pos 4). Fixed Oracle failure: memo checks now accept Markdown tables + prose (proximity 200 chars). Added test_memo_has_prose (5+ prose sentences). v11 Oracle failed 0.771 (rejected gold memo's Markdown table rows). v12 fixes this."
         }
       ],
-      "updated_at": "2026-09-09T21:17:42Z",
+      "updated_at": "2026-09-09T21:28:30Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
