@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T06:25:28Z",
+  "updated_at": "2026-09-09T06:57:10Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1329,7 +1329,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Re-running QC-Oracle-GLM on v1 (local Oracle passed 1.0; portal failure was transient)",
+      "notes": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running — Oracle should pass now.",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -1405,9 +1405,19 @@
           "at": "2026-09-09T06:25:28Z",
           "status": "final_running",
           "note": "Re-running QC-Oracle-GLM on v1 (local Oracle passed 1.0; portal failure was transient)"
+        },
+        {
+          "at": "2026-09-09T06:35:56Z",
+          "status": "final_running",
+          "note": "v3 uploaded (CRLF fix); QC-Oracle-GLM 409 (3-task limit); waiting for slot"
+        },
+        {
+          "at": "2026-09-09T06:57:10Z",
+          "status": "final_running",
+          "note": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running — Oracle should pass now."
         }
       ],
-      "updated_at": "2026-09-09T06:25:28Z",
+      "updated_at": "2026-09-09T06:57:10Z",
       "last_preqc": {
         "at": "2026-09-08T22:18:50Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-08T221849Z",
@@ -1425,9 +1435,9 @@
       },
       "packaged_at": "2026-09-08T22:20:04Z",
       "portal": {
-        "version": "v1",
+        "version": "v4",
         "watch": true,
-        "last_check_at": "2026-09-09T06:25:28Z",
+        "last_check_at": "2026-09-09T06:57:10Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -1483,6 +1493,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "Re-running QC-Oracle-GLM on v1 (local Oracle passed 1.0; portal failure was transient)",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T06:57:10Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running — Oracle should pass now.",
             "glm_pass": null,
             "oracle": null
           }
