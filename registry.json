@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T19:16:27Z",
+  "updated_at": "2026-09-09T19:21:12Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1925,8 +1925,8 @@
       "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Pipeline error on first submission (Sep 9 11:34 PM) — awaiting retry/verdict",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "gen-g857 v7 uploaded (84 depts, 110 checks, no legacy issues, stability evidence included) + eval started",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -2117,9 +2117,14 @@
           "at": "2026-09-09T18:46:48Z",
           "status": "final_running",
           "note": "Pipeline error on first submission (Sep 9 11:34 PM) — awaiting retry/verdict"
+        },
+        {
+          "at": "2026-09-09T19:21:12Z",
+          "status": "final_running",
+          "note": "gen-g857 v7 uploaded (84 depts, 110 checks, no legacy issues, stability evidence included) + eval started"
         }
       ],
-      "updated_at": "2026-09-09T18:46:48Z",
+      "updated_at": "2026-09-09T19:21:12Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -2139,7 +2144,7 @@
       "portal": {
         "version": "v7",
         "watch": true,
-        "last_check_at": "2026-09-09T17:32:10Z",
+        "last_check_at": "2026-09-09T19:21:12Z",
         "phase": "glm_or_oracle_running",
         "checks": [
           {
@@ -2291,6 +2296,14 @@
             "phase": "glm_or_oracle_running",
             "running": true,
             "note": "gen-g857 v7 re-run QC-Oracle-GLM (content-2a489be4)",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T19:21:12Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "gen-g857 v7 uploaded (84 depts, 110 checks, no legacy issues, stability evidence included) + eval started",
             "glm_pass": null,
             "oracle": null
           }
