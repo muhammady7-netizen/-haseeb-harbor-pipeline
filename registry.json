@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T20:42:44Z",
+  "updated_at": "2026-09-09T20:48:21Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -716,13 +716,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v11 eval running (evaluation-27f32a5f98ac4830). ALL 12 harbor findings fixed: instruction.md disclosure, line-based memo checks (reject CSV/Markdown, 10+ words), deliverable gate, 3 verifier checks, cross-artifact consistency.",
+      "notes": "v11 eval queued pos 3 (evaluation-27f32a5f98ac4830). ALL 12 harbor findings fixed: instruction.md discloses memo requirements, line-based memo checks reject CSV/Markdown tables and require 10+ word prose, missing deliverable gate=0, 3 verifier.json checks (not 77 dead), cross-artifact consistency (README/review.csv/trajectory/golden_results). v9 proved Oracle 1.0 + GLM 2/4.",
       "history": [
-        {
-          "at": "2026-09-08T19:32:13Z",
-          "status": "preqc_clean",
-          "note": "PreQC NEEDS_REVIEW; ready to package"
-        },
         {
           "at": "2026-09-08T19:32:18Z",
           "status": "ready_final",
@@ -917,9 +912,14 @@
           "at": "2026-09-09T20:42:44Z",
           "status": "final_running",
           "note": "v11 eval running (evaluation-27f32a5f98ac4830). ALL 12 harbor findings fixed: instruction.md disclosure, line-based memo checks (reject CSV/Markdown, 10+ words), deliverable gate, 3 verifier checks, cross-artifact consistency."
+        },
+        {
+          "at": "2026-09-09T20:48:20Z",
+          "status": "final_running",
+          "note": "v11 eval queued pos 3 (evaluation-27f32a5f98ac4830). ALL 12 harbor findings fixed: instruction.md discloses memo requirements, line-based memo checks reject CSV/Markdown tables and require 10+ word prose, missing deliverable gate=0, 3 verifier.json checks (not 77 dead), cross-artifact consistency (README/review.csv/trajectory/golden_results). v9 proved Oracle 1.0 + GLM 2/4."
         }
       ],
-      "updated_at": "2026-09-09T20:42:44Z",
+      "updated_at": "2026-09-09T20:48:20Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -982,7 +982,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v6 densified (7 new runs around 2026-07-06 cutover: boundary, unparseable, row-count). Upload blocked by file chooser contention. Will retry.",
+      "notes": "v6 densified (7 new runs around 2026-07-06 cutover: exact boundary, day before/after, row-count mismatch, correct pre/post cutover). Zip built. Upload blocked by file chooser contention from other chats. Will retry.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -1098,9 +1098,14 @@
           "at": "2026-09-09T20:42:44Z",
           "status": "final_running",
           "note": "v6 densified (7 new runs around 2026-07-06 cutover: boundary, unparseable, row-count). Upload blocked by file chooser contention. Will retry."
+        },
+        {
+          "at": "2026-09-09T20:48:21Z",
+          "status": "final_running",
+          "note": "v6 densified (7 new runs around 2026-07-06 cutover: exact boundary, day before/after, row-count mismatch, correct pre/post cutover). Zip built. Upload blocked by file chooser contention from other chats. Will retry."
         }
       ],
-      "updated_at": "2026-09-09T20:42:44Z",
+      "updated_at": "2026-09-09T20:48:21Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
