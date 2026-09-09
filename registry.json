@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T11:46:14Z",
+  "updated_at": "2026-09-09T11:53:08Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1575,11 +1575,11 @@
       "pack_name": "gen-g826-tender-document-brand-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1001654",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1001654/gen-g826-tender-document-brand-style-audit",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g826.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v4 eval DONE: Oracle 1.0 PASS, GLM 4/4 STILL too easy. 4 quoted-CSV-field trap docs added but GLM handles all. CSV audit is deterministic - GLM runs rules mechanically. Needs fundamentally harder approach.",
+      "notes": "v5 uploaded (content-eb15777b); PreQC 4 findings dismissed; eval started (evaluation-521f94125c1f4d31). Added 4 Unicode whitespace (U+00A0) trap docs - non-breaking space is NOT ASCII whitespace, should NOT be trimmed. GLM using Python strip() would incorrectly strip it.",
       "history": [
         {
           "at": "2026-09-08T19:06:38Z",
@@ -1655,9 +1655,19 @@
           "at": "2026-09-09T11:46:14Z",
           "status": "needs_densify",
           "note": "v4 eval DONE: Oracle 1.0 PASS, GLM 4/4 STILL too easy. 4 quoted-CSV-field trap docs added but GLM handles all. CSV audit is deterministic - GLM runs rules mechanically. Needs fundamentally harder approach."
+        },
+        {
+          "at": "2026-09-09T11:48:14Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g826.zip"
+        },
+        {
+          "at": "2026-09-09T11:53:08Z",
+          "status": "final_running",
+          "note": "v5 uploaded (content-eb15777b); PreQC 4 findings dismissed; eval started (evaluation-521f94125c1f4d31). Added 4 Unicode whitespace (U+00A0) trap docs - non-breaking space is NOT ASCII whitespace, should NOT be trimmed. GLM using Python strip() would incorrectly strip it."
         }
       ],
-      "updated_at": "2026-09-09T11:46:14Z",
+      "updated_at": "2026-09-09T11:53:08Z",
       "last_preqc": {
         "at": "2026-09-08T19:27:44Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001654\\2026-09-08T192743Z",
@@ -1673,7 +1683,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001654\\2026-09-08T192743Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001654\\2026-09-08T192743Z\\findings.csv"
       },
-      "packaged_at": "2026-09-09T11:08:39Z",
+      "packaged_at": "2026-09-09T11:48:14Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-f2b8f6e8d63ccfb03c6e9e5b67f6f519-v1",
         "version": "v3",
