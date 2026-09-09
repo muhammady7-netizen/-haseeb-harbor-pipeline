@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T17:55:18Z",
+  "updated_at": "2026-09-09T18:10:07Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -665,7 +665,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v8 eval queued (evaluation-4ccfd880a14f4792). Fixed: golden_results, README, review.csv, trajectory, memo regexes, gold memo.",
+      "notes": "v9 eval-27130cf8249145e1 running. Proper proximity-based memo regexes, anchored row regexes, fixed golden_results/README/review.csv/trajectory, proper test.sh per-check reward.",
       "history": [
         {
           "at": "2026-09-08T19:06:34Z",
@@ -831,9 +831,14 @@
           "at": "2026-09-09T17:51:34Z",
           "status": "final_running",
           "note": "v8 eval queued (evaluation-4ccfd880a14f4792). Fixed: golden_results, README, review.csv, trajectory, memo regexes, gold memo."
+        },
+        {
+          "at": "2026-09-09T18:10:07Z",
+          "status": "final_running",
+          "note": "v9 eval-27130cf8249145e1 running. Proper proximity-based memo regexes, anchored row regexes, fixed golden_results/README/review.csv/trajectory, proper test.sh per-check reward."
         }
       ],
-      "updated_at": "2026-09-09T17:51:34Z",
+      "updated_at": "2026-09-09T18:10:07Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -896,7 +901,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v4 uploaded (#9337dc). eval-24d671b674ca4aa2 running. Fixed: memo regexes (allow punctuation), test.sh, golden_results, trajectory.",
+      "notes": "v5 eval-88b9b49ab4154b55 running. Same fixes: proximity-based memo regexes, proper test.sh, golden_results/README/review.csv/trajectory.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -977,9 +982,14 @@
           "at": "2026-09-09T17:51:34Z",
           "status": "final_running",
           "note": "v4 uploaded (#9337dc). eval-24d671b674ca4aa2 running. Fixed: memo regexes (allow punctuation), test.sh, golden_results, trajectory."
+        },
+        {
+          "at": "2026-09-09T18:10:07Z",
+          "status": "final_running",
+          "note": "v5 eval-88b9b49ab4154b55 running. Same fixes: proximity-based memo regexes, proper test.sh, golden_results/README/review.csv/trajectory."
         }
       ],
-      "updated_at": "2026-09-09T17:51:34Z",
+      "updated_at": "2026-09-09T18:10:07Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
@@ -1404,11 +1414,11 @@
       "pack_name": "gen-g734-cms-publish-readiness-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562/gen-g734-cms-publish-readiness-audit",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g734.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 re-uploaded with finding-code memo checks; Oracle running",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip",
       "history": [
         {
           "at": "2026-09-08T19:09:08Z",
@@ -1519,9 +1529,14 @@
           "at": "2026-09-09T17:55:18Z",
           "status": "final_running",
           "note": "v1 re-uploaded with finding-code memo checks; Oracle running"
+        },
+        {
+          "at": "2026-09-09T18:07:13Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip"
         }
       ],
-      "updated_at": "2026-09-09T17:55:18Z",
+      "updated_at": "2026-09-09T18:07:13Z",
       "last_preqc": {
         "at": "2026-09-08T22:14:49Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221448Z",
@@ -1537,7 +1552,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221448Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221448Z\\findings.csv"
       },
-      "packaged_at": "2026-09-09T17:38:12Z",
+      "packaged_at": "2026-09-09T18:07:13Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58f824bc42a9cd6a7cee8bd85dd1283b-v1",
         "version": "v1",
@@ -2200,11 +2215,11 @@
       "pack_name": "gen-g986-festival-key-art-billing-parity-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812/gen-g986-festival-key-art-billing-parity-audit",
-      "status": "needs_densify",
+      "status": "ready_final",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g986.zip",
-      "next_action": "Keep polling portal until Oracle+GLMÃ—4 finishes",
-      "notes": "Portal eval: GLM 4/4 (too easy). Need to add edge cases/traps.",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g986.zip",
       "history": [
         {
           "at": "2026-09-08T19:09:11Z",
@@ -2260,9 +2275,14 @@
           "at": "2026-09-09T17:55:18Z",
           "status": "needs_densify",
           "note": "Portal eval: GLM 4/4 (too easy). Need to add edge cases/traps."
+        },
+        {
+          "at": "2026-09-09T18:03:30Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g986.zip"
         }
       ],
-      "updated_at": "2026-09-09T17:55:18Z",
+      "updated_at": "2026-09-09T18:03:30Z",
       "last_preqc": {
         "at": "2026-09-08T22:30:16Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z",
@@ -2278,7 +2298,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z\\findings.csv"
       },
-      "packaged_at": "2026-09-08T22:30:50Z",
+      "packaged_at": "2026-09-09T18:03:30Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-e11d8d755c6c2fe0f9f007b9f064cdab-v1",
         "version": "v1",
