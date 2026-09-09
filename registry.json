@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T20:28:53Z",
+  "updated_at": "2026-09-09T20:35:54Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -716,13 +716,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v11 fixing ALL 12 harbor findings: memo rejects CSV dumps (line-based, 10+ words), instruction.md discloses memo requirements, no no-op tests, no double-penalization, missing deliverable gate, 3 file-existence checks, cross-artifact consistency. Upload pending (browser contended).",
+      "notes": "v10 eval queued (pos 2, evaluation-98329bf1a3f14d46). v11 ready (ALL 12 findings fixed: instruction.md disclosure, line-based memo checks reject CSV/Markdown, no no-ops, no double-penalization) but upload blocked by file chooser contention. v10 has 4/6 fixes — if harbor passes, done. If not, upload v11.",
       "history": [
-        {
-          "at": "2026-09-08T19:31:35Z",
-          "status": "preqc_needs_fix",
-          "note": "PreQC FAIL; 1 must-fix"
-        },
         {
           "at": "2026-09-08T19:32:12Z",
           "status": "preqc_running",
@@ -917,9 +912,14 @@
           "at": "2026-09-09T20:28:53Z",
           "status": "final_running",
           "note": "v11 fixing ALL 12 harbor findings: memo rejects CSV dumps (line-based, 10+ words), instruction.md discloses memo requirements, no no-op tests, no double-penalization, missing deliverable gate, 3 file-existence checks, cross-artifact consistency. Upload pending (browser contended)."
+        },
+        {
+          "at": "2026-09-09T20:35:54Z",
+          "status": "final_running",
+          "note": "v10 eval queued (pos 2, evaluation-98329bf1a3f14d46). v11 ready (ALL 12 findings fixed: instruction.md disclosure, line-based memo checks reject CSV/Markdown, no no-ops, no double-penalization) but upload blocked by file chooser contention. v10 has 4/6 fixes — if harbor passes, done. If not, upload v11."
         }
       ],
-      "updated_at": "2026-09-09T20:28:53Z",
+      "updated_at": "2026-09-09T20:35:54Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -2431,11 +2431,11 @@
       "pack_name": "gen-g986-festival-key-art-billing-parity-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812/gen-g986-festival-key-art-billing-parity-audit",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g986.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v2 densified (14 Block D edge cases); Oracle+GLM started",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g986.zip",
       "history": [
         {
           "at": "2026-09-08T19:09:11Z",
@@ -2506,9 +2506,14 @@
           "at": "2026-09-09T18:13:13Z",
           "status": "final_running",
           "note": "v2 densified (14 Block D edge cases); Oracle+GLM started"
+        },
+        {
+          "at": "2026-09-09T20:30:33Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g986.zip"
         }
       ],
-      "updated_at": "2026-09-09T18:13:13Z",
+      "updated_at": "2026-09-09T20:30:33Z",
       "last_preqc": {
         "at": "2026-09-08T22:30:16Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z",
@@ -2524,7 +2529,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z\\findings.csv"
       },
-      "packaged_at": "2026-09-09T18:03:30Z",
+      "packaged_at": "2026-09-09T20:30:33Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-e11d8d755c6c2fe0f9f007b9f064cdab-v2",
         "version": "v2",
