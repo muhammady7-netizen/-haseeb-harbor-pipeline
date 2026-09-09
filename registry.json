@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T19:26:27Z",
+  "updated_at": "2026-09-09T19:30:40Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -219,11 +219,11 @@
       "pack_name": "fin-f44-facility-interest-review",
       "work_root": "C:/Users/Haseeb Mirza/Documents/f44-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/f44-work/fin-f44-facility-interest-review",
-      "status": "ready_final",
+      "status": "final_running",
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f44.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "Submitted to pipeline; verdict running (batch pipeline-evaluation-920a0c3ff8d74a50)",
       "history": [
         {
           "at": "2026-09-08T19:08:20Z",
@@ -329,9 +329,19 @@
           "at": "2026-09-09T17:51:56Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-fin-f44.zip"
+        },
+        {
+          "at": "2026-09-09T19:30:39Z",
+          "status": "final_running",
+          "note": "v3 uploaded (content-8b1adb), eval done (Oracle 1.0, GLM 1/4), 11 findings dismissed FP, submitted to pipeline (batch pipeline-evaluation-920a0c3ff8d74a50). Pipeline running."
+        },
+        {
+          "at": "2026-09-09T19:30:40Z",
+          "status": "final_running",
+          "note": "Submitted to pipeline; verdict running (batch pipeline-evaluation-920a0c3ff8d74a50)"
         }
       ],
-      "updated_at": "2026-09-09T17:51:56Z",
+      "updated_at": "2026-09-09T19:30:40Z",
       "last_preqc": {
         "at": "2026-09-08T22:27:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z",
@@ -350,7 +360,7 @@
       "packaged_at": "2026-09-09T17:51:56Z",
       "portal": {
         "watch": true,
-        "last_check_at": "2026-09-09T17:38:15Z",
+        "last_check_at": "2026-09-09T19:30:40Z",
         "phase": "pipeline_running",
         "checks": [
           {
@@ -390,6 +400,14 @@
             "phase": "pipeline_running",
             "running": true,
             "note": "Submitted to pipeline; verdict running",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-09T19:30:40Z",
+            "phase": "pipeline_running",
+            "running": true,
+            "note": "Submitted to pipeline; verdict running (batch pipeline-evaluation-920a0c3ff8d74a50)",
             "glm_pass": null,
             "oracle": null
           }
