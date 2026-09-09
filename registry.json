@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T21:50:10Z",
+  "updated_at": "2026-09-09T21:53:00Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1183,11 +1183,11 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work/code-c251-pdf-form-field-conversion-audit",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "code-c251 v2 QC-Oracle-GLM started (content-45ae46b0-v2)",
+      "notes": "Fixed: memo regexes DOTALL, removed duplicate missing-field checks, added explicit unquoted requirement. 93 checks. Needs fresh GLM runs.",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -1283,9 +1283,14 @@
           "at": "2026-09-09T19:00:55Z",
           "status": "final_running",
           "note": "code-c251 v2 QC-Oracle-GLM started (content-45ae46b0-v2)"
+        },
+        {
+          "at": "2026-09-09T21:53:00Z",
+          "status": "needs_densify",
+          "note": "Fixed: memo regexes DOTALL, removed duplicate missing-field checks, added explicit unquoted requirement. 93 checks. Needs fresh GLM runs."
         }
       ],
-      "updated_at": "2026-09-09T19:00:55Z",
+      "updated_at": "2026-09-09T21:53:00Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -2161,11 +2166,11 @@
       "pack_name": "gen-g857-department-directory-categorization-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4/gen-g857-department-directory-categorization-audit",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "gen-g857 v7 uploaded (84 depts, 110 checks, no legacy issues, stability evidence included) + eval started",
+      "notes": "Fixed: renamed traps, removed contrived aliases, removed undisclosed memo checks, added CSV format requirement. 104 depts, 123 checks. Needs fresh GLM runs.",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -2361,9 +2366,14 @@
           "at": "2026-09-09T19:21:12Z",
           "status": "final_running",
           "note": "gen-g857 v7 uploaded (84 depts, 110 checks, no legacy issues, stability evidence included) + eval started"
+        },
+        {
+          "at": "2026-09-09T21:53:00Z",
+          "status": "needs_densify",
+          "note": "Fixed: renamed traps, removed contrived aliases, removed undisclosed memo checks, added CSV format requirement. 104 depts, 123 checks. Needs fresh GLM runs."
         }
       ],
-      "updated_at": "2026-09-09T19:21:12Z",
+      "updated_at": "2026-09-09T21:53:00Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
