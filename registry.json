@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T18:45:01Z",
+  "updated_at": "2026-09-09T18:46:48Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1884,11 +1884,11 @@
       "pack_name": "gen-g857-department-directory-categorization-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4/gen-g857-department-directory-categorization-audit",
-      "status": "uploaded",
+      "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "gen-g857 submitted to pipeline Sep 9 11:34 PM — Final QC Running, awaiting verdict",
+      "notes": "Pipeline error on first submission (Sep 9 11:34 PM) — awaiting retry/verdict",
       "history": [
         {
           "at": "2026-09-08T19:11:49Z",
@@ -2074,9 +2074,14 @@
           "at": "2026-09-09T18:37:38Z",
           "status": "uploaded",
           "note": "gen-g857 submitted to pipeline Sep 9 11:34 PM — Final QC Running, awaiting verdict"
+        },
+        {
+          "at": "2026-09-09T18:46:48Z",
+          "status": "final_running",
+          "note": "Pipeline error on first submission (Sep 9 11:34 PM) — awaiting retry/verdict"
         }
       ],
-      "updated_at": "2026-09-09T18:37:38Z",
+      "updated_at": "2026-09-09T18:46:48Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
