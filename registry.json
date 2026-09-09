@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T18:15:37Z",
+  "updated_at": "2026-09-09T18:27:21Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1301,11 +1301,11 @@
       "pack_name": "fin-f55-trust-principal-income-allocation-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-fin-f55",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-fin-f55/fin-f55-trust-principal-income-allocation-audit",
-      "status": "ready_accept",
+      "status": "accepted",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f55.zip",
-      "next_action": "Pipeline running. Check for acceptance/rejection.",
-      "notes": "Submitted to pipeline (GLM 2/4, Oracle 1.0, 6 findings dismissed as false_positive).",
+      "next_action": "ACCEPTED! Task complete.",
+      "notes": "Pipeline ACCEPTED! GLM 2/4, Oracle 1.0, 6 findings dismissed as false_positive.",
       "history": [
         {
           "at": "2026-09-08T03:16:46Z",
@@ -1366,9 +1366,14 @@
           "at": "2026-09-09T17:48:32Z",
           "status": "ready_accept",
           "note": "Submitted to pipeline"
+        },
+        {
+          "at": "2026-09-09T18:27:21Z",
+          "status": "accepted",
+          "note": "Pipeline accepted!"
         }
       ],
-      "updated_at": "2026-09-09T17:48:32Z",
+      "updated_at": "2026-09-09T18:27:21Z",
       "last_preqc": {
         "at": "2026-09-08T19:31:54Z",
         "qc_verdict": "NEEDS_REVIEW",
@@ -1380,8 +1385,8 @@
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-bee4025dddbd241355c950a0e748855d-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-09T17:48:32Z",
-        "phase": "pipeline_running",
+        "last_check_at": "2026-09-09T18:27:21Z",
+        "phase": "accepted",
         "run_id": "evaluation-e08f4aad8c074959",
         "preqc_run_id": "af21beae4c264c4a8286ea717df0381b",
         "checks": [
