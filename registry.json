@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T18:13:13Z",
+  "updated_at": "2026-09-09T18:15:37Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1117,9 +1117,14 @@
           "at": "2026-09-09T17:54:31Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-code-c251.zip"
+        },
+        {
+          "at": "2026-09-09T18:15:37Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-code-c251.zip"
         }
       ],
-      "updated_at": "2026-09-09T17:54:31Z",
+      "updated_at": "2026-09-09T18:15:37Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1135,7 +1140,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z\\findings.csv"
       },
-      "packaged_at": "2026-09-09T17:54:31Z",
+      "packaged_at": "2026-09-09T18:15:37Z",
       "portal": {
         "version": "v4",
         "watch": true,
