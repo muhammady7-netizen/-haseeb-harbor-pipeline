@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T19:04:32Z",
+  "updated_at": "2026-09-09T19:16:27Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -670,7 +670,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v9 queued pos 3 (eval-27130cf8249145e1). Server slow: 3 running, 5 queued. v8 done: Oracle pass, GLM 4/4 (too loose). v9 has proximity-based memo regexes.",
+      "notes": "v9 queued pos 1 (eval-27130cf8249145e1). Next in line — will start when c249v5 or another eval finishes.",
       "history": [
         {
           "at": "2026-09-08T19:06:34Z",
@@ -851,9 +851,14 @@
           "at": "2026-09-09T18:57:58Z",
           "status": "final_running",
           "note": "v9 queued pos 3 (eval-27130cf8249145e1). Server slow: 3 running, 5 queued. v8 done: Oracle pass, GLM 4/4 (too loose). v9 has proximity-based memo regexes."
+        },
+        {
+          "at": "2026-09-09T19:16:27Z",
+          "status": "final_running",
+          "note": "v9 queued pos 1 (eval-27130cf8249145e1). Next in line — will start when c249v5 or another eval finishes."
         }
       ],
-      "updated_at": "2026-09-09T18:57:58Z",
+      "updated_at": "2026-09-09T19:16:27Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -916,7 +921,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v5 queued pos 2 (eval-88b9b49ab4154b55). About to start. v4 done: Oracle fail 0.848. v5 has proper proximity memo regexes + fixed test.sh.",
+      "notes": "v5 RUNNING (eval-88b9b49ab4154b55) at Oracle stage. ~35-55 min to complete.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -1012,9 +1017,14 @@
           "at": "2026-09-09T18:57:58Z",
           "status": "final_running",
           "note": "v5 queued pos 2 (eval-88b9b49ab4154b55). About to start. v4 done: Oracle fail 0.848. v5 has proper proximity memo regexes + fixed test.sh."
+        },
+        {
+          "at": "2026-09-09T19:16:26Z",
+          "status": "final_running",
+          "note": "v5 RUNNING (eval-88b9b49ab4154b55) at Oracle stage. ~35-55 min to complete."
         }
       ],
-      "updated_at": "2026-09-09T18:57:58Z",
+      "updated_at": "2026-09-09T19:16:26Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
