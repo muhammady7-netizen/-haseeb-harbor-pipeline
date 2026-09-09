@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T22:45:57Z",
+  "updated_at": "2026-09-09T22:47:41Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -741,13 +741,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v13 eval started (evaluation-0da0f1d083734990). Fixes: test_results_txn_count (was no-op), test_memo_has_prose (requires table ID + keyword), removed 8 memo checks for none tables, README declares 180 checks, instruction.md discloses memo requirements. v12 had Oracle 1.0 + GLM 2/4. v13 fixes harbor findings.",
+      "notes": "v13 eval running (evaluation-0da0f1d083734990). Fixes: test_results_txn_count (was no-op), test_memo_has_prose (requires table ID + keyword), removed 8 none-table memo checks, README declares 180 checks, instruction.md discloses memo. v12 had Oracle 1.0 + GLM 2/4. v13 fixes harbor findings.",
       "history": [
-        {
-          "at": "2026-09-09T10:33:12Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintenance-audit (2).zip"
-        },
         {
           "at": "2026-09-09T10:53:29Z",
           "status": "ready_final",
@@ -942,9 +937,14 @@
           "at": "2026-09-09T22:45:56Z",
           "status": "final_running",
           "note": "v13 eval started (evaluation-0da0f1d083734990). Fixes: test_results_txn_count (was no-op), test_memo_has_prose (requires table ID + keyword), removed 8 memo checks for none tables, README declares 180 checks, instruction.md discloses memo requirements. v12 had Oracle 1.0 + GLM 2/4. v13 fixes harbor findings."
+        },
+        {
+          "at": "2026-09-09T22:47:41Z",
+          "status": "final_running",
+          "note": "v13 eval running (evaluation-0da0f1d083734990). Fixes: test_results_txn_count (was no-op), test_memo_has_prose (requires table ID + keyword), removed 8 none-table memo checks, README declares 180 checks, instruction.md discloses memo. v12 had Oracle 1.0 + GLM 2/4. v13 fixes harbor findings."
         }
       ],
-      "updated_at": "2026-09-09T22:45:56Z",
+      "updated_at": "2026-09-09T22:47:41Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -1007,7 +1007,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v7 eval started (evaluation-5600552867da4865). Fixed Oracle failure: RUN-03 MISSING_TAIL_MERGE (was SOURCE_MISMATCH), results updated. Densified 7 edge-case runs.",
+      "notes": "v7 eval running (evaluation-5600552867da4865). Fixed Oracle: RUN-03 MISSING_TAIL_MERGE (was SOURCE_MISMATCH). Densified 7 edge-case runs.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -1193,9 +1193,14 @@
           "at": "2026-09-09T22:45:57Z",
           "status": "final_running",
           "note": "v7 eval started (evaluation-5600552867da4865). Fixed Oracle failure: RUN-03 MISSING_TAIL_MERGE (was SOURCE_MISMATCH), results updated. Densified 7 edge-case runs."
+        },
+        {
+          "at": "2026-09-09T22:47:41Z",
+          "status": "final_running",
+          "note": "v7 eval running (evaluation-5600552867da4865). Fixed Oracle: RUN-03 MISSING_TAIL_MERGE (was SOURCE_MISMATCH). Densified 7 edge-case runs."
         }
       ],
-      "updated_at": "2026-09-09T22:45:57Z",
+      "updated_at": "2026-09-09T22:47:41Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
