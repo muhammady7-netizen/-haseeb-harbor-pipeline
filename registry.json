@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-09T21:28:30Z",
+  "updated_at": "2026-09-09T21:32:46Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -726,13 +726,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v12 eval queued (evaluation-8b595a7ccc284d5c, pos 4). Fixed Oracle failure: memo checks now accept Markdown tables + prose (proximity 200 chars). Added test_memo_has_prose (5+ prose sentences). v11 Oracle failed 0.771 (rejected gold memo's Markdown table rows). v12 fixes this.",
+      "notes": "v12 eval queued pos 4 (evaluation-8b595a7ccc284d5c). Fixed Oracle failure (0.771->should be 1.0): memo checks now accept Markdown tables (was rejecting gold memo). Added test_memo_has_prose (5+ prose sentences separate from tables). Server: 6 running, 5 queued.",
       "history": [
-        {
-          "at": "2026-09-08T22:11:10Z",
-          "status": "needs_densify",
-          "note": "v1 4/4 too easy; v2 densified (+12 edge cases: round-half-up, size-class mismatch, stale cap tightening, reindex expired, manual vacuum, medium trap). eval-f9afcef5f7454857 running"
-        },
         {
           "at": "2026-09-08T23:20:32Z",
           "status": "final_running",
@@ -927,9 +922,14 @@
           "at": "2026-09-09T21:28:30Z",
           "status": "final_running",
           "note": "v12 eval queued (evaluation-8b595a7ccc284d5c, pos 4). Fixed Oracle failure: memo checks now accept Markdown tables + prose (proximity 200 chars). Added test_memo_has_prose (5+ prose sentences). v11 Oracle failed 0.771 (rejected gold memo's Markdown table rows). v12 fixes this."
+        },
+        {
+          "at": "2026-09-09T21:32:45Z",
+          "status": "final_running",
+          "note": "v12 eval queued pos 4 (evaluation-8b595a7ccc284d5c). Fixed Oracle failure (0.771->should be 1.0): memo checks now accept Markdown tables (was rejecting gold memo). Added test_memo_has_prose (5+ prose sentences separate from tables). Server: 6 running, 5 queued."
         }
       ],
-      "updated_at": "2026-09-09T21:28:30Z",
+      "updated_at": "2026-09-09T21:32:45Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -992,7 +992,7 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v6 uploaded + eval started (evaluation-484e797e5d514311). Densified: 7 new runs around 2026-07-06 cutover (exact boundary, day before/after, row-count mismatch, correct pre/post). Fixed: proximity memo regexes, test.sh per-check, golden_results/README/review.csv/trajectory.",
+      "notes": "v6 eval queued pos 3 (evaluation-484e797e5d514311). Densified: 7 new edge-case runs around 2026-07-06 cutover. Server: 6 running, 5 queued.",
       "history": [
         {
           "at": "2026-09-08T19:06:37Z",
@@ -1118,9 +1118,14 @@
           "at": "2026-09-09T21:22:56Z",
           "status": "final_running",
           "note": "v6 uploaded + eval started (evaluation-484e797e5d514311). Densified: 7 new runs around 2026-07-06 cutover (exact boundary, day before/after, row-count mismatch, correct pre/post). Fixed: proximity memo regexes, test.sh per-check, golden_results/README/review.csv/trajectory."
+        },
+        {
+          "at": "2026-09-09T21:32:46Z",
+          "status": "final_running",
+          "note": "v6 eval queued pos 3 (evaluation-484e797e5d514311). Densified: 7 new edge-case runs around 2026-07-06 cutover. Server: 6 running, 5 queued."
         }
       ],
-      "updated_at": "2026-09-09T21:22:56Z",
+      "updated_at": "2026-09-09T21:32:46Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
