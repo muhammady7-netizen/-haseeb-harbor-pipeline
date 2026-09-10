@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T15:48:16Z",
+  "updated_at": "2026-09-10T15:49:00Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1027,13 +1027,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v8: Oracle 1.0 PASSED! GLM x4 running (evaluation-6a1c1a82e6c74066). Fixed RUN-21 monthly cutover bug + 3 verifier fails. Will submit to pipeline when GLM<=2/4 + harbor clean.",
+      "notes": "v8: Oracle 1.0 PASSED! GLM x4 running ~30 min (evaluation-6a1c1a82e6c74066). Fixed RUN-21 cutover + 3 verifier fails. Will submit to pipeline when GLM<=2/4 + harbor clean. Browser contended.",
       "history": [
-        {
-          "at": "2026-09-08T19:30:13Z",
-          "status": "preqc_running",
-          "note": ""
-        },
         {
           "at": "2026-09-08T19:30:17Z",
           "status": "preqc_clean",
@@ -1228,9 +1223,14 @@
           "at": "2026-09-10T15:44:28Z",
           "status": "ready_accept",
           "note": "v8: Oracle 1.0 PASSED! GLM x4 running (evaluation-6a1c1a82e6c74066). Fixed RUN-21 monthly cutover bug + 3 verifier fails. Will submit to pipeline when GLM<=2/4 + harbor clean."
+        },
+        {
+          "at": "2026-09-10T15:49:00Z",
+          "status": "ready_accept",
+          "note": "v8: Oracle 1.0 PASSED! GLM x4 running ~30 min (evaluation-6a1c1a82e6c74066). Fixed RUN-21 cutover + 3 verifier fails. Will submit to pipeline when GLM<=2/4 + harbor clean. Browser contended."
         }
       ],
-      "updated_at": "2026-09-10T15:44:28Z",
+      "updated_at": "2026-09-10T15:49:00Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
