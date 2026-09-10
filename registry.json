@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T15:13:34Z",
+  "updated_at": "2026-09-10T15:21:11Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2824,7 +2824,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "V12 uploaded. Eval running in harbor phase (8c5ab74c4fd94d1b). Fixed: row count 150, gold memo with R- IDs, collect=[], 177 verifiers, 50 per-recipe checks, R-114 tab fixed.",
+      "notes": "V13 uploaded + eval started. Fixed: memo floor 500, disclosed memo topics, removed old GLM evals (3/4), loosened regexes. Oracle + stability only.",
       "history": [
         {
           "at": "2026-09-08T01:01:58Z",
@@ -2955,9 +2955,14 @@
           "at": "2026-09-09T23:00:17Z",
           "status": "final_running",
           "note": "V12 uploaded. Eval running in harbor phase (8c5ab74c4fd94d1b). Fixed: row count 150, gold memo with R- IDs, collect=[], 177 verifiers, 50 per-recipe checks, R-114 tab fixed."
+        },
+        {
+          "at": "2026-09-10T15:21:11Z",
+          "status": "final_running",
+          "note": "V13 uploaded + eval started. Fixed: memo floor 500, disclosed memo topics, removed old GLM evals (3/4), loosened regexes. Oracle + stability only."
         }
       ],
-      "updated_at": "2026-09-09T23:00:17Z",
+      "updated_at": "2026-09-10T15:21:11Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
