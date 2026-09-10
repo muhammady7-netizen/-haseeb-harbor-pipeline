@@ -1,0 +1,18 @@
+[
+  {
+    "short": "code-c227",
+    "uploaded": true,
+    "gates": false,
+    "preqc": false,
+    "oracle": false,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-bf13caac2832c44e6ba47f61a16cd5c0-v1"
+  },
+  {
+    "short": "code-c249",
+    "uploaded": false,
+    "gates": false,
+    "preqc": false,
+    "oracle": false,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-bf13caac2832c44e6ba47f61a16cd5c0-v1"
+  }
+]

@@ -1,0 +1,68 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+You already have 3 runs in flight — wait for one to finish, then press Run again.
+←
+All tasks
+code-c249-recurring-report-source-selection-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+Your 3 run slots are currently in use.
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Not run yet
+has not run on this task yet
+Run QC-Oracle-GLM
+View report
+Your 3 run slots are currently in use.
+what each gate checks
+You are the judge. what good QC takes — read once
+Run history
+no runs yet
+
+No runs yet. Start a gate above and its runs will be listed here, newest first.
+
+RESULT
+No run open
+
+Run a gate above, or pick an earlier run to read its findings, score and report.
+
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

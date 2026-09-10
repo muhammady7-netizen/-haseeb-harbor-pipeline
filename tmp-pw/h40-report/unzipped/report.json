@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "engine": "pipeline_evaluation",
+  "task_id": "content-3cbc34e3bd3f145428b66eab552ec13b-v1",
+  "execution_scope": "full",
+  "authoritative": true,
+  "qc_complete": true,
+  "workflow_status": "REVIEW_REQUIRED",
+  "category_results": [
+    {
+      "category_id": "evaluation.oracle",
+      "name": "Evaluation · Oracle",
+      "status": "FINDING",
+      "findings": [
+        {
+          "finding_id": "oracle:verdict",
+          "category_id": "evaluation.oracle",
+          "summary": "best 0.9444444444 over 3 graded attempt(s), needs 1.0",
+          "ownership": "trainer",
+          "blocking": true,
+          "impact": "Submission cannot continue until Oracle passes.",
+          "remediation": "Correct the task or golden solution and upload a new version.",
+          "verification": "Re-run Evaluation and confirm Oracle passes.",
+          "evidence": [
+            "best 0.9444444444 over 3 graded attempt(s), needs 1.0"
+          ]
+        }
+      ],
+      "error": null,
+      "notes": ""
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "oracle:verdict",
+      "category_id": "evaluation.oracle",
+      "summary": "best 0.9444444444 over 3 graded attempt(s), needs 1.0",
+      "ownership": "trainer",
+      "blocking": true,
+      "impact": "Submission cannot continue until Oracle passes.",
+      "remediation": "Correct the task or golden solution and upload a new version.",
+      "verification": "Re-run Evaluation and confirm Oracle passes.",
+      "evidence": [
+        "best 0.9444444444 over 3 graded attempt(s), needs 1.0"
+      ]
+    }
+  ],
+  "oracle": {
+    "verdict": "below_1.0",
+    "reason": "best 0.9444444444 over 3 graded attempt(s), needs 1.0",
+    "task_id": "content-3cbc34e3bd3f145428b66eab552ec13b-v1",
+    "source_digest": "3cbc34e3bd3f145428b66eab552ec13bacd6c5d1fc4b5e94d373db65261c50b7",
+    "evidence_path": "gs://obi-harbor-pipeline/tasks/trainer-evaluation-b53cf667a59c44f6-a1/health-h40-critical-result-acknowledgement/evaluations/solvability/r1"
+  },
+  "glm": [],
+  "difficulty": null,
+  "harbor": null
+}

@@ -1,0 +1,684 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+gen-g734-cms-publish-readiness-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+✓
+Client PreQC
+3
+Review findings
+5 to decide
+✓
+Review record
+5
+Evaluation
+28 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Last run: Review required
+Review required · 5 trainer finding(s) · 5 h ago
+Re-run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 28 trainer finding(s) · 4 h ago
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+28 blocking issues
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+28
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope__representation_contract
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__cross_artifact_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__declared_executed_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__instruction_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_instruction_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__eligible_strict_pass
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__instruction_environment_sufficiency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__saved_evidence_completeness
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__solution_legitimacy
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability__frozen_identity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability__repeat_count
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability__verifier_judge_config_identity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static__rollout_legitimacy
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__check_independence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__counterfactual_strength
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__coverage_depth
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__requirement_traceability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__scoring_proportionality
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+Run history
+2 runs · latest Review
+CLIENT PREQC (INTERNAL GATE · ADVISORY)
+Client preQC (Internal Gate · advisory)
+Legacy QC1
+Review required
+5 trainer finding(s)
+Sep 10, 08:59 PM · took 13s
+report
+zip
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 0/4 passed
+28 trainer finding(s)
+Sep 10, 09:53 PM · took 2075s
+report
+zip
+RESULT
+QC-Oracle-GLM check
+Review required
+28 trainer finding(s)
+Finalization held: 28 blocking finding(s) await disposition: confirm each one or justify it as a false positive with a note. Submit to pipeline
+Execution evidence — Oracle + four GLM runs
+
+These are the five scored trials. Oracle replays the golden solution once to prove the task is solvable; the next four rows are independent GLM-5.2 attempts used to measure difficulty.
+
+step	trial	status	result	Harbor view	download
+1	Oracle golden replay	PASS	1.0 on _nni48fp (1/1 graded)	View Oracle in Harbor	not published
+2	GLM-5.2 run 1	completed	reward 0.9664804469	View GLM run 1 in Harbor	trajectory (.zip)
+3	GLM-5.2 run 2	completed	reward 0.9664804469	View GLM run 2 in Harbor	trajectory (.zip)
+4	GLM-5.2 run 3	completed	reward 0.9664804469	View GLM run 3 in Harbor	trajectory (.zip)
+5	GLM-5.2 run 4	completed	reward 0.9664804469	View GLM run 4 in Harbor	trajectory (.zip)
+
+Difficulty: 0 of 4 GLM runs solved the task.
+
+FINAL VALIDATION — HARBOR CHECK
+
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+
+FAIL · 0 finding(s) screened out · gs://obi-harbor-pipeline/results/trainer-evaluation-3e03cacc64524c39-a1/_harbor_check/runs/evaluation-3e03cacc64524c39-a1/status.json
+
+Pipeline batch trainer-evaluation-3e03cacc64524c39-a1 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-kr4jr
+
+YOUR DECISIONS
+
+0/28
+findings dispositioned by you
+Blocking — blocker / critical 28
+blocker
+layer1_clarity_scope
+layer1_clarity_scope
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope Output surface, process and readability are clean, but the representation contract subcheck fails: undisclosed CSV surface-form assumptions in the verifier (unquoted post_id required by ~110 'pp*' checks and by the header regex) can change reward for a materially identical, standards-compliant CSV. A mandatory subcheck failure fails the aggregate.
+IMPACT
+Same root cause as l1.clarity_scope::layer1_clarity_scope__representation_contract. About 110 per-post checks and the header check require unquoted post_id, so a valid QUOTE_ALL CSV fails roughly 110 of 179 cases despite being semantically identical to the golden.
+SMALLEST FIX
+Either disclose the unquoted-CSV requirement in instruction.md, or make the per-post and header regexes tolerate quoted fields the way the named checks already do.
+VERIFY
+Generate a QUOTE_ALL version of the golden CSV and run the verifier; confirm it passes after the fix.
+Review note (optional)
+blocker
+layer1_clarity_scope__representation_contract
+layer1_clarity_scope__representation_contract
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope__representation_contract Quoting style is never specified, yet it changes reward. The ~110 'pp*' assertions anchor as '(?mi)^P\-01\s*,...' with no allowance for a quoted field, while the parallel named checks (e.g. clean_post_p01) do allow '\x22?'. A perfectly valid QUOTE_ALL CSV ('"P-01","Leaf-Peeping Weekend Guide",...') would fail roughly 110 of 179 cases and audit_header_exact, despite being semantically identical. Ordering is also unspecified (harmless here) and the golden itself deviates from the disclosed date normalization (slash signoff_date for P-50/P-62/P-72, '09-05-2026' for P-45), showing the representation rules are not applied consistently.
+IMPACT
+About 110 per-post checks and the header check require unquoted post_id, so a valid QUOTE_ALL CSV fails roughly 110 of 179 cases. The golden also keeps slash-form dates for P-50/P-62/P-72 and emits '09-05-2026' for P-45, showing the representation rules are not applied consistently.
+SMALLEST FIX
+Add optional quoting tolerance to the per-post and header regexes, or state the unquoted-CSV requirement in instruction.md. Fix the golden's date formats to match the standard's YYYY-MM-DD rule.
+VERIFY
+Run the verifier on a QUOTE_ALL version of the corrected golden CSV and confirm it passes.
+Review note (optional)
+blocker
+layer1_package_consistency
+layer1_package_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency The binding standard (environment/input/publish_readiness_standard.md, R4) states that a non-empty published_date with 'impossible calendar components' is 'always PREMATURE_PUBLISH unless the evergreen exception applies'. P-61 (2026-13-01, live, evergreen=no) and P-101 (2026-13-01, live, evergreen=no) therefore must be PREMATURE_PUBLISH, but solution/files/publish_audit.csv records 'none' for both and tests/verifier.json enforces that ('impossible_date_p61', 'pp61', 'pp101') plus the derived totals 92/62/36 instead of the standard-conformant 94/64/34. The golden also keeps slash-form signoff_date for P-50/P-62/P-72 ('2026/09/12' etc.) although R4 step 4 requires YYYY-MM-DD when the resolved value parses, and rewrites P-45's unparseable '09/05/2026' as '09-05-2026'. review.csv further claims six 'memo_p*_reason' clause-scoped checks and a '62-row publish_audit.csv' that do not exist in the shipped tests/verifier.json (178 checks, only memo_exists + a 3000-char length check). The sources do not jointly describe one consistent task.
+IMPACT
+The standard says impossible dates must be PREMATURE_PUBLISH, but the golden CSV and verifier mark P-61 and P-101 as 'none' and enforce totals 92/62/36 instead of 94/64/34. review.csv also describes memo checks and a 62-row CSV that do not exist in the verifier.
+SMALLEST FIX
+Decide whether impossible dates are PREMATURE_PUBLISH or 'none', then make the standard, golden CSV, verifier, and review.csv all enforce that same answer and the matching totals. Remove or implement the six memo checks review.csv claims, and correct the row count it states.
+VERIFY
+Run the verifier against the golden CSV and confirm every check passes; grep review.csv for memo_p*_reason and confirm each cited check exists in tests/verifier.json.
+Review note (optional)
+blocker
+layer1_package_consistency__cross_artifact_consistency
+layer1_package_consistency__cross_artifact_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__cross_artifact_consistency All files are present, but they contradict each other. publish_readiness_standard.md R4 makes impossible dates PREMATURE_PUBLISH while solution/files/publish_audit.csv and tests/verifier.json make P-61/P-101 'none' and hard-code totals 98/92/62/36 (a rule-faithful audit yields 98/94/64/34). review.csv additionally describes verifier content ('6 clause-scoped memo id-to-reason checks', 'memo_p*_reason', '62-row publish_audit.csv') that is absent from tests/verifier.json, and the checked-in evaluations/glm-5.2/* runs were graded by a 96-check verifier over a 52-post dataset, i.e. a different package version.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The standard requires PREMATURE_PUBLISH for impossible dates but the golden and verifier say 'none' with totals 92/62/36. review.csv describes memo checks absent from the verifier, and the glm-5.2 evaluations used a different 96-check verifier over 52 posts.
+SMALLEST FIX
+Align the standard, golden CSV, verifier, and review.csv on one consistent treatment of impossible dates and totals. Re-run the glm-5.2 evaluations against the shipped verifier so the checked-in evidence matches the current package.
+VERIFY
+Run the verifier on the golden and confirm a clean pass; confirm every evaluation directory's test-stdout.txt reports the same check count as tests/verifier.json.
+Review note (optional)
+blocker
+layer1_package_consistency__declared_executed_verifier_consistency
+layer1_package_consistency__declared_executed_verifier_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__declared_executed_verifier_consistency tests/verifier.json declares 178 checks, but tests/test.sh computes reward from the pytest summary, which includes an extra undeclared reward-bearing test, test_outputs.py::test_results_recomputed_from_audit (evaluations/difficulty/r*/verifier/reward_meta.txt shows total=179 while the spec fallback total is 178). review.csv also declares six 'memo_p*_reason' clause-scoped memo checks as added and verified; no such check exists in the shipped spec, so a declared score-bearing check never runs. tests/test_outputs.py additionally defines _audit_totals twice, the first definition being dead code.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. An undeclared pytest test inflates the denominator to 179, review.csv declares six memo checks that never run, and test_outputs.py defines _audit_totals twice with the first definition dead.
+SMALLEST FIX
+Either add the six memo checks to the verifier and update the declared count, or remove them from review.csv. Remove or merge the duplicate _audit_totals definition. Decide whether test_results_recomputed_from_audit should count toward the total and align the declared count accordingly.
+VERIFY
+Run tests/test.sh and confirm the pytest total matches the check count declared in tests/verifier.json; grep test_outputs.py for _audit_totals and confirm it appears once.
+Review note (optional)
+blocker
+layer1_package_consistency__instruction_verifier_consistency
+layer1_package_consistency__instruction_verifier_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__instruction_verifier_consistency instruction.md declares the standard binding, yet reward-bearing checks contradict it: impossible_date_p61/pp61/pp101 require 'none' where R4 requires PREMATURE_PUBLISH, and result_finding_count/result_flagged_count/result_clean_count encode 92/62/36 rather than the values the stated rules produce. Conversely, material instruction requirements for readiness_memo.md ('explaining every finding', 'reference the finding code for each post', 'addressing every post whose publish date precedes its recorded sign-off', 'noting omitted posts') are graded only by memo_exists and memo_has_explanatory_body (a bare length regex '(?s)^(?=[\s\S]{3000,})').
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The verifier requires 'none' for P-61/P-101 where the standard requires PREMATURE_PUBLISH, and encodes totals 92/62/36. The memo's instruction requirements (explain every finding, cite finding codes, address premature posts, note omissions) are graded only by existence and a 3000-character length regex.
+SMALLEST FIX
+Change the impossible-date checks to match the standard's PREMATURE_PUBLISH rule and update the totals. Add verifier checks that confirm the memo explains each finding, cites finding codes, addresses premature-publish posts, and notes omissions.
+VERIFY
+Run the verifier on a golden that follows the standard; confirm the memo checks fail when the memo is filler text and pass when it covers every required topic.
+Review note (optional)
+blocker
+layer1_package_consistency__solution_instruction_consistency
+layer1_package_consistency__solution_instruction_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__solution_instruction_consistency The golden deliverables in solution/files/ follow a materially different contract from the binding standard the instruction incorporates: P-61 and P-101 are 'none' despite R4's explicit impossible-calendar-component clause; signoff_date for P-50 ('2026/09/12'), P-62 ('2026/09/15') and P-72 ('2026/09/01') is left in slash form although R4 step 4 requires YYYY-MM-DD when the resolved value parses; and P-45's published_date is emitted as '09-05-2026', a form no rule produces. solution/solve.sh also merely copies pre-baked answers rather than deriving them, so no derivation evidences the contract.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The golden marks P-61 and P-101 as 'none' instead of PREMATURE_PUBLISH, leaves signoff_date in slash form for P-50/P-62/P-72, emits P-45's published_date as '09-05-2026', and solve.sh copies pre-baked answers instead of deriving them.
+SMALLEST FIX
+Fix the golden CSV to mark P-61 and P-101 as PREMATURE_PUBLISH, normalize slash-form dates to YYYY-MM-DD, and correct P-45's published_date. Rewrite solve.sh to derive the CSV from the input files using the standard's rules.
+VERIFY
+Run solve.sh from a clean environment and confirm the output matches the corrected golden CSV; run the verifier and confirm a clean pass.
+Review note (optional)
+blocker
+layer2_difficulty
+layer2_difficulty
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty evaluations/difficulty/r1-r4 are four independent GLM-5.2 (opencode 1.18.18, glm/glm-5.2) attempts against the shipped 179-case verifier; all four score 0.9664804469 (173/179), so 0/4 strict passes, which satisfies the distribution gate. However failure_cause_validity fails: every one of the four runs fails on exactly the same six cases (result_finding_count, result_flagged_count, result_clean_count, impossible_date_p61, pp61, pp101), i.e. precisely the places where the verifier contradicts the binding standard's impossible-date clause. The observed difficulty is a task/verifier defect, not genuine task difficulty, so the aggregate fails.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The four GLM-5.2 runs each score 173/179, failing exactly the six cases where the verifier contradicts the standard's impossible-date rule. The observed difficulty is a verifier defect, not genuine task difficulty.
+SMALLEST FIX
+Fix the verifier's impossible-date checks and totals to match the standard, then re-run the four difficulty evaluations against the corrected verifier.
+VERIFY
+Re-run one difficulty evaluation and confirm the six impossible-date cases now pass for a standard-faithful answer.
+Review note (optional)
+blocker
+layer2_difficulty__failure_cause_validity
+layer2_difficulty__failure_cause_validity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty__failure_cause_validity All four failures are caused by a verifier/golden defect, not difficulty. Each run fails exactly result_finding_count, result_flagged_count, result_clean_count, impossible_date_p61, pp61 and pp101 — the six cases where tests/verifier.json requires P-61/P-101 (published_date 2026-13-01, live, non-evergreen) to be 'none' and totals 92/62/36, whereas R4 of the binding standard makes an impossible calendar component 'always PREMATURE_PUBLISH', giving 94/64/34. An independent reimplementation of the standard reproduces the models' answer, so the agents were penalized for being correct.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. Each run fails exactly the six cases where the verifier requires 'none' for impossible dates but the standard requires PREMATURE_PUBLISH. An independent reimplementation confirms the agents were correct.
+SMALLEST FIX
+Fix the verifier to require PREMATURE_PUBLISH for impossible dates and update the totals to 94/64/34. Re-run the four difficulty evaluations.
+VERIFY
+Run the corrected verifier on one difficulty run's output and confirm the six previously failing cases now pass.
+Review note (optional)
+blocker
+layer2_solvability
+layer2_solvability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability No eligible non-oracle rollout reaches reward 1.0 on the shipped package: the four difficulty runs cap at 0.9664804469, and the only 1.0 in the tree (evaluations/glm-5.2/r1) was produced by a different verifier version (96 checks, memo_explains_* cases, agent-reported post_count 52 vs the shipped expectation of 98). Success on the current spec would additionally require the undisclosed, standard-contradicting treatment of impossible dates.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The four difficulty runs cap at 0.966 because of the verifier defect. The only 1.0 run (glm-5.2/r1) was graded by a 96-check verifier over 52 posts, not the shipped 179-check verifier.
+SMALLEST FIX
+Fix the verifier defect, then re-run at least one non-oracle GLM-5.2 attempt against the corrected shipped verifier and save a passing trajectory with full evidence.
+VERIFY
+Check that the new run's reward.txt reads 1.0 and its test-stdout.txt reports the same check count as tests/verifier.json.
+Review note (optional)
+blocker
+layer2_solvability__eligible_strict_pass
+layer2_solvability__eligible_strict_pass
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__eligible_strict_pass evaluations/difficulty/r1-r4 (the only evidence graded by the shipped spec) all record reward 0.9664804469 in verifier/reward.txt — partial reward, not a strict pass. evaluations/glm-5.2/r1/verifier/reward.txt is 1.0 but its test-stdout.txt ends '96 passed ... total=96' with memo_explains_* checks absent from tests/verifier.json, and its result.json final_answer reports 52 posts and totals 52/57/38/14, contradicting the shipped expectations of 98/92/62/36; it therefore cannot serve as a strict pass on this package.
+IMPACT
+Same root cause as l2.solvability::layer2_solvability. The four difficulty runs score 0.966, and the only 1.0 run used a different verifier with 96 checks and 52 posts.
+SMALLEST FIX
+Fix the verifier defect, then re-run a non-oracle GLM-5.2 attempt against the corrected verifier and save a full passing trajectory.
+VERIFY
+Confirm the new run's reward.txt reads 1.0 and its test-stdout.txt matches the shipped verifier's check count.
+Review note (optional)
+blocker
+layer2_solvability__instruction_environment_sufficiency
+layer2_solvability__instruction_environment_sufficiency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__instruction_environment_sufficiency Full reward on the shipped verifier requires a rule the instruction and standard do not state — that posts with impossible calendar dates (P-61, P-101) are clean rather than PREMATURE_PUBLISH — and the correspondingly adjusted totals 92/62/36. Four independent GLM-5.2 runs applied the documented R4 clause and lost exactly those six cases, showing success depends on a hidden requirement rather than on the supplied instruction and data.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The verifier requires P-61 and P-101 to be 'none' and totals 92/62/36, but the standard says impossible dates are PREMATURE_PUBLISH. Four independent runs applied the documented rule and lost six cases.
+SMALLEST FIX
+Change the verifier's impossible-date checks and totals to match the standard's PREMATURE_PUBLISH rule so the documented instruction is sufficient for full reward.
+VERIFY
+Run the corrected verifier on a standard-faithful answer and confirm all six previously failing cases pass.
+Review note (optional)
+blocker
+layer2_solvability__saved_evidence_completeness
+layer2_solvability__saved_evidence_completeness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__saved_evidence_completeness For the only reward-1.0 run (evaluations/glm-5.2/r1) there is no provenance.json, no lock.json, no artifacts manifest and no saved deliverables — the workspace files that earned 1.0 cannot be reconstructed, and its verifier/snapshots/ holds only .gitkeep. The difficulty runs are better documented (trajectory, trial.log, stdout, ctrf, reward_meta) but their artifacts/manifest.json records /logs/artifacts as 'empty', so no submitted publish_audit.csv/readiness_memo.md/results.json is preserved for any run.
+IMPACT
+The only 1.0 run has no provenance.json, lock.json, artifacts manifest, or saved deliverables, so the workspace that earned 1.0 cannot be reconstructed. The difficulty runs' artifacts/manifest.json lists the artifact directory as empty, so no submitted CSV, memo, or results.json is preserved.
+SMALLEST FIX
+Re-run at least one evaluation with artifact capture enabled so the submitted publish_audit.csv, readiness_memo.md, results.json, provenance.json, and lock.json are saved.
+VERIFY
+Open the new run's artifacts directory and confirm the three deliverable files and provenance metadata are present.
+Review note (optional)
+blocker
+layer2_solvability__solution_legitimacy
+layer2_solvability__solution_legitimacy
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__solution_legitimacy The difficulty trajectories look legitimate (13 steps, reading /app/input, no occurrence of 'solution', 'golden', '/tests' or 'verifier.json' in the trace), but they do not pass. The passing run's legitimacy cannot be established at all: glm-5.2/r1 was graded by a superseded 96-check spec, saved no artifacts, and its own summary (52 posts, finding_count 57) is incompatible with the shipped ground truth, so its 1.0 is a stale-verifier artifact rather than demonstrated genuine completion of this task.
+IMPACT
+Same root cause as l2.solvability::layer2_solvability. The 1.0 run was graded by a 96-check verifier, saved no artifacts, and its own summary reports 52 posts and finding_count 57, incompatible with the shipped ground truth. The difficulty trajectories look legitimate but do not pass.
+SMALLEST FIX
+Fix the verifier defect, then re-run a non-oracle GLM-5.2 attempt against the corrected verifier with full artifact capture and save a passing trajectory.
+VERIFY
+Confirm the new run's reward is 1.0, its test-stdout matches the shipped verifier, and its saved deliverables are present and correct.
+Review note (optional)
+blocker
+layer2_stability
+layer2_stability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability The tree contains no repeat verification of a frozen submission: evaluations/difficulty/r1-r4 and glm-5.2/r1-r5 are separate agent rollouts, not re-grades of one immutable trajectory/artifact set, and no submission hashes are recorded (artifacts/manifest.json lists /logs/artifacts as empty). Frozen identity and repeat count therefore cannot be established, and the two evidence sets were graded by different verifier specs (179 vs 96 cases).
+IMPACT
+Same root cause as l2.stability::layer2_stability__repeat_count. The evaluations are separate agent rollouts, not re-grades of one frozen submission, and no submission hashes are recorded. The two evidence sets were graded by different verifier specs.
+SMALLEST FIX
+Run the verifier at least three times on one frozen set of saved deliverables and save each run's reward output and the deliverable hashes.
+VERIFY
+Open the three repeat result files and confirm they report the same reward and the same frozen deliverable hash.
+Review note (optional)
+blocker
+layer2_stability__frozen_identity
+layer2_stability__frozen_identity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability__frozen_identity No hash or equivalent immutable identity for a graded submission is recorded anywhere in evaluations/. lock.json/provenance.json give task-side digests (sha256:08e791d0..., task_digest 485048...), not deliverable identity, and artifacts/manifest.json reports the artifact directory as 'empty'. The four difficulty runs have four different trajectory md5s, so they are distinct rollouts, not repeats of frozen evidence.
+IMPACT
+Same root cause as l2.stability::layer2_stability. No hash or immutable identity for a graded submission exists anywhere in evaluations/. The artifact directory is empty and the four difficulty runs have different trajectory hashes, so they are distinct rollouts, not repeats.
+SMALLEST FIX
+Save the submitted deliverables for at least one run and record a hash for each file. Run the verifier three times on that frozen set and save each reward output.
+VERIFY
+Open the saved deliverable directory and confirm the files and their hashes are present; confirm the three repeat runs reference the same hash.
+Review note (optional)
+blocker
+layer2_stability__repeat_count
+layer2_stability__repeat_count
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability__repeat_count Zero repeat verifier runs over a single frozen submission exist; review.csv itself concedes 'Stability will be run by platform (3 oracle repeats at 1.0)', i.e. the evidence is promised, not present. The requirement of at least three complete repeats on frozen evidence is unmet.
+IMPACT
+No repeat verifier runs over a single frozen submission exist in evaluations/. review.csv states 'Stability will be run by platform (3 oracle repeats at 1.0)', so the evidence is promised but not checked in.
+SMALLEST FIX
+Run the verifier at least three times on one frozen set of saved deliverables and save each run's reward output and the deliverable hashes in evaluations/.
+VERIFY
+Count the repeat result files in evaluations/ and confirm at least three exist with the same reward and frozen hash.
+Review note (optional)
+blocker
+layer2_stability__verifier_judge_config_identity
+layer2_stability__verifier_judge_config_identity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability__verifier_judge_config_identity Verifier configuration drifted between the checked-in evidence sets without disclosure: glm-5.2/r*/verifier/test-stdout.txt shows a 96-case spec including memo_explains_void_omit, memo_explains_impossible_date and other memo clause checks, while difficulty/r*/verifier/test-stdout.txt shows the shipped 179-case spec whose memo coverage is only memo_has_explanatory_body. review.csv also asserts six 'memo_p*_reason' checks that exist in neither. No judge is involved (spec config is null, all assertions deterministic).
+IMPACT
+Same root cause as l2.stability::layer2_stability. The glm-5.2 runs used a 96-case spec with memo clause checks, while the difficulty runs used the shipped 179-case spec with only a length check for the memo. review.csv also cites six memo checks that exist in neither.
+SMALLEST FIX
+Re-run all evaluations against the same shipped verifier spec, or remove the stale glm-5.2 runs. Align review.csv with the actual verifier content.
+VERIFY
+Open every evaluation's test-stdout.txt and confirm they all report the same check count and check names as tests/verifier.json.
+Review note (optional)
+blocker
+layer5_reward_hacking_static
+layer5_reward_hacking_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_reward_hacking_static A plausible shortcut earns full reward: because readiness_memo.md is graded only by existence and a 3000-character length regex, an agent can deliver a correct CSV plus entirely fabricated or filler memo prose and still score 1.0, skipping a required deliverable's substantive work. Interface use, golden access and state spoofing are otherwise clean, but a single failing mandatory subcheck fails the aggregate.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. The memo is graded only by existence and a 3000-character length regex, so an agent can skip the memo's substantive requirements and still score 1.0.
+SMALLEST FIX
+Add verifier checks that confirm the memo explains each finding, cites finding codes, addresses premature-publish posts, and notes omissions.
+VERIFY
+Run the verifier on a correct CSV with a 3000-character filler memo and confirm the memo checks fail.
+Review note (optional)
+blocker
+layer5_reward_hacking_static__rollout_legitimacy
+layer5_reward_hacking_static__rollout_legitimacy
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_reward_hacking_static__rollout_legitimacy Only the final files are inspected, and the memo's only content gate is memo_has_explanatory_body = '(?s)^(?=[\s\S]{3000,})'. A memo consisting of repeated filler — or of fabricated claims about posts — passes both memo checks, so the instruction's requirements to explain every finding, cite each finding code and address every premature-publish and omitted post can be skipped entirely while reaching reward 1.0. Some 'pp*' checks (pp25, pp94) are likewise satisfied by title text rather than by the graded finding.
+IMPACT
+Same root cause as l5.reward_hacking::layer5_reward_hacking_static. Only the final files are inspected, and the memo's only content gate is a 3000-character length regex. The instruction's requirements to explain every finding, cite finding codes, and address premature and omitted posts can be skipped entirely.
+SMALLEST FIX
+Add substantive memo content checks. Anchor the per-post regexes to the finding column so title text cannot satisfy them.
+VERIFY
+Run the verifier on a correct CSV with a filler memo and confirm it fails; run it on a CSV with 'none' in a title and confirm the per-post check fails.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static
+layer5_verifier_fairness_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static Multiple mandatory subchecks fail: the verifier contradicts the binding standard for P-61/P-101 and the derived totals (semantic equivalence, counterfactual strength), the readiness_memo.md deliverable is graded only by a 3000-character length regex (traceability, coverage depth, proportionality), ~110 'pp*' checks duplicate the anchored named checks and are quoting-brittle and sometimes tautological (independence, surface-form brittleness), and an undeclared reward-bearing pytest inflates the denominator to 179.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The verifier rejects correct impossible-date answers, grades the memo by length alone, duplicates about 110 per-post checks that reject quoted CSVs, and runs 179 tests while declaring 178.
+SMALLEST FIX
+Fix the impossible-date checks to match the standard, add substantive memo checks, make the per-post regexes tolerate quoting and remove duplicates, and align the declared and actual check counts.
+VERIFY
+Run the verifier on a standard-faithful, QUOTE_ALL CSV with a substantive memo and confirm a clean pass with the declared check count.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__check_independence
+layer5_verifier_fairness_static__check_independence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__check_independence About 110 'pp01'...'pp111' checks are unanchored restatements of the already-anchored named checks over the same evidence and the same predicate (e.g. missing_image_flagged vs pp02; evergreen_missing_image_only, post_p10_finding_no_premature and pp10 all on P-10's finding; impossible_date_p61 and pp61 are the same regex on P-61), with no disclosed justification. Because reward is passed/total over equally weighted cases, one underlying fact silently drives up to three cases, and the same coupling turns the single P-61/P-101 defect into six lost cases.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. About 110 'pp*' checks are unanchored restatements of the named checks over the same predicate, so one fact drives up to three cases. The P-61/P-101 defect turns into six lost cases because of this coupling.
+SMALLEST FIX
+Remove the 'pp*' checks or merge each with its corresponding named check so each underlying fact is graded once.
+VERIFY
+Count the checks in tests/verifier.json and confirm each per-post fact appears in exactly one check.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__counterfactual_strength
+layer5_verifier_fairness_static__counterfactual_strength
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__counterfactual_strength Positive case: the golden passes 178/178. Negative case: the four GLM runs' standard-faithful answer is rejected — a false negative on a defensible correct solution. Adversarial case: a submission with a correct CSV/results.json but a 3000-character filler memo scores 1.0 despite skipping a required deliverable's substance; and rows whose title contains 'none' (P-25, P-94) satisfy their 'pp*' check regardless of the finding emitted. The verifier therefore fails to separate a genuine solution from plausible defective ones in both directions.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. A standard-faithful answer is rejected on six impossible-date cases. A correct CSV with a 3000-character filler memo scores 1.0, and rows with 'none' in the title pass their per-post check regardless of the finding.
+SMALLEST FIX
+Fix the impossible-date checks to accept PREMATURE_PUBLISH. Add substantive memo content checks. Anchor the per-post regexes to the finding column.
+VERIFY
+Run the verifier on a standard-faithful CSV with a filler memo and confirm it fails; run it on a CSV with 'none' in a title but a different finding and confirm the per-post check fails.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__coverage_depth
+layer5_verifier_fairness_static__coverage_depth
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__coverage_depth The audit CSV is covered deeply (per-post finding regexes, header, 98-row count, four full-column regexes for signoff/published dates, omission negative lookaheads), but one of three required deliverables is graded by length alone: 3000 characters of lorem ipsum in readiness_memo.md satisfies memo_exists and memo_has_explanatory_body. Several 'pp*' checks are also satisfied by unrelated text — e.g. pp94 '(?mi)^P\-94\s*,.*none' matches the row 'P-94,Literal Hero None,none,...' regardless of the finding value, as does pp25 for 'Hero Literal none'.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. A 3000-character filler memo satisfies both memo checks. Per-post checks like pp94 and pp25 match rows whose title contains 'none' regardless of the actual finding value.
+SMALLEST FIX
+Add substantive memo content checks. Anchor the per-post regexes to the finding column so title text cannot satisfy them.
+VERIFY
+Run the verifier on a filler memo and confirm it fails; run it on a CSV with 'none' in a title but a different finding and confirm the per-post check fails.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__requirement_traceability
+layer5_verifier_fairness_static__requirement_traceability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__requirement_traceability Material instruction requirements are untested: readiness_memo.md must 'explain every finding', 'reference the finding code for each post', 'address every post whose publish date precedes its recorded sign-off, including any applicable exception' and 'note omitted posts', yet only memo_exists and memo_has_explanatory_body ('(?s)^(?=[\s\S]{3000,})') apply — no memo content is checked. Conversely, reward-bearing checks impossible_date_p61/pp61/pp101 and the totals 92/62/36 impose a requirement (impossible dates are clean) that traces to no rule in publish_readiness_standard.md and contradicts R4.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The instruction requires the memo to explain every finding, cite finding codes, address premature posts, and note omissions, but only existence and a 3000-character length regex apply. The impossible-date checks require 'none' for P-61/P-101, contradicting the standard.
+SMALLEST FIX
+Add verifier checks for each memo content requirement. Change the impossible-date checks to require PREMATURE_PUBLISH as the standard states.
+VERIFY
+Run the verifier on a filler memo and confirm the new memo checks fail; run it on a standard-faithful CSV and confirm the impossible-date checks pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__scoring_proportionality
+layer5_verifier_fairness_static__scoring_proportionality
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__scoring_proportionality Weighting is badly skewed. readiness_memo.md — one of three required deliverables, obliged to explain ~62 flagged posts and every premature-publish case — is worth 2/179 (~1.1%) and only for existing and exceeding 3000 characters, so a fatal omission of its substance is nearly free. Meanwhile a single per-post finding is effectively charged twice or three times (e.g. P-02 via missing_image_flagged, post_p02_signoff_and_finding and pp02), and the P-61/P-101 impossible-date disagreement alone costs six cases (3.4%) including all three derived totals.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. The memo deliverable is worth 2 of 179 checks and only requires 3000 characters, so skipping its substance is nearly free. A single per-post finding is charged up to three times via duplicate checks, and the P-61/P-101 defect costs six cases.
+SMALLEST FIX
+Add substantive memo checks with weight proportional to the deliverable's importance. Remove the duplicate 'pp*' checks or consolidate them with the named checks so each fact is charged once.
+VERIFY
+Run the verifier on a filler memo and confirm the memo score drops significantly; confirm each per-post fact affects exactly one check.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__semantic_equivalence
+layer5_verifier_fairness_static__semantic_equivalence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__semantic_equivalence A materially correct answer is rejected. Applying R4 as written yields PREMATURE_PUBLISH for P-61 and P-101 and totals 98/94/64/34; impossible_date_p61, pp61, pp101, result_finding_count, result_flagged_count and result_clean_count all reject that answer. Additionally an equivalent fully quoted CSV rendering is rejected by the ~110 'pp*' checks and audit_header_exact even though no quoting convention is disclosed, and P-50/P-62/P-72 signoff normalization to the disclosed YYYY-MM-DD form differs from the golden (ungraded, but evidencing inconsistent equivalence handling).
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. Applying the standard yields PREMATURE_PUBLISH for P-61/P-101 and totals 94/64/34, but six checks reject that answer. A fully quoted CSV is rejected by about 110 per-post checks and the header check though no quoting convention is disclosed.
+SMALLEST FIX
+Change the impossible-date checks and totals to match the standard. Add optional quoting tolerance to the per-post and header regexes.
+VERIFY
+Run the verifier on a standard-faithful, QUOTE_ALL CSV and confirm all checks pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__surface_form_brittleness
+layer5_verifier_fairness_static__surface_form_brittleness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__surface_form_brittleness The lexical matchers are inconsistent and partly tautological. Named checks tolerate quoting ('\x22?P-01\x22?') while the ~110 'pp*' checks do not ('^P\-01\s*,'), so QUOTE_ALL output loses ~62% of the reward for no semantic reason. Unanchored 'pp*' patterns ('.*CODE' with no end anchor) accept rows carrying extra invented codes, and '.*none' patterns match title text (pp25 'Hero Literal none', pp94 'Literal Hero None' under (?i)), so a wrong finding still passes those cases. impossible_date_p61 and pp61 are also unanchored variants of one another, so the same brittle assumption is charged twice.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Named checks tolerate quoting but about 110 'pp*' checks do not, so QUOTE_ALL output loses about 62% of reward. Unanchored 'pp*' patterns match title text and accept extra invented codes. impossible_date_p61 and pp61 are unanchored duplicates.
+SMALLEST FIX
+Add quoting tolerance to the per-post regexes, anchor them to the finding column, and remove the duplicate pp61 check or merge it with impossible_date_p61.
+VERIFY
+Run the verifier on a QUOTE_ALL CSV with a title containing 'none' and a different finding; confirm the per-post checks pass or fail based on the finding, not the title or quoting.
+Review note (optional)
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report_v2.html.
+
+DATA
+report.json
+Preview the report here
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

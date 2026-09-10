@@ -1,0 +1,321 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+health-h40-critical-result-acknowledgement
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+10 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 10 trainer finding(s) · 35 min ago
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+10 blocking issues and 1 finding to review
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+11
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope__representation_contract
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_instruction_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__coverage_depth
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+Difficulty advisory
+Review issue
+Run history
+1 run · latest Review
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 3/4 passed
+10 trainer finding(s)
+Sep 11, 01:06 AM · took 1977s
+report
+zip
+RESULT
+QC-Oracle-GLM check
+Review required
+10 trainer finding(s)
+Finalization held: 10 blocking finding(s) await disposition: confirm each one or justify it as a false positive with a note. Submit to pipeline
+Execution evidence — Oracle + four GLM runs
+
+These are the five scored trials. Oracle replays the golden solution once to prove the task is solvable; the next four rows are independent GLM-5.2 attempts used to measure difficulty.
+
+step	trial	status	result	Harbor view	download
+1	Oracle golden replay	PASS	1.0 on _ZxbH6fh (1/1 graded)	View Oracle in Harbor	trajectory (.zip)
+2	GLM-5.2 run 1	completed	reward 0.9722222222	View GLM run 1 in Harbor	trajectory (.zip)
+3	GLM-5.2 run 2	completed	reward 1	View GLM run 2 in Harbor	trajectory (.zip)
+4	GLM-5.2 run 3	completed	reward 1	View GLM run 3 in Harbor	trajectory (.zip)
+5	GLM-5.2 run 4	completed	reward 1	View GLM run 4 in Harbor	trajectory (.zip)
+
+Difficulty: 3 of 4 GLM runs solved the task.
+
+FINAL VALIDATION — HARBOR CHECK
+
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+
+FAIL · 0 finding(s) screened out · gs://obi-harbor-pipeline/results/trainer-evaluation-3454ae172a2449b2-a1/_harbor_check/runs/evaluation-3454ae172a2449b2-a1/status.json
+
+Pipeline batch trainer-evaluation-3454ae172a2449b2-a1 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-dnhf2
+
+YOUR DECISIONS
+
+0/10
+findings dispositioned by you
+Blocking — blocker / critical 10
+blocker
+layer1_clarity_scope
+layer1_clarity_scope
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope Mandatory subcheck layer1_clarity_scope__representation_contract fails: full reward requires the memo to spell the unapproved role with the canonical register token ('ward_clerk') or the word 'unapproved'/'not on the approved list', which instruction.md never states (it only says 'named by role'). evaluations/difficulty/r1 lost a check for writing 'acknowledged by a **ward clerk** ... not recognised by CR-7'. Other clarity dimensions are fine.
+IMPACT
+Full reward requires the memo to use 'ward_clerk' or the word 'unapproved'/'not on the approved list' near R-06, but instruction.md only says 'named by role'. A model that writes 'ward clerk' in prose loses a check, as seen in evaluations/difficulty/r1.
+SMALLEST FIX
+Add a sentence to instruction.md telling the model to use the exact role identifier 'ward_clerk' or the word 'unapproved' when naming the unapproved acknowledger, or broaden the verifier to accept 'ward clerk' as well.
+VERIFY
+Read instruction.md and confirm it discloses the required role token; run the verifier against a memo using 'ward clerk' and confirm it passes.
+Review note (optional)
+blocker
+layer1_clarity_scope__representation_contract
+layer1_clarity_scope__representation_contract
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope__representation_contract Disclosed representation (column order, ISO clock_start, whole-number minutes, findings/escalation_status vocabularies) is fine, but two undisclosed choices can change reward: (1) memo_names_the_unapproved_acknowledgement requires the alias-sensitive tokens 'unapproved|ward_clerk|not on the approved|cannot act' within 400 chars of R-06 - a memo naming the role in prose as 'ward clerk' is rejected (observed in evaluations/difficulty/r1, reward 0.9722); (2) several CSV row regexes require unquoted numeric fields (e.g. ',\s*60\s*,' for R-05, ',\s*20\s*,' for R-12/R-17) so an equally valid fully-quoted CSV loses checks, while the same patterns tolerate quotes around other fields.
+IMPACT
+The memo check rejects the prose alias 'ward clerk' in favor of 'ward_clerk', and several CSV row regexes reject fully-quoted numeric fields while tolerating quotes elsewhere. Neither rule is disclosed in instruction.md.
+SMALLEST FIX
+Add the role-token requirement to instruction.md as described in the related finding, and add a note to instruction.md stating that numeric CSV fields must be unquoted. Alternatively, update the CSV regexes in tests/verifier.json to tolerate quoted numeric fields consistently.
+VERIFY
+Run the verifier against a fully-quoted CSV and a memo using 'ward clerk'; both should pass after the fix.
+Review note (optional)
+blocker
+layer1_package_consistency
+layer1_package_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency Mandatory subcheck layer1_package_consistency__solution_instruction_consistency fails: solution/files/results_audit.csv fills acknowledgement_minutes=40 (R-06) and 45 (R-22) although instruction.md requires that column to be 'left empty where there is no acknowledgement the procedure recognises' and environment/input/critical_results_procedure.md states an entry by ward_clerk/nurse_hca 'is not an acknowledgement'. The golden memo also carries template glitches ('R-10 - acknowledged at never min') and lists R-06 as a late acknowledgement at '40 min ... (limit 60 min)' without explaining the role-void reasoning. Everything else (task.toml, Dockerfile, inputs, verifier.json, test.sh) aligns.
+IMPACT
+The reference answer in solution/files/results_audit.csv records 40 for R-06 and 45 for R-22, but instruction.md says to leave that column empty when the role is not an approved acknowledger. The golden memo also carries template glitches like 'R-10 - acknowledged at never min' and lists R-06 as late without explaining the role-void reasoning.
+SMALLEST FIX
+Blank the acknowledgement_minutes cells for R-06 and R-22 in solution/files/results_audit.csv. Fix the R-10 template glitch and add the role-void explanation for R-06 in solution/files/results_memo.md so the golden matches the instruction's contract.
+VERIFY
+Open solution/files/results_audit.csv and confirm R-06 and R-22 have empty acknowledgement_minutes; open solution/files/results_memo.md and confirm no 'never min' glitch and an explanation for R-06.
+Review note (optional)
+blocker
+layer1_package_consistency__solution_instruction_consistency
+layer1_package_consistency__solution_instruction_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__solution_instruction_consistency instruction.md: 'acknowledgement_minutes is left empty where there is no acknowledgement the procedure recognises'; CR-7: an entry by an unapproved role 'is not an acknowledgement'. solution/files/results_audit.csv nevertheless records 40 for R-06 (ward_clerk) and 45 for R-22 (nurse_hca) while simultaneously flagging acknowledgement_late - a different contract from the instruction (confirmed by evaluations/difficulty/r1 and solvability/r1, where the passing/near-passing GLM runs left those cells empty). solution/files/results_memo.md additionally emits 'R-10 - acknowledged at never min' and presents R-06 as '40 min (limit 60 min)' under late acknowledgements, i.e. the golden does not itself explain those two findings as the instruction demands.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The reference answer fills acknowledgement_minutes for R-06 and R-22 while also flagging them late, but the instruction says to leave the column empty for unapproved-role entries. The golden memo also emits 'R-10 - acknowledged at never min' and presents R-06 as '40 min (limit 60 min)' without the required explanation.
+SMALLEST FIX
+Blank acknowledgement_minutes for R-06 and R-22 in solution/files/results_audit.csv and remove the late flag for those rows. In solution/files/results_memo.md, fix the 'never min' template glitch and explain R-06 and R-22 as unapproved-role non-acknowledgements per the instruction.
+VERIFY
+Confirm R-06 and R-22 in solution/files/results_audit.csv have empty acknowledgement_minutes and no late flag; confirm the memo has no 'never min' text and explains the role-void reasoning.
+Review note (optional)
+blocker
+layer2_difficulty
+layer2_difficulty
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty Four eligible GLM-5.2 attempts exist (r1 KGeAfSA 0.9722, r2 LawVca9 1.0, r3 gbvSfik 1.0, r4 AUu5hNG 1.0), so the raw distribution is 3/4 strict passes, which would pass. But the mandatory failure_cause_validity subcheck fails: r1's single failed check (memo_names_the_unapproved_acknowledgement) is a verifier lexical defect, not task difficulty - its memo correctly explains R-06 as 'acknowledged by a **ward clerk** ... not recognised by CR-7'. Effective model performance is therefore 4/4, i.e. at ceiling.
+IMPACT
+Same root cause as l1.clarity_scope::layer1_clarity_scope. The r1 attempt scored 0.9722 solely because the memo wrote 'ward clerk' instead of 'ward_clerk', making effective model performance 4/4 and the task too easy.
+SMALLEST FIX
+Fix the memo regex in tests/verifier.json to accept 'ward clerk' as an alias for 'ward_clerk', or disclose the exact token requirement in instruction.md. Re-run the difficulty trials afterward.
+VERIFY
+Re-run the r1 trial and confirm it scores 1.0, then re-check that at most 3 of 4 trials pass strictly.
+Review note (optional)
+blocker
+layer2_difficulty__failure_cause_validity
+layer2_difficulty__failure_cause_validity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty__failure_cause_validity The only non-strict-pass (difficulty/r1) failed solely on memo_names_the_unapproved_acknowledgement, whose regex is '(?is)\bR-06\b.{0,400}(?:unapproved|ward_clerk|not on the approved|cannot act)'. The memo written in that trajectory says: 'R-06 (tier 1) ... The only entry is by a ward clerk at 16:40, which CR-7 does not recognise, so the result stands unacknowledged' and later 'R-06: acknowledged by a **ward clerk**. This role is not recognised by CR-7'. That is a materially correct, explanatory answer rejected on incidental wording (space vs underscore, 'not recognised' vs 'unapproved'), i.e. a verifier defect rather than task difficulty.
+IMPACT
+Same root cause as l2.difficulty::layer2_difficulty. The r1 memo correctly explains R-06 as 'acknowledged by a ward clerk ... not recognised by CR-7' but the regex only accepts 'ward_clerk' or 'unapproved', so a correct answer is rejected on incidental wording.
+SMALLEST FIX
+Update the memo_names_the_unapproved_acknowledgement regex in tests/verifier.json to accept 'ward clerk' (with a space) as an equivalent of 'ward_clerk'. Re-run the difficulty trials after the fix.
+VERIFY
+Run the verifier on the r1 memo and confirm the R-06 check passes with the updated regex.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static
+layer5_verifier_fairness_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static Mandatory subchecks semantic_equivalence, surface_form_brittleness and coverage_depth fail: correct memo prose naming the role as 'ward clerk' is rejected (demonstrated in evaluations/difficulty/r1), quoted-numeric CSV variants break several row regexes, and the memo's substantive 'explain the breach' requirement is graded only by keyword proximity plus a 900-character length floor.
+IMPACT
+The verifier fails three subchecks: it rejects 'ward clerk' in the memo, it rejects fully-quoted numeric CSV fields, and it grades the memo's explanation requirement only by keyword proximity plus a 900-character length floor.
+SMALLEST FIX
+Fix the memo regex to accept 'ward clerk', make CSV numeric regexes tolerate quotes consistently, and replace the 900-character length floor with a check that verifies the memo actually explains each breach rather than just listing IDs.
+VERIFY
+Run the verifier against a quoted CSV and a memo that lists IDs without explanation; the quoted CSV should pass and the ID-only memo should fail.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__coverage_depth
+layer5_verifier_fairness_static__coverage_depth
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__coverage_depth The CSV/JSON side is deep (per-row values for R-05/R-08/R-11/R-12/R-13/R-14/R-15/R-16/R-17, full ID-set equality, and results.json forced to equal audit-derived token counts). The memo side is shallow: its 8 checks are ID-plus-keyword proximity regexes plus memo_has_explanatory_body, which only requires >=900 characters. A memo that 'merely lists result IDs and finding labels' - explicitly declared insufficient by instruction.md - would pass every memo check. The acknowledged_by_role column is also never asserted for any row.
+IMPACT
+The memo's 8 checks are keyword-proximity regexes plus a 900-character length floor, so a memo that merely lists result IDs and finding labels passes every check. The acknowledged_by_role column is also never asserted for any row.
+SMALLEST FIX
+Add verifier checks that confirm the memo contains explanatory prose for each breach rather than just listing IDs, and add assertions for the acknowledged_by_role column in the CSV. Remove or strengthen the 900-character length floor so it cannot be satisfied by padding.
+VERIFY
+Run the verifier against a memo that only lists IDs and labels; it should fail the memo checks.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__semantic_equivalence
+layer5_verifier_fairness_static__semantic_equivalence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__semantic_equivalence memo_names_the_unapproved_acknowledgement accepts only 'unapproved|ward_clerk|not on the approved|cannot act'. The natural-language alias 'ward clerk' plus 'not recognised by CR-7' - a fully equivalent and arguably better answer to 'unapproved acknowledgers must be named by role' - is rejected; this is not a hypothetical, it cost evaluations/difficulty/r1 a check. Similar alias sensitivity affects nothing else materially, but this one is reward-bearing and undisclosed.
+IMPACT
+Same root cause as l1.clarity_scope::layer1_clarity_scope. The regex for memo_names_the_unapproved_acknowledgement only accepts 'ward_clerk' or 'unapproved', so a memo that writes 'ward clerk' plus 'not recognised by CR-7' is rejected despite being a correct answer.
+SMALLEST FIX
+Add 'ward clerk' (with a space) to the accepted token list in the memo_names_the_unapproved_acknowledgement regex in tests/verifier.json.
+VERIFY
+Run the verifier on a memo using 'ward clerk' near R-06 and confirm the check passes.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__surface_form_brittleness
+layer5_verifier_fairness_static__surface_form_brittleness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__surface_form_brittleness Two concrete defects. (1) Alias/underscore sensitivity in the R-06 memo regex (see semantic_equivalence). (2) Inconsistent CSV quoting tolerance: acknowledgement_boundary_is_inclusive requires ',\s*60(\.0+)?\s*,', tier_one_clock_runs_continuously requires ',\s*20\s*,' but allows '\x22?50\x22?', compliant_with_unnecessary_escalation requires ',\s*20\s*,\s*50\s*,', and tier_two_after_hours_ack_breach requires ',\s*240\s*,\s*510\s*,'; a semantically identical CSV written with QUOTE_ALL (',"60",') fails four checks while the same patterns explicitly tolerate quotes elsewhere. Conversely, several row checks match on a single loose token ('role', 'none', 'yes') anywhere in the row, so they check less than their names claim.
+IMPACT
+A semantically identical CSV written with all fields quoted fails four checks because the numeric regexes require unquoted values, while the same patterns tolerate quotes elsewhere. Several row checks also match a single loose token anywhere in the row, so they validate less than their names claim.
+SMALLEST FIX
+Update the CSV numeric regexes in tests/verifier.json to consistently tolerate optional quotes around numeric fields (e.g. use '\x22?\s*60\s*\x22?' patterns). Tighten the loose single-token row checks so they match the intended column value rather than any occurrence in the row.
+VERIFY
+Run the verifier against a QUOTE_ALL CSV and confirm all four previously failing checks pass; run it against a row with a wrong value containing a loose token and confirm it fails.
+Review note (optional)
+Minor / low 1
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report_v2.html.
+
+DATA
+report.json
+Preview the report here
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

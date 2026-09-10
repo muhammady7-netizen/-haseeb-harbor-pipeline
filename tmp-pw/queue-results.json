@@ -1,0 +1,23 @@
+[
+  {
+    "short": "gen-g734",
+    "uploaded": false,
+    "gates": false,
+    "preqc": false,
+    "oracle": false
+  },
+  {
+    "short": "gen-g806",
+    "uploaded": false,
+    "gates": false,
+    "preqc": false,
+    "oracle": false
+  },
+  {
+    "short": "gen-g857",
+    "uploaded": false,
+    "gates": false,
+    "preqc": false,
+    "oracle": false
+  }
+]

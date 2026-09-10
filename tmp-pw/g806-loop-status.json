@@ -1,0 +1,10 @@
+{
+  "round": 1,
+  "at": "2026-09-10T20:41:40.164Z",
+  "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
+  "running": false,
+  "oracleFail": false,
+  "oraclePass": false,
+  "glmPass": "1/4",
+  "complete": false
+}

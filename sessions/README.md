@@ -16,7 +16,7 @@
 4. Agent runs assign + PreQC loop for those 3 only
 5. Upload zips from `sessions/<LETTER>/zips/` when `ready_final`
 
-Max 3 portal Oracle+GLM evals at once across all chats.
+Max 4 portal Oracle+GLM evals at once across all chats.
 
 ## CRITICAL RULES FOR ALL SESSIONS (read before any portal work)
 

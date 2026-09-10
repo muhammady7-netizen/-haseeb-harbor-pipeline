@@ -1,0 +1,101 @@
+URL=https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-0f5e7ea213cebcd75662f8b0281f1da7-v1
+
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+health-h40-critical-result-acknowledgement
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+harbor
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Running now
+running now
+Running…
+Stop run
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+Run history
+1 run · latest running
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 3/4 passed
+running · 1741s
+RESULT
+harbor
+1741s
+Execution status — Oracle then GLM ×4
+ORACLE GOLDEN REPLAY
+
+Passed 1.0 on _ZxbH6fh (1/1 graded)
+
+View Oracle in Harbor
+
+GLM-5.2 ×4 DIFFICULTY
+
+Completed 3/4 passed. 3 of 4 scored GLM runs solved the task.
+
+View GLM run 1 in Harbor View GLM run 2 in Harbor View GLM run 3 in Harbor View GLM run 4 in Harbor
+
+Live evaluation logs
+Trainer-only execution output
+upload — upload started
+upload — upload completed
+oracle — Oracle started
+oracle — waiting for cloud capacity
+oracle — Oracle completed
+oracle — Oracle gate started
+oracle — Oracle gate completed
+glm — GLM x4 started
+glm — waiting for cloud capacity
+glm — GLM x4 completed
+harbor — Harbor Check started
+harbor — waiting for cloud capacity
+
+no update for 10m — still running; the worker heartbeats separately
+
+Oracle + GLM ×4 + Harbor Check normally takes around 50 minutes — one Oracle golden replay, four GLM-5.2 trials, then Harbor Check. Some runs finish sooner; large or connector-heavy tasks can run longer. Nothing is lost if you navigate away.
+
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

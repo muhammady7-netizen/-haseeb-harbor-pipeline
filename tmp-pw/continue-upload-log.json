@@ -1,0 +1,22 @@
+{
+  "at": "2026-09-10T20:31:35.712Z",
+  "results": [
+    {
+      "short": "gen-g734",
+      "ok": true,
+      "started": true,
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-86163925b042bec5e523b16ad2f7177e-v1",
+      "head": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\n←\nAll tasks\ngen-g734-cms-publish-readiness-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n✓\nClient PreQC\n3\nReview findings\n5 to decide\n✓\nReview record\n5\nEvaluation\n28 to decide\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nLast run: Review required\nReview required · 5 trainer finding(s) · 5 h ago\nRe-run client preQC\nView report\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each "
+    },
+    {
+      "short": "gen-g806",
+      "ok": false,
+      "error": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n  - navigating to \"https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "short": "gen-g857",
+      "ok": false,
+      "error": "Error: page.goto: Target page, context or browser has been closed"
+    }
+  ]
+}

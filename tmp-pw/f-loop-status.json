@@ -1,0 +1,17 @@
+{
+  "round": 1,
+  "at": "2026-09-10T20:52:54.943Z",
+  "g857": {
+    "status": "inflight",
+    "slotsFull": true,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-2a489be4b73a943d11d2c52efefae8c6-v2"
+  },
+  "c251": {
+    "status": "slots_full",
+    "pre": false,
+    "ev": false,
+    "running": false,
+    "slotsFull": true,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-db0490a135ad1cc1e0d71549021ddef3-v1"
+  }
+}

@@ -1,0 +1,598 @@
+URL=https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-f839351902aa1a404c1ca929e374a2f8-v1
+
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+code-c249-recurring-report-source-selection-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+✓
+Client PreQC
+3
+Review findings
+5 to decide
+✓
+Review record
+5
+Evaluation
+26 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Last run: Review required
+Review required · 5 trainer finding(s) · 5 h ago
+Re-run client preQC
+View report
+Your 3 run slots are currently in use.
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 8 trainer finding(s) · 3 h ago
+Re-run QC-Oracle-GLM
+View report
+Your 3 run slots are currently in use.
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+26 blocking issues
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+26
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope__representation_contract
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__cross_artifact_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__instruction_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_instruction_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__eligible_strict_pass
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__instruction_environment_sufficiency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability__frozen_identity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability__per_check_stability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability__repeat_count
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_stability__reward_equality
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static__rollout_legitimacy
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__counterfactual_strength
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__coverage_depth
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__requirement_traceability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__score_bucket_activation
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__scoring_proportionality
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+Run history
+2 runs · latest Review
+CLIENT PREQC (INTERNAL GATE · ADVISORY)
+Client preQC (Internal Gate · advisory)
+Legacy QC1
+Review required
+5 trainer finding(s)
+Sep 10, 08:59 PM · took 13s
+report
+zip
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 0/4 passed
+8 trainer finding(s)
+Sep 10, 10:59 PM · took 1764s
+report
+zip
+RESULT
+QC-Oracle-GLM check
+Review required
+8 trainer finding(s)
+Finalization held: 8 blocking finding(s) await disposition: confirm each one or justify it as a false positive with a note. Submit to pipeline
+Execution evidence — Oracle + four GLM runs
+
+These are the five scored trials. Oracle replays the golden solution once to prove the task is solvable; the next four rows are independent GLM-5.2 attempts used to measure difficulty.
+
+step	trial	status	result	Harbor view	download
+1	Oracle golden replay	PASS	1.0 on _mYEvSCP (1/1 graded)	View Oracle in Harbor	not published
+2	GLM-5.2 run 1	completed	reward 0.9565217391	View GLM run 1 in Harbor	trajectory (.zip)
+3	GLM-5.2 run 2	completed	reward 0.9782608696	View GLM run 2 in Harbor	trajectory (.zip)
+4	GLM-5.2 run 3	completed	reward 0.9782608696	View GLM run 3 in Harbor	trajectory (.zip)
+5	GLM-5.2 run 4	completed	reward 0.9782608696	View GLM run 4 in Harbor	trajectory (.zip)
+
+Difficulty: 0 of 4 GLM runs solved the task.
+
+FINAL VALIDATION — HARBOR CHECK
+
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+
+FAIL · 0 finding(s) screened out · gs://obi-harbor-pipeline/results/trainer-evaluation-d8976a2bcffb459a-a2/_harbor_check/runs/evaluation-d8976a2bcffb459a-a2/status.json
+
+Pipeline batch trainer-evaluation-d8976a2bcffb459a-a2 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-nng4b
+
+YOUR DECISIONS
+
+18 findings duplicated a defect already listed under another category and were consolidated into it — one decision covers each group. The grouping is recorded in this run's evidence.
+
+0/26
+findings dispositioned by you
+Blocking — blocker / critical 26
+blocker
+layer1_clarity_scope
+layer1_clarity_scope
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope Aggregate fails because representation_contract fails: the graded row count (exactly 29) and the resolution of the duplicate RUN-29 log row are undisclosed, and the exact CSV header/newline shape is enforced only by the verifier. All four packaged GLM rollouts lost reward on exactly that undisclosed requirement.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer1_clarity_scope__representation_contract
+layer1_clarity_scope__representation_contract
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope__representation_contract Undisclosed representation choices change reward. (1) 'audit_exactly_29_rows' requires exactly 29 data rows, i.e. the duplicate RUN-29 log entry must be collapsed to one row and specifically to the live/SOURCE_MISMATCH variant (the golden drops the archive/none row); the instruction says only 'one row per run' and gives no de-duplication rule. (2) The same regex hard-codes the exact header string and requires a newline-terminated final row. (3) Nothing states how to populate run_id/run_date/source_used for the MISSING_JOB row. r2's trajectory (evaluations/difficulty/r2/agent/trajectory.json) shows the model explicitly reasoning that each log entry is a run and emitting 30 rows — the defensible reading — and being penalized.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer1_package_consistency
+layer1_package_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency Aggregate fails: cross-artifact, instruction/verifier and solution/instruction subchecks fail. Core defect: instruction.md requires 'one row per run (plus any missing required job)' and environment/input/report_run_log.csv contains 29 run rows (RUN-29 is logged twice, once archive/none and once live/SOURCE_MISMATCH), so the faithful deliverable has 30 rows; tests/verifier.json check 'audit_exactly_29_rows' demands exactly 29 data rows and solution/files/report_source_audit.csv silently drops the compliant duplicate RUN-29 row. Additionally solution/files/report_source_memo.md only covers 15 runs ('15 runs + 1 missing job') and omits explanations for RUN-23, RUN-24, RUN-25, RUN-29(live) and RUN-33, contradicting the instruction's 'explaining every finding'. review.csv is also stale (claims 26/40 checks, 14 audit rows, flagged_count=7 vs the shipped 46 checks, 29 rows, flagged_count=12).
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer1_package_consistency__cross_artifact_consistency
+layer1_package_consistency__cross_artifact_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__cross_artifact_consistency The set does not jointly describe one gradable task. instruction.md ('one row per run') + report_run_log.csv (29 run rows incl. duplicate RUN-29) imply 30 audit rows, while tests/verifier.json 'audit_exactly_29_rows' and solution/files/report_source_audit.csv encode 29. solution/files/report_source_memo.md self-describes as covering '15 runs' though the log has 29. review.csv documents a different package (26 verifiers / 40 checks, 14 audit rows, flagged_count=7, memo gate '>=1200 chars and >=8 sentences') than the one shipped (46 verifiers, 29 rows, flagged_count=12, memo_substantive_body regex '(?is)(?=.*(?:.{50,}))').
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer1_package_consistency__instruction_verifier_consistency
+layer1_package_consistency__instruction_verifier_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__instruction_verifier_consistency Verifier-only requirement: 'audit_exactly_29_rows' enforces a row count and an exact header line plus trailing-newline shape that the instruction never states, and enforces an undisclosed de-duplication of the duplicate RUN-29 log row. Material ungraded requirement: the instruction requires the memo to explain every finding with run ID and specific reason, but tests/verifier.json only checks memo content for RUN-03, RUN-10, RUN-13, RUN-17, RUN-02, RUN-19 and the missing job — the SOURCE_MISMATCH findings for RUN-23/RUN-24/RUN-29 and RUN-33 and the ROW_COUNT_MISMATCH for RUN-25 are never checked in the memo.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer1_package_consistency__solution_instruction_consistency
+layer1_package_consistency__solution_instruction_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__solution_instruction_consistency solution/files/report_source_audit.csv omits one logged run (the RUN-29 archive row, finding none), violating 'one row per run'. solution/files/report_source_memo.md is stale relative to the densified log: its header says '15 runs + 1 missing job', its table lists only 15 runs, and it never cites RUN-22..RUN-34 findings (RUN-23, RUN-24, RUN-25, RUN-29-live, RUN-33), so the golden memo does not 'explain every finding' as instructed even though its own results.json reports 12 flagged rows.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_difficulty
+layer2_difficulty
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty Four eligible independent GLM-5.2 pairs exist (r1-r4) with fractional rewards 0.9565217391, 0.9782608696, 0.9782608696, 0.9782608696 — zero strict 1.0 passes, which satisfies the numeric bar, but the aggregate fails because failure_cause_validity fails: every attempt lost points to package/verifier defects, not task difficulty. All four failed 'audit_exactly_29_rows' (the undisclosed duplicate-RUN-29 collapse), and r1 additionally failed 'memo_missing_job' despite writing '**week-ahead-briefing**: no run is logged for this job, but it is on the required recurring roster.' — a correct explanation that the regex's alternatives (no\s+\w+\s+run, not\s+\w+\s+logged, missing, absent, ...) do not match.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_difficulty__failure_cause_validity
+layer2_difficulty__failure_cause_validity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty__failure_cause_validity The failures are verifier/golden defects, not model error. All four trials failed only 'audit_exactly_29_rows': r2's trajectory records the model deliberating the duplicate RUN-29 log rows and concluding 'each log entry is a run record to be audited ... I'll go with 29 log rows + 1 missing job = 30 audit rows' — the reading the instruction supports — while the verifier requires the golden's silent collapse to 29. r1's second failure, 'memo_missing_job', rejected the semantically correct sentence '**week-ahead-briefing**: no run is logged for this job, but it is on the required recurring roster.' because none of the regex alternatives match that phrasing. Both are ambiguity/hidden-requirement and lexical-matcher defects.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_solvability
+layer2_solvability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability No non-oracle trajectory/result pair in evaluations/ earns exactly 1.0: the maximum observed is 45/46 = 0.9782608696 (r2, r3, r4). Only the golden/oracle deliverables satisfy all 46 checks, and they do so partly by dropping a logged run. Solvability by an eligible agent is therefore not demonstrated.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_solvability__eligible_strict_pass
+layer2_solvability__eligible_strict_pass
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__eligible_strict_pass evaluations/difficulty/*/verifier/reward.json show 0.9565217391 / 0.9782608696 x3; reward_meta.txt confirms passed=44,45,45,45 of total=46. Every eligible attempt is partial-reward only; the only reward-1.0 evidence in the package is the golden replay (solution/), which is excluded.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_solvability__instruction_environment_sufficiency
+layer2_solvability__instruction_environment_sufficiency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__instruction_environment_sufficiency Reaching 1.0 requires knowledge absent from instruction.md and the inputs: that the duplicate RUN-29 log entry must be collapsed to a single row (keeping the live/SOURCE_MISMATCH variant) so the CSV has exactly 29 data rows, and that the missing-job explanation must use specific lexical forms to satisfy memo_missing_job. Four of four GLM trials, which otherwise produced fully correct findings and counts, were blocked by exactly these hidden requirements.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_stability
+layer2_stability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability evaluations/ contains only the four difficulty trials; there is no verifier-repeat set over frozen deliverables. review.csv asserts three oracle stability repeats (oracle-c249-stab-v1c-1/-2/-3 at reward 1.0) but no such evidence is checked into the tree, so frozen identity, repeat count and reward equality cannot be established.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_stability__frozen_identity
+layer2_stability__frozen_identity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability__frozen_identity No hashes or equivalent immutable identity for a repeated submission exist in evaluations/. Only task-side digests (provenance task_digest, lock task digest) are recorded; nothing pins the graded deliverable bytes across repeats, and the four trials are four distinct agent submissions rather than one frozen artifact re-verified.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_stability__per_check_stability
+layer2_stability__per_check_stability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability__per_check_stability No repeat evidence exists to compare per-check outcomes on identical input. The only cross-trial per-check variation available (r1 failing memo_missing_job while r2-r4 pass it) reflects different memo wording, not a repeat of frozen evidence, so per-check stability cannot be established from evaluations/.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_stability__repeat_count
+layer2_stability__repeat_count
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability__repeat_count Zero verifier repeats over identical evidence are present (four distinct agent trials only). The required minimum of three complete repeat results is not met by anything in evaluations/.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer2_stability__reward_equality
+layer2_stability__reward_equality
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_stability__reward_equality There is no frozen-evidence repeat set on which to demonstrate reward equality. The four available rewards are not equal (0.9565217391 vs 0.9782608696 x3), and they come from different submissions, so the stability property is simply unevidenced.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_reward_hacking_static
+layer5_reward_hacking_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_reward_hacking_static Aggregate fails because rollout_legitimacy fails: the memo half of the deliverable is gated only by token co-occurrence and an effectively no-op length regex, so a submission whose memo contains no genuine analysis (or fabricated reasoning) can still take all 7 memo checks and reach 46/46.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_reward_hacking_static__rollout_legitimacy
+layer5_reward_hacking_static__rollout_legitimacy
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_reward_hacking_static__rollout_legitimacy The verifier inspects only final file surfaces with lexical matchers, so unjustified or fabricated memo content passes: memo_substantive_body ('(?is)(?=.*(?:.{50,}))') accepts any ~50-character file, and the six remaining memo checks only require co-located tokens (memo_run19 merely needs 'RUN.?19', '410' and '405' anywhere in the file). A memo that asserts findings without any reasoning — or with wrong reasoning — is indistinguishable from the golden memo to this rubric.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static
+layer5_verifier_fairness_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static Aggregate fails: requirement_traceability, coverage_depth, semantic_equivalence, surface_form_brittleness, score_bucket_activation, scoring_proportionality and counterfactual_strength all fail. The verifier both rejects a defensible correct submission (audit_exactly_29_rows; memo_missing_job wording) and accepts a [REDACTED] memo stub.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__counterfactual_strength
+layer5_verifier_fairness_static__counterfactual_strength
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__counterfactual_strength The verifier cannot separate a genuine solution from a plausible defective one in both directions. Adversarial accept: a correct 29-row CSV plus a ~200-character memo listing only the tokens the six memo regexes look for (RUN-10 live/archive, RUN-13 live/archive, RUN-17 archive/live, RUN-02 388/395, '410 405 RUN-19', 'RUN-03 tail merge', 'week-ahead-briefing missing') scores 46/46 with no explanation of any finding. False reject: r2-r4's faithful 30-row audits and r1's correct missing-job explanation lose reward. Findings for RUN-25/RUN-23/RUN-24/RUN-29/RUN-33 can be omitted from the memo entirely with no penalty.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__coverage_depth
+layer5_verifier_fairness_static__coverage_depth
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__coverage_depth The CSV side is reasonably deep (29 per-row end-anchored finding assertions plus five results.json count assertions), but the memo side is shallow token co-occurrence: memo_substantive_body is '(?is)(?=.*(?:.{50,}))' (any file with ~50 characters passes), and the six substantive memo checks only require an ID token and one or two other tokens within 500 characters (memo_run19 merely requires 'RUN.?19', '410' and '405' to appear anywhere in the document, in any order or context). A memo containing a one-line token list with no analysis satisfies all seven memo checks.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__requirement_traceability
+layer5_verifier_fairness_static__requirement_traceability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__requirement_traceability Untested material requirement: the instruction demands the memo explain every finding with run ID and specific reason, yet no check covers the SOURCE_MISMATCH findings for RUN-23, RUN-24, RUN-29(live) and RUN-33 or the ROW_COUNT_MISMATCH for RUN-25 (7 of 12 flagged rows have no memo check; 5 are entirely unexplained even in the golden memo). Reward-bearing verifier-only requirement: audit_exactly_29_rows' exact row count, header string and duplicate-collapse rule appear nowhere in instruction.md.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__score_bucket_activation
+layer5_verifier_fairness_static__score_bucket_activation
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__score_bucket_activation memo_substantive_body is presented as a substantive gate (review.csv: 'requires >=1200 chars and >=8 sentences') but its expected regex is '(?is)(?=.*(?:.{50,}))', which any file of ~50+ characters satisfies — an always-pass bucket counted as active coverage (1/46 of reward). It cannot receive negative evidence for the property it claims to test.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__scoring_proportionality
+layer5_verifier_fairness_static__scoring_proportionality
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__scoring_proportionality Impact is misallocated. The whole memo deliverable — half the requested work, required to explain all 12 findings — carries only 7/46 (~15%) of reward and is satisfiable by a token stub, while a single undisclosed formatting/de-duplication choice (audit_exactly_29_rows) caps an otherwise perfect submission at 45/46 and is weighted the same as a substantive finding. Trivial existence checks (3/46) also count as much as individual row findings, and flagged_count is scored on top of the four component counts that determine it.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__semantic_equivalence
+layer5_verifier_fairness_static__semantic_equivalence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__semantic_equivalence Materially equivalent correct phrasings are rejected. memo_missing_job accepts 'no <word> run', 'not <word> logged', 'lacks <word> run', 'absent', 'skipped', 'missing', but rejects the equally correct 'no run is logged for this job' — exactly the sentence r1 wrote, costing it a check (evaluations/difficulty/r1/verifier/test-stdout.txt). Likewise audit_exactly_29_rows rejects a semantically faithful 30-row audit (both duplicate RUN-29 log rows) and any file whose last row is not newline-terminated, and results.json counts require ints (a stringified '12' fails 'equals').
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__surface_form_brittleness
+layer5_verifier_fairness_static__surface_form_brittleness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__surface_form_brittleness Every graded matcher is lexical. (a) audit_exactly_29_rows anchors on the literal header 'run_id,job_name,run_date,source_used,reported_row_count,finding' plus exactly 29 newline-terminated lines, so quoted headers, a header with spaces, or a missing final newline fail despite identical content. (b) The 29 row regexes require the finding to be the last field on the line, so an extra retained column (e.g. keeping source_row_count_snapshot) fails. (c) memo_missing_job's keyword whitelist rejects natural correct phrasing (demonstrated by r1). (d) Conversely wrong answers can pass by mimicking tokens: 'RUN-10 live archive; RUN-13 live archive; RUN-17 archive live; RUN-02 388 395; RUN-19 410 405; RUN-03 tail merge; week-ahead-briefing missing' satisfies all seven memo checks with no analysis.
+IMPACT
+Blocks submission until the task is corrected or the finding is justified as a false positive.
+SMALLEST FIX
+Correct the task and upload a new version, or justify the false positive with a note.
+Review note (optional)
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report_v2.html.
+
+DATA
+report.json
+Preview the report here
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

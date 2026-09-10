@@ -3,7 +3,7 @@
 Uses the ONE shared Shannon Chrome profile (same as opencode Playwright MCP).
 Runs headless so no profile window pops on screen. Never taskkill user's Chrome.
 
-Portal QC-Oracle-GLM is typically a 3-slot limit; --max-eval defaults to 3.
+Portal QC-Oracle-GLM allows up to 4 concurrent evals; --max-eval defaults to 4.
 """
 from __future__ import annotations
 
@@ -233,10 +233,11 @@ async function ensureReviewRecord(page, short) {{
 }}
 
 async function waitForEvalSlot(page, short) {{
-  // Portal disables PreQC/Oracle when 3 Oracle+GLM slots are full.
+  // Portal disables Oracle when all concurrent slots are full (cap is 4).
   for (let i = 0; i < 60; i++) {{
     const t = await bodyText(page);
-    if (!/3 runs in flight|3 run slots are currently in use/i.test(t)) {{
+    const full = /\d+\s+runs? in flight|run slots? are currently in use|already have \d+ runs/i.test(t);
+    if (!full) {{
       console.log(JSON.stringify({{ event: 'slot_free', short, i }}));
       return true;
     }}
@@ -339,7 +340,7 @@ async function startGates(page, short) {{
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Headless Harbor QC queue (shared chrome-profile)")
-    ap.add_argument("--max-eval", type=int, default=3, help="Max QC-Oracle-GLM starts this run (portal ~3)")
+    ap.add_argument("--max-eval", type=int, default=4, help="Max QC-Oracle-GLM starts this run (portal allows 4)")
     ap.add_argument("--only", default="", help="Comma shorts/ids to include")
     ap.add_argument("--session", default="", help="Optional session filter e.g. F")
     ap.add_argument("--dry-run", action="store_true")

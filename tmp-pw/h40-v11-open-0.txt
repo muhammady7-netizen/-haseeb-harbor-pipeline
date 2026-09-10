@@ -1,0 +1,549 @@
+URL=https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-6183c5072ed5fbd2ff923a821ff077d3-v1
+
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+health-h40-critical-result-acknowledgement
+v1
+Harbor package
+SWITCH VERSION
+v2 (latest) — not run · Sep 11, 02:46 AM
+v1 — Review · Sep 11, 01:51 AM
+V1
+Review
+V2
+·
+↑
+Upload new version
+!
+Upload
+new version needed
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+20 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+Your 3 run slots are currently in use.
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 20 trainer finding(s) · 40 min ago
+Re-run QC-Oracle-GLM
+View report
+Your 3 run slots are currently in use.
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+20 blocking issues and 5 findings to review
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+25
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope__representation_contract
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__cross_artifact_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__instruction_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_instruction_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_realism_leakage
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_realism_leakage__domain_correctness
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__eligible_strict_pass
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__instruction_environment_sufficiency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__counterfactual_strength
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__coverage_depth
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__requirement_traceability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__scoring_proportionality
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__frozen_identity
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__per_check_stability
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__repeat_count
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__reward_equality
+Review issue
+Run history
+1 run · latest Review
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 0/4 passed
+20 trainer finding(s)
+Sep 11, 02:07 AM · took 2198s
+report
+zip
+RESULT
+QC-Oracle-GLM check
+Review required
+20 trainer finding(s)
+Finalization held: 20 blocking finding(s) await disposition: confirm each one or justify it as a false positive with a note. Submit to pipeline
+Execution evidence — Oracle + four GLM runs
+
+These are the five scored trials. Oracle replays the golden solution once to prove the task is solvable; the next four rows are independent GLM-5.2 attempts used to measure difficulty.
+
+step	trial	status	result	Harbor view	download
+1	Oracle golden replay	PASS	1.0 on _uyjajjw (1/1 graded)	View Oracle in Harbor	not published
+2	GLM-5.2 run 1	completed	reward 0.9302325581	View GLM run 1 in Harbor	trajectory (.zip)
+3	GLM-5.2 run 2	completed	reward 0.976744186	View GLM run 2 in Harbor	trajectory (.zip)
+4	GLM-5.2 run 3	completed	reward 0.9534883721	View GLM run 3 in Harbor	trajectory (.zip)
+5	GLM-5.2 run 4	completed	reward 0.9534883721	View GLM run 4 in Harbor	trajectory (.zip)
+
+Difficulty: 0 of 4 GLM runs solved the task.
+
+FINAL VALIDATION — HARBOR CHECK
+
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+
+FAIL · 0 finding(s) screened out · gs://obi-harbor-pipeline/results/trainer-evaluation-7b2881fcb6a745b7-a1/_harbor_check/runs/evaluation-7b2881fcb6a745b7-a1/status.json
+
+Pipeline batch trainer-evaluation-7b2881fcb6a745b7-a1 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-t2w6l
+
+YOUR DECISIONS
+
+0/20
+findings dispositioned by you
+Blocking — blocker / critical 20
+blocker
+layer1_clarity_scope
+layer1_clarity_scope
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope Fails because the representation subcheck fails: the memo is graded on undisclosed wording (the literal token 'limit') and on naming one particular non-breach result (R-34), and both actually cost reward in the shipped GLM runs. General readability of the instruction does not compensate for that.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency__instruction_verifier_consistency. The verifier requires the literal word 'limit' and the name 'R-34' in the memo, but the instruction discloses neither, and both cost reward in shipped runs.
+SMALLEST FIX
+Remove the \blimit\b and R-34-specific requirements from tests/verifier.json, or add explicit instructions telling the model to use the word 'limit' and to name R-34 as a non-breach example.
+VERIFY
+Run the verifier on a memo that explains non-breach results without naming R-34 and without using 'limit'; it should pass.
+Review note (optional)
+blocker
+layer1_clarity_scope__representation_contract
+layer1_clarity_scope__representation_contract
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope__representation_contract Most representation choices are disclosed (column order, ISO 'YYYY-MM-DDTHH:MM', whole-number minutes, empty acknowledgement_minutes, unquoted numerics, the findings/escalation_status token vocabularies), and the row-level regexes rely only on those. But 'memo_has_explanatory_body' additionally demands the literal singular word 'limit' (\blimit\b — 'limits' does not match) and one of because|so CR-7|treats it|recognised|recognized. I confirmed by replay that a memo identical to the golden except for 'limit'->'threshold' fails only that check, and evaluations/difficulty/r4's memo (7793 chars, complete and explanatory) failed solely because it never used the word 'limit'. Nothing in instruction.md discloses that wording requirement.
+IMPACT
+Same root cause as l1.clarity_scope::layer1_clarity_scope. A complete, correct memo that uses 'threshold' or 'limits' instead of 'limit' fails the check and loses reward.
+SMALLEST FIX
+Remove the \blimit\b lookahead from the memo_has_explanatory_body check in tests/verifier.json, or add a sentence to instruction.md requiring the model to use the word 'limit' in the memo.
+VERIFY
+Run the verifier on a memo that uses 'threshold' instead of 'limit'; the memo_has_explanatory_body check should pass.
+Review note (optional)
+blocker
+layer1_package_consistency
+layer1_package_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency Mandatory subchecks fail. tests/verifier.json 'result_acknowledgement_breaches' expects 13, which encodes a rule found nowhere in instruction.md or environment/input/critical_results_procedure.md and which contradicts the golden's own handling of the identical case (solution/files/results_audit.csv gives R-35 'acknowledger_unapproved;acknowledgement_late' but gives R-06/R-22 'acknowledger_unapproved' only, while still setting their escalation_status to 'recorded' = 'the window was missed'). tests/verifier.json 'memo_keeps_r34_as_not_a_breach' and the literal '\blimit\b' lookahead in 'memo_has_explanatory_body' are verifier-only requirements. review.csv is also materially stale (claims 34 checks vs 41 shipped, golden counts 6/11/2/4/14 vs shipped 7/13/3/7/16, 33 results vs 35, 'R-01..R-17' coverage, 4/4 GLM runs at reward 1.0, and stability repeat-01/repeat-02 that are not in evaluations/).
+IMPACT
+The expected breach count of 13 contradicts the instruction and procedure, which yield 15. review.csv describes a different package (34 checks, wrong counts, missing runs).
+SMALLEST FIX
+Decide whether the correct breach count is 13 or 15. If 15, update tests/verifier.json, solution/files/results_audit.csv, solution/files/results.json, and solution/golden_results.json to 15 and add acknowledgement_late to R-06 and R-22. If 13, add an explicit rule to instruction.md and environment/input/critical_results_procedure.md explaining why R-06 and R-22 are not late. Update review.csv to match the shipped 41 checks, 35 rows, 7/13/3/7/16 counts, and the r1-r4 runs that exist.
+VERIFY
+Run the verifier against the golden solution and confirm it scores 43/43; open review.csv and confirm the check count, row count, category counts, and run list match the shipped package.
+Review note (optional)
+blocker
+layer1_package_consistency__cross_artifact_consistency
+layer1_package_consistency__cross_artifact_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__cross_artifact_consistency The core set (task.toml, instruction.md, environment/input/*, solution/*, tests/*) does describe one runnable task and the golden scores 43/43 when replayed, but the package is not jointly consistent: (a) solution/files/results_audit.csv + results.json assert acknowledgement_breaches=13 under a rule that contradicts the instruction's own definition of 'acknowledgement_late' ('a late or absent acknowledgement') and of escalation_status 'recorded' ('the window was missed'); (b) review.csv, a shipped task file, describes a materially different package (34 verifier checks vs the 41 in tests/verifier.json, golden counts notification=6/ack=11/unapproved=2/missing=4/compliant=14 vs the shipped 7/13/3/7/16, 33 results vs the 35 rows in environment/input/critical_results.csv, register coverage 'R-01..R-17', and evaluations for 'oracle + glm-5.2 r1-r5 + stability' where only difficulty/r1-r4 exist).
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The golden applies an undisclosed rule to get 13 breaches, and review.csv describes a different package than what shipped.
+SMALLEST FIX
+Reconcile the breach-count rule across instruction.md, environment/input/critical_results_procedure.md, solution/files/results_audit.csv, solution/files/results.json, and tests/verifier.json so they all agree. Rewrite review.csv to reflect the 41 shipped checks, 35 input rows, 7/13/3/7/16 category counts, and the four difficulty runs present.
+VERIFY
+Run the verifier on the golden and confirm 43/43; diff review.csv against tests/verifier.json and environment/input/critical_results.csv to confirm counts and row counts match.
+Review note (optional)
+blocker
+layer1_package_consistency__instruction_verifier_consistency
+layer1_package_consistency__instruction_verifier_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__instruction_verifier_consistency Three reward-bearing checks are not traceable to the instruction. (1) 'result_acknowledgement_breaches' expects 13; the instruction says acknowledgement_late covers 'a late or absent acknowledgement', says an unapproved role means 'that entry is not a recognised acknowledgement' with empty acknowledgement_minutes, and defines escalation_status 'recorded' as 'the window was missed and an escalation appears'. Applying those three statements to R-06 (tier 1, clock 16:00, no recognised ack, escalation 17:10) and R-22 (clock 14:00, escalation 15:05) yields 15, and I verified that submitting the consistent 15 fails exactly this one check. (2) 'memo_keeps_r34_as_not_a_breach' forces the memo to name R-34 specifically; the instruction only asks for 'which long elapsed times are not breaches at all', and evaluations/difficulty/r1 answered that with R-08/R-14/R-20 (genuinely long wall-clock, out-of-hours releases) and lost the check. (3) 'memo_has_explanatory_body' requires the literal singular token 'limit' (\blimit\b), which no instruction sentence requires.
+IMPACT
+The checks for the 13-breach count, naming R-34 in the memo, and using the literal word 'limit' all penalize answers the instruction actually supports, costing reward in shipped runs.
+SMALLEST FIX
+For result_acknowledgement_breaches, either change the expected value to 15 or add the distinguishing rule to instruction.md. For memo_keeps_r34_as_not_a_breach, change the check to accept any correct non-breach example, not just R-34. For memo_has_explanatory_body, remove the \blimit\b requirement or add a sentence to instruction.md telling the model to use that word.
+VERIFY
+Run the verifier against a memo that names R-08 instead of R-34 and uses 'threshold' instead of 'limit'; both should now pass.
+Review note (optional)
+blocker
+layer1_package_consistency__solution_instruction_consistency
+layer1_package_consistency__solution_instruction_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__solution_instruction_consistency solution/files/ contains all three requested deliverables in the requested formats, and solution/golden_results.json is byte-identical to solution/files/results.json. However the golden applies the disclosed findings vocabulary inconsistently and therefore relies on undisclosed knowledge: R-06 and R-22 (unapproved acknowledger, escalation recorded, escalation_status 'recorded' i.e. window missed) carry only 'acknowledger_unapproved', while R-35 (unapproved acknowledger, window missed, no escalation) carries 'acknowledger_unapproved;acknowledgement_late'. No sentence in instruction.md or the CR-7 procedure distinguishes those cases; the difference in the golden is unexplained and is what fixes acknowledgement_breaches at 13 instead of 15.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The golden gives R-06 and R-22 only 'acknowledger_unapproved' but gives the structurally identical R-35 'acknowledger_unapproved;acknowledgement_late', with no instruction basis for the difference.
+SMALLEST FIX
+Make the golden consistent: either add 'acknowledgement_late' to R-06 and R-22 in solution/files/results_audit.csv, solution/files/results.json, and solution/golden_results.json and update the breach count to 15, or add a rule to instruction.md and environment/input/critical_results_procedure.md that explains why R-06 and R-22 differ from R-35.
+VERIFY
+Open solution/files/results_audit.csv and confirm R-06, R-22, and R-35 all carry the same findings pattern for unapproved acknowledgers with missed windows.
+Review note (optional)
+blocker
+layer1_realism_leakage
+layer1_realism_leakage
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_realism_leakage Fails on domain_correctness: the golden/expected acknowledgement-breach count misapplies the supplied CR-7 rule that an unapproved entry leaves the result unacknowledged with its window still running. The other three subchecks pass.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The CR-7 procedure says an unapproved acknowledger leaves the window running, so R-06 and R-22 should be late, making the correct count 15, not 13.
+SMALLEST FIX
+Update the expected breach count to 15 in tests/verifier.json, solution/files/results.json, and solution/golden_results.json, and add 'acknowledgement_late' to R-06 and R-22 in solution/files/results_audit.csv. Alternatively, add a rule to the procedure that explains why R-06 and R-22 are not late despite their windows being missed.
+VERIFY
+Run the verifier against the updated golden and confirm 43/43; confirm R-06 and R-22 now carry 'acknowledgement_late' in results_audit.csv.
+Review note (optional)
+blocker
+layer1_realism_leakage__domain_correctness
+layer1_realism_leakage__domain_correctness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_realism_leakage__domain_correctness CR-7 ('Who can acknowledge') states that an acknowledgement by a non-approved role means 'the result stands unacknowledged and its window keeps running'. R-06 (tier 1, clock 2026-06-15T16:00, only entry by ward_clerk) and R-22 (clock 2026-06-17T14:00, nurse_hca) therefore both blew their 60-minute acknowledgement windows — which the golden itself concedes by setting escalation_status='recorded', a status the instruction defines as 'the window was missed'. Yet solution/files/results_audit.csv omits acknowledgement_late for them while including it for the structurally identical R-35, so the expected count of 13 (tests/verifier.json result_acknowledgement_breaches, solution/files/results.json) is wrong under the supplied procedure; the domain-correct figure is 15. I verified the rest of the golden arithmetic row by row (clock starts, inclusive boundaries, R-16/R-27/R-32 17:59 releases, R-14/R-33 18:00 releases, 931/1081/3841-minute figures) and found no other error.
+IMPACT
+Same root cause as l1.realism_leakage::layer1_realism_leakage. The CR-7 procedure says unapproved acknowledgers keep the window running, so R-06 and R-22 blew their 60-minute windows, making the expected count 13 wrong; the correct figure is 15.
+SMALLEST FIX
+Add 'acknowledgement_late' to R-06 and R-22 in solution/files/results_audit.csv. Update the expected breach count to 15 in tests/verifier.json, solution/files/results.json, and solution/golden_results.json. Or add a rule to environment/input/critical_results_procedure.md distinguishing R-06/R-22 from R-35.
+VERIFY
+Open solution/files/results_audit.csv and confirm R-06 and R-22 carry 'acknowledgement_late'; run the verifier and confirm 43/43.
+Review note (optional)
+blocker
+layer2_difficulty
+layer2_difficulty
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty Four eligible independent GLM-5.2 pairs exist and 0/4 reached strict reward 1.0 (0.9302, 0.9767, 0.9535, 0.9535), which is inside the distribution threshold, but the aggregate fails because failure_cause_validity fails: every failure in every run traces to a task/verifier defect, not to task difficulty. All four failed result_acknowledgement_breaches by submitting 15 — the value the instruction's and procedure's own wording implies — and the only other failures were the undisclosed 'limit' token (r1, r4) and the undisclosed demand to name R-34 (r1, r3).
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. Every run computed 15 breaches from the instruction's own rules and lost reward for it; the only other failures were the undisclosed 'limit' token and R-34 naming.
+SMALLEST FIX
+Fix the three verifier-only requirements identified in the package-consistency findings: correct the breach count to 15 or disclose the rule, remove the \blimit\b requirement, and stop requiring R-34 by name. Re-run the four GLM-5.2 trials after the fixes.
+VERIFY
+Re-run the verifier on the four existing trajectories after the fixes and confirm that any remaining failures reflect genuine difficulty, not hidden rules.
+Review note (optional)
+blocker
+layer2_difficulty__failure_cause_validity
+layer2_difficulty__failure_cause_validity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty__failure_cause_validity None of the seven individual check failures reflects task difficulty. All four runs failed result_acknowledgement_breaches: opencode.txt/trajectory.json show each run computing 15 with explicit reasoning ('R-06: ward_clerk -> unapproved -> window keeps running'), with all four other counts matching golden (7/3/7/16) — i.e. they were penalised for the reading the instruction and CR-7 actually support. r3's second failure was memo_keeps_r34_as_not_a_breach although its memo covered the non-breach reasoning (R-34 simply not named); r1's and r4's were memo_has_explanatory_body, and I verified against their reconstructed memo text that the only unmet lookahead was the undisclosed literal '\blimit\b' (r1 memo satisfies length, window, unapproved, escalat and because). No ambiguity-free, genuinely hard requirement caused any loss of reward.
+IMPACT
+Same root cause as l2.difficulty::layer2_difficulty. The models correctly derived 15 breaches from the supplied rules, and the only other failures were the undisclosed 'limit' token and the R-34 naming requirement.
+SMALLEST FIX
+Fix the breach-count rule, the \blimit\b requirement, and the R-34 naming requirement as described in the package-consistency findings. Re-run the GLM-5.2 trials.
+VERIFY
+After the fixes, re-run the verifier on the four trajectories and confirm no failure is caused by an undisclosed requirement.
+Review note (optional)
+blocker
+layer2_solvability
+layer2_solvability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability No eligible non-oracle trajectory/result pair in evaluations/ earns exactly 1.0 — the best is evaluations/difficulty/r2 at 0.976744186 — and the single blocking check is a hidden-rule mismatch rather than a genuine gap in the agent's work. Saved evidence is otherwise complete and the rollouts are legitimate, but the criterion's precondition (a genuine 1.0 pass) is unmet.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The best run scores 0.9767, blocked only by the undisclosed breach-count rule, not by a genuine gap in the agent's work.
+SMALLEST FIX
+Fix the breach-count rule, the \blimit\b requirement, and the R-34 naming requirement. Re-run the GLM-5.2 trials so at least one non-oracle run can reach 1.0.
+VERIFY
+After the fixes, re-run the trials and confirm at least one non-oracle trajectory scores 1.0.
+Review note (optional)
+blocker
+layer2_solvability__eligible_strict_pass
+layer2_solvability__eligible_strict_pass
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__eligible_strict_pass The only reward-1.0 evidence in the package is the oracle/golden path (solution/solve.sh replay, which I confirmed at 43/43). Among the four non-oracle GLM-5.2 runs the rewards are 0.9302, 0.9767, 0.9535, 0.9535 — all partial. evaluations/ contains no oracle or solvability directory either, so there is no eligible strict pass to point to.
+IMPACT
+Same root cause as l2.solvability::layer2_solvability. The only 1.0 evidence is the oracle replay; all four GLM runs are partial because of the hidden rules.
+SMALLEST FIX
+Fix the three hidden-rule defects so a non-oracle run can reach 1.0. Re-run the GLM-5.2 trials.
+VERIFY
+After the fixes, confirm at least one non-oracle trajectory in evaluations/ scores exactly 1.0.
+Review note (optional)
+blocker
+layer2_solvability__instruction_environment_sufficiency
+layer2_solvability__instruction_environment_sufficiency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_solvability__instruction_environment_sufficiency Reaching 1.0 requires knowledge that is not in the instruction or the environment: (a) that unapproved-acknowledger results R-06/R-22 must not be counted as acknowledgement breaches even though their windows were missed (needed for the expected 13; all four runs derived 15 from the supplied rules); (b) that the memo must contain the literal word 'limit'; (c) that the memo must name R-34 as a non-breach. Each of these is verifier-only, and each demonstrably cost reward in the shipped runs.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The model needs to know that R-06/R-22 are not breaches, that the memo must contain 'limit', and that the memo must name R-34.
+SMALLEST FIX
+Either disclose all three requirements in instruction.md or remove them from tests/verifier.json. Re-run the GLM-5.2 trials.
+VERIFY
+After the fixes, run the verifier on a trajectory that follows only the disclosed instruction and confirm it can reach 1.0.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static
+layer5_verifier_fairness_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static Multiple mandatory subchecks fail: verifier-only requirements (R-34 naming, literal 'limit', the undisclosed acknowledgement-breach rule), shallow row coverage (20 of 35 register rows carry no per-row assertion), rejection of semantically equivalent memo wording, and a demonstrated case where a materially wrong audit scores 1.0 while a defensibly correct one scores 0.977.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The verifier penalizes correct answers for wording, leaves 20 of 35 rows unasserted, and a materially wrong audit can score 1.0 while a defensible one scores 0.977.
+SMALLEST FIX
+Remove the R-34, 'limit', and 13-breach hidden requirements. Add per-row assertions for the 20 unasserted rows. Replace the 'limit' and R-34 regex matchers with semantic checks. Fix the breach count to 15 or disclose the rule.
+VERIFY
+Run the verifier on the wrong-audit replay and confirm it no longer scores 1.0; run it on the 15-breach audit and confirm it passes.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__counterfactual_strength
+layer5_verifier_fairness_static__counterfactual_strength
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__counterfactual_strength Replayed acceptance cases: positive — golden 43/43 (1.0). Incomplete — a sparse audit is caught by test_audit_covers_full_register, and a results.json inconsistent with the CSV is caught by test_results_recomputed_from_audit. Negative/adversarial — FAILS: a plausibly defective audit with compensating errors (notification_late moved from R-31 to R-01, all five counts unchanged) scores 43/43 = 1.0, while the defensible alternative reading (acknowledgement_breaches=15, R-06/R-22 also acknowledgement_late) scores 42/43. The verifier therefore cannot distinguish a genuine solution from a materially wrong one, and penalises a correct one.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Moving a finding from R-31 to R-01 keeps all counts and regexes satisfied, scoring 43/43, while the 15-breach reading scores 42/43.
+SMALLEST FIX
+Add per-row assertions for all 35 rows so compensating errors are caught. Fix the breach-count rule so the 15-breach reading passes. Re-run the wrong-audit replay and confirm it fails.
+VERIFY
+Run the verifier on the wrong-audit replay and confirm it scores below 1.0; run it on the 15-breach audit and confirm it scores 1.0.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__coverage_depth
+layer5_verifier_fairness_static__coverage_depth
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__coverage_depth Row-level grading is a spot check over raw CSV text: 20 of the 35 rows (R-01, R-02, R-07, R-09, R-10, R-18..R-21, R-23..R-33) have no per-row assertion, and the aggregate counts are only cross-checked for internal consistency by test_results_recomputed_from_audit (it re-derives the totals from the submitted findings column, so it can never contradict the CSV). I demonstrated the gap by replay: moving the notification_late finding from R-31 (a real 35-minute tier 1 breach, marked compliant) to R-01 (20 minutes against a 30-minute window, falsely flagged) keeps all five counts and every regex satisfied and scores 43/43 = reward 1.0.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Moving a finding from R-31 to R-01 keeps all counts and regexes satisfied, scoring 43/43, because the aggregate check only re-derives totals from the submitted CSV.
+SMALLEST FIX
+Add per-row assertions for all 35 rows in tests/verifier.json that check the findings, escalation_status, and timing fields against the expected values, not just the 15 currently asserted.
+VERIFY
+Run the verifier on the replayed wrong audit (notification_late moved from R-31 to R-01) and confirm it now fails.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__requirement_traceability
+layer5_verifier_fairness_static__requirement_traceability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__requirement_traceability Reward-bearing verifier-only requirements: 'memo_keeps_r34_as_not_a_breach' (instruction asks only for 'which long elapsed times are not breaches at all', not for R-34 by name), the '\blimit\b' lookahead in 'memo_has_explanatory_body', and 'result_acknowledgement_breaches'=13, which requires a classification rule absent from instruction.md and CR-7. Conversely, material instruction requirements are only sampled: the findings and escalation_status values are individually asserted for just 15 of 35 results, and clock_start/notification_minutes/acknowledgement_minutes are asserted for only R-05, R-08, R-11, R-12, R-13, R-14, R-15, R-16, R-17, R-34.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. The R-34, 'limit', and 13-breach checks are verifier-only, and the findings, escalation_status, and timing fields are only spot-checked for 15 of 35 rows.
+SMALLEST FIX
+Remove or disclose the R-34, 'limit', and 13-breach requirements in instruction.md. Add per-row assertions for the 20 rows (R-01, R-02, R-07, R-09, R-10, R-18-R-21, R-23-R-33) covering findings, escalation_status, and timing fields.
+VERIFY
+Run the verifier on a submission that misclassifies one of the previously unasserted rows and confirm it fails.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__scoring_proportionality
+layer5_verifier_fairness_static__scoring_proportionality
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__scoring_proportionality Impact is badly matched to materiality. Two cosmetic/lexical memo checks (memo_has_explanatory_body's 'limit' token, memo_keeps_r34_as_not_a_breach's R-34 token) each carry the same 1/43 as audit_exists and as the substantive count checks, and they were enough to drop otherwise-correct runs to 0.9302 and 0.9535. Meanwhile a fatally wrong audit is masked: my replay shows an audit that misclassifies two results (R-01 falsely breaching, R-31's real breach cleared) scoring a full 1.0, while an internally consistent, procedure-faithful audit that reports 15 acknowledgement breaches scores 0.9767. Cosmetic wording therefore outweighs substantive correctness.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Two lexical memo checks drop otherwise-correct runs to 0.93 and 0.95, while a materially wrong audit with compensating errors scores 1.0.
+SMALLEST FIX
+Remove or fix the two cosmetic memo checks so they do not penalize correct wording. Add per-row assertions so a wrong audit cannot score 1.0. Re-weight the checks so substantive correctness dominates the score.
+VERIFY
+Run the verifier on the wrong-audit replay and confirm it scores below 1.0; run it on a correct audit with different memo wording and confirm it scores 1.0.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__semantic_equivalence
+layer5_verifier_fairness_static__semantic_equivalence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__semantic_equivalence I replayed variants against the engine. A memo identical to the golden except that 'limit(s)' becomes 'threshold' fails memo_has_explanatory_body, even though it still states every window, role and escalation fact; note also that \blimit\b rejects the plural 'limits'. And memo_keeps_r34_as_not_a_breach rejects an equally correct choice of non-breach exemplars: evaluations/difficulty/r1's memo explained R-08/R-14/R-20 (out-of-hours releases with ~18-22 hours of wall clock) and r3's likewise omitted R-34, and both lost that check. Neither exact form is required by instruction.md.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. A memo using 'threshold' instead of 'limit' fails, and a memo explaining R-08/R-14/R-20 instead of R-34 fails, even though both are correct.
+SMALLEST FIX
+Replace the \blimit\b lookahead in memo_has_explanatory_body with a semantic check that accepts any equivalent term. Change memo_keeps_r34_as_not_a_breach to accept any correct non-breach example, not just R-34.
+VERIFY
+Run the verifier on a memo that uses 'threshold' and names R-08 as a non-breach; both checks should pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__surface_form_brittleness
+layer5_verifier_fairness_static__surface_form_brittleness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__surface_form_brittleness Inspecting every matcher: the row regexes are tolerant where the instruction discloses the form (optional quotes, optional .0 suffix, 'T' or space in the timestamp, 0?8:00, compliant|ok|pass|none|no_finding alternations), so those are acceptable. The memo matchers are not: memo_has_explanatory_body hinges on the singular token 'limit' plus one of because|so CR-7|treats it|recognised|recognized, and memo_keeps_r34_as_not_a_breach on the token 'R-34'. Both rejected correct submissions in the shipped runs (r1, r3, r4). In the other direction several matchers check far less than their names claim: escalated_breach_not_double_counted passes on any occurrence of 'recorded|escalated|present|yes|complete' anywhere in the R-03 line, and missing_escalation_flagged passes on any 'missing|absent|none|not_escalat' in the R-04 line, so token mimicry with wrong findings survives.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. The 'limit' and R-34 matchers reject correct submissions, while escalated_breach_not_double_counted and missing_escalation_flagged pass on any occurrence of surface tokens regardless of correctness.
+SMALLEST FIX
+Replace the 'limit' and R-34 matchers with semantic checks. Tighten escalated_breach_not_double_counted and missing_escalation_flagged to assert the correct findings value for the row, not just any token from a broad alternation.
+VERIFY
+Run the verifier on a submission with the correct findings for R-03 and R-04 and on one with wrong findings but matching tokens; only the correct one should pass.
+Review note (optional)
+Minor / low 5
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report_v2.html.
+
+DATA
+report.json
+Preview the report here
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

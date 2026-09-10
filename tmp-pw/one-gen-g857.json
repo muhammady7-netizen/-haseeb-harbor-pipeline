@@ -1,0 +1,7 @@
+{
+  "short": "gen-g857",
+  "ok": true,
+  "started": false,
+  "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+  "head": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\nUpload a task to QC\n\nClient PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.\n\nDrop a task here, or click to browse\nOne Harbor task package as .zip.\n reading the bundle…\nWhat a Harbor task package looks like\nRecent tasks\n\nResume a previous QC review.\n\n104\ngen-g857-department-directory-categorization-auditv2#fae8c6\n2 versions · Sep 11, 01:28 AM\nOpen\n→\nfin-f53-deposit-account-fee-assessment-audit#452347\nSep 11, 01:07 AM\nChanges needed\nOpen\n→\ncode-c227-table-bloat-maintenance-audit#4e6dc6\nSep 11, 01"
+}

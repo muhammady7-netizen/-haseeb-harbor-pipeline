@@ -1,0 +1,14 @@
+{
+  "at": "2026-09-10T20:08:01.115Z",
+  "results": [
+    {
+      "short": "fin-f53",
+      "ok": true,
+      "zip": "C:/Users/Haseeb Mirza/Downloads/UPLOAD-THIS-TO-QC-fin-f53.zip",
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-cf347576d2d9beabcb4dac83b3452347-v1",
+      "startedEval": false,
+      "likelyQueued": true,
+      "head": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\n←\nAll tasks\nfin-f53-deposit-account-fee-assessment-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n2\nClient PreQC\nnot run yet\n3\nReview findings\n✓\nReview record\n5\nEvaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nNot run yet\nhas not run on this task yet\nRun client preQC\nView report\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.\n\nComplete\nCheck with QC revi"
+    }
+  ]
+}

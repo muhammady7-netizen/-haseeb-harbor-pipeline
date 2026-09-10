@@ -1,0 +1,27 @@
+{
+  "agreement": {
+    "level": "pending",
+    "note": "no reviewer decision yet"
+  },
+  "mode": "delivery",
+  "reviewer": {
+    "checklist": "0/20",
+    "decision": null,
+    "decision_reason": "",
+    "problems_flagged": 0,
+    "verifiers_reviewed": 0,
+    "verifiers_to_fix": 0
+  },
+  "run_id": "evaluation-b53cf667a59c44f6",
+  "script": {
+    "audit": "not run",
+    "blocking": 1,
+    "completeness": null,
+    "findings": {
+      "blocker": 1
+    },
+    "kind": "internal gate (unified-qc + final-qc)",
+    "status": "below_1.0"
+  },
+  "task": "health-h40-critical-result-acknowledgement"
+}
