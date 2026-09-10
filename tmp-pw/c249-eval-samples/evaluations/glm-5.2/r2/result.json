@@ -1,0 +1,148 @@
+{
+  "id": "d7725a57-6543-40d5-94d6-111bc0a8d5f8",
+  "task_name": "obi/code-c249-recurring-report-source-selection-audit",
+  "trial_name": "code-c249-recurring-report-sou__91f1574",
+  "trial_uri": "file:///workspace/harbor-jobs/code-c249-recurring-report-sou__91f1574",
+  "task_id": {
+    "path": "/workspace/code-c249-recurring-report-source-selection-audit"
+  },
+  "source": null,
+  "task_checksum": "11a9a3f9de2cad8bab0826b66cc7c88b33e357dcb69a040dd46e5be7d244669b",
+  "config": {
+    "task": {
+      "path": "/workspace/code-c249-recurring-report-source-selection-audit",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "code-c249-recurring-report-sou__91f1574",
+    "trials_dir": "/workspace/harbor-jobs",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "opencode",
+      "import_path": null,
+      "model_name": "zai-org/GLM-5.2",
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {
+        "opencode_config": {
+          "provider": {
+            "zai": {
+              "npm": "@ai-sdk/openai-compatible",
+              "name": "GLM Gateway",
+              "models": {
+                "GLM-5.2": {
+                  "name": "GLM-5.2",
+                  "reasoning": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "mcp_servers": [],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "OPENAI_BASE_URL": "http://gateway.local/v1"
+      }
+    },
+    "environment": {
+      "type": "docker",
+      "import_path": null,
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {},
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "env": {},
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "job_id": "fbd80b7a-2ddb-4171-8248-ba06545835c1",
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "opencode",
+    "version": "1.18.26",
+    "model_info": {
+      "name": "GLM-5.2",
+      "provider": "zai-org"
+    }
+  },
+  "agent_result": {
+    "n_input_tokens": 152000,
+    "n_cache_tokens": 90000,
+    "n_output_tokens": 4200,
+    "cost_usd": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 0.8823529412
+    }
+  },
+  "verifier_environment_mode": "shared",
+  "exception_info": null,
+  "started_at": "2026-09-10T21:43:00.139673Z",
+  "finished_at": "2026-09-10T21:44:50.139718Z",
+  "environment_setup": {
+    "started_at": "2026-09-10T21:43:00.139673Z",
+    "finished_at": "2026-09-10T21:45:00.139784Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-09-10T21:43:00.139673Z",
+    "finished_at": "2026-09-10T21:43:00.139673Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-09-10T21:43:00.139673Z",
+    "finished_at": "2026-09-10T21:44:50.139718Z"
+  },
+  "verifier": {
+    "started_at": "2026-09-10T21:44:50.139718Z",
+    "finished_at": "2026-09-10T21:44:50.139718Z"
+  },
+  "step_results": null,
+  "frozen_deliverable_hashes": {
+    "report_source_audit.csv": "5d97fd4b91ad99fa7edfe3eb3fde55eed68b1fa73cf2ca4553d2d8a50dd98c98",
+    "report_source_memo.md": "a41a8fc23bdb7a347ea7b27c7ffac5a54bfb46a689de6c0c64dfc4dac2595262",
+    "results.json": "8f1e936b83edc7167e0a62836ee047df0c43fa73b161ab5febc5cbf7afed1a35"
+  },
+  "artifact_sha256": {
+    "report_source_audit.csv": "5d97fd4b91ad99fa7edfe3eb3fde55eed68b1fa73cf2ca4553d2d8a50dd98c98",
+    "report_source_memo.md": "a41a8fc23bdb7a347ea7b27c7ffac5a54bfb46a689de6c0c64dfc4dac2595262",
+    "results.json": "8f1e936b83edc7167e0a62836ee047df0c43fa73b161ab5febc5cbf7afed1a35"
+  },
+  "reward": 0.8823529412,
+  "overall_pass": false,
+  "model": "GLM-5.2"
+}

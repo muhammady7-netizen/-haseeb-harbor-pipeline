@@ -147,8 +147,11 @@ async function trackOnce() {
 
     if (onTask(t)) {
       const p0 = parse(t);
-      if (!p0.running) await clickFinalQcOnly(page);
-      else console.log(JSON.stringify({ event: 'already_running', ...p0 }));
+      const hasResult = /Oracle Passed|Oracle Failed|Completed ·\s*\d\/4|NEEDS ATTENTION|blocking issues/i.test(t);
+      if (p0.running) console.log(JSON.stringify({ event: 'already_running', ...p0 }));
+      else if (hasResult && !p0.oracleFail)
+        console.log(JSON.stringify({ event: 'has_result_no_reclick', ...p0 }));
+      else await clickFinalQcOnly(page);
     }
 
     for (let round = 1; round <= 24; round++) {
@@ -176,8 +179,15 @@ async function trackOnce() {
 
       if (status.onTask) {
         if (p.oracleFail) return 'ORACLE_FAIL';
-        if (p.readySubmit || (p.oraclePass && p.glm != null && !p.running)) return 'DONE';
-        if (!p.running && !p.slotsFull) await clickFinalQcOnly(page);
+        if (
+          /Completed ·\s*\d\/4|NEEDS ATTENTION|blocking issues/i.test(t) &&
+          p.oraclePass &&
+          !p.running
+        )
+          return 'DONE';
+        // Do not re-click Final QC while slots full or a completed result is on screen
+        if (!p.running && !p.slotsFull && !/Completed ·\s*\d\/4|NEEDS ATTENTION/i.test(t))
+          await clickFinalQcOnly(page);
       } else if (p.homeStatus) {
         console.log(JSON.stringify({ event: 'HOME_STATUS', homeStatus: p.homeStatus }));
         if (/Needs your review|Changes needed|Accepted/i.test(p.homeStatus)) return 'HOME_DONE';

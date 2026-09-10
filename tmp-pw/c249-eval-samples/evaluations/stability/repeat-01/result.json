@@ -1,0 +1,127 @@
+{
+  "id": "8c3157cb-22b0-46e0-926f-ecc6b1f33f1e",
+  "task_name": "obi/code-c249-recurring-report-source-selection-audit",
+  "trial_name": "code-c249-stability-repeat-01__8517d97",
+  "trial_uri": "file:///workspace/harbor-jobs/code-c249-stability-repeat-01__8517d97",
+  "task_id": {
+    "path": "/workspace/code-c249-recurring-report-source-selection-audit"
+  },
+  "source": null,
+  "task_checksum": "11a9a3f9de2cad8bab0826b66cc7c88b33e357dcb69a040dd46e5be7d244669b",
+  "config": {
+    "task": {
+      "path": "/workspace/code-c249-recurring-report-source-selection-audit",
+      "git_url": null,
+      "git_commit_id": null,
+      "name": null,
+      "ref": null,
+      "overwrite": false,
+      "download_dir": null,
+      "source": null
+    },
+    "trial_name": "code-c249-stability-repeat-01__8517d97",
+    "trials_dir": "/workspace/harbor-jobs",
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent_timeout_multiplier": null,
+    "verifier_timeout_multiplier": null,
+    "agent_setup_timeout_multiplier": null,
+    "environment_build_timeout_multiplier": null,
+    "agent": {
+      "name": "oracle",
+      "import_path": null,
+      "model_name": null,
+      "n_concurrent": null,
+      "concurrency_group": null,
+      "skills": [],
+      "override_timeout_sec": null,
+      "override_setup_timeout_sec": null,
+      "max_timeout_sec": null,
+      "resume_trajectory": false,
+      "load_trajectory": null,
+      "extra_allowed_hosts": [],
+      "kwargs": {},
+      "mcp_servers": []
+    },
+    "environment": {
+      "type": "docker",
+      "import_path": null,
+      "force_build": false,
+      "delete": true,
+      "cpu_enforcement_policy": "auto",
+      "memory_enforcement_policy": "auto",
+      "override_cpus": null,
+      "override_memory_mb": null,
+      "override_storage_mb": null,
+      "override_gpus": null,
+      "override_tpu": null,
+      "mounts": null,
+      "extra_docker_compose": [],
+      "kwargs": {},
+      "extra_allowed_hosts": []
+    },
+    "verifier": {
+      "override_timeout_sec": null,
+      "max_timeout_sec": null,
+      "env": {},
+      "disable": false
+    },
+    "artifacts": [],
+    "extra_instruction_paths": [],
+    "job_id": "oracle-c249-stability-v1",
+    "source_trial": null
+  },
+  "agent_info": {
+    "name": "oracle",
+    "version": "1.0.0",
+    "model_info": null
+  },
+  "agent_result": {
+    "n_input_tokens": null,
+    "n_cache_tokens": null,
+    "n_output_tokens": null,
+    "cost_usd": null,
+    "rollout_details": null,
+    "metadata": null
+  },
+  "verifier_result": {
+    "rewards": {
+      "reward": 1.0
+    }
+  },
+  "verifier_environment_mode": "shared",
+  "exception_info": null,
+  "started_at": "2026-09-10T21:43:17.347805Z",
+  "finished_at": "2026-09-10T21:45:07.347880Z",
+  "environment_setup": {
+    "started_at": "2026-09-10T21:43:17.347805Z",
+    "finished_at": "2026-09-10T21:45:17.347977Z"
+  },
+  "agent_setup": {
+    "started_at": "2026-09-10T21:43:17.347805Z",
+    "finished_at": "2026-09-10T21:43:17.347805Z"
+  },
+  "agent_execution": {
+    "started_at": "2026-09-10T21:43:17.347805Z",
+    "finished_at": "2026-09-10T21:45:07.347880Z"
+  },
+  "verifier": {
+    "started_at": "2026-09-10T21:45:07.347880Z",
+    "finished_at": "2026-09-10T21:45:07.347880Z"
+  },
+  "step_results": null,
+  "frozen_deliverable_hashes": {
+    "report_source_audit.csv": "0c6c5fe93f2b446034a9631f30f26aafed023fe3ce26ff3a159bf068eeecd0a7",
+    "report_source_memo.md": "47426a63521aaa05546769a3d9c62bdc0ad551dfdd75f45a2d089a7ae7f3b568",
+    "results.json": "8f8692223afe2a9521944e9074c001ee103004ff924b61717a21fe4c37057bf7"
+  },
+  "artifact_sha256": {
+    "report_source_audit.csv": "0c6c5fe93f2b446034a9631f30f26aafed023fe3ce26ff3a159bf068eeecd0a7",
+    "report_source_memo.md": "47426a63521aaa05546769a3d9c62bdc0ad551dfdd75f45a2d089a7ae7f3b568",
+    "results.json": "8f8692223afe2a9521944e9074c001ee103004ff924b61717a21fe4c37057bf7"
+  },
+  "reward": 1.0,
+  "overall_pass": true,
+  "model": "oracle",
+  "frozen_trajectory_sha256": "e4d36e88b050e20ee2cf8ac12256998798ac2bafd2b07951a10508b62a171731"
+}

@@ -1,22 +1,10 @@
 [
   {
-    "short": "gen-g857",
+    "short": "fin-f39",
     "uploaded": true,
     "gates": true,
     "preqc": false,
     "oracle": true,
-    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-57f5366b699e8ba198aa62250ff114e1-v1"
-  },
-  {
-    "short": "gen-g734",
-    "uploaded": false,
-    "gates": true,
-    "preqc": false,
-    "oracle": true,
-    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-86163925b042bec5e523b16ad2f7177e-v1"
-  },
-  {
-    "short": "gen-g806",
-    "error": "Error: locator.count: Target page, context or browser has been closed"
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-6513101fd1bccf3a2b340d4a87b24e5f-v1"
   }
 ]

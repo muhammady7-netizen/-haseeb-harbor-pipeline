@@ -1,0 +1,28 @@
+{
+  "task": {
+    "path": "/workspace/code-c249-recurring-report-source-selection-audit",
+    "git_url": null,
+    "git_commit_id": null,
+    "name": null,
+    "ref": null,
+    "overwrite": false,
+    "download_dir": null,
+    "source": null
+  },
+  "trial_name": "code-c249-recurring-report-sou__a8cf712",
+  "trials_dir": "/workspace/harbor-jobs",
+  "agent": {
+    "name": "opencode",
+    "model_name": "zai-org/GLM-5.2",
+    "env": {},
+    "kwargs": {},
+    "mcp_servers": []
+  },
+  "environment": {
+    "type": "docker"
+  },
+  "verifier": {
+    "env": {}
+  },
+  "job_id": "0d8722d9-d48c-452f-9592-8e8dfaeaefaf"
+}

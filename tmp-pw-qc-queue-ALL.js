@@ -1,7 +1,7 @@
 
 const { chromium } = require('./tmp-pw/node_modules/playwright');
 const fs = require('fs');
-const cfg = {"jobs": [{"id": "NONC-B1-1001634", "short": "gen-g806", "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit", "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634", "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit", "status": "final_running", "session": "C", "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip", "next_action": "Dismiss PreQC; poll until GLM finishes", "notes": "TRACKING: Final QC only (skip PreQC). content-58a3a86e Evaluation=glm. Headless finalqc waiter on shared chrome-profile (Session B queue holds profile).", "history": [{"at": "2026-09-08T19:09:10Z", "status": "preqc_running", "note": ""}, {"at": "2026-09-08T19:09:11Z", "status": "preqc_clean", "note": "PreQC PASS; ready to package"}, {"at": "2026-09-08T19:09:28Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-08T21:41:05Z", "status": "preqc_running", "note": ""}, {"at": "2026-09-08T21:41:06Z", "status": "preqc_clean", "note": "PreQC PASS; ready to package"}, {"at": "2026-09-08T21:41:48Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-08T22:29:31Z", "status": "preqc_running", "note": ""}, {"at": "2026-09-08T22:29:32Z", "status": "preqc_clean", "note": "PreQC PASS; ready to package"}, {"at": "2026-09-08T22:30:15Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-08T22:32:56Z", "status": "final_running", "note": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-0b62409e79b14e70)"}, {"at": "2026-09-09T17:52:13Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-09T17:55:18Z", "status": "final_running", "note": "v1 re-uploaded with fixed verifier (SC-10/32/35/36\u2192none, SC-50\u2192RUNTIME_OUT_OF_BAND); Oracle+GLM started"}, {"at": "2026-09-09T19:22:13Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-09T19:26:27Z", "status": "final_running", "note": "v1 re-uploaded with fixed result verifier checks (53/15/7/11); Oracle+GLM started"}, {"at": "2026-09-09T20:42:13Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-09T20:48:38Z", "status": "needs_densify", "note": "Densified: 15 new scripts (SC-101-115) with edge cases; 114 verifiers; Oracle sim 114/114 PASS; re-uploading"}, {"at": "2026-09-09T21:09:14Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-09T21:14:07Z", "status": "final_running", "note": "Densified v1 (15 new scripts, 114 verifiers); Oracle+GLM started"}, {"at": "2026-09-09T22:52:13Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-09T22:53:49Z", "status": "final_running", "note": "v1 (129 scripts, 144 verifiers); Oracle+GLM started"}, {"at": "2026-09-10T15:17:25Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-10T15:21:50Z", "status": "needs_densify", "note": "v2 (159 scripts, 174 verifiers, 30 new edge-case scripts); uploaded + queued"}, {"at": "2026-09-10T16:19:51Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-10T16:25:01Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-10T16:26:55Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-10T17:13:22Z", "status": "final_running", "note": "REWRITE: brief coherence evaluation (8 briefs, 82 sentences, 35 verifiers); Oracle+GLM started"}, {"at": "2026-09-10T18:34:38Z", "status": "final_running", "note": "Session C locked to gen-g806 ONLY. gen-g734 and gen-g986 released \u2014 do not work those in Chat C."}, {"at": "2026-09-10T19:30:49Z", "status": "ready_final", "note": "Fixed task.toml org/name + solve.sh mount path; local oracle coherence5 = 1.0 (35/35). Re-package for portal re-upload."}, {"at": "2026-09-10T19:31:36Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-10T19:31:57Z", "status": "ready_final", "note": "Packaged fixed zip (obi/ name + solve.sh SOLUTION_DIR). Local oracle 1.0. Awaiting portal re-upload + Oracle+GLM\u00d74."}, {"at": "2026-09-10T19:36:56Z", "status": "final_running", "note": "Fixed zip uploaded (content-58a3a86e). Shared opencode chrome-profile headless. Starting/confirming PreQC+Oracle+GLM in portal queue (cap ~3-4)."}, {"at": "2026-09-10T20:06:58Z", "status": "final_running", "note": "Fixed zip uploaded (content-58a3a86e). Shared opencode chrome-profile headless. Starting/confirming PreQC+Oracle+GLM in portal queue (cap ~3-4)."}, {"at": "2026-09-10T20:19:20Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"}, {"at": "2026-09-10T20:27:44Z", "status": "ready_final", "note": "content-58a3a86e uploaded (fixed solve.sh+obi name). Portal: 3 run slots full. Looping until slot frees then PreQC+Oracle+GLM. Session C only."}, {"at": "2026-09-10T20:41:11Z", "status": "final_running", "note": "PreQC+QC-Oracle-GLM RUNNING on content-58a3a86e. Oracle Waiting, GLM Waiting. Fixed zip. ~50min expected."}, {"at": "2026-09-10T20:58:40Z", "status": "ready_final", "note": "Re-queue via pipeline.qc_queue (headless, no Chrome churn)."}, {"at": "2026-09-10T21:03:03Z", "status": "final_running", "note": "Headless qc_queue: content-58a3a86e-v1. PreQC Review required (7). Evaluation=glm; slots full."}, {"at": "2026-09-10T21:44:37Z", "status": "final_running", "note": "TRACKING: Final QC only (skip PreQC). content-58a3a86e Evaluation=glm. Headless finalqc waiter on shared chrome-profile (Session B queue holds profile)."}], "updated_at": "2026-09-10T21:44:37Z", "last_preqc": {"at": "2026-09-08T22:29:32Z", "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z", "qc_verdict": "PASS", "full_model": false, "must_fix_count": 0, "finding_counts": {"INFO": 3, "P0": 0, "P1": 0, "P2": 0}, "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\verdict.md", "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\findings.csv"}, "packaged_at": "2026-09-10T20:19:20Z", "portal": {"task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1", "version": "v1", "watch": true, "last_check_at": "2026-09-10T20:41:11Z", "phase": "glm_or_oracle_running", "checks": [{"at": "2026-09-08T22:32:56Z", "phase": "oracle_running", "running": true, "note": "v1 uploaded; review.csv OK; PreQC NEEDS_REVIEW; Oracle+GLM started (run_id: evaluation-0b62409e79b14e70)", "glm_pass": null, "oracle": null}, {"at": "2026-09-09T17:55:18Z", "phase": "oracle_running", "running": true, "note": "v1 re-uploaded with fixed verifier (SC-10/32/35/36\u2192none, SC-50\u2192RUNTIME_OUT_OF_BAND); Oracle+GLM started", "glm_pass": null, "oracle": null}, {"at": "2026-09-09T19:26:27Z", "phase": "oracle_running", "running": true, "note": "v1 re-uploaded with fixed result verifier checks (53/15/7/11); Oracle+GLM started", "glm_pass": null, "oracle": null}, {"at": "2026-09-09T21:14:07Z", "phase": "oracle_running", "running": true, "note": "Densified v1 (15 new scripts, 114 verifiers); Oracle+GLM started", "glm_pass": null, "oracle": null}, {"at": "2026-09-09T22:53:49Z", "phase": "oracle_running", "running": true, "note": "v1 (129 scripts, 144 verifiers); Oracle+GLM started", "glm_pass": null, "oracle": null}, {"at": "2026-09-10T17:13:22Z", "phase": "oracle_running", "running": true, "note": "REWRITE: brief coherence evaluation (8 briefs, 82 sentences, 35 verifiers); Oracle+GLM started", "glm_pass": null, "oracle": null}, {"at": "2026-09-10T19:36:56Z", "phase": "glm_or_oracle_running", "running": true, "note": "Fixed zip uploaded (content-58a3a86e). Shared opencode chrome-profile headless. Starting/confirming PreQC+Oracle+GLM in portal queue (cap ~3-4).", "glm_pass": null, "oracle": null}, {"at": "2026-09-10T20:06:58Z", "phase": "glm_or_oracle_running", "running": true, "note": "Fixed zip uploaded (content-58a3a86e). Shared opencode chrome-profile headless. Starting/confirming PreQC+Oracle+GLM in portal queue (cap ~3-4).", "glm_pass": null, "oracle": null}, {"at": "2026-09-10T20:41:11Z", "phase": "glm_or_oracle_running", "running": true, "note": "PreQC+QC-Oracle-GLM RUNNING on content-58a3a86e. Oracle Waiting, GLM Waiting. Fixed zip. ~50min expected.", "glm_pass": null, "oracle": null}]}, "_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip"}], "maxEval": 1, "trainer": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#", "profile": "C:/Users/Haseeb Mirza/.config/opencode/chrome-profile", "resultsPath": "tmp-pw/queue-results-ALL.json"};
+const cfg = {"jobs": [{"id": "NONC-B1-1000070", "short": "fin-f39", "pack_name": "fin-f39-distributable-profits", "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070", "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits", "status": "ready_final", "session": "A", "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip", "next_action": "Headless qc_queue upload + Run QC-Oracle-GLM (skip PreQC)", "notes": "v22 packaged. GLM 2/4 @ 1.0 (in band). Zip 328510 bytes. Soft-ease kept densify traps.", "history": [{"at": "2026-09-07T22:28:47Z", "status": "preqc_running", "note": ""}, {"at": "2026-09-07T22:28:48Z", "status": "preqc_clean", "note": "PreQC PASS; ready to package"}, {"at": "2026-09-07T22:30:31Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"}, {"at": "2026-09-07T22:47:34Z", "status": "final_running", "note": "Portal f39 v9: Oracle+GLM\u00c3\u20144+Harbor started; PreQC 6 findings left unconfirmed (did not Confirm)"}, {"at": "2026-09-07T22:52:33Z", "status": "final_running", "note": "Tracking active: Oracle waiting, run history latest running"}, {"at": "2026-09-07T22:55:53Z", "status": "final_running", "note": "QC running; View Oracle in Harbor available; still latest running"}, {"at": "2026-09-08T01:01:53Z", "status": "preqc_running", "note": ""}, {"at": "2026-09-08T01:01:58Z", "status": "preqc_needs_fix", "note": "PreQC FAIL; 2 must-fix"}, {"at": "2026-09-08T02:58:44Z", "status": "preqc_running", "note": ""}, {"at": "2026-09-08T02:58:45Z", "status": "preqc_needs_fix", "note": "PreQC FAIL; 2 must-fix"}, {"at": "2026-09-08T03:02:51Z", "status": "preqc_running", "note": ""}, {"at": "2026-09-08T03:02:52Z", "status": "preqc_clean", "note": "PreQC NEEDS_REVIEW; ready to package"}, {"at": "2026-09-08T03:07:23Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"}, {"at": "2026-09-08T03:08:18Z", "status": "blocked", "note": "build_qc_bundle failed rc=1"}, {"at": "2026-09-08T03:20:04Z", "status": "ready_final", "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"}, {"at": "2026-09-08T20:41:57Z", "status": "final_running", "note": "Portal v9: 25 findings dismissed as false_positive via API; can_submit=true; submit button aria-disabled (needs PreQC run)"}, {"at": "2026-09-09T23:00:16Z", "status": "final_running", "note": "V19 uploaded. Eval queued (c20457262e2f45ac). Fixed: artifacts enabled, collect=[], anti-spoofing test.sh, sign-aware CSV, case-insensitive memo, disclosed all requirements."}, {"at": "2026-09-10T18:35:27Z", "status": "needs_densify", "note": "Portal TOO_EASY 4/4 on V19; densifying from Codex pack"}, {"at": "2026-09-10T18:45:54Z", "status": "blocked", "note": "build_qc_bundle failed rc=1"}, {"at": "2026-09-10T18:55:30Z", "status": "needs_densify", "note": "v20 densify applied: Meridian -110k, Project C -90k, capitalisation -250k; proposed 1430000 unlawful. Oracle 1.0 + stability 3/3. GLM v20 battery running."}, {"at": "2026-09-10T20:37:33Z", "status": "needs_densify", "note": "v21 soft-ease: dropped schedule_no_duplicate_items; broadened paid_distributions_only. Densify traps kept. Running oracle+stab+GLM v21."}, {"at": "2026-09-10T20:41:07Z", "status": "needs_densify", "note": "v21 soft-ease done. Oracle 1.0 + stability 3/3. GLM v21 battery starting."}, {"at": "2026-09-10T21:03:04Z", "status": "needs_densify", "note": "v21 GLM: 0.0, 0.0, 0.959, 0.959 (0/4 at 1.0). Near-misses only fail non_distributable_on_schedule + result_non_distributable_capital_gbp. Soft-ease those next \u2192 v22."}, {"at": "2026-09-10T21:24:58Z", "status": "needs_densify", "note": "v22 soft-ease (dropped 2 non_dist checks). Oracle+stab 1.0. GLM v22 ALL 0.0 (likely incomplete deliverables like v21-1/2). Investigating."}, {"at": "2026-09-10T21:46:20Z", "status": "needs_densify", "note": "v22b GLM retry: run1=1.0 (prior v22 all incomplete 0.0). Soft-ease working when agent completes. Battery continuing."}, {"at": "2026-09-10T22:26:09Z", "status": "needs_densify", "note": "v22 soft-ease. Oracle+stab 1.0. GLM v22b-1=1.0; running 2-4 now. Prior v22 0.0s were incomplete agent writes."}, {"at": "2026-09-10T22:41:25Z", "status": "ready_final", "note": "v22 packaged. GLM 2/4 @ 1.0 (in band). Zip 328510 bytes. Soft-ease kept densify traps."}], "updated_at": "2026-09-10T22:41:25Z", "last_preqc": {"at": "2026-09-08T03:02:52Z", "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z", "qc_verdict": "NEEDS_REVIEW", "full_model": false, "must_fix_count": 0, "finding_counts": {"INFO": 4, "P0": 0, "P1": 0, "P2": 1}, "verdict_md": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z\\verdict.md", "findings_csv": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z\\findings.csv"}, "packaged_at": "2026-09-08T03:20:04Z", "portal": {"task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer/#task=content-19b7cc58d1aaed31ea4d462329d6b62e-v9", "version": "v9", "watch": true, "last_check_at": "2026-09-07T22:55:53Z", "phase": "glm_or_oracle_running", "run_history": "2 runs \u00c2\u00b7 latest running", "checks": [{"at": "2026-09-07T22:51:29Z", "phase": "oracle_waiting", "running": true, "note": "Oracle waiting; GLM\u00c3\u20144 not started yet"}, {"at": "2026-09-07T22:52:33Z", "phase": "oracle_waiting", "running": true, "note": "Tracking active: Oracle waiting, run history latest running", "glm_pass": null, "oracle": null}, {"at": "2026-09-07T22:55:53Z", "phase": "glm_or_oracle_running", "running": true, "note": "QC running; View Oracle in Harbor available; still latest running", "glm_pass": null, "oracle": null}]}, "_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip"}], "maxEval": 1, "trainer": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#", "profile": "C:/Users/Haseeb Mirza/.config/opencode/chrome-profile", "resultsPath": "tmp-pw/queue-results-ALL.json"};
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -69,19 +69,24 @@ async function uploadZip(page, zipPath, short) {
   const input = page.locator('input[type="file"]').first();
   await input.setInputFiles(zipPath);
   console.log(JSON.stringify({ event: 'upload_started', short, zipPath }));
-  // Wait out "preparing upload…" then SPA task page / new version chrome
   let t = '';
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < 120; i++) {
     await sleep(2000);
     const url = page.url();
     t = await bodyText(page);
-    if (/preparing upload/i.test(t)) {
+    // Accept version-link dialog for same task name
+    if (/Yes, this is v\d+/i.test(t)) {
+      await clickIfVisible(page, /Yes, this is v\d+/i);
+      await sleep(3000);
+      t = await bodyText(page);
+      console.log(JSON.stringify({ event: 'version_linked', short, url: page.url() }));
+    }
+    if (/preparing upload|reading the bundle|uploading/i.test(t)) {
       if (i % 5 === 0) console.log(JSON.stringify({ event: 'upload_wait', short, i }));
       continue;
     }
-    if (url !== before && /#task=/.test(url)) break;
-    if (/Client [Pp]reQC|Run QC-Oracle-GLM|Upload new version/.test(t) && /v\d+|latest/.test(t)) break;
-    if (i >= 5 && !/preparing upload/i.test(t)) break;
+    if (/#task=/.test(url)) break;
+    if (/Upload new version|QC-Oracle-GLM|QC check|Delivery Gate|Review record/i.test(t) && /v\d+|latest/i.test(t)) break;
   }
   fs.writeFileSync('tmp-pw/queue-' + short + '-after-upload.txt', t);
   console.log(JSON.stringify({ event: 'after_upload', short, url: page.url(), head: t.slice(0, 600) }));
@@ -90,17 +95,33 @@ async function uploadZip(page, zipPath, short) {
 
 async function openLatest(page, nameStem) {
   await page.goto(cfg.trainer, { waitUntil: 'domcontentloaded', timeout: 90000 });
-  await sleep(4000);
-  // Prefer exact task title near top of list (no mouse.wheel — unstable under contention)
-  const link = page.getByText(nameStem, { exact: false }).first();
-  if (!(await link.count())) {
-    console.log(JSON.stringify({ event: 'open_miss', nameStem }));
-    return '';
+  await sleep(5000);
+  // Click the first Recent-task row matching the pack name via its Open control when possible
+  const row = page.locator('div,li,a,article').filter({ hasText: nameStem }).first();
+  if (await row.count()) {
+    await row.scrollIntoViewIfNeeded().catch(() => {});
+    const openBtn = row.getByRole('button', { name: /^Open$/i }).first();
+    const openTxt = row.getByText(/^Open$/).first();
+    if (await openBtn.count()) await openBtn.click({ force: true, timeout: 10000 }).catch(() => null);
+    else if (await openTxt.count()) await openTxt.click({ force: true, timeout: 10000 }).catch(() => null);
+    else await row.click({ force: true, timeout: 10000 }).catch(() => null);
+  } else {
+    const link = page.getByText(nameStem, { exact: false }).first();
+    if (!(await link.count())) {
+      console.log(JSON.stringify({ event: 'open_miss', nameStem }));
+      return '';
+    }
+    await link.scrollIntoViewIfNeeded().catch(() => {});
+    await link.click({ force: true, timeout: 15000 }).catch(() => null);
   }
-  await link.scrollIntoViewIfNeeded().catch(() => {});
-  await link.click({ timeout: 15000 });
-  await sleep(7000);
-  const t = await bodyText(page);
+  await sleep(8000);
+  // Version link prompt if present
+  let t = await bodyText(page);
+  if (/Yes, this is v\d+/i.test(t)) {
+    await clickIfVisible(page, /Yes, this is v\d+/i);
+    await sleep(3000);
+    t = await bodyText(page);
+  }
   fs.writeFileSync('tmp-pw/queue-opened-' + nameStem.slice(0, 40) + '.txt', t);
   console.log(JSON.stringify({ event: 'opened', nameStem, url: page.url() }));
   return t;
@@ -126,6 +147,8 @@ async function ensureReviewRecord(page, short) {
 
 async function waitForEvalSlot(page, short) {
   // Portal disables Oracle when all concurrent slots are full (cap is 4).
+  // NEVER page.reload() — it drops the #task= hash and dumps us on the pipeline list.
+  const taskUrl = page.url();
   for (let i = 0; i < 60; i++) {
     const t = await bodyText(page);
     const full = /\d+\s+runs? in flight|run slots? are currently in use|already have \d+ runs/i.test(t);
@@ -135,20 +158,32 @@ async function waitForEvalSlot(page, short) {
     }
     if (i % 3 === 0) console.log(JSON.stringify({ event: 'slot_wait', short, i }));
     await sleep(30000);
-    await page.reload({ waitUntil: 'domcontentloaded' }).catch(() => null);
-    await sleep(4000);
+    // Soft refresh: re-goto the same task URL
+    if (/#task=/.test(taskUrl)) {
+      await page.goto(taskUrl, { waitUntil: 'domcontentloaded', timeout: 90000 }).catch(() => null);
+      await sleep(4000);
+    }
   }
   console.log(JSON.stringify({ event: 'slot_timeout', short }));
   return false;
 }
 
 async function startGates(page, short) {
-  // PreQC is optional/advisory (STRICT-RULES.md + sessions/README.md) — skip it.
-  // Go straight to final QC: QC-Oracle-GLM.
+  // PreQC optional — skip. Prefer Delivery Gate / QC-Oracle-GLM.
+  // If still on home/pipeline list, abort gates.
+  let t0 = await bodyText(page);
+  if (/Submitted to the pipeline/i.test(t0) && !/#task=/.test(page.url())) {
+    console.log(JSON.stringify({ event: 'gates_abort_wrong_page', short, url: page.url() }));
+    return { pre: false, ev: false, t: t0 };
+  }
   await ensureReviewRecord(page, short);
   await waitForEvalSlot(page, short);
-  let ev = await clickIfVisible(page, /Re-run QC-Oracle-GLM/i);
-  if (!ev) ev = await clickIfVisible(page, /Run QC-Oracle-GLM/i);
+  let ev =
+    (await clickIfVisible(page, /Re-run QC-Oracle-GLM/i)) ||
+    (await clickIfVisible(page, /Run QC-Oracle-GLM/i)) ||
+    (await clickIfVisible(page, /^Re-run$/i)) ||
+    (await clickIfVisible(page, /Run QC check/i));
+  await sleep(8000);
   const t = await bodyText(page);
   fs.writeFileSync('tmp-pw/queue-' + short + '-gates.txt', t);
   console.log(JSON.stringify({ event: 'gates', short, preqc: false, skipped_preqc: true, oracle: ev, head: t.slice(0, 900) }));
@@ -192,6 +227,8 @@ async function startGates(page, short) {
         const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const onThis =
           onTask &&
+          !/Submitted to the pipeline/i.test(bodyNow) &&
+          /Upload new version|Harbor package|QC check|QC-Oracle-GLM/i.test(bodyNow) &&
           (new RegExp(esc(stem), 'i').test(bodyNow) || new RegExp(esc(short), 'i').test(bodyNow));
         if (onThis) {
           console.log(JSON.stringify({ event: 'already_on_task', short, url: page.url() }));

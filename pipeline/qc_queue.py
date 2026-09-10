@@ -177,19 +177,24 @@ async function uploadZip(page, zipPath, short) {{
   const input = page.locator('input[type="file"]').first();
   await input.setInputFiles(zipPath);
   console.log(JSON.stringify({{ event: 'upload_started', short, zipPath }}));
-  // Wait out "preparing upload…" then SPA task page / new version chrome
   let t = '';
-  for (let i = 0; i < 90; i++) {{
+  for (let i = 0; i < 120; i++) {{
     await sleep(2000);
     const url = page.url();
     t = await bodyText(page);
-    if (/preparing upload/i.test(t)) {{
+    // Accept version-link dialog for same task name
+    if (/Yes, this is v\\d+/i.test(t)) {{
+      await clickIfVisible(page, /Yes, this is v\\d+/i);
+      await sleep(3000);
+      t = await bodyText(page);
+      console.log(JSON.stringify({{ event: 'version_linked', short, url: page.url() }}));
+    }}
+    if (/preparing upload|reading the bundle|uploading/i.test(t)) {{
       if (i % 5 === 0) console.log(JSON.stringify({{ event: 'upload_wait', short, i }}));
       continue;
     }}
-    if (url !== before && /#task=/.test(url)) break;
-    if (/Client [Pp]reQC|Run QC-Oracle-GLM|Upload new version/.test(t) && /v\\d+|latest/.test(t)) break;
-    if (i >= 5 && !/preparing upload/i.test(t)) break;
+    if (/#task=/.test(url)) break;
+    if (/Upload new version|QC-Oracle-GLM|QC check|Delivery Gate|Review record/i.test(t) && /v\\d+|latest/i.test(t)) break;
   }}
   fs.writeFileSync('tmp-pw/queue-' + short + '-after-upload.txt', t);
   console.log(JSON.stringify({{ event: 'after_upload', short, url: page.url(), head: t.slice(0, 600) }}));
@@ -198,17 +203,33 @@ async function uploadZip(page, zipPath, short) {{
 
 async function openLatest(page, nameStem) {{
   await page.goto(cfg.trainer, {{ waitUntil: 'domcontentloaded', timeout: 90000 }});
-  await sleep(4000);
-  // Prefer exact task title near top of list (no mouse.wheel — unstable under contention)
-  const link = page.getByText(nameStem, {{ exact: false }}).first();
-  if (!(await link.count())) {{
-    console.log(JSON.stringify({{ event: 'open_miss', nameStem }}));
-    return '';
+  await sleep(5000);
+  // Click the first Recent-task row matching the pack name via its Open control when possible
+  const row = page.locator('div,li,a,article').filter({{ hasText: nameStem }}).first();
+  if (await row.count()) {{
+    await row.scrollIntoViewIfNeeded().catch(() => {{}});
+    const openBtn = row.getByRole('button', {{ name: /^Open$/i }}).first();
+    const openTxt = row.getByText(/^Open$/).first();
+    if (await openBtn.count()) await openBtn.click({{ force: true, timeout: 10000 }}).catch(() => null);
+    else if (await openTxt.count()) await openTxt.click({{ force: true, timeout: 10000 }}).catch(() => null);
+    else await row.click({{ force: true, timeout: 10000 }}).catch(() => null);
+  }} else {{
+    const link = page.getByText(nameStem, {{ exact: false }}).first();
+    if (!(await link.count())) {{
+      console.log(JSON.stringify({{ event: 'open_miss', nameStem }}));
+      return '';
+    }}
+    await link.scrollIntoViewIfNeeded().catch(() => {{}});
+    await link.click({{ force: true, timeout: 15000 }}).catch(() => null);
   }}
-  await link.scrollIntoViewIfNeeded().catch(() => {{}});
-  await link.click({{ timeout: 15000 }});
-  await sleep(7000);
-  const t = await bodyText(page);
+  await sleep(8000);
+  // Version link prompt if present
+  let t = await bodyText(page);
+  if (/Yes, this is v\\d+/i.test(t)) {{
+    await clickIfVisible(page, /Yes, this is v\\d+/i);
+    await sleep(3000);
+    t = await bodyText(page);
+  }}
   fs.writeFileSync('tmp-pw/queue-opened-' + nameStem.slice(0, 40) + '.txt', t);
   console.log(JSON.stringify({{ event: 'opened', nameStem, url: page.url() }}));
   return t;
@@ -234,29 +255,43 @@ async function ensureReviewRecord(page, short) {{
 
 async function waitForEvalSlot(page, short) {{
   // Portal disables Oracle when all concurrent slots are full (cap is 4).
+  // NEVER page.reload() — it drops the #task= hash and dumps us on the pipeline list.
+  const taskUrl = page.url();
   for (let i = 0; i < 60; i++) {{
     const t = await bodyText(page);
-    const full = /\d+\s+runs? in flight|run slots? are currently in use|already have \d+ runs/i.test(t);
+    const full = /\\d+\\s+runs? in flight|run slots? are currently in use|already have \\d+ runs/i.test(t);
     if (!full) {{
       console.log(JSON.stringify({{ event: 'slot_free', short, i }}));
       return true;
     }}
     if (i % 3 === 0) console.log(JSON.stringify({{ event: 'slot_wait', short, i }}));
     await sleep(30000);
-    await page.reload({{ waitUntil: 'domcontentloaded' }}).catch(() => null);
-    await sleep(4000);
+    // Soft refresh: re-goto the same task URL
+    if (/#task=/.test(taskUrl)) {{
+      await page.goto(taskUrl, {{ waitUntil: 'domcontentloaded', timeout: 90000 }}).catch(() => null);
+      await sleep(4000);
+    }}
   }}
   console.log(JSON.stringify({{ event: 'slot_timeout', short }}));
   return false;
 }}
 
 async function startGates(page, short) {{
-  // PreQC is optional/advisory (STRICT-RULES.md + sessions/README.md) — skip it.
-  // Go straight to final QC: QC-Oracle-GLM.
+  // PreQC optional — skip. Prefer Delivery Gate / QC-Oracle-GLM.
+  // If still on home/pipeline list, abort gates.
+  let t0 = await bodyText(page);
+  if (/Submitted to the pipeline/i.test(t0) && !/#task=/.test(page.url())) {{
+    console.log(JSON.stringify({{ event: 'gates_abort_wrong_page', short, url: page.url() }}));
+    return {{ pre: false, ev: false, t: t0 }};
+  }}
   await ensureReviewRecord(page, short);
   await waitForEvalSlot(page, short);
-  let ev = await clickIfVisible(page, /Re-run QC-Oracle-GLM/i);
-  if (!ev) ev = await clickIfVisible(page, /Run QC-Oracle-GLM/i);
+  let ev =
+    (await clickIfVisible(page, /Re-run QC-Oracle-GLM/i)) ||
+    (await clickIfVisible(page, /Run QC-Oracle-GLM/i)) ||
+    (await clickIfVisible(page, /^Re-run$/i)) ||
+    (await clickIfVisible(page, /Run QC check/i));
+  await sleep(8000);
   const t = await bodyText(page);
   fs.writeFileSync('tmp-pw/queue-' + short + '-gates.txt', t);
   console.log(JSON.stringify({{ event: 'gates', short, preqc: false, skipped_preqc: true, oracle: ev, head: t.slice(0, 900) }}));
@@ -300,6 +335,8 @@ async function startGates(page, short) {{
         const esc = (s) => s.replace(/[.*+?^${{}}()|[\\]\\\\]/g, '\\\\$&');
         const onThis =
           onTask &&
+          !/Submitted to the pipeline/i.test(bodyNow) &&
+          /Upload new version|Harbor package|QC check|QC-Oracle-GLM/i.test(bodyNow) &&
           (new RegExp(esc(stem), 'i').test(bodyNow) || new RegExp(esc(short), 'i').test(bodyNow));
         if (onThis) {{
           console.log(JSON.stringify({{ event: 'already_on_task', short, url: page.url() }}));

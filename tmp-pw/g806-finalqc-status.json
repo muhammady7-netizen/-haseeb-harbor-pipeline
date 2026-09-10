@@ -1,14 +1,15 @@
 {
   "event": "POLL",
   "round": 1,
-  "at": "2026-09-10T22:04:26.870Z",
-  "onTask": false,
+  "at": "2026-09-10T22:39:26.159Z",
+  "onTask": true,
   "skipped_preqc": true,
   "oracleFail": false,
-  "oraclePass": false,
-  "glm": null,
+  "oraclePass": true,
+  "glm": "0",
   "running": false,
-  "slotsFull": false,
+  "slotsFull": true,
   "readySubmit": false,
-  "head": "Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com Upload a task to QC Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots. Drop a task here, or click to browse One Harbor task package as .zip. What a Harbor task package looks like"
+  "homeStatus": null,
+  "head": "Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com ← All tasks gen-g806-leadership-brief-rhetorical-style-audit v1 · latest Harbor package ↑ Upload new version ✓ Upload ✓ Client PreQC 3 Review findings 7 to decide ✓ Review record 5 Evaluation 32 to decide 6 Submit Client preQC (Internal Gate · advisory) Last run: Review required Review required · 7 trainer finding(s) · 2 h ago Re-run client preQC View report Your 3 run slots are "
 }
