@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T16:02:44Z",
+  "updated_at": "2026-09-10T16:06:35Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1027,13 +1027,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v9 eval running (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended — monitoring. Will submit to pipeline when GLM<=2/4.",
+      "notes": "v9 eval queued (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended — can't check queue position. Will submit to pipeline when GLM<=2/4.",
       "history": [
-        {
-          "at": "2026-09-08T22:11:10Z",
-          "status": "needs_densify",
-          "note": "v1 verifier defects; v2 fixed (README 33 checks, test.sh fractional reward, memo regex periods, review.csv). eval-41be4c2ba921490f running"
-        },
         {
           "at": "2026-09-08T23:20:32Z",
           "status": "final_running",
@@ -1228,9 +1223,14 @@
           "at": "2026-09-10T16:02:44Z",
           "status": "final_running",
           "note": "v9 eval running (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended — monitoring. Will submit to pipeline when GLM<=2/4."
+        },
+        {
+          "at": "2026-09-10T16:06:35Z",
+          "status": "final_running",
+          "note": "v9 eval queued (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended — can't check queue position. Will submit to pipeline when GLM<=2/4."
         }
       ],
-      "updated_at": "2026-09-10T16:02:44Z",
+      "updated_at": "2026-09-10T16:06:35Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
