@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T19:31:57Z",
+  "updated_at": "2026-09-10T19:36:56Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -791,13 +791,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v14 local: Harbor findings fixed (memo T-14/T-16, hardened memo AND checks, disclosed rules, removed dead verifier.json). Gold pytest 168/168. Zip ready for upload.",
+      "notes": "v14 packaged fresh: Harbor blockers fixed; gold pytest 168/168; no verifier.json; zip UPLOAD-THIS-TO-QC-code-c227.zip ready for V2 upload.",
       "history": [
-        {
-          "at": "2026-09-09T17:51:34Z",
-          "status": "final_running",
-          "note": "v8 eval queued (evaluation-4ccfd880a14f4792). Fixed: golden_results, README, review.csv, trajectory, memo regexes, gold memo."
-        },
         {
           "at": "2026-09-09T18:10:07Z",
           "status": "final_running",
@@ -992,9 +987,14 @@
           "at": "2026-09-10T19:30:42Z",
           "status": "ready_final",
           "note": "v14 local: Harbor findings fixed (memo T-14/T-16, hardened memo AND checks, disclosed rules, removed dead verifier.json). Gold pytest 168/168. Zip ready for upload."
+        },
+        {
+          "at": "2026-09-10T19:34:01Z",
+          "status": "ready_final",
+          "note": "v14 packaged fresh: Harbor blockers fixed; gold pytest 168/168; no verifier.json; zip UPLOAD-THIS-TO-QC-code-c227.zip ready for V2 upload."
         }
       ],
-      "updated_at": "2026-09-10T19:30:42Z",
+      "updated_at": "2026-09-10T19:34:22Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -1307,7 +1307,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "code-c251 eval clicked (slots were free)",
+      "notes": "Latest portal #1ddef3: PreQC not run, QC-Oracle-GLM not run. Need portal clicks. Browser profile locked by other sessions.",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -1438,9 +1438,14 @@
           "at": "2026-09-10T18:37:56Z",
           "status": "final_running",
           "note": "Session F: synced pack_path + zips to Downloads portal upload; extracted under qc-out/ework"
+        },
+        {
+          "at": "2026-09-10T19:33:55Z",
+          "status": "final_running",
+          "note": "Latest portal #1ddef3: PreQC not run, QC-Oracle-GLM not run. Need portal clicks. Browser profile locked by other sessions."
         }
       ],
-      "updated_at": "2026-09-10T18:37:56Z",
+      "updated_at": "2026-09-10T19:33:55Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -2102,11 +2107,11 @@
       "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
-      "status": "ready_final",
+      "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged fixed zip (obi/ name + solve.sh SOLUTION_DIR). Local oracle 1.0. Awaiting portal re-upload + Oracle+GLM×4.",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "Fixed zip uploaded (content-58a3a86e). Shared opencode chrome-profile headless. Starting/confirming PreQC+Oracle+GLM in portal queue (cap ~3-4).",
       "history": [
         {
           "at": "2026-09-08T19:09:10Z",
@@ -2257,9 +2262,14 @@
           "at": "2026-09-10T19:31:57Z",
           "status": "ready_final",
           "note": "Packaged fixed zip (obi/ name + solve.sh SOLUTION_DIR). Local oracle 1.0. Awaiting portal re-upload + Oracle+GLM×4."
+        },
+        {
+          "at": "2026-09-10T19:36:56Z",
+          "status": "final_running",
+          "note": "Fixed zip uploaded (content-58a3a86e). Shared opencode chrome-profile headless. Starting/confirming PreQC+Oracle+GLM in portal queue (cap ~3-4)."
         }
       ],
-      "updated_at": "2026-09-10T19:31:57Z",
+      "updated_at": "2026-09-10T19:36:56Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2277,11 +2287,11 @@
       },
       "packaged_at": "2026-09-10T19:31:36Z",
       "portal": {
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-d181a0518c9e07d970b4149e69bb9ba2-v1",
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-10T17:13:22Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-10T19:36:56Z",
+        "phase": "glm_or_oracle_running",
         "checks": [
           {
             "at": "2026-09-08T22:32:56Z",
@@ -2328,6 +2338,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "REWRITE: brief coherence evaluation (8 briefs, 82 sentences, 35 verifiers); Oracle+GLM started",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-10T19:36:56Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "Fixed zip uploaded (content-58a3a86e). Shared opencode chrome-profile headless. Starting/confirming PreQC+Oracle+GLM in portal queue (cap ~3-4).",
             "glm_pass": null,
             "oracle": null
           }
@@ -2524,13 +2542,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g857.zip",
+      "notes": "Hardened for 6 PreQC gaps (unmapped schema, status regex, headcount schema, cycle grading, dup keys, rollup pytest). Zip ready at Downloads. Portal upload blocked by Chrome profile contention from other sessions.",
       "history": [
-        {
-          "at": "2026-09-08T22:20:04Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g857.zip"
-        },
         {
           "at": "2026-09-08T22:27:42Z",
           "status": "final_running",
@@ -2725,9 +2738,14 @@
           "at": "2026-09-10T19:27:46Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-gen-g857.zip"
+        },
+        {
+          "at": "2026-09-10T19:33:55Z",
+          "status": "ready_final",
+          "note": "Hardened for 6 PreQC gaps (unmapped schema, status regex, headcount schema, cycle grading, dup keys, rollup pytest). Zip ready at Downloads. Portal upload blocked by Chrome profile contention from other sessions."
         }
       ],
-      "updated_at": "2026-09-10T19:27:46Z",
+      "updated_at": "2026-09-10T19:33:55Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
