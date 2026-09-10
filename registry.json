@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T15:54:12Z",
+  "updated_at": "2026-09-10T15:56:25Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1023,17 +1023,12 @@
       "pack_name": "code-c249-recurring-report-source-selection-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c249-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c249-work/code-c249-recurring-report-source-selection-audit",
-      "status": "ready_accept",
+      "status": "needs_densify",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v8: Oracle 1.0 PASSED! GLM x4 running ~40 min (evaluation-6a1c1a82e6c74066). Browser contended — can't check GLM result. Will submit to pipeline when GLM done + harbor clean.",
+      "notes": "v8: Oracle 1.0 PASSED, GLM 4/4 TOO_EASY. Need harder traps: duplicate run_id last-wins, blank source_used, empty run_date, row count with empty snapshot, multiple missing jobs.",
       "history": [
-        {
-          "at": "2026-09-08T19:30:25Z",
-          "status": "blocked",
-          "note": "build_qc_bundle failed rc=1"
-        },
         {
           "at": "2026-09-08T19:30:40Z",
           "status": "ready_final",
@@ -1228,9 +1223,14 @@
           "at": "2026-09-10T15:54:12Z",
           "status": "ready_accept",
           "note": "v8: Oracle 1.0 PASSED! GLM x4 running ~40 min (evaluation-6a1c1a82e6c74066). Browser contended — can't check GLM result. Will submit to pipeline when GLM done + harbor clean."
+        },
+        {
+          "at": "2026-09-10T15:56:25Z",
+          "status": "needs_densify",
+          "note": "v8: Oracle 1.0 PASSED, GLM 4/4 TOO_EASY. Need harder traps: duplicate run_id last-wins, blank source_used, empty run_date, row count with empty snapshot, multiple missing jobs."
         }
       ],
-      "updated_at": "2026-09-10T15:54:12Z",
+      "updated_at": "2026-09-10T15:56:25Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
