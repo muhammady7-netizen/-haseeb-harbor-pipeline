@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T17:53:21Z",
+  "updated_at": "2026-09-10T18:09:04Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1027,13 +1027,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v9 retry queued pos 1 (evaluation-d8976a2bcffb459a). Oracle 1.0 + GLM 0/4 (PASS) on first run. Harbor check crashed (infra error). Retry should complete harbor. Will submit to pipeline when harbor passes.",
+      "notes": "v9 retry RUNNING at Oracle (evaluation-d8976a2bcffb459a). First run: Oracle 1.0 + GLM 0/4 (PASS). Harbor crashed (infra error). Retry should complete harbor this time. Oracle running ~10 min. GLM waiting.",
       "history": [
-        {
-          "at": "2026-09-09T17:51:34Z",
-          "status": "final_running",
-          "note": "v4 uploaded (#9337dc). eval-24d671b674ca4aa2 running. Fixed: memo regexes (allow punctuation), test.sh, golden_results, trajectory."
-        },
         {
           "at": "2026-09-09T18:10:07Z",
           "status": "final_running",
@@ -1228,9 +1223,14 @@
           "at": "2026-09-10T17:50:51Z",
           "status": "final_running",
           "note": "v9 retry queued pos 1 (evaluation-d8976a2bcffb459a). Oracle 1.0 + GLM 0/4 (PASS) on first run. Harbor check crashed (infra error). Retry should complete harbor. Will submit to pipeline when harbor passes."
+        },
+        {
+          "at": "2026-09-10T18:09:04Z",
+          "status": "final_running",
+          "note": "v9 retry RUNNING at Oracle (evaluation-d8976a2bcffb459a). First run: Oracle 1.0 + GLM 0/4 (PASS). Harbor crashed (infra error). Retry should complete harbor this time. Oracle running ~10 min. GLM waiting."
         }
       ],
-      "updated_at": "2026-09-10T17:50:51Z",
+      "updated_at": "2026-09-10T18:09:04Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
