@@ -6,7 +6,7 @@
 | B | sessions/B | gen-g826, code-c249, code-c227 | PROMPT.md |
 | C | sessions/C | gen-g734, gen-g806, gen-g986 | PROMPT.md |
 | D | sessions/D | fin-f33, fin-f44, fin-f53 | PROMPT.md |
-| E | sessions/E | fin-f55, health-h34, health-h40 | PROMPT.md |
+| E | sessions/E | health-h40 only (fin-f55 + health-h34 locked out) | PROMPT.md |
 | F | sessions/F | gen-g857, code-c251 | PROMPT.md |
 
 ## How to start a chat

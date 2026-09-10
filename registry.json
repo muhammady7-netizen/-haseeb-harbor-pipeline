@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T18:12:09Z",
+  "updated_at": "2026-09-10T18:35:27Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -79,13 +79,13 @@
       "id": "NONC-B1-1000070",
       "short": "fin-f39",
       "pack_name": "fin-f39-distributable-profits",
-      "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1000070",
-      "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "final_running",
+      "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
+      "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
+      "status": "needs_densify",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "V19 uploaded. Eval queued (c20457262e2f45ac). Fixed: artifacts enabled, collect=[], anti-spoofing test.sh, sign-aware CSV, case-insensitive memo, disclosed all requirements.",
+      "next_action": "Fair densify traps, oracle+stability, package, re-upload",
+      "notes": "Portal TOO_EASY 4/4 on V19; densifying from Codex pack",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -171,9 +171,14 @@
           "at": "2026-09-09T23:00:16Z",
           "status": "final_running",
           "note": "V19 uploaded. Eval queued (c20457262e2f45ac). Fixed: artifacts enabled, collect=[], anti-spoofing test.sh, sign-aware CSV, case-insensitive memo, disclosed all requirements."
+        },
+        {
+          "at": "2026-09-10T18:35:27Z",
+          "status": "needs_densify",
+          "note": "Portal TOO_EASY 4/4 on V19; densifying from Codex pack"
         }
       ],
-      "updated_at": "2026-09-09T23:00:16Z",
+      "updated_at": "2026-09-10T18:35:27Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -489,10 +494,10 @@
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h34",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h34/health-h34-randomisation-balance",
       "status": "final_running",
-      "session": "E",
+      "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-health-h34.zip",
       "next_action": "Wait for delivery eval. v4: 202 subjects, 44 OOS, 19 assessed blocks, 4 outside, 2 strata outside.",
-      "notes": "Densified v4: 202 subjects (was 121), 44 OOS, 19 blocks assessed, 4 outside, severe+S3 outside tolerance. Target: GLM <=2/4.",
+      "notes": "Session E locked out: do not work. Leave portal/eval as-is; no densify/upload from Session E.",
       "history": [
         {
           "at": "2026-09-08T03:16:41Z",
@@ -568,9 +573,14 @@
           "at": "2026-09-09T19:34:51Z",
           "status": "final_running",
           "note": "v4 densified uploaded"
+        },
+        {
+          "at": "2026-09-10T18:35:07Z",
+          "status": "final_running",
+          "note": "Session E locked out: do not work. Leave portal/eval as-is; no densify/upload from Session E."
         }
       ],
-      "updated_at": "2026-09-09T19:34:51Z",
+      "updated_at": "2026-09-10T18:35:07Z",
       "last_preqc": {
         "at": "2026-09-08T19:31:54Z",
         "qc_verdict": "NEEDS_REVIEW",
@@ -725,7 +735,7 @@
           "note": "v2 uploaded with stability+instruction fixes"
         }
       ],
-      "updated_at": "2026-09-09T19:34:51Z",
+      "updated_at": "2026-09-10T18:35:06Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
@@ -964,7 +974,7 @@
           "note": "v13 blocked. Harbor: cross-artifact contradictions, memo grades excluded tables, gold memo wrong T-14/T-16, verifier.json dead, memo trivially mimicked. Fixing locally."
         }
       ],
-      "updated_at": "2026-09-10T16:24:42Z",
+      "updated_at": "2026-09-10T18:32:44Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -1230,7 +1240,7 @@
           "note": "v9 retry RUNNING at Oracle (evaluation-d8976a2bcffb459a). First run: Oracle 1.0 + GLM 0/4 (PASS). Harbor crashed (infra error). Retry should complete harbor this time. Oracle running ~10 min. GLM waiting."
         }
       ],
-      "updated_at": "2026-09-10T18:09:04Z",
+      "updated_at": "2026-09-10T18:32:44Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
@@ -1643,10 +1653,10 @@
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-fin-f55",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-fin-f55/fin-f55-trust-principal-income-allocation-audit",
       "status": "accepted",
-      "session": "E",
+      "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f55.zip",
       "next_action": "ACCEPTED! Task complete.",
-      "notes": "Pipeline ACCEPTED! GLM 2/4, Oracle 1.0, 6 findings dismissed as false_positive.",
+      "notes": "Session E locked out: do not work. Accepted; leave alone.",
       "history": [
         {
           "at": "2026-09-08T03:16:46Z",
@@ -1712,9 +1722,14 @@
           "at": "2026-09-09T18:27:21Z",
           "status": "accepted",
           "note": "Pipeline accepted!"
+        },
+        {
+          "at": "2026-09-10T18:35:07Z",
+          "status": "accepted",
+          "note": "Session E locked out: do not work. Accepted; leave alone."
         }
       ],
-      "updated_at": "2026-09-09T18:27:21Z",
+      "updated_at": "2026-09-10T18:35:07Z",
       "last_preqc": {
         "at": "2026-09-08T19:31:54Z",
         "qc_verdict": "NEEDS_REVIEW",
@@ -1766,10 +1781,10 @@
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001562/gen-g734-cms-publish-readiness-audit",
       "status": "ready_final",
-      "session": "C",
+      "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g734.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip",
+      "notes": "Released from Session C. Do not work in Chat C.",
       "history": [
         {
           "at": "2026-09-08T19:09:08Z",
@@ -1950,9 +1965,14 @@
           "at": "2026-09-10T15:58:18Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-gen-g734.zip"
+        },
+        {
+          "at": "2026-09-10T18:34:38Z",
+          "status": "ready_final",
+          "note": "Released from Session C. Do not work in Chat C."
         }
       ],
-      "updated_at": "2026-09-10T15:58:18Z",
+      "updated_at": "2026-09-10T18:34:38Z",
       "last_preqc": {
         "at": "2026-09-08T22:14:49Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001562\\2026-09-08T221448Z",
@@ -2061,7 +2081,7 @@
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "REWRITE: brief coherence evaluation (8 briefs, 82 sentences, 35 verifiers); Oracle+GLM started",
+      "notes": "Session C locked to gen-g806 ONLY. gen-g734 and gen-g986 released — do not work those in Chat C.",
       "history": [
         {
           "at": "2026-09-08T19:09:10Z",
@@ -2192,9 +2212,14 @@
           "at": "2026-09-10T17:13:22Z",
           "status": "final_running",
           "note": "REWRITE: brief coherence evaluation (8 briefs, 82 sentences, 35 verifiers); Oracle+GLM started"
+        },
+        {
+          "at": "2026-09-10T18:34:38Z",
+          "status": "final_running",
+          "note": "Session C locked to gen-g806 ONLY. gen-g734 and gen-g986 released — do not work those in Chat C."
         }
       ],
-      "updated_at": "2026-09-10T17:13:22Z",
+      "updated_at": "2026-09-10T18:34:38Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2276,10 +2301,10 @@
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1001654",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1001654/gen-g826-tender-document-brand-style-audit",
       "status": "blocked",
-      "session": "B",
+      "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g826.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "REJECTED (yellow). Not working.",
+      "notes": "REJECTED — Session B must NOT work on this task anymore (user 2026-09-10). Only code-c249 + code-c227.",
       "history": [
         {
           "at": "2026-09-08T19:06:38Z",
@@ -2405,9 +2430,14 @@
           "at": "2026-09-10T16:24:43Z",
           "status": "blocked",
           "note": "REJECTED (yellow). Not working."
+        },
+        {
+          "at": "2026-09-10T18:32:44Z",
+          "status": "blocked",
+          "note": "REJECTED — Session B must NOT work on this task anymore (user 2026-09-10). Only code-c249 + code-c227."
         }
       ],
-      "updated_at": "2026-09-10T16:24:43Z",
+      "updated_at": "2026-09-10T18:32:44Z",
       "last_preqc": {
         "at": "2026-09-08T19:27:44Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001654\\2026-09-08T192743Z",
@@ -2893,10 +2923,10 @@
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001812/gen-g986-festival-key-art-billing-parity-audit",
       "status": "needs_densify",
-      "session": "C",
+      "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g986.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v2 (98 posters, 125 verifiers, 30 new Block E edge-case posters); uploaded + queued",
+      "notes": "Released from Session C. Do not work in Chat C.",
       "history": [
         {
           "at": "2026-09-08T19:09:11Z",
@@ -2992,9 +3022,14 @@
           "at": "2026-09-10T15:21:50Z",
           "status": "needs_densify",
           "note": "v2 (98 posters, 125 verifiers, 30 new Block E edge-case posters); uploaded + queued"
+        },
+        {
+          "at": "2026-09-10T18:34:38Z",
+          "status": "needs_densify",
+          "note": "Released from Session C. Do not work in Chat C."
         }
       ],
-      "updated_at": "2026-09-10T15:21:50Z",
+      "updated_at": "2026-09-10T18:34:38Z",
       "last_preqc": {
         "at": "2026-09-08T22:30:16Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001812\\2026-09-08T223015Z",
@@ -3049,8 +3084,8 @@
       "id": "NONC-B1-1002016",
       "short": "gen-g1205",
       "pack_name": "gen-g1205-meal-prep-cost-claim-recompute-audit",
-      "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1002016",
-      "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1002016/gen-g1205-meal-prep-cost-claim-recompute-audit",
+      "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016",
+      "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016/gen-g1205-meal-prep-cost-claim-recompute-audit",
       "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
@@ -3210,8 +3245,8 @@
       "id": "CONNECTOR-THREAD",
       "short": "the-thread",
       "pack_name": "the-thread-hands-back-its-own-opener",
-      "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1001634",
-      "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
+      "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/CONNECTOR-THREAD",
+      "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/CONNECTOR-THREAD/the-thread-hands-back-its-own-opener",
       "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
