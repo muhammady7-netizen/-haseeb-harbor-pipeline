@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T18:35:27Z",
+  "updated_at": "2026-09-10T18:37:56Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1281,11 +1281,11 @@
       "id": "NONC-B1-1000733",
       "short": "code-c251",
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
-      "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work",
-      "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c251-v9-work/code-c251-pdf-form-field-conversion-audit",
+      "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal",
+      "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal\\code-c251-pdf-form-field-conversion-audit",
       "status": "final_running",
       "session": "F",
-      "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip",
+      "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
       "notes": "code-c251 eval clicked (slots were free)",
       "history": [
@@ -1413,9 +1413,14 @@
           "at": "2026-09-10T17:53:21Z",
           "status": "final_running",
           "note": "code-c251 eval clicked (slots were free)"
+        },
+        {
+          "at": "2026-09-10T18:37:56Z",
+          "status": "final_running",
+          "note": "Session F: synced pack_path + zips to Downloads portal upload; extracted under qc-out/ework"
         }
       ],
-      "updated_at": "2026-09-10T17:53:21Z",
+      "updated_at": "2026-09-10T18:37:56Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -2478,11 +2483,11 @@
       "id": "NONC-B1-1001684",
       "short": "gen-g857",
       "pack_name": "gen-g857-department-directory-categorization-audit",
-      "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4",
-      "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4/gen-g857-department-directory-categorization-audit",
+      "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\gen-g857-portal",
+      "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\gen-g857-portal\\gen-g857-department-directory-categorization-audit",
       "status": "final_running",
       "session": "F",
-      "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
+      "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
       "notes": "gen-g857 taxonomy migration eval clicked (slots were free)",
       "history": [
@@ -2685,9 +2690,14 @@
           "at": "2026-09-10T17:53:20Z",
           "status": "final_running",
           "note": "gen-g857 taxonomy migration eval clicked (slots were free)"
+        },
+        {
+          "at": "2026-09-10T18:37:56Z",
+          "status": "final_running",
+          "note": "Session F: synced pack_path + zips to Downloads portal upload; extracted under qc-out/ework"
         }
       ],
-      "updated_at": "2026-09-10T17:53:20Z",
+      "updated_at": "2026-09-10T18:37:56Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
