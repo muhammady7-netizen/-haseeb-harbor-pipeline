@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T17:10:19Z",
+  "updated_at": "2026-09-10T17:11:52Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1523,11 +1523,11 @@
       "pack_name": "fin-f53-deposit-account-fee-assessment-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000791",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000791/fin-f53-deposit-account-fee-assessment-audit",
-      "status": "blocked",
+      "status": "final_running",
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f53.zip",
       "next_action": "Fix packager and retry package",
-      "notes": "build_qc_bundle failed rc=1",
+      "notes": "v2 uploaded (content-69d45ab1): source-only zip with instruction memo disclosure + fixed verifier (audit_row_count \\A, review.csv header). Eval triggered (evaluation-bf52725208844903). f33+f44 STOPPED (yellow in tracker).",
       "history": [
         {
           "at": "2026-09-08T19:08:22Z",
@@ -1593,9 +1593,14 @@
           "at": "2026-09-10T17:10:08Z",
           "status": "blocked",
           "note": "build_qc_bundle failed rc=1"
+        },
+        {
+          "at": "2026-09-10T17:11:52Z",
+          "status": "final_running",
+          "note": "v2 uploaded (content-69d45ab1): source-only zip with instruction memo disclosure + fixed verifier (audit_row_count \\A, review.csv header). Eval triggered (evaluation-bf52725208844903). f33+f44 STOPPED (yellow in tracker)."
         }
       ],
-      "updated_at": "2026-09-10T17:10:08Z",
+      "updated_at": "2026-09-10T17:11:52Z",
       "last_preqc": {
         "at": "2026-09-08T19:16:23Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000791\\2026-09-08T191622Z",
