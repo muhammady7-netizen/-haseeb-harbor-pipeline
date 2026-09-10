@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T16:21:33Z",
+  "updated_at": "2026-09-10T16:23:57Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2381,17 +2381,12 @@
       "pack_name": "gen-g857-department-directory-categorization-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/gen-g857-v4/gen-g857-department-directory-categorization-audit",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "gen-g857 v9 eval STARTED (platform runs fresh Oracle+GLM x4)",
+      "notes": "REBUILT from scratch: Department Taxonomy Migration task (30 people, 16 nodes, 69 checks). Correct task spec.",
       "history": [
-        {
-          "at": "2026-09-08T21:57:39Z",
-          "status": "final_running",
-          "note": "Portal: QC-Oracle-GLM started for gen-g857 v1 (content-5eb1eb1f)"
-        },
         {
           "at": "2026-09-08T22:10:51Z",
           "status": "needs_densify",
@@ -2586,9 +2581,14 @@
           "at": "2026-09-10T15:48:16Z",
           "status": "final_running",
           "note": "gen-g857 v9 eval STARTED (platform runs fresh Oracle+GLM x4)"
+        },
+        {
+          "at": "2026-09-10T16:23:57Z",
+          "status": "ready_final",
+          "note": "REBUILT from scratch: Department Taxonomy Migration task (30 people, 16 nodes, 69 checks). Correct task spec."
         }
       ],
-      "updated_at": "2026-09-10T15:48:16Z",
+      "updated_at": "2026-09-10T16:23:57Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
