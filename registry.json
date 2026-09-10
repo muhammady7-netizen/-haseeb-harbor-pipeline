@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T17:32:26Z",
+  "updated_at": "2026-09-10T18:01:54Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -3190,7 +3190,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "V4 uploaded. Eval running (e9cdefae13f34c8a, retry after 2 crashes). Added 3 new reasoning metrics. 19 verifier configs.",
+      "notes": "V4 eval crashed 5th time (Docker MCP gym infra). Retried 6th. gen-g1205 in harbor/GLM/oracle.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -3301,9 +3301,14 @@
           "at": "2026-09-09T23:00:17Z",
           "status": "final_running",
           "note": "V4 uploaded. Eval running (e9cdefae13f34c8a, retry after 2 crashes). Added 3 new reasoning metrics. 19 verifier configs."
+        },
+        {
+          "at": "2026-09-10T18:01:54Z",
+          "status": "final_running",
+          "note": "V4 eval crashed 5th time (Docker MCP gym infra). Retried 6th. gen-g1205 in harbor/GLM/oracle."
         }
       ],
-      "updated_at": "2026-09-09T23:00:17Z",
+      "updated_at": "2026-09-10T18:01:54Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
