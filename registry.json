@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T22:59:03Z",
+  "updated_at": "2026-09-10T23:02:31Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -653,22 +653,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v12 Final QC running (Oracle+GLM)",
+      "notes": "v13 densify R-39/40/41; local pytest green; upload Final QC",
       "history": [
-        {
-          "at": "2026-09-09T10:32:23Z",
-          "status": "ready_accept",
-          "note": "GLM 2/4 within difficulty gate"
-        },
-        {
-          "at": "2026-09-09T11:00:17Z",
-          "status": "ready_accept",
-          "note": "Oracle 1.0, GLM 2/4. All 10 eval findings + 4 PreQC findings dismissed as false_positive via API. Task READY_FOR_FINALIZATION, can_submit=true. Submit button needs UI click."
-        },
         {
           "at": "2026-09-09T11:02:52Z",
           "status": "ready_accept",
@@ -858,9 +848,19 @@
           "at": "2026-09-10T22:46:14Z",
           "status": "final_running",
           "note": "v12 Final QC running (Oracle+GLM)"
+        },
+        {
+          "at": "2026-09-10T23:02:23Z",
+          "status": "needs_densify",
+          "note": "v12 #7fcbcc0 Oracle 1.0 GLM 4/4 TOO_EASY again — densify v13"
+        },
+        {
+          "at": "2026-09-10T23:02:31Z",
+          "status": "ready_final",
+          "note": "v13 densify R-39/40/41; local pytest green; upload Final QC"
         }
       ],
-      "updated_at": "2026-09-10T22:46:14Z",
+      "updated_at": "2026-09-10T23:02:31Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
