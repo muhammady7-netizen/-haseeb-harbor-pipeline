@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-10T15:27:28Z",
+  "updated_at": "2026-09-10T15:29:21Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1027,13 +1027,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Wait for pipeline final QC acceptance",
-      "notes": "v8 eval started (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCH, should be none — cutover only applies to weekly-journal-brief), row count CRLF tolerance, memo_run19 loosened. Oracle was 0.975 on v7.",
+      "notes": "v8 eval queued pos 1 (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCH→none), row count CRLF, memo_run19 loosened. 3 running (1 at GLM). NEXT when one finishes.",
       "history": [
-        {
-          "at": "2026-09-08T19:06:38Z",
-          "status": "preqc_needs_fix",
-          "note": "PreQC FAIL; 4 must-fix"
-        },
         {
           "at": "2026-09-08T19:29:48Z",
           "status": "preqc_running",
@@ -1228,9 +1223,14 @@
           "at": "2026-09-10T15:19:25Z",
           "status": "final_running",
           "note": "v8 eval started (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCH, should be none — cutover only applies to weekly-journal-brief), row count CRLF tolerance, memo_run19 loosened. Oracle was 0.975 on v7."
+        },
+        {
+          "at": "2026-09-10T15:29:21Z",
+          "status": "final_running",
+          "note": "v8 eval queued pos 1 (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCH→none), row count CRLF, memo_run19 loosened. 3 running (1 at GLM). NEXT when one finishes."
         }
       ],
-      "updated_at": "2026-09-10T15:19:25Z",
+      "updated_at": "2026-09-10T15:29:21Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
