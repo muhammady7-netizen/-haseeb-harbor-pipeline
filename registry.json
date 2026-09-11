@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T14:24:26Z",
+  "updated_at": "2026-09-11T15:20:35Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -657,13 +657,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "h40 v17 uploaded (content-2d061f18) with 32 results, 57 verifiers, 4 just-past-boundary traps. Pipeline-packaged. QC-Oracle-GLM running.",
+      "notes": "h40 v18: 40 results, 64 verifiers, 7 non-round-time traps (R-33: midnight crossing, R-34: 237/477 compliant, R-35: 30/60 at boundary, R-36: 240/480 at boundary, R-37: night tier 1, R-38: 260 notif + 480 ack, R-39: non-round both late). Pipeline-packaged. Uploading now.",
       "history": [
-        {
-          "at": "2026-09-10T18:56:54Z",
-          "status": "needs_densify",
-          "note": "v8 Oracle 0.944 (audit_covers double-escaped \\\\b + memo R-02 notif regex). Fixed locally 36/36; packaging v9."
-        },
         {
           "at": "2026-09-10T18:56:54Z",
           "status": "ready_final",
@@ -858,9 +853,14 @@
           "at": "2026-09-11T14:24:26Z",
           "status": "final_running",
           "note": "h40 v17 uploaded (content-2d061f18) with 32 results, 57 verifiers, 4 just-past-boundary traps. Pipeline-packaged. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-11T15:20:35Z",
+          "status": "final_running",
+          "note": "h40 v18: 40 results, 64 verifiers, 7 non-round-time traps (R-33: midnight crossing, R-34: 237/477 compliant, R-35: 30/60 at boundary, R-36: 240/480 at boundary, R-37: night tier 1, R-38: 260 notif + 480 ack, R-39: non-round both late). Pipeline-packaged. Uploading now."
         }
       ],
-      "updated_at": "2026-09-11T14:24:26Z",
+      "updated_at": "2026-09-11T15:20:35Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
