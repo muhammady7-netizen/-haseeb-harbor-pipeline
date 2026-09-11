@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T13:44:31Z",
+  "updated_at": "2026-09-11T13:46:53Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1492,11 +1492,11 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal",
       "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal\\code-c251-pdf-form-field-conversion-audit",
-      "status": "ready_accept",
+      "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
-      "next_action": "Dismiss remaining PreQC if needed, then Accept on portal",
-      "notes": "GLM 0/4 within difficulty gate",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v1 (7ec9d05a) uploaded with ALL fixes: Dockerfile with openpyxl/python-docx/python-pptx/pypdf. Waiting for eval slot.",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -1692,9 +1692,14 @@
           "at": "2026-09-11T13:44:31Z",
           "status": "ready_accept",
           "note": "GLM 0/4 within difficulty gate"
+        },
+        {
+          "at": "2026-09-11T13:46:53Z",
+          "status": "final_running",
+          "note": "v1 (7ec9d05a) uploaded with ALL fixes: Dockerfile with openpyxl/python-docx/python-pptx/pypdf. Waiting for eval slot."
         }
       ],
-      "updated_at": "2026-09-11T13:44:31Z",
+      "updated_at": "2026-09-11T13:46:53Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1714,8 +1719,8 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T13:44:31Z",
-        "phase": "complete",
+        "last_check_at": "2026-09-11T13:46:53Z",
+        "phase": "oracle_running",
         "checks": [
           {
             "at": "2026-09-08T21:57:39Z",
@@ -1852,11 +1857,19 @@
             "note": "v1 (c4dd720f) Oracle FAILED 0.0 — missing deps in Dockerfile. Rebuilding with openpyxl/python-docx/python-pptx/pypdf.",
             "glm_pass": "0/4",
             "oracle": "0.0"
+          },
+          {
+            "at": "2026-09-11T13:46:53Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (7ec9d05a) uploaded with ALL fixes: Dockerfile with openpyxl/python-docx/python-pptx/pypdf. Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "0/4",
         "oracle": "0.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-c4dd720fb84432e3bac5404d3b90a229-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-7ec9d05ada07cb640c53224362e578f5-v1"
       }
     },
     {
