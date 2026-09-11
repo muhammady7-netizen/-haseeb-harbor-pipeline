@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T10:44:14Z",
+  "updated_at": "2026-09-11T10:53:43Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -980,18 +980,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Fairness-fixed v16 uploaded (content-dc2fe98f). QC-Oracle-GLM running (evaluation-e1d9d0223cf64dc8). Oracle phase 1029s. Fixed: broadened memo regexes, CTRF JSON anti-spoof, disclosed memo requirements.",
+      "notes": "v17 uploaded (content-22f44cda). QC-Oracle-GLM started (evaluation-e0616cb4a7894944). Reverted test.sh to original (CTRF broke Oracle), kept memo regex fairness fixes + instruction.md disclosure.",
       "history": [
-        {
-          "at": "2026-09-09T20:08:42Z",
-          "status": "final_running",
-          "note": "v10 eval running (evaluation-98329bf1a3f14d46). v9 had Oracle 1.0 + GLM 2/4 (PASS!). v10 fixes: missing deliverable gate, removed 77 dead verifier.json (->3), strengthened memo checks (8+ word sentences), cross-artifact consistency. Waiting for eval."
-        },
-        {
-          "at": "2026-09-09T20:28:53Z",
-          "status": "final_running",
-          "note": "v11 fixing ALL 12 harbor findings: memo rejects CSV dumps (line-based, 10+ words), instruction.md discloses memo requirements, no no-op tests, no double-penalization, missing deliverable gate, 3 file-existence checks, cross-artifact consistency. Upload pending (browser contended)."
-        },
         {
           "at": "2026-09-09T20:35:54Z",
           "status": "final_running",
@@ -1181,9 +1171,19 @@
           "at": "2026-09-11T10:44:14Z",
           "status": "final_running",
           "note": "Fairness-fixed v16 uploaded (content-dc2fe98f). QC-Oracle-GLM running (evaluation-e1d9d0223cf64dc8). Oracle phase 1029s. Fixed: broadened memo regexes, CTRF JSON anti-spoof, disclosed memo requirements."
+        },
+        {
+          "at": "2026-09-11T10:50:20Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-code-c227.zip"
+        },
+        {
+          "at": "2026-09-11T10:53:43Z",
+          "status": "final_running",
+          "note": "v17 uploaded (content-22f44cda). QC-Oracle-GLM started (evaluation-e0616cb4a7894944). Reverted test.sh to original (CTRF broke Oracle), kept memo regex fairness fixes + instruction.md disclosure."
         }
       ],
-      "updated_at": "2026-09-11T10:44:14Z",
+      "updated_at": "2026-09-11T10:53:43Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -1199,7 +1199,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z\\findings.csv"
       },
-      "packaged_at": "2026-09-11T10:22:16Z",
+      "packaged_at": "2026-09-11T10:50:20Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-a1cc40b3e1c27d640de1820b974b1ce4-v1",
         "version": "v2",
