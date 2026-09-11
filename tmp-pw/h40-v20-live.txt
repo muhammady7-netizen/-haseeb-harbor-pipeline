@@ -32,7 +32,6 @@ Not run yet
 has not run on this task yet
 Run client preQC
 View report
-Your 3 run slots are currently in use.
 
 REVIEW.CSV · REQUIRED TO SUBMIT
 
@@ -49,6 +48,7 @@ QC-Oracle-GLM check (3-task limit)
 Running now
 running now
 Running…
+Stop run
 View report
 what each gate checks
 You are the judge. what good QC takes — read once
@@ -58,10 +58,10 @@ QC-ORACLE-GLM CHECK
 QC-Oracle-GLM check
 Oracle Passed
 GLM-5.2 ×4 difficulty Running
-running · 653s
+running · 1036s
 RESULT
 glm
-653s
+1036s
 Execution status — Oracle then GLM ×4
 ORACLE GOLDEN REPLAY
 
@@ -87,7 +87,7 @@ oracle — Oracle gate completed
 glm — GLM x4 started
 glm — waiting for cloud capacity
 
-no update for 3m — still running; the worker heartbeats separately
+no update for 9m — still running; the worker heartbeats separately
 
 Oracle + GLM ×4 + Harbor Check normally takes around 50 minutes — one Oracle golden replay, four GLM-5.2 trials, then Harbor Check. Some runs finish sooner; large or connector-heavy tasks can run longer. Nothing is lost if you navigate away.
 
