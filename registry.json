@@ -2574,8 +2574,8 @@
       "status": "blocked",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Fix packager and retry package",
-      "notes": "build_qc_bundle failed rc=1",
+      "next_action": "Finish glm-g806-v4b-2..4 then package+upload v4 (see sessions/C/CONTINUE-OTHER-PC.md)",
+      "notes": "v3 Harbor: invalid r1 harness fail + pane artifact export. Fixed test.sh /logs/artifacts + empty artifacts. oracle-v4 1.0x4. glm-v4b-1=1.0 (83/83); 2-4 pending. Never confirm findings.",
       "history": [
         {
           "at": "2026-09-09T19:22:13Z",
@@ -2776,6 +2776,11 @@
           "at": "2026-09-11T19:15:33Z",
           "status": "blocked",
           "note": "build_qc_bundle failed rc=1"
+        },
+        {
+          "at": "2026-09-11T22:58:18Z",
+          "status": "blocked",
+          "note": "Cross-PC handoff: sessions/C/CONTINUE-OTHER-PC.md + source-pack. Finish GLM v4b-2..4, stage, package, upload v4. Confirm none."
         }
       ],
       "updated_at": "2026-09-11T19:15:33Z",

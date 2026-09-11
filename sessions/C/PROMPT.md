@@ -2,57 +2,31 @@
 
 Paste this whole file into a new Cursor chat, or say: **chat C** / **access session C**
 
-## Tasks (only these)
-gen-g734, gen-g806, gen-g986
+## Lock
+**gen-g806 ONLY** (`NONC-B1-1001634`). g734/g986 released — do not work them here.
 
-- gen-g734 (NONC-B1-1001562)
-- gen-g806 (NONC-B1-1001634)
-- gen-g986 (NONC-B1-1001812)
+## Cross-PC handoff (read first)
+→ **`sessions/C/CONTINUE-OTHER-PC.md`**
 
-## You MUST use repo automation (do not invent scripts)
+Pack snapshot: `sessions/C/source-pack/`  
+Zip (when packaged): `sessions/C/zips/` + `canonical-zips/UPLOAD-THIS-TO-QC-gen-g806.zip`
 
-Repo: https://github.com/muhammady7-netizen/-haseeb-harbor-pipeline
-
-### Bootstrap (you run)
+## Bootstrap
 ```powershell
 $repo = "https://github.com/muhammady7-netizen/-haseeb-harbor-pipeline.git"
 $dest = Join-Path $HOME "Documents\-haseeb-harbor-pipeline"
 if (-not (Test-Path $dest)) { git clone $repo $dest } else { Set-Location $dest; git pull }
 Set-Location $dest
-if (-not (Test-Path ".\machine.json")) { Copy-Item ".\machine.example.json" ".\machine.json" }
-# Fix machine.json paths on this PC if doctor fails
 .\resume.ps1 doctor
 .\resume.ps1 board
-git pull
-.\resume.ps1 assign --session C --tasks gen-g734,gen-g806,gen-g986
-.\resume.ps1 next --session C
-.\resume.ps1 loop --session C
-.\resume.ps1 loop --session C --package
+# Follow CONTINUE-OTHER-PC.md — finish glm-g806-v4b-2..4, stage, package, upload v4
 ```
 
-### Zips for this chat
-Folder: `sessions/C/zips/`
-Also mirrored in `canonical-zips\`.
-
-### Rules
-- Only Session **C** tasks. Do not touch other sessions' locks.
-- PreQC → fix source until `preqc_clean` → `package` → `ready_final`.
-- No browser automation required unless user says so. When `ready_final`, give zip path + portal checklist; wait for user portal reply; then `set-status`.
-- Never **Confirm** portal PreQC (Dismiss / leave unconfirmed).
-- Difficulty: ≤2/4 preferred; 3/4 OK; 4/4 densify then loop+package again.
-- After progress:
-```powershell
-git add -A
-git -c user.email="muhammad.y7@turing.com" -c user.name="Muhammad Haseeb Younas" commit -m "session C progress"
-git push
-```
-
-### Portal status helpers
-```powershell
-.\resume.ps1 portal-status --task <short>
-.\resume.ps1 watch-portal --task <short> --phase <phase> --note "..."
-.\resume.ps1 set-status --task <short> --status uploaded|final_running|accepted|needs_densify|blocked --note "..."
-```
+## Rules
+- Never **Confirm** Harbor findings as false positives — fix source, re-upload.
+- Skip Client PreQC; Final QC only.
+- Harbor GLM: run **without** `-a terminus-2` (use config agents[] so model_name sticks).
+- After progress: commit + push Session C handoff.
 
 ## Start now
-`git pull` → doctor → board → assign Session C → loop → package when clean → report board for C.
+`git pull` → open `sessions/C/CONTINUE-OTHER-PC.md` → finish GLM battery → package → upload v4.

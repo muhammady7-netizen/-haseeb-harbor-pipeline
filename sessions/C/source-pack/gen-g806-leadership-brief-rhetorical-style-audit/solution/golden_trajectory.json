@@ -1,0 +1,43 @@
+{
+    "schema_version": "ATIF-v1.7",
+    "agent": {
+        "name": "oracle",
+        "version": "harbor-0.21"
+    },
+    "steps": [
+        {
+            "step_id": 1,
+            "source": "user",
+            "message": "# Task\n\nRead `/app/input/brief_sentences.csv`, `/app/input/executive_questions.csv`, and `/app/input/message_rules.md`. Sentences contain `sentence_id,brief_id,position,purpose,word_count,question_ids`; questions contain `question_id,executive_role,priority`; rules define required opening purpose, permitted purpose transitions, answer-distance limits, and brief word budgets.\n\nEvaluate whether each leadership brief answers executive questions in a usable decision sequence. For every brief, map each question to its earliest answering sentence, calculate answer distance from the opening, and detect unanswered questions. Validate the purpose-transition chain and determine whether the opening states a decision, evidence, or context as defined in the rules. Compute a coherence score by subtracting the specified penalties from 100 (round half-up to the nearest integer). Recommend exactly one sentence relocation that produces the largest score improvement without changing question coverage (same answering `sentence_id` per question); ties use smallest movement distance, then smallest sentence ID. Format the move as `sentence_id:from_position->to_position`. The move must not lower the score; if no relocation improves the score, choose the smallest-distance coverage-preserving relocation that keeps the score unchanged. This is a structural sequencing analysis, not a review of rhetorical phrases.\n\n## Scoring contract (must match message_rules.md)\n\n- Start at 100. Opening purpose other than `decision`: \u221215 (this is an opening penalty, not a transition breach).\n- After position 1, any transition into `decision`: \u221210 per event (counts as a transition breach).\n- Consecutive identical purposes: \u22125 per event (counts as a transition breach).\n- Unanswered question: \u221220. Answer distance `position-1` greater than 5: \u22125.\n- Word count greater than 220: \u221210.\n- **Passing score threshold is 80.** Briefs with `coherence_score >= 80` pass; below 80 fail.\n- `results.json` `avg_score` is the mean of the eight coherence scores, rounded half-up to **two decimal places**.\n\n## Trace status vocabulary\n\nIn `question_trace.csv`, `status` must be exactly one of:\n- `answered` \u2014 question answered at distance `<= 5`\n- `answered_far` \u2014 question answered at distance `> 5`\n- `unanswered` \u2014 no answering sentence; set `answer_sentence_id` empty and `answer_distance` to `-1`\n\n## Deliverables\n\n`question_count` in `brief_coherence.csv` is the number of rows in `executive_questions.csv` (always **6** for this pack). `unanswered_questions` is a sorted pipe-delimited list of unanswered `question_id` values, or empty when none.\n\n## Memo format (graded)\n\nIn `executive_sequence_memo.md`:\n- Include a markdown heading line (`#`, `##`, or `###` followed by the brief id, e.g. `## B-02` or `### B-02`) **only** for each brief with `coherence_score < 80`.\n- Under each failing-brief heading, state unanswered status, transition-breach status, and the recommended relocation (the words unanswered/breach and recommended must appear in that subsection).\n- Do **not** give a markdown heading to any brief with `coherence_score >= 80`.\n\n## Deliverables continued\n\nWrite `/app/brief_coherence.csv` with `brief_id,word_count,question_count,unanswered_questions,transition_breaches,coherence_score,recommended_move,projected_score`. Write `/app/question_trace.csv` with `brief_id,question_id,priority,answer_sentence_id,answer_distance,status`. Write `/app/executive_sequence_memo.md` with one concise subsection **only** for each brief below the passing score (80). Write `/app/results.json` with `brief_count`, `passing_briefs`, `failing_briefs`, `avg_score`, `total_unanswered`, `total_breaches`.\n\n## Verification\n\nReject malformed headers, repeated sentence positions, duplicate IDs, unknown question references, nonpositive word counts, or missing rules. Sort briefs and questions lexicographically. Recalculate projected scores by applying the proposed move, ensure no recommendation lowers coverage or score, r"
+        },
+        {
+            "step_id": 2,
+            "source": "oracle",
+            "message": "Ran solution/solve.sh to install gold deliverables (brief_coherence.csv, question_trace.csv, executive_sequence_memo.md, results.json).",
+            "tool_calls": [
+                {
+                    "tool_call_id": "oracle-solve-sh",
+                    "function_name": "bash",
+                    "arguments": {
+                        "command": "bash solution/solve.sh"
+                    }
+                }
+            ]
+        },
+        {
+            "step_id": 3,
+            "source": "oracle",
+            "message": "Apply message_rules.md: opening decision, transition breaches, answer-distance, word budget, pass threshold 80."
+        },
+        {
+            "step_id": 4,
+            "source": "oracle",
+            "message": "Build question_trace with status answered|answered_far|unanswered; score briefs; pick best single relocation."
+        },
+        {
+            "step_id": 5,
+            "source": "oracle",
+            "message": "Wrote gold brief_coherence.csv, question_trace.csv, executive_sequence_memo.md, results.json."
+        }
+    ]
+}
