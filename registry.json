@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T14:24:26Z",
+  "updated_at": "2026-09-11T16:40:29Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,7 +85,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll portal until Oracle+GLM×4+Harbor done",
-      "notes": "v22 uploaded content-6513101fd1bccf3a-v1. Skipped PreQC. QC-Oracle-GLM started (final QC). Local GLM 2/4 @ 1.0.",
+      "notes": "V20 uploaded via repair pipeline. Eval started. Previous 4/4 TOO_EASY.",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -226,9 +226,14 @@
           "at": "2026-09-10T22:47:02Z",
           "status": "final_running",
           "note": "v22 uploaded content-6513101fd1bccf3a-v1. Skipped PreQC. QC-Oracle-GLM started (final QC). Local GLM 2/4 @ 1.0."
+        },
+        {
+          "at": "2026-09-11T16:40:28Z",
+          "status": "final_running",
+          "note": "V20 uploaded via repair pipeline. Eval started. Previous 4/4 TOO_EASY."
         }
       ],
-      "updated_at": "2026-09-10T22:47:02Z",
+      "updated_at": "2026-09-11T16:40:28Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -3600,7 +3605,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "V12 uploaded. Eval running in harbor phase (8c5ab74c4fd94d1b). Fixed: row count 150, gold memo with R- IDs, collect=[], 177 verifiers, 50 per-recipe checks, R-114 tab fixed.",
+      "notes": "V14 uploaded via repair pipeline. Eval started. 1/4 on previous version.",
       "history": [
         {
           "at": "2026-09-08T01:01:58Z",
@@ -3731,9 +3736,14 @@
           "at": "2026-09-09T23:00:17Z",
           "status": "final_running",
           "note": "V12 uploaded. Eval running in harbor phase (8c5ab74c4fd94d1b). Fixed: row count 150, gold memo with R- IDs, collect=[], 177 verifiers, 50 per-recipe checks, R-114 tab fixed."
+        },
+        {
+          "at": "2026-09-11T16:40:28Z",
+          "status": "final_running",
+          "note": "V14 uploaded via repair pipeline. Eval started. 1/4 on previous version."
         }
       ],
-      "updated_at": "2026-09-09T23:00:17Z",
+      "updated_at": "2026-09-11T16:40:28Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
@@ -3761,7 +3771,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLMÃ—4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "V4 uploaded. Eval running (e9cdefae13f34c8a, retry after 2 crashes). Added 3 new reasoning metrics. 19 verifier configs.",
+      "notes": "V4 eval retried. Docker MCP gym crash.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -3872,9 +3882,14 @@
           "at": "2026-09-09T23:00:17Z",
           "status": "final_running",
           "note": "V4 uploaded. Eval running (e9cdefae13f34c8a, retry after 2 crashes). Added 3 new reasoning metrics. 19 verifier configs."
+        },
+        {
+          "at": "2026-09-11T16:40:29Z",
+          "status": "final_running",
+          "note": "V4 eval retried. Docker MCP gym crash."
         }
       ],
-      "updated_at": "2026-09-09T23:00:17Z",
+      "updated_at": "2026-09-11T16:40:29Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
