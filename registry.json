@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T15:20:35Z",
+  "updated_at": "2026-09-11T16:38:46Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1882,7 +1882,7 @@
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f53.zip",
       "next_action": "Fix packager and retry package",
-      "notes": "v3 uploaded (content-2b281c00): strengthened memo checks with correct amounts. Eval triggered (evaluation-306200890e764e27). Oracle 1.0, GLM 2/4 on v2.",
+      "notes": "v4 uploaded (content-43d5b09c): fixed rounding ambiguity — changed input amounts Y/OO/EE from 187.50/227.50 to 188.00/228.00 so 3% doesn't land on .XX5 boundary. Updated gold + verifier. Eval pending (409 slot full).",
       "history": [
         {
           "at": "2026-09-08T19:08:22Z",
@@ -1958,9 +1958,14 @@
           "at": "2026-09-10T18:12:09Z",
           "status": "final_running",
           "note": "v3 uploaded (content-2b281c00): strengthened memo checks with correct amounts. Eval triggered (evaluation-306200890e764e27). Oracle 1.0, GLM 2/4 on v2."
+        },
+        {
+          "at": "2026-09-11T16:38:46Z",
+          "status": "final_running",
+          "note": "v4 uploaded (content-43d5b09c): fixed rounding ambiguity — changed input amounts Y/OO/EE from 187.50/227.50 to 188.00/228.00 so 3% doesn't land on .XX5 boundary. Updated gold + verifier. Eval pending (409 slot full)."
         }
       ],
-      "updated_at": "2026-09-10T18:12:09Z",
+      "updated_at": "2026-09-11T16:38:46Z",
       "last_preqc": {
         "at": "2026-09-08T19:16:23Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000791\\2026-09-08T191622Z",
