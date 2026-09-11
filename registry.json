@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T11:25:56Z",
+  "updated_at": "2026-09-11T11:53:55Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1496,7 +1496,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (78de81f1) uploaded with FIXED Dockerfile (removed pinned SHA + NVM/Node). Waiting for eval slot (3 in use).",
+      "notes": "v1 (c4dd720f) uploaded with FIXED Dockerfile (proper Linux backslash continuations). Waiting for eval slot.",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -1677,9 +1677,14 @@
           "at": "2026-09-11T11:14:59Z",
           "status": "final_running",
           "note": "v1 (78de81f1) uploaded with FIXED Dockerfile (removed pinned SHA + NVM/Node). Waiting for eval slot (3 in use)."
+        },
+        {
+          "at": "2026-09-11T11:53:55Z",
+          "status": "final_running",
+          "note": "v1 (c4dd720f) uploaded with FIXED Dockerfile (proper Linux backslash continuations). Waiting for eval slot."
         }
       ],
-      "updated_at": "2026-09-11T11:14:59Z",
+      "updated_at": "2026-09-11T11:53:55Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1699,7 +1704,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T11:14:59Z",
+        "last_check_at": "2026-09-11T11:53:55Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -1813,11 +1818,19 @@
             "note": "v1 (78de81f1) uploaded with FIXED Dockerfile (removed pinned SHA + NVM/Node). Waiting for eval slot (3 in use).",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-11T11:53:55Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (c4dd720f) uploaded with FIXED Dockerfile (proper Linux backslash continuations). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "4/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-78de81f1952442c9464868aa5788e197-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-c4dd720fb84432e3bac5404d3b90a229-v1"
       }
     },
     {
@@ -2894,13 +2907,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (5604745e) Final QC STARTED with fixed Dockerfile (no pinned SHA, no NVM/Node). Oracle should build and pass now.",
+      "notes": "v1 (6405280b) uploaded with FIXED Dockerfile (proper Linux backslash continuations, no PowerShell backticks). Waiting for eval slot.",
       "history": [
-        {
-          "at": "2026-09-09T09:39:05Z",
-          "status": "final_running",
-          "note": "v1 (ed239145) fixed verifier regex (15 assertions). PreQC done. QC-Oracle-GLM starting."
-        },
         {
           "at": "2026-09-09T10:53:02Z",
           "status": "final_running",
@@ -3095,9 +3103,14 @@
           "at": "2026-09-11T11:22:36Z",
           "status": "final_running",
           "note": "v1 (5604745e) Final QC STARTED with fixed Dockerfile (no pinned SHA, no NVM/Node). Oracle should build and pass now."
+        },
+        {
+          "at": "2026-09-11T11:53:55Z",
+          "status": "final_running",
+          "note": "v1 (6405280b) uploaded with FIXED Dockerfile (proper Linux backslash continuations, no PowerShell backticks). Waiting for eval slot."
         }
       ],
-      "updated_at": "2026-09-11T11:22:36Z",
+      "updated_at": "2026-09-11T11:53:55Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3117,7 +3130,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T11:22:36Z",
+        "last_check_at": "2026-09-11T11:53:55Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -3343,11 +3356,19 @@
             "note": "v1 (5604745e) Final QC STARTED with fixed Dockerfile (no pinned SHA, no NVM/Node). Oracle should build and pass now.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-11T11:53:55Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (6405280b) uploaded with FIXED Dockerfile (proper Linux backslash continuations, no PowerShell backticks). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "4/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-5604745e0d7d2a4b0116fa5d32b4ee6e-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-6405280bc2048278c063ca8833d84e3b-v1"
       }
     },
     {
