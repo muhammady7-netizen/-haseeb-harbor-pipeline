@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T18:40:45Z",
+  "updated_at": "2026-09-11T19:59:34Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,11 +81,11 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "needs_densify",
+      "status": "ready_final",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
-      "next_action": "Densify task, PreQC, package, re-upload",
-      "notes": "GLM 4/4 too easy",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -236,9 +236,24 @@
           "at": "2026-09-11T18:33:09Z",
           "status": "needs_densify",
           "note": "GLM 4/4 too easy"
+        },
+        {
+          "at": "2026-09-11T19:56:16Z",
+          "status": "preqc_clean",
+          "note": "v24 densify: oracle 1.0, GLM 2/4 @1.0 (0.968/1.0/0.0/1.0). Packaging."
+        },
+        {
+          "at": "2026-09-11T19:57:33Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"
+        },
+        {
+          "at": "2026-09-11T19:59:34Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"
         }
       ],
-      "updated_at": "2026-09-11T18:33:09Z",
+      "updated_at": "2026-09-11T19:59:34Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -254,7 +269,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z\\findings.csv"
       },
-      "packaged_at": "2026-09-08T03:20:04Z",
+      "packaged_at": "2026-09-11T19:59:34Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-20652e2b94b277552633d85bfc683901-v1",
         "version": "v1",
@@ -673,47 +688,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "watch-portal",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "headless Final QC running after pull",
+      "notes": "v14 densify Final QC running",
       "history": [
-        {
-          "at": "2026-09-10T20:33:16Z",
-          "status": "final_running",
-          "note": "Oracle 1.0 GLM 3/4; Harbor Check running on #1f1da7"
-        },
-        {
-          "at": "2026-09-10T20:40:42Z",
-          "status": "needs_densify",
-          "note": "v9 #1f1da7: Oracle 1.0 GLM 3/4 but Harbor Check FAIL with 10 blockers. Fixing source (not dismissing)."
-        },
-        {
-          "at": "2026-09-10T20:49:03Z",
-          "status": "needs_densify",
-          "note": "v10 Harbor fairness (ward clerk alias, quoted numerics, empty unapproved mins, memo depth) + densify R-34/R-35"
-        },
-        {
-          "at": "2026-09-10T20:49:03Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-health-h40.zip"
-        },
-        {
-          "at": "2026-09-10T20:49:44Z",
-          "status": "ready_final",
-          "note": "v10 rebuilt from pack: Harbor fairness + densify R-34/R-35; local 43/43"
-        },
-        {
-          "at": "2026-09-10T20:50:29Z",
-          "status": "ready_final",
-          "note": "v10 zip 80530 ready; upload via headless qc_queue"
-        },
-        {
-          "at": "2026-09-10T20:53:28Z",
-          "status": "uploaded",
-          "note": "v10 uploaded headless content-6183c5072ed5fbd2ff923a821ff077d3-v1; waiting slots then QC-Oracle-GLM"
-        },
         {
           "at": "2026-09-10T20:53:28Z",
           "status": "final_running",
@@ -878,9 +858,48 @@
           "at": "2026-09-11T18:24:44Z",
           "status": "final_running",
           "note": "headless Final QC running after pull"
+        },
+        {
+          "at": "2026-09-11T18:45:07Z",
+          "status": "final_running",
+          "note": "Oracle Passed 1.0; GLM x4 in progress on #a34a429"
+        },
+        {
+          "at": "2026-09-11T18:47:30Z",
+          "status": "needs_densify",
+          "note": "latest #a34a429 Oracle 1.0 GLM 4/4 TOO_EASY — densify again"
+        },
+        {
+          "at": "2026-09-11T18:52:56Z",
+          "status": "ready_final",
+          "note": "v14 densify 66 results / 85 verifiers; local 87/87; headless Final QC"
+        },
+        {
+          "at": "2026-09-11T18:58:17Z",
+          "status": "uploaded",
+          "note": "v14 #e86ad926 uploaded; waiting Final QC slot"
+        },
+        {
+          "at": "2026-09-11T18:58:17Z",
+          "status": "final_running",
+          "note": "v14 densify 66 results uploaded; slots busy"
+        },
+        {
+          "at": "2026-09-11T18:58:34Z",
+          "status": "final_running",
+          "note": "v14 #e86ad926 Final QC started after slot wait"
+        },
+        {
+          "at": "2026-09-11T18:58:34Z",
+          "status": "final_running",
+          "note": "v14 densify Final QC running"
+        },
+        {
+          "at": "2026-09-11T19:34:01.389831+00:00",
+          "note": "v15 #a413ccbb uploaded; Final QC started (skip PreQC)"
         }
       ],
-      "updated_at": "2026-09-11T18:24:44Z",
+      "updated_at": "2026-09-11T18:58:34Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
@@ -898,13 +917,13 @@
       },
       "packaged_at": "2026-09-11T12:21:06Z",
       "portal": {
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-a34a42922510c3e6c4479efd5d0ccfb6-v1",
-        "version": "latest",
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-a413ccbb871f611177076ae6f9214042-v1",
+        "version": "v14",
         "watch": true,
-        "last_check_at": "2026-09-11T18:24:44Z",
+        "last_check_at": "2026-09-11T18:58:34Z",
         "phase": "final_running",
         "run_id": "evaluation-b5f90203e9f44d32",
-        "glm_pass": "0/4",
+        "glm_pass": "running",
         "oracle": "1.0",
         "checks": [
           {
@@ -994,8 +1013,35 @@
             "note": "headless Final QC running after pull",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-11T18:45:07Z",
+            "phase": "final_running",
+            "running": true,
+            "note": "Oracle Passed 1.0; GLM x4 in progress on #a34a429",
+            "glm_pass": "running",
+            "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-11T18:58:17Z",
+            "phase": "uploaded",
+            "running": true,
+            "note": "v14 densify 66 results uploaded; slots busy",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-11T18:58:34Z",
+            "phase": "final_running",
+            "running": true,
+            "note": "v14 densify Final QC running",
+            "glm_pass": null,
+            "oracle": null
           }
-        ]
+        ],
+        "content_id": "content-a413ccbb871f611177076ae6f9214042-v1",
+        "version_note": "v15 densify 80 rows / 102 verifiers; Final QC started",
+        "updated_at": "2026-09-11T19:34:01.389768+00:00"
       }
     },
     {
@@ -1530,17 +1576,12 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal",
       "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal\\code-c251-pdf-form-field-conversion-audit",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM├ù4 finishes",
-      "notes": "v1 (7ec9d05a) uploaded with ALL fixes: Dockerfile with openpyxl/python-docx/python-pptx/pypdf. Waiting for eval slot.",
+      "notes": "Harbor Delivery Gate fixed: README/instruction aligned, full-row coverage, memo fairness, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip — upload as v2",
       "history": [
-        {
-          "at": "2026-09-08T19:11:56Z",
-          "status": "preqc_running",
-          "note": ""
-        },
         {
           "at": "2026-09-08T19:11:57Z",
           "status": "preqc_clean",
@@ -1735,9 +1776,14 @@
           "at": "2026-09-11T13:46:53Z",
           "status": "final_running",
           "note": "v1 (7ec9d05a) uploaded with ALL fixes: Dockerfile with openpyxl/python-docx/python-pptx/pypdf. Waiting for eval slot."
+        },
+        {
+          "at": "2026-09-11T18:58:10Z",
+          "status": "ready_final",
+          "note": "Harbor Delivery Gate fixed: README/instruction aligned, full-row coverage, memo fairness, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip — upload as v2"
         }
       ],
-      "updated_at": "2026-09-11T13:46:53Z",
+      "updated_at": "2026-09-11T18:58:10Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -2467,22 +2513,12 @@
       "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
-      "status": "ready_accept",
+      "status": "blocked",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Dismiss remaining PreQC if needed, then Accept on portal",
-      "notes": "GLM 3/4 within difficulty gate",
+      "next_action": "Fix packager and retry package",
+      "notes": "build_qc_bundle failed rc=1",
       "history": [
-        {
-          "at": "2026-09-09T17:52:13Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
-        },
-        {
-          "at": "2026-09-09T17:55:18Z",
-          "status": "final_running",
-          "note": "v1 re-uploaded with fixed verifier (SC-10/32/35/36ΓåÆnone, SC-50ΓåÆRUNTIME_OUT_OF_BAND); Oracle+GLM started"
-        },
         {
           "at": "2026-09-09T19:22:13Z",
           "status": "ready_final",
@@ -2672,9 +2708,19 @@
           "at": "2026-09-11T12:19:39Z",
           "status": "ready_accept",
           "note": "GLM 3/4 within difficulty gate"
+        },
+        {
+          "at": "2026-09-11T18:54:41Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
+        },
+        {
+          "at": "2026-09-11T19:15:33Z",
+          "status": "blocked",
+          "note": "build_qc_bundle failed rc=1"
         }
       ],
-      "updated_at": "2026-09-11T12:19:39Z",
+      "updated_at": "2026-09-11T19:15:33Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2690,7 +2736,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z\\findings.csv"
       },
-      "packaged_at": "2026-09-10T22:59:03Z",
+      "packaged_at": "2026-09-11T18:54:41Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
         "version": "v1",
@@ -3002,13 +3048,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Densified pack packaged. Upload as new version, link lineage, skip PreQC, run QC-Oracle-GLM only.",
+      "notes": "Harbor Delivery Gate fixed: task_id+exists+equals+no_pipe, gold 64/58/6, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip — upload as v3",
       "history": [
-        {
-          "at": "2026-09-09T18:46:48Z",
-          "status": "final_running",
-          "note": "Pipeline error on first submission (Sep 9 11:34 PM) ΓÇö awaiting retry/verdict"
-        },
         {
           "at": "2026-09-09T19:21:12Z",
           "status": "final_running",
@@ -3203,9 +3244,14 @@
           "at": "2026-09-11T18:39:21Z",
           "status": "ready_final",
           "note": "Densified pack packaged. Upload as new version, link lineage, skip PreQC, run QC-Oracle-GLM only."
+        },
+        {
+          "at": "2026-09-11T18:58:11Z",
+          "status": "ready_final",
+          "note": "Harbor Delivery Gate fixed: task_id+exists+equals+no_pipe, gold 64/58/6, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip — upload as v3"
         }
       ],
-      "updated_at": "2026-09-11T18:39:21Z",
+      "updated_at": "2026-09-11T18:58:11Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3644,11 +3690,11 @@
       "pack_name": "gen-g1205-meal-prep-cost-claim-recompute-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016/gen-g1205-meal-prep-cost-claim-recompute-audit",
-      "status": "preqc_clean",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
-      "next_action": "Package; local oracle; upload; Run QC-Oracle-GLM",
-      "notes": "Harbor fixes applied in source (memo/verifier/instruction/review). PreQC optional — packaging.",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "QC-Oracle-GLM started after Harbor fixes upload",
       "history": [
         {
           "at": "2026-09-08T01:01:58Z",
@@ -3799,9 +3845,34 @@
           "at": "2026-09-11T18:40:45Z",
           "status": "preqc_clean",
           "note": "Harbor fixes applied in source (memo/verifier/instruction/review). PreQC optional — packaging."
+        },
+        {
+          "at": "2026-09-11T18:42:11Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g1205.zip"
+        },
+        {
+          "at": "2026-09-11T18:51:03Z",
+          "status": "final_running",
+          "note": "Harbor-fixed zip uploaded content-85cfa7f7...-v1. Waiting for eval slot then QC-Oracle-GLM (PreQC skipped)."
+        },
+        {
+          "at": "2026-09-11T18:51:03Z",
+          "status": "final_running",
+          "note": "Uploaded Harbor fixes; slots full"
+        },
+        {
+          "at": "2026-09-11T19:02:24Z",
+          "status": "final_running",
+          "note": "Harbor-fixed pack uploaded content-85cfa7f7...-v1. PreQC skipped. QC-Oracle-GLM started after slot freed."
+        },
+        {
+          "at": "2026-09-11T19:02:25Z",
+          "status": "final_running",
+          "note": "QC-Oracle-GLM started after Harbor fixes upload"
         }
       ],
-      "updated_at": "2026-09-11T18:40:45Z",
+      "updated_at": "2026-09-11T19:02:25Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
@@ -3817,13 +3888,13 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z\\findings.csv"
       },
-      "packaged_at": "2026-09-08T09:19:15Z",
+      "packaged_at": "2026-09-11T18:42:11Z",
       "portal": {
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-553c87b7cc8db88e3ccbf5006870f11b-v1",
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-85cfa7f72f124d9edf685f508d5192be-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T18:33:09Z",
-        "phase": "harbor_findings",
+        "last_check_at": "2026-09-11T19:02:25Z",
+        "phase": "glm_or_oracle_running",
         "glm_pass": "2/4",
         "oracle": "pass",
         "checks": [
@@ -3834,6 +3905,22 @@
             "note": "Oracle pass GLM 2/4 Harbor 15 blockers",
             "glm_pass": "2/4",
             "oracle": "pass"
+          },
+          {
+            "at": "2026-09-11T18:51:03Z",
+            "phase": "uploaded_waiting_slot",
+            "running": true,
+            "note": "Uploaded Harbor fixes; slots full",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-11T19:02:25Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "QC-Oracle-GLM started after Harbor fixes upload",
+            "glm_pass": null,
+            "oracle": null
           }
         ]
       }
@@ -3847,8 +3934,8 @@
       "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "Oracle crashed 4/4; re-run needed",
+      "next_action": "Poll until Oracle+GLM×4+Harbor done; if crash repeats, investigate pack",
+      "notes": "Oracle re-run in progress (Oracle Running / GLM waiting) on content-5cc146d4...79dd1f-v1 after prior crash.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -3969,9 +4056,14 @@
           "at": "2026-09-11T18:33:10Z",
           "status": "final_running",
           "note": "Oracle crashed 4/4; re-run needed"
+        },
+        {
+          "at": "2026-09-11T19:08:30Z",
+          "status": "final_running",
+          "note": "Oracle re-run in progress (Oracle Running / GLM waiting) on content-5cc146d4...79dd1f-v1 after prior crash."
         }
       ],
-      "updated_at": "2026-09-11T18:33:10Z",
+      "updated_at": "2026-09-11T19:08:30Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
