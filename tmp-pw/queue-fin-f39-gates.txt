@@ -22,7 +22,6 @@ Review findings
 Review record
 5
 Evaluation
-evaluation
 6
 Submit
 Client preQC (Internal Gate · advisory)
@@ -42,44 +41,21 @@ Complete
 Check again
 View details
 QC-Oracle-GLM check (3-task limit)
-Running now
-running now
-Running…
+Not run yet
+has not run on this task yet
+Run QC-Oracle-GLM
 View report
 what each gate checks
 You are the judge. what good QC takes — read once
 Run history
-2 runs · latest running
-QC-ORACLE-GLM CHECK
-QC-Oracle-GLM check
-Oracle Waiting
-GLM-5.2 ×4 difficulty Waiting
-running · 11s
-REVIEW.CSV CHECK
-review.csv check
-Complete
-14 areas resolved · QC reviewer: could not tell
-Sep 11, 03:42 AM · took 1.542s
+no runs yet
+
+No runs yet. Start a gate above and its runs will be listed here, newest first.
+
 RESULT
-evaluation
-11s
-Execution status — Oracle then GLM ×4
-ORACLE GOLDEN REPLAY
+No run open
 
-Waiting Waiting for Oracle result.
-
-Result not available yet
-
-GLM-5.2 ×4 DIFFICULTY
-
-Waiting Waiting for Oracle to pass.
-
-Result not available yet Result not available yet Result not available yet Result not available yet
-
-Live evaluation logs
-Trainer-only execution output
-
-Oracle + GLM ×4 + Harbor Check normally takes around 50 minutes — one Oracle golden replay, four GLM-5.2 trials, then Harbor Check. Some runs finish sooner; large or connector-heavy tasks can run longer. Nothing is lost if you navigate away.
+Run a gate above, or pick an earlier run to read its findings, score and report.
 
 Use this guide to do your own read of the task
 0/20 answered

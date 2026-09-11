@@ -1,0 +1,137 @@
+URL=https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-2db1ccc90bf524a99a3747075a20cfa5-v1
+
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+health-h40-critical-result-acknowledgement
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+!
+Evaluation
+changes needed
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: Trainer changes required
+Trainer changes required · 0 trainer finding(s) · 19 min ago
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+1 blocking issue
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+1
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+Task is too easy
+Review issue
+Run history
+1 run · latest Changes required
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Trainer changes required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · TOO_EASY · 4/4 passed
+0 trainer finding(s)
+Sep 12, 01:34 AM · took 1118s
+report
+zip
+RESULT
+Difficulty is too easy
+GLM-5.2 solved the task in 4/4 scored runs; Harbor Check was not run.
+QC-Oracle-GLM check
+Trainer changes required
+0 trainer finding(s)
+Finalization held: 1 blocking finding(s) cannot be cleared by disposition; correct the task and upload a new version. Submit to pipeline
+Execution evidence — Oracle + four GLM runs
+
+These are the five scored trials. Oracle replays the golden solution once to prove the task is solvable; the next four rows are independent GLM-5.2 attempts used to measure difficulty.
+
+step	trial	status	result	Harbor view	download
+1	Oracle golden replay	PASS	1.0 on _WZ4ymny (1/1 graded)	View Oracle in Harbor	trajectory (.zip)
+2	GLM-5.2 run 1	completed	reward 1	View GLM run 1 in Harbor	trajectory (.zip)
+3	GLM-5.2 run 2	completed	reward 1	View GLM run 2 in Harbor	trajectory (.zip)
+4	GLM-5.2 run 3	completed	reward 1	View GLM run 3 in Harbor	trajectory (.zip)
+5	GLM-5.2 run 4	completed	reward 1	View GLM run 4 in Harbor	trajectory (.zip)
+
+Difficulty: 4 of 4 GLM runs solved the task.
+
+FINAL VALIDATION — HARBOR CHECK
+
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+
+not completed · no durable evidence path
+
+Pipeline batch trainer-evaluation-89b0c0bddea24f6a-a1 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-4qkzv
+
+YOUR DECISIONS
+
+Blocking — blocker / critical 1
+blocker
+Task is too easy
+difficulty_too_easy
+deterministic
+
+The difficulty verdict exceeds the configured pass-count ceiling; no disposition can clear it. Increase the difficulty and upload a new version.
+
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+GLM-5.2 solved the task in 4/4 scored runs; the pass count exceeds the difficulty ceiling.
+IMPACT
+Blocks submission until the task difficulty is revised.
+SMALLEST FIX
+Increase the task difficulty and upload a new version.
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report_v2.html.
+
+DATA
+report.json
+Preview the report here
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

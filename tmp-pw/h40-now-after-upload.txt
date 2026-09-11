@@ -1,0 +1,16 @@
+URL=https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#
+
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+Upload a task to QC
+
+Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.
+
+Drop a task here, or click to browse
+One Harbor task package as .zip.
+ reading the bundle…
+What a Harbor task package looks like

@@ -1,0 +1,416 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+gen-g1205-meal-prep-cost-claim-recompute-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+15 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 15 trainer finding(s) · 2 h ago
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+15 blocking issues
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+15
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope__representation_contract
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__cross_artifact_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__instruction_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_instruction_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__check_independence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__coverage_depth
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__requirement_traceability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__scoring_proportionality
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+Run history
+1 run · latest Review
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 2/4 passed
+15 trainer finding(s)
+Sep 11, 09:35 PM · took 2284s
+report
+zip
+RESULT
+QC-Oracle-GLM check
+Review required
+15 trainer finding(s)
+Finalization held: 15 blocking finding(s) await disposition: confirm each one or justify it as a false positive with a note. Submit to pipeline
+Execution evidence — Oracle + four GLM runs
+
+These are the five scored trials. Oracle replays the golden solution once to prove the task is solvable; the next four rows are independent GLM-5.2 attempts used to measure difficulty.
+
+step	trial	status	result	Harbor view	download
+1	Oracle golden replay	PASS	1.0 on _rSJo7cM (1/1 graded)	View Oracle in Harbor	trajectory (.zip)
+2	GLM-5.2 run 1	completed	reward 1	View GLM run 1 in Harbor	trajectory (.zip)
+3	GLM-5.2 run 2	completed	reward 0.988700565	View GLM run 2 in Harbor	trajectory (.zip)
+4	GLM-5.2 run 3	completed	reward 1	View GLM run 3 in Harbor	trajectory (.zip)
+5	GLM-5.2 run 4	completed	reward 0.988700565	View GLM run 4 in Harbor	trajectory (.zip)
+
+Difficulty: 2 of 4 GLM runs solved the task.
+
+FINAL VALIDATION — HARBOR CHECK
+
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+
+FAIL · 0 finding(s) screened out · gs://obi-harbor-pipeline/results/trainer-evaluation-e0440fa158644ed9-a1/_harbor_check/runs/evaluation-e0440fa158644ed9-a1/status.json
+
+Pipeline batch trainer-evaluation-e0440fa158644ed9-a1 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-7xchw
+
+YOUR DECISIONS
+
+0/15
+findings dispositioned by you
+Blocking — blocker / critical 15
+blocker
+layer1_clarity_scope
+layer1_clarity_scope
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope Aggregate fails on the representation subcheck: reward depends on undisclosed memo representation choices (which recipe IDs are named and whether the explanatory keyword appears after rather than before the ID), demonstrated by difficulty/r2 where a correct memo listing 'The 28 recipes flagged: R-02, R-05, ...' right after the sentence containing COST_CLAIM_INVALID still failed memo_r02_cost_claim_invalid.
+IMPACT
+Same root cause as l1.clarity_scope::layer1_clarity_scope__representation_contract. A correct memo in difficulty/r2 failed because it put the keyword before the ID list, which the verifier does not allow.
+SMALLEST FIX
+Disclose the required recipe IDs and the keyword-after-ID ordering in instruction.md, or make the memo checks in tests/verifier.json order-insensitive and accept any correct recipe ID.
+VERIFY
+Run the verifier on a memo that names a different valid pantry-staple recipe and puts the keyword before the ID; it should pass.
+Review note (optional)
+blocker
+layer1_clarity_scope__representation_contract
+layer1_clarity_scope__representation_contract
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_clarity_scope__representation_contract Undisclosed representation choices change reward. The memo anchors are order-sensitive windows: memo_r02_cost_claim_invalid requires 'R-0[25]' followed within 300 chars by cost/claim/invalid, so difficulty/r2's memo, which wrote the keyword first and then the ID list, failed despite being correct; memo_r15_stale_precedence failed the same way. Which recipe to cite (R-44 vs the other 17 pantry-staple recipes) is likewise not stated. Everything else (canonical upper-cased trimmed IDs, header, 2 columns, no pipes, finding tokens, results.json keys) is disclosed in instruction.md / recipe_cost_claim_standard.md.
+IMPACT
+Same root cause as l1.clarity_scope::layer1_clarity_scope. The memo checks require the keyword within 300 chars after a specific ID, but instruction.md never says which ID to cite or that the keyword must follow it.
+SMALLEST FIX
+Add the recipe-ID and keyword-ordering rules to instruction.md, or rewrite the five memo anchor checks in tests/verifier.json to accept any clause order and any correct recipe ID.
+VERIFY
+Run the verifier on a memo with the keyword before the ID and a different valid pantry-staple ID; both should pass.
+Review note (optional)
+blocker
+layer1_package_consistency
+layer1_package_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency Aggregate fails because mandatory subchecks fail: cross-artifact counts are stale (solution/golden_results.json = 100/56/21/20/44 vs the graded and actually-delivered 150/76/28/28/74; tests/verifier.json audit_exactly_n_rows metadata says '100 data rows' while its regex requires 150; review.csv claims '182 checks' where tests/verifier.json has 177), the verifier imposes memo requirements absent from instruction.md, and solution/files/recipe_cost_memo.md contradicts its own audit CSV (claims R-64 is at the exact $0.25 boundary and COST_CLAIM_INVALID, while solution/files/recipe_cost_audit.csv and verifier check r64 say 'none'; recomputed delta is $0.16).
+IMPACT
+Counts in golden_results.json, verifier.json metadata, and review.csv disagree with the actual 150-recipe dataset and 177-check verifier, and the golden memo contradicts its own audit CSV on R-64.
+SMALLEST FIX
+Update solution/golden_results.json to 150/76/28/28/74, fix the audit_exactly_n_rows metadata in tests/verifier.json to say 150, update review.csv to say 177 checks and 5 stability repeats, and correct the R-64 passage in solution/files/recipe_cost_memo.md to match the 'R-64,none' CSV row (the exact-$0.25 case is R-135).
+VERIFY
+Run the verifier and confirm golden_results.json, verifier.json metadata, review.csv, and the memo all agree on 150 recipes, 177 checks, 5 repeats, and R-64 as 'none'.
+Review note (optional)
+blocker
+layer1_package_consistency__cross_artifact_consistency
+layer1_package_consistency__cross_artifact_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__cross_artifact_consistency The set does not jointly describe one answer. environment/input/meal_prep_recipe_batch.csv has 185 data rows / 150 unique IDs and tests/verifier.json grades 150 per-recipe checks plus result_recipe_count=150, matching solution/files/results.json (150/76/28/28/74). But solution/golden_results.json still states 100/56/21/20/44, verifier metadata for audit_exactly_n_rows still describes '100 data rows (100 rows)', and review.csv repeatedly asserts '182 deterministic checks' and '3 stability repeats' (177 checks, 5 repeats are present). These are stale declarations about the correct answer and the check set.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The input CSV has 150 unique recipe IDs and the verifier grades 150, but three artifacts still declare 100 rows, 182 checks, and 3 repeats.
+SMALLEST FIX
+Set solution/golden_results.json to 150/76/28/28/74, change the audit_exactly_n_rows metadata in tests/verifier.json to '150 data rows', and update review.csv to say 177 checks and 5 stability repeats.
+VERIFY
+Diff the three files against environment/input/meal_prep_recipe_batch.csv and tests/verifier.json; all counts should match 150 recipes, 177 checks, and 5 repeats.
+Review note (optional)
+blocker
+layer1_package_consistency__instruction_verifier_consistency
+layer1_package_consistency__instruction_verifier_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__instruction_verifier_consistency Reward-bearing verifier-only requirements exist in the memo checks. memo_r44_truffle_excluded demands the literal token 'R-44'; instruction.md only asks 'which recipe's extra ingredient the standard excludes from cost', and 18 recipes carry an affirmative extra_is_pantry_staple (15 of which flip the finding: R-03, R-20, R-33, R-39, R-44, R-53, R-56, R-66, R-70, R-75, R-95, R-117, R-124, R-134, R-140), so R-44 is not derivable. memo_r02_cost_claim_invalid / memo_r04_stale_price / memo_r08_serving_missing / memo_r15_stale_precedence likewise require particular IDs with a keyword within 300 chars *after* the ID. Conversely, instruction.md's 'at least 1500 characters' memo rule is graded only at 500 ({500,}) and its 'exactly these keys and no others' rule for results.json is never checked.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The verifier requires R-44 and ID-before-keyword ordering that the instruction does not state, while the 1500-character and exact-keys rules are never checked.
+SMALLEST FIX
+Either add the required recipe IDs and keyword-ordering rules to instruction.md, or rewrite the memo checks in tests/verifier.json to accept any correct recipe ID and any clause order; also add a check for the 1500-character minimum and a no-extra-keys assertion on results.json.
+VERIFY
+Run the verifier against a memo that names R-03 instead of R-44 and puts the keyword before the ID; it should pass, and a results.json with extra keys should fail.
+Review note (optional)
+blocker
+layer1_package_consistency__solution_instruction_consistency
+layer1_package_consistency__solution_instruction_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__solution_instruction_consistency Golden deliverables are complete and use the disclosed contract (solution/files/recipe_cost_audit.csv: header recipe_id,finding, 150 rows; results.json with exactly the five keys; memo 3,879 chars), and solve.sh installs them into /app. However the golden memo contains a materially false explanation that contradicts the golden CSV: 'R-64: true cost exceeds claimed by exactly $0.25 ... COST_CLAIM_INVALID' while the golden CSV row is 'R-64,none' and the recomputed delta is $0.16 (R-135 is the actual exact-$0.25 case). The instruction requires the memo to explain the findings, so the reference deliverable does not satisfy its own contract.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The reference deliverable violates the instruction's requirement that the memo explain the findings, because it states a wrong finding for R-64.
+SMALLEST FIX
+Rewrite the R-64 passage in solution/files/recipe_cost_memo.md to say R-64 has no finding (delta $0.16), and move the exact-$0.25 COST_CLAIM_INVALID explanation to R-135.
+VERIFY
+Open solution/files/recipe_cost_memo.md and confirm the R-64 text matches the 'R-64,none' row in solution/files/recipe_cost_audit.csv.
+Review note (optional)
+blocker
+layer2_difficulty
+layer2_difficulty
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty Pairing, provenance, and distribution are fine (4 eligible independent glm/glm-5.2 opencode attempts; strict 1.0 in difficulty/r1 and r3, fractional 0.988700565 in r2 and r4 — 2/4), but the aggregate fails because failure_cause_validity fails: both sub-1.0 runs lost only memo lexical-window checks (r2: memo_r02_cost_claim_invalid, memo_r15_stale_precedence; r4: memo_r04_stale_price, memo_r15_stale_precedence) while passing all 150 per-recipe checks, all structural checks, and all five results.json checks. The observed difficulty comes from a verifier defect, not from the task.
+IMPACT
+Same root cause as l2.difficulty::layer2_difficulty__failure_cause_validity. Runs r2 and r4 got all 150 per-recipe checks and all results.json checks right but lost reward to order-sensitive memo regexes.
+SMALLEST FIX
+Fix the memo anchor checks in tests/verifier.json per the representation-contract finding, then re-run the difficulty trials so the observed failures reflect task difficulty rather than verifier brittleness.
+VERIFY
+Re-run difficulty r2 and r4 with the fixed verifier; the memo checks should pass for the existing correct memos.
+Review note (optional)
+blocker
+layer2_difficulty__failure_cause_validity
+layer2_difficulty__failure_cause_validity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty__failure_cause_validity The two non-passes are verifier defects, not task difficulty. difficulty/r2 lost exactly memo_r02_cost_claim_invalid and memo_r15_stale_precedence although its memo (recoverable from the trajectory write call) states '... exactly $0.25 is still `COST_CLAIM_INVALID`; only a delta strictly below $0.25 is compliant. The 28 recipes flagged: R-02, R-05, R-09, ...' — semantically explicit, but the regex needs the keyword within 300 chars *after* the ID. difficulty/r4 lost memo_r04_stale_price and memo_r15_stale_precedence the same way. Both runs produced all 150 correct per-recipe findings and correct results.json counts, so the substantive task was solved.
+IMPACT
+Same root cause as l2.difficulty::layer2_difficulty. Both runs produced all 150 correct findings and correct results.json counts but lost memo checks to order-sensitive windows.
+SMALLEST FIX
+Make the memo anchor checks in tests/verifier.json order-insensitive, then re-run the difficulty trials to confirm failures come from the task itself.
+VERIFY
+Re-run r2 and r4 with the fixed verifier; the existing memos should pass the memo checks.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static
+layer5_verifier_fairness_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static Aggregate fails because mandatory subchecks fail: requirement_traceability (verifier-only memo ID/keyword-order demands; ungraded 'exactly these keys' and 1500-char rules), coverage_depth (memo graded purely by token windows — the golden memo's false R-64 claim passes), semantic_equivalence and surface_form_brittleness (order-sensitive 300-char windows rejected a correct memo in difficulty/r2), scoring_proportionality, and check_independence. The strong 150-check per-recipe core does not offset these specific defects.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__requirement_traceability. The memo checks reward token presence over correctness, reject correct memos on clause order, and double-count the same stale-price fact.
+SMALLEST FIX
+Rewrite the memo checks in tests/verifier.json to be order-insensitive, accept any correct recipe ID, add a no-extra-keys check for results.json, raise the memo length check to 1500, and merge the overlapping stale-price checks.
+VERIFY
+Run the verifier on the golden memo (with the R-64 fix), a memo with reversed clause order, and a results.json with extra keys; only the extra-keys case should fail.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__check_independence
+layer5_verifier_fairness_static__check_independence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__check_independence Several memo checks are nested predicates over the same fact without disclosed justification: any text matching memo_anchors_blank_chicken ((blank|out-of-date|stale|unparseable).{0,500}(chicken|price)) necessarily matches memo_anchors_stale_price ((stale|out-of-date|chicken.{0,200}price|...)), and memo_r04_stale_price / memo_r15_stale_precedence are satisfied by the same stale-price sentence, so one stale-price paragraph collects four nominally distinct rewards while its absence is penalized four times.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. One stale-price sentence satisfies memo_anchors_blank_chicken, memo_anchors_stale_price, memo_r04_stale_price, and memo_r15_stale_precedence, multiplying one fact across four checks.
+SMALLEST FIX
+Merge the overlapping stale-price checks in tests/verifier.json into a single check, or split them so each requires a distinct fact (blank chicken price vs stale price vs precedence rule).
+VERIFY
+Run the verifier on a memo with one stale-price sentence; it should earn one check, not four.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__coverage_depth
+layer5_verifier_fairness_static__coverage_depth
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__coverage_depth The CSV and results.json are checked deeply (150 per-recipe findings, exact header, exactly-150-row and two-field shape, no pipes, five exact counts), but the memo — an explicitly required deliverable with substantive content requirements — is graded only by token presence/proximity. Demonstration: solution/files/recipe_cost_memo.md contains the materially false statement that R-64 exceeds the claim by exactly $0.25 and is COST_CLAIM_INVALID (actual delta $0.16; its own CSV says 'R-64,none') and still satisfies all 15 memo checks in my replay. A memo of correct keywords with wrong analysis passes.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. The memo is a required deliverable with substantive content, but the verifier only checks for keyword proximity, not correctness.
+SMALLEST FIX
+Add a check in tests/verifier.json that cross-references memo recipe claims against the audit CSV, or rewrite the memo checks to validate that named recipe IDs match the CSV findings.
+VERIFY
+Run the verifier on the current golden memo; the false R-64 claim should fail a memo check.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__requirement_traceability
+layer5_verifier_fairness_static__requirement_traceability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__requirement_traceability Reward-bearing verifier-only requirements: memo_r44_truffle_excluded (literal 'R-44', undeterminable among 18 affirmative pantry-staple recipes), memo_r02_cost_claim_invalid, memo_r04_stale_price, memo_r08_serving_missing, memo_r15_stale_precedence (specific IDs plus a keyword within 300 chars after the ID). Untested material instruction requirements: results.json must have 'exactly these keys and no others' (only the five values are read via $.<key>, extras pass) and the memo's 'at least 1500 characters' (graded at {500,}).
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Five memo checks demand specific IDs and keyword-after-ID order not in the instruction; the exact-keys and 1500-char rules are untested.
+SMALLEST FIX
+Disclose the recipe-ID and keyword-order rules in instruction.md or make the five memo checks accept any correct ID and any order; add a check that rejects extra keys in results.json and raise the memo length regex to 1500.
+VERIFY
+Run the verifier on a memo with a different valid pantry-staple ID and a results.json with an extra key; the memo should pass and the results.json should fail.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__scoring_proportionality
+layer5_verifier_fairness_static__scoring_proportionality
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__scoring_proportionality Impact is misallocated in both directions. Cosmetic clause ordering in two of 177 checks (memo_r02/memo_r15) is what separated an otherwise perfect difficulty/r2 run from a strict pass, while a fatal omission is under-penalized: deleting recipe_cost_memo.md entirely would fail only memo_exists plus the 15 memo checks, 16/177, leaving reward ~0.91. Meanwhile all 150 per-recipe rows and each memo token anchor carry identical weight, so trap recipes and keyword presence count the same.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Cosmetic memo wording has outsized impact and a missing memo is under-penalized, while all 150 per-recipe rows and memo tokens carry equal weight.
+SMALLEST FIX
+Reweight the memo checks in tests/verifier.json so a missing memo fails the task, and reduce the per-check impact of individual memo token anchors so clause order cannot block an otherwise correct submission.
+VERIFY
+Run the verifier with the memo deleted; the reward should be 0, and a memo with one reversed clause should not drop below a pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__semantic_equivalence
+layer5_verifier_fairness_static__semantic_equivalence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__semantic_equivalence Materially equivalent correct memos are rejected. Clause order alone decides: difficulty/r2 wrote '... is still `COST_CLAIM_INVALID`; ... The 28 recipes flagged: R-02, R-05, ...' and failed memo_r02_cost_claim_invalid because the regex only accepts keyword-after-ID. Likewise a memo that names R-03's finishing salt or R-56's truffle oil as the excluded pantry extra — equally correct, since 15 recipes' findings turn on the exclusion — fails memo_r44_truffle_excluded. None of these forms is required by instruction.md. (The audit CSV matchers themselves are tolerant: optional quotes, case-insensitive IDs, whitespace around the comma.)
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Clause order and recipe-ID choice, neither disclosed in the instruction, decide whether a correct memo passes.
+SMALLEST FIX
+Rewrite the memo anchor regexes in tests/verifier.json to accept keyword-before-ID order and any of the 15 valid pantry-staple recipe IDs, or disclose the required form in instruction.md.
+VERIFY
+Run the verifier on a memo with reversed clause order and R-03 as the pantry-staple recipe; it should pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__surface_form_brittleness
+layer5_verifier_fairness_static__surface_form_brittleness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__surface_form_brittleness The five memo ID anchors are direction- and distance-sensitive lexical matchers (`R-1[58].{0,300}?(?:PRICE_SHEET_STALE|stale|precedence|4\.00)`), so a correct explanation loses reward for incidental wording/layout — confirmed twice in the checked-in evidence (r2 and r4). Conversely they are trivially [REDACTED]: 'R-44 none', 'R-15 stale' satisfies them with no analysis, and memo_anchors_tolerance_boundary matches on the bare string '0.25'. Several matchers also check less than their stated criterion: memo_anchors_blank_chicken claims to verify blank/unparseable chicken-price handling but matches plain 'stale price'; memo_anchors_secondary_register matches the bare number '4.25'.
+IMPACT
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static. Correct memos fail on clause order while token strings with no analysis pass, and two checks match on bare numbers instead of their intended content.
+SMALLEST FIX
+Replace the five memo anchor regexes in tests/verifier.json with order-insensitive semantic checks, tighten memo_anchors_blank_chicken to require a blank-or-unparseable qualifier alongside chicken, and tighten memo_anchors_secondary_register to require context around 4.25.
+VERIFY
+Run the verifier on a memo with reversed clause order and on a memo with bare tokens 'R-44 none' and '4.25'; the first should pass and the second should fail.
+Review note (optional)
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report_v2.html.
+
+DATA
+report.json
+Preview the report here
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

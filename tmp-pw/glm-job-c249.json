@@ -1,0 +1,51 @@
+{
+  "job_name": "glm-c249-difficulty-v2",
+  "jobs_dir": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-c249",
+  "n_concurrent_trials": 2,
+  "n_attempts": 4,
+  "verifier": {
+    "env": {
+      "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+      "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+      "JUDGE_MODEL": "openai/glm-5.2"
+    }
+  },
+  "agents": [
+    {
+      "name": "opencode",
+      "model_name": "glm/glm-5.2",
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1"
+      },
+      "kwargs": {
+        "opencode_config": {
+          "provider": {
+            "glm": {
+              "npm": "@ai-sdk/openai-compatible",
+              "name": "GLM Gateway",
+              "options": {
+                "baseURL": "http://34.41.10.8:4000/v1",
+                "apiKey": "{env:OPENAI_API_KEY}"
+              },
+              "models": {
+                "glm-5.2": {
+                  "name": "GLM-5.2",
+                  "reasoning": true,
+                  "interleaved": {
+                    "field": "reasoning_content"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c249-work/code-c249-recurring-report-source-selection-audit"
+    }
+  ]
+}

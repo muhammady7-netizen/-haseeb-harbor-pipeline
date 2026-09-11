@@ -1,0 +1,26 @@
+[
+  {
+    "short": "fin-f39",
+    "uploaded": false,
+    "gates": false,
+    "preqc": false,
+    "oracle": false,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#"
+  },
+  {
+    "short": "gen-g1205",
+    "uploaded": false,
+    "gates": false,
+    "preqc": false,
+    "oracle": false,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#"
+  },
+  {
+    "short": "the-thread",
+    "uploaded": false,
+    "gates": false,
+    "preqc": false,
+    "oracle": false,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#"
+  }
+]

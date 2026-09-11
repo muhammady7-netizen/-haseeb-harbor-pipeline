@@ -8,7 +8,7 @@ pack = Path(
     r"\qc-out\ework\UPLOAD-THIS-TO-QC-health-h40"
     r"\health-h40-critical-result-acknowledgement"
 )
-ignore = {".DS_Store", "__pycache__", ".git"}
+ignore = {".DS_Store", "__pycache__", ".git", ".pytest_cache"}
 tmp = Path(
     r"C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline"
     r"\UPLOAD-THIS-TO-QC-health-h40.zip"
@@ -22,6 +22,8 @@ with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         if any(part in ignore or part.endswith(".pyc") for part in path.parts):
             continue
         if path.name.endswith(".zip"):
+            continue
+        if ".bak-" in path.name or path.name.endswith(".bak"):
             continue
         arc = (Path(pack.name) / path.relative_to(pack)).as_posix()
         zf.write(path, arcname=arc)

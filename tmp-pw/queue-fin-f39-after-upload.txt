@@ -29,7 +29,6 @@ Not run yet
 has not run on this task yet
 Run client preQC
 View report
-Your 3 run slots are currently in use.
 
 REVIEW.CSV · REQUIRED TO SUBMIT
 
@@ -47,7 +46,6 @@ Not run yet
 has not run on this task yet
 Run QC-Oracle-GLM
 View report
-Your 3 run slots are currently in use.
 what each gate checks
 You are the judge. what good QC takes — read once
 Run history
