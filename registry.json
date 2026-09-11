@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T13:20:30Z",
+  "updated_at": "2026-09-11T13:28:16Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -657,13 +657,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "h40 v15 uploaded (content-c9a663fb). Fixed: csv.py strips quotes, memo regex accepts 'ward clerk' + 'not permitted'. 28 results, 51 verifiers, 5 new traps. QC-Oracle-GLM running.",
+      "notes": "h40 v16 uploaded (content-e044997e) via pipeline tool. Fixed: csv.py strips quotes, memo regex broadened to accept 'not recognised/not recognized/unauthorised'. QC-Oracle-GLM running (Oracle waiting 125s).",
       "history": [
-        {
-          "at": "2026-09-09T19:04:32Z",
-          "status": "ready_accept",
-          "note": "Submitted run2 to pipeline"
-        },
         {
           "at": "2026-09-09T19:34:51Z",
           "status": "final_running",
@@ -858,9 +853,14 @@
           "at": "2026-09-11T12:22:48Z",
           "status": "final_running",
           "note": "h40 v15 uploaded (content-c9a663fb). Fixed: csv.py strips quotes, memo regex accepts 'ward clerk' + 'not permitted'. 28 results, 51 verifiers, 5 new traps. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-11T13:28:16Z",
+          "status": "final_running",
+          "note": "h40 v16 uploaded (content-e044997e) via pipeline tool. Fixed: csv.py strips quotes, memo regex broadened to accept 'not recognised/not recognized/unauthorised'. QC-Oracle-GLM running (Oracle waiting 125s)."
         }
       ],
-      "updated_at": "2026-09-11T12:22:48Z",
+      "updated_at": "2026-09-11T13:28:16Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
