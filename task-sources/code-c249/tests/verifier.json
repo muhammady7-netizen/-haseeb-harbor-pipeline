@@ -1,0 +1,580 @@
+{
+  "task_id": "code-C249-recurring-report-source-selection-audit",
+  "verifiers": [
+    {
+      "name": "audit_exists",
+      "metadata": {
+        "how_justification": "Checks report_source_audit.csv is present as a file in the workspace.",
+        "why_justification": "Audit delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_exists",
+      "metadata": {
+        "how_justification": "Checks report_source_memo.md is present as a file in the workspace.",
+        "why_justification": "Memo delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "report_source_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "row_mismatch_flagged",
+      "metadata": {
+        "how_justification": "Opens report_source_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Row count not matching the archive snapshot is flagged."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?RUN-02\\x22?\\s*,[^\\n]*ROW_COUNT_MISMATCH",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "tail_merge_flagged",
+      "metadata": {
+        "how_justification": "Opens report_source_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "First post-cutover monthly report with no tail merge is flagged."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?RUN-03\\x22?\\s*,[^\\n]*MISSING_TAIL_MERGE",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "source_mismatch_flagged",
+      "metadata": {
+        "how_justification": "Opens report_source_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Post-cutover run still on archive is flagged."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?RUN-04\\x22?\\s*,[^\\n]*SOURCE_MISMATCH",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trap_clean",
+      "metadata": {
+        "how_justification": "Opens report_source_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Cutover-date run on archive reads none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?RUN-05\\x22?\\s*,[^\\n]*\\bnone\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_inclusive_cutover",
+      "metadata": {
+        "how_justification": "Opens report_source_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo names the inclusive cutover rule."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)\\binclusive\\w*\\b.*\\bcutover",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_tail_merge",
+      "metadata": {
+        "how_justification": "Opens report_source_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo covers the missing-tail-merge finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)\\bmonthly\\w*\\b.*\\btail[\\s\\-]merge",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "run01_clean",
+      "metadata": {
+        "how_justification": "Opens report_source_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "RUN-01 is a compliant pre-cutover run \u2014 finding must be none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?RUN-01\\x22?\\s*,[^\\n]*\\bnone\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_run02_explained",
+      "metadata": {
+        "how_justification": "Opens report_source_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the RUN-02 row count mismatch finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)\\bRUN-02\\b.*\\brow count",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_run03_explained",
+      "metadata": {
+        "how_justification": "Opens report_source_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the RUN-03 missing tail merge finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)\\bRUN-03\\b.*\\btail merge",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_run04_explained",
+      "metadata": {
+        "how_justification": "Opens report_source_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the RUN-04 source mismatch finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)\\bRUN-04\\b.*\\bsource[\\s\\-]?mismatch",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Checks results.json is present as a file in the workspace.",
+        "why_justification": "Derived figures delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_flagged_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.flagged_count.",
+        "why_justification": "Derived figure `flagged_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 6,
+        "deterministic": {
+          "path": "$.flagged_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_source_mismatch_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.source_mismatch_count.",
+        "why_justification": "Derived figure `source_mismatch_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 4,
+        "deterministic": {
+          "path": "$.source_mismatch_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_row_count_mismatch_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.row_count_mismatch_count.",
+        "why_justification": "Derived figure `row_count_mismatch_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 1,
+        "deterministic": {
+          "path": "$.row_count_mismatch_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_missing_tail_merge_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.missing_tail_merge_count.",
+        "why_justification": "Derived figure `missing_tail_merge_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 1,
+        "deterministic": {
+          "path": "$.missing_tail_merge_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_missing_job_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.missing_job_count.",
+        "why_justification": "Derived figure `missing_job_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 0,
+        "deterministic": {
+          "path": "$.missing_job_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "finding_run_06",
+      "metadata": {
+        "how_justification": "RUN-06 after cutover using archive -> SOURCE_MISMATCH",
+        "why_justification": "RUN-06 after cutover using archive -> SOURCE_MISMATCH"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^RUN-06\\s*,.*SOURCE_MISMATCH",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "finding_run_07",
+      "metadata": {
+        "how_justification": "RUN-07 on cutover date using live -> SOURCE_MISMATCH",
+        "why_justification": "RUN-07 on cutover date using live -> SOURCE_MISMATCH"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^RUN-07\\s*,.*SOURCE_MISMATCH",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "finding_run_08",
+      "metadata": {
+        "how_justification": "RUN-08 second monthly report, no tail merge needed -> none",
+        "why_justification": "RUN-08 second monthly report, no tail merge needed -> none"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^RUN-08\\s*,.*none",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "finding_run_09",
+      "metadata": {
+        "how_justification": "RUN-09 before cutover using live -> SOURCE_MISMATCH",
+        "why_justification": "RUN-09 before cutover using live -> SOURCE_MISMATCH"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^RUN-09\\s*,.*SOURCE_MISMATCH",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "finding_run_10",
+      "metadata": {
+        "how_justification": "RUN-10 after cutover using live -> none",
+        "why_justification": "RUN-10 after cutover using live -> none"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "report_source_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^RUN-10\\s*,.*none",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    }
+  ]
+}

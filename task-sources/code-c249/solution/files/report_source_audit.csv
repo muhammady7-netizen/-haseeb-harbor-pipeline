@@ -1,0 +1,11 @@
+run_id,job_name,run_date,source_used,reported_row_count,finding
+RUN-01,weekly-journal-brief,2026-06-29,archive,412,none
+RUN-02,weekly-journal-brief,2026-07-13,live,388,ROW_COUNT_MISMATCH
+RUN-03,monthly-report,2026-08-03,,0,MISSING_TAIL_MERGE
+RUN-04,week-ahead-briefing,2026-07-20,archive,470,SOURCE_MISMATCH
+RUN-05,weekly-journal-brief,2026-07-06,archive,305,none
+RUN-06,weekly-journal-brief,2026-07-07,archive,401,SOURCE_MISMATCH
+RUN-07,week-ahead-briefing,2026-07-06,live,350,SOURCE_MISMATCH
+RUN-08,monthly-report,2026-09-07,live,520,none
+RUN-09,weekly-journal-brief,2026-07-05,live,290,SOURCE_MISMATCH
+RUN-10,week-ahead-briefing,2026-07-07,live,445,none

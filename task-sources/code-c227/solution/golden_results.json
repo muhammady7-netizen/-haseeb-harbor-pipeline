@@ -1,0 +1,7 @@
+{
+  "flagged_count": 9,
+  "autovacuum_disabled_count": 3,
+  "bloat_exceeded_count": 3,
+  "stale_statistics_count": 3,
+  "compliant_count": 8
+}

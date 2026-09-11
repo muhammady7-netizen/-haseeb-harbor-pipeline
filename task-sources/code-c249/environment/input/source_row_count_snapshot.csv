@@ -1,0 +1,11 @@
+run_id,source_used,source_row_count_snapshot
+RUN-01,archive,412
+RUN-02,live,412
+RUN-03,archive,0
+RUN-04,archive,470
+RUN-05,archive,305
+RUN-06,archive,401
+RUN-07,live,350
+RUN-08,live,520
+RUN-09,live,412
+RUN-10,live,445

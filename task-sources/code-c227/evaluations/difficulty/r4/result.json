@@ -1,0 +1,19 @@
+{
+    "model": "GLM-5.2",
+    "overall_pass": false,
+    "reward": 0.7037037037,
+    "task_name": "obi/code-c227-table-bloat-maintenance-audit",
+    "trial_name": "code-c227-table-bloat-maintenanc__ZTLTp8v",
+    "final_answer": "All three deliverables are written and confirmed in `/app`:\n\n- `bloat_audit.csv` \u2014 8 rows, one per table, with a `finding` column.\n- `bloat_memo.md` \u2014 explains every finding plus the actively-maintained table (T-05).\n- `results.json` \u2014 counts object.\n\n**Audit results:**\n\n| Table | Class | Bloat | Cap | AV | Days | Maint | Finding |\n|---|---|---|---|---|---|---|---|\n| T-01 | large | 0.1 | 0.2 | on | 10 | \u2013 | none |\n| T-02 | large | 0.35 | 0.2 | on | 5 | \u2013 | BLOAT_THRESHOLD_EXCEEDED |\n| T-03 | small | 0.15 | 0.4 | **off** | 5 | \u2013 | AUTOVACUUM_DISABLED |\n| T-04 | small | 0.1 | 0.4 | on | 45 | \u2013 | STALE_STATISTICS |\n| T-05 | large | 0.55 | 0.2 | on | 5 | **active reindex** | none (exempt) |\n| T-06 | small | 0.25 | 0.4 | on | 10 | \u2013 | none |\n| T-07 | large | 0.12 | 0.2 | on | 20 | \u2013 | none |\n| T-08 | small | 0.45 | 0.4 | on | 8 | \u2013 | BLOAT_THRESHOLD_EXCEEDED |\n\nCounts: `flagged_count=4`, `autovacuum_disabled_count=1`, `bloat_exceeded_count=2`, `stale_statistics_count=1`, `compliant_count=4`. Note T-05's bloat (0.55) is over the large cap but exempt under its approved active reindex; the memo documents it per the requirement to include the table under active maintenance.",
+    "judge_provenance": "harbor-verifier",
+    "task_checksum": "d8dba427e8501fc9ad973156c22ab9d8e27152835a9862033645694460855535",
+    "finished_at": "2026-09-01T12:00:00Z",
+    "exception_info": null,
+    "verifier_result": {
+        "rewards": {
+            "reward": 0.7037037037
+        }
+    },
+    "checks": {},
+    "regraded_checks": {}
+}
