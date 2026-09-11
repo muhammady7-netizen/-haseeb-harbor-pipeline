@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T11:22:36Z",
+  "updated_at": "2026-09-11T11:25:56Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2375,14 +2375,9 @@
       "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Dismiss remaining PreQC if needed, then Accept on portal",
-      "notes": "v2 uploaded (fixed verifier schema, gold 51/51). QC-Oracle-GLM waiting for slot (3 in use).",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v2 QC-Oracle-GLM started. Fixed verifier schema (51 verifiers, gold 51/51). ~50min expected.",
       "history": [
-        {
-          "at": "2026-09-08T22:30:15Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
-        },
         {
           "at": "2026-09-08T22:32:56Z",
           "status": "final_running",
@@ -2577,9 +2572,14 @@
           "at": "2026-09-11T11:08:08Z",
           "status": "final_running",
           "note": "v2 uploaded (fixed verifier schema, gold 51/51). QC-Oracle-GLM waiting for slot (3 in use)."
+        },
+        {
+          "at": "2026-09-11T11:25:56Z",
+          "status": "final_running",
+          "note": "v2 QC-Oracle-GLM started. Fixed verifier schema (51 verifiers, gold 51/51). ~50min expected."
         }
       ],
-      "updated_at": "2026-09-11T11:08:08Z",
+      "updated_at": "2026-09-11T11:25:56Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2600,8 +2600,8 @@
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T11:03:27Z",
-        "phase": "complete",
+        "last_check_at": "2026-09-11T11:25:56Z",
+        "phase": "oracle_running",
         "checks": [
           {
             "at": "2026-09-08T22:32:56Z",
@@ -2690,6 +2690,14 @@
             "note": "Oracle PASSED, GLM 0/4. 32 blocking findings. Need to fix source and re-upload.",
             "glm_pass": "0/4",
             "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-11T11:25:56Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v2 QC-Oracle-GLM started. Fixed verifier schema (51 verifiers, gold 51/51). ~50min expected.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "0/4",
