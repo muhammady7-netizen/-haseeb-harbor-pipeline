@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T10:53:43Z",
+  "updated_at": "2026-09-11T10:59:50Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -653,17 +653,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "ready_final",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v13 (content-337c2e4a) QC-Oracle-GLM started. Waiting ~50min for Oracle+GLM×4.",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "Packaged UPLOAD-THIS-TO-QC-health-h40.zip",
       "history": [
-        {
-          "at": "2026-09-09T12:58:44Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-health-h40.zip"
-        },
         {
           "at": "2026-09-09T13:00:12Z",
           "status": "ready_final",
@@ -858,9 +853,14 @@
           "at": "2026-09-11T10:13:47Z",
           "status": "final_running",
           "note": "h40 v13 (content-337c2e4a) QC-Oracle-GLM started. Waiting ~50min for Oracle+GLM×4."
+        },
+        {
+          "at": "2026-09-11T10:58:56Z",
+          "status": "ready_final",
+          "note": "Packaged UPLOAD-THIS-TO-QC-health-h40.zip"
         }
       ],
-      "updated_at": "2026-09-11T10:13:47Z",
+      "updated_at": "2026-09-11T10:58:56Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
@@ -876,7 +876,7 @@
         "verdict_md": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z\\verdict.md",
         "findings_csv": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z\\findings.csv"
       },
-      "packaged_at": "2026-09-10T20:49:03Z",
+      "packaged_at": "2026-09-11T10:58:56Z",
       "portal": {
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-7fcbcc0d3f5fa73743c2f9eaef553f11-v1",
         "version": "v13",
@@ -2863,13 +2863,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (7c6ded84) uploaded with other PC's latest rebuild (Department Taxonomy Migration, 164 entries, 69 checks). Final QC running.",
+      "notes": "v1 (5604745e) uploaded with FIXED Dockerfile (removed pinned SHA + NVM/Node). Waiting for eval slot (3 in use).",
       "history": [
-        {
-          "at": "2026-09-09T08:43:31Z",
-          "status": "final_running",
-          "note": "v6 Oracle PASSED! GLM×4 running 659s. 5 trap depts (121-125) should trip GLM. Waiting for difficulty result."
-        },
         {
           "at": "2026-09-09T09:04:08Z",
           "status": "needs_densify",
@@ -3064,9 +3059,14 @@
           "at": "2026-09-11T10:28:02Z",
           "status": "final_running",
           "note": "v1 (7c6ded84) uploaded with other PC's latest rebuild (Department Taxonomy Migration, 164 entries, 69 checks). Final QC running."
+        },
+        {
+          "at": "2026-09-11T10:59:50Z",
+          "status": "final_running",
+          "note": "v1 (5604745e) uploaded with FIXED Dockerfile (removed pinned SHA + NVM/Node). Waiting for eval slot (3 in use)."
         }
       ],
-      "updated_at": "2026-09-11T10:28:02Z",
+      "updated_at": "2026-09-11T10:59:50Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3086,7 +3086,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T10:28:02Z",
+        "last_check_at": "2026-09-11T10:59:50Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -3296,11 +3296,19 @@
             "note": "v1 (7c6ded84) uploaded with other PC's latest rebuild (Department Taxonomy Migration, 164 entries, 69 checks). Final QC running.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-11T10:59:50Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (5604745e) uploaded with FIXED Dockerfile (removed pinned SHA + NVM/Node). Waiting for eval slot (3 in use).",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "4/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-7c6ded8493620a917be2c416e0c4fcbd-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-5604745e0d7d2a4b0116fa5d32b4ee6e-v1"
       }
     },
     {
