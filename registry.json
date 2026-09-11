@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T19:59:34Z",
+  "updated_at": "2026-09-11T20:06:14Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,11 +81,11 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "ready_final",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v24 uploaded; QC started",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -251,9 +251,19 @@
           "at": "2026-09-11T19:59:34Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"
+        },
+        {
+          "at": "2026-09-11T20:06:14Z",
+          "status": "final_running",
+          "note": "v24 densify uploaded content-d09f3e79...-v1. Local GLM 2/4 @1.0. PreQC skipped. QC-Oracle-GLM started."
+        },
+        {
+          "at": "2026-09-11T20:06:14Z",
+          "status": "final_running",
+          "note": "v24 uploaded; QC started"
         }
       ],
-      "updated_at": "2026-09-11T19:59:34Z",
+      "updated_at": "2026-09-11T20:06:14Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -271,11 +281,11 @@
       },
       "packaged_at": "2026-09-11T19:59:34Z",
       "portal": {
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-20652e2b94b277552633d85bfc683901-v1",
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-d09f3e79ded320c787b15498063ef758-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T18:33:09Z",
-        "phase": "needs_densify",
+        "last_check_at": "2026-09-11T20:06:14Z",
+        "phase": "glm_or_oracle_running",
         "run_history": "2 runs ├é┬╖ latest running",
         "checks": [
           {
@@ -307,6 +317,14 @@
             "note": "TOO_EASY 4/4 on #683901",
             "glm_pass": "4/4",
             "oracle": "pass"
+          },
+          {
+            "at": "2026-09-11T20:06:14Z",
+            "phase": "glm_or_oracle_running",
+            "running": true,
+            "note": "v24 uploaded; QC started",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "4/4",
