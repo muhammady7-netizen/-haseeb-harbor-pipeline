@@ -1093,11 +1093,11 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "ready_final",
+      "status": "blocked",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c227.zip",
-      "next_action": "Upload canonical-zips/UPLOAD-THIS-TO-QC-code-c227.zip (Yes=new version). Do not Confirm findings.",
-      "notes": "T-13 fairness + T-45 densify; gold 170/170; GLM rescored 0.994x4 (0@1.0). Zip ready. Confirm none. Re-upload as next version.",
+      "next_action": "Fix package consistency + run fresh Harbor GLM/oracle/solvability; rebuild zip; re-upload. See sessions/B/CONTINUE-OTHER-PC.md",
+      "notes": "Harbor v2: fake/stale GLM+gold solvability; README/memo count drift (40/166 vs 41/170). Need fresh GLM x4 + real solvability + README/memo sync. Confirm none.",
       "history": [
         {
           "at": "2026-09-09T21:17:42Z",
@@ -1308,6 +1308,11 @@
           "at": "2026-09-11T22:50:22Z",
           "status": "ready_final",
           "note": "Session B push: T-13 fix + T-45 densify pack"
+        },
+        {
+          "at": "2026-09-11T23:04:05Z",
+          "status": "blocked",
+          "note": "Harbor v2 Delivery Gate: packaging evidence rejected"
         }
       ],
       "updated_at": "2026-09-11T17:03:19Z",
@@ -1369,11 +1374,11 @@
       "pack_name": "code-c249-recurring-report-source-selection-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c249-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c249-work/code-c249-recurring-report-source-selection-audit",
-      "status": "ready_final",
+      "status": "blocked",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c249.zip",
-      "next_action": "Upload canonical-zips/UPLOAD-THIS-TO-QC-code-c249.zip (Yes=new version). Do not Confirm findings.",
-      "notes": "Bidirectional memo + proportionality; GLM 0.967x4; solvability 1.0; 92 checks. Zip ready. Confirm none. Re-upload.",
+      "next_action": "Fresh Harbor GLM x4 + real agent-pass + distinct stability; memo-audit consistency; rebuild zip. See sessions/B/CONTINUE-OTHER-PC.md",
+      "notes": "Harbor v3: pre-densify GLM ineligible; hand-repaired solvability; stability repeat-02=oracle; memo totals ungated. Need fresh GLM x4 + real solvability. Confirm none.",
       "history": [
         {
           "at": "2026-09-09T21:32:46Z",
@@ -1589,6 +1594,11 @@
           "at": "2026-09-11T22:50:22Z",
           "status": "ready_final",
           "note": "Session B push: fairness+evals pack"
+        },
+        {
+          "at": "2026-09-11T23:04:05Z",
+          "status": "blocked",
+          "note": "Harbor v3 Delivery Gate: packaging evidence rejected"
         }
       ],
       "updated_at": "2026-09-11T17:03:19Z",
