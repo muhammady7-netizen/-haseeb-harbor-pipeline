@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T12:37:11Z",
+  "updated_at": "2026-09-11T13:20:30Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1496,7 +1496,7 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (c4dd720f) uploaded with FIXED Dockerfile (proper Linux backslash continuations). Waiting for eval slot.",
+      "notes": "v1 (c4dd720f) pipeline-repaired zip uploaded + Final QC started (fixed Dockerfile). Pipeline confirmed only G10 (expected residual).",
       "history": [
         {
           "at": "2026-09-08T19:11:56Z",
@@ -1682,9 +1682,14 @@
           "at": "2026-09-11T11:53:55Z",
           "status": "final_running",
           "note": "v1 (c4dd720f) uploaded with FIXED Dockerfile (proper Linux backslash continuations). Waiting for eval slot."
+        },
+        {
+          "at": "2026-09-11T13:20:30Z",
+          "status": "final_running",
+          "note": "v1 (c4dd720f) pipeline-repaired zip uploaded + Final QC started (fixed Dockerfile). Pipeline confirmed only G10 (expected residual)."
         }
       ],
-      "updated_at": "2026-09-11T11:53:55Z",
+      "updated_at": "2026-09-11T13:20:30Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1704,7 +1709,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T11:53:55Z",
+        "last_check_at": "2026-09-11T13:20:30Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -1824,6 +1829,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v1 (c4dd720f) uploaded with FIXED Dockerfile (proper Linux backslash continuations). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-11T13:20:30Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (c4dd720f) pipeline-repaired zip uploaded + Final QC started (fixed Dockerfile). Pipeline confirmed only G10 (expected residual).",
             "glm_pass": null,
             "oracle": null
           }
@@ -2915,13 +2928,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (6405280b) Final QC RUNNING with properly fixed Dockerfile (Linux backslashes). Oracle Waiting, GLM Waiting, 64s. No error!",
+      "notes": "v1 (6405280b) Final QC running (Oracle was running 757s with fixed Dockerfile, no error). Pipeline confirmed only G10 (expected residual).",
       "history": [
-        {
-          "at": "2026-09-09T13:01:14Z",
-          "status": "final_running",
-          "note": "v7 (2a489be4) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions legacy rule. QC-Oracle-GLM running."
-        },
         {
           "at": "2026-09-09T17:32:10Z",
           "status": "final_running",
@@ -3116,9 +3124,14 @@
           "at": "2026-09-11T12:13:57Z",
           "status": "final_running",
           "note": "v1 (6405280b) Final QC RUNNING with properly fixed Dockerfile (Linux backslashes). Oracle Waiting, GLM Waiting, 64s. No error!"
+        },
+        {
+          "at": "2026-09-11T13:20:30Z",
+          "status": "final_running",
+          "note": "v1 (6405280b) Final QC running (Oracle was running 757s with fixed Dockerfile, no error). Pipeline confirmed only G10 (expected residual)."
         }
       ],
-      "updated_at": "2026-09-11T12:13:57Z",
+      "updated_at": "2026-09-11T13:20:30Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3138,17 +3151,9 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T12:13:57Z",
+        "last_check_at": "2026-09-11T13:20:30Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-08T21:57:39Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "Portal: QC-Oracle-GLM started for gen-g857 v1 (content-5eb1eb1f)",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-08T22:10:51Z",
             "phase": "complete",
@@ -3378,6 +3383,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v1 (6405280b) Final QC RUNNING with properly fixed Dockerfile (Linux backslashes). Oracle Waiting, GLM Waiting, 64s. No error!",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-11T13:20:30Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (6405280b) Final QC running (Oracle was running 757s with fixed Dockerfile, no error). Pipeline confirmed only G10 (expected residual).",
             "glm_pass": null,
             "oracle": null
           }
