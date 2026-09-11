@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T11:53:55Z",
+  "updated_at": "2026-09-11T12:13:57Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2907,13 +2907,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (6405280b) uploaded with FIXED Dockerfile (proper Linux backslash continuations, no PowerShell backticks). Waiting for eval slot.",
+      "notes": "v1 (6405280b) Final QC RUNNING with properly fixed Dockerfile (Linux backslashes). Oracle Waiting, GLM Waiting, 64s. No error!",
       "history": [
-        {
-          "at": "2026-09-09T10:53:02Z",
-          "status": "final_running",
-          "note": "v1 (ed239145) re-running QC-Oracle-GLM after previous eval ERRORED (infrastructure failure, not difficulty). Oracle passed, GLM 0/4 was due to error. 3 PreQC findings advisory (legacy rule, sort-order, regex permissiveness)."
-        },
         {
           "at": "2026-09-09T13:01:14Z",
           "status": "final_running",
@@ -3108,9 +3103,14 @@
           "at": "2026-09-11T11:53:55Z",
           "status": "final_running",
           "note": "v1 (6405280b) uploaded with FIXED Dockerfile (proper Linux backslash continuations, no PowerShell backticks). Waiting for eval slot."
+        },
+        {
+          "at": "2026-09-11T12:13:57Z",
+          "status": "final_running",
+          "note": "v1 (6405280b) Final QC RUNNING with properly fixed Dockerfile (Linux backslashes). Oracle Waiting, GLM Waiting, 64s. No error!"
         }
       ],
-      "updated_at": "2026-09-11T11:53:55Z",
+      "updated_at": "2026-09-11T12:13:57Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3130,7 +3130,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T11:53:55Z",
+        "last_check_at": "2026-09-11T12:13:57Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -3362,6 +3362,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v1 (6405280b) uploaded with FIXED Dockerfile (proper Linux backslash continuations, no PowerShell backticks). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-11T12:13:57Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (6405280b) Final QC RUNNING with properly fixed Dockerfile (Linux backslashes). Oracle Waiting, GLM Waiting, 64s. No error!",
             "glm_pass": null,
             "oracle": null
           }
