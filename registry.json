@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T12:34:10Z",
+  "updated_at": "2026-09-11T12:37:11Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -976,17 +976,12 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "ready_final",
+      "status": "final_running",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Packaged UPLOAD-THIS-TO-QC-code-c227.zip",
+      "notes": "v17 eval DONE: Oracle 1.0 PASS, GLM 3/4 (good difficulty!). 9 fairness findings remain (memo regex line-scoping, keyword-stuffing, spelling). Need to fix memo regexes to use dotall .{0,N}? and accept synonyms.",
       "history": [
-        {
-          "at": "2026-09-09T20:42:44Z",
-          "status": "final_running",
-          "note": "v11 eval running (evaluation-27f32a5f98ac4830). ALL 12 harbor findings fixed: instruction.md disclosure, line-based memo checks (reject CSV/Markdown, 10+ words), deliverable gate, 3 verifier checks, cross-artifact consistency."
-        },
         {
           "at": "2026-09-09T20:48:20Z",
           "status": "final_running",
@@ -1181,9 +1176,14 @@
           "at": "2026-09-11T12:14:11Z",
           "status": "ready_final",
           "note": "Packaged UPLOAD-THIS-TO-QC-code-c227.zip"
+        },
+        {
+          "at": "2026-09-11T12:37:11Z",
+          "status": "final_running",
+          "note": "v17 eval DONE: Oracle 1.0 PASS, GLM 3/4 (good difficulty!). 9 fairness findings remain (memo regex line-scoping, keyword-stuffing, spelling). Need to fix memo regexes to use dotall .{0,N}? and accept synonyms."
         }
       ],
-      "updated_at": "2026-09-11T12:14:11Z",
+      "updated_at": "2026-09-11T12:37:11Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
