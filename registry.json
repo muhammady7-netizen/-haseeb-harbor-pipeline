@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-11T20:32:41Z",
+  "updated_at": "2026-09-11T21:54:12Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -711,7 +711,7 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "watch-portal",
+      "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
@@ -924,6 +924,14 @@
         {
           "at": "2026-09-11T20:30:55.195093+00:00",
           "note": "v16 #2db1ccc uploaded; waiting Final QC slot (3 in use)"
+        },
+        {
+          "at": "2026-09-11T21:00:58.835635+00:00",
+          "note": "v17 #9985b6fa despoil uploaded; Final QC pending/started"
+        },
+        {
+          "at": "2026-09-11T21:28:57.787301+00:00",
+          "note": "v18 #ca1119af structural harden uploaded"
         }
       ],
       "updated_at": "2026-09-11T18:58:34Z",
@@ -944,7 +952,7 @@
       },
       "packaged_at": "2026-09-11T12:21:06Z",
       "portal": {
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-2db1ccc90bf524a99a3747075a20cfa5-v1",
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-ca1119aff2993a64d8334d705d99ae43-v1",
         "version": "v14",
         "watch": true,
         "last_check_at": "2026-09-11T18:58:34Z",
@@ -1066,9 +1074,9 @@
             "oracle": null
           }
         ],
-        "content_id": "content-2db1ccc90bf524a99a3747075a20cfa5-v1",
-        "version_note": "v16 densify 105 rows/130 verifiers; waiting Final QC slot",
-        "updated_at": "2026-09-11T20:30:55.195059+00:00"
+        "content_id": "content-ca1119aff2993a64d8334d705d99ae43-v1",
+        "version_note": "v18 structural multi-doc+holidays+sites; Final QC",
+        "updated_at": "2026-09-11T21:28:57.787256+00:00"
       }
     },
     {
@@ -1081,7 +1089,7 @@
       "session": "B",
       "canonical_zip": "C:\\\\Users\\\\Haseeb Mirza\\\\Downloads\\\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM├ù4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Fairness rebuild: DOTALL memo synonyms + results.json key checks; gold 166/166; stale glm/solvability removed. Zip ready for re-upload (skip PreQC → QC-Oracle-GLM). Confirm none.",
+      "notes": "Delivery Gate v3: memo softener + pytest isolation; real GLM rescored 3@1.0+1@0.982; solvability=real GLM 1.0. Confirm none. Re-upload.",
       "history": [
         {
           "at": "2026-09-09T21:17:42Z",
@@ -1352,7 +1360,7 @@
       "session": "B",
       "canonical_zip": "C:\\\\Users\\\\Haseeb Mirza\\\\Downloads\\\\UPLOAD-THIS-TO-QC-code-c249.zip",
       "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM├ù4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "Delivery Gate fixes: grade identifying cols; harden memo; densify traps; real compute solvability; real GLM×4 (2/4@1.0 + 2@0.966); oracle stability 3/3@1.0. Confirm none — re-upload.",
+      "notes": "Delivery Gate v3: trajectory/cache fix; memo window 450 + prose gate; RUN-38 densify 61 checks; oracle refreshed. GLM×4 pending gateway 401 — upload verifier fixes now or wait for GLM. Confirm none.",
       "history": [
         {
           "at": "2026-09-09T21:32:46Z",
