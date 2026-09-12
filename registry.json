@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T02:09:57Z",
+  "updated_at": "2026-09-12T02:18:54Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1583,13 +1583,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (2113e438) Oracle PASSED 1.0! GLM x4 difficulty RUNNING (631s). Dockerfile fix worked!",
+      "notes": "v1 (2113e438) Oracle PASSED 1.0! GLM 2/4 passed (within difficulty gate!). Harbor Check running (1171s).",
       "history": [
-        {
-          "at": "2026-09-08T22:34:50Z",
-          "status": "needs_densify",
-          "note": "GLM 4/4 too easy"
-        },
         {
           "at": "2026-09-08T22:39:06Z",
           "status": "preqc_running",
@@ -1784,9 +1779,14 @@
           "at": "2026-09-12T02:09:57Z",
           "status": "final_running",
           "note": "v1 (2113e438) Oracle PASSED 1.0! GLM x4 difficulty RUNNING (631s). Dockerfile fix worked!"
+        },
+        {
+          "at": "2026-09-12T02:18:54Z",
+          "status": "final_running",
+          "note": "v1 (2113e438) Oracle PASSED 1.0! GLM 2/4 passed (within difficulty gate!). Harbor Check running (1171s)."
         }
       ],
-      "updated_at": "2026-09-12T02:09:57Z",
+      "updated_at": "2026-09-12T02:18:54Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1806,7 +1806,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T02:09:57Z",
+        "last_check_at": "2026-09-12T02:18:54Z",
         "phase": "glm_running",
         "checks": [
           {
@@ -1976,9 +1976,17 @@
             "note": "v1 (2113e438) Oracle PASSED 1.0! GLM x4 difficulty RUNNING (631s). Dockerfile fix worked!",
             "glm_pass": null,
             "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-12T02:18:54Z",
+            "phase": "glm_running",
+            "running": true,
+            "note": "v1 (2113e438) Oracle PASSED 1.0! GLM 2/4 passed (within difficulty gate!). Harbor Check running (1171s).",
+            "glm_pass": "2/4",
+            "oracle": "1.0"
           }
         ],
-        "glm_pass": "0/4",
+        "glm_pass": "2/4",
         "oracle": "1.0",
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-2113e438fde5e70b6d64e6049779e106-v1"
       }
