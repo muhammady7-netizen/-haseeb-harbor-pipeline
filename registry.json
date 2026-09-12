@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T16:23:20Z",
+  "updated_at": "2026-09-12T17:12:26Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v22 uploaded (content-870d1b80). Alias trap: added Reg->resident_doctor to approved_roles_roster.md. 3 trap results (R-135-R-137) acknowledged by Reg. Model hardcodes ALIASES without Reg so flags them unapproved. 137 results, 166 verifiers, 185 tests. Pipeline-packaged. QC-Oracle-GLM running.",
+      "notes": "h40 v22 eval done: Oracle PASS, GLM 4/4 TOO_EASY. Alias trap (Reg) did NOT work - GLM reads roster file dynamically. Need to download eval bundle to check trajectory and find a real model assumption to break.",
       "history": [
-        {
-          "at": "2026-09-10T22:36:15Z",
-          "status": "final_running",
-          "note": "v12 densify uploaded; slots full ΓÇö waiting to start Final QC"
-        },
         {
           "at": "2026-09-10T22:40:42Z",
           "status": "uploaded",
@@ -930,9 +925,14 @@
           "at": "2026-09-12T14:20:07Z",
           "status": "final_running",
           "note": "h40 v22 uploaded (content-870d1b80). Alias trap: added Reg->resident_doctor to approved_roles_roster.md. 3 trap results (R-135-R-137) acknowledged by Reg. Model hardcodes ALIASES without Reg so flags them unapproved. 137 results, 166 verifiers, 185 tests. Pipeline-packaged. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-12T17:12:26Z",
+          "status": "needs_densify",
+          "note": "h40 v22 eval done: Oracle PASS, GLM 4/4 TOO_EASY. Alias trap (Reg) did NOT work - GLM reads roster file dynamically. Need to download eval bundle to check trajectory and find a real model assumption to break."
         }
       ],
-      "updated_at": "2026-09-12T14:20:07Z",
+      "updated_at": "2026-09-12T17:12:26Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
