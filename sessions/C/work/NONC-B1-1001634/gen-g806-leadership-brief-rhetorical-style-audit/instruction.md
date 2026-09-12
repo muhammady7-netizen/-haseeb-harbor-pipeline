@@ -45,3 +45,15 @@ Reject malformed headers, repeated sentence positions, duplicate IDs, unknown qu
 - Your current working directory is `/app`, and it is writable.
 - The read-only attachments referred to as `input/` are at `/app/input`.
 - Write every deliverable into `/app`, at the exact filenames listed above. All deliverables must be the final action; confirm each one exists before you answer.
+
+
+## Memo format
+
+For each failing brief (B-02, B-04, B-05, B-06, B-08), the memo must:
+- Name the brief ID in a heading (e.g. `### B-02`)
+- State the status (unanswered question or transition breach)
+- Recommend a specific sentence move (e.g. `S-007:7->8`)
+
+Do NOT include passing briefs (B-01, B-03, B-07) in the memo.
+
+The memo should be at least 200 characters.

@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T11:13:50Z",
+  "updated_at": "2026-09-12T11:23:08Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -3108,17 +3108,12 @@
       "pack_name": "gen-g857-department-directory-categorization-audit",
       "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\gen-g857-portal",
       "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\gen-g857-portal\\gen-g857-department-directory-categorization-audit",
-      "status": "final_running",
+      "status": "ready_accept",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (536e8bab) Oracle PASSED 1.0! GLM 1/4 passed (difficulty gate PASSED — better than 2/4!). Harbor Check running. Clean zip, no fabricated evals.",
+      "next_action": "Dismiss remaining PreQC if needed, then Accept on portal",
+      "notes": "GLM 1/4 within difficulty gate",
       "history": [
-        {
-          "at": "2026-09-10T16:23:57Z",
-          "status": "ready_final",
-          "note": "REBUILT from scratch: Department Taxonomy Migration task (30 people, 16 nodes, 69 checks). Correct task spec."
-        },
         {
           "at": "2026-09-10T16:26:57Z",
           "status": "final_running",
@@ -3313,9 +3308,14 @@
           "at": "2026-09-12T11:13:50Z",
           "status": "final_running",
           "note": "v1 (536e8bab) Oracle PASSED 1.0! GLM 1/4 passed (difficulty gate PASSED — better than 2/4!). Harbor Check running. Clean zip, no fabricated evals."
+        },
+        {
+          "at": "2026-09-12T11:23:08Z",
+          "status": "ready_accept",
+          "note": "GLM 1/4 within difficulty gate"
         }
       ],
-      "updated_at": "2026-09-12T11:13:50Z",
+      "updated_at": "2026-09-12T11:23:08Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3335,17 +3335,9 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T11:13:50Z",
-        "phase": "glm_running",
+        "last_check_at": "2026-09-12T11:23:08Z",
+        "phase": "complete",
         "checks": [
-          {
-            "at": "2026-09-09T06:57:10Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running ├óΓé¼ΓÇ¥ Oracle should pass now.",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-09T07:24:40Z",
             "phase": "oracle_running",
@@ -3575,6 +3567,14 @@
             "phase": "glm_running",
             "running": true,
             "note": "v1 (536e8bab) Oracle PASSED 1.0! GLM 1/4 passed (difficulty gate PASSED — better than 2/4!). Harbor Check running. Clean zip, no fabricated evals.",
+            "glm_pass": "1/4",
+            "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-12T11:23:08Z",
+            "phase": "complete",
+            "running": false,
+            "note": "v1 (536e8bab) Oracle 1.0, GLM 1/4 (difficulty PASSED!). 9 Harbor Check blockers (layer1_clarity, etc). Clean zip, no fabricated evals. Same quality findings pattern as code-c251.",
             "glm_pass": "1/4",
             "oracle": "1.0"
           }

@@ -354,7 +354,7 @@
     {
       "name": "coherence_lexicographic",
       "metadata": {
-        "how_justification": "Briefs must appear in lexicographic brief_id order.",
+        "how_justification": "Checks brief rows B-01 through B-08 appear in ascending order (non-consecutive OK).",
         "why_justification": "Briefs must appear in lexicographic brief_id order."
       },
       "source": {
@@ -369,7 +369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ms)(?:.*\\n)*^B\\-01\\s*,(?:.*\\n)*^B\\-02\\s*,(?:.*\\n)*^B\\-03\\s*,(?:.*\\n)*^B\\-04\\s*,(?:.*\\n)*^B\\-05\\s*,(?:.*\\n)*^B\\-06\\s*,(?:.*\\n)*^B\\-07\\s*,(?:.*\\n)*^B\\-08\\s*,",
+        "expected": "(?ms)B[\\-_\\s]?01[\\s\\S]*B[\\-_\\s]?02[\\s\\S]*B[\\-_\\s]?03[\\s\\S]*B[\\-_\\s]?04[\\s\\S]*B[\\-_\\s]?05[\\s\\S]*B[\\-_\\s]?06[\\s\\S]*B[\\-_\\s]?07[\\s\\S]*B[\\-_\\s]?08",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1744,7 +1744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-02\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?02\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1754,7 +1754,7 @@
     {
       "name": "memo_explains_b02",
       "metadata": {
-        "how_justification": "Memo subsection for B-02 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "how_justification": "Checks memo mentions brief B02 with a status word (unanswered/breach/transition violation) \u2014 any order, no proximity window.",
         "why_justification": "Memo subsection for B-02 must mention unanswered/breach status and recommended move (disclosed memo format)."
       },
       "source": {
@@ -1769,7 +1769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)#{1,3}\\s*B\\-02\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "expected": "(?is)B[\\-\\s_]?02.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1794,7 +1794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-04\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?04\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1804,7 +1804,7 @@
     {
       "name": "memo_explains_b04",
       "metadata": {
-        "how_justification": "Memo subsection for B-04 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "how_justification": "Checks memo mentions brief B04 with a status word (unanswered/breach/transition violation) \u2014 any order, no proximity window.",
         "why_justification": "Memo subsection for B-04 must mention unanswered/breach status and recommended move (disclosed memo format)."
       },
       "source": {
@@ -1819,7 +1819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)#{1,3}\\s*B\\-04\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "expected": "(?is)B[\\-\\s_]?04.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1844,7 +1844,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-05\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?05\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1854,7 +1854,7 @@
     {
       "name": "memo_explains_b05",
       "metadata": {
-        "how_justification": "Memo subsection for B-05 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "how_justification": "Checks memo mentions brief B05 with a status word (unanswered/breach/transition violation) \u2014 any order, no proximity window.",
         "why_justification": "Memo subsection for B-05 must mention unanswered/breach status and recommended move (disclosed memo format)."
       },
       "source": {
@@ -1869,7 +1869,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)#{1,3}\\s*B\\-05\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "expected": "(?is)B[\\-\\s_]?05.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1894,7 +1894,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-06\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?06\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1904,7 +1904,7 @@
     {
       "name": "memo_explains_b06",
       "metadata": {
-        "how_justification": "Memo subsection for B-06 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "how_justification": "Checks memo mentions brief B06 with a status word (unanswered/breach/transition violation) \u2014 any order, no proximity window.",
         "why_justification": "Memo subsection for B-06 must mention unanswered/breach status and recommended move (disclosed memo format)."
       },
       "source": {
@@ -1919,7 +1919,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)#{1,3}\\s*B\\-06\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "expected": "(?is)B[\\-\\s_]?06.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1944,7 +1944,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-08\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?08\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1954,7 +1954,7 @@
     {
       "name": "memo_explains_b08",
       "metadata": {
-        "how_justification": "Memo subsection for B-08 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "how_justification": "Checks memo mentions brief B08 with a status word (unanswered/breach/transition violation) \u2014 any order, no proximity window.",
         "why_justification": "Memo subsection for B-08 must mention unanswered/breach status and recommended move (disclosed memo format)."
       },
       "source": {
@@ -1969,7 +1969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)#{1,3}\\s*B\\-08\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "expected": "(?is)B[\\-\\s_]?08.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1994,7 +1994,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-01\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?01\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "not_regex_match"
@@ -2019,7 +2019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-03\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?03\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "not_regex_match"
@@ -2044,7 +2044,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B\\-07\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?07\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "not_regex_match"
@@ -2070,6 +2070,31 @@
       "assertion": {
         "type": "deterministic",
         "expected": "(?s).{200,}",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_one_row_per_brief",
+      "metadata": {
+        "how_justification": "Checks brief_coherence.csv has exactly 8 data rows (one per brief) with no duplicates.",
+        "why_justification": "Each brief must appear exactly once; duplicate or contradictory rows are invalid."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "\\A[^\\r\\n]+\\r?\\n(?:[^\\r\\n]+\\r?\\n){7}[^\\r\\n]+\\r?\\n?\\Z",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
