@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T12:21:26Z",
+  "updated_at": "2026-09-12T12:38:20Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1593,13 +1593,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (f21caab1) Final QC RUNNING (queued, waiting for worker). Clean zip, no fabricated evals, fixed Dockerfile, broadened memo checks.",
+      "notes": "v1 (148ed513) FIXED VERIFIER BUG: audit_no_pipe_chars had 'regex_not_match' instead of 'not_regex_match' — caused ALL 93 tests to fail. Now fixed. Clean zip, no evals, fixed Dockerfile, broadened memo checks.",
       "history": [
-        {
-          "at": "2026-09-09T06:17:23Z",
-          "status": "final_running",
-          "note": "v2 densified uploaded; QC-Oracle-GLM running"
-        },
         {
           "at": "2026-09-09T06:25:28Z",
           "status": "final_running",
@@ -1794,9 +1789,14 @@
           "at": "2026-09-12T12:14:47Z",
           "status": "final_running",
           "note": "v1 (f21caab1) Final QC RUNNING (queued, waiting for worker). Clean zip, no fabricated evals, fixed Dockerfile, broadened memo checks."
+        },
+        {
+          "at": "2026-09-12T12:38:20Z",
+          "status": "final_running",
+          "note": "v1 (148ed513) FIXED VERIFIER BUG: audit_no_pipe_chars had 'regex_not_match' instead of 'not_regex_match' — caused ALL 93 tests to fail. Now fixed. Clean zip, no evals, fixed Dockerfile, broadened memo checks."
         }
       ],
-      "updated_at": "2026-09-12T12:14:47Z",
+      "updated_at": "2026-09-12T12:38:20Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1816,7 +1816,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T12:14:47Z",
+        "last_check_at": "2026-09-12T12:38:20Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -2026,11 +2026,19 @@
             "note": "v1 (f21caab1) Final QC RUNNING (queued, waiting for worker). Clean zip, no fabricated evals, fixed Dockerfile, broadened memo checks.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-12T12:38:20Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (148ed513) FIXED VERIFIER BUG: audit_no_pipe_chars had 'regex_not_match' instead of 'not_regex_match' — caused ALL 93 tests to fail. Now fixed. Clean zip, no evals, fixed Dockerfile, broadened memo checks.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "2/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-f21caab18a46225dad20578088efc4ea-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-148ed513a1f4d39f00212057e5777188-v1"
       }
     },
     {
