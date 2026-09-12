@@ -33,3 +33,6 @@ Thumbs.db
 !sessions/*/zips/
 !sessions/*/zips/*.zip
 
+
+# Large video files - keep in repo locally only
+*.mp4
