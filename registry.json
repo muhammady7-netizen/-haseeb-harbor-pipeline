@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T14:35:06Z",
+  "updated_at": "2026-09-12T14:54:07Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v27 ready: fixed test.sh (python3 not /usr/bin/python3, PYTHONPATH=/tests, no cd /app). v26 Oracle crashed with RewardFileNotFoundError due to wrong python path. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v27.zip. Upload blocked by browser overload.",
+      "notes": "v27 uploaded content-a2fa2ba5d24a2560107188139bb1e077-v1. CSV complete. QC-Oracle-GLM started evaluation-b0079ab7fe94462d. 59 verifiers, test.sh fixed (python3 not /usr/bin/python3).",
       "history": [
-        {
-          "at": "2026-09-07T22:28:47Z",
-          "status": "preqc_running",
-          "note": ""
-        },
         {
           "at": "2026-09-07T22:28:48Z",
           "status": "preqc_clean",
@@ -286,9 +281,14 @@
           "at": "2026-09-12T14:35:06Z",
           "status": "final_running",
           "note": "v27 ready: fixed test.sh (python3 not /usr/bin/python3, PYTHONPATH=/tests, no cd /app). v26 Oracle crashed with RewardFileNotFoundError due to wrong python path. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v27.zip. Upload blocked by browser overload."
+        },
+        {
+          "at": "2026-09-12T14:54:07Z",
+          "status": "final_running",
+          "note": "v27 uploaded content-a2fa2ba5d24a2560107188139bb1e077-v1. CSV complete. QC-Oracle-GLM started evaluation-b0079ab7fe94462d. 59 verifiers, test.sh fixed (python3 not /usr/bin/python3)."
         }
       ],
-      "updated_at": "2026-09-12T14:35:06Z",
+      "updated_at": "2026-09-12T14:54:07Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
