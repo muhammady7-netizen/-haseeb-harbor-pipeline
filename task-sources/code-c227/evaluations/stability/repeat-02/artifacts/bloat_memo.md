@@ -1,4 +1,4 @@
-﻿# Table maintenance audit â€” 40 unique tables
+# Table maintenance audit — 40 unique tables
 
 40 unique tables checked against DBOPS-31 (42 input rows collapsed for T-31/T-32
 duplicates). 13 are compliant and 27 carry a finding.
@@ -46,23 +46,23 @@ normally. Finding: BLOAT_THRESHOLD_EXCEEDED.
 
 T-02's bloat ratio of 0.35 is over the large-table cap with no maintenance flag, so the finding is BLOAT_THRESHOLD_EXCEEDED.
 T-03 has autovacuum disabled and that check overrides later bloat review: AUTOVACUUM_DISABLED.
-T-04's statistics are 46 days stale, over the 30-day limit: STALE_STATISTICS.
+T-04's statistics are 45 days stale, over the 30-day limit: STALE_STATISTICS.
 T-06's size_class column says small but total_pages=1000 computes as large (cap 0.2); its bloat ratio 0.25 is over that large cap: BLOAT_THRESHOLD_EXCEEDED.
-T-08's size_class column is wrong â€” total_pages=1000 so the computed size class is large (cap 0.2), and its bloat ratio of 0.45 is over that large cap: BLOAT_THRESHOLD_EXCEEDED.
+T-08's size_class column is wrong — total_pages=1000 so the computed size class is large (cap 0.2), and its bloat ratio of 0.45 is over that large cap: BLOAT_THRESHOLD_EXCEEDED.
 T-13 is a large table (total_pages 1000) with autovacuum disabled; autovacuum is checked first: AUTOVACUUM_DISABLED.
 
 
 ## Tables T-09 through T-11
 
-- **T-09**: A large table with bloat ratio 0.19 (under the 0.20 cap) and statistics last refreshed 30 days ago. The policy says "more than 30 days ago" â€” 30 is not more than 30. Finding: none.
+- **T-09**: A large table with bloat ratio 0.19 (under the 0.20 cap) and statistics last refreshed 30 days ago. The policy says "more than 30 days ago" — 30 is not more than 30. Finding: none.
 - **T-10**: Large table, bloat 0.21 under active reindex, but statistics are 31 days stale. Reindex does not exempt staleness. Finding: STALE_STATISTICS.
 - **T-11**: size_class says small but total_pages=1000 computes as large; bloat 0.41 over cap, yet autovacuum is disabled and overrides first. Finding: AUTOVACUUM_DISABLED.
 
 ## Boundary equality
 
-- **T-12**: A large table with bloat ratio exactly 0.20 â€” equal to the large-table cap. The policy says a table *over* its cap is BLOAT_THRESHOLD_EXCEEDED; 0.20 is not over 0.20. Finding: none.
+- **T-12**: A large table with bloat ratio exactly 0.20 — equal to the large-table cap. The policy says a table *over* its cap is BLOAT_THRESHOLD_EXCEEDED; 0.20 is not over 0.20. Finding: none.
 - **T-14**: size_class says small but total_pages=1000 computes as large (cap 0.2). Bloat ratio 0.40 is over that large cap. Finding: BLOAT_THRESHOLD_EXCEEDED.
-- **T-15**: A large table with bloat ratio 0.200 â€” numerically equal to the large-table cap of 0.2. Finding: none.
+- **T-15**: A large table with bloat ratio 0.200 — numerically equal to the large-table cap of 0.2. Finding: none.
 
 ## Multi-rule interaction cases
 
@@ -119,7 +119,7 @@ must be computed from `total_pages`: >= 500 is large (cap 0.2), < 500 is small (
   Finding: none. If the column's "large" were used (cap 0.2), 0.30 > 0.2 would give
   BLOAT_THRESHOLD_EXCEEDED (incorrect).
 - **T-32**: total_pages=400 (< 500), computed size class is small (cap 0.4). The column
-  says "large" (WRONG). Bloat ratio 0.40 equals the small cap 0.4 â€” at the cap, not over.
+  says "large" (WRONG). Bloat ratio 0.40 equals the small cap 0.4 — at the cap, not over.
   Finding: none. If "large" were used (cap 0.2), 0.40 > 0.2 would give BLOAT (incorrect).
 
 Several other tables (T-03, T-04, T-06, T-08, T-11, T-13, T-14, T-17, T-19, T-27) have
@@ -132,11 +132,11 @@ incorrect `size_class` column values. The audit uses the computed size class fro
 - **T-33**: round-half-up: 41/200 = 0.205 -> 0.21. Small class (200 < 500, cap 0.4). Under cap. Finding: none.
 - **T-34**: size_class says small but total_pages=500 computes large; ratio 0.20 equals cap. Finding: none. Compute from total_pages.
 - **T-35**: size_class says small but total_pages=500 computes large; ratio 0.22 over cap 0.2. Finding: BLOAT_THRESHOLD_EXCEEDED. Compute from total_pages.
-- **T-36**: Stale stats (36 days) tighten the large cap to 0.15; ratio 0.18 is over that tightened cap. Finding: BLOAT_THRESHOLD_EXCEEDED.
+- **T-36**: Stale stats (35 days) tighten the large cap to 0.15; ratio 0.18 is over that tightened cap. Finding: BLOAT_THRESHOLD_EXCEEDED.
 - **T-37**: Reindex expired (valid_until before audit_date) so not exempt; large ratio 0.25 over cap. Finding: BLOAT_THRESHOLD_EXCEEDED.
 - **T-38**: Unapproved reindex (approved=False) does not exempt; small ratio 0.33 under cap. Finding: none.
 - **T-39**: vacuum_type=manual with autovacuum_enabled=True, so the manual vacuum overrides the automatic schedule. Finding: AUTOVACUUM_DISABLED.
-- **T-40**: days_since_analyze field says 25 but is wrong; actual date gap is 36 days stale. Finding: STALE_STATISTICS.
+- **T-40**: days_since_analyze field says 25 but is wrong; actual date gap is 35 days stale. Finding: STALE_STATISTICS.
 - **T-41**: Exact small cap boundary 0.40 equals cap. Finding: none.
 - **T-42**: Stale stats tighten large cap to 0.15; ratio 0.20 is at the normal cap but over the tightened cap. Finding: BLOAT_THRESHOLD_EXCEEDED.
 - **T-43**: Exact ratio 0.21 under small cap. Finding: none.

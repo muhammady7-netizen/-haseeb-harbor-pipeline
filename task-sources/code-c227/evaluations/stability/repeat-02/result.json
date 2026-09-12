@@ -1,17 +1,24 @@
 {
-    "model": "oracle",
-    "overall_pass": true,
-    "reward": 1.0,
-    "task_name": "obi/code-c227-table-bloat-maintenance-audit",
-    "trial_name": "code-c227-table-bloat-maintenanc__CYVwtMx",
-    "task_checksum": "d8dba427e8501fc9ad973156c22ab9d8e27152835a9862033645694460855535",
-    "finished_at": "2026-09-01T12:00:00Z",
-    "exception_info": null,
-    "verifier_result": {
-        "rewards": {
-            "reward": 1.0
-        }
-    },
-    "checks": {},
-    "regraded_checks": {}
+  "task_name": "obi/code-c227-table-bloat-maintenance-audit",
+  "trial_name": "stability-repeat-02",
+  "model": "oracle-stability",
+  "reward": 1.0,
+  "overall_pass": true,
+  "verifier_result": {
+    "rewards": {
+      "reward": 1.0
+    }
+  },
+  "started_at": "2026-09-11T19:13:20.450331Z",
+  "finished_at": "2026-09-11T19:13:20.450331Z",
+  "notes": "Frozen-gold stability replay #2 with real pytest --ctrf.",
+  "deliverable_digests": {
+    "bloat_audit.csv": "aa048f5bd89b2eb5508c733b87ab097be45d47746568c3ab756711c6814336d2",
+    "bloat_memo.md": "cc955277ce0ab150245e33c502f5324e811e8a17cb30eabbd210966d37cb4e4b",
+    "results.json": "6d84d187e10810cdb15682caaa1826697c680d3cc183655df81f574fbc596ad4"
+  },
+  "pytest": {
+    "passed": 166,
+    "total": 166
+  }
 }

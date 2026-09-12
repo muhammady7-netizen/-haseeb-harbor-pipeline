@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T01:35:53Z",
+  "updated_at": "2026-09-12T01:36:46Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1063,17 +1063,12 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "blocked",
+      "status": "final_running",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Fix package consistency + run fresh Harbor GLM/oracle/solvability; rebuild zip; re-upload. See sessions/B/CONTINUE-OTHER-PC.md",
-      "notes": "Harbor v3: 14 findings. README 161->166, memo reindex_approvals->reindex_log, T-26/T-27 day counts, duplicate count checks, memo T-13/T-10 regex. Fixing source.",
+      "notes": "Fixed: README 161->166, memo reindex_approvals->reindex_log, T-26/T-27 day counts, removed stale EVIDENCE_SUMMARY. Uploaded (content-2c191e40). QC-Oracle-GLM started (evaluation-4ac18562115e4a16).",
       "history": [
-        {
-          "at": "2026-09-09T21:49:14Z",
-          "status": "final_running",
-          "note": "v12 eval queued pos 2 (eval-8b595a7ccc284d5c). 3 running (all at Oracle), 4 queued. c249v6 at pos 1 (next). v12 fixes: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences). Waiting for server."
-        },
         {
           "at": "2026-09-09T21:58:11Z",
           "status": "final_running",
@@ -1268,9 +1263,14 @@
           "at": "2026-09-12T01:29:27Z",
           "status": "blocked",
           "note": "Harbor v3: 14 findings. README 161->166, memo reindex_approvals->reindex_log, T-26/T-27 day counts, duplicate count checks, memo T-13/T-10 regex. Fixing source."
+        },
+        {
+          "at": "2026-09-12T01:36:46Z",
+          "status": "final_running",
+          "note": "Fixed: README 161->166, memo reindex_approvals->reindex_log, T-26/T-27 day counts, removed stale EVIDENCE_SUMMARY. Uploaded (content-2c191e40). QC-Oracle-GLM started (evaluation-4ac18562115e4a16)."
         }
       ],
-      "updated_at": "2026-09-12T01:29:27Z",
+      "updated_at": "2026-09-12T01:36:46Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",

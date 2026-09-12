@@ -4,7 +4,7 @@
 # python deps the vendored verifier engine needs. Installing the grader's deps
 # at build time (rather than in tests/test.sh) keeps verification independent of
 # network conditions at run time.
-FROM python:3.12-slim-bookworm@sha256:a116514e19457bcb7af7efe9c3dd0b9b71e85b317694e7882a1c52aa15a78134
+FROM python:3.12-slim-bookworm@sha256:782412e85d0f0984994c290652577d4018aff08145c85b262bb63dc0c7522254
 
 # curl + ca-certificates: Harbor's installed agents (claude-code, codex, ...)
 # bootstrap node via nvm inside this container during agent setup.

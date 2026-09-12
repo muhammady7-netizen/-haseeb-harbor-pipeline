@@ -1,0 +1,5 @@
+installed gold deliverables into /app:
+bloat_audit.csv
+bloat_memo.md
+input
+results.json
