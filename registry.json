@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T01:36:46Z",
+  "updated_at": "2026-09-12T01:54:04Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2536,18 +2536,8 @@
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
       "next_action": "Finish glm-g806-v4b-2..4 then package+upload v4 (see sessions/C/CONTINUE-OTHER-PC.md)",
-      "notes": "v3 Harbor: invalid r1 harness fail + pane artifact export. Fixed test.sh /logs/artifacts + empty artifacts. oracle-v4 1.0x4. glm-v4b-1=1.0 (83/83); 2-4 pending. Never confirm findings.",
+      "notes": "GLM trial OOM (Docker 4.8GB). Oracle 1.0 + stability 3/3 done. GLM needs more RAM. Source pack ready in sessions/C/source-pack/.",
       "history": [
-        {
-          "at": "2026-09-09T19:22:13Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
-        },
-        {
-          "at": "2026-09-09T19:26:27Z",
-          "status": "final_running",
-          "note": "v1 re-uploaded with fixed result verifier checks (53/15/7/11); Oracle+GLM started"
-        },
         {
           "at": "2026-09-09T20:42:13Z",
           "status": "ready_final",
@@ -2742,9 +2732,14 @@
           "at": "2026-09-11T22:58:18Z",
           "status": "blocked",
           "note": "Cross-PC handoff: sessions/C/CONTINUE-OTHER-PC.md + source-pack. Finish GLM v4b-2..4, stage, package, upload v4. Confirm none."
+        },
+        {
+          "at": "2026-09-12T01:54:04Z",
+          "status": "blocked",
+          "note": "GLM trial OOM (Docker 4.8GB). Oracle 1.0 + stability 3/3 done. GLM needs more RAM. Source pack ready in sessions/C/source-pack/."
         }
       ],
-      "updated_at": "2026-09-11T19:15:33Z",
+      "updated_at": "2026-09-12T01:54:04Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
