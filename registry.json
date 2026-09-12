@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T03:12:20Z",
+  "updated_at": "2026-09-12T04:30:16Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -715,13 +715,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v19 (content-ddb4aca6...f61e66) QC-Oracle-GLM started on correct task. Fixed memo regexes (order-independent, accepts minutes/min). 40 results, 64 verifiers.",
+      "notes": "h40 v20 (content-35cd6ff6) with 45 results, 72 verifiers, 5 more non-round-time traps (R-40: 31min notif+60min ack, R-41: 241min notif+479min ack, R-42: 30min notif+61min ack, R-43: 240min notif+481min ack, R-44: 31min notif+61min ack+escalation). QC-Oracle-GLM running.",
       "history": [
-        {
-          "at": "2026-09-10T21:46:45Z",
-          "status": "ready_final",
-          "note": "v11 ack_breaches=15 + Harbor fairness fixes; local 64/64; uploading Final QC only"
-        },
         {
           "at": "2026-09-10T21:48:30Z",
           "status": "final_running",
@@ -910,9 +905,14 @@
           "at": "2026-09-12T03:12:20Z",
           "status": "final_running",
           "note": "h40 v19 (content-ddb4aca6...f61e66) QC-Oracle-GLM started on correct task. Fixed memo regexes (order-independent, accepts minutes/min). 40 results, 64 verifiers."
+        },
+        {
+          "at": "2026-09-12T04:30:16Z",
+          "status": "final_running",
+          "note": "h40 v20 (content-35cd6ff6) with 45 results, 72 verifiers, 5 more non-round-time traps (R-40: 31min notif+60min ack, R-41: 241min notif+479min ack, R-42: 30min notif+61min ack, R-43: 240min notif+481min ack, R-44: 31min notif+61min ack+escalation). QC-Oracle-GLM running."
         }
       ],
-      "updated_at": "2026-09-12T03:12:20Z",
+      "updated_at": "2026-09-12T04:30:16Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
