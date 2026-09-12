@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T09:45:25Z",
+  "updated_at": "2026-09-12T09:48:45Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1579,17 +1579,12 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal",
       "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal\\code-c251-pdf-form-field-conversion-audit",
-      "status": "ready_accept",
+      "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
-      "next_action": "Dismiss remaining PreQC if needed, then Accept on portal",
-      "notes": "GLM 2/4 within difficulty gate",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v1 (b5a69666) fair verifier (broadened memo checks, disclosed instruction). Waiting for eval slot.",
       "history": [
-        {
-          "at": "2026-09-08T22:39:07Z",
-          "status": "preqc_needs_fix",
-          "note": "PreQC FAIL; 1 must-fix"
-        },
         {
           "at": "2026-09-08T22:39:30Z",
           "status": "ready_final",
@@ -1784,9 +1779,14 @@
           "at": "2026-09-12T02:36:23Z",
           "status": "ready_accept",
           "note": "GLM 2/4 within difficulty gate"
+        },
+        {
+          "at": "2026-09-12T09:48:45Z",
+          "status": "final_running",
+          "note": "v1 (b5a69666) fair verifier (broadened memo checks, disclosed instruction). Waiting for eval slot."
         }
       ],
-      "updated_at": "2026-09-12T02:36:23Z",
+      "updated_at": "2026-09-12T09:48:45Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1806,8 +1806,8 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T02:36:23Z",
-        "phase": "complete",
+        "last_check_at": "2026-09-12T09:48:45Z",
+        "phase": "oracle_running",
         "checks": [
           {
             "at": "2026-09-08T21:57:39Z",
@@ -1992,11 +1992,19 @@
             "note": "v1 (2113e438) Oracle 1.0, GLM 2/4 (difficulty gate PASSED!). Harbor Check found 9 blocking issues (layer1_clarity, layer2_difficulty, layer5_fairness). Submit available but needs source fixes.",
             "glm_pass": "2/4",
             "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-12T09:48:45Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (b5a69666) fair verifier (broadened memo checks, disclosed instruction). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "2/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-2113e438fde5e70b6d64e6049779e106-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-b5a6966624917394de7d37694ab55b74-v1"
       }
     },
     {
@@ -3087,17 +3095,12 @@
       "pack_name": "gen-g857-department-directory-categorization-audit",
       "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\gen-g857-portal",
       "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\gen-g857-portal\\gen-g857-department-directory-categorization-audit",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
-      "next_action": "Densify task, PreQC, package, re-upload",
-      "notes": "Oracle passes 1.0, GLM 4/4 too easy. Taxonomy migration task needs harder traps.",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v1 (536e8bab) clean upload (no evals, 8 trap people, fixed Dockerfile+solve.sh). Waiting for eval slot.",
       "history": [
-        {
-          "at": "2026-09-10T15:27:27Z",
-          "status": "final_running",
-          "note": "gen-g857 v9 uploaded (#312d0a) + PreQC + eval started. 123 checks, tightened memo, no-pipe, no stale evals."
-        },
         {
           "at": "2026-09-10T15:48:16Z",
           "status": "final_running",
@@ -3292,9 +3295,14 @@
           "at": "2026-09-12T01:19:21Z",
           "status": "needs_densify",
           "note": "Oracle passes 1.0, GLM 4/4 too easy. Taxonomy migration task needs harder traps."
+        },
+        {
+          "at": "2026-09-12T09:48:45Z",
+          "status": "final_running",
+          "note": "v1 (536e8bab) clean upload (no evals, 8 trap people, fixed Dockerfile+solve.sh). Waiting for eval slot."
         }
       ],
-      "updated_at": "2026-09-12T01:19:21Z",
+      "updated_at": "2026-09-12T09:48:45Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3314,17 +3322,9 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T01:19:21Z",
-        "phase": "complete",
+        "last_check_at": "2026-09-12T09:48:45Z",
+        "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-09T06:17:13Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v2 Oracle running 901s, waiting for cloud capacity. GLM waiting. No update for 11m.",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-09T06:25:28Z",
             "phase": "oracle_running",
@@ -3556,11 +3556,19 @@
             "note": "v1 (519d21da) Oracle PASSED 1.0! GLM 4/4 too easy. Needs densification.",
             "glm_pass": "4/4",
             "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-12T09:48:45Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (536e8bab) clean upload (no evals, 8 trap people, fixed Dockerfile+solve.sh). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "4/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-519d21da87216543be34951a9aae53e1-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-536e8bab53115a86281e2726b0411c81-v1"
       }
     },
     {
