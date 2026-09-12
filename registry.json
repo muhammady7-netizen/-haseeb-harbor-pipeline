@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T18:04:28Z",
+  "updated_at": "2026-09-12T18:06:25Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -4109,7 +4109,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Poll until Oracle+GLM+Harbor done",
-      "notes": "Oracle crashed 4/4 again. Infra issue - not changing task per meeting guidance.",
+      "notes": "3rd QC-Oracle-GLM attempt started (evaluation-e9cdefae13f34c8a). Previous 2 crashed: 'Oracle failed: 4 of 4 trial(s) died before grading'. Infra issue per meeting guidance.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -4250,9 +4250,14 @@
           "at": "2026-09-12T11:43:40Z",
           "status": "final_running",
           "note": "Oracle crashed 4/4 again. Infra issue - not changing task per meeting guidance."
+        },
+        {
+          "at": "2026-09-12T18:06:25Z",
+          "status": "final_running",
+          "note": "3rd QC-Oracle-GLM attempt started (evaluation-e9cdefae13f34c8a). Previous 2 crashed: 'Oracle failed: 4 of 4 trial(s) died before grading'. Infra issue per meeting guidance."
         }
       ],
-      "updated_at": "2026-09-12T11:43:40Z",
+      "updated_at": "2026-09-12T18:06:25Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
