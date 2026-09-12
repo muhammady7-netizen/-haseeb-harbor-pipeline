@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T09:52:19Z",
+  "updated_at": "2026-09-12T10:13:30Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -715,13 +715,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v21: Added July 18 as new bank holiday in bank_holidays.csv. Added 4 trap results (R-135-R-138) released on July 18 during core hours. Model hardcodes CLOSED_DAYS without reading file dynamically - will get wrong clock start for July 18 results. 138 results, 167 verifiers, 186 tests. Pipeline-packaged.",
+      "notes": "h40 v21 uploaded (content-7ff9915522a5). Bank holiday trap: July 18 added to bank_holidays.csv. Model hardcodes CLOSED_DAYS without reading file. 4 trap results (R-135-R-138) on July 18 will get wrong clock start. QC-Oracle-GLM running.",
       "history": [
-        {
-          "at": "2026-09-10T22:27:33Z",
-          "status": "needs_densify",
-          "note": "v11 #daa5029 Oracle 1.0 GLM 4/4 TOO_EASY ΓÇö densifying to v12"
-        },
         {
           "at": "2026-09-10T22:27:57Z",
           "status": "ready_final",
@@ -910,9 +905,14 @@
           "at": "2026-09-12T09:52:19Z",
           "status": "final_running",
           "note": "h40 v21: Added July 18 as new bank holiday in bank_holidays.csv. Added 4 trap results (R-135-R-138) released on July 18 during core hours. Model hardcodes CLOSED_DAYS without reading file dynamically - will get wrong clock start for July 18 results. 138 results, 167 verifiers, 186 tests. Pipeline-packaged."
+        },
+        {
+          "at": "2026-09-12T09:54:06Z",
+          "status": "final_running",
+          "note": "h40 v21 uploaded (content-7ff9915522a5). Bank holiday trap: July 18 added to bank_holidays.csv. Model hardcodes CLOSED_DAYS without reading file. 4 trap results (R-135-R-138) on July 18 will get wrong clock start. QC-Oracle-GLM running."
         }
       ],
-      "updated_at": "2026-09-12T09:52:19Z",
+      "updated_at": "2026-09-12T09:54:06Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
@@ -2567,14 +2567,9 @@
       "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Finish glm-g806-v4b-2..4 then package+upload v4 (see sessions/C/CONTINUE-OTHER-PC.md)",
-      "notes": "v3 uploaded (fixed verifier schema, 83 checks). QC-Oracle-GLM waiting for slot (3 in use). Will retry.",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v3 QC-Oracle-GLM STARTED on portal. Oracle waiting. ~50min expected. Fixed verifier schema (83 checks, gold 51/51).",
       "history": [
-        {
-          "at": "2026-09-09T20:48:38Z",
-          "status": "needs_densify",
-          "note": "Densified: 15 new scripts (SC-101-115) with edge cases; 114 verifiers; Oracle sim 114/114 PASS; re-uploading"
-        },
         {
           "at": "2026-09-09T21:09:14Z",
           "status": "ready_final",
@@ -2769,9 +2764,14 @@
           "at": "2026-09-12T09:39:44Z",
           "status": "final_running",
           "note": "v3 uploaded (fixed verifier schema, 83 checks). QC-Oracle-GLM waiting for slot (3 in use). Will retry."
+        },
+        {
+          "at": "2026-09-12T10:13:30Z",
+          "status": "final_running",
+          "note": "v3 QC-Oracle-GLM STARTED on portal. Oracle waiting. ~50min expected. Fixed verifier schema (83 checks, gold 51/51)."
         }
       ],
-      "updated_at": "2026-09-12T09:39:44Z",
+      "updated_at": "2026-09-12T10:13:30Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2792,8 +2792,8 @@
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-11T12:19:39Z",
-        "phase": "complete",
+        "last_check_at": "2026-09-12T10:13:30Z",
+        "phase": "oracle_running",
         "checks": [
           {
             "at": "2026-09-08T22:32:56Z",
@@ -2898,6 +2898,14 @@
             "note": "v2: Oracle PASSED, GLM 3/4 (good difficulty!). 3 blocking findings. Need to read+fix+re-upload v3.",
             "glm_pass": "3/4",
             "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-12T10:13:30Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v3 QC-Oracle-GLM STARTED on portal. Oracle waiting. ~50min expected. Fixed verifier schema (83 checks, gold 51/51).",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "3/4",
