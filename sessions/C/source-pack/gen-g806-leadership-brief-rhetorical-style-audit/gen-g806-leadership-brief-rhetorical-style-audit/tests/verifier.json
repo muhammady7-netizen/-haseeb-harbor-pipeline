@@ -2069,7 +2069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "\\A[^\\r\\n]+\\r?\\n(?:[^\\r\\n]+\\r?\\n){7}[^\\r\\n]+\\r?\\n?\\Z",
+        "expected": "\\A[^\\r\\n]+\\r?\\n(?:[^\\r\\n]+\\r?\\n){7}[^\\r\\n]+\\r?\\n?\\s*\\Z",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2144,7 +2144,182 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "\\A[^\\r\\n]+\\r?\\n(?:[^\\r\\n]+\\r?\\n){47}[^\\r\\n]+\\r?\\n?\\Z",
+        "expected": "\\A[^\\r\\n]+\\r?\\n(?:[^\\r\\n]+\\r?\\n){47}[^\\r\\n]+\\r?\\n?\\s*\\Z",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_recommends_b02",
+      "metadata": {
+        "how_justification": "Checks memo subsection for B-02 contains the word recommended and a relocation move.",
+        "why_justification": "Instruction requires each failing-brief memo subsection to state the recommended relocation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?02.*recommended.*S[-\\d]+:\\d+->\\d+",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_recommends_b03",
+      "metadata": {
+        "how_justification": "Checks memo subsection for B-03 contains the word recommended and a relocation move.",
+        "why_justification": "Instruction requires each failing-brief memo subsection to state the recommended relocation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?03.*recommended.*S[-\\d]+:\\d+->\\d+",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_recommends_b04",
+      "metadata": {
+        "how_justification": "Checks memo subsection for B-04 contains the word recommended and a relocation move.",
+        "why_justification": "Instruction requires each failing-brief memo subsection to state the recommended relocation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?04.*recommended.*S[-\\d]+:\\d+->\\d+",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_recommends_b05",
+      "metadata": {
+        "how_justification": "Checks memo subsection for B-05 contains the word recommended and a relocation move.",
+        "why_justification": "Instruction requires each failing-brief memo subsection to state the recommended relocation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?05.*recommended.*S[-\\d]+:\\d+->\\d+",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_recommends_b06",
+      "metadata": {
+        "how_justification": "Checks memo subsection for B-06 contains the word recommended and a relocation move.",
+        "why_justification": "Instruction requires each failing-brief memo subsection to state the recommended relocation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?06.*recommended.*S[-\\d]+:\\d+->\\d+",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_recommends_b08",
+      "metadata": {
+        "how_justification": "Checks memo subsection for B-08 contains the word recommended and a relocation move.",
+        "why_justification": "Instruction requires each failing-brief memo subsection to state the recommended relocation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?08.*recommended.*S[-\\d]+:\\d+->\\d+",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_lexicographic_order",
+      "metadata": {
+        "how_justification": "Checks question_trace.csv rows are sorted lexicographically by (brief_id, question_id).",
+        "why_justification": "Instruction requires sorting briefs and questions lexicographically."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?ms)^B-01.*?^B-01.*?^B-01.*?^B-01.*?^B-01.*?^B-01.*?^B-02.*?^B-02.*?^B-02.*?^B-02.*?^B-02.*?^B-02.*?^B-03.*?^B-03.*?^B-03.*?^B-03.*?^B-03.*?^B-03.*?^B-04.*?^B-04.*?^B-04.*?^B-04.*?^B-04.*?^B-04.*?^B-05.*?^B-05.*?^B-05.*?^B-05.*?^B-05.*?^B-05.*?^B-06.*?^B-06.*?^B-06.*?^B-06.*?^B-06.*?^B-06.*?^B-07.*?^B-07.*?^B-07.*?^B-07.*?^B-07.*?^B-07.*?^B-07.*?^B-08.*?^B-08.*?^B-08.*?^B-08.*?^B-08.*?^B-08",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

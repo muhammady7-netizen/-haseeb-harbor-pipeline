@@ -10,8 +10,8 @@ creating consecutive identical purpose violations (-5 each, -15 total).
 Three questions are answered at distance > 5 (-5 each, -15 total).
 Score: 100 - 15 - 15 = 70 (failing).
 
-Recommended move: S-029:9->2 (smallest distance that preserves coverage).
-Projected score: 75.
+Recommended move: S-028:8->2 (largest-improvement coverage-preserving relocation).
+Projected score: 80.
 
 ## B-04 (score: 70)
 Unanswered: none. Transition breaches: 5. Recommended: S-033:3->6 (projected 75).
