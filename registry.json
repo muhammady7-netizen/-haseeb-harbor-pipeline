@@ -9,10 +9,10 @@
     "url": "https://github.com/muhammady7-netizen/-haseeb-harbor-pipeline"
   },
   "workflow": [
-    "pending ├óΓÇáΓÇÖ preqc ├óΓÇáΓÇÖ fix until preqc_clean",
-    "package ├óΓÇáΓÇÖ ready_final",
-    "upload V2 ├óΓÇáΓÇÖ dismiss portal PreQC ├óΓÇáΓÇÖ Oracle+GLM├âΓÇö4",
-    "accept or densify/fix ├óΓÇáΓÇÖ loop"
+    "pending \u251c\u00f3\u0393\u00c7\u00e1\u0393\u00c7\u00d6 preqc \u251c\u00f3\u0393\u00c7\u00e1\u0393\u00c7\u00d6 fix until preqc_clean",
+    "package \u251c\u00f3\u0393\u00c7\u00e1\u0393\u00c7\u00d6 ready_final",
+    "upload V2 \u251c\u00f3\u0393\u00c7\u00e1\u0393\u00c7\u00d6 dismiss portal PreQC \u251c\u00f3\u0393\u00c7\u00e1\u0393\u00c7\u00d6 Oracle+GLM\u251c\u00e2\u0393\u00c7\u00f64",
+    "accept or densify/fix \u251c\u00f3\u0393\u00c7\u00e1\u0393\u00c7\u00d6 loop"
   ],
   "tasks": [
     {
@@ -84,7 +84,7 @@
       "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
-      "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
+      "next_action": "Poll Oracle+GLM\u00d74+Harbor on content-d09f3e79...-v1",
       "notes": "v24 on portal content-d09f3e79ded320c787b15498063ef758-v1. Local oracle 1.0 + stab 1.0x3 + GLM 2/4. QC-Oracle-GLM started earlier; keep polling.",
       "history": [
         {
@@ -105,7 +105,7 @@
         {
           "at": "2026-09-07T22:47:34Z",
           "status": "final_running",
-          "note": "Portal f39 v9: Oracle+GLM├âΓÇö4+Harbor started; PreQC 6 findings left unconfirmed (did not Confirm)"
+          "note": "Portal f39 v9: Oracle+GLM\u251c\u00e2\u0393\u00c7\u00f64+Harbor started; PreQC 6 findings left unconfirmed (did not Confirm)"
         },
         {
           "at": "2026-09-07T22:52:33Z",
@@ -200,7 +200,7 @@
         {
           "at": "2026-09-10T21:03:04Z",
           "status": "needs_densify",
-          "note": "v21 GLM: 0.0, 0.0, 0.959, 0.959 (0/4 at 1.0). Near-misses only fail non_distributable_on_schedule + result_non_distributable_capital_gbp. Soft-ease those next ΓåÆ v22."
+          "note": "v21 GLM: 0.0, 0.0, 0.959, 0.959 (0/4 at 1.0). Near-misses only fail non_distributable_on_schedule + result_non_distributable_capital_gbp. Soft-ease those next \u0393\u00e5\u00c6 v22."
         },
         {
           "at": "2026-09-10T21:24:58Z",
@@ -291,13 +291,13 @@
         "watch": true,
         "last_check_at": "2026-09-11T20:06:14Z",
         "phase": "glm_or_oracle_running",
-        "run_history": "2 runs ├é┬╖ latest running",
+        "run_history": "2 runs \u251c\u00e9\u252c\u2556 latest running",
         "checks": [
           {
             "at": "2026-09-07T22:51:29Z",
             "phase": "oracle_waiting",
             "running": true,
-            "note": "Oracle waiting; GLM├âΓÇö4 not started yet"
+            "note": "Oracle waiting; GLM\u251c\u00e2\u0393\u00c7\u00f64 not started yet"
           },
           {
             "at": "2026-09-07T22:52:33Z",
@@ -345,8 +345,8 @@
       "status": "final_running",
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f44.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM├ù4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
-      "notes": "v7 uploaded (content-21ee2d95): fixed per-row CSV regexes to account for description column. Eval triggered.",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM\u251c\u00f94. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "notes": "v10 uploaded with hardened data (Loan E + split commitment fee). 40 verifiers. Oracle 1.0. GLM 0/4 at 1.0 (all 0.7). QC-Oracle-GLM started on portal.",
       "history": [
         {
           "at": "2026-09-08T19:08:20Z",
@@ -514,7 +514,7 @@
           "note": "v7 uploaded (content-21ee2d95): fixed per-row CSV regexes to account for description column. Eval triggered."
         }
       ],
-      "updated_at": "2026-09-10T15:24:34Z",
+      "updated_at": "2026-09-12T10:20:00Z",
       "last_preqc": {
         "at": "2026-09-08T22:27:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000075\\2026-09-08T222715Z",
@@ -660,7 +660,7 @@
         {
           "at": "2026-09-09T11:45:32Z",
           "status": "final_running",
-          "note": "h34 old PreQC+eval findings dismissed. New densified v2 eval (evaluation-1ee3ab) still running. Waiting for Oracle+GLM├ù4 result."
+          "note": "h34 old PreQC+eval findings dismissed. New densified v2 eval (evaluation-1ee3ab) still running. Waiting for Oracle+GLM\u251c\u00f94 result."
         },
         {
           "at": "2026-09-09T12:00:47Z",
@@ -714,7 +714,7 @@
       "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "next_action": "Keep polling portal until Oracle+GLM\u00d74 finishes",
       "notes": "h40 v21 uploaded (content-7ff9915522a5). Bank holiday trap: July 18 added to bank_holidays.csv. Model hardcodes CLOSED_DAYS without reading file. 4 trap results (R-135-R-138) on July 18 will get wrong clock start. QC-Oracle-GLM running.",
       "history": [
         {
@@ -730,7 +730,7 @@
         {
           "at": "2026-09-10T22:36:15Z",
           "status": "final_running",
-          "note": "v12 densify uploaded; slots full ΓÇö waiting to start Final QC"
+          "note": "v12 densify uploaded; slots full \u0393\u00c7\u00f6 waiting to start Final QC"
         },
         {
           "at": "2026-09-10T22:40:42Z",
@@ -740,7 +740,7 @@
         {
           "at": "2026-09-10T22:40:42Z",
           "status": "final_running",
-          "note": "v12 densify uploaded; slots full ΓÇö waiting to start Final QC"
+          "note": "v12 densify uploaded; slots full \u0393\u00c7\u00f6 waiting to start Final QC"
         },
         {
           "at": "2026-09-10T22:46:14Z",
@@ -755,7 +755,7 @@
         {
           "at": "2026-09-10T23:02:23Z",
           "status": "needs_densify",
-          "note": "v12 #7fcbcc0 Oracle 1.0 GLM 4/4 TOO_EASY again ΓÇö densify v13"
+          "note": "v12 #7fcbcc0 Oracle 1.0 GLM 4/4 TOO_EASY again \u0393\u00c7\u00f6 densify v13"
         },
         {
           "at": "2026-09-10T23:02:31Z",
@@ -770,7 +770,7 @@
         {
           "at": "2026-09-11T10:13:47Z",
           "status": "final_running",
-          "note": "h40 v13 (content-337c2e4a) QC-Oracle-GLM started. Waiting ~50min for Oracle+GLM├ù4."
+          "note": "h40 v13 (content-337c2e4a) QC-Oracle-GLM started. Waiting ~50min for Oracle+GLM\u251c\u00f94."
         },
         {
           "at": "2026-09-11T10:58:56Z",
@@ -830,7 +830,7 @@
         {
           "at": "2026-09-11T18:47:30Z",
           "status": "needs_densify",
-          "note": "latest #a34a429 Oracle 1.0 GLM 4/4 TOO_EASY — densify again"
+          "note": "latest #a34a429 Oracle 1.0 GLM 4/4 TOO_EASY \u2014 densify again"
         },
         {
           "at": "2026-09-11T18:52:56Z",
@@ -991,7 +991,7 @@
             "at": "2026-09-10T22:36:15Z",
             "phase": "uploaded",
             "running": true,
-            "note": "v12 densify uploaded; slots full ΓÇö waiting to start Final QC",
+            "note": "v12 densify uploaded; slots full \u0393\u00c7\u00f6 waiting to start Final QC",
             "glm_pass": null,
             "oracle": null
           },
@@ -999,7 +999,7 @@
             "at": "2026-09-10T22:40:42Z",
             "phase": "uploaded",
             "running": true,
-            "note": "v12 densify uploaded; slots full ΓÇö waiting to start Final QC",
+            "note": "v12 densify uploaded; slots full \u0393\u00c7\u00f6 waiting to start Final QC",
             "glm_pass": null,
             "oracle": null
           },
@@ -1015,7 +1015,7 @@
             "at": "2026-09-11T10:13:47Z",
             "phase": "oracle_running",
             "running": true,
-            "note": "h40 v13 (content-337c2e4a) QC-Oracle-GLM started. Waiting ~50min for Oracle+GLM├ù4.",
+            "note": "h40 v13 (content-337c2e4a) QC-Oracle-GLM started. Waiting ~50min for Oracle+GLM\u251c\u00f94.",
             "glm_pass": null,
             "oracle": null
           },
@@ -1072,7 +1072,7 @@
         {
           "at": "2026-09-09T22:04:34Z",
           "status": "final_running",
-          "note": "v12 eval RUNNING at Oracle (eval-8b595a7ccc284d5c). c249v6 also running at Oracle. Both waiting for Oracle to pass. v12 fixes: memo accepts Markdown tables + test_memo_has_prose. v9 proved Oracle 1.0 + GLM 2/4. ALL fixes pushed. Browser contended ΓÇö monitoring when possible."
+          "note": "v12 eval RUNNING at Oracle (eval-8b595a7ccc284d5c). c249v6 also running at Oracle. Both waiting for Oracle to pass. v12 fixes: memo accepts Markdown tables + test_memo_has_prose. v9 proved Oracle 1.0 + GLM 2/4. ALL fixes pushed. Browser contended \u0393\u00c7\u00f6 monitoring when possible."
         },
         {
           "at": "2026-09-09T22:07:00Z",
@@ -1102,12 +1102,12 @@
         {
           "at": "2026-09-09T22:36:41Z",
           "status": "ready_accept",
-          "note": "v12 eval: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running ~50 min (long ΓÇö server load). Will submit to pipeline when harbor completes. ALL 12 harbor findings fixed. Browser contended."
+          "note": "v12 eval: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running ~50 min (long \u0393\u00c7\u00f6 server load). Will submit to pipeline when harbor completes. ALL 12 harbor findings fixed. Browser contended."
         },
         {
           "at": "2026-09-09T22:39:27Z",
           "status": "ready_accept",
-          "note": "v12: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running 60+ min (very long ΓÇö server overload). Pipeline submission returns 409 (harbor not done). Will submit when harbor completes."
+          "note": "v12: Oracle 1.0 + GLM 2/4 PASSED! Harbor check running 60+ min (very long \u0393\u00c7\u00f6 server overload). Pipeline submission returns 409 (harbor not done). Will submit when harbor completes."
         },
         {
           "at": "2026-09-09T22:43:35Z",
@@ -1167,7 +1167,7 @@
         {
           "at": "2026-09-10T20:11:29Z",
           "status": "final_running",
-          "note": "v14 uploaded headless (content-3a68a466...). Portal: review.csv shows Not finished ΓÇö need Check with QC reviewer then Run PreQC + Oracle+GLM. Banner: review.csv must be complete before Oracle. Shared chrome-profile currently contended."
+          "note": "v14 uploaded headless (content-3a68a466...). Portal: review.csv shows Not finished \u0393\u00c7\u00f6 need Check with QC reviewer then Run PreQC + Oracle+GLM. Banner: review.csv must be complete before Oracle. Shared chrome-profile currently contended."
         },
         {
           "at": "2026-09-10T20:26:24Z",
@@ -1232,7 +1232,7 @@
         {
           "at": "2026-09-11T18:39:58Z",
           "status": "ready_final",
-          "note": "Fairness rebuild: DOTALL memo synonyms + results.json key checks; gold 166/166; stale glm/solvability removed. Zip ready for re-upload (skip PreQC → QC-Oracle-GLM). Confirm none."
+          "note": "Fairness rebuild: DOTALL memo synonyms + results.json key checks; gold 166/166; stale glm/solvability removed. Zip ready for re-upload (skip PreQC \u2192 QC-Oracle-GLM). Confirm none."
         },
         {
           "at": "2026-09-11T22:50:22Z",
@@ -1383,17 +1383,17 @@
         {
           "at": "2026-09-10T15:13:34Z",
           "status": "blocked",
-          "note": "v7 done. Oracle failed 0.975 (1 check failing). RUN-03 fix may not be correct ΓÇö need to check which check fails. Gold memo may need fixing too."
+          "note": "v7 done. Oracle failed 0.975 (1 check failing). RUN-03 fix may not be correct \u0393\u00c7\u00f6 need to check which check fails. Gold memo may need fixing too."
         },
         {
           "at": "2026-09-10T15:19:25Z",
           "status": "final_running",
-          "note": "v8 eval started (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCH, should be none ΓÇö cutover only applies to weekly-journal-brief), row count CRLF tolerance, memo_run19 loosened. Oracle was 0.975 on v7."
+          "note": "v8 eval started (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCH, should be none \u0393\u00c7\u00f6 cutover only applies to weekly-journal-brief), row count CRLF tolerance, memo_run19 loosened. Oracle was 0.975 on v7."
         },
         {
           "at": "2026-09-10T15:29:21Z",
           "status": "final_running",
-          "note": "v8 eval queued pos 1 (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCHΓåÆnone), row count CRLF, memo_run19 loosened. 3 running (1 at GLM). NEXT when one finishes."
+          "note": "v8 eval queued pos 1 (evaluation-6a1c1a82e6c74066). Fixed: RUN-21 monthly-report cutover bug (was SOURCE_MISMATCH\u0393\u00e5\u00c6none), row count CRLF, memo_run19 loosened. 3 running (1 at GLM). NEXT when one finishes."
         },
         {
           "at": "2026-09-10T15:41:35Z",
@@ -1413,7 +1413,7 @@
         {
           "at": "2026-09-10T15:54:12Z",
           "status": "ready_accept",
-          "note": "v8: Oracle 1.0 PASSED! GLM x4 running ~40 min (evaluation-6a1c1a82e6c74066). Browser contended ΓÇö can't check GLM result. Will submit to pipeline when GLM done + harbor clean."
+          "note": "v8: Oracle 1.0 PASSED! GLM x4 running ~40 min (evaluation-6a1c1a82e6c74066). Browser contended \u0393\u00c7\u00f6 can't check GLM result. Will submit to pipeline when GLM done + harbor clean."
         },
         {
           "at": "2026-09-10T15:56:25Z",
@@ -1428,12 +1428,12 @@
         {
           "at": "2026-09-10T16:02:44Z",
           "status": "final_running",
-          "note": "v9 eval running (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended ΓÇö monitoring. Will submit to pipeline when GLM<=2/4."
+          "note": "v9 eval running (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended \u0393\u00c7\u00f6 monitoring. Will submit to pipeline when GLM<=2/4."
         },
         {
           "at": "2026-09-10T16:06:35Z",
           "status": "final_running",
-          "note": "v9 eval queued (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended ΓÇö can't check queue position. Will submit to pipeline when GLM<=2/4."
+          "note": "v9 eval queued (evaluation-d8976a2bcffb459a). Densified 7 traps. Oracle 1.0 on v8. Browser contended \u0393\u00c7\u00f6 can't check queue position. Will submit to pipeline when GLM<=2/4."
         },
         {
           "at": "2026-09-10T16:09:34Z",
@@ -1448,12 +1448,12 @@
         {
           "at": "2026-09-10T17:19:39Z",
           "status": "ready_accept",
-          "note": "v9 BREAKTHROUGH: Oracle 1.0 PASSED + GLM 0/4 (PASS ΓÇö difficulty bar met!). Harbor check running. 0/4 might fail solvability (needs >=1 GLM pass). If harbor rejects on solvability, need to slightly loosen 1-2 traps. ALL source pushed."
+          "note": "v9 BREAKTHROUGH: Oracle 1.0 PASSED + GLM 0/4 (PASS \u0393\u00c7\u00f6 difficulty bar met!). Harbor check running. 0/4 might fail solvability (needs >=1 GLM pass). If harbor rejects on solvability, need to slightly loosen 1-2 traps. ALL source pushed."
         },
         {
           "at": "2026-09-10T17:32:26Z",
           "status": "ready_accept",
-          "note": "v9: Oracle 1.0 + GLM 0/4 (PASS). Harbor check running. Browser locked by other chats ΓÇö can't check harbor completion. 0/4 might fail solvability (needs >=1 GLM pass). If harbor rejects, loosen 1-2 traps. Zip at .playwright-mcp/zips/UPLOAD-THIS-TO-QC-code-c249-v9.zip"
+          "note": "v9: Oracle 1.0 + GLM 0/4 (PASS). Harbor check running. Browser locked by other chats \u0393\u00c7\u00f6 can't check harbor completion. 0/4 might fail solvability (needs >=1 GLM pass). If harbor rejects, loosen 1-2 traps. Zip at .playwright-mcp/zips/UPLOAD-THIS-TO-QC-code-c249-v9.zip"
         },
         {
           "at": "2026-09-10T17:50:51Z",
@@ -1478,7 +1478,7 @@
         {
           "at": "2026-09-10T21:14:04Z",
           "status": "final_running",
-          "note": "review.csv Complete; PreQC skipped; Oracle click attempted on content-10994eb6 ΓÇö confirm eval running and re-click if still Not run yet."
+          "note": "review.csv Complete; PreQC skipped; Oracle click attempted on content-10994eb6 \u0393\u00c7\u00f6 confirm eval running and re-click if still Not run yet."
         },
         {
           "at": "2026-09-10T22:26:05Z",
@@ -1518,7 +1518,7 @@
         {
           "at": "2026-09-11T20:32:41Z",
           "status": "ready_final",
-          "note": "Delivery Gate fixes: grade identifying cols; harden memo; densify traps; real compute solvability; real GLM×4 (2/4@1.0 + 2@0.966); oracle stability 3/3@1.0. Confirm none — re-upload."
+          "note": "Delivery Gate fixes: grade identifying cols; harden memo; densify traps; real compute solvability; real GLM\u00d74 (2/4@1.0 + 2@0.966); oracle stability 3/3@1.0. Confirm none \u2014 re-upload."
         },
         {
           "at": "2026-09-11T22:50:22Z",
@@ -1582,7 +1582,7 @@
       "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "next_action": "Keep polling portal until Oracle+GLM\u00d74 finishes",
       "notes": "v1 (b5a69666) fair verifier (broadened memo checks, disclosed instruction). Waiting for eval slot.",
       "history": [
         {
@@ -1688,7 +1688,7 @@
         {
           "at": "2026-09-10T20:27:53Z",
           "status": "final_running",
-          "note": "TRACKING: #1ddef3 needs PreQC+Oracle. Portal 3/3 slots busy ΓÇö waiting in queue."
+          "note": "TRACKING: #1ddef3 needs PreQC+Oracle. Portal 3/3 slots busy \u0393\u00c7\u00f6 waiting in queue."
         },
         {
           "at": "2026-09-10T20:33:39Z",
@@ -1753,7 +1753,7 @@
         {
           "at": "2026-09-11T18:58:10Z",
           "status": "ready_final",
-          "note": "Harbor Delivery Gate fixed: README/instruction aligned, full-row coverage, memo fairness, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip — upload as v2"
+          "note": "Harbor Delivery Gate fixed: README/instruction aligned, full-row coverage, memo fairness, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-code-c251.zip \u2014 upload as v2"
         },
         {
           "at": "2026-09-12T00:54:55Z",
@@ -1941,7 +1941,7 @@
             "at": "2026-09-11T13:44:31Z",
             "phase": "complete",
             "running": false,
-            "note": "v1 (c4dd720f) Oracle FAILED 0.0 ΓÇö missing deps in Dockerfile. Rebuilding with openpyxl/python-docx/python-pptx/pypdf.",
+            "note": "v1 (c4dd720f) Oracle FAILED 0.0 \u0393\u00c7\u00f6 missing deps in Dockerfile. Rebuilding with openpyxl/python-docx/python-pptx/pypdf.",
             "glm_pass": "0/4",
             "oracle": "0.0"
           },
@@ -2017,7 +2017,7 @@
       "session": "D",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f53.zip",
       "next_action": "Fix packager and retry package",
-      "notes": "v4 uploaded (content-43d5b09c): fixed rounding ambiguity ΓÇö changed input amounts Y/OO/EE from 187.50/227.50 to 188.00/228.00 so 3% doesn't land on .XX5 boundary. Updated gold + verifier. Eval pending (409 slot full).",
+      "notes": "v4 uploaded (content-43d5b09c): fixed rounding ambiguity \u0393\u00c7\u00f6 changed input amounts Y/OO/EE from 187.50/227.50 to 188.00/228.00 so 3% doesn't land on .XX5 boundary. Updated gold + verifier. Eval pending (409 slot full).",
       "history": [
         {
           "at": "2026-09-08T19:08:22Z",
@@ -2097,7 +2097,7 @@
         {
           "at": "2026-09-11T16:38:46Z",
           "status": "final_running",
-          "note": "v4 uploaded (content-43d5b09c): fixed rounding ambiguity ΓÇö changed input amounts Y/OO/EE from 187.50/227.50 to 188.00/228.00 so 3% doesn't land on .XX5 boundary. Updated gold + verifier. Eval pending (409 slot full)."
+          "note": "v4 uploaded (content-43d5b09c): fixed rounding ambiguity \u0393\u00c7\u00f6 changed input amounts Y/OO/EE from 187.50/227.50 to 188.00/228.00 so 3% doesn't land on .XX5 boundary. Updated gold + verifier. Eval pending (409 slot full)."
         }
       ],
       "updated_at": "2026-09-11T16:38:46Z",
@@ -2255,7 +2255,7 @@
       "status": "final_running",
       "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g734.zip",
-      "next_action": "Poll Oracle+GLM├ù4; fix Harbor findings in source if blocking",
+      "next_action": "Poll Oracle+GLM\u251c\u00f94; fix Harbor findings in source if blocking",
       "notes": "Final QC clicked (skipped PreQC). content-86163925-v1. Evaluation open.",
       "history": [
         {
@@ -2567,7 +2567,7 @@
       "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "next_action": "Keep polling portal until Oracle+GLM\u00d74 finishes",
       "notes": "v3 QC-Oracle-GLM STARTED on portal. Oracle waiting. ~50min expected. Fixed verifier schema (83 checks, gold 51/51).",
       "history": [
         {
@@ -2623,7 +2623,7 @@
         {
           "at": "2026-09-10T18:34:38Z",
           "status": "final_running",
-          "note": "Session C locked to gen-g806 ONLY. gen-g734 and gen-g986 released ΓÇö do not work those in Chat C."
+          "note": "Session C locked to gen-g806 ONLY. gen-g734 and gen-g986 released \u0393\u00c7\u00f6 do not work those in Chat C."
         },
         {
           "at": "2026-09-10T19:30:49Z",
@@ -2638,7 +2638,7 @@
         {
           "at": "2026-09-10T19:31:57Z",
           "status": "ready_final",
-          "note": "Packaged fixed zip (obi/ name + solve.sh SOLUTION_DIR). Local oracle 1.0. Awaiting portal re-upload + Oracle+GLM├ù4."
+          "note": "Packaged fixed zip (obi/ name + solve.sh SOLUTION_DIR). Local oracle 1.0. Awaiting portal re-upload + Oracle+GLM\u251c\u00f94."
         },
         {
           "at": "2026-09-10T19:36:56Z",
@@ -2693,7 +2693,7 @@
         {
           "at": "2026-09-10T22:25:55Z",
           "status": "needs_densify",
-          "note": "Final QC DONE content-58a3a86e: Oracle PASS, GLM 0/4 (good). Harbor Check: 32 blockers ΓÇö must FIX in source (STRICT-RULES), not dismiss. Tracker continues."
+          "note": "Final QC DONE content-58a3a86e: Oracle PASS, GLM 0/4 (good). Harbor Check: 32 blockers \u0393\u00c7\u00f6 must FIX in source (STRICT-RULES), not dismiss. Tracker continues."
         },
         {
           "at": "2026-09-10T22:26:10Z",
@@ -2703,12 +2703,12 @@
         {
           "at": "2026-09-10T22:26:26Z",
           "status": "final_running",
-          "note": "Final QC content-58a3a86e: Oracle PASS, GLM 0/4 (difficulty OK). Harbor: 32 blockers ΓÇö FIX in source per STRICT-RULES (not dismiss). Fetching finding details then patch+reupload."
+          "note": "Final QC content-58a3a86e: Oracle PASS, GLM 0/4 (difficulty OK). Harbor: 32 blockers \u0393\u00c7\u00f6 FIX in source per STRICT-RULES (not dismiss). Fetching finding details then patch+reupload."
         },
         {
           "at": "2026-09-10T22:29:20Z",
           "status": "final_running",
-          "note": "Portal: Oracle PASS + GLM 0/4 on content-58a3a86e (Harbor 32 blockers). Tracker re-clicked Final QC ΓÇö new GLM run in progress. Waiting that run; then FIX Harbor findings in source (no dismiss)."
+          "note": "Portal: Oracle PASS + GLM 0/4 on content-58a3a86e (Harbor 32 blockers). Tracker re-clicked Final QC \u0393\u00c7\u00f6 new GLM run in progress. Waiting that run; then FIX Harbor findings in source (no dismiss)."
         },
         {
           "at": "2026-09-10T22:57:29Z",
@@ -2807,7 +2807,7 @@
             "at": "2026-09-09T17:55:18Z",
             "phase": "oracle_running",
             "running": true,
-            "note": "v1 re-uploaded with fixed verifier (SC-10/32/35/36ΓåÆnone, SC-50ΓåÆRUNTIME_OUT_OF_BAND); Oracle+GLM started",
+            "note": "v1 re-uploaded with fixed verifier (SC-10/32/35/36\u0393\u00e5\u00c6none, SC-50\u0393\u00e5\u00c6RUNTIME_OUT_OF_BAND); Oracle+GLM started",
             "glm_pass": null,
             "oracle": null
           },
@@ -2921,7 +2921,7 @@
       "status": "blocked",
       "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g826.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM├ù4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM\u251c\u00f94. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
       "notes": "REJECTED (yellow). Not working.",
       "history": [
         {
@@ -3052,7 +3052,7 @@
         {
           "at": "2026-09-10T18:32:44Z",
           "status": "blocked",
-          "note": "REJECTED ΓÇö Session B must NOT work on this task anymore (user 2026-09-10). Only code-c249 + code-c227."
+          "note": "REJECTED \u0393\u00c7\u00f6 Session B must NOT work on this task anymore (user 2026-09-10). Only code-c249 + code-c227."
         },
         {
           "at": "2026-09-11T17:03:20Z",
@@ -3106,7 +3106,7 @@
       "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "next_action": "Keep polling portal until Oracle+GLM\u00d74 finishes",
       "notes": "v1 (536e8bab) clean upload (no evals, 8 trap people, fixed Dockerfile+solve.sh). Waiting for eval slot.",
       "history": [
         {
@@ -3157,7 +3157,7 @@
         {
           "at": "2026-09-10T20:27:52Z",
           "status": "ready_final",
-          "note": "TRACKING: hardened zip ready. Portal 3/3 eval slots busy ΓÇö queued. Will click PreQC+Oracle when slot frees. Prior upload often landed on old #a41d17."
+          "note": "TRACKING: hardened zip ready. Portal 3/3 eval slots busy \u0393\u00c7\u00f6 queued. Will click PreQC+Oracle when slot frees. Prior upload often landed on old #a41d17."
         },
         {
           "at": "2026-09-10T20:30:16Z",
@@ -3167,7 +3167,7 @@
         {
           "at": "2026-09-10T20:33:39Z",
           "status": "ready_final",
-          "note": "TRACK: v2 #fae8c6 uploaded. PreQC click attempted (may still show not-run). Oracle blocked 3/3 slots. Profile held by g806-loop ΓÇö waiting to reclaim. c251 #1ddef3 still needs gates."
+          "note": "TRACK: v2 #fae8c6 uploaded. PreQC click attempted (may still show not-run). Oracle blocked 3/3 slots. Profile held by g806-loop \u0393\u00c7\u00f6 waiting to reclaim. c251 #1ddef3 still needs gates."
         },
         {
           "at": "2026-09-10T20:43:17Z",
@@ -3287,7 +3287,7 @@
         {
           "at": "2026-09-11T18:58:11Z",
           "status": "ready_final",
-          "note": "Harbor Delivery Gate fixed: task_id+exists+equals+no_pipe, gold 64/58/6, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip — upload as v3"
+          "note": "Harbor Delivery Gate fixed: task_id+exists+equals+no_pipe, gold 64/58/6, evaluations/. Zip Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip \u2014 upload as v3"
         },
         {
           "at": "2026-09-12T00:54:54Z",
@@ -3345,7 +3345,7 @@
             "at": "2026-09-09T06:57:10Z",
             "phase": "oracle_running",
             "running": true,
-            "note": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running ├óΓé¼ΓÇ¥ Oracle should pass now.",
+            "note": "v4 uploaded with CORRECT densified gold (121 depts, was 64 in stale zip). PreQC done. QC-Oracle-GLM running \u251c\u00f3\u0393\u00e9\u00bc\u0393\u00c7\u00a5 Oracle should pass now.",
             "glm_pass": null,
             "oracle": null
           },
@@ -3393,7 +3393,7 @@
             "at": "2026-09-09T08:43:31Z",
             "phase": "glm_running",
             "running": true,
-            "note": "v6 Oracle PASSED! GLM├ù4 running 659s. 5 trap depts (121-125) should trip GLM. Waiting for difficulty result.",
+            "note": "v6 Oracle PASSED! GLM\u251c\u00f94 running 659s. 5 trap depts (121-125) should trip GLM. Waiting for difficulty result.",
             "glm_pass": null,
             "oracle": "1.0"
           },
@@ -3588,7 +3588,7 @@
       "status": "needs_densify",
       "session": null,
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g986.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM├ù4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM\u251c\u00f94. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
       "notes": "Released from Session C. Do not work in Chat C.",
       "history": [
         {
@@ -3752,7 +3752,7 @@
       "status": "ready_final",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM\u00d74. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
       "notes": "Packaged UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "history": [
         {
@@ -3888,7 +3888,7 @@
         {
           "at": "2026-09-11T18:33:09Z",
           "status": "blocked",
-          "note": "Portal #70f11b: Oracle PASS, GLM 2/4 @1.0. Harbor FAIL 15 findings — fix memo order regexes, gold R-64, fairness; then package+reupload."
+          "note": "Portal #70f11b: Oracle PASS, GLM 2/4 @1.0. Harbor FAIL 15 findings \u2014 fix memo order regexes, gold R-64, fairness; then package+reupload."
         },
         {
           "at": "2026-09-11T18:33:09Z",
@@ -3898,12 +3898,12 @@
         {
           "at": "2026-09-11T18:33:37Z",
           "status": "blocked",
-          "note": "Harbor 15 blockers despite GLM 2/4 — NOT ready_accept. Fix memo regexes + gold R-64 + fairness, then re-upload."
+          "note": "Harbor 15 blockers despite GLM 2/4 \u2014 NOT ready_accept. Fix memo regexes + gold R-64 + fairness, then re-upload."
         },
         {
           "at": "2026-09-11T18:40:45Z",
           "status": "preqc_clean",
-          "note": "Harbor fixes applied in source (memo/verifier/instruction/review). PreQC optional — packaging."
+          "note": "Harbor fixes applied in source (memo/verifier/instruction/review). PreQC optional \u2014 packaging."
         },
         {
           "at": "2026-09-11T18:42:11Z",
