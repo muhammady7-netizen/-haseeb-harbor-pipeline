@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T09:48:45Z",
+  "updated_at": "2026-09-12T09:52:19Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -711,17 +711,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v20 eval done: Oracle PASS, GLM 4/4 TOO_EASY. 182 checks all pass in all 4 runs. Both my v20 (45 results) and other PC v20 (137 results) get 4/4. Model writes Python script that handles all rules. Adding more data/traps doesn't trip it. Need fundamentally different approach per All Hands guide.",
+      "notes": "h40 v21: Added July 18 as new bank holiday in bank_holidays.csv. Added 4 trap results (R-135-R-138) released on July 18 during core hours. Model hardcodes CLOSED_DAYS without reading file dynamically - will get wrong clock start for July 18 results. 138 results, 167 verifiers, 186 tests. Pipeline-packaged.",
       "history": [
-        {
-          "at": "2026-09-10T21:48:31Z",
-          "status": "final_running",
-          "note": "v11 Final QC running; ack_breaches=15 Harbor fairness fixes"
-        },
         {
           "at": "2026-09-10T22:27:33Z",
           "status": "needs_densify",
@@ -910,9 +905,14 @@
           "at": "2026-09-12T09:45:25Z",
           "status": "needs_densify",
           "note": "h40 v20 eval done: Oracle PASS, GLM 4/4 TOO_EASY. 182 checks all pass in all 4 runs. Both my v20 (45 results) and other PC v20 (137 results) get 4/4. Model writes Python script that handles all rules. Adding more data/traps doesn't trip it. Need fundamentally different approach per All Hands guide."
+        },
+        {
+          "at": "2026-09-12T09:52:19Z",
+          "status": "final_running",
+          "note": "h40 v21: Added July 18 as new bank holiday in bank_holidays.csv. Added 4 trap results (R-135-R-138) released on July 18 during core hours. Model hardcodes CLOSED_DAYS without reading file dynamically - will get wrong clock start for July 18 results. 138 results, 167 verifiers, 186 tests. Pipeline-packaged."
         }
       ],
-      "updated_at": "2026-09-12T09:45:25Z",
+      "updated_at": "2026-09-12T09:52:19Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
