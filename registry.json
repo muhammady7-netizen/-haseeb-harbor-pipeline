@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T16:10:54Z",
+  "updated_at": "2026-09-12T16:18:53Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v27 uploaded content-a2fa2ba5d24a2560107188139bb1e077-v1. CSV complete. QC-Oracle-GLM started evaluation-b0079ab7fe94462d. 59 verifiers, test.sh fixed (python3 not /usr/bin/python3).",
+      "notes": "v28 uploaded content-3c2c57c50d4cf9d0705af4fafbb1f602-v1. CSV complete. QC-Oracle-GLM started evaluation-d54e3361b007488e. 63 verifiers (original v24 restored, no weight fields). test.sh uses python3 + PYTHONPATH=/tests. Case-sensitive Paid rule consistent in instruction + policy + verifier.",
       "history": [
-        {
-          "at": "2026-09-07T22:28:48Z",
-          "status": "preqc_clean",
-          "note": "PreQC PASS; ready to package"
-        },
         {
           "at": "2026-09-07T22:30:31Z",
           "status": "ready_final",
@@ -286,9 +281,14 @@
           "at": "2026-09-12T14:54:07Z",
           "status": "final_running",
           "note": "v27 uploaded content-a2fa2ba5d24a2560107188139bb1e077-v1. CSV complete. QC-Oracle-GLM started evaluation-b0079ab7fe94462d. 59 verifiers, test.sh fixed (python3 not /usr/bin/python3)."
+        },
+        {
+          "at": "2026-09-12T16:18:53Z",
+          "status": "final_running",
+          "note": "v28 uploaded content-3c2c57c50d4cf9d0705af4fafbb1f602-v1. CSV complete. QC-Oracle-GLM started evaluation-d54e3361b007488e. 63 verifiers (original v24 restored, no weight fields). test.sh uses python3 + PYTHONPATH=/tests. Case-sensitive Paid rule consistent in instruction + policy + verifier."
         }
       ],
-      "updated_at": "2026-09-12T14:54:07Z",
+      "updated_at": "2026-09-12T16:18:53Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",

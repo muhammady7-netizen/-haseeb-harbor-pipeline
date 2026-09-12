@@ -9,7 +9,15 @@ mkdir -p /logs/verifier
 
 cd /app || exit 1
 
-python3 -m pytest \
+# Defensive: remove common shadow modules if an agent planted them
+rm -f /app/pytest.py /app/pytest.pyc
+rm -rf /app/pytest
+
+# Keep workspace for tests; do not put /app first on sys.path
+export HARBOR_TASK_WORKSPACE=/app
+export WORKSPACE=/app
+cd /tmp || exit 1
+PYTHONPATH=/tests python3 -m pytest \
     --ctrf /logs/verifier/ctrf.json \
     /tests/test_outputs.py \
     -rA \
