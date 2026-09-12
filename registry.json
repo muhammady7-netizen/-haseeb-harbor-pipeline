@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T12:14:47Z",
+  "updated_at": "2026-09-12T12:21:26Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2590,17 +2590,12 @@
       "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v4 QC-Oracle-GLM STARTED. Fixed 9 blockers: memo proximity/order removed, hyphen variants accepted, uniqueness check added, lexicographic backtracking fixed, instruction disclosure added. Gold 84/84. ~50min.",
+      "next_action": "Densify task, PreQC, package, re-upload",
+      "notes": "GLM 4/4 too easy",
       "history": [
-        {
-          "at": "2026-09-09T22:52:13Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
-        },
         {
           "at": "2026-09-09T22:53:49Z",
           "status": "final_running",
@@ -2795,9 +2790,14 @@
           "at": "2026-09-12T11:44:44Z",
           "status": "final_running",
           "note": "v4 QC-Oracle-GLM STARTED. Fixed 9 blockers: memo proximity/order removed, hyphen variants accepted, uniqueness check added, lexicographic backtracking fixed, instruction disclosure added. Gold 84/84. ~50min."
+        },
+        {
+          "at": "2026-09-12T12:21:26Z",
+          "status": "needs_densify",
+          "note": "GLM 4/4 too easy"
         }
       ],
-      "updated_at": "2026-09-12T11:44:44Z",
+      "updated_at": "2026-09-12T12:21:26Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2818,8 +2818,8 @@
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T11:44:44Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-12T12:21:26Z",
+        "phase": "complete",
         "checks": [
           {
             "at": "2026-09-08T22:32:56Z",
@@ -2948,9 +2948,17 @@
             "note": "v4 QC-Oracle-GLM STARTED. Fixed 9 blockers: memo proximity/order removed, hyphen variants accepted, uniqueness check added, lexicographic backtracking fixed, instruction disclosure added. Gold 84/84. ~50min.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-12T12:21:26Z",
+            "phase": "complete",
+            "running": false,
+            "note": "v4: Oracle PASSED, GLM 4/4 (TOO EASY). 1 blocking finding. Need to densify (put difficulty in data per All Hands guide) + fix blocker.",
+            "glm_pass": "4/4",
+            "oracle": "1.0"
           }
         ],
-        "glm_pass": "3/4",
+        "glm_pass": "4/4",
         "oracle": "1.0"
       }
     },
