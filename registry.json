@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T17:40:19Z",
+  "updated_at": "2026-09-12T17:42:08Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v28 done: Oracle PASS, GLM 3/4, 20 findings. Case-sensitive Paid token STILL flagged as contrived. Need to remove entirely + update gold (dividends_paid 750k->900k, max_further 1402k->1252k). Then if GLM 4/4 pass to partlets.",
+      "notes": "v29 uploaded content-db86357d90425cdf7a567aa113be95ba-v1. CSV complete. QC-Oracle-GLM started evaluation-56f303d764ca48bf. 59 verifiers, case-insensitive paid, gold 900k/1252k. If GLM 4/4 pass to partlets.",
       "history": [
-        {
-          "at": "2026-09-07T22:47:34Z",
-          "status": "final_running",
-          "note": "Portal f39 v9: Oracle+GLM├âΓÇö4+Harbor started; PreQC 6 findings left unconfirmed (did not Confirm)"
-        },
         {
           "at": "2026-09-07T22:52:33Z",
           "status": "final_running",
@@ -286,9 +281,14 @@
           "at": "2026-09-12T17:20:11Z",
           "status": "final_running",
           "note": "v28 done: Oracle PASS, GLM 3/4, 20 findings. Case-sensitive Paid token STILL flagged as contrived. Need to remove entirely + update gold (dividends_paid 750k->900k, max_further 1402k->1252k). Then if GLM 4/4 pass to partlets."
+        },
+        {
+          "at": "2026-09-12T17:42:08Z",
+          "status": "final_running",
+          "note": "v29 uploaded content-db86357d90425cdf7a567aa113be95ba-v1. CSV complete. QC-Oracle-GLM started evaluation-56f303d764ca48bf. 59 verifiers, case-insensitive paid, gold 900k/1252k. If GLM 4/4 pass to partlets."
         }
       ],
-      "updated_at": "2026-09-12T17:20:11Z",
+      "updated_at": "2026-09-12T17:42:08Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
