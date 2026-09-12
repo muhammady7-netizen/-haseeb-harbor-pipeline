@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T04:30:16Z",
+  "updated_at": "2026-09-12T09:43:33Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1063,17 +1063,12 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Fix package consistency + run fresh Harbor GLM/oracle/solvability; rebuild zip; re-upload. See sessions/B/CONTINUE-OTHER-PC.md",
-      "notes": "Eval DONE: Oracle 1.0 PASS, GLM 4/4 TOO_EASY. 0 trainer findings (all fixes worked!). Only blocking: difficulty. Task with 41 tables is still too easy for GLM. Needs fundamentally harder approach.",
+      "notes": "Dedup trap: T-31 duplicate rows with different bloat (0.3 vs 0.2). Last row wins -> none. First row -> BLOAT. Uploaded (content-536e8bab). Eval started (evaluation-29a954f5dc0f492d).",
       "history": [
-        {
-          "at": "2026-09-09T22:02:54Z",
-          "status": "final_running",
-          "note": "v12 eval RUNNING (eval-8b595a7ccc284d5c). Oracle pending. v12 fixes: memo accepts Markdown tables + test_memo_has_prose (5+ prose sentences). v9 proved Oracle 1.0 + GLM 2/4."
-        },
         {
           "at": "2026-09-09T22:04:34Z",
           "status": "final_running",
@@ -1268,9 +1263,14 @@
           "at": "2026-09-12T01:56:48Z",
           "status": "needs_densify",
           "note": "Eval DONE: Oracle 1.0 PASS, GLM 4/4 TOO_EASY. 0 trainer findings (all fixes worked!). Only blocking: difficulty. Task with 41 tables is still too easy for GLM. Needs fundamentally harder approach."
+        },
+        {
+          "at": "2026-09-12T09:43:33Z",
+          "status": "final_running",
+          "note": "Dedup trap: T-31 duplicate rows with different bloat (0.3 vs 0.2). Last row wins -> none. First row -> BLOAT. Uploaded (content-536e8bab). Eval started (evaluation-29a954f5dc0f492d)."
         }
       ],
-      "updated_at": "2026-09-12T01:56:48Z",
+      "updated_at": "2026-09-12T09:43:33Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
@@ -2556,17 +2556,12 @@
       "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
-      "status": "blocked",
+      "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
       "next_action": "Finish glm-g806-v4b-2..4 then package+upload v4 (see sessions/C/CONTINUE-OTHER-PC.md)",
-      "notes": "GLM trial OOM (Docker 4.8GB). Oracle 1.0 + stability 3/3 done. GLM needs more RAM. Source pack ready in sessions/C/source-pack/.",
+      "notes": "v3 uploaded (fixed verifier schema, 83 checks). QC-Oracle-GLM waiting for slot (3 in use). Will retry.",
       "history": [
-        {
-          "at": "2026-09-09T20:42:13Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
-        },
         {
           "at": "2026-09-09T20:48:38Z",
           "status": "needs_densify",
@@ -2761,9 +2756,14 @@
           "at": "2026-09-12T01:54:04Z",
           "status": "blocked",
           "note": "GLM trial OOM (Docker 4.8GB). Oracle 1.0 + stability 3/3 done. GLM needs more RAM. Source pack ready in sessions/C/source-pack/."
+        },
+        {
+          "at": "2026-09-12T09:39:44Z",
+          "status": "final_running",
+          "note": "v3 uploaded (fixed verifier schema, 83 checks). QC-Oracle-GLM waiting for slot (3 in use). Will retry."
         }
       ],
-      "updated_at": "2026-09-12T01:54:04Z",
+      "updated_at": "2026-09-12T09:39:44Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",

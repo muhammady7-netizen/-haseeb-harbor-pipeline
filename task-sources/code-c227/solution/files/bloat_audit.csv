@@ -24,7 +24,7 @@ T-18,large,0.21,BLOAT_THRESHOLD_EXCEEDED
 T-20,large,0.1,AUTOVACUUM_DISABLED
 T-28,large,0.25,none
 T-29,large,0.25,BLOAT_THRESHOLD_EXCEEDED
-T-31,small,0.3,none
+T-31,large,0.2,none
 T-32,small,0.4,none
 T-33,small,0.21,none
 T-34,large,0.2,none

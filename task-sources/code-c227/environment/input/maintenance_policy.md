@@ -9,7 +9,7 @@ A table with autovacuum disabled is `AUTOVACUUM_DISABLED`. This is checked first
 overrides every other check for that table, whatever its current bloat ratio reads.
 
 **Manual vacuum override:** if the `vacuum_type` field is `manual`, autovacuum is
-considered disabled even when `autovacuum_enabled` is `True` — a manual vacuum
+considered disabled even when `autovacuum_enabled` is `True` â€” a manual vacuum
 overrides and supersedes the automatic schedule, so the table no longer has
 automatic autovacuum protection. A table with `vacuum_type=manual` is
 `AUTOVACUUM_DISABLED` regardless of its `autovacuum_enabled` value.
@@ -22,7 +22,7 @@ as `dead_pages / total_pages` using **round-half-up** to 2 decimal places. The
 `bloat_ratio` field may give incorrect results for ratios that fall exactly on a
 rounding boundary (e.g. 0.205). Always compute from `dead_pages` and `total_pages`.
 
-The bloat ratio is not read directly from the export — it is **computed** as
+The bloat ratio is not read directly from the export â€” it is **computed** as
 `dead_pages / total_pages`, rounded to 2 decimal places using **round-half-up**
 (0.205 rounds to 0.21, not 0.20). A table whose computed bloat ratio is at or below
 its size class cap is compliant; a table whose computed ratio is **over** its cap
@@ -32,7 +32,7 @@ its size class cap is compliant; a table whose computed ratio is **over** its ca
 Size class is determined by `total_pages`: a table with **>= 500 total pages** is
 `large` (cap 0.2); a table with **< 500 total pages** is `small` (cap 0.4).
 
-**The `size_class` column in the export is a legacy field and is NOT reliable** —
+**The `size_class` column in the export is a legacy field and is NOT reliable** â€”
 it may not match the classification computed from `total_pages`. Always compute
 size class from `total_pages` using the threshold above, never read it from the
 `size_class` column. When documenting size-class traps in the audit memo, cite the
@@ -46,15 +46,15 @@ rules decide the finding.
 | small | < 500 | 0.4 |
 
 Any export `size_class` value other than the computed large/small classes above
-(including traps such as `medium`) is ignored — always classify from `total_pages`
+(including traps such as `medium`) is ignored â€” always classify from `total_pages`
 and apply the corresponding large/small bloat cap.
 
-Size class matching is case-insensitive (e.g. `Large` matches `large`). A table over its own cap is `BLOAT_THRESHOLD_EXCEEDED` — **unless** the table is marked
+Size class matching is case-insensitive (e.g. `Large` matches `large`). A table over its own cap is `BLOAT_THRESHOLD_EXCEEDED` â€” **unless** the table is marked
 under an approved active reindex operation **and** appears in `reindex_log.csv`
 with `approved=True` **and** the `valid_until` date in `reindex_log.csv` is on
 or after the `audit_date` (i.e., `valid_until >= audit_date`). A table with
 `maintenance_active=True` but no matching `approved=True` entry, or whose
-approval has expired (`valid_until < audit_date`), is NOT exempt — the reindex
+approval has expired (`valid_until < audit_date`), is NOT exempt â€” the reindex
 is unapproved or expired, and the bloat check applies normally. A table whose computed ratio
 **equals** its cap (e.g. 0.20 for large) is NOT over the cap and is not flagged.
 
@@ -67,7 +67,7 @@ and `last_analyzed` fields (both in `YYYY-MM-DD` format):
 (the policy says 'more than 30 days').
 
 **The `days_since_analyze` field in the export is a legacy estimate and is NOT
-reliable** — it may differ from the actual date-based computation. Always compute
+reliable** â€” it may differ from the actual date-based computation. Always compute
 staleness from the `audit_date` and `last_analyzed` date fields, never from the
 `days_since_analyze` field. Using the `days_since_analyze` field will produce
 incorrect results.
@@ -75,7 +75,7 @@ incorrect results.
 ### Stale-stats cap tightening
 
 When a table's statistics are stale (more than 30 days since last analyzed), the
-bloat cap for that table is **reduced by 0.05** — stale statistics mean the bloat
+bloat cap for that table is **reduced by 0.05** â€” stale statistics mean the bloat
 measurement cannot be trusted, so a tighter threshold is applied. This tightening
 is applied **before** the bloat check: if the tightened cap is exceeded, the finding
 is `BLOAT_THRESHOLD_EXCEEDED` (not `STALE_STATISTICS`), because bloat is checked
@@ -88,7 +88,7 @@ tightened cap (0.18 > 0.15), so the finding is `BLOAT_THRESHOLD_EXCEEDED`.
 
 ### Processing order
 
-Tables are processed in order of `last_analyzed` date (ascending — oldest first).
+Tables are processed in order of `last_analyzed` date (ascending â€” oldest first).
 The processing order determines the sequence in which rules are evaluated and
 is the order in which the audit rows should appear in the output. A table with an
 earlier `last_analyzed` date is processed before a table with a later date.
@@ -98,3 +98,10 @@ alphabetical order.
 ## 4. Finding names
 
 `AUTOVACUUM_DISABLED`, `BLOAT_THRESHOLD_EXCEEDED`, `STALE_STATISTICS`, or `none`.
+
+## 5. Duplicate rows
+
+If a table appears more than once in the export, the **last** row for that table
+is the authoritative record — earlier rows are stale snapshots and must be
+discarded. The audit output contains exactly one row per unique `table_name`,
+using the values from the last occurrence.
