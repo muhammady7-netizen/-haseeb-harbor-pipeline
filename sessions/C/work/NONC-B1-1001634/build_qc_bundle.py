@@ -14,7 +14,7 @@ from pathlib import Path
 BUNDLE_NAME = "gen-g806-leadership-brief-rhetorical-style-audit"
 TASK_NAME = f"obi/{BUNDLE_NAME}"
 ROOT = Path(
-    r"C:\Users\Haseeb Mirza\Documents\Codex\2026-08-17\this-is-the-very-beginning-of\tasks\NONC-B1-1001634"
+    r"C:\Users\Haseeb Mirza\OneDrive\Documents\-haseeb-harbor-pipeline\sessions\C\work\NONC-B1-1001634"
 )
 TASK = ROOT / BUNDLE_NAME
 JOBS = ROOT / "harbor-jobs"
