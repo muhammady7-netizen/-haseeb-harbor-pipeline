@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T14:16:15Z",
+  "updated_at": "2026-09-12T14:19:26Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2614,14 +2614,9 @@
       "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
-      "next_action": "Densify task, PreQC, package, re-upload",
-      "notes": "v5 uploaded manually by user. Densified: B-03 consecutive context trap. Gold 85/85. Need QC-Oracle-GLM on portal.",
+      "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
+      "notes": "v6 uploaded (S-028 actually changed to context, gold 85/85). QC-Oracle-GLM STARTED. ~50min.",
       "history": [
-        {
-          "at": "2026-09-10T15:17:25Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
-        },
         {
           "at": "2026-09-10T15:21:50Z",
           "status": "needs_densify",
@@ -2816,9 +2811,14 @@
           "at": "2026-09-12T13:20:32Z",
           "status": "final_running",
           "note": "v5 uploaded manually by user. Densified: B-03 consecutive context trap. Gold 85/85. Need QC-Oracle-GLM on portal."
+        },
+        {
+          "at": "2026-09-12T14:19:26Z",
+          "status": "final_running",
+          "note": "v6 uploaded (S-028 actually changed to context, gold 85/85). QC-Oracle-GLM STARTED. ~50min."
         }
       ],
-      "updated_at": "2026-09-12T13:20:32Z",
+      "updated_at": "2026-09-12T14:19:26Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2839,8 +2839,8 @@
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T12:21:26Z",
-        "phase": "complete",
+        "last_check_at": "2026-09-12T14:19:26Z",
+        "phase": "oracle_running",
         "checks": [
           {
             "at": "2026-09-08T22:32:56Z",
@@ -2977,6 +2977,14 @@
             "note": "v4: Oracle PASSED, GLM 4/4 (TOO EASY). 1 blocking finding. Need to densify (put difficulty in data per All Hands guide) + fix blocker.",
             "glm_pass": "4/4",
             "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-12T14:19:26Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v6 uploaded (S-028 actually changed to context, gold 85/85). QC-Oracle-GLM STARTED. ~50min.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "4/4",
