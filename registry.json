@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T00:53:47Z",
+  "updated_at": "2026-09-12T00:54:44Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -715,43 +715,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v14 densify Final QC running",
+      "notes": "h40 v19 uploaded (content-2113e43) with fixed memo regexes (order-independent, accepts 'minutes'/'min'). 40 results, 64 verifiers. QC-Oracle-GLM running.",
       "history": [
-        {
-          "at": "2026-09-10T20:53:28Z",
-          "status": "final_running",
-          "note": "headless upload via chrome-profile-e-h40; gates pending slots"
-        },
-        {
-          "at": "2026-09-10T21:08:51Z",
-          "status": "final_running",
-          "note": "v10 #6183c5 headless: QC-Oracle-GLM started after slot wait"
-        },
-        {
-          "at": "2026-09-10T21:08:51Z",
-          "status": "final_running",
-          "note": "Oracle+GLM started via headless qc-style queue"
-        },
-        {
-          "at": "2026-09-10T21:23:51Z",
-          "status": "final_running",
-          "note": "Oracle Passed 1.0; GLM x4 running ~16m on #f077d3"
-        },
-        {
-          "at": "2026-09-10T21:39:18Z",
-          "status": "final_running",
-          "note": "Oracle 1.0 GLM 0/4 (over-hard densify); Harbor Check started on #f077d3"
-        },
-        {
-          "at": "2026-09-10T21:39:19Z",
-          "status": "final_running",
-          "note": "v10 Oracle 1.0 GLM 0/4; Harbor running ΓÇö will soften after Harbor"
-        },
-        {
-          "at": "2026-09-10T21:45:32Z",
-          "status": "needs_densify",
-          "note": "v10 #f077d3 Oracle 1.0 GLM 0/4 Harbor FAIL 20 findings ΓÇö ack_breaches should be 15; soften limit/R-34 memo checks; densify row asserts"
-        },
         {
           "at": "2026-09-10T21:45:42Z",
           "status": "needs_densify",
@@ -940,9 +905,14 @@
         {
           "at": "2026-09-11T22:45:14.386220+00:00",
           "note": "v20 #b63f3de2 amendment harden uploaded; Final QC started"
+        },
+        {
+          "at": "2026-09-12T00:54:44Z",
+          "status": "final_running",
+          "note": "h40 v19 uploaded (content-2113e43) with fixed memo regexes (order-independent, accepts 'minutes'/'min'). 40 results, 64 verifiers. QC-Oracle-GLM running."
         }
       ],
-      "updated_at": "2026-09-11T18:58:34Z",
+      "updated_at": "2026-09-12T00:54:44Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
