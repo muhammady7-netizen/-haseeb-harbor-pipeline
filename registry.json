@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T17:48:44Z",
+  "updated_at": "2026-09-12T18:04:28Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,17 +81,12 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v29 uploaded content-db86357d90425cdf7a567aa113be95ba-v1. CSV complete. QC-Oracle-GLM started evaluation-56f303d764ca48bf. 59 verifiers, case-insensitive paid, gold 900k/1252k. If GLM 4/4 pass to partlets.",
+      "notes": "v29: GLM 4/4 (too easy). Case-sensitive Paid token was only difficulty but Harbor Check flags it as contrived. Passing to partlets per All Hands meeting guidance.",
       "history": [
-        {
-          "at": "2026-09-07T22:52:33Z",
-          "status": "final_running",
-          "note": "Tracking active: Oracle waiting, run history latest running"
-        },
         {
           "at": "2026-09-07T22:55:53Z",
           "status": "final_running",
@@ -286,9 +281,14 @@
           "at": "2026-09-12T17:42:08Z",
           "status": "final_running",
           "note": "v29 uploaded content-db86357d90425cdf7a567aa113be95ba-v1. CSV complete. QC-Oracle-GLM started evaluation-56f303d764ca48bf. 59 verifiers, case-insensitive paid, gold 900k/1252k. If GLM 4/4 pass to partlets."
+        },
+        {
+          "at": "2026-09-12T18:04:28Z",
+          "status": "needs_densify",
+          "note": "v29: GLM 4/4 (too easy). Case-sensitive Paid token was only difficulty but Harbor Check flags it as contrived. Passing to partlets per All Hands meeting guidance."
         }
       ],
-      "updated_at": "2026-09-12T17:42:08Z",
+      "updated_at": "2026-09-12T18:04:28Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
