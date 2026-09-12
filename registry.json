@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T02:36:23Z",
+  "updated_at": "2026-09-12T03:12:20Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -715,13 +715,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v19 uploaded (content-2113e43) with fixed memo regexes (order-independent, accepts 'minutes'/'min'). 40 results, 64 verifiers. QC-Oracle-GLM running.",
+      "notes": "h40 v19 (content-ddb4aca6...f61e66) QC-Oracle-GLM started on correct task. Fixed memo regexes (order-independent, accepts minutes/min). 40 results, 64 verifiers.",
       "history": [
-        {
-          "at": "2026-09-10T21:45:42Z",
-          "status": "needs_densify",
-          "note": "v10 #f077d3 Oracle 1.0 GLM 0/4 Harbor FAIL 20 findings ΓÇö ack_breaches should be 15; soften limit/R-34 memo checks; densify row asserts"
-        },
         {
           "at": "2026-09-10T21:46:45Z",
           "status": "ready_final",
@@ -910,9 +905,14 @@
           "at": "2026-09-12T00:54:44Z",
           "status": "final_running",
           "note": "h40 v19 uploaded (content-2113e43) with fixed memo regexes (order-independent, accepts 'minutes'/'min'). 40 results, 64 verifiers. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-12T03:12:20Z",
+          "status": "final_running",
+          "note": "h40 v19 (content-ddb4aca6...f61e66) QC-Oracle-GLM started on correct task. Fixed memo regexes (order-independent, accepts minutes/min). 40 results, 64 verifiers."
         }
       ],
-      "updated_at": "2026-09-12T00:54:44Z",
+      "updated_at": "2026-09-12T03:12:20Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
