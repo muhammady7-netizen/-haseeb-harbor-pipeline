@@ -219,7 +219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*1\\s*,\\s*80\\s*,\\s*S\\-029:9\\->2\\s*,\\s*90\\s*$",
+        "expected": "(?mi)^B\\-03\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*70\\s*,\\s*S\\-029:9\\->2\\s*,\\s*75\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1619,7 +1619,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 3,
+        "expected": 2,
         "deterministic": {
           "path": "$.passing_briefs",
           "comparison": "equals"
@@ -1644,7 +1644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 5,
+        "expected": 6,
         "deterministic": {
           "path": "$.failing_briefs",
           "comparison": "equals"
@@ -1669,7 +1669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 66.88,
+        "expected": 65.63,
         "deterministic": {
           "path": "$.avg_score",
           "comparison": "equals"
@@ -1719,7 +1719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 31,
+        "expected": 33,
         "deterministic": {
           "path": "$.total_breaches",
           "comparison": "equals"
@@ -2002,31 +2002,6 @@
       }
     },
     {
-      "name": "memo_omits_b03",
-      "metadata": {
-        "how_justification": "Memo must not include a #/##/### heading for passing brief B-03.",
-        "why_justification": "Memo must not include a #/##/### heading for passing brief B-03."
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "md",
-          "command": "extract_text",
-          "arguments": {
-            "path": "executive_sequence_memo.md"
-          }
-        }
-      },
-      "assertion": {
-        "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?03\\b",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "not_regex_match"
-        }
-      }
-    },
-    {
       "name": "memo_omits_b07",
       "metadata": {
         "how_justification": "Memo must not include a #/##/### heading for passing brief B-07.",
@@ -2095,6 +2070,56 @@
       "assertion": {
         "type": "deterministic",
         "expected": "\\A[^\\r\\n]+\\r?\\n(?:[^\\r\\n]+\\r?\\n){7}[^\\r\\n]+\\r?\\n?\\Z",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_has_b03",
+      "metadata": {
+        "how_justification": "Checks memo mentions B-03 heading.",
+        "why_justification": "B-03 now fails (score 70 < 80) and must appear in memo."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?03\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_b03",
+      "metadata": {
+        "how_justification": "Checks memo explains B-03 with status and recommendation.",
+        "why_justification": "B-03 now fails and must have status + recommended move."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-_\\s]?03.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
