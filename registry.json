@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T01:54:04Z",
+  "updated_at": "2026-09-12T01:56:48Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1063,17 +1063,12 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Fix package consistency + run fresh Harbor GLM/oracle/solvability; rebuild zip; re-upload. See sessions/B/CONTINUE-OTHER-PC.md",
-      "notes": "Fixed: README 161->166, memo reindex_approvals->reindex_log, T-26/T-27 day counts, removed stale EVIDENCE_SUMMARY. Uploaded (content-2c191e40). QC-Oracle-GLM started (evaluation-4ac18562115e4a16).",
+      "notes": "Eval DONE: Oracle 1.0 PASS, GLM 4/4 TOO_EASY. 0 trainer findings (all fixes worked!). Only blocking: difficulty. Task with 41 tables is still too easy for GLM. Needs fundamentally harder approach.",
       "history": [
-        {
-          "at": "2026-09-09T21:58:11Z",
-          "status": "final_running",
-          "note": "v12 eval queued pos 2 (eval-8b595a7ccc284d5c). c249v6 at pos 1 (NEXT). 3 running (1 at GLM, 2 at Oracle), 4 queued. v12 fixes Oracle failure (memo accepts Markdown tables + test_memo_has_prose). v9 proved Oracle 1.0 + GLM 2/4. ALL fixes pushed. Will submit to pipeline when eval completes."
-        },
         {
           "at": "2026-09-09T22:02:54Z",
           "status": "final_running",
@@ -1268,9 +1263,14 @@
           "at": "2026-09-12T01:36:46Z",
           "status": "final_running",
           "note": "Fixed: README 161->166, memo reindex_approvals->reindex_log, T-26/T-27 day counts, removed stale EVIDENCE_SUMMARY. Uploaded (content-2c191e40). QC-Oracle-GLM started (evaluation-4ac18562115e4a16)."
+        },
+        {
+          "at": "2026-09-12T01:56:48Z",
+          "status": "needs_densify",
+          "note": "Eval DONE: Oracle 1.0 PASS, GLM 4/4 TOO_EASY. 0 trainer findings (all fixes worked!). Only blocking: difficulty. Task with 41 tables is still too easy for GLM. Needs fundamentally harder approach."
         }
       ],
-      "updated_at": "2026-09-12T01:36:46Z",
+      "updated_at": "2026-09-12T01:56:48Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
