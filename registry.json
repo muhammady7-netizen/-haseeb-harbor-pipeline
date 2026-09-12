@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T13:20:32Z",
+  "updated_at": "2026-09-12T13:58:05Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,7 +85,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v24 re-eval done: Oracle PASS, GLM 1/4 (meets difficulty), 21 findings to fix. v25 ready with fixes but review.csv upload blocked.",
+      "notes": "v26 uploaded content-e85b8d585b279108cd5f9b61f04ab794-v1. CSV complete. QC-Oracle-GLM started evaluation-b74c975a8a9749d9. 59 verifiers, schema fixed, case-sensitive trap removed, all 13 findings addressed.",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -276,9 +276,14 @@
           "at": "2026-09-12T11:43:39Z",
           "status": "final_running",
           "note": "v24 re-eval done: Oracle PASS, GLM 1/4 (meets difficulty), 21 findings to fix. v25 ready with fixes but review.csv upload blocked."
+        },
+        {
+          "at": "2026-09-12T13:58:05Z",
+          "status": "final_running",
+          "note": "v26 uploaded content-e85b8d585b279108cd5f9b61f04ab794-v1. CSV complete. QC-Oracle-GLM started evaluation-b74c975a8a9749d9. 59 verifiers, schema fixed, case-sensitive trap removed, all 13 findings addressed."
         }
       ],
-      "updated_at": "2026-09-12T11:43:39Z",
+      "updated_at": "2026-09-12T13:58:05Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
