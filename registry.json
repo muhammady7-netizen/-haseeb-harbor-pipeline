@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T11:54:43Z",
+  "updated_at": "2026-09-12T12:14:33Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -725,13 +725,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v21 uploaded (content-7ff9915522a5). Bank holiday trap: July 18 added to bank_holidays.csv. Model hardcodes CLOSED_DAYS without reading file. 4 trap results (R-135-R-138) on July 18 will get wrong clock start. QC-Oracle-GLM running.",
+      "notes": "h40 v21 QC-Oracle-GLM queued/running. Bank holiday trap: July 18 added to bank_holidays.csv. 4 trap results (R-135-R-138) released on July 18. Model hardcodes CLOSED_DAYS without reading file. 138 results, 167 verifiers.",
       "history": [
-        {
-          "at": "2026-09-10T22:27:57Z",
-          "status": "ready_final",
-          "note": "v12 densified (R-36/37/38 midnight+weekend traps); local 70/70; upload Final QC only"
-        },
         {
           "at": "2026-09-10T22:36:15Z",
           "status": "uploaded",
@@ -920,9 +915,14 @@
           "at": "2026-09-12T09:54:06Z",
           "status": "final_running",
           "note": "h40 v21 uploaded (content-7ff9915522a5). Bank holiday trap: July 18 added to bank_holidays.csv. Model hardcodes CLOSED_DAYS without reading file. 4 trap results (R-135-R-138) on July 18 will get wrong clock start. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-12T12:14:33Z",
+          "status": "final_running",
+          "note": "h40 v21 QC-Oracle-GLM queued/running. Bank holiday trap: July 18 added to bank_holidays.csv. 4 trap results (R-135-R-138) released on July 18. Model hardcodes CLOSED_DAYS without reading file. 138 results, 167 verifiers."
         }
       ],
-      "updated_at": "2026-09-12T09:54:06Z",
+      "updated_at": "2026-09-12T12:14:33Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
