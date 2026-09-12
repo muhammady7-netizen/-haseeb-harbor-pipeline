@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T12:38:20Z",
+  "updated_at": "2026-09-12T13:20:32Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -2598,17 +2598,12 @@
       "pack_name": "gen-g806-leadership-brief-rhetorical-style-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
       "next_action": "Densify task, PreQC, package, re-upload",
-      "notes": "GLM 4/4 too easy",
+      "notes": "v5 uploaded manually by user. Densified: B-03 consecutive context trap. Gold 85/85. Need QC-Oracle-GLM on portal.",
       "history": [
-        {
-          "at": "2026-09-09T22:53:49Z",
-          "status": "final_running",
-          "note": "v1 (129 scripts, 144 verifiers); Oracle+GLM started"
-        },
         {
           "at": "2026-09-10T15:17:25Z",
           "status": "ready_final",
@@ -2803,9 +2798,14 @@
           "at": "2026-09-12T12:21:26Z",
           "status": "needs_densify",
           "note": "GLM 4/4 too easy"
+        },
+        {
+          "at": "2026-09-12T13:20:32Z",
+          "status": "final_running",
+          "note": "v5 uploaded manually by user. Densified: B-03 consecutive context trap. Gold 85/85. Need QC-Oracle-GLM on portal."
         }
       ],
-      "updated_at": "2026-09-12T12:21:26Z",
+      "updated_at": "2026-09-12T13:20:32Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
