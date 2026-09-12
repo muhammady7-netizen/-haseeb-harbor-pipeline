@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T17:20:11Z",
+  "updated_at": "2026-09-12T17:40:19Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1603,13 +1603,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v3 (f21caab1-v3) FINAL FIX: audit_no_pipe_chars comparison changed from not_regex_match to regex_match (pattern (?s)\\A[^|]*\\Z matches no-pipes text, so regex_match is correct). Previous run scored 0.989 (92/93). Now should be 1.0.",
+      "notes": "v3 (f21caab1-v3) FINAL FIX uploaded. audit_no_pipe_chars: not_regex_match -> regex_match. Previous Oracle scored 0.989 (92/93). Waiting for eval slot (3 in use by other sessions).",
       "history": [
-        {
-          "at": "2026-09-09T17:32:10Z",
-          "status": "final_running",
-          "note": "code-c251 v4 QC-Oracle-GLM started (content-45ae46b0)"
-        },
         {
           "at": "2026-09-09T17:54:31Z",
           "status": "ready_final",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-12T16:23:20Z",
           "status": "final_running",
           "note": "v3 (f21caab1-v3) FINAL FIX: audit_no_pipe_chars comparison changed from not_regex_match to regex_match (pattern (?s)\\A[^|]*\\Z matches no-pipes text, so regex_match is correct). Previous run scored 0.989 (92/93). Now should be 1.0."
+        },
+        {
+          "at": "2026-09-12T17:40:19Z",
+          "status": "final_running",
+          "note": "v3 (f21caab1-v3) FINAL FIX uploaded. audit_no_pipe_chars: not_regex_match -> regex_match. Previous Oracle scored 0.989 (92/93). Waiting for eval slot (3 in use by other sessions)."
         }
       ],
-      "updated_at": "2026-09-12T16:23:20Z",
+      "updated_at": "2026-09-12T17:40:19Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v3",
         "watch": true,
-        "last_check_at": "2026-09-12T16:23:20Z",
+        "last_check_at": "2026-09-12T17:40:19Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-08T22:34:50Z",
-            "phase": "complete",
-            "running": false,
-            "note": "Trainer changes required - likely TOO_EASY 4/4",
-            "glm_pass": "4/4",
-            "oracle": "1.0"
-          },
           {
             "at": "2026-09-09T06:17:23Z",
             "phase": "oracle_running",
@@ -2066,6 +2058,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v3 (f21caab1-v3) FINAL FIX: audit_no_pipe_chars comparison changed from not_regex_match to regex_match (pattern (?s)\\A[^|]*\\Z matches no-pipes text, so regex_match is correct). Previous run scored 0.989 (92/93). Now should be 1.0.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-12T17:40:19Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v3 (f21caab1-v3) FINAL FIX uploaded. audit_no_pipe_chars: not_regex_match -> regex_match. Previous Oracle scored 0.989 (92/93). Waiting for eval slot (3 in use by other sessions).",
             "glm_pass": null,
             "oracle": null
           }
