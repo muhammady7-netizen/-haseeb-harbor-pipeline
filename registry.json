@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T17:42:08Z",
+  "updated_at": "2026-09-12T17:48:44Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v22 eval done: Oracle PASS, GLM 4/4 TOO_EASY. Alias trap (Reg) did NOT work - GLM reads roster file dynamically. Need to download eval bundle to check trajectory and find a real model assumption to break.",
+      "notes": "h40 v23 uploaded (content-1d45d1b5). SUMMIT site trap: added SUMMIT with 07:00-16:00 core hours to site_core_hours.md. 4 trap results (R-135-R-138) at SUMMIT site. Model hardcodes only MAIN/RIVERSIDE -> wrong clock for SUMMIT. 138 results, 167 verifiers, 186 tests. Pipeline-packaged. QC-Oracle-GLM running.",
       "history": [
-        {
-          "at": "2026-09-10T22:40:42Z",
-          "status": "uploaded",
-          "note": "v12 uploaded #7fcbcc0; waiting for Final QC slot (3 busy)"
-        },
         {
           "at": "2026-09-10T22:40:42Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-12T17:12:26Z",
           "status": "needs_densify",
           "note": "h40 v22 eval done: Oracle PASS, GLM 4/4 TOO_EASY. Alias trap (Reg) did NOT work - GLM reads roster file dynamically. Need to download eval bundle to check trajectory and find a real model assumption to break."
+        },
+        {
+          "at": "2026-09-12T17:48:44Z",
+          "status": "final_running",
+          "note": "h40 v23 uploaded (content-1d45d1b5). SUMMIT site trap: added SUMMIT with 07:00-16:00 core hours to site_core_hours.md. 4 trap results (R-135-R-138) at SUMMIT site. Model hardcodes only MAIN/RIVERSIDE -> wrong clock for SUMMIT. 138 results, 167 verifiers, 186 tests. Pipeline-packaged. QC-Oracle-GLM running."
         }
       ],
-      "updated_at": "2026-09-12T17:12:26Z",
+      "updated_at": "2026-09-12T17:48:44Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
