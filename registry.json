@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T14:19:26Z",
+  "updated_at": "2026-09-12T14:20:07Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -730,13 +730,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v21 QC-Oracle-GLM queued/running. Bank holiday trap: July 18 added to bank_holidays.csv. 4 trap results (R-135-R-138) released on July 18. Model hardcodes CLOSED_DAYS without reading file. 138 results, 167 verifiers.",
+      "notes": "h40 v22 uploaded (content-870d1b80). Alias trap: added Reg->resident_doctor to approved_roles_roster.md. 3 trap results (R-135-R-137) acknowledged by Reg. Model hardcodes ALIASES without Reg so flags them unapproved. 137 results, 166 verifiers, 185 tests. Pipeline-packaged. QC-Oracle-GLM running.",
       "history": [
-        {
-          "at": "2026-09-10T22:36:15Z",
-          "status": "uploaded",
-          "note": "v12 uploaded #7fcbcc0; waiting for Final QC slot (3 busy)"
-        },
         {
           "at": "2026-09-10T22:36:15Z",
           "status": "final_running",
@@ -925,9 +920,14 @@
           "at": "2026-09-12T12:14:33Z",
           "status": "final_running",
           "note": "h40 v21 QC-Oracle-GLM queued/running. Bank holiday trap: July 18 added to bank_holidays.csv. 4 trap results (R-135-R-138) released on July 18. Model hardcodes CLOSED_DAYS without reading file. 138 results, 167 verifiers."
+        },
+        {
+          "at": "2026-09-12T14:20:07Z",
+          "status": "final_running",
+          "note": "h40 v22 uploaded (content-870d1b80). Alias trap: added Reg->resident_doctor to approved_roles_roster.md. 3 trap results (R-135-R-137) acknowledged by Reg. Model hardcodes ALIASES without Reg so flags them unapproved. 137 results, 166 verifiers, 185 tests. Pipeline-packaged. QC-Oracle-GLM running."
         }
       ],
-      "updated_at": "2026-09-12T12:14:33Z",
+      "updated_at": "2026-09-12T14:20:07Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
