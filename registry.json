@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T11:44:44Z",
+  "updated_at": "2026-09-12T11:54:43Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1593,13 +1593,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (b5a69666) fair verifier (broadened memo checks, disclosed instruction). Waiting for eval slot.",
+      "notes": "v1 (f21caab1) clean upload (no evals, fixed Dockerfile, broadened memo checks, disclosed instruction). Waiting for eval slot.",
       "history": [
-        {
-          "at": "2026-09-08T22:39:30Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-code-c251.zip"
-        },
         {
           "at": "2026-09-09T06:17:23Z",
           "status": "final_running",
@@ -1794,9 +1789,14 @@
           "at": "2026-09-12T09:48:45Z",
           "status": "final_running",
           "note": "v1 (b5a69666) fair verifier (broadened memo checks, disclosed instruction). Waiting for eval slot."
+        },
+        {
+          "at": "2026-09-12T11:54:43Z",
+          "status": "final_running",
+          "note": "v1 (f21caab1) clean upload (no evals, fixed Dockerfile, broadened memo checks, disclosed instruction). Waiting for eval slot."
         }
       ],
-      "updated_at": "2026-09-12T09:48:45Z",
+      "updated_at": "2026-09-12T11:54:43Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1816,7 +1816,7 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T09:48:45Z",
+        "last_check_at": "2026-09-12T11:54:43Z",
         "phase": "oracle_running",
         "checks": [
           {
@@ -2010,11 +2010,19 @@
             "note": "v1 (b5a69666) fair verifier (broadened memo checks, disclosed instruction). Waiting for eval slot.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-12T11:54:43Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (f21caab1) clean upload (no evals, fixed Dockerfile, broadened memo checks, disclosed instruction). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "2/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-b5a6966624917394de7d37694ab55b74-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-f21caab18a46225dad20578088efc4ea-v1"
       }
     },
     {
