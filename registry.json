@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T17:12:26Z",
+  "updated_at": "2026-09-12T17:20:11Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v28 uploaded content-3c2c57c50d4cf9d0705af4fafbb1f602-v1. CSV complete. QC-Oracle-GLM started evaluation-d54e3361b007488e. 63 verifiers (original v24 restored, no weight fields). test.sh uses python3 + PYTHONPATH=/tests. Case-sensitive Paid rule consistent in instruction + policy + verifier.",
+      "notes": "v28 done: Oracle PASS, GLM 3/4, 20 findings. Case-sensitive Paid token STILL flagged as contrived. Need to remove entirely + update gold (dividends_paid 750k->900k, max_further 1402k->1252k). Then if GLM 4/4 pass to partlets.",
       "history": [
-        {
-          "at": "2026-09-07T22:30:31Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"
-        },
         {
           "at": "2026-09-07T22:47:34Z",
           "status": "final_running",
@@ -286,9 +281,14 @@
           "at": "2026-09-12T16:18:53Z",
           "status": "final_running",
           "note": "v28 uploaded content-3c2c57c50d4cf9d0705af4fafbb1f602-v1. CSV complete. QC-Oracle-GLM started evaluation-d54e3361b007488e. 63 verifiers (original v24 restored, no weight fields). test.sh uses python3 + PYTHONPATH=/tests. Case-sensitive Paid rule consistent in instruction + policy + verifier."
+        },
+        {
+          "at": "2026-09-12T17:20:11Z",
+          "status": "final_running",
+          "note": "v28 done: Oracle PASS, GLM 3/4, 20 findings. Case-sensitive Paid token STILL flagged as contrived. Need to remove entirely + update gold (dividends_paid 750k->900k, max_further 1402k->1252k). Then if GLM 4/4 pass to partlets."
         }
       ],
-      "updated_at": "2026-09-12T16:18:53Z",
+      "updated_at": "2026-09-12T17:20:11Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
