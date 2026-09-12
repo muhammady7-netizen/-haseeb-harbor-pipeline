@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-12T11:23:08Z",
+  "updated_at": "2026-09-12T11:43:40Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,7 +85,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v25 ready: fixed 15 findings (instruction, test.sh, verifier fairness/weights, README/review.csv). 63 verifiers, GLM 1/4. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v25.zip. Upload blocked by browser timeout.",
+      "notes": "v24 re-eval done: Oracle PASS, GLM 1/4 (meets difficulty), 21 findings to fix. v25 ready with fixes but review.csv upload blocked.",
       "history": [
         {
           "at": "2026-09-07T22:28:47Z",
@@ -271,9 +271,14 @@
           "at": "2026-09-12T10:45:35Z",
           "status": "final_running",
           "note": "v25 ready: fixed 15 findings (instruction, test.sh, verifier fairness/weights, README/review.csv). 63 verifiers, GLM 1/4. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v25.zip. Upload blocked by browser timeout."
+        },
+        {
+          "at": "2026-09-12T11:43:39Z",
+          "status": "final_running",
+          "note": "v24 re-eval done: Oracle PASS, GLM 1/4 (meets difficulty), 21 findings to fix. v25 ready with fixes but review.csv upload blocked."
         }
       ],
-      "updated_at": "2026-09-12T10:45:35Z",
+      "updated_at": "2026-09-12T11:43:39Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -2573,13 +2578,8 @@
       "session": "C",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g806.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v3 QC-Oracle-GLM STARTED on portal. Oracle waiting. ~50min expected. Fixed verifier schema (83 checks, gold 51/51).",
+      "notes": "v4 uploaded (fixed 9 blockers: memo proximity/order, hyphen variants, uniqueness check, lexicographic backtracking, instruction disclosure). QC-Oracle-GLM waiting for slot.",
       "history": [
-        {
-          "at": "2026-09-09T21:09:14Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-gen-g806.zip"
-        },
         {
           "at": "2026-09-09T21:14:07Z",
           "status": "final_running",
@@ -2774,9 +2774,14 @@
           "at": "2026-09-12T10:13:30Z",
           "status": "final_running",
           "note": "v3 QC-Oracle-GLM STARTED on portal. Oracle waiting. ~50min expected. Fixed verifier schema (83 checks, gold 51/51)."
+        },
+        {
+          "at": "2026-09-12T11:25:33Z",
+          "status": "final_running",
+          "note": "v4 uploaded (fixed 9 blockers: memo proximity/order, hyphen variants, uniqueness check, lexicographic backtracking, instruction disclosure). QC-Oracle-GLM waiting for slot."
         }
       ],
-      "updated_at": "2026-09-12T10:13:30Z",
+      "updated_at": "2026-09-12T11:25:33Z",
       "last_preqc": {
         "at": "2026-09-08T22:29:32Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1001634\\2026-09-08T222931Z",
@@ -2797,8 +2802,8 @@
         "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-12T10:13:30Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-12T11:25:33Z",
+        "phase": "oracle_waiting",
         "checks": [
           {
             "at": "2026-09-08T22:32:56Z",
@@ -2909,6 +2914,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v3 QC-Oracle-GLM STARTED on portal. Oracle waiting. ~50min expected. Fixed verifier schema (83 checks, gold 51/51).",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-12T11:25:33Z",
+            "phase": "oracle_waiting",
+            "running": true,
+            "note": "v4 uploaded (fixed 9 blockers: memo proximity/order, hyphen variants, uniqueness check, lexicographic backtracking, instruction disclosure). QC-Oracle-GLM waiting for slot.",
             "glm_pass": null,
             "oracle": null
           }
@@ -4014,7 +4027,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Poll until Oracle+GLM+Harbor done",
-      "notes": "Oracle crashed (infra). Re-run started evaluation-e9cdefae13f34c8a. Per meeting: don't change task for infra failures.",
+      "notes": "Oracle crashed 4/4 again. Infra issue - not changing task per meeting guidance.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -4150,9 +4163,14 @@
           "at": "2026-09-12T10:45:35Z",
           "status": "final_running",
           "note": "Oracle crashed (infra). Re-run started evaluation-e9cdefae13f34c8a. Per meeting: don't change task for infra failures."
+        },
+        {
+          "at": "2026-09-12T11:43:40Z",
+          "status": "final_running",
+          "note": "Oracle crashed 4/4 again. Infra issue - not changing task per meeting guidance."
         }
       ],
-      "updated_at": "2026-09-12T10:45:35Z",
+      "updated_at": "2026-09-12T11:43:40Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
