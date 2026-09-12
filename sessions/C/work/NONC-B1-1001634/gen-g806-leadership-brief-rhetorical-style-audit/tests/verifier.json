@@ -1,0 +1,2080 @@
+{
+  "task_id": "gen-g806-leadership-brief-rhetorical-style-audit",
+  "verifiers": [
+    {
+      "name": "brief_coherence_exists",
+      "metadata": {
+        "how_justification": "brief_coherence.csv must exist.",
+        "why_justification": "brief_coherence.csv must exist."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "question_trace_exists",
+      "metadata": {
+        "how_justification": "question_trace.csv must exist.",
+        "why_justification": "question_trace.csv must exist."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "executive_sequence_memo_exists",
+      "metadata": {
+        "how_justification": "executive_sequence_memo.md must exist.",
+        "why_justification": "executive_sequence_memo.md must exist."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "results.json must exist.",
+        "why_justification": "results.json must exist."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "coherence_header",
+      "metadata": {
+        "how_justification": "Coherence CSV header must match the instruction.",
+        "why_justification": "Coherence CSV header must match the instruction."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^brief_id\\s*,\\s*word_count\\s*,\\s*question_count\\s*,\\s*unanswered_questions\\s*,\\s*transition_breaches\\s*,\\s*coherence_score\\s*,\\s*recommended_move\\s*,\\s*projected_score\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_header",
+      "metadata": {
+        "how_justification": "Trace CSV header must match the instruction.",
+        "why_justification": "Trace CSV header must match the instruction."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^brief_id\\s*,\\s*question_id\\s*,\\s*priority\\s*,\\s*answer_sentence_id\\s*,\\s*answer_distance\\s*,\\s*status\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b01",
+      "metadata": {
+        "how_justification": "Full coherence row for B-01 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-01 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-01\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*85\\s*,\\s*S\\-007:7\\->8\\s*,\\s*85\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b02",
+      "metadata": {
+        "how_justification": "Full coherence row for B-02 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-02 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-02\\s*,\\s*217\\s*,\\s*6\\s*,\\s*Q\\-06\\s*,\\s*4\\s*,\\s*40\\s*,\\s*S\\-013:3\\->1\\s*,\\s*65\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b03",
+      "metadata": {
+        "how_justification": "Full coherence row for B-03 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-03 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-03\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*1\\s*,\\s*80\\s*,\\s*S\\-029:9\\->2\\s*,\\s*90\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b04",
+      "metadata": {
+        "how_justification": "Full coherence row for B-04 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-04 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-04\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*5\\s*,\\s*70\\s*,\\s*S\\-033:3\\->6\\s*,\\s*75\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b05",
+      "metadata": {
+        "how_justification": "Full coherence row for B-05 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-05 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-05\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*5\\s*,\\s*75\\s*,\\s*S\\-043:3\\->6\\s*,\\s*85\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b06",
+      "metadata": {
+        "how_justification": "Full coherence row for B-06 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-06 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-06\\s*,\\s*312\\s*,\\s*6\\s*,\\s*\\s*,\\s*5\\s*,\\s*65\\s*,\\s*S\\-057:7\\->8\\s*,\\s*65\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b07",
+      "metadata": {
+        "how_justification": "Full coherence row for B-07 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-07 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-07\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*85\\s*,\\s*S\\-069:7\\->2\\s*,\\s*90\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_row_b08",
+      "metadata": {
+        "how_justification": "Full coherence row for B-08 (question_count=6, unanswered list, breaches, score, move, projection).",
+        "why_justification": "Full coherence row for B-08 (question_count=6, unanswered list, breaches, score, move, projection)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-08\\s*,\\s*217\\s*,\\s*6\\s*,\\s*Q\\-05\\s*,\\s*5\\s*,\\s*35\\s*,\\s*S\\-077:5\\->1\\s*,\\s*60\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "coherence_lexicographic",
+      "metadata": {
+        "how_justification": "Briefs must appear in lexicographic brief_id order.",
+        "why_justification": "Briefs must appear in lexicographic brief_id order."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "brief_coherence.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?ms)(?:.*\\n)*^B\\-01\\s*,(?:.*\\n)*^B\\-02\\s*,(?:.*\\n)*^B\\-03\\s*,(?:.*\\n)*^B\\-04\\s*,(?:.*\\n)*^B\\-05\\s*,(?:.*\\n)*^B\\-06\\s*,(?:.*\\n)*^B\\-07\\s*,(?:.*\\n)*^B\\-08\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b01_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-01/Q-01.",
+        "why_justification": "Full trace for B-01/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-001\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b01_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-01/Q-02.",
+        "why_justification": "Full trace for B-01/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-001\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b01_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-01/Q-03.",
+        "why_justification": "Full trace for B-01/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-002\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b01_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-01/Q-04.",
+        "why_justification": "Full trace for B-01/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-004\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b01_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-01/Q-05.",
+        "why_justification": "Full trace for B-01/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-005\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b01_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-01/Q-06.",
+        "why_justification": "Full trace for B-01/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-006\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b02_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-02/Q-01.",
+        "why_justification": "Full trace for B-02/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-011\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b02_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-02/Q-02.",
+        "why_justification": "Full trace for B-02/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-012\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b02_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-02/Q-03.",
+        "why_justification": "Full trace for B-02/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-014\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b02_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-02/Q-04.",
+        "why_justification": "Full trace for B-02/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-015\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b02_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-02/Q-05.",
+        "why_justification": "Full trace for B-02/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-016\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b02_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-02/Q-06.",
+        "why_justification": "Full trace for B-02/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*\\s*,\\s*\\-1\\s*,\\s*unanswered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b03_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-03/Q-01.",
+        "why_justification": "Full trace for B-03/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-021\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b03_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-03/Q-02.",
+        "why_justification": "Full trace for B-03/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-022\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b03_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-03/Q-03.",
+        "why_justification": "Full trace for B-03/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-023\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b03_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-03/Q-04.",
+        "why_justification": "Full trace for B-03/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-028\\s*,\\s*7\\s*,\\s*answered_far\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b03_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-03/Q-05.",
+        "why_justification": "Full trace for B-03/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-029\\s*,\\s*8\\s*,\\s*answered_far\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b03_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-03/Q-06.",
+        "why_justification": "Full trace for B-03/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-030\\s*,\\s*9\\s*,\\s*answered_far\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b04_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-04/Q-01.",
+        "why_justification": "Full trace for B-04/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-031\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b04_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-04/Q-02.",
+        "why_justification": "Full trace for B-04/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-032\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b04_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-04/Q-03.",
+        "why_justification": "Full trace for B-04/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-033\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b04_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-04/Q-04.",
+        "why_justification": "Full trace for B-04/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-034\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b04_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-04/Q-05.",
+        "why_justification": "Full trace for B-04/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-035\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b04_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-04/Q-06.",
+        "why_justification": "Full trace for B-04/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-036\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b05_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-05/Q-01.",
+        "why_justification": "Full trace for B-05/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-041\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b05_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-05/Q-02.",
+        "why_justification": "Full trace for B-05/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-041\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b05_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-05/Q-03.",
+        "why_justification": "Full trace for B-05/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-042\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b05_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-05/Q-04.",
+        "why_justification": "Full trace for B-05/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-043\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b05_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-05/Q-05.",
+        "why_justification": "Full trace for B-05/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-044\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b05_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-05/Q-06.",
+        "why_justification": "Full trace for B-05/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-045\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b06_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-06/Q-01.",
+        "why_justification": "Full trace for B-06/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-051\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b06_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-06/Q-02.",
+        "why_justification": "Full trace for B-06/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-052\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b06_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-06/Q-03.",
+        "why_justification": "Full trace for B-06/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-053\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b06_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-06/Q-04.",
+        "why_justification": "Full trace for B-06/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-054\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b06_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-06/Q-05.",
+        "why_justification": "Full trace for B-06/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-055\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b06_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-06/Q-06.",
+        "why_justification": "Full trace for B-06/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-056\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b07_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-07/Q-01.",
+        "why_justification": "Full trace for B-07/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-063\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b07_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-07/Q-02.",
+        "why_justification": "Full trace for B-07/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-063\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b07_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-07/Q-03.",
+        "why_justification": "Full trace for B-07/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-064\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b07_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-07/Q-04.",
+        "why_justification": "Full trace for B-07/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-064\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b07_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-07/Q-05.",
+        "why_justification": "Full trace for B-07/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-065\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b07_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-07/Q-06.",
+        "why_justification": "Full trace for B-07/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-065\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b08_q01",
+      "metadata": {
+        "how_justification": "Full trace for B-08/Q-01.",
+        "why_justification": "Full trace for B-08/Q-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-073\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b08_q02",
+      "metadata": {
+        "how_justification": "Full trace for B-08/Q-02.",
+        "why_justification": "Full trace for B-08/Q-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-074\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b08_q03",
+      "metadata": {
+        "how_justification": "Full trace for B-08/Q-03.",
+        "why_justification": "Full trace for B-08/Q-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-075\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b08_q04",
+      "metadata": {
+        "how_justification": "Full trace for B-08/Q-04.",
+        "why_justification": "Full trace for B-08/Q-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-076\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b08_q05",
+      "metadata": {
+        "how_justification": "Full trace for B-08/Q-05.",
+        "why_justification": "Full trace for B-08/Q-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*\\s*,\\s*\\-1\\s*,\\s*unanswered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trace_b08_q06",
+      "metadata": {
+        "how_justification": "Full trace for B-08/Q-06.",
+        "why_justification": "Full trace for B-08/Q-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "question_trace.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-078\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "results_brief_count",
+      "metadata": {
+        "how_justification": "results.json brief_count must equal 8.",
+        "why_justification": "results.json brief_count must equal 8."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 8,
+        "deterministic": {
+          "path": "$.brief_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_passing_briefs",
+      "metadata": {
+        "how_justification": "results.json passing_briefs must equal 3.",
+        "why_justification": "results.json passing_briefs must equal 3."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 3,
+        "deterministic": {
+          "path": "$.passing_briefs",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_failing_briefs",
+      "metadata": {
+        "how_justification": "results.json failing_briefs must equal 5.",
+        "why_justification": "results.json failing_briefs must equal 5."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 5,
+        "deterministic": {
+          "path": "$.failing_briefs",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_avg_score",
+      "metadata": {
+        "how_justification": "results.json avg_score must equal 66.88.",
+        "why_justification": "results.json avg_score must equal 66.88."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 66.88,
+        "deterministic": {
+          "path": "$.avg_score",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_total_unanswered",
+      "metadata": {
+        "how_justification": "results.json total_unanswered must equal 2.",
+        "why_justification": "results.json total_unanswered must equal 2."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 2,
+        "deterministic": {
+          "path": "$.total_unanswered",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_total_breaches",
+      "metadata": {
+        "how_justification": "results.json total_breaches must equal 31.",
+        "why_justification": "results.json total_breaches must equal 31."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 31,
+        "deterministic": {
+          "path": "$.total_breaches",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_has_b02",
+      "metadata": {
+        "how_justification": "Memo must include a #/##/### heading for failing brief B-02.",
+        "why_justification": "Memo must include a #/##/### heading for failing brief B-02."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-02\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_b02",
+      "metadata": {
+        "how_justification": "Memo subsection for B-02 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "why_justification": "Memo subsection for B-02 must mention unanswered/breach status and recommended move (disclosed memo format)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)#{1,3}\\s*B\\-02\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_has_b04",
+      "metadata": {
+        "how_justification": "Memo must include a #/##/### heading for failing brief B-04.",
+        "why_justification": "Memo must include a #/##/### heading for failing brief B-04."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-04\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_b04",
+      "metadata": {
+        "how_justification": "Memo subsection for B-04 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "why_justification": "Memo subsection for B-04 must mention unanswered/breach status and recommended move (disclosed memo format)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)#{1,3}\\s*B\\-04\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_has_b05",
+      "metadata": {
+        "how_justification": "Memo must include a #/##/### heading for failing brief B-05.",
+        "why_justification": "Memo must include a #/##/### heading for failing brief B-05."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-05\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_b05",
+      "metadata": {
+        "how_justification": "Memo subsection for B-05 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "why_justification": "Memo subsection for B-05 must mention unanswered/breach status and recommended move (disclosed memo format)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)#{1,3}\\s*B\\-05\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_has_b06",
+      "metadata": {
+        "how_justification": "Memo must include a #/##/### heading for failing brief B-06.",
+        "why_justification": "Memo must include a #/##/### heading for failing brief B-06."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-06\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_b06",
+      "metadata": {
+        "how_justification": "Memo subsection for B-06 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "why_justification": "Memo subsection for B-06 must mention unanswered/breach status and recommended move (disclosed memo format)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)#{1,3}\\s*B\\-06\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_has_b08",
+      "metadata": {
+        "how_justification": "Memo must include a #/##/### heading for failing brief B-08.",
+        "why_justification": "Memo must include a #/##/### heading for failing brief B-08."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-08\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_b08",
+      "metadata": {
+        "how_justification": "Memo subsection for B-08 must mention unanswered/breach status and recommended move (disclosed memo format).",
+        "why_justification": "Memo subsection for B-08 must mention unanswered/breach status and recommended move (disclosed memo format)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)#{1,3}\\s*B\\-08\\b.{0,600}(?:[Uu]nanswered|[Bb]reach).{0,400}[Rr]ecommended",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_omits_b01",
+      "metadata": {
+        "how_justification": "Memo must not include a #/##/### heading for passing brief B-01.",
+        "why_justification": "Memo must not include a #/##/### heading for passing brief B-01."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-01\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "not_regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_omits_b03",
+      "metadata": {
+        "how_justification": "Memo must not include a #/##/### heading for passing brief B-03.",
+        "why_justification": "Memo must not include a #/##/### heading for passing brief B-03."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-03\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "not_regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_omits_b07",
+      "metadata": {
+        "how_justification": "Memo must not include a #/##/### heading for passing brief B-07.",
+        "why_justification": "Memo must not include a #/##/### heading for passing brief B-07."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^#{1,3}\\s*B\\-07\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "not_regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_has_body",
+      "metadata": {
+        "how_justification": "Memo must contain substantive body text.",
+        "why_justification": "Memo must contain substantive body text."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?s).{200,}",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    }
+  ]
+}

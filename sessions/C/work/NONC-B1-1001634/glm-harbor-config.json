@@ -1,0 +1,44 @@
+{
+  "jobs_dir": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/sessions/C/work/NONC-B1-1001634/harbor-jobs",
+  "n_concurrent_trials": 1,
+  "n_attempts": 1,
+  "verifier": { "env": {} },
+  "agents": [
+    {
+      "name": "opencode",
+      "model_name": "glm/glm-5.2",
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1"
+      },
+      "kwargs": {
+        "opencode_config": {
+          "provider": {
+            "glm": {
+              "npm": "@ai-sdk/openai-compatible",
+              "name": "GLM Gateway",
+              "options": {
+                "baseURL": "http://34.41.10.8:4000/v1",
+                "apiKey": "{env:OPENAI_API_KEY}"
+              },
+              "models": {
+                "glm-5.2": {
+                  "name": "GLM-5.2",
+                  "reasoning": true,
+                  "interleaved": { "field": "reasoning_content" },
+                  "limit": { "context": 200000, "output": 96000 },
+                  "options": { "max_tokens": 96000 }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/sessions/C/work/NONC-B1-1001634/gen-g806-leadership-brief-rhetorical-style-audit"
+    }
+  ]
+}

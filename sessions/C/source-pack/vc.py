@@ -1,0 +1,1 @@
+﻿import json; v=json.load(open(r'C:\Users\Haseeb Mirza\OneDrive\Documents\-haseeb-harbor-pipeline\sessions\C\source-pack\gen-g806-leadership-brief-rhetorical-style-audit\tests\verifier.json',encoding='utf-8')); print(len(v['verifiers']),'verifiers')
