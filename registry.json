@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T11:11:48Z",
+  "updated_at": "2026-09-13T11:27:22Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,17 +81,12 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v35: Oracle PASS, GLM 4/4 (too easy). 0 findings but DIFFICULTY-GLM-TOO-EASY blocking. Removing Westfield partial-reversal and case-sensitive trap made it too easy. Need fundamentally harder DATA trap. Pass to partlets per meeting: 'If 4/4 after fixing setup once -> pass to partlets.'",
+      "notes": "v36 uploaded content-07723200fe5016b2f4ec4081f2958526-v1. CSV complete. QC started evaluation-0f2015698b9440cd. 56 verifiers. Westfield DATA trap restored (partial reversal 85000->65000, IAS 37, no adjustment). Greenfield transferred-to-retained trap also active.",
       "history": [
-        {
-          "at": "2026-09-08T03:08:18Z",
-          "status": "blocked",
-          "note": "build_qc_bundle failed rc=1"
-        },
         {
           "at": "2026-09-08T03:20:04Z",
           "status": "ready_final",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T10:45:26Z",
           "status": "needs_densify",
           "note": "v35: Oracle PASS, GLM 4/4 (too easy). 0 findings but DIFFICULTY-GLM-TOO-EASY blocking. Removing Westfield partial-reversal and case-sensitive trap made it too easy. Need fundamentally harder DATA trap. Pass to partlets per meeting: 'If 4/4 after fixing setup once -> pass to partlets.'"
+        },
+        {
+          "at": "2026-09-13T11:27:22Z",
+          "status": "final_running",
+          "note": "v36 uploaded content-07723200fe5016b2f4ec4081f2958526-v1. CSV complete. QC started evaluation-0f2015698b9440cd. 56 verifiers. Westfield DATA trap restored (partial reversal 85000->65000, IAS 37, no adjustment). Greenfield transferred-to-retained trap also active."
         }
       ],
-      "updated_at": "2026-09-13T10:45:26Z",
+      "updated_at": "2026-09-13T11:27:22Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
