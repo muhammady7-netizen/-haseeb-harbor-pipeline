@@ -5,10 +5,10 @@ S-003,B-01,3,context,20,
 S-004,B-01,4,evidence,18,Q-04
 S-005,B-01,5,context,24,Q-05
 S-006,B-01,6,evidence,26,Q-06
-S-007,B-01,7,context,20,
+S-007,B-01,7,context,21,
 S-008,B-01,8,context,22,
-S-009,B-01,9,context,19,
-S-010,B-01,10,context,21,
+S-009,B-01,9,context,20,
+S-010,B-01,10,context,22,
 S-011,B-02,1,evidence,25,Q-01
 S-012,B-02,2,context,22,Q-02
 S-013,B-02,3,decision,20,
@@ -66,7 +66,7 @@ S-064,B-07,2,evidence,22,"Q-03,Q-04"
 S-065,B-07,3,context,20,"Q-05,Q-06"
 S-066,B-07,4,evidence,18,
 S-067,B-07,5,context,24,
-S-068,B-07,6,evidence,26,
+S-068,B-07,6,decision,26,
 S-069,B-07,7,context,20,
 S-070,B-07,8,context,22,
 S-071,B-07,9,context,19,

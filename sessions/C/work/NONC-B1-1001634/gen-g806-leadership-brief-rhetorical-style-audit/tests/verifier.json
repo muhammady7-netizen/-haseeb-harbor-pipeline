@@ -169,7 +169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*85\\s*,\\s*S\\-007:7\\->8\\s*,\\s*85\\s*$",
+        "expected": "(?mi)^B\\-01\\s*,\\s*220\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*85\\s*,\\s*S\\-007:7\\->8\\s*,\\s*85\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -319,7 +319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*85\\s*,\\s*S\\-069:7\\->2\\s*,\\s*90\\s*$",
+        "expected": "(?mi)^B\\-07\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*4\\s*,\\s*75\\s*,\\s*S\\-068:6\\->7\\s*,\\s*75\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1604,7 +1604,7 @@
     {
       "name": "results_passing_briefs",
       "metadata": {
-        "how_justification": "results.json passing_briefs must equal 2.",
+        "how_justification": "results.json passing_briefs must equal 1.",
         "why_justification": "results.json passing_briefs must equal 2."
       },
       "source": {
@@ -1619,7 +1619,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 2,
+        "expected": 1,
         "deterministic": {
           "path": "$.passing_briefs",
           "comparison": "equals"
@@ -1629,7 +1629,7 @@
     {
       "name": "results_failing_briefs",
       "metadata": {
-        "how_justification": "results.json failing_briefs must equal 6.",
+        "how_justification": "results.json failing_briefs must equal 7.",
         "why_justification": "results.json failing_briefs must equal 6."
       },
       "source": {
@@ -1644,7 +1644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 6,
+        "expected": 7,
         "deterministic": {
           "path": "$.failing_briefs",
           "comparison": "equals"
@@ -1654,7 +1654,7 @@
     {
       "name": "results_avg_score",
       "metadata": {
-        "how_justification": "results.json avg_score must equal 65.63.",
+        "how_justification": "results.json avg_score must equal 64.38.",
         "why_justification": "results.json avg_score must equal 65.63."
       },
       "source": {
@@ -1669,7 +1669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 65.63,
+        "expected": 64.38,
         "deterministic": {
           "path": "$.avg_score",
           "comparison": "equals"
@@ -1704,7 +1704,7 @@
     {
       "name": "results_total_breaches",
       "metadata": {
-        "how_justification": "results.json total_breaches must equal 33.",
+        "how_justification": "results.json total_breaches must equal 34.",
         "why_justification": "results.json total_breaches must equal 33."
       },
       "source": {
@@ -1719,7 +1719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 33,
+        "expected": 34,
         "deterministic": {
           "path": "$.total_breaches",
           "comparison": "equals"
@@ -2002,10 +2002,10 @@
       }
     },
     {
-      "name": "memo_omits_b07",
+      "name": "memo_has_b07",
       "metadata": {
-        "how_justification": "Memo must not include a #/##/### heading for passing brief B-07.",
-        "why_justification": "Memo must not include a #/##/### heading for passing brief B-07."
+        "how_justification": "Memo must include a heading for failing brief B-07.",
+        "why_justification": "B-07 now fails (score 75 < 80) and must appear in memo."
       },
       "source": {
         "type": "file",
@@ -2019,10 +2019,10 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?m)^#{1,3}\\s*B[\\-_\u2013\\s]?07\\b",
+        "expected": "(?m)^#{1,3}\\s*B[\\-_\\u2013\\s]?07\\b",
         "deterministic": {
           "path": "$.text",
-          "comparison": "not_regex_match"
+          "comparison": "regex_match"
         }
       }
     },
@@ -2320,6 +2320,56 @@
       "assertion": {
         "type": "deterministic",
         "expected": "(?ms)^B-01.*?^B-01.*?^B-01.*?^B-01.*?^B-01.*?^B-01.*?^B-02.*?^B-02.*?^B-02.*?^B-02.*?^B-02.*?^B-02.*?^B-03.*?^B-03.*?^B-03.*?^B-03.*?^B-03.*?^B-03.*?^B-04.*?^B-04.*?^B-04.*?^B-04.*?^B-04.*?^B-04.*?^B-05.*?^B-05.*?^B-05.*?^B-05.*?^B-05.*?^B-05.*?^B-06.*?^B-06.*?^B-06.*?^B-06.*?^B-06.*?^B-06.*?^B-07.*?^B-07.*?^B-07.*?^B-07.*?^B-07.*?^B-07.*?^B-08.*?^B-08.*?^B-08.*?^B-08.*?^B-08.*?^B-08",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_b07",
+      "metadata": {
+        "how_justification": "Checks memo mentions brief B07 with a status word.",
+        "why_justification": "B-07 now fails and must have status + recommended move."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?07.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_recommends_b07",
+      "metadata": {
+        "how_justification": "Checks memo subsection for B-07 contains recommended and the correct relocation.",
+        "why_justification": "Instruction requires each failing-brief memo subsection to state the recommended relocation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "executive_sequence_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)B[\\-\\s_]?07[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-068:6\\->7|S\\-068:6\\->7[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
