@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T10:05:14Z",
+  "updated_at": "2026-09-13T10:13:00Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -735,13 +735,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v25: Amendment window trap. Changed procedure_amendment to reduce RIVERSIDE tier 2 notification window from 240 to 180 min for releases >= July 15. Added 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). Model hardcodes WINDOWS={2:(240,480)} without reading amendment. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. Upload pending - browser stuck.",
+      "notes": "h40 v25 QC-Oracle-GLM running. Amendment window trap: RIVERSIDE tier 2 notification window reduced from 240 to 180 min for releases >= July 15. Model hardcodes WINDOWS={2:(240,480)}. 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). 141 results, 170 verifiers, 189 tests.",
       "history": [
-        {
-          "at": "2026-09-11T10:13:47Z",
-          "status": "final_running",
-          "note": "h40 v13 (content-337c2e4a) QC-Oracle-GLM started. Waiting ~50min for Oracle+GLM├ù4."
-        },
         {
           "at": "2026-09-11T10:58:56Z",
           "status": "ready_final",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T09:33:43Z",
           "status": "final_running",
           "note": "h40 v25: Amendment window trap. Changed procedure_amendment to reduce RIVERSIDE tier 2 notification window from 240 to 180 min for releases >= July 15. Added 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). Model hardcodes WINDOWS={2:(240,480)} without reading amendment. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. Upload pending - browser stuck."
+        },
+        {
+          "at": "2026-09-13T10:13:00Z",
+          "status": "final_running",
+          "note": "h40 v25 QC-Oracle-GLM running. Amendment window trap: RIVERSIDE tier 2 notification window reduced from 240 to 180 min for releases >= July 15. Model hardcodes WINDOWS={2:(240,480)}. 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). 141 results, 170 verifiers, 189 tests."
         }
       ],
-      "updated_at": "2026-09-13T09:33:43Z",
+      "updated_at": "2026-09-13T10:13:00Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
