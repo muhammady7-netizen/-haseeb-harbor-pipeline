@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T14:47:40Z",
+  "updated_at": "2026-09-13T15:59:27Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -3212,13 +3212,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (536e8bab) Re-run #4 STARTED (105s). Oracle Running. Previous 3 runs errored with [judge]. Infrastructure issue.",
+      "notes": "v3 (536e8bab-v3) uploaded with ORIGINAL 64-people pack (0 headcount mismatches, fixed Dockerfile+solve.sh, no evals). Waiting for eval slot.",
       "history": [
-        {
-          "at": "2026-09-10T20:46:01Z",
-          "status": "final_running",
-          "note": "AUTO: v2 #fae8c6 PreQC done (8 findings, leave unconfirmed). QC-Oracle-GLM RUNNING. Polling. c251 still blocked on slots."
-        },
         {
           "at": "2026-09-10T20:52:43Z",
           "status": "final_running",
@@ -3413,9 +3408,14 @@
           "at": "2026-09-13T14:47:40Z",
           "status": "final_running",
           "note": "v1 (536e8bab) Re-run #4 STARTED (105s). Oracle Running. Previous 3 runs errored with [judge]. Infrastructure issue."
+        },
+        {
+          "at": "2026-09-13T15:59:27Z",
+          "status": "final_running",
+          "note": "v3 (536e8bab-v3) uploaded with ORIGINAL 64-people pack (0 headcount mismatches, fixed Dockerfile+solve.sh, no evals). Waiting for eval slot."
         }
       ],
-      "updated_at": "2026-09-13T14:47:40Z",
+      "updated_at": "2026-09-13T15:59:27Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3433,19 +3433,11 @@
       },
       "packaged_at": "2026-09-10T21:38:15Z",
       "portal": {
-        "version": "v1",
+        "version": "v3",
         "watch": true,
-        "last_check_at": "2026-09-13T14:47:40Z",
+        "last_check_at": "2026-09-13T15:59:27Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-09T19:21:12Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "gen-g857 v7 uploaded (84 depts, 110 checks, no legacy issues, stability evidence included) + eval started",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-10T15:27:27Z",
             "phase": "glm_or_oracle_running",
@@ -3677,11 +3669,19 @@
             "note": "v1 (536e8bab) Re-run #4 STARTED (105s). Oracle Running. Previous 3 runs errored with [judge]. Infrastructure issue.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-13T15:59:27Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v3 (536e8bab-v3) uploaded with ORIGINAL 64-people pack (0 headcount mismatches, fixed Dockerfile+solve.sh, no evals). Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "1/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-536e8bab53115a86281e2726b0411c81-v1"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-536e8bab53115a86281e2726b0411c81-v3"
       }
     },
     {
