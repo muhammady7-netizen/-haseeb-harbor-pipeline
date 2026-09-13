@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T05:08:40Z",
+  "updated_at": "2026-09-13T05:08:46Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v32 retry: Oracle PASS, GLM 3/4 (meets E5). Harbor Check failed with 'invalid access receipt' (infrastructure, retryable). Retrying evaluation-861ad4853a5e497e.",
+      "notes": "v33 ready to upload: 56 verifiers, Westfield added to instruction, memo_westfield_reversal removed, test.sh cd /tests, memo_lawful_conclusion negation fix, README/golden_results updated. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v33.zip. Browser overloaded - need manual upload.",
       "history": [
-        {
-          "at": "2026-09-08T02:58:45Z",
-          "status": "preqc_needs_fix",
-          "note": "PreQC FAIL; 2 must-fix"
-        },
         {
           "at": "2026-09-08T03:02:51Z",
           "status": "preqc_running",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T03:55:23Z",
           "status": "final_running",
           "note": "v32 retry: Oracle PASS, GLM 3/4 (meets E5). Harbor Check failed with 'invalid access receipt' (infrastructure, retryable). Retrying evaluation-861ad4853a5e497e."
+        },
+        {
+          "at": "2026-09-13T05:08:46Z",
+          "status": "final_running",
+          "note": "v33 ready to upload: 56 verifiers, Westfield added to instruction, memo_westfield_reversal removed, test.sh cd /tests, memo_lawful_conclusion negation fix, README/golden_results updated. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v33.zip. Browser overloaded - need manual upload."
         }
       ],
-      "updated_at": "2026-09-13T03:55:23Z",
+      "updated_at": "2026-09-13T05:08:46Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
