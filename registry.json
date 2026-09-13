@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T17:45:05Z",
+  "updated_at": "2026-09-13T17:50:41Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,17 +81,12 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v39 fin-f39 task content-85b491b3134f6cf4104b59c3ffcbeb6b-v1. CSV complete. QC started evaluation-eff8953d33314047. 36 verifiers (removed 21 shallow memo checks). Birchwood DATA trap + results.json equals checks.",
+      "notes": "v39: Oracle PASS, GLM 4/4 (too easy), 0 findings but DIFFICULTY blocker. 16 versions tried. Fundamental tension: verifier fairness vs difficulty. Only case-sensitive trap made GLM fail but Harbor Check flags it as contrived. Moving to gen-g1205 and the-thread.",
       "history": [
-        {
-          "at": "2026-09-10T20:37:33Z",
-          "status": "needs_densify",
-          "note": "v21 soft-ease: dropped schedule_no_duplicate_items; broadened paid_distributions_only. Densify traps kept. Running oracle+stab+GLM v21."
-        },
         {
           "at": "2026-09-10T20:41:07Z",
           "status": "needs_densify",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T17:38:12Z",
           "status": "final_running",
           "note": "v39 fin-f39 task content-85b491b3134f6cf4104b59c3ffcbeb6b-v1. CSV complete. QC started evaluation-eff8953d33314047. 36 verifiers (removed 21 shallow memo checks). Birchwood DATA trap + results.json equals checks."
+        },
+        {
+          "at": "2026-09-13T17:50:41Z",
+          "status": "needs_densify",
+          "note": "v39: Oracle PASS, GLM 4/4 (too easy), 0 findings but DIFFICULTY blocker. 16 versions tried. Fundamental tension: verifier fairness vs difficulty. Only case-sensitive trap made GLM fail but Harbor Check flags it as contrived. Moving to gen-g1205 and the-thread."
         }
       ],
-      "updated_at": "2026-09-13T17:38:12Z",
+      "updated_at": "2026-09-13T17:50:41Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
