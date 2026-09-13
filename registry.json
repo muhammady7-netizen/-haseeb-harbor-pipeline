@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T10:59:29Z",
+  "updated_at": "2026-09-13T11:08:13Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v25 QC-Oracle-GLM running. Amendment window trap: RIVERSIDE tier 2 notification window reduced from 240 to 180 min for releases >= July 15. Model hardcodes WINDOWS={2:(240,480)}. 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). 141 results, 170 verifiers, 189 tests.",
+      "notes": "h40 v25: GLM 4/4. Model reads amendment and implements AMD_NOTIF_WINDOW=180. Amendment window trap failed. Model is too good at reading all input files. Per All Hands: 'If a task runs locally with a pass but yields a 4/4 score online after addressing setup issues once, trainers should not waste further effort, but instead pass the task to their partlets for spot checks and move on to other tasks.' 11+ data trap versions all failed. Task may be inherently too easy for script-based solving.",
       "history": [
-        {
-          "at": "2026-09-11T10:58:56Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-health-h40.zip"
-        },
         {
           "at": "2026-09-11T11:00:45Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T10:13:00Z",
           "status": "final_running",
           "note": "h40 v25 QC-Oracle-GLM running. Amendment window trap: RIVERSIDE tier 2 notification window reduced from 240 to 180 min for releases >= July 15. Model hardcodes WINDOWS={2:(240,480)}. 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). 141 results, 170 verifiers, 189 tests."
+        },
+        {
+          "at": "2026-09-13T11:08:13Z",
+          "status": "needs_densify",
+          "note": "h40 v25: GLM 4/4. Model reads amendment and implements AMD_NOTIF_WINDOW=180. Amendment window trap failed. Model is too good at reading all input files. Per All Hands: 'If a task runs locally with a pass but yields a 4/4 score online after addressing setup issues once, trainers should not waste further effort, but instead pass the task to their partlets for spot checks and move on to other tasks.' 11+ data trap versions all failed. Task may be inherently too easy for script-based solving."
         }
       ],
-      "updated_at": "2026-09-13T10:13:00Z",
+      "updated_at": "2026-09-13T11:08:13Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
