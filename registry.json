@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T15:59:27Z",
+  "updated_at": "2026-09-13T16:30:36Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,17 +81,12 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v37: Oracle PASS, GLM 4/4 (too easy), 0 findings but DIFFICULTY blocker. 14 versions tried (v24-v37). Pattern: when GLM fails (1/4-3/4), Harbor Check finds 8-21 findings. When findings fixed, GLM goes 4/4. Fundamental tension between verifier fairness and difficulty. Pass to partlets per meeting guidance.",
+      "notes": "v38 uploaded content-aec0a03665910d5abfcd0e267ac172f7-v1. CSV complete. QC started evaluation-e749692c9470401c. 57 verifiers. Birchwood DATA trap: surplus must be COMPUTED (200k = 600k carrying - 400k cost), not read from amount column (500k proceeds). results.json checks catch wrong total - no memo regex needed.",
       "history": [
-        {
-          "at": "2026-09-10T18:35:27Z",
-          "status": "needs_densify",
-          "note": "Portal TOO_EASY 4/4 on V19; densifying from Codex pack"
-        },
         {
           "at": "2026-09-10T18:45:54Z",
           "status": "blocked",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T14:29:39Z",
           "status": "needs_densify",
           "note": "v37: Oracle PASS, GLM 4/4 (too easy), 0 findings but DIFFICULTY blocker. 14 versions tried (v24-v37). Pattern: when GLM fails (1/4-3/4), Harbor Check finds 8-21 findings. When findings fixed, GLM goes 4/4. Fundamental tension between verifier fairness and difficulty. Pass to partlets per meeting guidance."
+        },
+        {
+          "at": "2026-09-13T16:30:36Z",
+          "status": "final_running",
+          "note": "v38 uploaded content-aec0a03665910d5abfcd0e267ac172f7-v1. CSV complete. QC started evaluation-e749692c9470401c. 57 verifiers. Birchwood DATA trap: surplus must be COMPUTED (200k = 600k carrying - 400k cost), not read from amount column (500k proceeds). results.json checks catch wrong total - no memo regex needed."
         }
       ],
-      "updated_at": "2026-09-13T14:29:39Z",
+      "updated_at": "2026-09-13T16:30:36Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
