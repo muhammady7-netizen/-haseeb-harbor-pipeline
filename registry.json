@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T14:29:39Z",
+  "updated_at": "2026-09-13T14:43:41Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v25 STUCK: GLM 4/4. difficulty_too_easy is a HARD BLOCKER - cannot be dismissed via API. 11+ data trap versions all failed. Model reads ALL input files dynamically and writes correct Python script every time. Task may need fundamental restructuring (not data changes) to trip GLM-5.2. Per All Hands: 'After two builds with no change, stop turning the same dial.'",
+      "notes": "h40 v26 uploaded (content-34aeeea7). Finding precedence rule change: unapproved role within window -> ONLY acknowledger_unapproved (no ack_late, no escalation_missing). Model script always sets ack_late=True for unapproved -> 21 rows wrong. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. QC-Oracle-GLM running.",
       "history": [
-        {
-          "at": "2026-09-11T12:22:48Z",
-          "status": "final_running",
-          "note": "h40 v15 uploaded (content-c9a663fb). Fixed: csv.py strips quotes, memo regex accepts 'ward clerk' + 'not permitted'. 28 results, 51 verifiers, 5 new traps. QC-Oracle-GLM running."
-        },
         {
           "at": "2026-09-11T13:28:16Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T14:00:00Z",
           "status": "needs_densify",
           "note": "h40 v25 STUCK: GLM 4/4. difficulty_too_easy is a HARD BLOCKER - cannot be dismissed via API. 11+ data trap versions all failed. Model reads ALL input files dynamically and writes correct Python script every time. Task may need fundamental restructuring (not data changes) to trip GLM-5.2. Per All Hands: 'After two builds with no change, stop turning the same dial.'"
+        },
+        {
+          "at": "2026-09-13T14:43:41Z",
+          "status": "final_running",
+          "note": "h40 v26 uploaded (content-34aeeea7). Finding precedence rule change: unapproved role within window -> ONLY acknowledger_unapproved (no ack_late, no escalation_missing). Model script always sets ack_late=True for unapproved -> 21 rows wrong. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. QC-Oracle-GLM running."
         }
       ],
-      "updated_at": "2026-09-13T14:00:00Z",
+      "updated_at": "2026-09-13T14:43:41Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
