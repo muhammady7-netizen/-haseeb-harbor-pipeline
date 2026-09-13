@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T00:25:06Z",
+  "updated_at": "2026-09-13T00:39:04Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,17 +81,12 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v29: GLM 4/4 (too easy). Case-sensitive Paid token was only difficulty but Harbor Check flags it as contrived. Passing to partlets per All Hands meeting guidance.",
+      "notes": "v30 uploaded content-9935502f3b82b9c09f521f3c219d124e-v1. CSV complete. QC-Oracle-GLM started evaluation-33f12e08994e4773. 60 verifiers. DATA TRAP: Greenfield disposal - amount column shows 500,000 proceeds but surplus is 175,000. Model must read the note, not copy the amount.",
       "history": [
-        {
-          "at": "2026-09-07T22:55:53Z",
-          "status": "final_running",
-          "note": "QC running; View Oracle in Harbor available; still latest running"
-        },
         {
           "at": "2026-09-08T01:01:53Z",
           "status": "preqc_running",
@@ -286,9 +281,14 @@
           "at": "2026-09-12T18:04:28Z",
           "status": "needs_densify",
           "note": "v29: GLM 4/4 (too easy). Case-sensitive Paid token was only difficulty but Harbor Check flags it as contrived. Passing to partlets per All Hands meeting guidance."
+        },
+        {
+          "at": "2026-09-13T00:39:04Z",
+          "status": "final_running",
+          "note": "v30 uploaded content-9935502f3b82b9c09f521f3c219d124e-v1. CSV complete. QC-Oracle-GLM started evaluation-33f12e08994e4773. 60 verifiers. DATA TRAP: Greenfield disposal - amount column shows 500,000 proceeds but surplus is 175,000. Model must read the note, not copy the amount."
         }
       ],
-      "updated_at": "2026-09-12T18:04:28Z",
+      "updated_at": "2026-09-13T00:39:04Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
