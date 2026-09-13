@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T02:44:07Z",
+  "updated_at": "2026-09-13T02:53:25Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v31 uploaded content-bf9270595dd53577347ce4c44821bf4c-v1. CSV complete. QC-Oracle-GLM started evaluation-41f9a03d1b014a75. 60 verifiers. Greenfield transferred-to-retained trap (like Grangeford). Removed Westfield/partial reversal. Case-insensitive paid. Single aggregate paid row disclosed.",
+      "notes": "v32 uploaded content-52900ca8d2836eebab7cd570c6a15bdc-v1. CSV complete. QC-Oracle-GLM started evaluation-861ad4853a5e497e. 57 verifiers (removed 3 file-existence checks). Fixed: CSV quoting disclosure, memo_lawful_conclusion negation, scoring proportionality.",
       "history": [
-        {
-          "at": "2026-09-08T01:01:58Z",
-          "status": "preqc_needs_fix",
-          "note": "PreQC FAIL; 2 must-fix"
-        },
         {
           "at": "2026-09-08T02:58:44Z",
           "status": "preqc_running",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T01:55:52Z",
           "status": "final_running",
           "note": "v31 uploaded content-bf9270595dd53577347ce4c44821bf4c-v1. CSV complete. QC-Oracle-GLM started evaluation-41f9a03d1b014a75. 60 verifiers. Greenfield transferred-to-retained trap (like Grangeford). Removed Westfield/partial reversal. Case-insensitive paid. Single aggregate paid row disclosed."
+        },
+        {
+          "at": "2026-09-13T02:53:25Z",
+          "status": "final_running",
+          "note": "v32 uploaded content-52900ca8d2836eebab7cd570c6a15bdc-v1. CSV complete. QC-Oracle-GLM started evaluation-861ad4853a5e497e. 57 verifiers (removed 3 file-existence checks). Fixed: CSV quoting disclosure, memo_lawful_conclusion negation, scoring proportionality."
         }
       ],
-      "updated_at": "2026-09-13T01:55:52Z",
+      "updated_at": "2026-09-13T02:53:25Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
