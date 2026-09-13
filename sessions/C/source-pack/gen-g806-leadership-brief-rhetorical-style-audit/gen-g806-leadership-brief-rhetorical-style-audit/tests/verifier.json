@@ -169,7 +169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*220\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*85\\s*,\\s*S\\-007:7\\->8\\s*,\\s*85\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-01\\s*,\\s*\\\\x22?220\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?85\\s*,\\s*\\\\x22?S\\-007:7\\->8\\s*,\\s*\\\\x22?85\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -194,7 +194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-02\\s*,\\s*217\\s*,\\s*6\\s*,\\s*Q\\-06\\s*,\\s*4\\s*,\\s*40\\s*,\\s*S\\-013:3\\->1\\s*,\\s*65\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-02\\s*,\\s*\\\\x22?217\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?4\\s*,\\s*\\\\x22?40\\s*,\\s*\\\\x22?S\\-013:3\\->1\\s*,\\s*\\\\x22?65\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -219,7 +219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*70\\s*,\\s*S\\-028:8\\->2\\s*,\\s*80\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-03\\s*,\\s*\\\\x22?217\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?70\\s*,\\s*\\\\x22?S\\-028:8\\->2\\s*,\\s*\\\\x22?80\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -244,7 +244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-04\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*5\\s*,\\s*70\\s*,\\s*S\\-033:3\\->6\\s*,\\s*75\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-04\\s*,\\s*\\\\x22?217\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?70\\s*,\\s*\\\\x22?S\\-033:3\\->6\\s*,\\s*\\\\x22?75\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -269,7 +269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-05\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*5\\s*,\\s*75\\s*,\\s*S\\-043:3\\->6\\s*,\\s*85\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-05\\s*,\\s*\\\\x22?217\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?75\\s*,\\s*\\\\x22?S\\-043:3\\->6\\s*,\\s*\\\\x22?85\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -294,7 +294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-06\\s*,\\s*312\\s*,\\s*6\\s*,\\s*\\s*,\\s*5\\s*,\\s*65\\s*,\\s*S\\-057:7\\->8\\s*,\\s*65\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-06\\s*,\\s*\\\\x22?312\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?65\\s*,\\s*\\\\x22?S\\-057:7\\->8\\s*,\\s*\\\\x22?65\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -319,7 +319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*4\\s*,\\s*75\\s*,\\s*S\\-068:6\\->7\\s*,\\s*75\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-07\\s*,\\s*\\\\x22?217\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?4\\s*,\\s*\\\\x22?75\\s*,\\s*\\\\x22?S\\-068:6\\->7\\s*,\\s*\\\\x22?75\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -344,7 +344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-08\\s*,\\s*217\\s*,\\s*6\\s*,\\s*Q\\-05\\s*,\\s*5\\s*,\\s*35\\s*,\\s*S\\-077:5\\->1\\s*,\\s*60\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-08\\s*,\\s*\\\\x22?217\\s*,\\s*\\\\x22?6\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?35\\s*,\\s*\\\\x22?S\\-077:5\\->1\\s*,\\s*\\\\x22?60\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -394,7 +394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-001\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-01\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-001\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -419,7 +419,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-001\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-01\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-001\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -444,7 +444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-002\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-01\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-002\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -469,7 +469,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-004\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-01\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-004\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -494,7 +494,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-005\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-01\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-005\\s*,\\s*\\\\x22?4\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -519,7 +519,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-01\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-006\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-01\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-006\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -544,7 +544,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-011\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-02\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-011\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -569,7 +569,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-012\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-02\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-012\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -594,7 +594,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-014\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-02\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-014\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -619,7 +619,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-015\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-02\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-015\\s*,\\s*\\\\x22?4\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -644,7 +644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-016\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-02\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-016\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -669,7 +669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-02\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*\\s*,\\s*\\-1\\s*,\\s*unanswered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-02\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?\\-1\\s*,\\s*\\\\x22?unanswered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -694,7 +694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-021\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-03\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-021\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -719,7 +719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-022\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-03\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-022\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -744,7 +744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-023\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-03\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-023\\s*,\\s*\\\\x22?2\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -769,7 +769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-028\\s*,\\s*7\\s*,\\s*answered_far\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-03\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-028\\s*,\\s*\\\\x22?7\\s*,\\s*\\\\x22?answered_far\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -794,7 +794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-029\\s*,\\s*8\\s*,\\s*answered_far\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-03\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-029\\s*,\\s*\\\\x22?8\\s*,\\s*\\\\x22?answered_far\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -819,7 +819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-030\\s*,\\s*9\\s*,\\s*answered_far\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-03\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-030\\s*,\\s*\\\\x22?9\\s*,\\s*\\\\x22?answered_far\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -844,7 +844,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-031\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-04\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-031\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -869,7 +869,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-032\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-04\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-032\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -894,7 +894,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-033\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-04\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-033\\s*,\\s*\\\\x22?2\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -919,7 +919,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-034\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-04\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-034\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -944,7 +944,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-035\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-04\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-035\\s*,\\s*\\\\x22?4\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -969,7 +969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-04\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-036\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-04\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-036\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -994,7 +994,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-041\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-05\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-041\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1019,7 +1019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-041\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-05\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-041\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1044,7 +1044,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-042\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-05\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-042\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1069,7 +1069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-043\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-05\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-043\\s*,\\s*\\\\x22?2\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1094,7 +1094,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-044\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-05\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-044\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1119,7 +1119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-05\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-045\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-05\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-045\\s*,\\s*\\\\x22?4\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1144,7 +1144,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-051\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-06\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-051\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1169,7 +1169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-052\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-06\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-052\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1194,7 +1194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-053\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-06\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-053\\s*,\\s*\\\\x22?2\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1219,7 +1219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-054\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-06\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-054\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1244,7 +1244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-055\\s*,\\s*4\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-06\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-055\\s*,\\s*\\\\x22?4\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1269,7 +1269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-06\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-056\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-06\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-056\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1294,7 +1294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-063\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-07\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-063\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1319,7 +1319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-063\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-07\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-063\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1344,7 +1344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-064\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-07\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-064\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1369,7 +1369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-064\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-07\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-064\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1394,7 +1394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*S\\-065\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-07\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-065\\s*,\\s*\\\\x22?2\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1419,7 +1419,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-07\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-065\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-07\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-065\\s*,\\s*\\\\x22?2\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1444,7 +1444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-01\\s*,\\s*high\\s*,\\s*S\\-073\\s*,\\s*0\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-08\\s*,\\s*\\\\x22?Q\\-01\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-073\\s*,\\s*\\\\x22?0\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1469,7 +1469,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-02\\s*,\\s*high\\s*,\\s*S\\-074\\s*,\\s*1\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-08\\s*,\\s*\\\\x22?Q\\-02\\s*,\\s*\\\\x22?high\\s*,\\s*\\\\x22?S\\-074\\s*,\\s*\\\\x22?1\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1494,7 +1494,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-03\\s*,\\s*medium\\s*,\\s*S\\-075\\s*,\\s*2\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-08\\s*,\\s*\\\\x22?Q\\-03\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-075\\s*,\\s*\\\\x22?2\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1519,7 +1519,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-04\\s*,\\s*medium\\s*,\\s*S\\-076\\s*,\\s*3\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-08\\s*,\\s*\\\\x22?Q\\-04\\s*,\\s*\\\\x22?medium\\s*,\\s*\\\\x22?S\\-076\\s*,\\s*\\\\x22?3\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1544,7 +1544,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-05\\s*,\\s*low\\s*,\\s*\\s*,\\s*\\-1\\s*,\\s*unanswered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-08\\s*,\\s*\\\\x22?Q\\-05\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?\\s*,\\s*\\\\x22?\\-1\\s*,\\s*\\\\x22?unanswered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1569,7 +1569,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-08\\s*,\\s*Q\\-06\\s*,\\s*low\\s*,\\s*S\\-078\\s*,\\s*5\\s*,\\s*answered\\s*$",
+        "expected": "(?mi)^\\\\x22?B\\-08\\s*,\\s*\\\\x22?Q\\-06\\s*,\\s*\\\\x22?low\\s*,\\s*\\\\x22?S\\-078\\s*,\\s*\\\\x22?5\\s*,\\s*\\\\x22?answered\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1769,7 +1769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?02.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "expected": "(?i)B[\\-\\s_]?02.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1819,7 +1819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?04.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "expected": "(?i)B[\\-\\s_]?04.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1869,7 +1869,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?05.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "expected": "(?i)B[\\-\\s_]?05.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1919,7 +1919,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?06.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "expected": "(?i)B[\\-\\s_]?06.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1969,7 +1969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?08.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "expected": "(?i)B[\\-\\s_]?08.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2119,7 +2119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-_\\s]?03.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "expected": "(?i)B[\\-_\\s]?03.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2169,7 +2169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?02[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-013:3\\->1|S\\-013:3\\->1[\\s\\S]*?recommended)",
+        "expected": "(?i)B[\\-\\s_]?02[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-013:3\\->1|S\\-013:3\\->1[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2194,7 +2194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?03[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-028:8\\->2|S\\-028:8\\->2[\\s\\S]*?recommended)",
+        "expected": "(?i)B[\\-\\s_]?03[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-028:8\\->2|S\\-028:8\\->2[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2219,7 +2219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?04[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-033:3\\->6|S\\-033:3\\->6[\\s\\S]*?recommended)",
+        "expected": "(?i)B[\\-\\s_]?04[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-033:3\\->6|S\\-033:3\\->6[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2244,7 +2244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?05[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-043:3\\->6|S\\-043:3\\->6[\\s\\S]*?recommended)",
+        "expected": "(?i)B[\\-\\s_]?05[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-043:3\\->6|S\\-043:3\\->6[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2269,7 +2269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?06[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-057:7\\->8|S\\-057:7\\->8[\\s\\S]*?recommended)",
+        "expected": "(?i)B[\\-\\s_]?06[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-057:7\\->8|S\\-057:7\\->8[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2294,7 +2294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?08[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-077:5\\->1|S\\-077:5\\->1[\\s\\S]*?recommended)",
+        "expected": "(?i)B[\\-\\s_]?08[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-077:5\\->1|S\\-077:5\\->1[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2344,7 +2344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?07.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
+        "expected": "(?i)B[\\-\\s_]?07.*(?:[Uu]nanswered|[Bb]reach|transition\\s+violation)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2369,7 +2369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?07[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-068:6\\->7|S\\-068:6\\->7[\\s\\S]*?recommended)",
+        "expected": "(?i)B[\\-\\s_]?07[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-068:6\\->7|S\\-068:6\\->7[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

@@ -40,6 +40,10 @@ Write `/app/brief_coherence.csv` with `brief_id,word_count,question_count,unansw
 
 Reject malformed headers, repeated sentence positions, duplicate IDs, unknown question references, nonpositive word counts, or missing rules. Sort briefs and questions lexicographically. Recalculate projected scores by applying the proposed move, ensure no recommendation lowers coverage or score, require sorted pipe lists for unanswered question IDs, and confirm all four files exist before completion.
 
+## CSV format
+
+All CSV deliverables must use unquoted fields with no trailing blank line.
+
 ## Working environment
 
 - Your current working directory is `/app`, and it is writable.
