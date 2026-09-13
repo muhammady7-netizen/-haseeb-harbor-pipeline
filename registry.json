@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T17:22:56Z",
+  "updated_at": "2026-09-13T17:38:12Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v39 uploaded content-34aeeea7cdb8c491619c7363ff64c81c-v1. CSV complete. QC started evaluation-90eeefee3c9f4d88. 36 verifiers (removed 21 shallow memo checks that caused fairness findings). Kept: results.json equals + CSV value checks + memo_has_explanatory_body + memo_lawful_conclusion + Birchwood DATA trap.",
+      "notes": "v39 fin-f39 task content-85b491b3134f6cf4104b59c3ffcbeb6b-v1. CSV complete. QC started evaluation-eff8953d33314047. 36 verifiers (removed 21 shallow memo checks). Birchwood DATA trap + results.json equals checks.",
       "history": [
-        {
-          "at": "2026-09-10T18:55:30Z",
-          "status": "needs_densify",
-          "note": "v20 densify applied: Meridian -110k, Project C -90k, capitalisation -250k; proposed 1430000 unlawful. Oracle 1.0 + stability 3/3. GLM v20 battery running."
-        },
         {
           "at": "2026-09-10T20:37:33Z",
           "status": "needs_densify",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T17:09:31Z",
           "status": "final_running",
           "note": "v39 uploaded content-34aeeea7cdb8c491619c7363ff64c81c-v1. CSV complete. QC started evaluation-90eeefee3c9f4d88. 36 verifiers (removed 21 shallow memo checks that caused fairness findings). Kept: results.json equals + CSV value checks + memo_has_explanatory_body + memo_lawful_conclusion + Birchwood DATA trap."
+        },
+        {
+          "at": "2026-09-13T17:38:12Z",
+          "status": "final_running",
+          "note": "v39 fin-f39 task content-85b491b3134f6cf4104b59c3ffcbeb6b-v1. CSV complete. QC started evaluation-eff8953d33314047. 36 verifiers (removed 21 shallow memo checks). Birchwood DATA trap + results.json equals checks."
         }
       ],
-      "updated_at": "2026-09-13T17:09:31Z",
+      "updated_at": "2026-09-13T17:38:12Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
