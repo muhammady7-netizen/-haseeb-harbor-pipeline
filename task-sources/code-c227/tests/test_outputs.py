@@ -53,7 +53,7 @@ EXPECTED_TABLES = {
     "T-28": {"size_class": "large", "bloat_ratio": 0.25, "finding": "none"},
     "T-29": {"size_class": "large", "bloat_ratio": 0.25, "finding": "BLOAT_THRESHOLD_EXCEEDED"},
     "T-30": {"size_class": "large", "bloat_ratio": 0.2, "finding": "BLOAT_THRESHOLD_EXCEEDED"},
-    "T-31": {"size_class": "small", "bloat_ratio": 0.3, "finding": "none"},
+    "T-31": {"size_class": "large", "bloat_ratio": 0.2, "finding": "none"},
     "T-32": {"size_class": "small", "bloat_ratio": 0.4, "finding": "none"},
     "T-33": {"size_class": "small", "bloat_ratio": 0.21, "finding": "none"},
     "T-34": {"size_class": "large", "bloat_ratio": 0.2, "finding": "none"},
