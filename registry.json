@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T01:55:52Z",
+  "updated_at": "2026-09-13T01:55:58Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1603,13 +1603,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v4 (f21caab1-v4) uploaded with deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Previous v3 had Oracle 1.0 but GLM 4/4 too easy. Deprecated traps should trip GLM. Waiting for eval slot.",
+      "notes": "v4 (f21caab1-v4) on portal, waiting for eval slot. Deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Should trip GLM on deprecated field handling.",
       "history": [
-        {
-          "at": "2026-09-09T19:00:55Z",
-          "status": "final_running",
-          "note": "code-c251 v2 QC-Oracle-GLM started (content-45ae46b0-v2)"
-        },
         {
           "at": "2026-09-09T21:53:00Z",
           "status": "needs_densify",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-13T01:03:57Z",
           "status": "final_running",
           "note": "v4 (f21caab1-v4) uploaded with deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Previous v3 had Oracle 1.0 but GLM 4/4 too easy. Deprecated traps should trip GLM. Waiting for eval slot."
+        },
+        {
+          "at": "2026-09-13T01:55:58Z",
+          "status": "final_running",
+          "note": "v4 (f21caab1-v4) on portal, waiting for eval slot. Deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Should trip GLM on deprecated field handling."
         }
       ],
-      "updated_at": "2026-09-13T01:03:57Z",
+      "updated_at": "2026-09-13T01:55:58Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v4",
         "watch": true,
-        "last_check_at": "2026-09-13T01:03:57Z",
+        "last_check_at": "2026-09-13T01:55:58Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-09T13:01:14Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v4 (45ae46b0) uploaded with README, golden_results.json, golden_trajectory.json, instruction mentions deprecated rule. Waiting for eval slot (3 in use).",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-09T17:32:10Z",
             "phase": "glm_or_oracle_running",
@@ -2066,6 +2058,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v4 (f21caab1-v4) uploaded with deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Previous v3 had Oracle 1.0 but GLM 4/4 too easy. Deprecated traps should trip GLM. Waiting for eval slot.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T01:55:58Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v4 (f21caab1-v4) on portal, waiting for eval slot. Deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Should trip GLM on deprecated field handling.",
             "glm_pass": null,
             "oracle": null
           }
