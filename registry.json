@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T04:08:40Z",
+  "updated_at": "2026-09-13T04:12:44Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v24 QC-Oracle-GLM running. Oracle Waiting, 79s. SUMMIT trap active (07:00-16:00 core hours). Fixed stale counts + broadened memo regexes. 138 results, 167 verifiers.",
+      "notes": "h40 v24: GLM 4/4 TOO_EASY. SUMMIT trap failed - model reads site_core_hours.md dynamically. All fairness findings fixed (only 1 finding: difficulty_too_easy). Need fundamentally different approach per All Hands guide: 'After two builds with no change, stop turning the same dial.'",
       "history": [
-        {
-          "at": "2026-09-10T22:46:14Z",
-          "status": "final_running",
-          "note": "v12 Final QC running (Oracle+GLM)"
-        },
         {
           "at": "2026-09-10T23:02:23Z",
           "status": "needs_densify",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T03:19:07Z",
           "status": "final_running",
           "note": "h40 v24 QC-Oracle-GLM running. Oracle Waiting, 79s. SUMMIT trap active (07:00-16:00 core hours). Fixed stale counts + broadened memo regexes. 138 results, 167 verifiers."
+        },
+        {
+          "at": "2026-09-13T04:12:44Z",
+          "status": "needs_densify",
+          "note": "h40 v24: GLM 4/4 TOO_EASY. SUMMIT trap failed - model reads site_core_hours.md dynamically. All fairness findings fixed (only 1 finding: difficulty_too_easy). Need fundamentally different approach per All Hands guide: 'After two builds with no change, stop turning the same dial.'"
         }
       ],
-      "updated_at": "2026-09-13T03:19:07Z",
+      "updated_at": "2026-09-13T04:12:44Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
