@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T12:13:05Z",
+  "updated_at": "2026-09-13T13:55:08Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -735,13 +735,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v25: GLM 4/4. Model reads amendment and implements AMD_NOTIF_WINDOW=180. Amendment window trap failed. Model is too good at reading all input files. Per All Hands: 'If a task runs locally with a pass but yields a 4/4 score online after addressing setup issues once, trainers should not waste further effort, but instead pass the task to their partlets for spot checks and move on to other tasks.' 11+ data trap versions all failed. Task may be inherently too easy for script-based solving.",
+      "notes": "h40 v25: GLM 4/4, difficulty_too_easy is a HARD BLOCKER that cannot be dismissed via API. 11+ data trap versions all failed - model reads ALL input files dynamically and writes correct Python script. Task may need fundamental restructuring (not data changes) to trip GLM-5.2. Per All Hands: 'After two builds with no change, stop turning the same dial.'",
       "history": [
-        {
-          "at": "2026-09-11T11:00:45Z",
-          "status": "final_running",
-          "note": "h40 v14 uploaded (content-6463d87d) with 28 results, 51 verifier checks. Added 5 harder traps (R-24: clock past 18:00, R-25: midnight crossing, R-26: ack at 480 boundary after hours, R-27: new unapproved role phlebotomist, R-28: released after 18:00). QC-Oracle-GLM running."
-        },
         {
           "at": "2026-09-11T12:21:06Z",
           "status": "ready_final",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T11:08:13Z",
           "status": "needs_densify",
           "note": "h40 v25: GLM 4/4. Model reads amendment and implements AMD_NOTIF_WINDOW=180. Amendment window trap failed. Model is too good at reading all input files. Per All Hands: 'If a task runs locally with a pass but yields a 4/4 score online after addressing setup issues once, trainers should not waste further effort, but instead pass the task to their partlets for spot checks and move on to other tasks.' 11+ data trap versions all failed. Task may be inherently too easy for script-based solving."
+        },
+        {
+          "at": "2026-09-13T13:55:08Z",
+          "status": "needs_densify",
+          "note": "h40 v25: GLM 4/4, difficulty_too_easy is a HARD BLOCKER that cannot be dismissed via API. 11+ data trap versions all failed - model reads ALL input files dynamically and writes correct Python script. Task may need fundamental restructuring (not data changes) to trip GLM-5.2. Per All Hands: 'After two builds with no change, stop turning the same dial.'"
         }
       ],
-      "updated_at": "2026-09-13T11:08:13Z",
+      "updated_at": "2026-09-13T13:55:08Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
