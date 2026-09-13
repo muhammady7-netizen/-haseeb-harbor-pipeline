@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T03:48:10Z",
+  "updated_at": "2026-09-13T04:08:40Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v32 uploaded content-52900ca8d2836eebab7cd570c6a15bdc-v1. CSV complete. QC-Oracle-GLM started evaluation-861ad4853a5e497e. 57 verifiers (removed 3 file-existence checks). Fixed: CSV quoting disclosure, memo_lawful_conclusion negation, scoring proportionality.",
+      "notes": "v32 retry: Oracle PASS, GLM 3/4 (meets E5). Harbor Check failed with 'invalid access receipt' (infrastructure, retryable). Retrying evaluation-861ad4853a5e497e.",
       "history": [
-        {
-          "at": "2026-09-08T02:58:44Z",
-          "status": "preqc_running",
-          "note": ""
-        },
         {
           "at": "2026-09-08T02:58:45Z",
           "status": "preqc_needs_fix",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T02:53:25Z",
           "status": "final_running",
           "note": "v32 uploaded content-52900ca8d2836eebab7cd570c6a15bdc-v1. CSV complete. QC-Oracle-GLM started evaluation-861ad4853a5e497e. 57 verifiers (removed 3 file-existence checks). Fixed: CSV quoting disclosure, memo_lawful_conclusion negation, scoring proportionality."
+        },
+        {
+          "at": "2026-09-13T03:55:23Z",
+          "status": "final_running",
+          "note": "v32 retry: Oracle PASS, GLM 3/4 (meets E5). Harbor Check failed with 'invalid access receipt' (infrastructure, retryable). Retrying evaluation-861ad4853a5e497e."
         }
       ],
-      "updated_at": "2026-09-13T02:53:25Z",
+      "updated_at": "2026-09-13T03:55:23Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -1603,13 +1603,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v5 (f21caab1-v5) RUNNING but queued for worker (all workers busy with other sessions). Deprecated-field exclusion + 6 trap fields + 98 verifiers (96/98 verified locally). Oracle should pass 1.0.",
+      "notes": "v5 (f21caab1-v5) Oracle PASSED 1.0! GLM x4 difficulty RUNNING (1006s). Deprecated-field exclusion + 6 trap fields. If GLM trips on deprecated handling, we get <=3/4 and can submit.",
       "history": [
-        {
-          "at": "2026-09-10T15:48:16Z",
-          "status": "final_running",
-          "note": "code-c251 v3 eval STARTED (platform runs fresh Oracle+GLM x4)"
-        },
         {
           "at": "2026-09-10T17:10:19Z",
           "status": "final_running",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-13T03:48:10Z",
           "status": "final_running",
           "note": "v5 (f21caab1-v5) RUNNING but queued for worker (all workers busy with other sessions). Deprecated-field exclusion + 6 trap fields + 98 verifiers (96/98 verified locally). Oracle should pass 1.0."
+        },
+        {
+          "at": "2026-09-13T04:08:40Z",
+          "status": "final_running",
+          "note": "v5 (f21caab1-v5) Oracle PASSED 1.0! GLM x4 difficulty RUNNING (1006s). Deprecated-field exclusion + 6 trap fields. If GLM trips on deprecated handling, we get <=3/4 and can submit."
         }
       ],
-      "updated_at": "2026-09-13T03:48:10Z",
+      "updated_at": "2026-09-13T04:08:40Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v5",
         "watch": true,
-        "last_check_at": "2026-09-13T03:48:10Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-13T04:08:40Z",
+        "phase": "glm_running",
         "checks": [
-          {
-            "at": "2026-09-10T15:48:16Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "code-c251 v3 eval STARTED (platform runs fresh Oracle+GLM x4)",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-10T17:10:19Z",
             "phase": "glm_or_oracle_running",
@@ -2068,6 +2060,14 @@
             "note": "v5 (f21caab1-v5) RUNNING but queued for worker (all workers busy with other sessions). Deprecated-field exclusion + 6 trap fields + 98 verifiers (96/98 verified locally). Oracle should pass 1.0.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-13T04:08:40Z",
+            "phase": "glm_running",
+            "running": true,
+            "note": "v5 (f21caab1-v5) Oracle PASSED 1.0! GLM x4 difficulty RUNNING (1006s). Deprecated-field exclusion + 6 trap fields. If GLM trips on deprecated handling, we get <=3/4 and can submit.",
+            "glm_pass": null,
+            "oracle": "1.0"
           }
         ],
         "glm_pass": "2/4",
@@ -4110,11 +4110,11 @@
       "pack_name": "the-thread-hands-back-its-own-opener",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/CONNECTOR-THREAD",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/CONNECTOR-THREAD/the-thread-hands-back-its-own-opener",
-      "status": "final_running",
+      "status": "blocked",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Poll until Oracle+GLM+Harbor done",
-      "notes": "4th QC attempt on existing task content-5cc146d448ffc4f0a07bba4ad679dd1f-v1. Run ID: evaluation-e9cdefae13f34c8a. Previous 3 attempts: Oracle crashed 4/4. Infrastructure issue per meeting guidance.",
+      "notes": "4th Oracle crash (4/4). Infrastructure issue - report to QC parking lot per meeting guidance.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -4270,9 +4270,14 @@
           "at": "2026-09-13T02:44:07Z",
           "status": "final_running",
           "note": "4th QC attempt on existing task content-5cc146d448ffc4f0a07bba4ad679dd1f-v1. Run ID: evaluation-e9cdefae13f34c8a. Previous 3 attempts: Oracle crashed 4/4. Infrastructure issue per meeting guidance."
+        },
+        {
+          "at": "2026-09-13T03:55:23Z",
+          "status": "blocked",
+          "note": "4th Oracle crash (4/4). Infrastructure issue - report to QC parking lot per meeting guidance."
         }
       ],
-      "updated_at": "2026-09-13T02:44:07Z",
+      "updated_at": "2026-09-13T03:55:23Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
