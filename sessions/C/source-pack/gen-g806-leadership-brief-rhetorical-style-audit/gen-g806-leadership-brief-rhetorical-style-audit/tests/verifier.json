@@ -219,7 +219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^B\\-03\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*70\\s*,\\s*S\\-029:9\\->2\\s*,\\s*75\\s*$",
+        "expected": "(?mi)^B\\-03\\s*,\\s*217\\s*,\\s*6\\s*,\\s*\\s*,\\s*3\\s*,\\s*70\\s*,\\s*S\\-028:8\\->2\\s*,\\s*80\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
