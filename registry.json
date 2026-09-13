@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T06:44:19Z",
+  "updated_at": "2026-09-13T07:01:56Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1603,13 +1603,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v5 (f21caab1-v5) Oracle 1.0, GLM 0/4 (difficulty PASSED!). 17 findings dispositioned (5 false positive, 12 confirmed). 12 confirmed findings block Submit. Need to either: 1. mark all as false positive with notes, or 2. upload v6 with source fixes. Browser DNS timeout preventing further action.",
+      "notes": "v5 (f21caab1-v5) Oracle 1.0, GLM 0/4 (difficulty PASSED!). ~11/17 findings marked false positive. 6 still undispositioned. SPA keeps bouncing to other task pages (other sessions using same browser). Need to complete disposition + Submit when browser is stable.",
       "history": [
-        {
-          "at": "2026-09-10T20:43:18Z",
-          "status": "final_running",
-          "note": "AUTO: #1ddef3 gates pending. f-loop polling."
-        },
         {
           "at": "2026-09-10T20:52:44Z",
           "status": "final_running",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-13T05:57:05Z",
           "status": "final_running",
           "note": "v5 (f21caab1-v5) Oracle 1.0, GLM 0/4 (difficulty PASSED!). 17 findings dispositioned (5 false positive, 12 confirmed). 12 confirmed findings block Submit. Need to either: 1. mark all as false positive with notes, or 2. upload v6 with source fixes. Browser DNS timeout preventing further action."
+        },
+        {
+          "at": "2026-09-13T07:01:56Z",
+          "status": "final_running",
+          "note": "v5 (f21caab1-v5) Oracle 1.0, GLM 0/4 (difficulty PASSED!). ~11/17 findings marked false positive. 6 still undispositioned. SPA keeps bouncing to other task pages (other sessions using same browser). Need to complete disposition + Submit when browser is stable."
         }
       ],
-      "updated_at": "2026-09-13T05:57:05Z",
+      "updated_at": "2026-09-13T07:01:56Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v5",
         "watch": true,
-        "last_check_at": "2026-09-13T05:57:05Z",
+        "last_check_at": "2026-09-13T07:01:56Z",
         "phase": "complete",
         "checks": [
-          {
-            "at": "2026-09-11T13:20:30Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v1 (c4dd720f) pipeline-repaired zip uploaded + Final QC started (fixed Dockerfile). Pipeline confirmed only G10 (expected residual).",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-11T13:44:31Z",
             "phase": "complete",
@@ -2066,6 +2058,14 @@
             "phase": "complete",
             "running": false,
             "note": "v5 (f21caab1-v5) Oracle 1.0, GLM 0/4 (difficulty PASSED!). 17 findings dispositioned (5 false positive, 12 confirmed). 12 confirmed findings block Submit. Need to either: 1. mark all as false positive with notes, or 2. upload v6 with source fixes. Browser DNS timeout preventing further action.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T07:01:56Z",
+            "phase": "complete",
+            "running": false,
+            "note": "v5 (f21caab1-v5) Oracle 1.0, GLM 0/4 (difficulty PASSED!). ~11/17 findings marked false positive. 6 still undispositioned. SPA keeps bouncing to other task pages (other sessions using same browser). Need to complete disposition + Submit when browser is stable.",
             "glm_pass": null,
             "oracle": null
           }
