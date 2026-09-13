@@ -1083,11 +1083,11 @@
       "pack_name": "code-c227-table-bloat-maintenance-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c227-work/code-c227-table-bloat-maintenance-audit",
-      "status": "blocked",
+      "status": "needs_fix",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c227.zip",
-      "next_action": "Run harbor GLM x4 locally, copy trials into evaluations/, re-upload",
-      "notes": "Pipeline REJECTED: 16 findings all 'Harbor Check did not approve'. Harbor Check likely crashed/timed out (evaluations/ stripped clean). Need real GLM x4 + solvability trials or report as infra failure.",
+      "next_action": "Fix T-32 contradiction: test_outputs.py expects small/0.4 but input has total_pages=1000/dead_pages=160 -> large/0.16. Fix gold audit, memo, results, trajectory, README. Remove dead verifier.json checks. Re-run Oracle 1.0 locally then re-upload.",
+      "notes": "Pipeline REJECTED: 16 Harbor Check findings. ROOT CAUSE: T-32 EXPECTED_TABLES says small/0.4 but input data gives large/0.16 — all 6 trials (4 GLM + Claude + GPT) fail same 2 checks (168/170). Harbor Check detects defective check. Also: gold memo has wrong T-31/T-32 page counts, verifier.json has 35 dead checks never executed. FIX: correct T-32 to large/0.16 everywhere, fix memo, remove or execute verifier.json checks.",
       "history": [
         {
           "at": "2026-09-09T22:18:06Z",
