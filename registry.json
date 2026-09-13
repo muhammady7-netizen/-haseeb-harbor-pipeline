@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T02:30:49Z",
+  "updated_at": "2026-09-13T02:37:30Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1603,13 +1603,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v4 (f21caab1-v4) on portal, waiting for eval slot. Deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Should trip GLM on deprecated field handling.",
+      "notes": "v4 (f21caab1-v4) on portal, Run button disabled (3 slots in use by other sessions). Deprecated-field exclusion + 6 traps + fixed verifier. Waiting for slot.",
       "history": [
-        {
-          "at": "2026-09-09T21:53:00Z",
-          "status": "needs_densify",
-          "note": "Fixed: memo regexes DOTALL, removed duplicate missing-field checks, added explicit unquoted requirement. 93 checks. Needs fresh GLM runs."
-        },
         {
           "at": "2026-09-09T22:15:46Z",
           "status": "ready_final",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-13T01:55:58Z",
           "status": "final_running",
           "note": "v4 (f21caab1-v4) on portal, waiting for eval slot. Deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Should trip GLM on deprecated field handling."
+        },
+        {
+          "at": "2026-09-13T02:37:30Z",
+          "status": "final_running",
+          "note": "v4 (f21caab1-v4) on portal, Run button disabled (3 slots in use by other sessions). Deprecated-field exclusion + 6 traps + fixed verifier. Waiting for slot."
         }
       ],
-      "updated_at": "2026-09-13T01:55:58Z",
+      "updated_at": "2026-09-13T02:37:30Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v4",
         "watch": true,
-        "last_check_at": "2026-09-13T01:55:58Z",
+        "last_check_at": "2026-09-13T02:37:30Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-09T17:32:10Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "code-c251 v4 QC-Oracle-GLM started (content-45ae46b0)",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-09T19:00:55Z",
             "phase": "glm_or_oracle_running",
@@ -2066,6 +2058,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v4 (f21caab1-v4) on portal, waiting for eval slot. Deprecated-field exclusion rule + 6 trap fields + fixed verifier (regex_match). Should trip GLM on deprecated field handling.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T02:37:30Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v4 (f21caab1-v4) on portal, Run button disabled (3 slots in use by other sessions). Deprecated-field exclusion + 6 traps + fixed verifier. Waiting for slot.",
             "glm_pass": null,
             "oracle": null
           }
