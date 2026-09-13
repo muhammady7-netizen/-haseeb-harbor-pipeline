@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T04:45:23Z",
+  "updated_at": "2026-09-13T05:08:34Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1086,14 +1086,9 @@
       "status": "final_running",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c227.zip",
-      "next_action": "Poll eval for Oracle+GLM result",
-      "notes": "T-32 fix uploaded (content-e02d18d6b872149092dc221be20c48b7-v1). Eval started (evaluation-3c6225536c5b4095). Fixed: T-32 small/0.4 -> large/0.16, golden_results/trajectory, verifier.json removed, counts 41/43, README 170 checks. Oracle 1.0 local.",
+      "next_action": "Upload and start eval",
+      "notes": "Densified: 41->51 tables, 10 new trap tables (valid_until=audit_date boundary, different audit_date, maintenance_active=False, finding priority, reindex+stale, tightened cap boundary, 30-day boundary, round-half-up small cap, triple dedup, stale under tightened cap). Oracle 200/200=1.0. Vamsi packaged. Uploading.",
       "history": [
-        {
-          "at": "2026-09-09T22:23:54Z",
-          "status": "final_running",
-          "note": "v12 eval: Oracle 1.0 PASSED! GLM x4 RUNNING (eval-8b595a7ccc284d5c). Will submit to pipeline when GLM<=2/4 + harbor clean. Browser contended."
-        },
         {
           "at": "2026-09-09T22:27:00Z",
           "status": "ready_accept",
@@ -1288,9 +1283,14 @@
           "at": "2026-09-13T04:24:43Z",
           "status": "final_running",
           "note": "T-32 fix uploaded (content-e02d18d6b872149092dc221be20c48b7-v1). Eval started (evaluation-3c6225536c5b4095). Fixed: T-32 small/0.4 -> large/0.16, golden_results/trajectory, verifier.json removed, counts 41/43, README 170 checks. Oracle 1.0 local."
+        },
+        {
+          "at": "2026-09-13T05:08:34Z",
+          "status": "final_running",
+          "note": "Densified: 41->51 tables, 10 new trap tables (valid_until=audit_date boundary, different audit_date, maintenance_active=False, finding priority, reindex+stale, tightened cap boundary, 30-day boundary, round-half-up small cap, triple dedup, stale under tightened cap). Oracle 200/200=1.0. Vamsi packaged. Uploading."
         }
       ],
-      "updated_at": "2026-09-13T04:24:43Z",
+      "updated_at": "2026-09-13T05:08:34Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
