@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T14:43:41Z",
+  "updated_at": "2026-09-13T14:47:40Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -3212,13 +3212,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (536e8bab) ERRORED 3rd time (Pipeline Oracle failed: [judge]). Infrastructure issue. Need to re-run when slots free.",
+      "notes": "v1 (536e8bab) Re-run #4 STARTED (105s). Oracle Running. Previous 3 runs errored with [judge]. Infrastructure issue.",
       "history": [
-        {
-          "at": "2026-09-10T20:43:17Z",
-          "status": "ready_final",
-          "note": "AUTO: v2 #fae8c6 up. PreQC clicked earlier. Oracle waiting slots. Durable f-loop started amid profile contention (B/h40)."
-        },
         {
           "at": "2026-09-10T20:46:01Z",
           "status": "final_running",
@@ -3413,9 +3408,14 @@
           "at": "2026-09-13T14:10:56Z",
           "status": "final_running",
           "note": "v1 (536e8bab) ERRORED 3rd time (Pipeline Oracle failed: [judge]). Infrastructure issue. Need to re-run when slots free."
+        },
+        {
+          "at": "2026-09-13T14:47:40Z",
+          "status": "final_running",
+          "note": "v1 (536e8bab) Re-run #4 STARTED (105s). Oracle Running. Previous 3 runs errored with [judge]. Infrastructure issue."
         }
       ],
-      "updated_at": "2026-09-13T14:10:56Z",
+      "updated_at": "2026-09-13T14:47:40Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3435,17 +3435,9 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-13T14:10:56Z",
-        "phase": "complete",
+        "last_check_at": "2026-09-13T14:47:40Z",
+        "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-09T17:32:10Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "gen-g857 v7 re-run QC-Oracle-GLM (content-2a489be4)",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-09T19:21:12Z",
             "phase": "glm_or_oracle_running",
@@ -3675,6 +3667,14 @@
             "phase": "complete",
             "running": false,
             "note": "v1 (536e8bab) ERRORED 3rd time (Pipeline Oracle failed: [judge]). Infrastructure issue. Need to re-run when slots free.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T14:47:40Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (536e8bab) Re-run #4 STARTED (105s). Oracle Running. Previous 3 runs errored with [judge]. Infrastructure issue.",
             "glm_pass": null,
             "oracle": null
           }
