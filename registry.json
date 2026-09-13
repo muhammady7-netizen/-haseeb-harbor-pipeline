@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T05:08:46Z",
+  "updated_at": "2026-09-13T05:12:19Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -735,13 +735,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v24: GLM 4/4 TOO_EASY. SUMMIT trap failed - model reads site_core_hours.md dynamically. All fairness findings fixed (only 1 finding: difficulty_too_easy). Need fundamentally different approach per All Hands guide: 'After two builds with no change, stop turning the same dial.'",
+      "notes": "h40 v24: GLM 4/4. SUMMIT trap + Reg alias both failed. Model writes Python script, reads all files dynamically, handles all rules. 10+ versions of data traps all failed. Need fundamentally different approach - task may be inherently too easy for script-based solving.",
       "history": [
-        {
-          "at": "2026-09-10T23:02:23Z",
-          "status": "needs_densify",
-          "note": "v12 #7fcbcc0 Oracle 1.0 GLM 4/4 TOO_EASY again ΓÇö densify v13"
-        },
         {
           "at": "2026-09-10T23:02:31Z",
           "status": "ready_final",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T04:12:44Z",
           "status": "needs_densify",
           "note": "h40 v24: GLM 4/4 TOO_EASY. SUMMIT trap failed - model reads site_core_hours.md dynamically. All fairness findings fixed (only 1 finding: difficulty_too_easy). Need fundamentally different approach per All Hands guide: 'After two builds with no change, stop turning the same dial.'"
+        },
+        {
+          "at": "2026-09-13T05:12:19Z",
+          "status": "needs_densify",
+          "note": "h40 v24: GLM 4/4. SUMMIT trap + Reg alias both failed. Model writes Python script, reads all files dynamically, handles all rules. 10+ versions of data traps all failed. Need fundamentally different approach - task may be inherently too easy for script-based solving."
         }
       ],
-      "updated_at": "2026-09-13T04:12:44Z",
+      "updated_at": "2026-09-13T05:12:19Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
