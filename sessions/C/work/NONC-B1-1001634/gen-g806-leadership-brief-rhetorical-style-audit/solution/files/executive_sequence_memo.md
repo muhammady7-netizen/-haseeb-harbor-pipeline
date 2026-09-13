@@ -10,6 +10,4 @@
 
 ## B-06 (score: 65) Unanswered: none. Transition breaches: 5. Recommended: S-057:7->8 (projected 65).
 
-## B-07 (score: 75) Unanswered: none. Transition breaches: 4. Recommended: S-068:6->7 (projected 75).
-
 ## B-08 (score: 35) Unanswered: Q-05. Transition breaches: 5. Recommended: S-077:5->1 (projected 60).

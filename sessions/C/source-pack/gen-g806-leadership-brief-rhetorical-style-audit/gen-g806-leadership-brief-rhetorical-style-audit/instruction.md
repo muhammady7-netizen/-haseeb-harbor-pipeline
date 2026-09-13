@@ -44,6 +44,10 @@ Reject malformed headers, repeated sentence positions, duplicate IDs, unknown qu
 
 All CSV deliverables must use unquoted fields with no trailing blank line.
 
+## Memo format (graded)
+
+Each failing-brief subsection must state the brief ID, the status (unanswered or breach), and the recommended relocation on the same line as the heading.
+
 ## Working environment
 
 - Your current working directory is `/app`, and it is writable.
