@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T10:33:06Z",
+  "updated_at": "2026-09-13T10:35:35Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1603,13 +1603,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v6 (f21caab18a46225dad20578088efc4ea-v6) uploaded with FIXED memo regexes (broadened to accept instruction's own wording). v5 was REJECTED by pipeline for semantic_equivalence (memo regexes too rigid). Waiting for eval slot (gen-g857 using one).",
+      "notes": "v6 (f21caab18a46225dad20578088efc4ea-v6) Final QC RUNNING (65s). Fixed memo regexes (broadened to accept instruction's own wording). v5 was REJECTED for semantic_equivalence. Oracle should pass 1.0, GLM should fail on deprecated traps.",
       "history": [
-        {
-          "at": "2026-09-10T21:46:14Z",
-          "status": "final_running",
-          "note": "TRACK: Oracle-GLM when profile+slot free."
-        },
         {
           "at": "2026-09-10T21:48:09Z",
           "status": "ready_final",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-13T10:05:14Z",
           "status": "final_running",
           "note": "v6 (f21caab18a46225dad20578088efc4ea-v6) uploaded with FIXED memo regexes (broadened to accept instruction's own wording). v5 was REJECTED by pipeline for semantic_equivalence (memo regexes too rigid). Waiting for eval slot (gen-g857 using one)."
+        },
+        {
+          "at": "2026-09-13T10:35:35Z",
+          "status": "final_running",
+          "note": "v6 (f21caab18a46225dad20578088efc4ea-v6) Final QC RUNNING (65s). Fixed memo regexes (broadened to accept instruction's own wording). v5 was REJECTED for semantic_equivalence. Oracle should pass 1.0, GLM should fail on deprecated traps."
         }
       ],
-      "updated_at": "2026-09-13T10:05:14Z",
+      "updated_at": "2026-09-13T10:35:35Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v6",
         "watch": true,
-        "last_check_at": "2026-09-13T10:05:14Z",
+        "last_check_at": "2026-09-13T10:35:35Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-12T00:54:55Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v1 (79e106) uploaded with ALL fixes (Dockerfile deps). Waiting for eval slot (3 in use).",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-12T01:35:53Z",
             "phase": "complete",
@@ -2066,6 +2058,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v6 (f21caab18a46225dad20578088efc4ea-v6) uploaded with FIXED memo regexes (broadened to accept instruction's own wording). v5 was REJECTED by pipeline for semantic_equivalence (memo regexes too rigid). Waiting for eval slot (gen-g857 using one).",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T10:35:35Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v6 (f21caab18a46225dad20578088efc4ea-v6) Final QC RUNNING (65s). Fixed memo regexes (broadened to accept instruction's own wording). v5 was REJECTED for semantic_equivalence. Oracle should pass 1.0, GLM should fail on deprecated traps.",
             "glm_pass": null,
             "oracle": null
           }
@@ -3212,13 +3212,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (536e8bab) Re-run started. Oracle Waiting. Previous errored (Pipeline Oracle failed: [judge]).",
+      "notes": "v1 (536e8bab) Oracle Running 1117s. Same long Oracle pattern. May error again with [judge].",
       "history": [
-        {
-          "at": "2026-09-10T19:33:55Z",
-          "status": "ready_final",
-          "note": "Hardened for 6 PreQC gaps (unmapped schema, status regex, headcount schema, cycle grading, dup keys, rollup pytest). Zip ready at Downloads. Portal upload blocked by Chrome profile contention from other sessions."
-        },
         {
           "at": "2026-09-10T20:25:38Z",
           "status": "ready_final",
@@ -3413,9 +3408,14 @@
           "at": "2026-09-13T10:05:14Z",
           "status": "final_running",
           "note": "v1 (536e8bab) Re-run started. Oracle Waiting. Previous errored (Pipeline Oracle failed: [judge])."
+        },
+        {
+          "at": "2026-09-13T10:35:35Z",
+          "status": "final_running",
+          "note": "v1 (536e8bab) Oracle Running 1117s. Same long Oracle pattern. May error again with [judge]."
         }
       ],
-      "updated_at": "2026-09-13T10:05:14Z",
+      "updated_at": "2026-09-13T10:35:35Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3435,17 +3435,9 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-13T10:05:14Z",
+        "last_check_at": "2026-09-13T10:35:35Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-09T08:43:31Z",
-            "phase": "glm_running",
-            "running": true,
-            "note": "v6 Oracle PASSED! GLM├ù4 running 659s. 5 trap depts (121-125) should trip GLM. Waiting for difficulty result.",
-            "glm_pass": null,
-            "oracle": "1.0"
-          },
           {
             "at": "2026-09-09T09:04:08Z",
             "phase": "complete",
@@ -3675,6 +3667,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v1 (536e8bab) Re-run started. Oracle Waiting. Previous errored (Pipeline Oracle failed: [judge]).",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T10:35:35Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (536e8bab) Oracle Running 1117s. Same long Oracle pattern. May error again with [judge].",
             "glm_pass": null,
             "oracle": null
           }
