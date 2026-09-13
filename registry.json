@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T02:37:30Z",
+  "updated_at": "2026-09-13T02:44:07Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -4110,11 +4110,11 @@
       "pack_name": "the-thread-hands-back-its-own-opener",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/CONNECTOR-THREAD",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/CONNECTOR-THREAD/the-thread-hands-back-its-own-opener",
-      "status": "blocked",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Poll until Oracle+GLM+Harbor done",
-      "notes": "Oracle crashed 3x on V2 portal (evaluation-e9cdefae13f34c8a). Error: '4 of 4 trial(s) crashed, none graded'. Connector task Docker container fails. Infrastructure issue - not a task defect. Report to QC parking lot.",
+      "notes": "4th QC attempt on existing task content-5cc146d448ffc4f0a07bba4ad679dd1f-v1. Run ID: evaluation-e9cdefae13f34c8a. Previous 3 attempts: Oracle crashed 4/4. Infrastructure issue per meeting guidance.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -4265,9 +4265,14 @@
           "at": "2026-09-13T00:18:54Z",
           "status": "blocked",
           "note": "Oracle crashed 3x on V2 portal (evaluation-e9cdefae13f34c8a). Error: '4 of 4 trial(s) crashed, none graded'. Connector task Docker container fails. Infrastructure issue - not a task defect. Report to QC parking lot."
+        },
+        {
+          "at": "2026-09-13T02:44:07Z",
+          "status": "final_running",
+          "note": "4th QC attempt on existing task content-5cc146d448ffc4f0a07bba4ad679dd1f-v1. Run ID: evaluation-e9cdefae13f34c8a. Previous 3 attempts: Oracle crashed 4/4. Infrastructure issue per meeting guidance."
         }
       ],
-      "updated_at": "2026-09-13T00:18:54Z",
+      "updated_at": "2026-09-13T02:44:07Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
