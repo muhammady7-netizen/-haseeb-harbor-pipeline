@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T07:01:56Z",
+  "updated_at": "2026-09-13T07:26:32Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1087,13 +1087,8 @@
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c227.zip",
       "next_action": "Poll eval",
-      "notes": "v4 uploaded (content-54b5e7316651998e3756340e722e53c2-v1). 61 tables, 5 new traps: case-sensitivity (Auto vs auto), cross-year dates (2025/2024 audit_dates), leap year (2024-03-01), reindex exemption with different audit_date. Oracle 230/230=1.0. Eval: evaluation-550a59127f074037. Previous v3 GLM 4/4 with 56 tables.",
+      "notes": "v5 uploaded (content-266b89f2549a41431749e28fee6c917a-v1). 61 tables + 9 new memo checks for T-48/49/50/51/53/55/58/62/65. Oracle 239/239=1.0. Eval: evaluation-202109c9dfd14cd3. GLM must now write prose for 9 more non-none tables or fail memo checks.",
       "history": [
-        {
-          "at": "2026-09-09T22:43:35Z",
-          "status": "final_running",
-          "note": "v13 built: fixed test_results_txn_count (was no-op), strengthened test_memo_has_prose (requires table ID + finding keyword), removed 8 memo checks for 'none' tables, README declares ~180 pytest checks, instruction.md discloses memo requirements. Harbor found findings on v12: gold memo wrong T-14/T-16, CSV dump passes memo checks, results.json not compared. v13 fixes these."
-        },
         {
           "at": "2026-09-09T22:45:56Z",
           "status": "final_running",
@@ -1288,9 +1283,14 @@
           "at": "2026-09-13T06:44:19Z",
           "status": "final_running",
           "note": "v4 uploaded (content-54b5e7316651998e3756340e722e53c2-v1). 61 tables, 5 new traps: case-sensitivity (Auto vs auto), cross-year dates (2025/2024 audit_dates), leap year (2024-03-01), reindex exemption with different audit_date. Oracle 230/230=1.0. Eval: evaluation-550a59127f074037. Previous v3 GLM 4/4 with 56 tables."
+        },
+        {
+          "at": "2026-09-13T07:26:32Z",
+          "status": "final_running",
+          "note": "v5 uploaded (content-266b89f2549a41431749e28fee6c917a-v1). 61 tables + 9 new memo checks for T-48/49/50/51/53/55/58/62/65. Oracle 239/239=1.0. Eval: evaluation-202109c9dfd14cd3. GLM must now write prose for 9 more non-none tables or fail memo checks."
         }
       ],
-      "updated_at": "2026-09-13T06:44:19Z",
+      "updated_at": "2026-09-13T07:26:32Z",
       "last_preqc": {
         "at": "2026-09-09T08:56:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000607\\2026-09-09T085605Z",
