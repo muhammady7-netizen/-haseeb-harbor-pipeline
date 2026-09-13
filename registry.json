@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T11:45:01Z",
+  "updated_at": "2026-09-13T12:13:05Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v36 uploaded content-07723200fe5016b2f4ec4081f2958526-v1. CSV complete. QC started evaluation-0f2015698b9440cd. 56 verifiers. Westfield DATA trap restored (partial reversal 85000->65000, IAS 37, no adjustment). Greenfield transferred-to-retained trap also active.",
+      "notes": "v36 retry: Oracle PASS, GLM 3/4 (meets E5!). Harbor Check infra error (invalid access receipt, retryable). Retrying evaluation-0f2015698b9440cd.",
       "history": [
-        {
-          "at": "2026-09-08T03:20:04Z",
-          "status": "ready_final",
-          "note": "Packaged UPLOAD-THIS-TO-QC-fin-f39.zip"
-        },
         {
           "at": "2026-09-08T20:41:57Z",
           "status": "final_running",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T11:27:22Z",
           "status": "final_running",
           "note": "v36 uploaded content-07723200fe5016b2f4ec4081f2958526-v1. CSV complete. QC started evaluation-0f2015698b9440cd. 56 verifiers. Westfield DATA trap restored (partial reversal 85000->65000, IAS 37, no adjustment). Greenfield transferred-to-retained trap also active."
+        },
+        {
+          "at": "2026-09-13T12:13:05Z",
+          "status": "final_running",
+          "note": "v36 retry: Oracle PASS, GLM 3/4 (meets E5!). Harbor Check infra error (invalid access receipt, retryable). Retrying evaluation-0f2015698b9440cd."
         }
       ],
-      "updated_at": "2026-09-13T11:27:22Z",
+      "updated_at": "2026-09-13T12:13:05Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -4114,7 +4114,7 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener.zip",
       "next_action": "Poll until Oracle+GLM+Harbor done",
-      "notes": "4th Oracle crash (4/4). Infrastructure issue - report to QC parking lot per meeting guidance.",
+      "notes": "5th Oracle crash (4/4 trials). Infrastructure issue - Connector Docker container fails. Report to QC parking lot.",
       "history": [
         {
           "at": "2026-09-08T01:02:02Z",
@@ -4275,9 +4275,14 @@
           "at": "2026-09-13T03:55:23Z",
           "status": "blocked",
           "note": "4th Oracle crash (4/4). Infrastructure issue - report to QC parking lot per meeting guidance."
+        },
+        {
+          "at": "2026-09-13T12:13:05Z",
+          "status": "blocked",
+          "note": "5th Oracle crash (4/4 trials). Infrastructure issue - Connector Docker container fails. Report to QC parking lot."
         }
       ],
-      "updated_at": "2026-09-13T03:55:23Z",
+      "updated_at": "2026-09-13T12:13:05Z",
       "last_preqc": {
         "at": "2026-09-08T09:20:14Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\CONNECTOR-THREAD\\2026-09-08T092013Z",
