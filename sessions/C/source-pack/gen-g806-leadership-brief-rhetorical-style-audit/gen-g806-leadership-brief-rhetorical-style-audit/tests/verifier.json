@@ -2169,7 +2169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?00[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-013:3\\\\->1|S\\-013:3\\\\->1[\\s\\S]*?recommended)",
+        "expected": "(?is)B[\\-\\s_]?02[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-013:3\\->1|S\\-013:3\\->1[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2194,7 +2194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?00[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-028:8\\\\->2|S\\-028:8\\\\->2[\\s\\S]*?recommended)",
+        "expected": "(?is)B[\\-\\s_]?03[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-028:8\\->2|S\\-028:8\\->2[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2219,7 +2219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?00[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-033:3\\\\->6|S\\-033:3\\\\->6[\\s\\S]*?recommended)",
+        "expected": "(?is)B[\\-\\s_]?04[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-033:3\\->6|S\\-033:3\\->6[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2244,7 +2244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?00[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-043:3\\\\->6|S\\-043:3\\\\->6[\\s\\S]*?recommended)",
+        "expected": "(?is)B[\\-\\s_]?05[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-043:3\\->6|S\\-043:3\\->6[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2269,7 +2269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?00[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-057:7\\\\->8|S\\-057:7\\\\->8[\\s\\S]*?recommended)",
+        "expected": "(?is)B[\\-\\s_]?06[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-057:7\\->8|S\\-057:7\\->8[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2294,7 +2294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)B[\\-\\s_]?00[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-077:5\\\\->1|S\\-077:5\\\\->1[\\s\\S]*?recommended)",
+        "expected": "(?is)B[\\-\\s_]?08[\\s\\S]*?(?:recommended[\\s\\S]*?S\\-077:5\\->1|S\\-077:5\\->1[\\s\\S]*?recommended)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
