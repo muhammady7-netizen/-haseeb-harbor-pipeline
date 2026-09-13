@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T09:23:07Z",
+  "updated_at": "2026-09-13T09:33:43Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v24: GLM 4/4. 10+ data trap versions all failed. Model writes correct Python script reading all input files dynamically. SUMMIT trap, Reg alias, bank holiday, boundary traps - all handled by model. Need fundamentally different approach or accept task is inherently too easy for script-based solving.",
+      "notes": "h40 v25: Amendment window trap. Changed procedure_amendment to reduce RIVERSIDE tier 2 notification window from 240 to 180 min for releases >= July 15. Added 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). Model hardcodes WINDOWS={2:(240,480)} without reading amendment. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. Upload pending - browser stuck.",
       "history": [
-        {
-          "at": "2026-09-11T10:12:51Z",
-          "status": "final_running",
-          "note": "h40 v13 uploaded (content-337c2e4a) with fixed instruction.md + broadened verifier regexes. QC-Oracle-GLM started. PreQC skipped (optional)."
-        },
         {
           "at": "2026-09-11T10:13:47Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T05:38:32Z",
           "status": "needs_densify",
           "note": "h40 v24: GLM 4/4. 10+ data trap versions all failed. Model writes correct Python script reading all input files dynamically. SUMMIT trap, Reg alias, bank holiday, boundary traps - all handled by model. Need fundamentally different approach or accept task is inherently too easy for script-based solving."
+        },
+        {
+          "at": "2026-09-13T09:33:43Z",
+          "status": "final_running",
+          "note": "h40 v25: Amendment window trap. Changed procedure_amendment to reduce RIVERSIDE tier 2 notification window from 240 to 180 min for releases >= July 15. Added 3 trap results (R-139: 181 min late, R-140: 210 min late, R-141: 180 min at boundary). Model hardcodes WINDOWS={2:(240,480)} without reading amendment. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. Upload pending - browser stuck."
         }
       ],
-      "updated_at": "2026-09-13T05:38:32Z",
+      "updated_at": "2026-09-13T09:33:43Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
