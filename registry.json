@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T11:27:22Z",
+  "updated_at": "2026-09-13T11:36:45Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1599,17 +1599,12 @@
       "pack_name": "code-c251-pdf-form-field-conversion-audit",
       "work_root": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal",
       "pack_path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\ework\\code-c251-portal\\code-c251-pdf-form-field-conversion-audit",
-      "status": "ready_accept",
+      "status": "final_running",
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Dismiss remaining PreQC if needed, then Accept on portal",
-      "notes": "GLM 0/4 within difficulty gate",
+      "notes": "v6 (f21caab18a46225dad20578088efc4ea-v6) Oracle 1.0, GLM 0/4 (difficulty PASSED!). 4/19 findings dispositioned as false positive. 15 remaining. SPA keeps bouncing to other sessions' task pages. Need stable browser to complete disposition + Submit.",
       "history": [
-        {
-          "at": "2026-09-11T10:28:02Z",
-          "status": "final_running",
-          "note": "v1 (dc2fe98f) uploaded with other PC's latest fix (93 checks, Harbor findings fixed). Final QC running."
-        },
         {
           "at": "2026-09-11T11:14:59Z",
           "status": "final_running",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-13T10:59:29Z",
           "status": "ready_accept",
           "note": "GLM 0/4 within difficulty gate"
+        },
+        {
+          "at": "2026-09-13T11:36:44Z",
+          "status": "final_running",
+          "note": "v6 (f21caab18a46225dad20578088efc4ea-v6) Oracle 1.0, GLM 0/4 (difficulty PASSED!). 4/19 findings dispositioned as false positive. 15 remaining. SPA keeps bouncing to other sessions' task pages. Need stable browser to complete disposition + Submit."
         }
       ],
-      "updated_at": "2026-09-13T10:59:29Z",
+      "updated_at": "2026-09-13T11:36:44Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v6",
         "watch": true,
-        "last_check_at": "2026-09-13T10:59:29Z",
+        "last_check_at": "2026-09-13T11:36:44Z",
         "phase": "complete",
         "checks": [
-          {
-            "at": "2026-09-12T02:09:57Z",
-            "phase": "glm_running",
-            "running": true,
-            "note": "v1 (2113e438) Oracle PASSED 1.0! GLM x4 difficulty RUNNING (631s). Dockerfile fix worked!",
-            "glm_pass": null,
-            "oracle": "1.0"
-          },
           {
             "at": "2026-09-12T02:18:54Z",
             "phase": "glm_running",
@@ -2068,6 +2060,14 @@
             "note": "v6 (f21caab18a46225dad20578088efc4ea-v6) Oracle PASSED 1.0! GLM 0/4 (difficulty PASSED!). 16 trainer findings (down from 17 in v5). Fixed memo regexes (broadened to accept instruction's own wording). Need to check if semantic_equivalence finding is gone.",
             "glm_pass": "0/4",
             "oracle": "1.0"
+          },
+          {
+            "at": "2026-09-13T11:36:44Z",
+            "phase": "complete",
+            "running": false,
+            "note": "v6 (f21caab18a46225dad20578088efc4ea-v6) Oracle 1.0, GLM 0/4 (difficulty PASSED!). 4/19 findings dispositioned as false positive. 15 remaining. SPA keeps bouncing to other sessions' task pages. Need stable browser to complete disposition + Submit.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "0/4",
@@ -3212,13 +3212,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (536e8bab) Re-run #3 started. Previous 2 runs errored with [judge]. Infrastructure issue.",
+      "notes": "v1 (536e8bab) ERRORED 3rd time (Pipeline Oracle failed: [judge]). Infrastructure issue. Need to re-run when slots free.",
       "history": [
-        {
-          "at": "2026-09-10T20:30:16Z",
-          "status": "ready_final",
-          "note": "UPLOADED v2 #fae8c6 (content-2a489be4...-v2). PreQC not run yet. Waiting for portal slot (3/3 busy: c227, f53, old g857 a41d17, g806). Tracker polling."
-        },
         {
           "at": "2026-09-10T20:33:39Z",
           "status": "ready_final",
@@ -3413,9 +3408,14 @@
           "at": "2026-09-13T11:11:48Z",
           "status": "final_running",
           "note": "v1 (536e8bab) Re-run #3 started. Previous 2 runs errored with [judge]. Infrastructure issue."
+        },
+        {
+          "at": "2026-09-13T11:36:45Z",
+          "status": "final_running",
+          "note": "v1 (536e8bab) ERRORED 3rd time (Pipeline Oracle failed: [judge]). Infrastructure issue. Need to re-run when slots free."
         }
       ],
-      "updated_at": "2026-09-13T11:11:48Z",
+      "updated_at": "2026-09-13T11:36:45Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3435,17 +3435,9 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-13T11:11:48Z",
-        "phase": "oracle_running",
+        "last_check_at": "2026-09-13T11:36:45Z",
+        "phase": "complete",
         "checks": [
-          {
-            "at": "2026-09-09T10:53:02Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v1 (ed239145) re-running QC-Oracle-GLM after previous eval ERRORED (infrastructure failure, not difficulty). Oracle passed, GLM 0/4 was due to error. 3 PreQC findings advisory (legacy rule, sort-order, regex permissiveness).",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-09T13:01:14Z",
             "phase": "oracle_running",
@@ -3675,6 +3667,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v1 (536e8bab) Re-run #3 started. Previous 2 runs errored with [judge]. Infrastructure issue.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T11:36:45Z",
+            "phase": "complete",
+            "running": false,
+            "note": "v1 (536e8bab) ERRORED 3rd time (Pipeline Oracle failed: [judge]). Infrastructure issue. Need to re-run when slots free.",
             "glm_pass": null,
             "oracle": null
           }
