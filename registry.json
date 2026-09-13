@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T08:35:40Z",
+  "updated_at": "2026-09-13T09:08:03Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v33 ready to upload: 56 verifiers, Westfield added to instruction, memo_westfield_reversal removed, test.sh cd /tests, memo_lawful_conclusion negation fix, README/golden_results updated. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v33.zip. Browser overloaded - need manual upload.",
+      "notes": "v34 uploaded content-85b1879300eb00d23204649f7f9fe5b9-v1. CSV complete. QC-Oracle-GLM started evaluation-cfd3abee30354dea. 56 verifiers, all 19 findings fixed: golden_trajectory, README, review.csv, Westfield removed, memo regexes fixed, test.sh cd /tests, stale evals cleared.",
       "history": [
-        {
-          "at": "2026-09-08T03:02:51Z",
-          "status": "preqc_running",
-          "note": ""
-        },
         {
           "at": "2026-09-08T03:02:52Z",
           "status": "preqc_clean",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T05:08:46Z",
           "status": "final_running",
           "note": "v33 ready to upload: 56 verifiers, Westfield added to instruction, memo_westfield_reversal removed, test.sh cd /tests, memo_lawful_conclusion negation fix, README/golden_results updated. Zip at Default Project/UPLOAD-THIS-TO-QC-fin-f39-v33.zip. Browser overloaded - need manual upload."
+        },
+        {
+          "at": "2026-09-13T09:08:03Z",
+          "status": "final_running",
+          "note": "v34 uploaded content-85b1879300eb00d23204649f7f9fe5b9-v1. CSV complete. QC-Oracle-GLM started evaluation-cfd3abee30354dea. 56 verifiers, all 19 findings fixed: golden_trajectory, README, review.csv, Westfield removed, memo regexes fixed, test.sh cd /tests, stale evals cleared."
         }
       ],
-      "updated_at": "2026-09-13T05:08:46Z",
+      "updated_at": "2026-09-13T09:08:03Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
