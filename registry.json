@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T03:26:37Z",
+  "updated_at": "2026-09-13T03:48:10Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1603,13 +1603,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v5 (f21caab1-v5) FINAL: deprecated-field exclusion + 6 trap fields + all assertions verified (96/98 pass locally, 2 filesystem checks pass on portal). Fixed regex escaping. Oracle should pass 1.0.",
+      "notes": "v5 (f21caab1-v5) RUNNING but queued for worker (all workers busy with other sessions). Deprecated-field exclusion + 6 trap fields + 98 verifiers (96/98 verified locally). Oracle should pass 1.0.",
       "history": [
-        {
-          "at": "2026-09-10T15:27:28Z",
-          "status": "final_running",
-          "note": "code-c251 v3 uploaded (#1ddef3) + PreQC + eval started. 93 checks, tightened memo, no-pipe, no stale evals."
-        },
         {
           "at": "2026-09-10T15:48:16Z",
           "status": "final_running",
@@ -1804,9 +1799,14 @@
           "at": "2026-09-13T03:08:56Z",
           "status": "final_running",
           "note": "v5 (f21caab1-v5) FINAL: deprecated-field exclusion + 6 trap fields + all assertions verified (96/98 pass locally, 2 filesystem checks pass on portal). Fixed regex escaping. Oracle should pass 1.0."
+        },
+        {
+          "at": "2026-09-13T03:48:10Z",
+          "status": "final_running",
+          "note": "v5 (f21caab1-v5) RUNNING but queued for worker (all workers busy with other sessions). Deprecated-field exclusion + 6 trap fields + 98 verifiers (96/98 verified locally). Oracle should pass 1.0."
         }
       ],
-      "updated_at": "2026-09-13T03:08:56Z",
+      "updated_at": "2026-09-13T03:48:10Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1826,17 +1826,9 @@
       "portal": {
         "version": "v5",
         "watch": true,
-        "last_check_at": "2026-09-13T03:08:56Z",
+        "last_check_at": "2026-09-13T03:48:10Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-10T15:27:28Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "code-c251 v3 uploaded (#1ddef3) + PreQC + eval started. 93 checks, tightened memo, no-pipe, no stale evals.",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-10T15:48:16Z",
             "phase": "glm_or_oracle_running",
@@ -2066,6 +2058,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v5 (f21caab1-v5) FINAL: deprecated-field exclusion + 6 trap fields + all assertions verified (96/98 pass locally, 2 filesystem checks pass on portal). Fixed regex escaping. Oracle should pass 1.0.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T03:48:10Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v5 (f21caab1-v5) RUNNING but queued for worker (all workers busy with other sessions). Deprecated-field exclusion + 6 trap fields + 98 verifiers (96/98 verified locally). Oracle should pass 1.0.",
             "glm_pass": null,
             "oracle": null
           }
