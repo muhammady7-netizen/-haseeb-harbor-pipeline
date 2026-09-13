@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T17:38:12Z",
+  "updated_at": "2026-09-13T17:45:05Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -735,13 +735,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v26: Needs your review. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved). Waiting for eval report details. Browser timing out on API calls.",
+      "notes": "h40 v27 uploaded (content-12e4beec). Fixed solve.sh to only copy deliverables (not input/ which is read-only in Docker). Finding precedence rule change intact. 141 results, 170 verifiers, 189 tests. QC-Oracle-GLM running.",
       "history": [
-        {
-          "at": "2026-09-11T14:24:26Z",
-          "status": "final_running",
-          "note": "h40 v17 uploaded (content-2d061f18) with 32 results, 57 verifiers, 4 just-past-boundary traps. Pipeline-packaged. QC-Oracle-GLM running."
-        },
         {
           "at": "2026-09-11T15:20:35Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T17:22:56Z",
           "status": "final_running",
           "note": "h40 v26: Needs your review. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved). Waiting for eval report details. Browser timing out on API calls."
+        },
+        {
+          "at": "2026-09-13T17:45:05Z",
+          "status": "final_running",
+          "note": "h40 v27 uploaded (content-12e4beec). Fixed solve.sh to only copy deliverables (not input/ which is read-only in Docker). Finding precedence rule change intact. 141 results, 170 verifiers, 189 tests. QC-Oracle-GLM running."
         }
       ],
-      "updated_at": "2026-09-13T17:22:56Z",
+      "updated_at": "2026-09-13T17:45:05Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
