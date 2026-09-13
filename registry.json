@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T17:09:31Z",
+  "updated_at": "2026-09-13T17:22:56Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -735,13 +735,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v26 uploaded (content-34aeeea7). Finding precedence rule change: unapproved role within window -> ONLY acknowledger_unapproved (no ack_late, no escalation_missing). Model script always sets ack_late=True for unapproved -> 21 rows wrong. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. QC-Oracle-GLM running.",
+      "notes": "h40 v26: Needs your review. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved). Waiting for eval report details. Browser timing out on API calls.",
       "history": [
-        {
-          "at": "2026-09-11T13:28:16Z",
-          "status": "final_running",
-          "note": "h40 v16 uploaded (content-e044997e) via pipeline tool. Fixed: csv.py strips quotes, memo regex broadened to accept 'not recognised/not recognized/unauthorised'. QC-Oracle-GLM running (Oracle waiting 125s)."
-        },
         {
           "at": "2026-09-11T14:24:26Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T14:43:41Z",
           "status": "final_running",
           "note": "h40 v26 uploaded (content-34aeeea7). Finding precedence rule change: unapproved role within window -> ONLY acknowledger_unapproved (no ack_late, no escalation_missing). Model script always sets ack_late=True for unapproved -> 21 rows wrong. 141 results, 170 verifiers, 189 tests. Pipeline-packaged. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-13T17:22:56Z",
+          "status": "final_running",
+          "note": "h40 v26: Needs your review. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved). Waiting for eval report details. Browser timing out on API calls."
         }
       ],
-      "updated_at": "2026-09-13T14:43:41Z",
+      "updated_at": "2026-09-13T17:22:56Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
