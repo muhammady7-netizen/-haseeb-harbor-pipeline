@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T10:13:00Z",
+  "updated_at": "2026-09-13T10:33:06Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -85,13 +85,8 @@
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
-      "notes": "v34 uploaded content-85b1879300eb00d23204649f7f9fe5b9-v1. CSV complete. QC-Oracle-GLM started evaluation-cfd3abee30354dea. 56 verifiers, all 19 findings fixed: golden_trajectory, README, review.csv, Westfield removed, memo regexes fixed, test.sh cd /tests, stale evals cleared.",
+      "notes": "v35 uploaded content-34cabb63471f223fea7913f598f3e7a8-v1. CSV complete. QC-Oracle-GLM started evaluation-f68a04dc45024c20. 56 verifiers. Down from 19 findings to 8 (all Layer 5 verifier fairness). Fixed memo_lawful_conclusion phrasing and memo_has_explanatory_body.",
       "history": [
-        {
-          "at": "2026-09-08T03:02:52Z",
-          "status": "preqc_clean",
-          "note": "PreQC NEEDS_REVIEW; ready to package"
-        },
         {
           "at": "2026-09-08T03:07:23Z",
           "status": "ready_final",
@@ -286,9 +281,14 @@
           "at": "2026-09-13T09:08:03Z",
           "status": "final_running",
           "note": "v34 uploaded content-85b1879300eb00d23204649f7f9fe5b9-v1. CSV complete. QC-Oracle-GLM started evaluation-cfd3abee30354dea. 56 verifiers, all 19 findings fixed: golden_trajectory, README, review.csv, Westfield removed, memo regexes fixed, test.sh cd /tests, stale evals cleared."
+        },
+        {
+          "at": "2026-09-13T10:33:06Z",
+          "status": "final_running",
+          "note": "v35 uploaded content-34cabb63471f223fea7913f598f3e7a8-v1. CSV complete. QC-Oracle-GLM started evaluation-f68a04dc45024c20. 56 verifiers. Down from 19 findings to 8 (all Layer 5 verifier fairness). Fixed memo_lawful_conclusion phrasing and memo_has_explanatory_body."
         }
       ],
-      "updated_at": "2026-09-13T09:08:03Z",
+      "updated_at": "2026-09-13T10:33:06Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
