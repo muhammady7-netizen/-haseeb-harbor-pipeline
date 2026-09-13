@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T17:50:41Z",
+  "updated_at": "2026-09-13T17:54:46Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -3212,13 +3212,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v3 (536e8bab-v3) uploaded with ORIGINAL 64-people pack (0 headcount mismatches, fixed Dockerfile+solve.sh, no evals). Waiting for eval slot.",
+      "notes": "v4 (536e8bab-v4) uploaded with 72 people + 8 trap people + FIXED headcount assertions (5 mismatches fixed). Oracle should pass 1.0 with fixed headcount. GLM should trip on trap people.",
       "history": [
-        {
-          "at": "2026-09-10T20:52:43Z",
-          "status": "final_running",
-          "note": "Switched to OpenCode-style keepchrome (1 headless Chrome, never close/reopen). Polling v2 Oracle + c251 gates. max-eval 3."
-        },
         {
           "at": "2026-09-10T20:58:41Z",
           "status": "ready_final",
@@ -3413,9 +3408,14 @@
           "at": "2026-09-13T15:59:27Z",
           "status": "final_running",
           "note": "v3 (536e8bab-v3) uploaded with ORIGINAL 64-people pack (0 headcount mismatches, fixed Dockerfile+solve.sh, no evals). Waiting for eval slot."
+        },
+        {
+          "at": "2026-09-13T17:54:46Z",
+          "status": "final_running",
+          "note": "v4 (536e8bab-v4) uploaded with 72 people + 8 trap people + FIXED headcount assertions (5 mismatches fixed). Oracle should pass 1.0 with fixed headcount. GLM should trip on trap people."
         }
       ],
-      "updated_at": "2026-09-13T15:59:27Z",
+      "updated_at": "2026-09-13T17:54:46Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3433,19 +3433,11 @@
       },
       "packaged_at": "2026-09-10T21:38:15Z",
       "portal": {
-        "version": "v3",
+        "version": "v4",
         "watch": true,
-        "last_check_at": "2026-09-13T15:59:27Z",
+        "last_check_at": "2026-09-13T17:54:46Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-10T15:27:27Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "gen-g857 v9 uploaded (#312d0a) + PreQC + eval started. 123 checks, tightened memo, no-pipe, no stale evals.",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-10T15:48:16Z",
             "phase": "glm_or_oracle_running",
@@ -3677,11 +3669,19 @@
             "note": "v3 (536e8bab-v3) uploaded with ORIGINAL 64-people pack (0 headcount mismatches, fixed Dockerfile+solve.sh, no evals). Waiting for eval slot.",
             "glm_pass": null,
             "oracle": null
+          },
+          {
+            "at": "2026-09-13T17:54:46Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v4 (536e8bab-v4) uploaded with 72 people + 8 trap people + FIXED headcount assertions (5 mismatches fixed). Oracle should pass 1.0 with fixed headcount. GLM should trip on trap people.",
+            "glm_pass": null,
+            "oracle": null
           }
         ],
         "glm_pass": "1/4",
         "oracle": "1.0",
-        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-536e8bab53115a86281e2726b0411c81-v3"
+        "task_url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-536e8bab53115a86281e2726b0411c81-v4"
       }
     },
     {
