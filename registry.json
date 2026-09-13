@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T09:33:43Z",
+  "updated_at": "2026-09-13T09:57:01Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -3212,13 +3212,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v1 (536e8bab) Run QC-Oracle-GLM clicked. Previous errored 10h ago. Clean zip, 8 data traps, fixed Dockerfile+solve.sh.",
+      "notes": "v1 (536e8bab) Re-run started (49s). Previous errored (Pipeline Oracle failed: [judge]). 8 data traps, fixed Dockerfile+solve.sh, no evals.",
       "history": [
-        {
-          "at": "2026-09-10T18:37:56Z",
-          "status": "final_running",
-          "note": "Session F: synced pack_path + zips to Downloads portal upload; extracted under qc-out/ework"
-        },
         {
           "at": "2026-09-10T19:27:46Z",
           "status": "ready_final",
@@ -3413,9 +3408,14 @@
           "at": "2026-09-13T04:45:23Z",
           "status": "final_running",
           "note": "v1 (536e8bab) Run QC-Oracle-GLM clicked. Previous errored 10h ago. Clean zip, 8 data traps, fixed Dockerfile+solve.sh."
+        },
+        {
+          "at": "2026-09-13T09:57:01Z",
+          "status": "final_running",
+          "note": "v1 (536e8bab) Re-run started (49s). Previous errored (Pipeline Oracle failed: [judge]). 8 data traps, fixed Dockerfile+solve.sh, no evals."
         }
       ],
-      "updated_at": "2026-09-13T04:45:23Z",
+      "updated_at": "2026-09-13T09:57:01Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3435,17 +3435,9 @@
       "portal": {
         "version": "v1",
         "watch": true,
-        "last_check_at": "2026-09-13T04:45:23Z",
+        "last_check_at": "2026-09-13T09:57:01Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-09T08:32:20Z",
-            "phase": "preqc_running",
-            "running": true,
-            "note": "gen-g857 v6 uploaded with 5 trap depts (121-125). 137 verifier checks, 126 departments. PreQC + QC-Oracle-GLM started on portal.",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-09T08:38:10Z",
             "phase": "oracle_running",
@@ -3675,6 +3667,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v1 (536e8bab) Run QC-Oracle-GLM clicked. Previous errored 10h ago. Clean zip, 8 data traps, fixed Dockerfile+solve.sh.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-13T09:57:01Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v1 (536e8bab) Re-run started (49s). Previous errored (Pipeline Oracle failed: [judge]). 8 data traps, fixed Dockerfile+solve.sh, no evals.",
             "glm_pass": null,
             "oracle": null
           }
