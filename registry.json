@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T05:19:15Z",
+  "updated_at": "2026-09-14T05:24:28Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -301,9 +301,14 @@
           "at": "2026-09-14T05:19:15Z",
           "status": "final_running",
           "note": "v6 uploaded (content-7e19767d). PreQC: 3 blocking (undisclosed amounts, brittle CSV matching, memo requires undisclosed amount). Deterministic lint: 0 findings. All regex migrated to test_outputs.py with specific matching, CTRF scoring, float amounts. PreQC keeps finding new issues each version - may be false positives (amounts are derived from inputs, not hidden requirements)."
+        },
+        {
+          "at": "2026-09-14T05:24:28Z",
+          "status": "final_running",
+          "note": "v8 ready (instruction disclosure added). 7+ versions uploaded, PreQC keeps finding new blocking findings (non-deterministic GLM). Latest: 2 blocking (undisclosed amounts, keyword stuffing). These are likely false positives - amounts are computed from inputs. Need pod lead review for PreQC false positive classification."
         }
       ],
-      "updated_at": "2026-09-14T05:19:15Z",
+      "updated_at": "2026-09-14T05:24:28Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",

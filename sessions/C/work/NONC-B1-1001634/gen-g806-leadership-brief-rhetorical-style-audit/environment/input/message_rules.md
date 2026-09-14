@@ -33,7 +33,7 @@ In `question_trace.csv`, the status column uses exactly these tokens:
 - `unanswered` when no sentence answers the question (`answer_distance = -1`, `answer_sentence_id` empty)
 
 ## results.json schema
-`results.json` contains exactly: `brief_count` (total briefs), `passing_briefs` (score >= 80), `failing_briefs` (score < 80), `avg_score` (mean of all scores, rounded to 2 decimals half-up), `total_unanswered` (sum of unanswered across all briefs), `total_breaches` (sum of transition breaches across all briefs).
+`results.json` contains exactly: `brief_count` (total briefs), `passing_briefs` (score >= 80), `failing_briefs` (score < 80), `avg_score` (mean of all scores, the exact mean of all scores (no rounding)), `total_unanswered` (sum of unanswered across all briefs), `total_breaches` (sum of transition breaches across all briefs).
 
 
 ## Memo format

@@ -12,7 +12,7 @@ Evaluate whether each leadership brief answers executive questions in a usable d
 - Unanswered question: −20. Answer distance `position-1` greater than 5: −5.
 - Word count greater than 220: −10.
 - **Passing score threshold is 80.** Briefs with `coherence_score >= 80` pass; below 80 fail.
-- `results.json` `avg_score` is the mean of the eight coherence scores, rounded half-up to **two decimal places**.
+- `results.json` `avg_score` is the mean of the eight coherence scores, the exact mean of the eight coherence scores (no rounding).
 
 ## Trace status vocabulary
 

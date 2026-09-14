@@ -33,3 +33,5 @@ WORKDIR /app
 # Read-only task inputs. The prompt refers to these as `input/`.
 COPY input/ /app/input/
 RUN chmod -R a-w,a+rX /app/input
+
+USER node
