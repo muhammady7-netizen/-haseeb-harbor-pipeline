@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T04:55:01Z",
+  "updated_at": "2026-09-14T04:57:51Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,7 +81,7 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "preqc_clean",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
       "next_action": "Pre-QC clean. Upload to V2 trainer, Dismiss portal PreQC, run Oracle+GLM x4. Difficulty (GLM 4/4) still needs addressing before final accept.",
@@ -291,9 +291,14 @@
           "at": "2026-09-14T03:30:20Z",
           "status": "preqc_clean",
           "note": "Pre-QC mandatory fix: migrated 16 memo regex_match checks from verifier.json to test_outputs.py Python assertions (clears D1 prose_regex_grading); added non-root USER to Dockerfile (clears D2 root_container). verifier_defect_lint.py = 0 findings. Golden memo still passes all checks."
+        },
+        {
+          "at": "2026-09-14T04:57:51Z",
+          "status": "final_running",
+          "note": "v4 uploaded (content-2a1ec71f). PreQC: 4 blocking (stdout parsing, amount format, OR logic). QC-Oracle-GLM running on content-536e8bab-v25 (0 PreQC blocking). Deterministic lint: 0 findings (D1+D2 fixed). All memo+CSV regex migrated to test_outputs.py."
         }
       ],
-      "updated_at": "2026-09-14T03:30:20Z",
+      "updated_at": "2026-09-14T04:57:51Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -3859,7 +3864,7 @@
       "pack_name": "gen-g1205-meal-prep-cost-claim-recompute-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016/gen-g1205-meal-prep-cost-claim-recompute-audit",
-      "status": "preqc_clean",
+      "status": "final_running",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
       "next_action": "Pre-QC clean. Upload to V2 trainer, Dismiss portal PreQC, run Oracle+GLM x4. Difficulty (GLM 4/4) still needs addressing before final accept.",
@@ -4059,9 +4064,14 @@
           "at": "2026-09-14T03:30:20Z",
           "status": "preqc_clean",
           "note": "Pre-QC mandatory fix: migrated 20 memo regex_match checks from verifier.json to test_outputs.py Python assertions (clears D1 prose_regex_grading); added non-root USER to Dockerfile (clears D2 root_container). verifier_defect_lint.py = 0 findings. Golden memo still passes all checks."
+        },
+        {
+          "at": "2026-09-14T04:57:51Z",
+          "status": "final_running",
+          "note": "v2 uploaded (content-43d083bc). PreQC: 2 blocking (memo RUN-05, job coverage). Deterministic lint: 0 findings (D1+D2 fixed). test.sh denominator fixed, audit_exactly_n_rows tightened."
         }
       ],
-      "updated_at": "2026-09-14T03:30:20Z",
+      "updated_at": "2026-09-14T04:57:51Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
