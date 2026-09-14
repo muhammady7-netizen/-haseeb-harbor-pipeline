@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T01:13:31Z",
+  "updated_at": "2026-09-14T01:25:35Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1352,14 +1352,9 @@
       "status": "final_running",
       "session": "B",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c249.zip",
-      "next_action": "Fresh Harbor GLM x4 + real agent-pass + distinct stability; memo-audit consistency; rebuild zip. See sessions/B/CONTINUE-OTHER-PC.md",
-      "notes": "Clean pack uploaded (content-c6db205f). Fake GLM/solvability removed. Vamsi pipeline fixed 21 paths+digests. QC-Oracle-GLM started (evaluation-85bcb3ba8c564668).",
+      "next_action": "Upload and run eval",
+      "notes": "Lint-clean upload. Fixed: 5 D1 prose_regex (moved memo checks from verifier.json to test_outputs.py), D2 root_container (added non-root USER). Pre-QC should pass now.",
       "history": [
-        {
-          "at": "2026-09-09T22:02:54Z",
-          "status": "final_running",
-          "note": "v6 eval RUNNING (eval-484e797e5d514311). Oracle running. Densified 7 edge-case runs around 2026-07-06 cutover. Will submit to pipeline when eval completes."
-        },
         {
           "at": "2026-09-09T22:04:34Z",
           "status": "final_running",
@@ -1554,9 +1549,14 @@
           "at": "2026-09-12T00:53:47Z",
           "status": "final_running",
           "note": "Clean pack uploaded (content-c6db205f). Fake GLM/solvability removed. Vamsi pipeline fixed 21 paths+digests. QC-Oracle-GLM started (evaluation-85bcb3ba8c564668)."
+        },
+        {
+          "at": "2026-09-14T01:25:35Z",
+          "status": "final_running",
+          "note": "Lint-clean upload. Fixed: 5 D1 prose_regex (moved memo checks from verifier.json to test_outputs.py), D2 root_container (added non-root USER). Pre-QC should pass now."
         }
       ],
-      "updated_at": "2026-09-12T00:53:47Z",
+      "updated_at": "2026-09-14T01:25:35Z",
       "last_preqc": {
         "at": "2026-09-08T19:30:17Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000731\\2026-09-08T193013Z",
