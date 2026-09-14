@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T05:14:22Z",
+  "updated_at": "2026-09-14T05:19:15Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -296,9 +296,14 @@
           "at": "2026-09-14T04:57:51Z",
           "status": "final_running",
           "note": "v4 uploaded (content-2a1ec71f). PreQC: 4 blocking (stdout parsing, amount format, OR logic). QC-Oracle-GLM running on content-536e8bab-v25 (0 PreQC blocking). Deterministic lint: 0 findings (D1+D2 fixed). All memo+CSV regex migrated to test_outputs.py."
+        },
+        {
+          "at": "2026-09-14T05:19:15Z",
+          "status": "final_running",
+          "note": "v6 uploaded (content-7e19767d). PreQC: 3 blocking (undisclosed amounts, brittle CSV matching, memo requires undisclosed amount). Deterministic lint: 0 findings. All regex migrated to test_outputs.py with specific matching, CTRF scoring, float amounts. PreQC keeps finding new issues each version - may be false positives (amounts are derived from inputs, not hidden requirements)."
         }
       ],
-      "updated_at": "2026-09-14T04:57:51Z",
+      "updated_at": "2026-09-14T05:19:15Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
