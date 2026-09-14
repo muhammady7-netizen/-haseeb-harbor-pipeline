@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T03:43:45Z",
+  "updated_at": "2026-09-14T03:57:29Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -1608,13 +1608,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\canonical-zips\\UPLOAD-THIS-TO-QC-code-c251.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v9 (f21caab1-v9) uploaded with fixed memo checks (proximity patterns + memo_explains_missing_fields added). PreQC found 13 blockers: inconsistent row count, malformed regex, reward-hackable regex. Need v10 fix.",
+      "notes": "v11 (f21caab1-v11) uploaded with lookahead memo checks (no .{0,N} gaps) + fixed FIELD-50 regex + memo_explains_missing_fields. PreQC running. Previous v10 had 13 blockers.",
       "history": [
-        {
-          "at": "2026-09-11T13:46:53Z",
-          "status": "final_running",
-          "note": "v1 (7ec9d05a) uploaded with ALL fixes: Dockerfile with openpyxl/python-docx/python-pptx/pypdf. Waiting for eval slot."
-        },
         {
           "at": "2026-09-11T18:58:10Z",
           "status": "ready_final",
@@ -1809,9 +1804,14 @@
           "at": "2026-09-14T03:43:45Z",
           "status": "final_running",
           "note": "v9 (f21caab1-v9) uploaded with fixed memo checks (proximity patterns + memo_explains_missing_fields added). PreQC found 13 blockers: inconsistent row count, malformed regex, reward-hackable regex. Need v10 fix."
+        },
+        {
+          "at": "2026-09-14T03:57:29Z",
+          "status": "final_running",
+          "note": "v11 (f21caab1-v11) uploaded with lookahead memo checks (no .{0,N} gaps) + fixed FIELD-50 regex + memo_explains_missing_fields. PreQC running. Previous v10 had 13 blockers."
         }
       ],
-      "updated_at": "2026-09-14T03:43:45Z",
+      "updated_at": "2026-09-14T03:57:29Z",
       "last_preqc": {
         "at": "2026-09-08T22:39:07Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\NONC-B1-1000733\\2026-09-08T223906Z",
@@ -1829,19 +1829,11 @@
       },
       "packaged_at": "2026-09-09T18:15:37Z",
       "portal": {
-        "version": "v9",
+        "version": "v11",
         "watch": true,
-        "last_check_at": "2026-09-14T03:43:45Z",
+        "last_check_at": "2026-09-14T03:57:29Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-12T12:14:47Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v1 (f21caab1) Final QC RUNNING (queued, waiting for worker). Clean zip, no fabricated evals, fixed Dockerfile, broadened memo checks.",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-12T12:38:20Z",
             "phase": "oracle_running",
@@ -2071,6 +2063,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v9 (f21caab1-v9) uploaded with fixed memo checks (proximity patterns + memo_explains_missing_fields added). PreQC found 13 blockers: inconsistent row count, malformed regex, reward-hackable regex. Need v10 fix.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-14T03:57:29Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v11 (f21caab1-v11) uploaded with lookahead memo checks (no .{0,N} gaps) + fixed FIELD-50 regex + memo_explains_missing_fields. PreQC running. Previous v10 had 13 blockers.",
             "glm_pass": null,
             "oracle": null
           }
@@ -3217,13 +3217,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v9 (536e8bab-v9) uploaded with fixed duplicate key detection (newline-anchored) + strict row count. PreQC running. Previous v8 had 2 blockers (multiline flag, off-by-one row count).",
+      "notes": "v14 (536e8bab-v14) built with 141 checks: added unmapped_no_duplicate_keys, unmapped_sorted_by_id, headcount_no_duplicate_keys, fixed taxonomy_no_self_cycle (non-greedy). Need to upload + run PreQC.",
       "history": [
-        {
-          "at": "2026-09-10T21:19:55Z",
-          "status": "final_running",
-          "note": "Skip PreQC per STRICT-RULES; final QC Oracle-GLM only on v2."
-        },
         {
           "at": "2026-09-10T21:38:15Z",
           "status": "ready_final",
@@ -3418,9 +3413,14 @@
           "at": "2026-09-14T03:43:45Z",
           "status": "final_running",
           "note": "v9 (536e8bab-v9) uploaded with fixed duplicate key detection (newline-anchored) + strict row count. PreQC running. Previous v8 had 2 blockers (multiline flag, off-by-one row count)."
+        },
+        {
+          "at": "2026-09-14T03:57:29Z",
+          "status": "final_running",
+          "note": "v14 (536e8bab-v14) built with 141 checks: added unmapped_no_duplicate_keys, unmapped_sorted_by_id, headcount_no_duplicate_keys, fixed taxonomy_no_self_cycle (non-greedy). Need to upload + run PreQC."
         }
       ],
-      "updated_at": "2026-09-14T03:43:45Z",
+      "updated_at": "2026-09-14T03:57:29Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3438,19 +3438,11 @@
       },
       "packaged_at": "2026-09-10T21:38:15Z",
       "portal": {
-        "version": "v9",
+        "version": "v14",
         "watch": true,
-        "last_check_at": "2026-09-14T03:43:45Z",
+        "last_check_at": "2026-09-14T03:57:29Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-11T10:28:02Z",
-            "phase": "oracle_running",
-            "running": true,
-            "note": "v1 (7c6ded84) uploaded with other PC's latest rebuild (Department Taxonomy Migration, 164 entries, 69 checks). Final QC running.",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-11T10:59:50Z",
             "phase": "oracle_running",
@@ -3680,6 +3672,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v9 (536e8bab-v9) uploaded with fixed duplicate key detection (newline-anchored) + strict row count. PreQC running. Previous v8 had 2 blockers (multiline flag, off-by-one row count).",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-14T03:57:29Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v14 (536e8bab-v14) built with 141 checks: added unmapped_no_duplicate_keys, unmapped_sorted_by_id, headcount_no_duplicate_keys, fixed taxonomy_no_self_cycle (non-greedy). Need to upload + run PreQC.",
             "glm_pass": null,
             "oracle": null
           }
