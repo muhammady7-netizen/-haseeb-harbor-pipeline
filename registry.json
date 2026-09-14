@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T01:01:49Z",
+  "updated_at": "2026-09-14T01:01:53Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v27 uploaded (content-12e4beec). Fixed solve.sh to only copy deliverables (not input/ which is read-only in Docker). Finding precedence rule change intact. 141 results, 170 verifiers, 189 tests. QC-Oracle-GLM running.",
+      "notes": "h40 v27: Oracle PASS, GLM 4/4. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved) did NOT trip GLM. Model reads procedure.md dynamically and implements all rules. Solve.sh fixed (Oracle passes). 12+ versions exhausted - model writes correct Python script every time.",
       "history": [
-        {
-          "at": "2026-09-11T15:20:35Z",
-          "status": "final_running",
-          "note": "h40 v18: 40 results, 64 verifiers, 7 non-round-time traps (R-33: midnight crossing, R-34: 237/477 compliant, R-35: 30/60 at boundary, R-36: 240/480 at boundary, R-37: night tier 1, R-38: 260 notif + 480 ack, R-39: non-round both late). Pipeline-packaged. Uploading now."
-        },
         {
           "at": "2026-09-11T18:24:07Z",
           "status": "ready_final",
@@ -930,9 +925,14 @@
           "at": "2026-09-13T17:45:05Z",
           "status": "final_running",
           "note": "h40 v27 uploaded (content-12e4beec). Fixed solve.sh to only copy deliverables (not input/ which is read-only in Docker). Finding precedence rule change intact. 141 results, 170 verifiers, 189 tests. QC-Oracle-GLM running."
+        },
+        {
+          "at": "2026-09-14T01:01:53Z",
+          "status": "needs_densify",
+          "note": "h40 v27: Oracle PASS, GLM 4/4. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved) did NOT trip GLM. Model reads procedure.md dynamically and implements all rules. Solve.sh fixed (Oracle passes). 12+ versions exhausted - model writes correct Python script every time."
         }
       ],
-      "updated_at": "2026-09-13T17:45:05Z",
+      "updated_at": "2026-09-14T01:01:53Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
