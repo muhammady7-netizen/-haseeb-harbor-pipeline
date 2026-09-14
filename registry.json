@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-13T17:54:46Z",
+  "updated_at": "2026-09-14T01:01:49Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -3212,13 +3212,8 @@
       "session": "F",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g857.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "v4 (536e8bab-v4) uploaded with 72 people + 8 trap people + FIXED headcount assertions (5 mismatches fixed). Oracle should pass 1.0 with fixed headcount. GLM should trip on trap people.",
+      "notes": "v4 (536e8bab-v4) Re-run started. Previous: Oracle 1.0, GLM 4/4 (too easy). 72 people + 8 trap people + fixed headcount. GLM results probabilistic — may get <=3/4 this time.",
       "history": [
-        {
-          "at": "2026-09-10T20:58:41Z",
-          "status": "ready_final",
-          "note": "Re-queue via pipeline.qc_queue (headless, no Chrome churn)."
-        },
         {
           "at": "2026-09-10T21:02:24Z",
           "status": "final_running",
@@ -3413,9 +3408,14 @@
           "at": "2026-09-13T17:54:46Z",
           "status": "final_running",
           "note": "v4 (536e8bab-v4) uploaded with 72 people + 8 trap people + FIXED headcount assertions (5 mismatches fixed). Oracle should pass 1.0 with fixed headcount. GLM should trip on trap people."
+        },
+        {
+          "at": "2026-09-14T01:01:49Z",
+          "status": "final_running",
+          "note": "v4 (536e8bab-v4) Re-run started. Previous: Oracle 1.0, GLM 4/4 (too easy). 72 people + 8 trap people + fixed headcount. GLM results probabilistic — may get <=3/4 this time."
         }
       ],
-      "updated_at": "2026-09-13T17:54:46Z",
+      "updated_at": "2026-09-14T01:01:49Z",
       "last_preqc": {
         "at": "2026-09-09T08:21:58Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1001684\\2026-09-09T082134Z",
@@ -3435,17 +3435,9 @@
       "portal": {
         "version": "v4",
         "watch": true,
-        "last_check_at": "2026-09-13T17:54:46Z",
+        "last_check_at": "2026-09-14T01:01:49Z",
         "phase": "oracle_running",
         "checks": [
-          {
-            "at": "2026-09-10T15:48:16Z",
-            "phase": "glm_or_oracle_running",
-            "running": true,
-            "note": "gen-g857 v9 eval STARTED (platform runs fresh Oracle+GLM x4)",
-            "glm_pass": null,
-            "oracle": null
-          },
           {
             "at": "2026-09-10T16:26:57Z",
             "phase": "glm_or_oracle_running",
@@ -3675,6 +3667,14 @@
             "phase": "oracle_running",
             "running": true,
             "note": "v4 (536e8bab-v4) uploaded with 72 people + 8 trap people + FIXED headcount assertions (5 mismatches fixed). Oracle should pass 1.0 with fixed headcount. GLM should trip on trap people.",
+            "glm_pass": null,
+            "oracle": null
+          },
+          {
+            "at": "2026-09-14T01:01:49Z",
+            "phase": "oracle_running",
+            "running": true,
+            "note": "v4 (536e8bab-v4) Re-run started. Previous: Oracle 1.0, GLM 4/4 (too easy). 72 people + 8 trap people + fixed headcount. GLM results probabilistic — may get <=3/4 this time.",
             "glm_pass": null,
             "oracle": null
           }
