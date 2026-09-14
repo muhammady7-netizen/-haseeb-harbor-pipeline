@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T01:01:53Z",
+  "updated_at": "2026-09-14T01:13:31Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -731,17 +731,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "needs_densify",
+      "status": "final_running",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v27: Oracle PASS, GLM 4/4. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved) did NOT trip GLM. Model reads procedure.md dynamically and implements all rules. Solve.sh fixed (Oracle passes). 12+ versions exhausted - model writes correct Python script every time.",
+      "notes": "h40 v28: Added R-142 with seconds in timestamps (09:00:30, 09:20:45, 09:50:15). Updated procedure to mention seconds. Updated golden, verifier (171 checks, 190 tests). Pipeline-packaged. Upload pending - browser stuck.",
       "history": [
-        {
-          "at": "2026-09-11T18:24:07Z",
-          "status": "ready_final",
-          "note": "pulled latest zip 82989 (densified counts); headless upload Final QC only"
-        },
         {
           "at": "2026-09-11T18:24:43Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-14T01:01:53Z",
           "status": "needs_densify",
           "note": "h40 v27: Oracle PASS, GLM 4/4. Finding precedence rule change (unapproved within window -> only acknowledger_unapproved) did NOT trip GLM. Model reads procedure.md dynamically and implements all rules. Solve.sh fixed (Oracle passes). 12+ versions exhausted - model writes correct Python script every time."
+        },
+        {
+          "at": "2026-09-14T01:13:31Z",
+          "status": "final_running",
+          "note": "h40 v28: Added R-142 with seconds in timestamps (09:00:30, 09:20:45, 09:50:15). Updated procedure to mention seconds. Updated golden, verifier (171 checks, 190 tests). Pipeline-packaged. Upload pending - browser stuck."
         }
       ],
-      "updated_at": "2026-09-14T01:01:53Z",
+      "updated_at": "2026-09-14T01:13:31Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
