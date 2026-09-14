@@ -36,3 +36,6 @@ Thumbs.db
 
 # Large video files - keep in repo locally only
 *.mp4
+
+# Pre-QC scratch work area
+tmp-preqc-work/

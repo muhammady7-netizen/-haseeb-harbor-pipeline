@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T03:26:28Z",
+  "updated_at": "2026-09-14T03:30:20Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -81,10 +81,10 @@
       "pack_name": "fin-f39-distributable-profits",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1000070/fin-f39-distributable-profits",
-      "status": "needs_densify",
+      "status": "preqc_clean",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-fin-f39.zip",
-      "next_action": "Poll Oracle+GLM×4+Harbor on content-d09f3e79...-v1",
+      "next_action": "Pre-QC clean. Upload to V2 trainer, Dismiss portal PreQC, run Oracle+GLM x4. Difficulty (GLM 4/4) still needs addressing before final accept.",
       "notes": "v39: Oracle PASS, GLM 4/4 (too easy), 0 findings but DIFFICULTY blocker. 16 versions tried. Fundamental tension: verifier fairness vs difficulty. Only case-sensitive trap made GLM fail but Harbor Check flags it as contrived. Moving to gen-g1205 and the-thread.",
       "history": [
         {
@@ -286,9 +286,14 @@
           "at": "2026-09-13T17:50:41Z",
           "status": "needs_densify",
           "note": "v39: Oracle PASS, GLM 4/4 (too easy), 0 findings but DIFFICULTY blocker. 16 versions tried. Fundamental tension: verifier fairness vs difficulty. Only case-sensitive trap made GLM fail but Harbor Check flags it as contrived. Moving to gen-g1205 and the-thread."
+        },
+        {
+          "at": "2026-09-14T03:30:20Z",
+          "status": "preqc_clean",
+          "note": "Pre-QC mandatory fix: migrated 16 memo regex_match checks from verifier.json to test_outputs.py Python assertions (clears D1 prose_regex_grading); added non-root USER to Dockerfile (clears D2 root_container). verifier_defect_lint.py = 0 findings. Golden memo still passes all checks."
         }
       ],
-      "updated_at": "2026-09-13T17:50:41Z",
+      "updated_at": "2026-09-14T03:30:20Z",
       "last_preqc": {
         "at": "2026-09-08T03:02:52Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000070\\2026-09-08T030251Z",
@@ -3854,10 +3859,10 @@
       "pack_name": "gen-g1205-meal-prep-cost-claim-recompute-audit",
       "work_root": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016",
       "pack_path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/NONC-B1-1002016/gen-g1205-meal-prep-cost-claim-recompute-audit",
-      "status": "needs_densify",
+      "status": "preqc_clean",
       "session": "A",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-gen-g1205.zip",
-      "next_action": "Upload canonical_zip to V2 trainer, Dismiss portal PreQC, run Oracle+GLM×4. URL: https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#",
+      "next_action": "Pre-QC clean. Upload to V2 trainer, Dismiss portal PreQC, run Oracle+GLM x4. Difficulty (GLM 4/4) still needs addressing before final accept.",
       "notes": "v3 done: Oracle PASS, GLM 4/4 (too easy). Fixed memo_content_anchors + R-05 CSV check + review.csv. Pass to partlets per meeting guidance.",
       "history": [
         {
@@ -4049,9 +4054,14 @@
           "at": "2026-09-12T10:45:35Z",
           "status": "needs_densify",
           "note": "v3 done: Oracle PASS, GLM 4/4 (too easy). Fixed memo_content_anchors + R-05 CSV check + review.csv. Pass to partlets per meeting guidance."
+        },
+        {
+          "at": "2026-09-14T03:30:20Z",
+          "status": "preqc_clean",
+          "note": "Pre-QC mandatory fix: migrated 20 memo regex_match checks from verifier.json to test_outputs.py Python assertions (clears D1 prose_regex_grading); added non-root USER to Dockerfile (clears D2 root_container). verifier_defect_lint.py = 0 findings. Golden memo still passes all checks."
         }
       ],
-      "updated_at": "2026-09-12T10:45:35Z",
+      "updated_at": "2026-09-14T03:30:20Z",
       "last_preqc": {
         "at": "2026-09-08T09:18:28Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1002016\\2026-09-08T091827Z",
