@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T04:57:51Z",
+  "updated_at": "2026-09-14T05:14:22Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -745,13 +745,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v29: PreQC passed (all findings dismissed as false positive). QC-Oracle-GLM started (evaluation-6f9bdc94). Fixed: D1 prose_regex (line-anchored [^\\n]), broad synonyms tightened to exact codes, memo_has_explanatory_body removed. 142 results, 170 verifiers, 189 tests. Pipeline-packaged.",
+      "notes": "h40 v29: PreQC passed. QC-Oracle-GLM errored, re-triggered. Waiting for eval.",
       "history": [
-        {
-          "at": "2026-09-11T18:24:44Z",
-          "status": "final_running",
-          "note": "headless Final QC running after pull"
-        },
         {
           "at": "2026-09-11T18:45:07Z",
           "status": "final_running",
@@ -940,9 +935,14 @@
           "at": "2026-09-14T03:26:28Z",
           "status": "final_running",
           "note": "h40 v29: PreQC passed (all findings dismissed as false positive). QC-Oracle-GLM started (evaluation-6f9bdc94). Fixed: D1 prose_regex (line-anchored [^\\n]), broad synonyms tightened to exact codes, memo_has_explanatory_body removed. 142 results, 170 verifiers, 189 tests. Pipeline-packaged."
+        },
+        {
+          "at": "2026-09-14T05:14:22Z",
+          "status": "final_running",
+          "note": "h40 v29: PreQC passed. QC-Oracle-GLM errored, re-triggered. Waiting for eval."
         }
       ],
-      "updated_at": "2026-09-14T03:26:28Z",
+      "updated_at": "2026-09-14T05:14:22Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
