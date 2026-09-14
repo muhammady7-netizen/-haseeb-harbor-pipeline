@@ -1,0 +1,323 @@
+[
+    {
+        "id": "s01",
+        "depends_on": [],
+        "name": "slack_read_user_profile",
+        "server": "slack-gym",
+        "arguments": {}
+    },
+    {
+        "id": "s02",
+        "depends_on": [],
+        "name": "slack_read_channel",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "CV22RIS8EUFS",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s03",
+        "depends_on": [],
+        "name": "slack_read_channel",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "CRTSMZXIYU27",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s04",
+        "depends_on": [],
+        "name": "slack_read_channel",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C893RPE2V5HO",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s05",
+        "depends_on": [],
+        "name": "slack_read_channel",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s06",
+        "depends_on": [
+            "s02"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "CV22RIS8EUFS",
+            "message_ts": "1771228895.364693",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s07",
+        "depends_on": [
+            "s02"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "CV22RIS8EUFS",
+            "message_ts": "1771275919.597351",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s08",
+        "depends_on": [
+            "s03"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "CRTSMZXIYU27",
+            "message_ts": "1771248864.040782",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s09",
+        "depends_on": [
+            "s03"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "CRTSMZXIYU27",
+            "message_ts": "1771316267.949157",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s10",
+        "depends_on": [
+            "s04"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C893RPE2V5HO",
+            "message_ts": "1770973715.273407",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s11",
+        "depends_on": [
+            "s04"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C893RPE2V5HO",
+            "message_ts": "1771213716.787313",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s12",
+        "depends_on": [
+            "s04"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C893RPE2V5HO",
+            "message_ts": "1771235180.335143",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s13",
+        "depends_on": [
+            "s04"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C893RPE2V5HO",
+            "message_ts": "1771259323.565255",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s14",
+        "depends_on": [
+            "s04"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C893RPE2V5HO",
+            "message_ts": "1771303566.261648",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s15",
+        "depends_on": [
+            "s04"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C893RPE2V5HO",
+            "message_ts": "1771326145.006876",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s16",
+        "depends_on": [
+            "s05"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "message_ts": "1771197450.697300",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s17",
+        "depends_on": [
+            "s05"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "message_ts": "1771219683.670336",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s18",
+        "depends_on": [
+            "s05"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "message_ts": "1771241306.517885",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s19",
+        "depends_on": [
+            "s05"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "message_ts": "1771265162.182241",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s20",
+        "depends_on": [
+            "s05"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "message_ts": "1771286638.720924",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s21",
+        "depends_on": [
+            "s05"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "message_ts": "1771309514.496061",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s22",
+        "depends_on": [
+            "s05"
+        ],
+        "name": "slack_read_thread",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "C279YYU33SGZ",
+            "message_ts": "1771354654.490792",
+            "limit": 100,
+            "response_format": "detailed"
+        }
+    },
+    {
+        "id": "s23",
+        "depends_on": [
+            "s02",
+            "s03",
+            "s04",
+            "s05",
+            "s06",
+            "s07",
+            "s08",
+            "s09",
+            "s10",
+            "s11",
+            "s12",
+            "s13",
+            "s14",
+            "s15",
+            "s16",
+            "s17",
+            "s18",
+            "s19",
+            "s20",
+            "s21",
+            "s22"
+        ],
+        "name": "slack_send_message",
+        "server": "slack-gym",
+        "arguments": {
+            "channel_id": "CV22RIS8EUFS",
+            "message": "Recount across the four rooms chartered for security.\n\nThe room listings only carry 35 rows between them - the messages that started a thread plus four replies that were broadcast back out. Opening every thread that reports replies brings the real total to 56.\n\n| room | messages | replies | threads answered |\n| --- | --- | --- | --- |\n| general-meshworks-security | 11 | 3 | 2 |\n| security-095 | 11 | 4 | 2 |\n| security-v1-041 | 15 | 7 | 6 |\n| security-v3-065 | 19 | 11 | 7 |\n| TOTAL | 56 | 25 | 17 |\n\n15 different accounts replied to something. Only 3 of them never started a thread of their own here, and those 3 account for 4 of the 25 replies."
+        }
+    }
+]

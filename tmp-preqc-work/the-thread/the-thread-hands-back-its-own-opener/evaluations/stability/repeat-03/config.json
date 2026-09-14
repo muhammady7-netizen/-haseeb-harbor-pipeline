@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\the-thread-work\\the-thread-hands-back-its-own-opener"
+    },
+    "trial_name": "the-thread-hands-back-its-own-op__tf384kN",
+    "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\the-thread-work\\the-thread-hands-back-its-own-opener\\harbor-jobs\\oracle-thread-stab-3",
+    "verifier": {
+        "env": {
+            "JUDGE_MODEL": "openai/glm-5.2",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+        }
+    },
+    "job_id": "4b06cbb0-06c3-4814-a2d2-ef2126a04e6e"
+}

@@ -1,0 +1,8 @@
+ingredient,unit_price_usd,effective_date,status
+chicken_breast,4.10,2026-07-01,active
+cilantro_lime_rice,0.55,2026-07-01,draft
+chicken_breast,4.25,2026-08-01,active
+chicken_breast,4.50,2026-09-01,proposed
+asparagus,3.25,2026-08-01,Active
+cilantro_lime_rice,0.65,2026-08-01,active
+ chicken_breast ,4.25,2026-08-01, Active

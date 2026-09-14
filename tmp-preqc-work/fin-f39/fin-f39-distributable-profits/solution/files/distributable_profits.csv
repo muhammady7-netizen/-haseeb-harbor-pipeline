@@ -1,0 +1,19 @@
+item,amount_gbp,treatment
+Retained earnings per the last annual accounts,2400000,Starting point
+Revaluation surplus on Fairhurst Road (disposed of in the year),320000,Realised on disposal — available whether or not transferred out of revaluation reserve A
+Revaluation surplus on Maple Court (disposed of in the year),300000,Realised on disposal — available whether or not transferred out of revaluation reserve B
+Revaluation surplus on Oak Plaza (50% disposed),50000,Realised on disposal to the extent of the disposed portion; the remaining 50000 stays unrealised
+Fair value gain on Brookvale investment property,-180000,Unrealised — the asset is not readily convertible to cash
+Fair value gain on listed equity investments,0,"Realised — readily convertible to cash, so no adjustment"
+Fair value gain on the Helmsley private equity stake,-85000,"Unrealised — unquoted private-company interest, not readily convertible to cash"
+Fair value gain on UK government bonds,0,"Realised — readily convertible to cash, no negotiation needed, no effect on price"
+Development costs capitalised (software project A),-260000,Treated as a realised loss — FD email is not notes to the accounts
+Development costs capitalised (software project B),0,NOT a realised loss — directors justified special circumstances in Note 17 of the notes to the accounts
+Provision for the Denby litigation,0,A realised loss already charged in accordance with accounting standards — no adjustment
+Provision for the Elmwood restructuring,80000,Not a realised loss — not charged in accordance with accounting standards — added back
+Profits available for distribution,2625000,
+Distributions already paid since the last annual accounts,-750000,"Two interim dividends with status Paid after trim (PAID is case-sensitive and does not count; declared third interim is not yet made)"
+Fourth interim with status PAID,0,"PAID is not Paid — case-sensitive per the policy; does not count as paid"
+Third interim declared but not yet paid,0,Declared only — does not reduce profits available until paid
+Maximum further distribution,1875000,
+Capital and reserves not available for distribution,2680000,"Share capital 500000, share premium 1200000, capital redemption reserve 150000, unrealised revaluation reserve A (Willowbrook 580000), unrealised revaluation reserve B (Treetop 200000 + Oak Plaza held 50000 = 250000)"

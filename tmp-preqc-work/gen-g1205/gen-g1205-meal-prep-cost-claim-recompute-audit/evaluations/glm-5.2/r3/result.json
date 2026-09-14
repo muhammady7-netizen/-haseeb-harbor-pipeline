@@ -1,0 +1,10 @@
+{
+    "model": "GLM-5.2",
+    "overall_pass": true,
+    "reward": 1.0,
+    "task_name": "obi/gen-g1205-meal-prep-cost-claim-recompute-audit",
+    "trial_name": "gen-g1205-meal-prep-cost-claim-r__VZ2b6fq",
+    "final_answer": "All three deliverables are confirmed in `/app`:\n\n- **`recipe_cost_audit.csv`** \u2014 100 data rows, exactly two columns (`recipe_id,finding`), canonical IDs, one finding per recipe.\n- **`recipe_cost_memo.md`** \u2014 7850 chars (\u22651500), references all six required concepts verbatim.\n- **`results.json`** \u2014 `recipe_count:100, flagged_count:56, cost_claim_flagged_count:21, stale_price_flagged_count:20, compliant_count:44`.\n\nSummary of the audit:\n- **Register override** (active rows only, last-wins, trim): chicken $4.00\u2192$4.25, rice $0.60\u2192$0.65, asparagus $3.00\u2192$3.25. Draft rice $0.55, proposed chicken $4.50, and the proposed $4.50 errata were all excluded.\n- **15 `SERVING_COUNT_MISSING`** \u2014 blank/zero/negative/unparseable servings (incl. `+0`, `00`, `-2`, `-0`); precedes all other checks.\n- **20 `PRICE_SHEET_STALE`** \u2014 `chicken_price_used` \u2260 $4.25 (e.g. $4.00, $4.20, $4.30, blank, `4.25.0`); independent of claim validity (R-15/R-73/R-84 would also be cost-invalid).\n- **21 `COST_CLAIM_INVALID`** \u2014 recomputed exceeds claim by \u2265 $0.25 using current prices.\n- **44 `none`** \u2014 including recipes saved by the **pantry-staple exclusion**: R-53's $10 saffron (delta +$5.20\u2192+$0.20), plus R-44/R-56 truffle oil, R-70 vanilla, R-75 bay leaf, R-95 garlic, R-66 sea salt, and R-03/R-20/R-33/R-39 finishing salt.",
+    "judge_provenance": "harbor-verifier",
+    "task_checksum": "fade71d51ec49ac9b34947124bb10a4217449d462c5a6be648a7c1c5eb65fb62"
+}

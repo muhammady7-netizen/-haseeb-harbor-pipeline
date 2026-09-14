@@ -1,0 +1,30 @@
+schema_version = "1.3"
+artifacts = ["recipe_cost_audit.csv", "recipe_cost_memo.md", "results.json"]
+
+[task]
+name = "obi/gen-g1205-meal-prep-cost-claim-recompute-audit"
+description = "Recompute a meal-prep recipe batch's cost claims against the current price sheet"
+authors = []
+keywords = ["harbor", "shannon-200", "gen", "non-connector", "offline"]
+
+[metadata]
+source_config = "infra/task-harness/configs/shannon-200/task_gen_G1205_meal_prep_cost_claim_recompute_audit"
+
+[verifier]
+timeout_sec = 600.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

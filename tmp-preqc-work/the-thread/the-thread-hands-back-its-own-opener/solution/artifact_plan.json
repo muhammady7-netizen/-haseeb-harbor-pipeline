@@ -1,0 +1,16 @@
+﻿{
+    "report_path":  "report.md",
+    "report":  "# Recounting the four security rooms\n\n## What the listings show, and what they miss\n\nOpening the four rooms returns 35 rows between them. That is not what was said in them. A room\nlisting carries the messages that started a thread plus the handful of replies that were\nbroadcast back out - here, 31 openers and 4 broadcasts. Everything else lives underneath, and\nthe only way to see it is to open each thread that reports replies.\n\n## What the thread reads add, and what they double\n\n17 of the 31 openers report replies. Opening all 17 returns 42 rows, because a thread read hands\nback its own opener alongside the replies. The replies themselves number 25, and 56 messages were\nposted across the four rooms in total: 11 in general-meshworks-security, 11 in security-095, 15\nin security-v1-041 and 19 in security-v3-065.\n\n## Who is actually talking\n\nEach opener reports how many accounts are in its thread but never says which. Those counts add up\nto 25 across the 17 threads, which is the reply count again rather than a roster. Reading the\nthreads gives 15 distinct accounts replying. 21 accounts started a thread here, and only 3 of the\nrepliers never started one; between them they account for 4 of the 25 replies. The recount is\nposted in general-meshworks-security with a line per room and a TOTAL line.\n\n## Self-replies\n\n5 of the 25 replies were posted by the same account that started the thread they\nreplied to. A self-reply is not a separate message type; it is an ordinary reply whose\nauthor happens to be the person who opened that thread. It still counts as a reply and\nas a message; the only question is whether the author matches the opener, thread by\nthread.\n\n\nThe 31 openers are the messages that started threads. The 4 broadcast replies are the replies visible in the room listing — the other 21 replies live underneath threads and only appear when you open them.\n",
+    "json_path":  "metrics.json",
+    "json":  {
+                 "messages_in_total":  56,
+                 "replies_in_total":  25,
+                 "threads_with_replies":  17,
+                 "people_who_replied":  15,
+                 "replies_from_outside_the_openers":  4,
+                 "self_replies":  5,
+                 "openers_in_total":  31,
+                 "broadcast_replies":  4
+             },
+    "xlsx_path":  null
+}

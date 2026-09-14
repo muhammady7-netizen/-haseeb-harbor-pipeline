@@ -1,0 +1,564 @@
+{
+  "state": {
+    "snapshot": {
+      "mode": "full_hash",
+      "exclude_tables": [
+        "sqlite_sequence",
+        "sqlite_stat1"
+      ],
+      "include_tables": null,
+      "schema_version": "harbor.state_snapshot.v1",
+      "debug_full_rows": "gzip",
+      "diff_schema_version": "harbor.state_diff.v1"
+    },
+    "canonicalize": {
+      "sort_lists": true,
+      "strip_fields": [
+        "id",
+        "created_at",
+        "updated_at",
+        "executed_at",
+        "deleted_at",
+        "execution_time_ms",
+        "fr_due_by",
+        "due_by",
+        "last_used_at",
+        "create_time",
+        "update_time"
+      ],
+      "strip_fields_per_table": {}
+    },
+    "expected_diff_file": "solution/expected_diff.json"
+  },
+  "rubric": {
+    "file": "tests/rubric.toml",
+    "evidence": {
+      "max_chars": 350000,
+      "include_db_diff": false,
+      "include_trajectory": true,
+      "include_final_output": true
+    }
+  },
+  "scoring": {
+    "weights": {
+      "state": 0.0,
+      "rubric": 1.0,
+      "trajectory": 0.0
+    },
+    "round_digits": 4,
+    "flat_verifier_scoring": true,
+    "allowed_verifier_types": [
+      "database_state",
+      "rubric",
+      "agentic_llm_as_judge"
+    ]
+  },
+  "trajectory": {
+    "golden_file": "solution/golden_trajectory.json",
+    "response_match": {
+      "match_is_error": true,
+      "match_status_code": true,
+      "strip_response_fields": [
+        "id",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "forbidden_tools": [],
+    "agent_trace_file": "/logs/agent/trajectory.json",
+    "scoring_per_step": {
+      "args_weight": 0.4,
+      "name_weight": 0.4,
+      "response_weight": 0.2
+    }
+  },
+  "verifier_configs": [
+    {
+      "name": "recount_post_exists",
+      "description": "gym-state assertion: the recount was posted into general-meshworks-security",
+      "requirement_id": "R6",
+      "evidence_span": "Post the recount into general-meshworks-security",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE user = 'UDV94ZXBF0PM' AND channel = 'CV22RIS8EUFS' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), '`','') LIKE '%securityv1041%'",
+      "expected_value": 1,
+      "comparison_type": "greater_or_equal",
+      "metadata": {
+        "why_justification": "The posted recount is the durable half of the deliverable. It catches the run that answers in its final reply or leaves the table in report.md and never posts into the room the request names."
+      }
+    },
+    {
+      "name": "recount_covers_all_four_rooms",
+      "description": "gym-state assertion: the recount names all four rooms",
+      "requirement_id": "R6",
+      "evidence_span": "a line per room and a TOTAL line",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE user = 'UDV94ZXBF0PM' AND channel = 'CV22RIS8EUFS' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), '`','') LIKE '%generalmeshworkssecurity%' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), '`','') LIKE '%security095%' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), '`','') LIKE '%securityv1041%' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), '`','') LIKE '%securityv3065%'",
+      "expected_value": 1,
+      "comparison_type": "greater_or_equal",
+      "metadata": {
+        "why_justification": "A run that stops at the two rooms whose listings look busy reports two rows, and the two quiet rooms never appear."
+      }
+    },
+    {
+      "name": "recount_carries_a_total_line",
+      "description": "gym-state assertion: the recount includes a TOTAL line",
+      "requirement_id": "R6",
+      "evidence_span": "and a TOTAL line",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE user = 'UDV94ZXBF0PM' AND channel = 'CV22RIS8EUFS' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), '`','') LIKE '%total%'",
+      "expected_value": 1,
+      "comparison_type": "greater_or_equal",
+      "metadata": {
+        "why_justification": "A per-room table with no total is the shape a run produces when it never combined the rooms."
+      }
+    },
+    {
+      "name": "recount_post_carries_correct_total",
+      "description": "gym-state assertion: the posted recount includes a TOTAL line and the correct total (56) somewhere in the message",
+      "requirement_id": "R6",
+      "evidence_span": "a line per room and a TOTAL line",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE user = 'UDV94ZXBF0PM' AND channel = 'CV22RIS8EUFS' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), char(124),''), '`','') LIKE '%total%' AND replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(text), char(9),''), char(10),''), char(13),''), ' ',''), '-',''), '_',''), '#',''), '.',''), ',',''), ':',''), '*',''), char(124),''), '`','') LIKE '%total%56%'",
+      "expected_value": 1,
+      "comparison_type": "greater_or_equal",
+      "metadata": {
+        "why_justification": "A post that says TOTAL but with the wrong number reveals the agent counted listing rows rather than opening threads. This check requires both the word TOTAL and the number 56 to appear in the posted message, in any order — not necessarily adjacent."
+      }
+    },
+    {
+      "name": "messages_in_total",
+      "requirement_id": "R1",
+      "evidence_span": "How much was said in all",
+      "description": "Read messages_in_total from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "messages_in_total",
+        "verifiers": [
+          {
+            "name": "messages_in_total",
+            "metadata": {
+              "how_justification": "Read messages_in_total from metrics.json.",
+              "why_justification": "Counting what the four room listings return yields 35 against 56, because a listing carries the thread openers and only the broadcast replies; counting the openers alone yields 31."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 56,
+              "deterministic": {
+                "path": "$.messages_in_total",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "replies_in_total",
+      "requirement_id": "R2",
+      "evidence_span": "How much of that was a reply rather than something that started a thread",
+      "description": "Read replies_in_total from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "replies_in_total",
+        "verifiers": [
+          {
+            "name": "replies_in_total",
+            "metadata": {
+              "how_justification": "Read replies_in_total from metrics.json.",
+              "why_justification": "Counting the rows the 17 thread reads return yields 42 against 25, because a thread read hands back its own opener; counting the replies visible in the room listings yields 4."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 25,
+              "deterministic": {
+                "path": "$.replies_in_total",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "threads_with_replies",
+      "requirement_id": "R3",
+      "evidence_span": "How many of the things that started a thread got answered at all",
+      "description": "Read threads_with_replies from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "threads_with_replies",
+        "verifiers": [
+          {
+            "name": "threads_with_replies",
+            "metadata": {
+              "how_justification": "Read threads_with_replies from metrics.json.",
+              "why_justification": "Counting every message that started a thread yields 31 against 17, and counting the listing rows that are not openers yields 4."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 17,
+              "deterministic": {
+                "path": "$.threads_with_replies",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "people_who_replied",
+      "requirement_id": "R4",
+      "evidence_span": "How many different accounts replied to anything",
+      "description": "Read people_who_replied from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "people_who_replied",
+        "verifiers": [
+          {
+            "name": "people_who_replied",
+            "metadata": {
+              "how_justification": "Read people_who_replied from metrics.json.",
+              "why_justification": "Adding up the accounts-in-thread counts the listings report yields 25 against 15 - that is the reply count again, not a roster; counting everybody who posted in the four rooms yields 24."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 15,
+              "deterministic": {
+                "path": "$.people_who_replied",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "replies_from_outside_the_openers",
+      "requirement_id": "R5",
+      "evidence_span": "came from someone who never started a thread of their own in these four rooms",
+      "description": "Read replies_from_outside_the_openers from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "replies_from_outside_the_openers",
+        "verifiers": [
+          {
+            "name": "replies_from_outside_the_openers",
+            "metadata": {
+              "how_justification": "Read replies_from_outside_the_openers from metrics.json.",
+              "why_justification": "Counting the people rather than their replies yields 3 against 4, and counting every reply yields 25."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$.replies_from_outside_the_openers",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "self_replies",
+      "requirement_id": "R8",
+      "evidence_span": "how many of those replies were posted by the same account that started the thread they replied to",
+      "description": "Read self_replies from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "self_replies",
+        "verifiers": [
+          {
+            "name": "self_replies",
+            "metadata": {
+              "how_justification": "Read self_replies from metrics.json.",
+              "why_justification": "A self-reply is a reply whose author is the same account that started that thread. Counting it requires opening each thread and matching the opener's user with each reply's user, thread by thread. The trap is to count all replies from anyone who started any thread (21) rather than only replies where the author started that specific thread (5)."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 5,
+              "deterministic": {
+                "path": "$.self_replies",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "report_names_a_room",
+      "requirement_id": "R7",
+      "evidence_span": "Leave report.md and metrics.json at the workspace root",
+      "description": "Extract report.md text and require at least one of the four rooms in scope to be named, in any markdown rendering of its name.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "report_names_a_room",
+        "verifiers": [
+          {
+            "name": "report_names_a_room",
+            "metadata": {
+              "how_justification": "Extract report.md text and require at least one of the four rooms in scope to be named, in any markdown rendering of its name.",
+              "why_justification": "Guards against a write-up that reports five totals without naming a single room they came from."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "md",
+                "command": "extract_text",
+                "arguments": {
+                  "path": "report.md"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "(?i)(general[\\W_]{0,3}meshworks[\\W_]{0,3}security|security[\\W_]{0,3}095|security[\\W_]{0,3}v1[\\W_]{0,3}041|security[\\W_]{0,3}v3[\\W_]{0,3}065)",
+              "deterministic": {
+                "path": "$.text",
+                "comparison": "regex_match"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "did_the_work_through_the_gym",
+      "requirement_id": "R0",
+      "evidence_span": "Four rooms are in scope",
+      "description": "Floor only: the episode must actually drive the gym. Names no tool (a live agent records slack-gym_<tool> while the oracle replay records the bare <tool>, and the match is exact and ANDed), so expected_tools stays empty and only the call floor is asserted.",
+      "category": "core",
+      "verifier_type": "tool_execution",
+      "type": "tool_execution",
+      "weight": 0.5,
+      "target_gym_server": "slack-gym",
+      "expected_tools": [],
+      "minimum_tool_calls": 18,
+      "metadata": {
+        "why_justification": "A floor the shortcut cannot clear on volume: any correct route opens the four rooms and then a thread per answered message, and search cannot stand in for the thread reads (its rows carry no thread_ts and it pages at 20), so the leanest correct run is 4 listings + 16-17 thread reads + the post = 21-22 gym calls; the oracle makes 24. The floor sits at 18 to keep headroom under that while still rejecting the run this check exists to catch - read the four listings, report their row counts, post - which makes 7."
+      }
+    },
+    {
+      "name": "method_opened_the_threads",
+      "requirement_id": "R2",
+      "evidence_span": "Most of the conversation lives underneath the messages that started a thread",
+      "description": "PASS if the content underneath the messages that started a thread was actually retrieved, so replies were seen rather than inferred - any number of calls, one per thread or fewer, passes equally. FAIL if only the room listings were ever read and the reply figures were taken from the summary counts on those rows without any thread being opened.",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "trace",
+      "target_gym_server": "slack-gym",
+      "rubric": "PASS if the content underneath the messages that started a thread was actually retrieved, so replies were seen rather than inferred - any number of calls, one per thread or fewer, passes equally. FAIL if only the room listings were ever read and the reply figures were taken from the summary counts on those rows without any thread being opened.",
+      "expected": "PASS",
+      "weight": 1.0,
+      "metadata": {
+        "why_justification": "The room listings carry 35 rows against 56 messages and expose four replies of the 25, so a listing-only run cannot see the replies or the accounts behind them at all."
+      }
+    },
+    {
+      "name": "method_identified_repliers_rather_than_counting_them",
+      "requirement_id": "R4",
+      "evidence_span": "How many different accounts replied to anything",
+      "description": "PASS if the accounts that replied were identified individually, so the same account replying to several threads is counted once. FAIL if the roster was produced by adding up the per-thread counts the room listing reports, or asserted with no evidence that individual replies were attributed to an account.",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "trace",
+      "target_gym_server": "slack-gym",
+      "rubric": "PASS if the accounts that replied were identified individually, so the same account replying to several threads is counted once. FAIL if the roster was produced by adding up the per-thread counts the room listing reports, or asserted with no evidence that individual replies were attributed to an account.",
+      "expected": "PASS",
+      "weight": 1.0,
+      "metadata": {
+        "why_justification": "The listing reports how many accounts are in each thread but never which, and those counts sum to 25 across the 17 threads against 15 distinct accounts."
+      }
+    },
+    {
+      "name": "openers_in_total",
+      "requirement_id": "R9",
+      "evidence_span": "openers_in_total is the count of messages that started a thread",
+      "description": "Read openers_in_total from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "openers_in_total",
+        "verifiers": [
+          {
+            "name": "openers_in_total",
+            "metadata": {
+              "how_justification": "Read openers_in_total from metrics.json.",
+              "why_justification": "Counting all messages yields 56 against 31 openers; counting listing rows yields 35. Only messages that started a thread count as openers."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 31,
+              "deterministic": {
+                "path": "$.openers_in_total",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "broadcast_replies",
+      "requirement_id": "R10",
+      "evidence_span": "broadcast_replies is the count of replies that appear in the room listing itself",
+      "description": "Read broadcast_replies from metrics.json.",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "weight": 1.0,
+      "pass_threshold": 1.0,
+      "verifier_spec": {
+        "task_id": "broadcast_replies",
+        "verifiers": [
+          {
+            "name": "broadcast_replies",
+            "metadata": {
+              "how_justification": "Read broadcast_replies from metrics.json.",
+              "why_justification": "Counting all replies yields 25 against 4 broadcast replies. Only replies visible in the room listing itself count as broadcast; the rest live underneath threads."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$.broadcast_replies",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

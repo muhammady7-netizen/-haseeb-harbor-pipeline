@@ -1,0 +1,18 @@
+{
+    "task": {
+        "path": "C:\\Users\\USER\\Downloads\\gen-g1205-meal-prep-cost-claim-recompute-audit",
+        "git_url": null,
+        "git_commit_id": null,
+        "name": null,
+        "ref": null,
+        "overwrite": false,
+        "download_dir": null,
+        "source": null
+    },
+    "trial_name": "gen-g1205-meal-prep-cost-claim-r__XaDCfvC",
+    "trials_dir": "C:\\Users\\USER\\AppData\\Local\\Temp\\harbor-jobs\\gen-g1205-meal-prep-cost-claim-recompute-audit",
+    "verifier": {
+        "env": {}
+    },
+    "job_id": "ad3257ee-1738-4b6c-9659-cec520e2f559"
+}

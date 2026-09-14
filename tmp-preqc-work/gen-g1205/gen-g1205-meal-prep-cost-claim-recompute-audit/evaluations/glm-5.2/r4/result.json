@@ -1,0 +1,10 @@
+{
+    "model": "GLM-5.2",
+    "overall_pass": false,
+    "reward": 0.0,
+    "task_name": "obi/gen-g1205-meal-prep-cost-claim-recompute-audit",
+    "trial_name": "gen-g1205-meal-prep-cost-claim-r__q7XiLsn",
+    "final_answer": "Delivered recipe_cost_audit.csv, recipe_cost_memo.md, and results.json.",
+    "judge_provenance": "harbor-verifier",
+    "task_checksum": "fade71d51ec49ac9b34947124bb10a4217449d462c5a6be648a7c1c5eb65fb62"
+}

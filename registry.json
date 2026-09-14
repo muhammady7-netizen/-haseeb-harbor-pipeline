@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T03:15:04Z",
+  "updated_at": "2026-09-14T03:26:28Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -735,13 +735,8 @@
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v28: Added R-142 with seconds in timestamps (09:00:30, 09:20:45, 09:50:15). Updated procedure to mention seconds. Updated golden, verifier (171 checks, 190 tests). Pipeline-packaged. Upload pending - browser stuck.",
+      "notes": "h40 v29: PreQC passed (all findings dismissed as false positive). QC-Oracle-GLM started (evaluation-6f9bdc94). Fixed: D1 prose_regex (line-anchored [^\\n]), broad synonyms tightened to exact codes, memo_has_explanatory_body removed. 142 results, 170 verifiers, 189 tests. Pipeline-packaged.",
       "history": [
-        {
-          "at": "2026-09-11T18:24:43Z",
-          "status": "final_running",
-          "note": "latest zip uploaded #a34a429; Final QC started (PreQC skipped)"
-        },
         {
           "at": "2026-09-11T18:24:44Z",
           "status": "final_running",
@@ -930,9 +925,14 @@
           "at": "2026-09-14T01:13:31Z",
           "status": "final_running",
           "note": "h40 v28: Added R-142 with seconds in timestamps (09:00:30, 09:20:45, 09:50:15). Updated procedure to mention seconds. Updated golden, verifier (171 checks, 190 tests). Pipeline-packaged. Upload pending - browser stuck."
+        },
+        {
+          "at": "2026-09-14T03:26:28Z",
+          "status": "final_running",
+          "note": "h40 v29: PreQC passed (all findings dismissed as false positive). QC-Oracle-GLM started (evaluation-6f9bdc94). Fixed: D1 prose_regex (line-anchored [^\\n]), broad synonyms tightened to exact codes, memo_has_explanatory_body removed. 142 results, 170 verifiers, 189 tests. Pipeline-packaged."
         }
       ],
-      "updated_at": "2026-09-14T01:13:31Z",
+      "updated_at": "2026-09-14T03:26:28Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",

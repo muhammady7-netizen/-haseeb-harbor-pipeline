@@ -1,0 +1,27 @@
+{
+    "task": {
+        "path": "C:\\Users\\USER\\Downloads\\the-thread-hands-back-its-own-opener",
+        "git_url": null,
+        "git_commit_id": null,
+        "name": null,
+        "ref": null,
+        "overwrite": false,
+        "download_dir": null,
+        "source": null
+    },
+    "trial_name": "the-thread-hands-back-its-own-op__qaQn9mG",
+    "trials_dir": "C:\\Users\\USER\\AppData\\Local\\Temp\\harbor-jobs\\the-thread-hands-back-its-own-opener",
+    "timeout_multiplier": 2.0,
+    "agent_setup_timeout_multiplier": 5.0,
+    "agent": {
+        "name": "opencode",
+        "model_name": "glm/glm-5.2",
+        "kwargs": {},
+        "env": {},
+        "mcp_servers": []
+    },
+    "verifier": {
+        "env": {}
+    },
+    "job_id": "5f98e2af-6608-4d34-bdcb-dc202999f6e6"
+}

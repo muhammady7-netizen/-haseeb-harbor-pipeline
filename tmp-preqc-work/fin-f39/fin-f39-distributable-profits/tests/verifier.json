@@ -1,0 +1,705 @@
+{
+  "task_id": "fin-F39-distributable-profits",
+  "verifiers": [
+    {
+      "name": "schedule_exists",
+      "metadata": {
+        "how_justification": "Checks distributable_profits.csv is present as a file in the workspace.",
+        "why_justification": "Schedule delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_exists",
+      "metadata": {
+        "how_justification": "Checks dividend_memo.md is present as a file in the workspace.",
+        "why_justification": "Memo delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "dividend_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Checks results.json is present as a file in the workspace.",
+        "why_justification": "Derived figures delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "schedule_has_expected_columns",
+      "metadata": {
+        "how_justification": "Opens distributable_profits.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Schedule carries the requested schema."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)item.{0,40}amount.{0,40}treatment",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "schedule_starts_from_retained_earnings",
+      "metadata": {
+        "how_justification": "Opens distributable_profits.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Build starts from retained earnings 2,400,000."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*(retained\\s+earnings)[^\\n]*2[,.]?400[,.]?000",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "fairhurst_surplus_brought_in",
+      "metadata": {
+        "how_justification": "Opens distributable_profits.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Realised Fairhurst revaluation surplus of 320,000 is brought in."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*(Fairhurst|revaluation|disposal)[^\\n]*320[,.]?000",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "brookvale_gain_deducted",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored: requires 'Brookvale' AND a NEGATIVE 180,000 (with minus sign) on the same line. A row that adds the gain (+180,000) does not match.",
+        "why_justification": "Unrealised Brookvale investment-property gain is deducted."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*[Bb]rookvale[^\\n]*-(?:\\s*)?180[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "listed_equity_no_adjustment",
+      "metadata": {
+        "how_justification": "Opens distributable_profits.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Listed equity gain considered with amount 0 or an explicit no-adjustment treatment."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*(listed|quoted)[^\\n]*(?:\\b0\\b|no\\s+adjustment)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "helmsley_unquoted_deducted",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored: requires 'Helmsley' AND a NEGATIVE 85,000 on the same line.",
+        "why_justification": "Unquoted Helmsley private-equity gain is deducted."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*[Hh]elmsley[^\\n]*-(?:\\s*)?85[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "development_costs_deducted",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored: requires 'Development costs' AND a NEGATIVE 260,000 on the same line.",
+        "why_justification": "Capitalised development costs are deducted as a realised loss."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*[Dd]evelopment costs[^\\n]*-(?:\\s*)?260[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "denby_provision_no_adjustment",
+      "metadata": {
+        "how_justification": "Opens distributable_profits.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Denby provision is considered with no add-back (0 or stated)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*(Denby|provision|litigation)[^\\n]*(?:\\b0\\b|no\\s+adjustment)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "distributable_profits_total",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored regex requiring 'Profits available for distribution' AND 2,625,000 on the same line.",
+        "why_justification": "Profits available for distribution = 2,625,000."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*Profits available for distribution[^\\n]*2[,.]?625[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "paid_distributions_only",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored: requires 'paid'/'interim' AND a NEGATIVE 750,000 on the same line.",
+        "why_justification": "Only the two Paid interims (750,000) reduce the pool."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*(?:paid|Paid|interim)[^\\n]*-(?:\\s*)?750[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "declared_interim_zero_on_schedule",
+      "metadata": {
+        "how_justification": "Opens distributable_profits.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Declared-but-unpaid third interim considered without reducing the pool."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*(third|declared|unpaid|not\\s+yet\\s+paid)[^\\n]*(?:\\b0\\b|no\\s+adjustment|until\\s+paid|not\\s+yet\\s+paid)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "maximum_further_on_schedule",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored regex requiring 'Maximum further' AND 1,875,000 on the same line.",
+        "why_justification": "Maximum further distribution = 1,875,000."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*[Mm]aximum further[^\\n]*1[,.]?875[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "non_distributable_on_schedule",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored regex requiring 'Capital and reserves not available' AND 2,680,000 on the same line.",
+        "why_justification": "Non-distributable capital = 2,680,000."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*[Cc]apital and reserves not available[^\\n]*2[,.]?680[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "result_distributable_profits_gbp",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.distributable_profits_gbp.",
+        "why_justification": "Derived figure distributable_profits_gbp, recomputed from the schedule."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 2625000,
+        "deterministic": {
+          "path": "$.distributable_profits_gbp",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_non_distributable_capital_gbp",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.non_distributable_capital_gbp.",
+        "why_justification": "Derived figure non_distributable_capital_gbp, recomputed from reserves."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 2680000,
+        "deterministic": {
+          "path": "$.non_distributable_capital_gbp",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_dividends_paid_gbp",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.dividends_paid_gbp.",
+        "why_justification": "Derived figure dividends_paid_gbp — Paid status only after trim."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 750000,
+        "deterministic": {
+          "path": "$.dividends_paid_gbp",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_maximum_further_dividend_gbp",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.maximum_further_dividend_gbp.",
+        "why_justification": "Derived figure maximum_further_dividend_gbp = distributable − paid."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 1875000,
+        "deterministic": {
+          "path": "$.maximum_further_dividend_gbp",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_proposed_dividend_is_lawful",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.proposed_dividend_is_lawful.",
+        "why_justification": "Derived figure proposed_dividend_is_lawful."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.proposed_dividend_is_lawful",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "maple_court_disposal_brought_in",
+      "metadata": {
+        "how_justification": "csv.extract_text; checks 300000 Maple Court disposal is in the CSV.",
+        "why_justification": "Maple Court was disposed; surplus is realised."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)maple.*300[,.]?000",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "oak_plaza_partial_disposal",
+      "metadata": {
+        "how_justification": "csv.extract_text; checks 50000 Oak Plaza partial disposal is in the CSV.",
+        "why_justification": "Only the disposed 50% of Oak Plaza is realised; the held 50% stays unrealised."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)oak.*50[,.]?000",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "govt_bonds_no_adjustment",
+      "metadata": {
+        "how_justification": "csv.extract_text; requires 0 in amount_gbp for government bonds row. Instruction discloses that no-adjustment items use 0.",
+        "why_justification": "The zero-amount convention for no-adjustment items is now disclosed in instruction.md."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)(?:government|govt|gilt)[^,]*,0(?:,|\"|\\s*$)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "dev_costs_b_no_deduction",
+      "metadata": {
+        "how_justification": "csv.extract_text; requires 0 in amount_gbp for project B row. Instruction discloses that no-adjustment items use 0.",
+        "why_justification": "The zero-amount convention is now disclosed in instruction.md."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)(?:project\\s+B)[^,]*,0(?:,|\"|\\s*$)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "elmwood_restructuring_added_back",
+      "metadata": {
+        "how_justification": "csv.extract_text; line-anchored: requires 'elmwood' AND a POSITIVE 80,000 (no minus sign before the number) on the same line.",
+        "why_justification": "Elmwood provision not per IAS 37 — not a realised loss, added back."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n]*elmwood[^\\n]*(?<!-)80[,.]?000[^\\n]*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "paid_case_trap_zero",
+      "metadata": {
+        "how_justification": "csv.extract_text; case-sensitive PAID (uppercase only) with amount 0. The instruction now discloses that dividends not exactly Paid should have amount 0.",
+        "why_justification": "The PAID case-sensitivity trap is now disclosed in instruction.md."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?m)^[^\\n]*PAID[^\\n]*,0(?:[,\\n]|$)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "schedule_no_duplicate_items",
+      "metadata": {
+        "how_justification": "csv.extract_text; negative lookahead verifies 'Profits available for distribution' appears at most once. Combined with the per-item checks, this rejects any duplicated-row submission.",
+        "why_justification": "A duplicated-row CSV would contain two copies of the summary line; this check rejects it."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "distributable_profits.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?s)^(?:(?!Profits available for distribution.*Profits available for distribution).)*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    }
+  ]
+}

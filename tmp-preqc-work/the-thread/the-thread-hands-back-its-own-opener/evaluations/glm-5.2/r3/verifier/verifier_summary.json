@@ -1,0 +1,11 @@
+{
+    "reward": {
+        "total": 0.0,
+        "rubric": {
+            "items": []
+        }
+    },
+    "source": "harbor-cli-ctrf",
+    "ctrf_summary": {},
+    "test_stdout_tail": ""
+}

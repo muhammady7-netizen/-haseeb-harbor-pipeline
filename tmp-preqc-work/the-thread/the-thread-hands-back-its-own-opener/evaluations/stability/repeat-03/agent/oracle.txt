@@ -1,0 +1,27 @@
+[1/23] slack-gym.slack_read_user_profile
+[2/23] slack-gym.slack_read_channel
+[3/23] slack-gym.slack_read_channel
+[4/23] slack-gym.slack_read_channel
+[5/23] slack-gym.slack_read_channel
+[6/23] slack-gym.slack_read_thread
+[7/23] slack-gym.slack_read_thread
+[8/23] slack-gym.slack_read_thread
+[9/23] slack-gym.slack_read_thread
+[10/23] slack-gym.slack_read_thread
+[11/23] slack-gym.slack_read_thread
+[12/23] slack-gym.slack_read_thread
+[13/23] slack-gym.slack_read_thread
+[14/23] slack-gym.slack_read_thread
+[15/23] slack-gym.slack_read_thread
+[16/23] slack-gym.slack_read_thread
+[17/23] slack-gym.slack_read_thread
+[18/23] slack-gym.slack_read_thread
+[19/23] slack-gym.slack_read_thread
+[20/23] slack-gym.slack_read_thread
+[21/23] slack-gym.slack_read_thread
+[22/23] slack-gym.slack_read_thread
+[23/23] slack-gym.slack_send_message
+wrote captured responses to /tmp/tmp.ErS7K4W3GX/solution/golden_trajectory.json
+mirrored to /logs/verifier/golden_trajectory.json (for daytona artifact pull)
+wrote report.md
+wrote metrics.json keys ['messages_in_total', 'people_who_replied', 'replies_from_outside_the_openers', 'replies_in_total', 'self_replies', 'threads_with_replies']

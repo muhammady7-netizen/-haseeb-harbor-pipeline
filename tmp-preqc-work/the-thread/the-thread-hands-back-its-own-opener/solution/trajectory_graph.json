@@ -1,0 +1,40 @@
+{
+  "hops": 17,
+  "chain_depth": 3,
+  "steps": 23,
+  "graded_hops": 17,
+  "hop_coverage": 1.0,
+  "hop_steps": [
+    "s06",
+    "s07",
+    "s08",
+    "s09",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22"
+  ],
+  "not_hops": {
+    "s01": "self profile read, arguments come from nothing",
+    "s02": "the room is named in the prompt; this replay carries its id directly, so the arguments derive from no earlier result",
+    "s03": "the room is named in the prompt; this replay carries its id directly, so the arguments derive from no earlier result",
+    "s04": "the room is named in the prompt; this replay carries its id directly, so the arguments derive from no earlier result",
+    "s05": "the room is named in the prompt; this replay carries its id directly, so the arguments derive from no earlier result",
+    "s23": "write step; its result is not load-bearing for the gold"
+  },
+  "longest_path": [
+    "s02",
+    "s06",
+    "s23"
+  ],
+  "note": "hops = steps whose arguments derive from an earlier step's output AND whose result is load-bearing. The four rooms are named in the prompt so their reads are not hops, but every one of the 17 thread reads takes its timestamp from a listing row and is the only place the replies and the accounts behind them can be seen."
+}

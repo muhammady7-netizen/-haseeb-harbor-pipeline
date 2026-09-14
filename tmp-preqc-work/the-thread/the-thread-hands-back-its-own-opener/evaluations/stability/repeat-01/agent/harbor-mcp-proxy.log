@@ -1,0 +1,69 @@
+2026-09-01 21:07:04,826 INFO harbor-mcp-proxy: server 'slack-gym' upstream=http://127.0.0.1:8008 db_id=db_1788296824826_890f8565 auth_hdr=x-slack-user-token db_hdr=x-database-id seed=<gym default> reset_on_run=True
+2026-09-01 21:07:34,979 INFO httpx: HTTP Request: GET http://127.0.0.1:8008/health "HTTP/1.1 200 OK"
+2026-09-01 21:07:35,009 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/reset "HTTP/1.1 200 OK"
+2026-09-01 21:07:35,022 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+2026-09-01 21:07:35,026 INFO harbor-mcp-proxy: server 'slack-gym' ready with 14 tool(s)
+2026-09-01 21:07:35,027 WARNING harbor-mcp-proxy: BAD GYM SCHEMA [slack-gym/slack_create_canvas]: schema contains problematic keys/patterns that LLM providers reject — 'title'. Fix the gym's schema before sharing or the run will fail on the first completion.
+2026-09-01 21:07:35,028 INFO harbor-mcp-proxy: server 'slack-gym': before-snapshot skipped (JSON State verifier disabled)
+2026-09-01 21:07:35,032 INFO harbor-mcp-proxy: proxy listening on 0.0.0.0:7000 — routes: ['/health', '/mcp/slack-gym']
+INFO:     Started server process [14]
+INFO:     Waiting for application startup.
+2026-09-01 21:07:35,085 INFO mcp.server.streamable_http_manager: StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:7000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57262 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57274 - "GET /health HTTP/1.1" 200 OK
+2026-09-01 21:07:51,019 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,128 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,196 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,277 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,344 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,448 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,522 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,592 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,669 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,751 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,846 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:51,950 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,042 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,166 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,302 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,383 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,473 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,541 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,606 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,676 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,757 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,822 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:07:52,961 INFO httpx: HTTP Request: POST http://127.0.0.1:8008/step "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:57274 - "POST /raw/slack-gym/step HTTP/1.1" 200 OK
+2026-09-01 21:08:00,803 INFO httpx: HTTP Request: GET http://127.0.0.1:8008/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25securityv1041%25%27 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:56074 - "GET /raw/slack-gym/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25securityv1041%25%27 HTTP/1.1" 200 OK
+2026-09-01 21:08:00,864 INFO httpx: HTTP Request: GET http://127.0.0.1:8008/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25generalmeshworkssecurity%25%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25security095%25%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25securityv1041%25%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25securityv3065%25%27 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:56088 - "GET /raw/slack-gym/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25generalmeshworkssecurity%25%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25security095%25%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25securityv1041%25%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25securityv3065%25%27 HTTP/1.1" 200 OK
+2026-09-01 21:08:00,904 INFO httpx: HTTP Request: GET http://127.0.0.1:8008/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25total%25%27 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:56098 - "GET /raw/slack-gym/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25total%25%27 HTTP/1.1" 200 OK
+2026-09-01 21:08:00,944 INFO httpx: HTTP Request: GET http://127.0.0.1:8008/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+char%28124%29%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25total56%25%27 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:56108 - "GET /raw/slack-gym/state?verify_queries=SELECT+COUNT%28%2A%29+FROM+slack_messages+WHERE+user+%3D+%27UDV94ZXBF0PM%27+AND+channel+%3D+%27CV22RIS8EUFS%27+AND+replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28replace%28lower%28text%29%2C+char%289%29%2C%27%27%29%2C+char%2810%29%2C%27%27%29%2C+char%2813%29%2C%27%27%29%2C+%27+%27%2C%27%27%29%2C+%27-%27%2C%27%27%29%2C+%27_%27%2C%27%27%29%2C+%27%23%27%2C%27%27%29%2C+%27.%27%2C%27%27%29%2C+%27%2C%27%2C%27%27%29%2C+%27%3A%27%2C%27%27%29%2C+%27%2A%27%2C%27%27%29%2C+char%28124%29%2C%27%27%29%2C+%27%60%27%2C%27%27%29+LIKE+%27%25total56%25%27 HTTP/1.1" 200 OK
