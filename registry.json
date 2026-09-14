@@ -2,7 +2,7 @@
   "schema": "haseeb-pipeline/v1",
   "owner": "Muhammad Haseeb Younas",
   "email": "muhammad.y7@turing.com",
-  "updated_at": "2026-09-14T05:24:28Z",
+  "updated_at": "2026-09-14T06:12:55Z",
   "github": {
     "owner": "muhammady7-netizen",
     "repo": "-haseeb-harbor-pipeline",
@@ -751,17 +751,12 @@
       "pack_name": "health-h40-critical-result-acknowledgement",
       "work_root": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40",
       "pack_path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/qc-out/ework/UPLOAD-THIS-TO-QC-health-h40/health-h40-critical-result-acknowledgement",
-      "status": "final_running",
+      "status": "needs_densify",
       "session": "E",
       "canonical_zip": "C:\\Users\\Haseeb Mirza\\Downloads\\UPLOAD-THIS-TO-QC-health-h40.zip",
       "next_action": "Keep polling portal until Oracle+GLM×4 finishes",
-      "notes": "h40 v29: PreQC passed. QC-Oracle-GLM errored, re-triggered. Waiting for eval.",
+      "notes": "h40 v29: QC-Oracle-GLM keeps erroring (evaluation-6f9bdc94). PreQC passed (all findings dismissed). Delivery eval keeps failing with error status. May be infrastructure issue. 142 results, 170 verifiers, 189 tests. All progress pushed.",
       "history": [
-        {
-          "at": "2026-09-11T18:45:07Z",
-          "status": "final_running",
-          "note": "Oracle Passed 1.0; GLM x4 in progress on #a34a429"
-        },
         {
           "at": "2026-09-11T18:47:30Z",
           "status": "needs_densify",
@@ -950,9 +945,14 @@
           "at": "2026-09-14T05:14:22Z",
           "status": "final_running",
           "note": "h40 v29: PreQC passed. QC-Oracle-GLM errored, re-triggered. Waiting for eval."
+        },
+        {
+          "at": "2026-09-14T06:12:55Z",
+          "status": "needs_densify",
+          "note": "h40 v29: QC-Oracle-GLM keeps erroring (evaluation-6f9bdc94). PreQC passed (all findings dismissed). Delivery eval keeps failing with error status. May be infrastructure issue. 142 results, 170 verifiers, 189 tests. All progress pushed."
         }
       ],
-      "updated_at": "2026-09-14T05:14:22Z",
+      "updated_at": "2026-09-14T06:12:55Z",
       "last_preqc": {
         "at": "2026-09-09T05:24:33Z",
         "out_dir": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\qc-out\\NONC-B1-1000151\\2026-09-09T052432Z",
