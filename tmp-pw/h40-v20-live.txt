@@ -24,7 +24,7 @@ Review findings
 Review record
 5
 Evaluation
-glm
+harbor
 6
 Submit
 Client preQC (Internal Gate · advisory)
@@ -57,11 +57,11 @@ Run history
 QC-ORACLE-GLM CHECK
 QC-Oracle-GLM check
 Oracle Passed
-GLM-5.2 ×4 difficulty Running
-running · 1036s
+GLM-5.2 ×4 difficulty Completed · 3/4 passed
+running · 1225s
 RESULT
-glm
-1036s
+harbor
+1225s
 Execution status — Oracle then GLM ×4
 ORACLE GOLDEN REPLAY
 
@@ -71,9 +71,9 @@ View Oracle in Harbor
 
 GLM-5.2 ×4 DIFFICULTY
 
-Running 4 scored GLM runs are in progress.
+Completed 3/4 passed. 3 of 4 scored GLM runs solved the task.
 
-Result not available yet Result not available yet Result not available yet Result not available yet
+View GLM run 1 in Harbor View GLM run 2 in Harbor View GLM run 3 in Harbor View GLM run 4 in Harbor
 
 Live evaluation logs
 Trainer-only execution output
@@ -86,8 +86,9 @@ oracle — Oracle gate started
 oracle — Oracle gate completed
 glm — GLM x4 started
 glm — waiting for cloud capacity
-
-no update for 9m — still running; the worker heartbeats separately
+glm — GLM x4 completed
+harbor — Harbor Check started
+harbor — waiting for cloud capacity
 
 Oracle + GLM ×4 + Harbor Check normally takes around 50 minutes — one Oracle golden replay, four GLM-5.2 trials, then Harbor Check. Some runs finish sooner; large or connector-heavy tasks can run longer. Nothing is lost if you navigate away.
 
