@@ -1,0 +1,192 @@
+{
+  "schema_version": "ATIF-v1.5",
+  "session_id": "oracle-replay",
+  "agent": {
+    "name": "oracle",
+    "version": "1.0.0",
+    "model_name": null,
+    "model_provider": null
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-1",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat input/clarification.md"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 2,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-2",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat input/letter_lines.csv"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 3,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-3",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat input/original_instruction.md"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 4,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-4",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat input/review_protocol.md"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 5,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-5",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat input/submission_format.md"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 6,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-6",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat > answer.md << 'ANSWEREOF'\n# The draft letter weighed against the client's two messages\n\nLetter lines at odds with the record: 4\n\nThe greater part of the draft matches what the client asked for and is verified: the right of first refusal, the children and their ages, the overnight stays, the father's shifting accounts, the concern, the request, the enclosure, the salutation and the signature all hold, under the clarification wherever it speaks and under the original wherever it does not. The draft parts from the record in claiming the stays have left the behavioural plan untouched, in setting the position out firmly and at length when the client wanted it soft and brief, and in copying the father when the client said to copy nobody. The reply deadline, the mention of the school principal and the offer to mediate answer to nothing in either message.\n\nST-104 directs the letter to counsel for the father, leaning on the original instruction, which did say so. The clarification sends the letter to the mother's attorney instead, and on a disagreement the clarification prevails whatever the draft cites, so ST-104 is at odds with the record under CL-301.\nANSWEREOF"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 7,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-7",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat > letter_line_review.csv << 'LETTERLINEREVIEWEOF'\nline_id,verdict,record_entry\nST-101,VERIFIED,OI-202\nST-102,VERIFIED,OI-203\nST-103,VERIFIED,OI-204\nST-104,AT_ODDS,CL-301\nST-105,VERIFIED,OI-205\nST-106,VERIFIED,OI-206\nST-107,AT_ODDS,OI-207\nST-108,VERIFIED,CL-302\nST-109,VERIFIED,CL-303\nST-110,AT_ODDS,OI-210\nST-111,VERIFIED,OI-211\nST-112,VERIFIED,CL-304\nST-113,AT_ODDS,CL-305\nST-114,NOT_IN_RECORD,NONE\nST-115,NOT_IN_RECORD,NONE\nST-116,NOT_IN_RECORD,NONE\nLETTERLINEREVIEWEOF"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 8,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-8",
+          "function_name": "bash",
+          "arguments": {
+            "command": "cat > results.json << 'RESULTSEOF'\n{\n  \"verified_count\": 9,\n  \"at_odds_count\": 4,\n  \"not_in_record_count\": 3,\n  \"clarification_governed_count\": 5\n}\nRESULTSEOF"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 9,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Oracle step bash",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-step-9",
+          "function_name": "bash",
+          "arguments": {
+            "command": "ls -la answer.md letter_line_review.csv results.json"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    },
+    {
+      "step_id": 10,
+      "timestamp": "2026-09-13T01:57:30.732286+00:00",
+      "source": "agent",
+      "message": "Finished.",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-finish",
+          "function_name": "finish",
+          "arguments": {
+            "message": "Deliverables written: answer.md, letter_line_review.csv, results.json"
+          }
+        }
+      ],
+      "observation": {
+        "results": []
+      }
+    }
+  ]
+}
