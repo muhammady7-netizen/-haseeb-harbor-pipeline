@@ -125,7 +125,7 @@
       "graded_by": [
         "answer_at_odds_figure",
         "answer_at_odds_figure_exactly_one",
-        "answer_prose_floor"
+        "answer_at_odds_figure_exactly_one"
       ],
       "graded_by_count": 3,
       "tolerance": {
