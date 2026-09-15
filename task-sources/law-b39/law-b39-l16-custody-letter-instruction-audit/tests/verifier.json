@@ -360,8 +360,8 @@
     {
       "name": "answer_prose_floor",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose.",
-        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. This check enforces that requirement in the reward path.",
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose containing domain content (letter, client, record, draft, verified, odds, behavioural, concern, request, enclosure, salutation, signature, father, mother, attorney, counsel, children, overnight, refusal).",
+        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. This check enforces both the word count floor and requires substantive domain content.",
         "tag": "incidental"
       },
       "source": {
@@ -376,7 +376,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)\\A(?:[^\\s\\n]+(?:\\s+[^\\s\\n]+){59,})",
+        "expected": "(?s)\\A(?:\\S+\\s+){59}(?:\\S+\\s+){0,30}(?:letter|client|record|draft|verified|odds|behavioural|concern|request|enclosure|salutation|signature|father|mother|attorney|counsel|children|overnight|refusal)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
