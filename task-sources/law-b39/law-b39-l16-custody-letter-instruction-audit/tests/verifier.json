@@ -83,7 +83,7 @@
       "name": "register_table_trap_st104",
       "metadata": {
         "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals to every graded cell of the ST-104 row (matched by 'line_id'); a failure names the exact cell.",
-        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).\"",
+        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-\u2026` or `CL-\u2026`; `NONE` when neither record speaks to the subject).\"",
         "tag": "core"
       },
       "source": {
@@ -120,7 +120,7 @@
       "name": "register_table",
       "metadata": {
         "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals: every graded cell of 15 rows plus the full 16-row population as a row_set lock (duplicate-row and cross-product dumps fail the lock; a duplicated graded id is rejected outright), the delivered row order equal to the stated order, and the delivered column set closed to the stated header, with declared cell types {'record_entry': 'id'} normalised on both sides. A failure names the exact row and column.",
-        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).\"",
+        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-\u2026` or `CL-\u2026`; `NONE` when neither record speaks to the subject).\"",
         "tag": "core"
       },
       "source": {
@@ -354,6 +354,32 @@
         "deterministic": {
           "path": "$.is_file",
           "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "answer_prose_floor",
+      "metadata": {
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose.",
+        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. This check enforces that requirement in the reward path.",
+        "tag": "incidental"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "answer.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?s)\\A(?:[^\\s\\n]+(?:\\s+[^\\s\\n]+){59,})",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
         }
       }
     }
