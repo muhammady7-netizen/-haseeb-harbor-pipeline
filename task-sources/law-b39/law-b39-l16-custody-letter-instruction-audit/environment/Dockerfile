@@ -67,6 +67,9 @@ RUN chmod -R a-w,a+rX /app/input
 # Create writable dirs for the agent before dropping root.
 RUN mkdir -p /logs/agent && chmod 777 /logs/agent
 
+# Ensure /app is writable by the non-root agent (WORKDIR created it as root).
+RUN chmod 777 /app
+
 # Drop to non-root for the agent runtime.
 RUN useradd -m appuser
 USER appuser
