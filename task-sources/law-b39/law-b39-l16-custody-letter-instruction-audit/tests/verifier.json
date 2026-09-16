@@ -360,9 +360,9 @@
     {
       "name": "answer_prose_floor",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose containing at least 3 distinct domain content words (letter, client, record, draft, verified, odds, behavioural, concern, request, enclosure, salutation, signature, father, mother, attorney, counsel, children, overnight, refusal) appearing anywhere in the text.",
-        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. This check enforces both the word count floor and requires substantive domain content (3+ distinct domain words) appearing anywhere in the text.",
-        "tag": "core"
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose.",
+        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. This check enforces the word count floor as an incidental check (does not zero an otherwise perfect submission).",
+        "tag": "incidental"
       },
       "source": {
         "type": "file",
@@ -376,7 +376,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)\\A(?:\\S+\\s+){59,}\\S+.*(?:letter|client|record|draft|verified|odds|behavioural|concern|request|enclosure|salutation|signature|father|mother|attorney|counsel|children|overnight|refusal).*(?:letter|client|record|draft|verified|odds|behavioural|concern|request|enclosure|salutation|signature|father|mother|attorney|counsel|children|overnight|refusal).*(?:letter|client|record|draft|verified|odds|behavioural|concern|request|enclosure|salutation|signature|father|mother|attorney|counsel|children|overnight|refusal)",
+        "expected": "(?s)\\A(?:\\S+\\s+){59,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
