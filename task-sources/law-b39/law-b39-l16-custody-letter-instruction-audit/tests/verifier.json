@@ -233,6 +233,38 @@
             "ST-124": {
               "verdict": "NOT_IN_RECORD",
               "record_entry": "NONE"
+            },
+            "ST-125": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-126": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-303"
+            },
+            "ST-127": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-210"
+            },
+            "ST-128": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-129": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
+            },
+            "ST-130": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-131": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
+            },
+            "ST-132": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-302"
             }
           },
           "row_set": [
@@ -259,7 +291,15 @@
             "ST-121",
             "ST-122",
             "ST-123",
-            "ST-124"
+            "ST-124",
+            "ST-125",
+            "ST-126",
+            "ST-127",
+            "ST-128",
+            "ST-129",
+            "ST-130",
+            "ST-131",
+            "ST-132"
           ],
           "row_set_ordered": true,
           "columns": [
@@ -299,19 +339,19 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 11,
+              "value": 13,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 7,
+              "value": 12,
               "tolerance": null
             },
             "not_in_record_count": {
-              "value": 6,
+              "value": 7,
               "tolerance": null
             },
             "clarification_governed_count": {
-              "value": 8,
+              "value": 13,
               "tolerance": null
             }
           },
@@ -342,7 +382,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,70}?(?<![\\d.])(?:7|7\\.0|7\\.00|\\bseven\\b)(?!\\d)(?!\\.\\d)|(?<![\\d.])(?:7|7\\.0|7\\.00|\\bseven\\b)(?!\\d)(?!\\.\\d)(?:(?![.!?](?:\\s|$)|\\n).){0,70}?\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b)",
+        "expected": "(?is)(?:\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,120}?(?<![\\d.])(?:12|12\\.0|12\\.00|\\btwelve\\b)(?!\\d)(?!\\.\\d)|(?<![\\d.])(?:12|12\\.0|12\\.00|\\btwelve\\b)(?!\\d)(?!\\.\\d)(?:(?![.!?](?:\\s|$)|\\n).){0,120}?\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
