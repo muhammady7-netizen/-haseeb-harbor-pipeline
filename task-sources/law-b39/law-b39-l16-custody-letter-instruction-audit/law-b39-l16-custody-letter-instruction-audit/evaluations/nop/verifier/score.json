@@ -1,0 +1,87 @@
+{
+  "reward": 0.0,
+  "core_failures": [
+    "answer_exists",
+    "answer_at_odds_figure_exactly_one",
+    "register_exists",
+    "register_header",
+    "register_table_trap_st104",
+    "register_table",
+    "results_figures",
+    "results_exists"
+  ],
+  "passed": 0,
+  "total": 9,
+  "checks": [
+    {
+      "name": "answer_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "answer_at_odds_figure_exactly_one",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "required file missing: answer.md"
+    },
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "required file missing: letter_line_review.csv"
+    },
+    {
+      "name": "register_table_trap_st104",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "required file missing: letter_line_review.csv"
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "required file missing: letter_line_review.csv"
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "required file missing: results.json"
+    },
+    {
+      "name": "answer_at_odds_figure",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "required file missing: answer.md"
+    },
+    {
+      "name": "answer_at_odds_figure_exactly_one",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "required file missing: answer.md"
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1,
+      "detail": "assertion failed"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "task": "task_law_b39_l16_custody_letter_instruction_audit",
   "generated_by": "to_harbor_cli.build_requirements_json",
-  "verifier_total": 10,
+  "verifier_total": 9,
   "census": {
     "letter_line_review.csv": {
       "records": 16,
@@ -15,12 +15,8 @@
   },
   "scoring": {
     "policy": "two-tier: any core failure zeroes the reward; incidental failures cost their weight share (tests/score.py)",
-    "core": 8,
-    "incidental": [
-      "answer_at_odds_figure",
-      "answer_at_odds_figure_exactly_one",
-      "answer_prose_floor"
-    ],
+    "core": 7,
+    "incidental": 2,
     "sidecar_note": "derived figures are paid once, in results.json; artifact cell pins grade PRIMARY data carried into the deliverable, and cardinality closures pay the count \u2014 neither re-pays a derived figure"
   },
   "duplicate_payments": [
@@ -129,7 +125,7 @@
       "graded_by": [
         "answer_at_odds_figure",
         "answer_at_odds_figure_exactly_one",
-        "answer_prose_floor"
+        "answer_at_odds_figure_exactly_one"
       ],
       "graded_by_count": 3,
       "tolerance": {
