@@ -1,16 +1,16 @@
 {
-    "id": "6ac6f8fe-d8ce-4154-88f1-b31160eb4d9b",
+    "id": "f745e6b5-d7d7-4506-a9fd-a9f5f7c9df91",
     "task_name": "obi/law-b39-l16-custody-letter-instruction-audit",
-    "trial_name": "law-b39-l16-custody-letter-instr__aXcP4xd",
-    "trial_uri": "file:///C:/Users/hp/nonconnector-tasks/oracle-runs/b39/law-b39-l16-custody-letter-instruction-audit/run/law-b39-l16-custody-letter-instr__aXcP4xd",
+    "trial_name": "law-b39-l16-custody-letter-instr__Cy8JwMD",
+    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-b39/oracle-b39-l16-v9-empty/law-b39-l16-custody-letter-instr__Cy8JwMD",
     "task_id": {
-        "path": "C:\\Users\\hp\\nonconnector-tasks\\bundles\\shannon-200\\law-b39-l16-custody-letter-instruction-audit"
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit"
     },
     "source": null,
-    "task_checksum": "93755a83ae7498c7ea8694a354225e3121edd32206538d26072a6f81ef575b85",
+    "task_checksum": "06e12249b4b1b55e1847dd600c5d1e53576c1d7cc1792c5f6ab3767bfcfd6081",
     "config": {
         "task": {
-            "path": "C:\\Users\\hp\\nonconnector-tasks\\bundles\\shannon-200\\law-b39-l16-custody-letter-instruction-audit",
+            "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit",
             "git_url": null,
             "git_commit_id": null,
             "name": null,
@@ -19,8 +19,8 @@
             "download_dir": null,
             "source": null
         },
-        "trial_name": "law-b39-l16-custody-letter-instr__aXcP4xd",
-        "trials_dir": "C:\\Users\\hp\\nonconnector-tasks\\oracle-runs\\b39\\law-b39-l16-custody-letter-instruction-audit\\run",
+        "trial_name": "law-b39-l16-custody-letter-instr__Cy8JwMD",
+        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v9-empty",
         "install_only": false,
         "timeout_multiplier": 1.0,
         "agent_timeout_multiplier": null,
@@ -46,7 +46,7 @@
         "environment": {
             "type": "docker",
             "import_path": null,
-            "force_build": false,
+            "force_build": true,
             "delete": true,
             "cpu_enforcement_policy": "auto",
             "memory_enforcement_policy": "auto",
@@ -63,11 +63,16 @@
         "verifier": {
             "override_timeout_sec": null,
             "max_timeout_sec": null,
+            "env": {
+                "JUDGE_MODEL": "openai/glm-5.2",
+                "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+            },
             "disable": false
         },
         "artifacts": [],
         "extra_instruction_paths": [],
-        "job_id": "c2f05284-fe2f-4db3-a754-9e26bd067aac",
+        "job_id": "0e196123-5d99-495d-b342-5bb4d3c94800",
         "source_trial": null
     },
     "agent_info": {
@@ -90,23 +95,23 @@
     },
     "verifier_environment_mode": "shared",
     "exception_info": null,
-    "started_at": "2026-09-13T01:57:17.821184Z",
-    "finished_at": "2026-09-13T01:57:41.667314Z",
+    "started_at": "2026-09-16T12:14:13.415504Z",
+    "finished_at": "2026-09-16T12:14:44.747782Z",
     "environment_setup": {
-        "started_at": "2026-09-13T01:57:18.088187Z",
-        "finished_at": "2026-09-13T01:57:28.085197Z"
+        "started_at": "2026-09-16T12:14:13.645893Z",
+        "finished_at": "2026-09-16T12:14:31.057527Z"
     },
     "agent_setup": {
-        "started_at": "2026-09-13T01:57:28.085197Z",
-        "finished_at": "2026-09-13T01:57:28.085197Z"
+        "started_at": "2026-09-16T12:14:31.057602Z",
+        "finished_at": "2026-09-16T12:14:31.057711Z"
     },
     "agent_execution": {
-        "started_at": "2026-09-13T01:57:28.085197Z",
-        "finished_at": "2026-09-13T01:57:30.988172Z"
+        "started_at": "2026-09-16T12:14:31.057854Z",
+        "finished_at": "2026-09-16T12:14:32.620924Z"
     },
     "verifier": {
-        "started_at": "2026-09-13T01:57:30.995466Z",
-        "finished_at": "2026-09-13T01:57:37.131729Z"
+        "started_at": "2026-09-16T12:14:34.923338Z",
+        "finished_at": "2026-09-16T12:14:40.389554Z"
     },
     "step_results": null
 }

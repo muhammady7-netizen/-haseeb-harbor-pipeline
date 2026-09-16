@@ -6,10 +6,15 @@ collected 18 items
 
 ../tests/test_outputs.py ..................                              [100%]
 
+=============================== warnings summary ===============================
+../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/tests/pytest-cache-files-_6ey2wkw'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 ==================================== PASSES ====================================
 =========================== short test summary info ============================
 PASSED ../tests/test_outputs.py::test_deliverable[answer_exists]
-PASSED ../tests/test_outputs.py::test_deliverable[answer_prose_floor]
 PASSED ../tests/test_outputs.py::test_deliverable[register_exists]
 PASSED ../tests/test_outputs.py::test_deliverable[register_header]
 PASSED ../tests/test_outputs.py::test_deliverable[register_table_trap_st104]
@@ -18,6 +23,7 @@ PASSED ../tests/test_outputs.py::test_deliverable[results_figures]
 PASSED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure]
 PASSED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure_exactly_one]
 PASSED ../tests/test_outputs.py::test_deliverable[results_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[answer_prose_floor]
 PASSED ../tests/test_outputs.py::test_incomplete_output[answer.md]
 PASSED ../tests/test_outputs.py::test_incomplete_output[letter_line_review.csv]
 PASSED ../tests/test_outputs.py::test_incomplete_output[results.json]
@@ -26,7 +32,7 @@ PASSED ../tests/test_outputs.py::test_negative_corrupted_value[clarification_gov
 PASSED ../tests/test_outputs.py::test_negative_corrupted_value[not_in_record_count]
 PASSED ../tests/test_outputs.py::test_negative_corrupted_value[verified_count]
 PASSED ../tests/test_outputs.py::test_adversarial_extra_key
-============================== 18 passed in 1.85s ==============================
+======================== 18 passed, 1 warning in 1.81s =========================
 {
   "reward": 1.0,
   "core_failures": [],
@@ -35,13 +41,6 @@ PASSED ../tests/test_outputs.py::test_adversarial_extra_key
   "checks": [
     {
       "name": "answer_exists",
-      "tag": "core",
-      "passed": true,
-      "weight": 0.1,
-      "detail": ""
-    },
-    {
-      "name": "answer_prose_floor",
       "tag": "core",
       "passed": true,
       "weight": 0.1,
@@ -99,6 +98,13 @@ PASSED ../tests/test_outputs.py::test_adversarial_extra_key
     {
       "name": "results_exists",
       "tag": "core",
+      "passed": true,
+      "weight": 0.1,
+      "detail": ""
+    },
+    {
+      "name": "answer_prose_floor",
+      "tag": "incidental",
       "passed": true,
       "weight": 0.1,
       "detail": ""

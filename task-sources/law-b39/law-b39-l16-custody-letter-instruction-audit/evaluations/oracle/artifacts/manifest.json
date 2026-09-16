@@ -5,5 +5,26 @@
     "type": "directory",
     "status": "empty",
     "service": null
+  },
+  {
+    "source": "answer.md",
+    "destination": "artifacts/answer.md",
+    "type": "file",
+    "status": "failed",
+    "service": null
+  },
+  {
+    "source": "letter_line_review.csv",
+    "destination": "artifacts/letter_line_review.csv",
+    "type": "file",
+    "status": "failed",
+    "service": null
+  },
+  {
+    "source": "results.json",
+    "destination": "artifacts/results.json",
+    "type": "file",
+    "status": "failed",
+    "service": null
   }
 ]

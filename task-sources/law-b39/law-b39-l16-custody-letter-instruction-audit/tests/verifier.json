@@ -175,7 +175,7 @@
               "record_entry": "OI-210"
             },
             "ST-111": {
-              "verdict": "AT_ODDS",
+              "verdict": "VERIFIED",
               "record_entry": "OI-211"
             },
             "ST-112": {
@@ -197,6 +197,42 @@
             "ST-116": {
               "verdict": "NOT_IN_RECORD",
               "record_entry": "NONE"
+            },
+            "ST-104": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
+            },
+            "ST-117": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-118": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-119": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-210"
+            },
+            "ST-120": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-121": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
+            },
+            "ST-122": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-123": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-124": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             }
           },
           "row_set": [
@@ -215,7 +251,16 @@
             "ST-113",
             "ST-114",
             "ST-115",
-            "ST-116"
+            "ST-116",
+            "ST-104",
+            "ST-117",
+            "ST-118",
+            "ST-119",
+            "ST-120",
+            "ST-121",
+            "ST-122",
+            "ST-123",
+            "ST-124"
           ],
           "row_set_ordered": true,
           "columns": [
@@ -255,19 +300,19 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 8,
+              "value": 11,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 5,
+              "value": 7,
               "tolerance": null
             },
             "not_in_record_count": {
-              "value": 3,
+              "value": 6,
               "tolerance": null
             },
             "clarification_governed_count": {
-              "value": 5,
+              "value": 8,
               "tolerance": null
             }
           },
@@ -298,7 +343,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,70}?(?<![\\d.])(?:5|5\\.0|5\\.00|\\bfive\\b)(?!\\d)(?!\\.\\d)|(?<![\\d.])(?:5|5\\.0|5\\.00|\\bfive\\b)(?!\\d)(?!\\.\\d)(?:(?![.!?](?:\\s|$)|\\n).){0,70}?\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b)",
+        "expected": "(?is)(?:\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,70}?(?<![\\d.])(?:7|7\\.0|7\\.00|\\bseven\\b)(?!\\d)(?!\\.\\d)|(?<![\\d.])(?:7|7\\.0|7\\.00|\\bseven\\b)(?!\\d)(?!\\.\\d)(?:(?![.!?](?:\\s|$)|\\n).){0,70}?\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

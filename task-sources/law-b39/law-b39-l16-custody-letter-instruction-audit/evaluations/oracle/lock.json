@@ -3,8 +3,8 @@
     "task": {
         "name": "law-b39-l16-custody-letter-instruction-audit",
         "type": "local",
-        "digest": "sha256:86b9d6cfe7c06b5a1c8074a888bd85d2e12ae1d56a30913e4bbeacf2af0267e9",
-        "path": "C:\\Users\\hp\\nonconnector-tasks\\bundles\\shannon-200\\law-b39-l16-custody-letter-instruction-audit"
+        "digest": "sha256:5b4863625c230d18fd08b5cf2d7e04d7bdd2bddd53ec3633c420439e8cb1ad61",
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit"
     },
     "install_only": false,
     "timeout_multiplier": 1.0,
@@ -19,7 +19,7 @@
     "skills": [],
     "environment": {
         "type": "docker",
-        "force_build": false,
+        "force_build": true,
         "delete": true,
         "cpu_enforcement_policy": "auto",
         "memory_enforcement_policy": "auto",
@@ -28,6 +28,11 @@
         "extra_allowed_hosts": []
     },
     "verifier": {
+        "env": {
+            "JUDGE_MODEL": "openai/glm-5.2",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+        },
         "disable": false,
         "environment_mode": "shared"
     }
