@@ -360,8 +360,8 @@
     {
       "name": "answer_prose_floor",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose.",
-        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. This check enforces the word count floor as an incidental check (does not zero an otherwise perfect submission).",
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose containing the domain word 'record' (central to the task: the submission format requires 'Letter lines at odds with the record').",
+        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. The word 'record' is the core vocabulary of the task (the instruction, protocol and submission format all refer to the client's record). This check enforces the word count floor plus a domain content word as an incidental check (does not zero an otherwise perfect submission).",
         "tag": "incidental"
       },
       "source": {
@@ -376,7 +376,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)\\A(?:\\S+\\s+){59,}\\S+",
+        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)\\A(?:\\S+\\s+){59,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

@@ -13,4 +13,4 @@ Audit a draft letter to opposing counsel against the client's two messages (orig
 
 - `environment/input/`: letter_lines.csv (16 draft lines), original_instruction.md (11 entries), clarification.md (6 entries), review_protocol.md (6 rules), submission_format.md (layout spec)
 - `solution/files/`: answer.md, letter_line_review.csv, results.json (gold)
-- `tests/verifier.json`: 9 deterministic checks (file existence, prose floor, CSV header, table_equals with row_set lock, results object_equals, answer figure regex)
+- `tests/verifier.json`: 10 deterministic checks (7 core, 3 incidental): file existence, CSV header, table_equals with row_set lock, results object_equals, answer figure regex, and a 60+ word prose floor (incidental)
