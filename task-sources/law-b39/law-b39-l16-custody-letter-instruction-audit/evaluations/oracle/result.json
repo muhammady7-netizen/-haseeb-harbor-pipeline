@@ -1,13 +1,13 @@
 {
-    "id": "f745e6b5-d7d7-4506-a9fd-a9f5f7c9df91",
+    "id": "b3a3b0f8-99ab-4384-8dc9-013b5afd327d",
     "task_name": "obi/law-b39-l16-custody-letter-instruction-audit",
-    "trial_name": "law-b39-l16-custody-letter-instr__Cy8JwMD",
-    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-b39/oracle-b39-l16-v9-empty/law-b39-l16-custody-letter-instr__Cy8JwMD",
+    "trial_name": "law-b39-l16-custody-letter-instr__nZfLvRa",
+    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/AppData/Local/Temp/opencode/law-b39-jobs-densified/oracle-b39-densified/law-b39-l16-custody-letter-instr__nZfLvRa",
     "task_id": {
         "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit"
     },
     "source": null,
-    "task_checksum": "06e12249b4b1b55e1847dd600c5d1e53576c1d7cc1792c5f6ab3767bfcfd6081",
+    "task_checksum": "0c674fbaf967ca6172de2b97fdd68982e2db6182a4b6ca3d2379ddcdf668f4a6",
     "config": {
         "task": {
             "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit",
@@ -19,8 +19,8 @@
             "download_dir": null,
             "source": null
         },
-        "trial_name": "law-b39-l16-custody-letter-instr__Cy8JwMD",
-        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v9-empty",
+        "trial_name": "law-b39-l16-custody-letter-instr__nZfLvRa",
+        "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\law-b39-jobs-densified\\oracle-b39-densified",
         "install_only": false,
         "timeout_multiplier": 1.0,
         "agent_timeout_multiplier": null,
@@ -46,7 +46,7 @@
         "environment": {
             "type": "docker",
             "import_path": null,
-            "force_build": true,
+            "force_build": false,
             "delete": true,
             "cpu_enforcement_policy": "auto",
             "memory_enforcement_policy": "auto",
@@ -64,15 +64,15 @@
             "override_timeout_sec": null,
             "max_timeout_sec": null,
             "env": {
-                "JUDGE_MODEL": "openai/glm-5.2",
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}",
                 "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
-                "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+                "JUDGE_MODEL": "openai/glm-5.2"
             },
             "disable": false
         },
         "artifacts": [],
         "extra_instruction_paths": [],
-        "job_id": "0e196123-5d99-495d-b342-5bb4d3c94800",
+        "job_id": "5b50827e-2659-47eb-b932-f7073b26f7c7",
         "source_trial": null
     },
     "agent_info": {
@@ -95,23 +95,23 @@
     },
     "verifier_environment_mode": "shared",
     "exception_info": null,
-    "started_at": "2026-09-16T12:14:13.415504Z",
-    "finished_at": "2026-09-16T12:14:44.747782Z",
+    "started_at": "2026-09-16T12:56:04.896862Z",
+    "finished_at": "2026-09-16T12:56:33.055645Z",
     "environment_setup": {
-        "started_at": "2026-09-16T12:14:13.645893Z",
-        "finished_at": "2026-09-16T12:14:31.057527Z"
+        "started_at": "2026-09-16T12:56:05.154909Z",
+        "finished_at": "2026-09-16T12:56:19.786931Z"
     },
     "agent_setup": {
-        "started_at": "2026-09-16T12:14:31.057602Z",
-        "finished_at": "2026-09-16T12:14:31.057711Z"
+        "started_at": "2026-09-16T12:56:19.787013Z",
+        "finished_at": "2026-09-16T12:56:19.787126Z"
     },
     "agent_execution": {
-        "started_at": "2026-09-16T12:14:31.057854Z",
-        "finished_at": "2026-09-16T12:14:32.620924Z"
+        "started_at": "2026-09-16T12:56:19.787296Z",
+        "finished_at": "2026-09-16T12:56:21.475111Z"
     },
     "verifier": {
-        "started_at": "2026-09-16T12:14:34.923338Z",
-        "finished_at": "2026-09-16T12:14:40.389554Z"
+        "started_at": "2026-09-16T12:56:23.648059Z",
+        "finished_at": "2026-09-16T12:56:28.797884Z"
     },
     "step_results": null
 }

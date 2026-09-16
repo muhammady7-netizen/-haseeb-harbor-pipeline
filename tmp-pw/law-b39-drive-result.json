@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "step": "create_folder",
+  "driveUrl": "https://drive.google.com/drive/folders/15ULnjl1MvMNdkqLlz9wLXpxDiZzM1bDW",
+  "folderUrl": null,
+  "fileUrl": null,
+  "errors": [
+    "locator.click: Timeout 10000ms exceeded.\nCall log:\n  - waiting for getByRole('menuitem', { name: /Folder/i }).or(locator('[role=\"menuitem\"]:has-text(\"Folder\")')).first()\n    - locator resolved to <li tabindex=\"0\" data-key=\"1\" role=\"menuitem\" aria-disabled=\"true\" data-tooltip-enabled=\"true\" data-tooltip-classes=\"YTSN5d\" aria-describedby=\"menu-item-tooltip-1\" class=\"aqdrmf-E-Q aqdrmf-E-Q-Qu-hXIJHe aqdrmf-E-Q-Qu-gc-UbuQg-r4m2rf aqdrmf-E-Q-Qu-db aqdrmf-E-Q-Qu-gc-Xq-Hq O68mGe-OQAXze-Qu-gc-Xq-Hq O68mGe-w-Q-Qu-ig\" jsaction=\"click:o6ZaF; keydown:RDtNu; keyup:JdS61c; focusin:MeMJlc; focusout:bkTmIf; mousedown:teoBgf; mouseup:NZPHBc; mouseenter:SKyDAe; mouseleave:xq3APb; touchstart:jJiBRc; touchmove…>…</li>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n      - waiting 100ms\n    19 × waiting for element to be visible, enabled and stable\n       - element is not enabled\n     - retrying click action\n       - waiting 500ms\n\n    at C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\tmp-pw-law-b39-drive-upload.js:99:28"
+  ]
+}

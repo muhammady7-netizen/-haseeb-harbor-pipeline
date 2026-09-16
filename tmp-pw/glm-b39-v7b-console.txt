@@ -1,0 +1,30 @@
+[92m16:37:13 - LiteLLM:WARNING[0m: utils.py:2782 - register_model: model=openai/glm-5.2 not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.
+  4/4 Mean: 0.000 ---------------------------------------- 0:07:06 0:00:00
+
+adhoc • terminus-2 • glm-5.2
+┌────────┬────────────┬───────┬────────┬────────┐
+│ Trials │ Exceptions │  Mean │ Pass@2 │ Pass@4 │
+├────────┼────────────┼───────┼────────┼────────┤
+│      4 │          0 │ 0.000 │  0.000 │  0.000 │
+└────────┴────────────┴───────┴────────┴────────┘
+
+┌────────┬───────┐
+│ Reward │ Count │
+├────────┼───────┤
+│ 0.0    │     4 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 11m 6s
+Results written to C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v7\resu
+lt.json
+Inspect results by running `harbor view C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39`
+Share results by running `harbor upload C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v7`
+

@@ -1,0 +1,138 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+Upload a task to QC
+
+Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.
+
+Drop a task here, or click to browse
+One Harbor task package as .zip.
+What a Harbor task package looks like
+Submitted to the pipeline
+
+Every task you have handed over, newest first.
+
+47
+code-c227-table-bloat-maintenance-audit
+v1
+Sep 13, 04:43 PM
+Accepted
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-e1d160f96e124642
+landed in
+gs://obi-harbor-pipeline/tasks/finalisation_client_qc_accepted_iteration_2/code-c227-table-bloat-maintenance-audit/9bb150064defada5e0afe23a95c36d0470d0854e4fb1f8c512b2b36d7e2a8a62.zip
+copy
+Pipeline report
+Submitted bundle
+code-c251-pdf-form-field-conversion-audit
+v5
+Sep 13, 02:28 PM
+Pipeline error
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-666c5e85098b46fd
+View pipeline error
+Submitted bundle
+code-c227-table-bloat-maintenance-audit
+v1
+Sep 13, 01:34 PM
+Accepted
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-202109c9dfd14cd3
+landed in
+gs://obi-harbor-pipeline/tasks/finalisation_client_qc_accepted_iteration_2/code-c227-table-bloat-maintenance-audit/3c613cd18fc23ab4724f29e3dc24ca0da91c3887a528e0923a234fff23c6bcef.zip
+copy
+Pipeline report
+Submitted bundle
+code-c227-table-bloat-maintenance-audit
+v1
+Sep 13, 07:14 AM
+Rejected · 5 findings
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-5007fb24e3394653
+Why it was rejected 5
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Mandatory subcheck results: calibration_profile FAILs (fractional rewards driven by known defective T-32 golden check across all six cells), score_eligibility FAILs (defective-grading cells counted as model performance; verifier not reasonable for any eligible cell), and criterion_level_anomalies FAILs (all models fail the same suspect T-32 check; one defective check drives fractional rewards without a supported task-performance difference). failure_attribution PASSes (correct attribution to verifier golden bug, no infrastructure/pre-action misattribution) and harness_comparability PASSes (lane differences disclosed, no invalid cross-lane comparisons claimed). Since mandatory subchecks fail, the parent criterion FAILs per the rubric; the failure cannot be averaged or voted away.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration · harbor-check
+error
+Configured denominator 6, score-eligible denominator 6. All six eligible trials (glm-gce/1-4 with GLM-5.2 via opencode, claude-modal/1 with Claude Opus 5 via claude-code, gpt-e2b/1 with GPT-5.6-sol via codex) received identical reward 0.9882352941 (168/170) with 0 strict passes (evidence.json eligible_strict_passes=0). The fractional reward is not plausibly explained by task performance: every trial's only two failures are the same T-32 verifier golden-bug tests - test_table_size_class[T-32] (expected small, got large) and test_table_bloat_ratio[T-32] (expected 0.4, got 0.16) - confirmed natively in each trial's verifier/test-stdout.txt and verifier/ctrf.json. The ba4a9fba65918270 trajectory (step 19 read-back) explicitly shows the agent wrote T-32,large,0.16,none correctly from input total_pages=1000/dead_pages=160 per the disclosed policy (>=500 -> large, 160/1000=0.16). The golden EXPECTED_TABLES['T-32'] hardcodes small/0.4 inconsistent with the input. Per the rubric, FAIL applies when fractional rewards are driven by known defective checks; the 0.988 reward is depressed solely by the defective T-32 golden check, not by model performance.
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration__calibration_profile · harbor-check
+error
+All three models (GLM-5.2, Claude Opus 5, GPT-5.6-sol) fail the same two suspect criterion checks (T-32 size_class and T-32 bloat_ratio) across all six eligible trials, confirmed natively by each trial's verifier/test-stdout.txt and verifier/ctrf.json. One defective check (EXPECTED_TABLES['T-32'] hardcoding small/0.4, inconsistent with the input table_health.csv where T-32 has total_pages=1000/dead_pages=160 -> large/0.16 per the disclosed policy) drives the fractional reward on every cell without any supported task-performance difference - all models computed T-32 correctly as large/0.16/none (ba4a9fba65918270 trajectory step 19 read-back shows the correct value). This meets two FAIL conditions: all models fail the same suspect criterion, and one defective check drives fractional rewards without a supported task-performance difference.
+HARBOR-CHECK-3
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration__criterion_level_anomalies · harbor-check
+error
+All six cells are marked score_eligible=true with empty ineligibility reason, and all completed normally (exception_info=null in each result.json, trajectory_valid=true, action counts 10-19). However, the rubric requires verifier reasonableness to support every eligible cell, and the verifier is not reasonable for any cell: all six trials share the same T-32 golden bug (verified natively via each trial's verifier/test-stdout.txt showing identical FAILED test_table_size_class[T-32] and test_table_bloat_ratio[T-32], and each verifier/ctrf.json summary showing passed=48/failed=2). The rubric also FAILs when a defective-grading cell is counted as model performance; the 0.988 reward on each cell reflects the defective golden check, not model performance, yet all cells are counted as model-performance evidence.
+HARBOR-CHECK-4
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration__score_eligibility · harbor-check
+error
+The live deterministic verifier is pytest tests/test_outputs.py (run by tests/test.sh). It produces two FALSE failures: test_table_size_class[T-32] (expected small, got large) and test_table_bloat_ratio[T-32] (expected 0.4, got 0.16). EXPECTED_TABLES['T-32']={'size_class':'small','bloat_ratio':0.4} (tests/test_outputs.py:57) is inconsistent with the provided input table_health.csv, where T-32 (both duplicate rows, lines 29 and 31) has total_pages=1000, dead_pages=160; per the disclosed policy 1000>=500 -> large and 160/1000=0.16, so the agent's large/0.16/none is correct. The golden solution file (solution/files/bloat_audit.csv:28) carries the same bug. These are deterministic-verifier errors presented as agent mistakes (they reduce reward from 1.0 to 0.988). The 168 other checks (findings, counts, memo local-window prose, sort order) are supported and proportional; the stale verifier.json declarative spec is not executed by test.sh and is moot.
+HARBOR-CHECK-5
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/verifier_reasonableness · harbor-check
+Pipeline report
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtZ2VuLWc4NTctOGRhNDA4LXYz
+v3
+Sep 12, 04:03 AM
+Rejected · 4 findings
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g857-8da408-v3-sna-kbvp
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g857-8da408-v3-sna-kbvp/
+copy
+Why it was rejected 4
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+The overall calibration check fails because the mandatory calibration_profile subcheck fails: 5 of 6 eligible trials strictly pass, triggering the rubric's explicit 'FAIL when at least five of six eligible trials strictly pass' condition. The failure_attribution, score_eligibility, harness_comparability, and criterion_level_anomalies subchecks all pass. Per the rubric, a single failed mandatory subcheck cannot be averaged or voted away.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration · harbor-check
+error
+Configured denominator is 6 and all 6 trials are score-eligible (score_eligible_denominator=6). Five of six eligible trials strictly pass (glm-gce/1 reward 1.0 131/131, glm-gce/2 reward 1.0 131/131, glm-gce/4 reward 1.0 131/131, claude-modal/1 reward 1.0 131/131, gpt-e2b/1 reward 1.0 131/131), with one failure (glm-gce/3, reward 0, 0/131). The single failure is a genuine model failure: trajectory (0695efde8eebfddc sibling a8c783e1fe2ea71b) shows 8 steps - the agent read all three input files, then at step 8 produced text 'Let me write a Python script to process everything reliably' with 10563 completion tokens of reasoning but NO tool_calls array, stopping with reason absent (final step with no tool call). No deliverables were produced; the verifier found all 131 checks failing due to missing files. The task is genuinely solvable (3/4 GLM trials and both non-GLM lanes solved it with the same 131-check deterministic verifier). However, the rubric explicitly states 'FAIL when at least five of six eligible trials strictly pass.' Five >= 5, triggering this mandatory FAIL condition. The Oracle solvability carve-out applies only to 'zero of four GLM strict passes,' not to the five-of-six overall condition.
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO C

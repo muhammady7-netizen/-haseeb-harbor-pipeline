@@ -20,7 +20,7 @@ SOLUTION_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE="${HARBOR_TASK_WORKSPACE:-/app}"
 
 mkdir -p "$WORKSPACE"
-cp -a "$SOLUTION_DIR/files/." "$WORKSPACE/"
+cp -r "$SOLUTION_DIR/files/." "$WORKSPACE/"
 
 echo "installed gold deliverables into $WORKSPACE:"
 ls -1 "$WORKSPACE"
