@@ -1,6 +1,6 @@
 # The draft letter weighed against the client's two messages
 
-Letter lines at odds with the record: 12
+Letter lines at odds with the record: 18
 
 The greater part of the draft matches what the client asked for and is verified: the right of first refusal, the children and their ages, the overnight stays, the father's shifting accounts (in full), the concern, the request (under the clarification), the enclosure, the salutation and the signature all hold, under the clarification wherever it speaks and under the original wherever it does not. The draft parts from the record in claiming the stays have left the behavioural plan untouched when the client said they set it back, in setting the position out firmly and in full detail when the client wanted it soft and succinct, in describing the father's shifting accounts only to the school when the record names three audiences, in proposing courier delivery when the clarification says by post, and in copying the father when the client said to copy nobody. The reply deadline, the mention of the school principal, the mediation terms, the delivery method, the legal fees, and the mediation offer all answer to nothing in either message.
 

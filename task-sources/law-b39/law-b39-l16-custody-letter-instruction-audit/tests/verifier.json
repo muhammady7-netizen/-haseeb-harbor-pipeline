@@ -80,43 +80,6 @@
       }
     },
     {
-      "name": "register_table_trap_st104",
-      "metadata": {
-        "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals to every graded cell of the ST-104 row (matched by 'line_id'); a failure names the exact cell.",
-        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).\"",
-        "tag": "core"
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "csv",
-          "command": "read_rows",
-          "arguments": {
-            "path": "letter_line_review.csv"
-          }
-        }
-      },
-      "assertion": {
-        "type": "deterministic",
-        "expected": {
-          "id_column": "line_id",
-          "rows": {
-            "ST-104": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-301"
-            }
-          },
-          "cell_types": {
-            "record_entry": "id"
-          }
-        },
-        "deterministic": {
-          "path": "$",
-          "comparison": "table_equals"
-        }
-      }
-    },
-    {
       "name": "register_table",
       "metadata": {
         "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals: every graded cell of 15 rows plus the full 16-row population as a row_set lock (duplicate-row and cross-product dumps fail the lock; a duplicated graded id is rejected outright), the delivered row order equal to the stated order, and the delivered column set closed to the stated header, with declared cell types {'record_entry': 'id'} normalised on both sides. A failure names the exact row and column.",
@@ -265,6 +228,46 @@
             "ST-132": {
               "verdict": "AT_ODDS",
               "record_entry": "CL-302"
+            },
+            "ST-133": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-202"
+            },
+            "ST-134": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-303"
+            },
+            "ST-135": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-304"
+            },
+            "ST-136": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-137": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-210"
+            },
+            "ST-138": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-206"
+            },
+            "ST-139": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-207"
+            },
+            "ST-140": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-203"
+            },
+            "ST-141": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-204"
+            },
+            "ST-142": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-202"
             }
           },
           "row_set": [
@@ -299,7 +302,17 @@
             "ST-129",
             "ST-130",
             "ST-131",
-            "ST-132"
+            "ST-132",
+            "ST-133",
+            "ST-134",
+            "ST-135",
+            "ST-136",
+            "ST-137",
+            "ST-138",
+            "ST-139",
+            "ST-140",
+            "ST-141",
+            "ST-142"
           ],
           "row_set_ordered": true,
           "columns": [
@@ -339,11 +352,11 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 13,
+              "value": 17,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 12,
+              "value": 18,
               "tolerance": null
             },
             "not_in_record_count": {
@@ -351,7 +364,7 @@
               "tolerance": null
             },
             "clarification_governed_count": {
-              "value": 13,
+              "value": 15,
               "tolerance": null
             }
           },
@@ -366,7 +379,7 @@
     {
       "name": "answer_at_odds_figure",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match.",
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to the label-colon-figure format from submission_format.md.",
         "why_justification": "One at odds figure stands next to its label in the sentence that names the label.",
         "tag": "incidental"
       },
@@ -382,7 +395,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,120}?(?<![\\d.])(?:12|12\\.0|12\\.00|\\btwelve\\b)(?!\\d)(?!\\.\\d)|(?<![\\d.])(?:12|12\\.0|12\\.00|\\btwelve\\b)(?!\\d)(?!\\.\\d)(?:(?![.!?](?:\\s|$)|\\n).){0,120}?\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b)",
+        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:18|18\\.0|18\\.00|eighteen)\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

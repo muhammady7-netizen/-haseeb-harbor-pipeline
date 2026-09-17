@@ -29,5 +29,15 @@ ST-127,tone,warm and personal,OI-210,"The letter is written in a warm and person
 ST-128,carbon_copy_recipients,copied to the children,OI-299,A copy of this letter has been provided to both children for their records.
 ST-129,addressee,the father attorney,OI-201,This letter is addressed to the attorney representing the father in this matter.
 ST-130,inconsistent_accounts,babysitter to me only,OI-205,Mr Adler has described Ms Corwin as a babysitter to me.
-ST-131,delivery,sent by registered mail,CL-306,The letter shall be sent by registered mail to the office of opposing counsel.
+ST-131,delivery,sent by hand delivery,CL-306,The letter shall be sent by hand delivery to the office of opposing counsel.
 ST-132,request,no overnight unless accompanied by a parent,CL-302,No child shall remain overnight in Ms Corwin care unless accompanied by a parent or legal guardian.
+ST-133,right_of_first_refusal,the mother agreed,OI-202,"Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present."
+ST-134,enclosure,an uncertified summary of the plan,OI-209,"An uncertified summary of the custodial plan is enclosed."
+ST-135,salutation,Dear Mr Adler,CL-304,"Dear Mr Adler,"
+ST-136,inconsistent_accounts,babysitter to clinicians,OI-205,"Mr Adler has described Ms Corwin as a babysitter to her clinicians."
+ST-137,tone,soft formal and succinct,CL-304,"The position is set out softly, formally and succinctly below."
+ST-138,concern,she may not appreciate,CL-305,"I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order."
+ST-139,behavioural_plan,confidence and stability and stays set back,CL-302,"Imogen's behavioural plan focuses on confidence and stability, and the stays have set back her progress."
+ST-140,children_named,both children with ages,CL-303,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-141,overnight_stays,one child on one occasion,OI-204,"On one occasion, Imogen stayed overnight at Ms Corwin's home while Mr Adler was away."
+ST-142,right_of_first_refusal,not overnight with anyone but parents,OI-202,"The children are not to be left overnight with anyone other than their parents."

@@ -1,6 +1,6 @@
 # Original instruction — the client's first message
 
-What the client asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
+I am Delphine Marr. What follows is what I asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
 
 ## OI-201 `addressee`
 
