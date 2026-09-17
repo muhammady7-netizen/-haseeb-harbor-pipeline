@@ -1,77 +1,70 @@
 {
   "reward": 1.0,
   "core_failures": [],
-  "passed": 10,
-  "total": 10,
+  "passed": 9,
+  "total": 9,
   "checks": [
     {
       "name": "answer_exists",
       "tag": "core",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "register_exists",
       "tag": "core",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "register_header",
       "tag": "core",
       "passed": true,
-      "weight": 0.1,
-      "detail": ""
-    },
-    {
-      "name": "register_table_trap_st104",
-      "tag": "core",
-      "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "register_table",
       "tag": "core",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "results_figures",
       "tag": "core",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "answer_at_odds_figure",
-      "tag": "incidental",
+      "tag": "core",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "answer_at_odds_figure_exactly_one",
       "tag": "incidental",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "results_exists",
       "tag": "core",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111111,
       "detail": ""
     },
     {
       "name": "answer_prose_floor",
       "tag": "incidental",
       "passed": true,
-      "weight": 0.1,
+      "weight": 0.1111111112,
       "detail": ""
     }
   ]

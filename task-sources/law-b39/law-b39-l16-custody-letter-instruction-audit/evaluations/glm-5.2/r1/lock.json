@@ -1,0 +1,45 @@
+{
+    "schema_version": 2,
+    "task": {
+        "name": "law-b39-l16-custody-letter-instruction-audit-v17",
+        "type": "local",
+        "digest": "sha256:601789c56815d579c65860a679017dbcfe4f9930aa4e275d49a63e8174f2a59b",
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit-v17"
+    },
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent": {
+        "name": "terminus-2",
+        "model_name": "openai/glm-5.2",
+        "skills": [],
+        "override_timeout_sec": 1800.0,
+        "resume_trajectory": false,
+        "extra_allowed_hosts": [],
+        "kwargs": {
+            "extra_body": {
+                "max_tokens": 16000
+            }
+        },
+        "mcp_servers": []
+    },
+    "skills": [],
+    "environment": {
+        "type": "docker",
+        "force_build": true,
+        "delete": true,
+        "cpu_enforcement_policy": "auto",
+        "memory_enforcement_policy": "auto",
+        "extra_docker_compose": [],
+        "kwargs": {},
+        "extra_allowed_hosts": []
+    },
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "****",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        },
+        "disable": false,
+        "environment_mode": "shared"
+    }
+}

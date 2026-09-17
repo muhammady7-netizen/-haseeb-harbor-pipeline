@@ -1,0 +1,75 @@
+{
+  "reward": 0.0,
+  "core_failures": [
+    "register_table",
+    "results_figures",
+    "answer_at_odds_figure"
+  ],
+  "passed": 6,
+  "total": 9,
+  "checks": [
+    {
+      "name": "answer_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1111111111,
+      "detail": "row ST-354: verdict expected VERIFIED, got AT_ODDS"
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1111111111,
+      "detail": "key verified_count: expected 87, got 86; key at_odds_count: expected 154, got 155"
+    },
+    {
+      "name": "answer_at_odds_figure",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1111111111,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "answer_at_odds_figure_exactly_one",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "answer_prose_floor",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.1111111112,
+      "detail": ""
+    }
+  ]
+}

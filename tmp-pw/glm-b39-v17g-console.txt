@@ -1,0 +1,26 @@
+  4/4 Mean: 0.250 ---------------------------------------- 0:24:12 0:00:00
+
+adhoc • terminus-2 • glm-5.2
+┌────────┬────────────┬───────┬────────┬────────┐
+│ Trials │ Exceptions │  Mean │ Pass@2 │ Pass@4 │
+├────────┼────────────┼───────┼────────┼────────┤
+│      4 │          0 │ 0.250 │  0.500 │  1.000 │
+└────────┴────────────┴───────┴────────┴────────┘
+
+┌────────┬───────┐
+│ Reward │ Count │
+├────────┼───────┤
+│ 1.0    │     1 │
+│ 0.0    │     3 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 24m 12s
+Results written to C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\re
+sult.json
+Inspect results by running `harbor view C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39`
+Share results by running `harbor upload C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g`
+

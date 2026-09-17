@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "steps": [
+    "clicked_open",
+    {
+      "rerunCount": 0
+    }
+  ],
+  "clicks": [],
+  "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-cc9eb99d91a211eeeb149d3b50cb0ddf-v1",
+  "snippet": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\n←\nAll tasks\nlaw-b39-l16-custody-letter-instruction-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n2\nClient PreQC\nnot run yet\n3\nReview findings\n✓\nReview record\n5\nEvaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nNot run yet\nhas not run on this task yet\nRun client preQC\nView report\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.\n\nComplete\nCheck with QC reviewer\nView details\nThe QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.\nQC-Oracle-GLM check (3-task limit)\nNot run yet\nhas not run on this task yet\nRun QC-Oracle-GLM\nView report\nwhat each gate checks\nYou are the judge. what good QC takes — read once\nRun history\nno runs yet\n\nNo runs yet. Start a gate above and its runs will be listed here, newest first.\n\nRESULT\nNo run open\n\nRun a gate above, or pick an earlier run to read its findings, score and report.\n\nUse this guide to do your own read of the task\n0/20 answered\nSaved\nNot scored — it feeds the report card and the tracker.\nTask readiness"
+}

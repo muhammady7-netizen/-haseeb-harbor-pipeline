@@ -1,1 +1,6 @@
-cp: preserving times for '/app/.': Operation not permitted
+installed gold deliverables into /app:
+answer.md
+input
+letter_line_review.csv
+results.json
+oracle: wrote /logs/agent/trajectory.json (10 steps)

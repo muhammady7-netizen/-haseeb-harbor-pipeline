@@ -1,0 +1,5 @@
+# Review of the draft letter lines
+
+I weighed every numbered line in `input/letter_lines.csv` against the client's record, using `input/review_protocol.md`. Where the clarification speaks to a subject, it governs under RP-401 and RP-402; where only the original instruction speaks to a subject, that original entry governs under RP-403; where neither record speaks to a subject, the line is not in the record at all under RP-404. Each line was then compared with its governing entry under RP-405.
+
+The review shows that some lines are verified by the record, some are at odds with the record, and some are not in the record at all. The governing entry is named for every line in `letter_line_review.csv`, and the four totals appear in `results.json`. Letter lines at odds with the record: 156. This count reflects the lines whose governing entry takes a position other than the line's, whether the line reverses the client's record, states something narrower, names a different person, or otherwise fails to match the entry that governs it.

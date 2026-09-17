@@ -1,305 +1,0 @@
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ asciinema rec --stdin /logs/agent/recording.cast
-[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
-[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ clear
-[?2004l[H[J[3J[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ ls -la
-[?2004ltotal 12
-drwxrwxrwx 1 root root 4096 Sep 14 18:43 [0m[34;42m.[0m
-drwxr-xr-x 1 root root 4096 Sep 16 12:18 [01;34m..[0m
-dr-xr-xr-x 1 root root 4096 Sep 14 18:42 [01;34minput[0m
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ ls -la input
-[?2004ltotal 28
-dr-xr-xr-x 1 root root 4096 Sep 14 18:42 [0m[01;34m.[0m
-drwxrwxrwx 1 root root 4096 Sep 14 18:43 [34;42m..[0m
--r-xr-xr-x 1 root root  786 Sep 12 09:13 [01;32mclarification.md[0m
--r-xr-xr-x 1 root root 2136 Sep 12 09:13 [01;32mletter_lines.csv[0m
--r-xr-xr-x 1 root root 1350 Sep 12 09:13 [01;32moriginal_instruction.md[0m
--r-xr-xr-x 1 root root 2265 Sep 12 09:13 [01;32mreview_protocol.md[0m
--r-xr-xr-x 1 root root 1531 Sep 12 09:13 [01;32msubmission_format.md[0m
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ for f in input/*; do echo "===== $f ====="; sed -n '1,220p' "$f"; echo; done
-[?2004l===== input/clarification.md =====
-# Clarification — the client's later message
-
-What the client added afterwards, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses; any subject missing here is one the clarification leaves alone.
-
-## CL-301 `addressee`
-
-To be clear: Adam is the father. The letter goes to Catherine's attorney — the mother's attorney — not to Adam's.
-
-## CL-302 `request`
-
-The request stands: neither child overnight in her care unless the father is present.
-
-## CL-303 `enclosure`
-
-Yes, enclose the certified copy of the custodial plan.
-
-## CL-304 `salutation`
-
-Open with Dear Counsel, since the attorney's name is still to be confirmed.
-
-## CL-305 `copies`
-
-Do not copy anyone on it.
-
-## CL-306 `delivery`
-
-Send it by post to counsel's office.
-
-===== input/letter_lines.csv =====
-line_id,subject,position,cited_entry,wording
-ST-101,right_of_first_refusal,agreed by the father,OI-202,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
-ST-102,children_named,"both children, with their ages",OI-203,"This concerns Noor, aged seven, and Imogen, aged twelve."
-ST-103,overnight_stays,several occasions at her home or with a sitter,OI-204,On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
-ST-104,addressee,the father's attorney,OI-201,To counsel for Mr Adler.
-ST-105,inconsistent_accounts,"wife to the school, resident to clinicians, sitter to the sender",OI-205,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
-ST-106,concern,she may not appreciate the violation,OI-206,"I am concerned that Ms Corwin may not fully appreciate that these stays violate the custodial order, or the position she has been placed in."
-ST-107,behavioural_plan,the stays have had no effect on the plan,OI-207,"Imogen's behavioural plan focuses on her confidence and stability, and the stays have not affected her progress."
-ST-108,request,no overnight stays in her care unless the father is present,CL-302,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
-ST-109,enclosure,a certified copy of the custodial plan,OI-209,A certified copy of the custodial plan is enclosed.
-ST-110,tone,firm and detailed,OI-210,I set out the position firmly and in full detail below.
-ST-111,sender_signature,the sender's own name,OI-211,"Yours sincerely, Delphine Marr."
-ST-112,salutation,Dear Counsel,CL-304,"Dear Counsel,"
-ST-113,copies,copied to the father,CL-305,Copy: Mr Adler.
-ST-114,reply_deadline,a reply within seven days,OI-299,I would be grateful for a reply within seven days.
-ST-115,school_reference,the school principal named,OI-298,"The school principal, Ms Oduya, can confirm the account given to the school."
-ST-116,mediation_offer,an offer to mediate,CL-399,I remain open to mediation.
-
-===== input/original_instruction.md =====
-# Original instruction — the client's first message
-
-What the client asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
-
-## OI-201 `addressee`
-
-Address the letter to the father's attorney.
-
-## OI-202 `right_of_first_refusal`
-
-Say that the father agreed to a right of first refusal: the children are not to be left overnight without him present.
-
-## OI-203 `children_named`
-
-Name both children with their ages.
-
-## OI-204 `overnight_stays`
-
-State that on several occasions both children stayed overnight at her home or with a sitter while the father was away.
-
-## OI-205 `inconsistent_accounts`
-
-Note that the father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me.
-
-## OI-206 `concern`
-
-Say I am concerned she may not appreciate that the stays violate the order or the position she has been put in.
-
-## OI-207 `behavioural_plan`
-
-Say the behavioural plan is about confidence and stability and the stays have set it back.
-
-## OI-208 `request`
-
-Ask that neither child remain overnight in her care unless the father is present.
-
-## OI-209 `enclosure`
-
-Say a certified copy of the custodial plan is enclosed.
-
-## OI-210 `tone`
-
-Keep it soft, formal and succinct.
-
-## OI-211 `sender_signature`
-
-Sign it in my own name.
-
-===== input/review_protocol.md =====
-# Review protocol — letter to opposing counsel
-
-Governs every line in `letter_lines.csv`, weighed against `original_instruction.md` and
-`clarification.md`.
-
-## RP-401 Which record prevails
-
-On any subject the clarification speaks to, the clarification prevails. If the original instruction and the clarification take different positions on a subject, the clarification wins and the original falls away, no matter which entry the draft cites or how plainly the original was put: what the client said last is what the client instructs. For a line on a subject the clarification speaks to, the governing entry is always the clarification entry and never the original one (`RP-401`).
-
-## RP-402 Subjects the clarification repeats
-
-If the clarification repeats a subject in the very terms the original used, the clarification entry nonetheless governs the line, and the line is weighed against it (`RP-402`).
-
-## RP-403 Subjects only the original speaks to
-
-If the clarification leaves a subject alone, the original entry on that subject governs and the line is weighed against it (`RP-403`).
-
-## RP-404 Subjects neither record speaks to
-
-If neither record speaks to a subject — which includes a draft citing an entry that exists nowhere — nothing governs: the line's verdict is NOT_IN_RECORD and its record entry is `NONE`, however reasonable the line may read (`RP-404`).
-
-## RP-405 How a line is weighed
-
-Weighed against its governing entry, a line is VERIFIED when the position it takes is the entry's own, and AT_ODDS when the entry's position differs from it — the reverse, something narrower, or a different person (`RP-405`).
-
-## RP-406 The review table
-
-`record_entry` holds the id of the entry that governs the line, spelled as the records spell it, or `NONE` (`RP-406`).
-
-## Figures
-
-`verified_count` is the number of lines whose verdict is VERIFIED.
-`at_odds_count` is the at odds count: the lines whose verdict is AT_ODDS.
-`not_in_record_count` is the number of lines whose verdict is NOT_IN_RECORD.
-`clarification_governed_count` is the number of lines whose record entry is a clarification entry (`CL-…`).
-In the answer, `Letter lines at odds with the record` is the number of lines whose governing entry takes a position
-other than the line's.
-
-===== input/submission_format.md =====
-# Submission format
-
-Deliver exactly these files, in your working directory:
-
-- `answer.md` — The written review, carrying the number of letter lines at odds with the client's record
-- `letter_line_review.csv` — One row per line of the draft letter, giving its verdict and the record entry that governs it
-- `results.json` — a JSON object; see below.
-
-## `answer.md`
-
-`answer.md` states `Letter lines at odds with the record: <count>` — the figure placed beside its label, in the very sentence that names the label. At least sixty words of prose. Each figure stands beside its label once, stated as the finding — not offered as one of two candidates.
-
-## `letter_line_review.csv`
-
-Header, exactly: `line_id,verdict,record_entry`
-One row per record, keyed by `line_id`.
-`verdict` takes exactly one of: `VERIFIED`, `AT_ODDS`, `NOT_IN_RECORD`.
-The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).
-
-Example (placeholder values):
-
-```
-line_id,verdict,record_entry
-ST-100,VERIFIED,OI-200
-```
-
-## `results.json`
-
-A JSON object with exactly these keys and nothing else:
-
-- `verified_count` — number
-- `at_odds_count` — number
-- `not_in_record_count` — number
-- `clarification_governed_count` — number
-
-Shape example (placeholder values):
-
-```json
-{
-  "verified_count": 0,
-  "at_odds_count": 0,
-  "not_in_record_count": 0,
-  "clarification_governed_count": 0
-}
-```
-
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ cat > answer.md <<'EOF'
-[?2004l[?2004h> I reviewed every numbered line in the draft letter against the client's two messages and the review protocol. Where the clarification spoke to a subject, it governed; where it left the subject alone, the original instruction governed; where neither record spoke, the line was not in the record. The review found four lines that conflict with the governing entry. Letter lines at odds with the record: 4. Those lines concern the addressee, the behavioural plan, the tone, and the copies. They cannot be sent as drafted because each takes a position the client's record does not support.
-[?2004l[?2004h> EOF
-[?2004l[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ 
-[?2004l[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ cat > letter_line_review.csv <<'EOF'
-[?2004l[?2004h> line_id,verdict,record_entry
-[?2004l[?2004h> ST-101,VERIFIED,OI-202
-[?2004l[?2004h> ST-102,VERIFIED,OI-203
-[?2004l[?2004h> ST-103,VERIFIED,OI-204
-[?2004l[?2004h> ST-104,AT_ODDS,CL-301
-[?2004l[?2004h> ST-105,VERIFIED,OI-205
-[?2004l[?2004h> ST-106,VERIFIED,OI-206
-[?2004l[?2004h> ST-107,AT_ODDS,OI-207
-[?2004l[?2004h> ST-108,VERIFIED,CL-302
-[?2004l[?2004h> ST-109,VERIFIED,CL-303
-[?2004l[?2004h> ST-110,AT_ODDS,OI-210
-[?2004l[?2004h> ST-111,VERIFIED,OI-211
-[?2004l[?2004h> ST-112,VERIFIED,CL-304
-[?2004l[?2004h> ST-113,AT_ODDS,CL-305
-[?2004l[?2004h> ST-114,NOT_IN_RECORD,NONE
-[?2004l[?2004h> ST-115,NOT_IN_RECORD,NONE
-[?2004l[?2004h> ST-116,NOT_IN_RECORD,NONE
-[?2004l[?2004h> EOF
-[?2004l[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ 
-[?2004l[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ cat > results.json <<'EOF'
-[?2004l[?2004h> {
-[?2004l[?2004h>   "verified_count": 9,
-[?2004l[?2004h>   "at_odds_count": 4,
-[?2004l[?2004h>   "not_in_record_count": 3,
-[?2004l[?2004h>   "clarification_governed_count": 5
-[?2004l[?2004h> }
-[?2004l[?2004h> EOF
-[?2004l[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ 
-[?2004l[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l[?2004h> import csv, json
-[?2004l[?2004h> from pathlib import Path
-[?2004l[?2004h> 
-[?2004l[?2004h> src = list(csv.DictReader(open('input/letter_lines.csv')))
-[?2004l[?2004h> rows = list(csv.DictReader(open('letter_line_review.csv')))
-[?2004l[?2004h> assert Path('letter_line_review.csv').read_text().splitlines()[0] == 'line_id,verdict,record_entry'
-[?2004l[?2004h> assert len(rows) == len(src)
-[?2004l[?2004h> assert [r['line_id'] for r in rows] == [r['line_id'] for r in src]
-[?2004l[?2004h> assert all(r['verdict'] in ('VERIFIED', 'AT_ODDS', 'NOT_IN_RECORD') for r in rows)
-[?2004l[?2004h> 
-[?2004l[?2004h> counts = {
-[?2004l[?2004h>     'verified_count': sum(r['verdict'] == 'VERIFIED' for r in rows),
-[?2004l[?2004h>     'at_odds_count': sum(r['verdict'] == 'AT_ODDS' for r in rows),
-[?2004l[?2004h>     'not_in_record_count': sum(r['verdict'] == 'NOT_IN_RECORD' for r in rows),
-[?2004l[?2004h>     'clarification_governed_count': sum(r['record_entry'].startswith('CL-') for r in rows),
-[?2004l[?2004h> }
-[?2004l[?2004h> res = json.load(open('results.json'))
-[?2004l[?2004h> assert set(res) == {'verified_count', 'at_odds_count', 'not_in_record_count', 'clarification_governed_count'}
-[?2004l[?2004h> assert res == counts
-[?2004l[?2004h> assert 'Letter lines at odds with the record: 4' in Path('answer.md').read_text()
-[?2004l[?2004h> print('validation OK', counts)
-[?2004l[?2004h> PY
-[?2004lvalidation OK {'verified_count': 9, 'at_odds_count': 4, 'not_in_record_count': 3, 'clarification_governed_count': 5}
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ 
-[?2004l[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ ls -l answer.md letter_line_review.csv results.json
-[?2004l-rw-r--r-- 1 appuser appuser 586 Sep 16 12:19 answer.md
--rw-r--r-- 1 appuser appuser 402 Sep 16 12:19 letter_line_review.csv
--rw-r--r-- 1 appuser appuser 113 Sep 16 12:19 results.json
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ printf '\n--- answer.md ---\n'
-[?2004l
---- answer.md ---
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ cat answer.md
-[?2004lI reviewed every numbered line in the draft letter against the client's two messages and the review protocol. Where the clarification spoke to a subject, it governed; where it left the subject alone, the original instruction governed; where neither record spoke, the line was not in the record. The review found four lines that conflict with the governing entry. Letter lines at odds with the record: 4. Those lines concern the addressee, the behavioural plan, the tone, and the copies. They cannot be sent as drafted because each takes a position the client's record does not support.
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ printf '\n--- letter_line_review.csv ---\n'
-[?2004l
---- letter_line_review.csv ---
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ cat letter_line_review.csv
-[?2004lline_id,verdict,record_entry
-ST-101,VERIFIED,OI-202
-ST-102,VERIFIED,OI-203
-ST-103,VERIFIED,OI-204
-ST-104,AT_ODDS,CL-301
-ST-105,VERIFIED,OI-205
-ST-106,VERIFIED,OI-206
-ST-107,AT_ODDS,OI-207
-ST-108,VERIFIED,CL-302
-ST-109,VERIFIED,CL-303
-ST-110,AT_ODDS,OI-210
-ST-111,VERIFIED,OI-211
-ST-112,VERIFIED,CL-304
-ST-113,AT_ODDS,CL-305
-ST-114,NOT_IN_RECORD,NONE
-ST-115,NOT_IN_RECORD,NONE
-ST-116,NOT_IN_RECORD,NONE
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ printf '\n--- results.json ---\n'
-[?2004l
---- results.json ---
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ cat results.json
-[?2004l{
-  "verified_count": 9,
-  "at_odds_count": 4,
-  "not_in_record_count": 3,
-  "clarification_governed_count": 5
-}
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ ls -l answer.md letter_line_review.csv results.json
-[?2004l-rw-r--r-- 1 appuser appuser 586 Sep 16 12:19 answer.md
--rw-r--r-- 1 appuser appuser 402 Sep 16 12:19 letter_line_review.csv
--rw-r--r-- 1 appuser appuser 113 Sep 16 12:19 results.json
-[?2004h[01;32mappuser@d1fe697499dd[00m:[01;34m/app[00m$ 

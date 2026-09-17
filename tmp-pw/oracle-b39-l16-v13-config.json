@@ -1,0 +1,27 @@
+{
+  "job_name": "oracle-b39-l16-v13",
+  "jobs_dir": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-b39",
+  "n_concurrent_trials": 1,
+  "n_attempts": 4,
+  "environment": {
+    "type": "docker",
+    "force_build": true
+  },
+  "verifier": {
+    "env": {
+      "OPENAI_API_KEY": "",
+      "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+      "JUDGE_MODEL": "openai/glm-5.2"
+    }
+  },
+  "agents": [
+    {
+      "name": "oracle"
+    }
+  ],
+  "tasks": [
+    {
+      "path": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/task-sources/law-b39/law-b39-l16-custody-letter-instruction-audit"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Review of draft letter lines against the client's record
+
+I compared every numbered line in `input/letter_lines.csv` with the client's original instruction and clarification, applying `input/review_protocol.md`. Where the clarification spoke to a subject, it governed; where it left a subject alone, the original instruction governed; where neither record spoke to a subject, the line was not in the record. Letter lines at odds with the record: 153. These are lines whose governing entry takes a position other than the line's, including a different person, a narrower point, or the reverse. The review table records each line's verdict and governing entry, and the totals are saved in `results.json`.

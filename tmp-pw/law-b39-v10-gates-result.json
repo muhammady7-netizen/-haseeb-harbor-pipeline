@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-cc9eb99d91a211eeeb149d3b50cb0ddf-v1",
+  "clicks": [
+    "csv_input_0",
+    "csv_input_1",
+    "csv_input_2",
+    "csv_input_3"
+  ],
+  "steps": [
+    {
+      "at": "before",
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-cc9eb99d91a211eeeb149d3b50cb0ddf-v1",
+      "hasPreQC": true
+    },
+    {
+      "fileInputs": 4
+    }
+  ],
+  "snippet": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\nUpload a task to QC\n\nClient PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.\n\nDrop a task here, or click to browse\nOne Harbor task package as .zip.\nreview.csv is not an upload this gate takes — Harbor task package as .zip (or a task-harness .json for the deep-dive checks).\ndismiss\nWhat a Harbor task package looks like\nRecent tasks\n\nResume a previous QC review.\n\n112\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 17, 01:36 PM\n#cb0ddf\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\n6 versions · Sep 17, 09:40 AM\nv6\n#9929ab\nView pipeline error\nOpen task\n→\nL16 custody letter instruction audit\nChanges needed\nlaw-b39-l16-custody-letter-instruction-audit\nSep 16, 06:00 PM\n#2678d0\nPipeline report\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 16, 05:44 PM\n#cd4358\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 16, 05:39 PM\n#eb4c7b\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 16, 05:28 PM\n#ae7a8d\nView pipeline error\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 16, 04:17 PM\n#61613a\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 16, 01:44 PM\n#6b909f\nView pipeline error\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\n5 versions · Sep 16, 08:16 AM\nv5\n#e83a3c\nView pipeline error · v4\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 15, 01:27 AM\n#b01b4f\nView pipeline error\nOpen task\n→\nL16 custody letter instruction audit\nNeeds your review\nlaw-b39-l16-custody-letter-instruction-audit\nSep 14, 10:41 PM\n#4ffe63\nPipeline report\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 14, 09:46 PM\n#ecf0b4\nView pipeline error\nOpen task\n→\nL16 custody letter instruction audit\nlaw-b39-l16-custody-letter-instruction-audit\nSep 14, 09:42 PM\n#a684d7\nOpen task\n→\nFacility interest review\nChanges needed\nfin-f44-facility-interest-review\n4 versions · Sep 14, 12:21 PM\nv4\n#38b6ac\nPipeline report\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 11:53 AM\n#dd771e\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 11:48 AM\n#943cd6\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 11:43 AM\n#74c3ac\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 11:37 AM\n#294ea9\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 11:33 AM\n#79df99\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\n11 versions · Sep 14, 11:29 AM\nv11\n#bee437\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 10:41 AM\n#714fca\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 10:37 AM\n#e80ce2\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nSep 14, 10:31 AM\n#df297e\nOpen task\n→\nDistributable profits\nfin-f39-distributable-profits\nSep 14, 10:29 AM\n#605884\nOpen task\n→\nFacility interest review\nfin-f44-facility-interest-review\nS"
+}

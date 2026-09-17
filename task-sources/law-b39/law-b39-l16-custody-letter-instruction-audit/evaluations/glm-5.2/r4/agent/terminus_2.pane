@@ -1,0 +1,2235 @@
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ asciinema rec --stdin /logs/agent/recording.cast
+[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ clear
+[?2004l[H[J[3J[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ ls -la /app && ls -la /app/input
+[?2004ltotal 12
+drwxrwxrwx 1 root root 4096 Sep 17 13:52 [0m[34;42m.[0m
+drwxr-xr-x 1 root root 4096 Sep 17 14:15 [01;34m..[0m
+dr-xr-xr-x 1 root root 4096 Sep 17 13:52 [01;34minput[0m
+total 56
+dr-xr-xr-x 1 root root  4096 Sep 17 13:52 [0m[01;34m.[0m
+drwxrwxrwx 1 root root  4096 Sep 17 13:52 [34;42m..[0m
+-r-xr-xr-x 1 root root  1221 Sep 17 13:23 [01;32mclarification.md[0m
+-r-xr-xr-x 1 root root 31015 Sep 17 13:23 [01;32mletter_lines.csv[0m
+-r-xr-xr-x 1 root root  2093 Sep 17 13:23 [01;32moriginal_instruction.md[0m
+-r-xr-xr-x 1 root root  2265 Sep 12 09:13 [01;32mreview_protocol.md[0m
+-r-xr-xr-x 1 root root  1776 Sep 17 12:31 [01;32msubmission_format.md[0m
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ sed -n '1,240p' /app/input/submission_format.md
+[?2004l# Submission format
+
+Deliver exactly these files, in your working directory:
+
+- `answer.md` — The written review, carrying the number of letter lines at odds with the client's record
+- `letter_line_review.csv` — One row per line of the draft letter, giving its verdict and the record entry that governs it
+- `results.json` — a JSON object; see below.
+
+## `answer.md`
+
+`answer.md` states `Letter lines at odds with the record: <count>` — the figure placed beside its label, in the very sentence that names the label (that sentence may appear anywhere in the review, including mid-paragraph). Optional markdown emphasis around the figure is fine (`124`, `**124**`, `*124*`, `__124__`). At least sixty words of prose that use the vocabulary of that required label (including the word `record`). Each figure stands beside its label once, stated as the finding — not offered as one of two candidates.
+
+## `letter_line_review.csv`
+
+Header, exactly: `line_id,verdict,record_entry`
+One row per record, keyed by `line_id`.
+`verdict` takes exactly one of: `VERIFIED`, `AT_ODDS`, `NOT_IN_RECORD`.
+The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).
+
+Example (placeholder values):
+
+```
+line_id,verdict,record_entry
+ST-100,VERIFIED,OI-200
+```
+
+## `results.json`
+
+A JSON object with exactly these keys and nothing else:
+
+- `verified_count` — number
+- `at_odds_count` — number
+- `not_in_record_count` — number
+- `clarification_governed_count` — number
+
+Shape example (placeholder values):
+
+```json
+{
+  "verified_count": 0,
+  "at_odds_count": 0,
+  "not_in_record_count": 0,
+  "clarification_governed_count": 0
+}
+```
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ sed -n '1,240p' /app/input/review_protocol.md
+[?2004l# Review protocol — letter to opposing counsel
+
+Governs every line in `letter_lines.csv`, weighed against `original_instruction.md` and
+`clarification.md`.
+
+## RP-401 Which record prevails
+
+On any subject the clarification speaks to, the clarification prevails. If the original instruction and the clarification take different positions on a subject, the clarification wins and the original falls away, no matter which entry the draft cites or how plainly the original was put: what the client said last is what the client instructs. For a line on a subject the clarification speaks to, the governing entry is always the clarification entry and never the original one (`RP-401`).
+
+## RP-402 Subjects the clarification repeats
+
+If the clarification repeats a subject in the very terms the original used, the clarification entry nonetheless governs the line, and the line is weighed against it (`RP-402`).
+
+## RP-403 Subjects only the original speaks to
+
+If the clarification leaves a subject alone, the original entry on that subject governs and the line is weighed against it (`RP-403`).
+
+## RP-404 Subjects neither record speaks to
+
+If neither record speaks to a subject — which includes a draft citing an entry that exists nowhere — nothing governs: the line's verdict is NOT_IN_RECORD and its record entry is `NONE`, however reasonable the line may read (`RP-404`).
+
+## RP-405 How a line is weighed
+
+Weighed against its governing entry, a line is VERIFIED when the position it takes is the entry's own, and AT_ODDS when the entry's position differs from it — the reverse, something narrower, or a different person (`RP-405`).
+
+## RP-406 The review table
+
+`record_entry` holds the id of the entry that governs the line, spelled as the records spell it, or `NONE` (`RP-406`).
+
+## Figures
+
+`verified_count` is the number of lines whose verdict is VERIFIED.
+`at_odds_count` is the at odds count: the lines whose verdict is AT_ODDS.
+`not_in_record_count` is the number of lines whose verdict is NOT_IN_RECORD.
+`clarification_governed_count` is the number of lines whose record entry is a clarification entry (`CL-…`).
+In the answer, `Letter lines at odds with the record` is the number of lines whose governing entry takes a position
+other than the line's.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ sed -n '1,240p' /app/input/original_instruction.md
+[?2004l# Original instruction — the client's first message
+
+I am Delphine Marr. What follows is what I asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
+
+## OI-201 `addressee`
+
+Address the letter to the father's attorney.
+
+## OI-202 `right_of_first_refusal`
+
+Say that Mr Adler — the father — agreed to a right of first refusal, and that the children are not to be left overnight without him present. Both the agreement and the overnight restriction must appear.
+
+## OI-203 `children_named`
+
+Name both children with their ages: Noor, aged seven, and Imogen, aged twelve. Both names and both ages are required.
+
+## OI-204 `overnight_stays`
+
+State that on several occasions both children stayed overnight at her home or with a sitter while the father was away — both places must be mentioned, both children, and several occasions.
+
+## OI-205 `inconsistent_accounts`
+
+Note that the father has called her his wife to the school, the person the child lives with to clinicians, a sitter to me, and his partner to the neighbours. All four audiences are required.
+
+## OI-206 `concern`
+
+Say I am concerned she may not appreciate that the stays violate the order or the position she has been put in — both limbs. (Superseded wherever the clarification speaks to concern.)
+
+## OI-207 `behavioural_plan`
+
+Say the behavioural plan is about confidence and stability and the stays have set it back — confidence, stability, and setback all required. (Superseded wherever the clarification speaks to behavioural_plan.)
+
+## OI-208 `request`
+
+Ask that neither child remain overnight in her care unless the father is present.
+
+## OI-209 `enclosure`
+
+Say a certified copy of the custodial plan is enclosed.
+
+## OI-210 `tone`
+
+Keep it soft, formal and succinct — all three. (Superseded wherever the clarification speaks to tone.)
+
+## OI-211 `sender_signature`
+
+Sign it in my own name as Delphine Marr — the full name is required; do not sign as counsel or on behalf of anyone else.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ sed -n '1,240p' /app/input/clarification.md
+[?2004l# Clarification — the client's later message
+
+What the client added afterwards, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses; any subject missing here is one the clarification leaves alone.
+
+## CL-301 `addressee`
+
+To be clear: Adam is the father. The letter goes to Catherine's attorney — the mother's attorney — not to Adam's.
+
+## CL-302 `request`
+
+The request stands: neither child overnight in her care unless the father is present.
+
+## CL-303 `enclosure`
+
+Yes, enclose the certified copy of the custodial plan.
+
+## CL-304 `salutation`
+
+Open with Dear Counsel, since the attorney's name is still to be confirmed.
+
+## CL-305 `copies`
+
+Do not copy anyone on it.
+
+## CL-306 `delivery`
+
+Send it by post to counsel's office.
+
+## CL-307 `tone`
+
+Use a firm, formal and brief tone — not soft, and not long-winded.
+
+## CL-308 `behavioural_plan`
+
+The plan is about confidence, stability and peer relations. The stays have set back confidence only — not the whole plan.
+
+## CL-309 `concern`
+
+I am concerned only about the position she has been put in. Do not raise whether she appreciates that the stays violate the order.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ cat /app/input/letter_lines.csv
+[?2004lline_id,subject,position,cited_entry,wording
+ST-101,right_of_first_refusal,agreed by the father,OI-202,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-102,children_named,"both children, with their ages",OI-203,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-103,overnight_stays,several occasions at her home or with a sitter,OI-204,On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+ST-104,addressee,the father's attorney,OI-201,To counsel for Mr Adler.
+ST-105,inconsistent_accounts,"wife to the school, resident to clinicians, sitter to the sender",OI-205,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-106,concern,violation limb only,OI-206,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-107,behavioural_plan,the stays have had no effect on the plan,OI-207,"Imogen's behavioural plan focuses on her confidence and stability, and the stays have not affected her progress."
+ST-108,request,no overnight stays in her care unless the father is present,CL-302,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+ST-109,enclosure,a certified copy of the custodial plan,OI-209,A certified copy of the custodial plan is enclosed.
+ST-110,tone,firm and detailed,OI-210,I set out the position firmly and in full detail below.
+ST-111,sender_signature,the sender's own name,OI-211,"Yours sincerely, Delphine Marr."
+ST-112,salutation,Dear Counsel,CL-304,"Dear Counsel,"
+ST-113,copies,copied to the father,CL-305,Copy: Mr Adler.
+ST-114,reply_deadline,a reply within seven days,OI-299,I would be grateful for a reply within seven days.
+ST-115,school_reference,the school principal named,OI-298,"The school principal, Ms Oduya, can confirm the account given to the school."
+ST-116,mediation_offer,an offer to mediate,CL-399,I remain open to mediation.
+ST-117,request,no overnight stays unless father present,OI-208,I ask that neither child remain overnight in her care unless the father is present.
+ST-118,delivery,sent by email to counsel,OI-299,The letter shall be sent by email to opposing counsel.
+ST-119,tone,firm and detailed,OI-210,The position is set out firmly and in full detail below.
+ST-120,mediation_terms,mediation within 14 days,CL-399,I propose mediation within fourteen days of the date of this letter.
+ST-121,delivery,sent by courier to counsel,OI-299,The letter is to be delivered by courier to the offices of opposing counsel.
+ST-122,inconsistent_accounts,wife to the school only,OI-205,Mr Adler has described Ms Corwin as his wife to the school.
+ST-123,request,no overnight unless father present,CL-302,Neither child should remain overnight in her care unless Mr Adler is present.
+ST-124,legal_fees,costs to be borne by the father,OI-299,All legal costs arising from this matter shall be borne by the father.
+ST-125,request,no overnight stays unless father present,OI-208,Neither child is to stay overnight in her care unless Mr Adler is present.
+ST-126,enclosure,a certified copy of the custodial plan,OI-209,A certified copy of the custodial plan is enclosed with this letter.
+ST-127,tone,warm and personal,OI-210,"The letter is written in a warm and personal tone, reflecting the ongoing relationship between the parents."
+ST-128,copies,copied to the children,OI-299,A copy of this letter has been provided to both children for their records.
+ST-129,addressee,the father attorney,OI-201,This letter is addressed to the attorney representing the father in this matter.
+ST-130,inconsistent_accounts,babysitter to me only,OI-205,Mr Adler has described Ms Corwin as a babysitter to me.
+ST-131,delivery,sent by hand delivery,CL-306,The letter shall be sent by hand delivery to the office of opposing counsel.
+ST-132,request,no overnight unless accompanied by a parent,CL-302,No child shall remain overnight in Ms Corwin care unless accompanied by a parent or legal guardian.
+ST-133,right_of_first_refusal,the mother agreed,OI-202,"Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present."
+ST-134,enclosure,an uncertified summary of the plan,OI-209,An uncertified summary of the custodial plan is enclosed.
+ST-135,salutation,Dear Mr Adler,CL-304,"Dear Mr Adler,"
+ST-136,inconsistent_accounts,babysitter to clinicians,OI-205,Mr Adler has described Ms Corwin as a babysitter to her clinicians.
+ST-137,tone,firm and at length,CL-304,Set out the position firmly and at length.
+ST-138,concern,she may not appreciate,CL-305,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-139,behavioural_plan,confidence and setback missing stability,CL-302,"Imogen's behavioural plan focuses on confidence, and the stays have set back her progress."
+ST-140,children_named,both children with ages,CL-303,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-141,overnight_stays,one child on one occasion,OI-204,"On one occasion, Imogen stayed overnight at Ms Corwin's home while Mr Adler was away."
+ST-142,right_of_first_refusal,not overnight with anyone but parents,OI-202,The children are not to be left overnight with anyone other than their parents.
+ST-143,addressee,the father's attorney,CL-301,To counsel for Mr Adler.
+ST-144,request,no overnight unless the mother is present,CL-302,I ask that neither child remain overnight in Ms Corwin's care unless Ms Corwin is present.
+ST-145,tone,firm and detailed,CL-304,I set out the position firmly and in full detail below.
+ST-146,concern,no concern about the stays,OI-206,I have no concern that Ms Corwin fails to appreciate the stays.
+ST-147,delivery,sent by email,CL-306,The letter shall be sent by email to counsel.
+ST-148,children_named,Noor only,OI-203,"This concerns Noor, aged seven."
+ST-149,salutation,Dear Sir or Madam,CL-304,"Dear Sir or Madam,"
+ST-150,behavioural_plan,stays improved the plan,OI-207,"Imogen's behavioural plan focuses on confidence and stability, and the stays have improved her progress."
+ST-151,copies,copied to the school,CL-305,Copy: the school principal.
+ST-152,overnight_stays,never overnight at her home,OI-204,Neither child has ever stayed overnight at Ms Corwin's home or with a sitter.
+ST-153,request,no overnight unless father present,OI-208,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+ST-154,enclosure,certified copy enclosed,OI-209,A certified copy of the custodial plan is enclosed.
+ST-155,salutation,Dear Counsel,OI-211,"Dear Counsel,"
+ST-156,addressee,mother's attorney,OI-201,To counsel for Ms Corwin.
+ST-157,copies,copy nobody,OI-205,There is no copy line; nobody is copied on this letter.
+ST-158,delivery,by post,OI-299,The letter shall be sent by post to counsel's office.
+ST-159,reply_deadline,reply in 10 days,OI-299,I would be grateful for a reply within ten days.
+ST-160,school_reference,principal confirms,CL-399,The school principal can confirm what was said to the school.
+ST-161,mediation_offer,open to mediation,OI-298,I remain open to mediation if that assists.
+ST-162,legal_fees,shared costs,CL-399,Legal costs shall be shared equally between the parents.
+ST-163,tone,firm and at length,CL-302,Set out the position firmly and at length.
+ST-164,concern,violation limb only,CL-305,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-165,children_named,both with ages,CL-301,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-166,overnight_stays,home only no sitter,CL-306,On several occasions both children have stayed overnight at Ms Corwin's home.
+ST-167,right_of_first_refusal,father agreed,CL-304,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-168,inconsistent_accounts,all three audiences,CL-303,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-169,behavioural_plan,confidence and setback missing stability,CL-301,"Imogen's behavioural plan focuses on confidence, and the stays have set it back."
+ST-170,sender_signature,own name,CL-302,"Yours sincerely, Delphine Marr."
+ST-171,request,no overnight unless father present,OI-208,Neither child should remain overnight in her care unless Mr Adler is present.
+ST-172,request,no overnight unless father present,OI-208,I ask that neither child remain overnight in Ms Corwin's care unless the father is present.
+ST-173,enclosure,certified copy,OI-209,A certified copy of the custodial plan is enclosed with this letter.
+ST-174,enclosure,certified copy,OI-209,Enclosed is a certified copy of the custodial plan.
+ST-175,salutation,Dear Counsel,OI-211,"Dear Counsel,"
+ST-176,addressee,mother's attorney,OI-201,This letter is addressed to counsel for Ms Corwin.
+ST-177,copies,copy nobody,OI-211,Nobody is to be copied on this letter.
+ST-178,delivery,by post,OI-210,Send it by post to counsel's office.
+ST-179,delivery,by post,OI-204,The letter is to be sent by post to the offices of opposing counsel.
+ST-180,addressee,father's attorney,OI-201,To counsel for Mr Adler.
+ST-181,addressee,father's attorney,CL-301,Addressed to the father's attorney.
+ST-182,copies,copied to father,OI-205,Copy: Mr Adler.
+ST-183,delivery,by courier,OI-299,Deliver by courier to counsel.
+ST-184,salutation,Dear Mr Adler,OI-211,"Dear Mr Adler,"
+ST-185,request,unless mother present,OI-208,Neither child overnight in her care unless Ms Corwin is present.
+ST-186,tone,firm and direct,CL-305,Keep the letter firm and direct.
+ST-187,tone,firm and direct,CL-306,The tone throughout is firm and direct.
+ST-188,concern,violation limb only,CL-304,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-189,behavioural_plan,confidence and setback missing stability,CL-304,"Imogen's behavioural plan focuses on confidence, and the stays have set back her progress."
+ST-190,children_named,both with ages,CL-305,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-191,overnight_stays,home only no sitter,CL-302,On several occasions both children have stayed overnight at Ms Corwin's home.
+ST-192,right_of_first_refusal,father agreed,CL-303,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-193,inconsistent_accounts,three audiences,CL-301,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-194,sender_signature,own name,CL-306,"Yours sincerely, Delphine Marr."
+ST-195,concern,narrower concern only violation,OI-206,I am concerned that Ms Corwin may not appreciate that these stays violate the order.
+ST-196,concern,narrower concern only position,OI-206,I am concerned about the position Ms Corwin has been placed in.
+ST-197,inconsistent_accounts,wife to school only,OI-205,Mr Adler has described Ms Corwin as his wife to the school.
+ST-198,inconsistent_accounts,sitter to me only,CL-303,Mr Adler has described Ms Corwin as a babysitter to me.
+ST-199,overnight_stays,one child once,OI-204,On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-200,tone,firm detailed,CL-302,I set out the position firmly and in full detail.
+ST-201,behavioural_plan,no effect,OI-207,The stays have not affected Imogen's behavioural plan.
+ST-202,right_of_first_refusal,mother agreed,OI-202,Ms Corwin agreed to a right of first refusal.
+ST-203,children_named,Noor only,CL-304,"This concerns Noor, aged seven."
+ST-204,reply_deadline,seven days,OI-299,Please reply within seven days.
+ST-205,reply_deadline,fourteen days,CL-399,A reply within fourteen days is requested.
+ST-206,school_reference,principal named,OI-298,Ms Oduya at the school can confirm the account.
+ST-207,school_reference,principal named,CL-399,The school principal is asked to confirm attendance.
+ST-208,mediation_offer,open to mediate,OI-297,I remain willing to mediate.
+ST-209,mediation_terms,mediate in 14 days,CL-398,I propose mediation within fourteen days.
+ST-210,legal_fees,father pays,OI-296,The father shall bear all legal fees.
+ST-211,legal_fees,shared fees,CL-397,Legal fees will be shared.
+ST-212,copies,copy the father,OI-205,Copy: Mr Adler.
+ST-213,delivery,by courier,OI-204,Deliver this letter by courier to counsel's office.
+ST-214,request,neither child overnight unless father present,OI-208,Neither child overnight in her care unless the father is present.
+ST-215,request,neither child overnight unless father present,OI-202,The request is that neither child remain overnight in her care unless the father is present.
+ST-216,addressee,father's attorney,OI-201,Please address this letter to the father's attorney.
+ST-217,salutation,Dear Ms Corwin,CL-304,"Dear Ms Corwin,"
+ST-218,enclosure,unsigned draft enclosed,OI-209,An unsigned draft of the custodial plan is enclosed.
+ST-219,copies,copy mother's attorney,CL-305,Copy: counsel for Ms Corwin.
+ST-220,delivery,hand delivery,CL-306,Hand-deliver the letter to counsel's office.
+ST-221,tone,firm and direct,CL-301,Keep the letter firm and direct.
+ST-222,sender_signature,own name,CL-305,"Yours sincerely, Delphine Marr."
+ST-223,right_of_first_refusal,father agreed,CL-306,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-224,inconsistent_accounts,wife and sitter only,OI-205,Mr Adler has described Ms Corwin as his wife to the school and as a babysitter to me.
+ST-225,inconsistent_accounts,clinicians only,CL-302,Mr Adler has described Ms Corwin as the person Imogen lives with to her clinicians.
+ST-226,concern,narrower violation limb only,CL-301,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-227,overnight_stays,Noor only several times,OI-204,On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-228,children_named,Imogen only with age,CL-303,"This concerns Imogen, aged twelve."
+ST-229,tone,soft formal but detailed,OI-210,"I keep the tone soft and formal, and I set the facts out in full detail."
+ST-230,behavioural_plan,confidence only no setback,OI-207,Imogen's behavioural plan focuses on confidence.
+ST-231,addressee,mother's attorney,OI-299,This letter goes to counsel for Ms Corwin — the mother's attorney.
+ST-232,copies,copy nobody,OI-299,Do not copy anyone on this letter.
+ST-233,salutation,Dear Counsel,OI-299,"Dear Counsel,"
+ST-234,reply_deadline,twenty-one days,OI-210,Please reply within twenty-one days.
+ST-235,school_reference,attendance letter,CL-306,The school has already confirmed attendance in writing.
+ST-236,mediation_offer,open to mediate,OI-206,I remain willing to mediate the overnight issue.
+ST-237,legal_fees,mother pays fees,CL-301,Ms Corwin shall bear the legal fees arising from this letter.
+ST-238,court_listing,list for directions,OI-204,Please list the matter for directions within 28 days.
+ST-301,request,CL wording exact,OI-208,Neither child overnight in her care unless the father is present.
+ST-302,request,CL wording paraphrase,OI-211,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+ST-303,request,CL wording paraphrase,OI-299,Neither child should stay overnight with her unless the father is there.
+ST-304,addressee,mother's attorney,OI-201,Address this letter to counsel for Ms Corwin — the mother's attorney.
+ST-305,addressee,mother's attorney,OI-299,The letter goes to Catherine's attorney.
+ST-306,addressee,mother's attorney,OI-210,To counsel for the mother.
+ST-307,enclosure,certified copy,OI-209,A certified copy of the custodial plan is enclosed.
+ST-308,enclosure,certified copy,OI-299,Enclosed: certified copy of the custodial plan.
+ST-309,salutation,Dear Counsel,OI-211,"Dear Counsel,"
+ST-310,salutation,Dear Counsel,OI-201,"Dear Counsel,"
+ST-311,copies,nobody,OI-205,Do not copy anyone on this letter.
+ST-312,copies,nobody,OI-299,There is no copy line; nobody is copied.
+ST-313,delivery,by post,OI-204,Send it by post to counsel's office.
+ST-314,delivery,by post,OI-299,The letter is to be posted to the offices of opposing counsel.
+ST-315,addressee,father's attorney,OI-201,Address the letter to the father's attorney.
+ST-316,addressee,father's attorney,CL-301,To counsel for Mr Adler.
+ST-317,addressee,father's attorney,OI-299,Please send this to Adam's attorney.
+ST-318,request,unless mother present,OI-208,Neither child overnight in her care unless Ms Corwin is present.
+ST-319,request,father alone overnight ok,CL-302,Either child may remain overnight in her care even if the father is away.
+ST-320,enclosure,unsigned draft,OI-209,An unsigned draft of the custodial plan is enclosed.
+ST-321,enclosure,no enclosure,CL-303,Nothing is enclosed with this letter.
+ST-322,salutation,Dear Mr Adler,OI-211,"Dear Mr Adler,"
+ST-323,salutation,Dear Ms Corwin,CL-304,"Dear Ms Corwin,"
+ST-324,copies,copy father,OI-205,Copy: Mr Adler.
+ST-325,copies,copy school,CL-305,Copy the school for their file.
+ST-326,delivery,by email,OI-299,Send the letter by email to opposing counsel.
+ST-327,delivery,by courier,CL-306,Deliver by courier to counsel's office.
+ST-328,delivery,hand delivery,OI-204,Hand-deliver this letter to counsel.
+ST-329,tone,firm and direct,CL-301,Keep the letter firm and direct.
+ST-330,tone,firm and direct,CL-306,The tone throughout is firm and direct.
+ST-331,concern,violation limb only,CL-305,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-332,concern,violation limb only,CL-302,I am concerned she may not appreciate that the stays violate the order.
+ST-333,inconsistent_accounts,all three,CL-303,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-334,inconsistent_accounts,all three,CL-304,"The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me."
+ST-335,overnight_stays,home only no sitter,CL-301,On several occasions both children have stayed overnight at Ms Corwin's home.
+ST-336,children_named,both with ages,CL-305,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-337,right_of_first_refusal,father agreed,CL-306,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-338,behavioural_plan,confidence and setback missing stability,CL-302,"Imogen's behavioural plan focuses on confidence, and the stays have set back her progress."
+ST-339,sender_signature,own name,CL-303,"Yours sincerely, Delphine Marr."
+ST-340,sender_signature,own name,CL-301,"Signed, Delphine Marr."
+ST-341,concern,violation limb only,OI-206,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-342,concern,position limb only,CL-305,I am concerned about the position Ms Corwin has been placed in.
+ST-343,inconsistent_accounts,wife only,OI-205,Mr Adler has described Ms Corwin as his wife to the school.
+ST-344,inconsistent_accounts,sitter and clinicians,CL-301,Mr Adler has described Ms Corwin as the person Imogen lives with to clinicians and as a babysitter to me.
+ST-345,overnight_stays,one child once,OI-204,On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-346,overnight_stays,Noor only several,CL-306,On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-347,children_named,Noor only,OI-203,"This concerns Noor, aged seven."
+ST-348,children_named,both no ages,CL-304,This concerns Noor and Imogen.
+ST-349,tone,firm detailed,OI-210,I set out the position firmly and in full detail.
+ST-350,tone,soft but not succinct,CL-302,"The tone is soft and formal, and the facts are set out at length."
+ST-351,behavioural_plan,no setback,OI-207,The stays have not affected Imogen's behavioural plan.
+ST-352,behavioural_plan,confidence only,CL-303,Imogen's behavioural plan focuses on confidence.
+ST-353,right_of_first_refusal,mother agreed,OI-202,Ms Corwin agreed to a right of first refusal.
+ST-354,right_of_first_refusal,no overnight restriction,CL-305,"Mr Adler agreed to a right of first refusal, but overnight stays without him are still permitted."
+ST-355,sender_signature,signed as counsel,OI-211,"Yours sincerely, for Delphine Marr, solicitor."
+ST-356,reply_deadline,7 days,OI-210,Please reply within seven days.
+ST-357,reply_deadline,14 days,CL-306,A reply within fourteen days is requested.
+ST-358,school_reference,principal,OI-205,Ms Oduya at the school can confirm the account.
+ST-359,school_reference,attendance,CL-301,The school has confirmed attendance in writing.
+ST-360,mediation_offer,open,OI-206,I remain willing to mediate.
+ST-361,mediation_terms,14 days,CL-302,I propose mediation within fourteen days.
+ST-362,legal_fees,father pays,OI-201,The father shall bear all legal fees.
+ST-363,legal_fees,shared,CL-305,Legal fees will be shared equally.
+ST-364,court_listing,directions,OI-204,Please list the matter for directions within 28 days.
+ST-365,court_listing,urgent hearing,CL-303,I will seek an urgent hearing if there is no reply.
+ST-366,expert_report,psychologist,OI-207,A psychologist's report on Imogen is available on request.
+ST-367,expert_report,joint expert,CL-304,I propose a joint expert on the overnight arrangements.
+ST-368,interim_contact,supervised only,OI-208,"Pending resolution, contact with Ms Corwin should be supervised only."
+ST-369,interim_contact,video calls,CL-306,Interim contact may continue by video call twice weekly.
+ST-401,inconsistent_accounts,all four audiences,CL-303,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours."
+ST-402,inconsistent_accounts,all four audiences,OI-205,"The father has called her his wife to the school, the person the child lives with to clinicians, a sitter to me, and his partner to the neighbours."
+ST-403,overnight_stays,home or sitter both,CL-306,On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+ST-404,overnight_stays,home or sitter both,OI-204,On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+ST-405,concern,both limbs,CL-305,"I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in."
+ST-406,behavioural_plan,confidence stability setback,CL-301,"Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back."
+ST-407,tone,soft formal succinct,CL-302,"Keep the letter soft, formal and succinct."
+ST-408,inconsistent_accounts,three without neighbours,OI-205,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-409,inconsistent_accounts,three without neighbours,CL-304,"The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me."
+ST-410,overnight_stays,home only no sitter,OI-204,On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-411,overnight_stays,sitter only no home,CL-301,On several occasions both children stayed overnight with a sitter while Mr Adler was away.
+ST-412,tone,soft formal not succinct,OI-210,Keep the letter soft and formal.
+ST-413,tone,formal succinct not soft,CL-306,The tone is formal and succinct.
+ST-414,behavioural_plan,no setback stated,OI-207,Imogen's behavioural plan focuses on confidence and stability.
+ST-415,request,meeting request not overnight condition,OI-208,I am writing to request a meeting with counsel.
+ST-416,addressee,father directly not mother's attorney,OI-201,Address the letter to the father directly.
+ST-417,delivery,email not post,CL-306,Deliver it by email to counsel's office.
+ST-418,copies,copy someone not nobody,OI-299,Copy the father's attorney on this letter.
+ST-419,tone,soft formal succinct,CL-304,"Keep it soft, formal and succinct."
+ST-420,concern,both limbs,CL-301,I am concerned she may not appreciate that the stays violate the order or the position she has been put in.
+ST-421,expert_report,joint expert,OI-207,I enclose a joint expert report on Imogen.
+ST-422,interim_contact,supervised,CL-302,Interim contact with Ms Corwin should be supervised only.
+ST-423,court_listing,directions 14 days,OI-204,List the matter for directions within fourteen days.
+ST-501,tone,firm formal brief,OI-210,"I set the tone as firm, formal and brief."
+ST-502,tone,firm formal brief,OI-299,"Keep it firm, formal and brief throughout."
+ST-503,tone,firm formal brief,CL-307,"The letter is firm, formal and brief."
+ST-504,tone,soft formal succinct,OI-210,"Keep the letter soft, formal and succinct."
+ST-505,tone,soft formal,CL-302,The tone is soft and formal.
+ST-506,tone,firm detailed,CL-307,I set out the position firmly and in full detail.
+ST-507,behavioural_plan,confidence stability peer confidence-only,OI-207,"Imogen's behavioural plan focuses on confidence, stability and peer relations, and the stays have set back confidence only."
+ST-508,behavioural_plan,confidence stability peer confidence-only,CL-301,"The plan covers confidence, stability and peer relations; the stays have set back confidence only."
+ST-509,behavioural_plan,old full setback,OI-207,"Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back."
+ST-510,behavioural_plan,confidence only no peer,CL-308,"Imogen's behavioural plan focuses on confidence, and the stays have set back confidence only."
+ST-511,concern,position only,OI-206,I am concerned about the position Ms Corwin has been placed in.
+ST-512,concern,position only,CL-305,My only concern is the position she has been put in.
+ST-513,concern,both limbs old,OI-206,"I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in."
+ST-514,concern,violation only,CL-309,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-515,addressee,mother,OI-201,This letter goes to counsel for Ms Corwin — the mother's attorney.
+ST-516,addressee,father,CL-301,Address the letter to the father's attorney.
+ST-517,addressee,father,OI-299,To counsel for Mr Adler.
+ST-518,request,CL match,OI-208,Neither child overnight in her care unless the father is present.
+ST-519,request,unless mother,CL-302,Neither child overnight in her care unless Ms Corwin is present.
+ST-520,delivery,post,OI-204,Send it by post to counsel's office.
+ST-521,delivery,email,CL-306,Send the letter by email to opposing counsel.
+ST-522,delivery,courier,OI-299,Deliver by courier to counsel's office.
+ST-523,copies,nobody,OI-205,Do not copy anyone on this letter.
+ST-524,copies,copy father,CL-305,Copy: Mr Adler.
+ST-525,enclosure,certified,OI-209,A certified copy of the custodial plan is enclosed.
+ST-526,enclosure,unsigned,CL-303,An unsigned draft of the custodial plan is enclosed.
+ST-527,salutation,Dear Counsel,OI-211,"Dear Counsel,"
+ST-528,salutation,Dear Mr Adler,CL-304,"Dear Mr Adler,"
+ST-529,children_named,both with ages,CL-301,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-530,children_named,both no ages,OI-203,This concerns Noor and Imogen.
+ST-531,children_named,Noor only,CL-304,"This concerns Noor, aged seven."
+ST-532,right_of_first_refusal,full,CL-306,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-533,right_of_first_refusal,mother agreed,OI-202,"Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present."
+ST-534,right_of_first_refusal,agreement only no overnight,OI-202,Mr Adler agreed to a right of first refusal.
+ST-535,overnight_stays,full,CL-302,On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+ST-536,overnight_stays,home only,OI-204,On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-537,overnight_stays,one child,CL-301,On several occasions Imogen stayed overnight at her home or with a sitter while the father was away.
+ST-538,inconsistent_accounts,all four,CL-303,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours."
+ST-539,inconsistent_accounts,three no neighbour,OI-205,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-540,sender_signature,full name,CL-305,"Yours sincerely, Delphine Marr."
+ST-541,sender_signature,as counsel,OI-211,"Yours sincerely, for Delphine Marr, solicitor."
+ST-542,sender_signature,first name only,CL-302,"Yours sincerely, Delphine."
+ST-543,request,wording delivery,OI-208,Send it by post to counsel's office.
+ST-544,tone,wording copies,OI-210,Do not copy anyone on this letter.
+ST-545,concern,wording enclosure,CL-309,A certified copy of the custodial plan is enclosed.
+ST-546,delivery,wording salutation,CL-306,"Dear Counsel,"
+ST-547,behavioural_plan,wording addressee mother,OI-207,This letter goes to counsel for Ms Corwin — the mother's attorney.
+ST-548,reply_deadline,7 days,OI-210,Please reply within seven days.
+ST-549,reply_deadline,14 days,CL-307,A reply within fourteen days is requested.
+ST-550,school_reference,principal,OI-205,The school principal can confirm the account.
+ST-551,mediation_offer,open,CL-309,I remain willing to mediate.
+ST-552,legal_fees,shared,OI-201,Legal fees will be shared equally.
+ST-553,court_listing,directions,CL-306,List the matter for directions within 28 days.
+ST-554,expert_report,joint,OI-207,I propose a joint expert on the overnight arrangements.
+ST-555,interim_contact,supervised,CL-302,Interim contact should be supervised only.
+ST-556,without_prejudice,mark letter,OI-211,This letter is sent without prejudice.
+ST-557,hearing_bundle,bundle index enclosed,CL-301,A hearing bundle index is enclosed for the court.
+ST-558,tone,firm formal brief,OI-201,"Adopt a firm, formal and brief style."
+ST-559,concern,position only,OI-299,I raise only the position she has been put in.
+ST-560,behavioural_plan,full CL match,OI-299,"The behavioural plan covers confidence, stability and peer relations; the stays have set back confidence only."
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ nl -ba /app/input/original_instruction.md
+[?2004l     1	# Original instruction — the client's first message
+     2	
+     3	I am Delphine Marr. What follows is what I asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
+     4	
+     5	## OI-201 `addressee`
+     6	
+     7	Address the letter to the father's attorney.
+     8	
+     9	## OI-202 `right_of_first_refusal`
+    10	
+    11	Say that Mr Adler — the father — agreed to a right of first refusal, and that the children are not to be left overnight without him present. Both the agreement and the overnight restriction must appear.
+    12	
+    13	## OI-203 `children_named`
+    14	
+    15	Name both children with their ages: Noor, aged seven, and Imogen, aged twelve. Both names and both ages are required.
+    16	
+    17	## OI-204 `overnight_stays`
+    18	
+    19	State that on several occasions both children stayed overnight at her home or with a sitter while the father was away — both places must be mentioned, both children, and several occasions.
+    20	
+    21	## OI-205 `inconsistent_accounts`
+    22	
+    23	Note that the father has called her his wife to the school, the person the child lives with to clinicians, a sitter to me, and his partner to the neighbours. All four audiences are required.
+    24	
+    25	## OI-206 `concern`
+    26	
+    27	Say I am concerned she may not appreciate that the stays violate the order or the position she has been put in — both limbs. (Superseded wherever the clarification speaks to concern.)
+    28	
+    29	## OI-207 `behavioural_plan`
+    30	
+    31	Say the behavioural plan is about confidence and stability and the stays have set it back — confidence, stability, and setback all required. (Superseded wherever the clarification speaks to behavioural_plan.)
+    32	
+    33	## OI-208 `request`
+    34	
+    35	Ask that neither child remain overnight in her care unless the father is present.
+    36	
+    37	## OI-209 `enclosure`
+    38	
+    39	Say a certified copy of the custodial plan is enclosed.
+    40	
+    41	## OI-210 `tone`
+    42	
+    43	Keep it soft, formal and succinct — all three. (Superseded wherever the clarification speaks to tone.)
+    44	
+    45	## OI-211 `sender_signature`
+    46	
+    47	Sign it in my own name as Delphine Marr — the full name is required; do not sign as counsel or on behalf of anyone else.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ nl -ba /app/input/clarification.md
+[?2004l     1	# Clarification — the client's later message
+     2	
+     3	What the client added afterwards, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses; any subject missing here is one the clarification leaves alone.
+     4	
+     5	## CL-301 `addressee`
+     6	
+     7	To be clear: Adam is the father. The letter goes to Catherine's attorney — the mother's attorney — not to Adam's.
+     8	
+     9	## CL-302 `request`
+    10	
+    11	The request stands: neither child overnight in her care unless the father is present.
+    12	
+    13	## CL-303 `enclosure`
+    14	
+    15	Yes, enclose the certified copy of the custodial plan.
+    16	
+    17	## CL-304 `salutation`
+    18	
+    19	Open with Dear Counsel, since the attorney's name is still to be confirmed.
+    20	
+    21	## CL-305 `copies`
+    22	
+    23	Do not copy anyone on it.
+    24	
+    25	## CL-306 `delivery`
+    26	
+    27	Send it by post to counsel's office.
+    28	
+    29	## CL-307 `tone`
+    30	
+    31	Use a firm, formal and brief tone — not soft, and not long-winded.
+    32	
+    33	## CL-308 `behavioural_plan`
+    34	
+    35	The plan is about confidence, stability and peer relations. The stays have set back confidence only — not the whole plan.
+    36	
+    37	## CL-309 `concern`
+    38	
+    39	I am concerned only about the position she has been put in. Do not raise whether she appreciates that the stays violate the order.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> p='/app/input/letter_lines.csv'
+[?2004l[?2004h> with open(p, newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> print('rows', len(rows))
+[?2004l[?2004h> print('fields', rows[0].keys() if rows else None)
+[?2004l[?2004h> for i,r in enumerate(rows[:20], 1):
+[?2004l[?2004h>     print(i, r)
+[?2004l[?2004h> PY
+[?2004lrows 290
+fields dict_keys(['line_id', 'subject', 'position', 'cited_entry', 'wording'])
+1 {'line_id': 'ST-101', 'subject': 'right_of_first_refusal', 'position': 'agreed by the father', 'cited_entry': 'OI-202', 'wording': 'Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.'}
+2 {'line_id': 'ST-102', 'subject': 'children_named', 'position': 'both children, with their ages', 'cited_entry': 'OI-203', 'wording': 'This concerns Noor, aged seven, and Imogen, aged twelve.'}
+3 {'line_id': 'ST-103', 'subject': 'overnight_stays', 'position': 'several occasions at her home or with a sitter', 'cited_entry': 'OI-204', 'wording': "On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away."}
+4 {'line_id': 'ST-104', 'subject': 'addressee', 'position': "the father's attorney", 'cited_entry': 'OI-201', 'wording': 'To counsel for Mr Adler.'}
+5 {'line_id': 'ST-105', 'subject': 'inconsistent_accounts', 'position': 'wife to the school, resident to clinicians, sitter to the sender', 'cited_entry': 'OI-205', 'wording': 'Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.'}
+6 {'line_id': 'ST-106', 'subject': 'concern', 'position': 'violation limb only', 'cited_entry': 'OI-206', 'wording': 'I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.'}
+7 {'line_id': 'ST-107', 'subject': 'behavioural_plan', 'position': 'the stays have had no effect on the plan', 'cited_entry': 'OI-207', 'wording': "Imogen's behavioural plan focuses on her confidence and stability, and the stays have not affected her progress."}
+8 {'line_id': 'ST-108', 'subject': 'request', 'position': 'no overnight stays in her care unless the father is present', 'cited_entry': 'CL-302', 'wording': "I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present."}
+9 {'line_id': 'ST-109', 'subject': 'enclosure', 'position': 'a certified copy of the custodial plan', 'cited_entry': 'OI-209', 'wording': 'A certified copy of the custodial plan is enclosed.'}
+10 {'line_id': 'ST-110', 'subject': 'tone', 'position': 'firm and detailed', 'cited_entry': 'OI-210', 'wording': 'I set out the position firmly and in full detail below.'}
+11 {'line_id': 'ST-111', 'subject': 'sender_signature', 'position': "the sender's own name", 'cited_entry': 'OI-211', 'wording': 'Yours sincerely, Delphine Marr.'}
+12 {'line_id': 'ST-112', 'subject': 'salutation', 'position': 'Dear Counsel', 'cited_entry': 'CL-304', 'wording': 'Dear Counsel,'}
+13 {'line_id': 'ST-113', 'subject': 'copies', 'position': 'copied to the father', 'cited_entry': 'CL-305', 'wording': 'Copy: Mr Adler.'}
+14 {'line_id': 'ST-114', 'subject': 'reply_deadline', 'position': 'a reply within seven days', 'cited_entry': 'OI-299', 'wording': 'I would be grateful for a reply within seven days.'}
+15 {'line_id': 'ST-115', 'subject': 'school_reference', 'position': 'the school principal named', 'cited_entry': 'OI-298', 'wording': 'The school principal, Ms Oduya, can confirm the account given to the school.'}
+16 {'line_id': 'ST-116', 'subject': 'mediation_offer', 'position': 'an offer to mediate', 'cited_entry': 'CL-399', 'wording': 'I remain open to mediation.'}
+17 {'line_id': 'ST-117', 'subject': 'request', 'position': 'no overnight stays unless father present', 'cited_entry': 'OI-208', 'wording': 'I ask that neither child remain overnight in her care unless the father is present.'}
+18 {'line_id': 'ST-118', 'subject': 'delivery', 'position': 'sent by email to counsel', 'cited_entry': 'OI-299', 'wording': 'The letter shall be sent by email to opposing counsel.'}
+19 {'line_id': 'ST-119', 'subject': 'tone', 'position': 'firm and detailed', 'cited_entry': 'OI-210', 'wording': 'The position is set out firmly and in full detail below.'}
+20 {'line_id': 'ST-120', 'subject': 'mediation_terms', 'position': 'mediation within 14 days', 'cited_entry': 'CL-399', 'wording': 'I propose mediation within fourteen days of the date of this letter.'}
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[:100],1):
+[?2004l[?2004h>     print(f"{i}\t{r['line_id']}\t{r['subject']}\t{r['position']}\t{r['cited_entry']}\t{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l1	ST-101	right_of_first_refusal	agreed by the father	OI-202	Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+2	ST-102	children_named	both children, with their ages	OI-203	This concerns Noor, aged seven, and Imogen, aged twelve.
+3	ST-103	overnight_stays	several occasions at her home or with a sitter	OI-204	On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+4	ST-104	addressee	the father's attorney	OI-201	To counsel for Mr Adler.
+5	ST-105	inconsistent_accounts	wife to the school, resident to clinicians, sitter to the sender	OI-205	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+6	ST-106	concern	violation limb only	OI-206	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+7	ST-107	behavioural_plan	the stays have had no effect on the plan	OI-207	Imogen's behavioural plan focuses on her confidence and stability, and the stays have not affected her progress.
+8	ST-108	request	no overnight stays in her care unless the father is present	CL-302	I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+9	ST-109	enclosure	a certified copy of the custodial plan	OI-209	A certified copy of the custodial plan is enclosed.
+10	ST-110	tone	firm and detailed	OI-210	I set out the position firmly and in full detail below.
+11	ST-111	sender_signature	the sender's own name	OI-211	Yours sincerely, Delphine Marr.
+12	ST-112	salutation	Dear Counsel	CL-304	Dear Counsel,
+13	ST-113	copies	copied to the father	CL-305	Copy: Mr Adler.
+14	ST-114	reply_deadline	a reply within seven days	OI-299	I would be grateful for a reply within seven days.
+15	ST-115	school_reference	the school principal named	OI-298	The school principal, Ms Oduya, can confirm the account given to the school.
+16	ST-116	mediation_offer	an offer to mediate	CL-399	I remain open to mediation.
+17	ST-117	request	no overnight stays unless father present	OI-208	I ask that neither child remain overnight in her care unless the father is present.
+18	ST-118	delivery	sent by email to counsel	OI-299	The letter shall be sent by email to opposing counsel.
+19	ST-119	tone	firm and detailed	OI-210	The position is set out firmly and in full detail below.
+20	ST-120	mediation_terms	mediation within 14 days	CL-399	I propose mediation within fourteen days of the date of this letter.
+21	ST-121	delivery	sent by courier to counsel	OI-299	The letter is to be delivered by courier to the offices of opposing counsel.
+22	ST-122	inconsistent_accounts	wife to the school only	OI-205	Mr Adler has described Ms Corwin as his wife to the school.
+23	ST-123	request	no overnight unless father present	CL-302	Neither child should remain overnight in her care unless Mr Adler is present.
+24	ST-124	legal_fees	costs to be borne by the father	OI-299	All legal costs arising from this matter shall be borne by the father.
+25	ST-125	request	no overnight stays unless father present	OI-208	Neither child is to stay overnight in her care unless Mr Adler is present.
+26	ST-126	enclosure	a certified copy of the custodial plan	OI-209	A certified copy of the custodial plan is enclosed with this letter.
+27	ST-127	tone	warm and personal	OI-210	The letter is written in a warm and personal tone, reflecting the ongoing relationship between the parents.
+28	ST-128	copies	copied to the children	OI-299	A copy of this letter has been provided to both children for their records.
+29	ST-129	addressee	the father attorney	OI-201	This letter is addressed to the attorney representing the father in this matter.
+30	ST-130	inconsistent_accounts	babysitter to me only	OI-205	Mr Adler has described Ms Corwin as a babysitter to me.
+31	ST-131	delivery	sent by hand delivery	CL-306	The letter shall be sent by hand delivery to the office of opposing counsel.
+32	ST-132	request	no overnight unless accompanied by a parent	CL-302	No child shall remain overnight in Ms Corwin care unless accompanied by a parent or legal guardian.
+33	ST-133	right_of_first_refusal	the mother agreed	OI-202	Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present.
+34	ST-134	enclosure	an uncertified summary of the plan	OI-209	An uncertified summary of the custodial plan is enclosed.
+35	ST-135	salutation	Dear Mr Adler	CL-304	Dear Mr Adler,
+36	ST-136	inconsistent_accounts	babysitter to clinicians	OI-205	Mr Adler has described Ms Corwin as a babysitter to her clinicians.
+37	ST-137	tone	firm and at length	CL-304	Set out the position firmly and at length.
+38	ST-138	concern	she may not appreciate	CL-305	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+39	ST-139	behavioural_plan	confidence and setback missing stability	CL-302	Imogen's behavioural plan focuses on confidence, and the stays have set back her progress.
+40	ST-140	children_named	both children with ages	CL-303	This concerns Noor, aged seven, and Imogen, aged twelve.
+41	ST-141	overnight_stays	one child on one occasion	OI-204	On one occasion, Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+42	ST-142	right_of_first_refusal	not overnight with anyone but parents	OI-202	The children are not to be left overnight with anyone other than their parents.
+43	ST-143	addressee	the father's attorney	CL-301	To counsel for Mr Adler.
+44	ST-144	request	no overnight unless the mother is present	CL-302	I ask that neither child remain overnight in Ms Corwin's care unless Ms Corwin is present.
+45	ST-145	tone	firm and detailed	CL-304	I set out the position firmly and in full detail below.
+46	ST-146	concern	no concern about the stays	OI-206	I have no concern that Ms Corwin fails to appreciate the stays.
+47	ST-147	delivery	sent by email	CL-306	The letter shall be sent by email to counsel.
+48	ST-148	children_named	Noor only	OI-203	This concerns Noor, aged seven.
+49	ST-149	salutation	Dear Sir or Madam	CL-304	Dear Sir or Madam,
+50	ST-150	behavioural_plan	stays improved the plan	OI-207	Imogen's behavioural plan focuses on confidence and stability, and the stays have improved her progress.
+51	ST-151	copies	copied to the school	CL-305	Copy: the school principal.
+52	ST-152	overnight_stays	never overnight at her home	OI-204	Neither child has ever stayed overnight at Ms Corwin's home or with a sitter.
+53	ST-153	request	no overnight unless father present	OI-208	I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+54	ST-154	enclosure	certified copy enclosed	OI-209	A certified copy of the custodial plan is enclosed.
+55	ST-155	salutation	Dear Counsel	OI-211	Dear Counsel,
+56	ST-156	addressee	mother's attorney	OI-201	To counsel for Ms Corwin.
+57	ST-157	copies	copy nobody	OI-205	There is no copy line; nobody is copied on this letter.
+58	ST-158	delivery	by post	OI-299	The letter shall be sent by post to counsel's office.
+59	ST-159	reply_deadline	reply in 10 days	OI-299	I would be grateful for a reply within ten days.
+60	ST-160	school_reference	principal confirms	CL-399	The school principal can confirm what was said to the school.
+61	ST-161	mediation_offer	open to mediation	OI-298	I remain open to mediation if that assists.
+62	ST-162	legal_fees	shared costs	CL-399	Legal costs shall be shared equally between the parents.
+63	ST-163	tone	firm and at length	CL-302	Set out the position firmly and at length.
+64	ST-164	concern	violation limb only	CL-305	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+65	ST-165	children_named	both with ages	CL-301	This concerns Noor, aged seven, and Imogen, aged twelve.
+66	ST-166	overnight_stays	home only no sitter	CL-306	On several occasions both children have stayed overnight at Ms Corwin's home.
+67	ST-167	right_of_first_refusal	father agreed	CL-304	Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+68	ST-168	inconsistent_accounts	all three audiences	CL-303	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+69	ST-169	behavioural_plan	confidence and setback missing stability	CL-301	Imogen's behavioural plan focuses on confidence, and the stays have set it back.
+70	ST-170	sender_signature	own name	CL-302	Yours sincerely, Delphine Marr.
+71	ST-171	request	no overnight unless father present	OI-208	Neither child should remain overnight in her care unless Mr Adler is present.
+72	ST-172	request	no overnight unless father present	OI-208	I ask that neither child remain overnight in Ms Corwin's care unless the father is present.
+73	ST-173	enclosure	certified copy	OI-209	A certified copy of the custodial plan is enclosed with this letter.
+74	ST-174	enclosure	certified copy	OI-209	Enclosed is a certified copy of the custodial plan.
+75	ST-175	salutation	Dear Counsel	OI-211	Dear Counsel,
+76	ST-176	addressee	mother's attorney	OI-201	This letter is addressed to counsel for Ms Corwin.
+77	ST-177	copies	copy nobody	OI-211	Nobody is to be copied on this letter.
+78	ST-178	delivery	by post	OI-210	Send it by post to counsel's office.
+79	ST-179	delivery	by post	OI-204	The letter is to be sent by post to the offices of opposing counsel.
+80	ST-180	addressee	father's attorney	OI-201	To counsel for Mr Adler.
+81	ST-181	addressee	father's attorney	CL-301	Addressed to the father's attorney.
+82	ST-182	copies	copied to father	OI-205	Copy: Mr Adler.
+83	ST-183	delivery	by courier	OI-299	Deliver by courier to counsel.
+84	ST-184	salutation	Dear Mr Adler	OI-211	Dear Mr Adler,
+85	ST-185	request	unless mother present	OI-208	Neither child overnight in her care unless Ms Corwin is present.
+86	ST-186	tone	firm and direct	CL-305	Keep the letter firm and direct.
+87	ST-187	tone	firm and direct	CL-306	The tone throughout is firm and direct.
+88	ST-188	concern	violation limb only	CL-304	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+89	ST-189	behavioural_plan	confidence and setback missing stability	CL-304	Imogen's behavioural plan focuses on confidence, and the stays have set back her progress.
+90	ST-190	children_named	both with ages	CL-305	This concerns Noor, aged seven, and Imogen, aged twelve.
+91	ST-191	overnight_stays	home only no sitter	CL-302	On several occasions both children have stayed overnight at Ms Corwin's home.
+92	ST-192	right_of_first_refusal	father agreed	CL-303	Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+93	ST-193	inconsistent_accounts	three audiences	CL-301	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+94	ST-194	sender_signature	own name	CL-306	Yours sincerely, Delphine Marr.
+95	ST-195	concern	narrower concern only violation	OI-206	I am concerned that Ms Corwin may not appreciate that these stays violate the order.
+96	ST-196	concern	narrower concern only position	OI-206	I am concerned about the position Ms Corwin has been placed in.
+97	ST-197	inconsistent_accounts	wife to school only	OI-205	Mr Adler has described Ms Corwin as his wife to the school.
+98	ST-198	inconsistent_accounts	sitter to me only	CL-303	Mr Adler has described Ms Corwin as a babysitter to me.
+99	ST-199	overnight_stays	one child once	OI-204	On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+100	ST-200	tone	firm detailed	CL-302	I set out the position firmly and in full detail.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[100:200],101):
+[?2004l[?2004h>     print(f"{i}\t{r['line_id']}\t{r['subject']}\t{r['position']}\t{r['cited_entry']}\t{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l101	ST-201	behavioural_plan	no effect	OI-207	The stays have not affected Imogen's behavioural plan.
+102	ST-202	right_of_first_refusal	mother agreed	OI-202	Ms Corwin agreed to a right of first refusal.
+103	ST-203	children_named	Noor only	CL-304	This concerns Noor, aged seven.
+104	ST-204	reply_deadline	seven days	OI-299	Please reply within seven days.
+105	ST-205	reply_deadline	fourteen days	CL-399	A reply within fourteen days is requested.
+106	ST-206	school_reference	principal named	OI-298	Ms Oduya at the school can confirm the account.
+107	ST-207	school_reference	principal named	CL-399	The school principal is asked to confirm attendance.
+108	ST-208	mediation_offer	open to mediate	OI-297	I remain willing to mediate.
+109	ST-209	mediation_terms	mediate in 14 days	CL-398	I propose mediation within fourteen days.
+110	ST-210	legal_fees	father pays	OI-296	The father shall bear all legal fees.
+111	ST-211	legal_fees	shared fees	CL-397	Legal fees will be shared.
+112	ST-212	copies	copy the father	OI-205	Copy: Mr Adler.
+113	ST-213	delivery	by courier	OI-204	Deliver this letter by courier to counsel's office.
+114	ST-214	request	neither child overnight unless father present	OI-208	Neither child overnight in her care unless the father is present.
+115	ST-215	request	neither child overnight unless father present	OI-202	The request is that neither child remain overnight in her care unless the father is present.
+116	ST-216	addressee	father's attorney	OI-201	Please address this letter to the father's attorney.
+117	ST-217	salutation	Dear Ms Corwin	CL-304	Dear Ms Corwin,
+118	ST-218	enclosure	unsigned draft enclosed	OI-209	An unsigned draft of the custodial plan is enclosed.
+119	ST-219	copies	copy mother's attorney	CL-305	Copy: counsel for Ms Corwin.
+120	ST-220	delivery	hand delivery	CL-306	Hand-deliver the letter to counsel's office.
+121	ST-221	tone	firm and direct	CL-301	Keep the letter firm and direct.
+122	ST-222	sender_signature	own name	CL-305	Yours sincerely, Delphine Marr.
+123	ST-223	right_of_first_refusal	father agreed	CL-306	Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+124	ST-224	inconsistent_accounts	wife and sitter only	OI-205	Mr Adler has described Ms Corwin as his wife to the school and as a babysitter to me.
+125	ST-225	inconsistent_accounts	clinicians only	CL-302	Mr Adler has described Ms Corwin as the person Imogen lives with to her clinicians.
+126	ST-226	concern	narrower violation limb only	CL-301	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+127	ST-227	overnight_stays	Noor only several times	OI-204	On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+128	ST-228	children_named	Imogen only with age	CL-303	This concerns Imogen, aged twelve.
+129	ST-229	tone	soft formal but detailed	OI-210	I keep the tone soft and formal, and I set the facts out in full detail.
+130	ST-230	behavioural_plan	confidence only no setback	OI-207	Imogen's behavioural plan focuses on confidence.
+131	ST-231	addressee	mother's attorney	OI-299	This letter goes to counsel for Ms Corwin — the mother's attorney.
+132	ST-232	copies	copy nobody	OI-299	Do not copy anyone on this letter.
+133	ST-233	salutation	Dear Counsel	OI-299	Dear Counsel,
+134	ST-234	reply_deadline	twenty-one days	OI-210	Please reply within twenty-one days.
+135	ST-235	school_reference	attendance letter	CL-306	The school has already confirmed attendance in writing.
+136	ST-236	mediation_offer	open to mediate	OI-206	I remain willing to mediate the overnight issue.
+137	ST-237	legal_fees	mother pays fees	CL-301	Ms Corwin shall bear the legal fees arising from this letter.
+138	ST-238	court_listing	list for directions	OI-204	Please list the matter for directions within 28 days.
+139	ST-301	request	CL wording exact	OI-208	Neither child overnight in her care unless the father is present.
+140	ST-302	request	CL wording paraphrase	OI-211	I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+141	ST-303	request	CL wording paraphrase	OI-299	Neither child should stay overnight with her unless the father is there.
+142	ST-304	addressee	mother's attorney	OI-201	Address this letter to counsel for Ms Corwin — the mother's attorney.
+143	ST-305	addressee	mother's attorney	OI-299	The letter goes to Catherine's attorney.
+144	ST-306	addressee	mother's attorney	OI-210	To counsel for the mother.
+145	ST-307	enclosure	certified copy	OI-209	A certified copy of the custodial plan is enclosed.
+146	ST-308	enclosure	certified copy	OI-299	Enclosed: certified copy of the custodial plan.
+147	ST-309	salutation	Dear Counsel	OI-211	Dear Counsel,
+148	ST-310	salutation	Dear Counsel	OI-201	Dear Counsel,
+149	ST-311	copies	nobody	OI-205	Do not copy anyone on this letter.
+150	ST-312	copies	nobody	OI-299	There is no copy line; nobody is copied.
+151	ST-313	delivery	by post	OI-204	Send it by post to counsel's office.
+152	ST-314	delivery	by post	OI-299	The letter is to be posted to the offices of opposing counsel.
+153	ST-315	addressee	father's attorney	OI-201	Address the letter to the father's attorney.
+154	ST-316	addressee	father's attorney	CL-301	To counsel for Mr Adler.
+155	ST-317	addressee	father's attorney	OI-299	Please send this to Adam's attorney.
+156	ST-318	request	unless mother present	OI-208	Neither child overnight in her care unless Ms Corwin is present.
+157	ST-319	request	father alone overnight ok	CL-302	Either child may remain overnight in her care even if the father is away.
+158	ST-320	enclosure	unsigned draft	OI-209	An unsigned draft of the custodial plan is enclosed.
+159	ST-321	enclosure	no enclosure	CL-303	Nothing is enclosed with this letter.
+160	ST-322	salutation	Dear Mr Adler	OI-211	Dear Mr Adler,
+161	ST-323	salutation	Dear Ms Corwin	CL-304	Dear Ms Corwin,
+162	ST-324	copies	copy father	OI-205	Copy: Mr Adler.
+163	ST-325	copies	copy school	CL-305	Copy the school for their file.
+164	ST-326	delivery	by email	OI-299	Send the letter by email to opposing counsel.
+165	ST-327	delivery	by courier	CL-306	Deliver by courier to counsel's office.
+166	ST-328	delivery	hand delivery	OI-204	Hand-deliver this letter to counsel.
+167	ST-329	tone	firm and direct	CL-301	Keep the letter firm and direct.
+168	ST-330	tone	firm and direct	CL-306	The tone throughout is firm and direct.
+169	ST-331	concern	violation limb only	CL-305	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+170	ST-332	concern	violation limb only	CL-302	I am concerned she may not appreciate that the stays violate the order.
+171	ST-333	inconsistent_accounts	all three	CL-303	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+172	ST-334	inconsistent_accounts	all three	CL-304	The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me.
+173	ST-335	overnight_stays	home only no sitter	CL-301	On several occasions both children have stayed overnight at Ms Corwin's home.
+174	ST-336	children_named	both with ages	CL-305	This concerns Noor, aged seven, and Imogen, aged twelve.
+175	ST-337	right_of_first_refusal	father agreed	CL-306	Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+176	ST-338	behavioural_plan	confidence and setback missing stability	CL-302	Imogen's behavioural plan focuses on confidence, and the stays have set back her progress.
+177	ST-339	sender_signature	own name	CL-303	Yours sincerely, Delphine Marr.
+178	ST-340	sender_signature	own name	CL-301	Signed, Delphine Marr.
+179	ST-341	concern	violation limb only	OI-206	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+180	ST-342	concern	position limb only	CL-305	I am concerned about the position Ms Corwin has been placed in.
+181	ST-343	inconsistent_accounts	wife only	OI-205	Mr Adler has described Ms Corwin as his wife to the school.
+182	ST-344	inconsistent_accounts	sitter and clinicians	CL-301	Mr Adler has described Ms Corwin as the person Imogen lives with to clinicians and as a babysitter to me.
+183	ST-345	overnight_stays	one child once	OI-204	On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+184	ST-346	overnight_stays	Noor only several	CL-306	On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+185	ST-347	children_named	Noor only	OI-203	This concerns Noor, aged seven.
+186	ST-348	children_named	both no ages	CL-304	This concerns Noor and Imogen.
+187	ST-349	tone	firm detailed	OI-210	I set out the position firmly and in full detail.
+188	ST-350	tone	soft but not succinct	CL-302	The tone is soft and formal, and the facts are set out at length.
+189	ST-351	behavioural_plan	no setback	OI-207	The stays have not affected Imogen's behavioural plan.
+190	ST-352	behavioural_plan	confidence only	CL-303	Imogen's behavioural plan focuses on confidence.
+191	ST-353	right_of_first_refusal	mother agreed	OI-202	Ms Corwin agreed to a right of first refusal.
+192	ST-354	right_of_first_refusal	no overnight restriction	CL-305	Mr Adler agreed to a right of first refusal, but overnight stays without him are still permitted.
+193	ST-355	sender_signature	signed as counsel	OI-211	Yours sincerely, for Delphine Marr, solicitor.
+194	ST-356	reply_deadline	7 days	OI-210	Please reply within seven days.
+195	ST-357	reply_deadline	14 days	CL-306	A reply within fourteen days is requested.
+196	ST-358	school_reference	principal	OI-205	Ms Oduya at the school can confirm the account.
+197	ST-359	school_reference	attendance	CL-301	The school has confirmed attendance in writing.
+198	ST-360	mediation_offer	open	OI-206	I remain willing to mediate.
+199	ST-361	mediation_terms	14 days	CL-302	I propose mediation within fourteen days.
+200	ST-362	legal_fees	father pays	OI-201	The father shall bear all legal fees.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[200:],201):
+[?2004l[?2004h>     print(f"{i}\t{r['line_id']}\t{r['subject']}\t{r['position']}\t{r['cited_entry']}\t{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l201	ST-363	legal_fees	shared	CL-305	Legal fees will be shared equally.
+202	ST-364	court_listing	directions	OI-204	Please list the matter for directions within 28 days.
+203	ST-365	court_listing	urgent hearing	CL-303	I will seek an urgent hearing if there is no reply.
+204	ST-366	expert_report	psychologist	OI-207	A psychologist's report on Imogen is available on request.
+205	ST-367	expert_report	joint expert	CL-304	I propose a joint expert on the overnight arrangements.
+206	ST-368	interim_contact	supervised only	OI-208	Pending resolution, contact with Ms Corwin should be supervised only.
+207	ST-369	interim_contact	video calls	CL-306	Interim contact may continue by video call twice weekly.
+208	ST-401	inconsistent_accounts	all four audiences	CL-303	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours.
+209	ST-402	inconsistent_accounts	all four audiences	OI-205	The father has called her his wife to the school, the person the child lives with to clinicians, a sitter to me, and his partner to the neighbours.
+210	ST-403	overnight_stays	home or sitter both	CL-306	On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+211	ST-404	overnight_stays	home or sitter both	OI-204	On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+212	ST-405	concern	both limbs	CL-305	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in.
+213	ST-406	behavioural_plan	confidence stability setback	CL-301	Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back.
+214	ST-407	tone	soft formal succinct	CL-302	Keep the letter soft, formal and succinct.
+215	ST-408	inconsistent_accounts	three without neighbours	OI-205	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+216	ST-409	inconsistent_accounts	three without neighbours	CL-304	The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me.
+217	ST-410	overnight_stays	home only no sitter	OI-204	On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+218	ST-411	overnight_stays	sitter only no home	CL-301	On several occasions both children stayed overnight with a sitter while Mr Adler was away.
+219	ST-412	tone	soft formal not succinct	OI-210	Keep the letter soft and formal.
+220	ST-413	tone	formal succinct not soft	CL-306	The tone is formal and succinct.
+221	ST-414	behavioural_plan	no setback stated	OI-207	Imogen's behavioural plan focuses on confidence and stability.
+222	ST-415	request	meeting request not overnight condition	OI-208	I am writing to request a meeting with counsel.
+223	ST-416	addressee	father directly not mother's attorney	OI-201	Address the letter to the father directly.
+224	ST-417	delivery	email not post	CL-306	Deliver it by email to counsel's office.
+225	ST-418	copies	copy someone not nobody	OI-299	Copy the father's attorney on this letter.
+226	ST-419	tone	soft formal succinct	CL-304	Keep it soft, formal and succinct.
+227	ST-420	concern	both limbs	CL-301	I am concerned she may not appreciate that the stays violate the order or the position she has been put in.
+228	ST-421	expert_report	joint expert	OI-207	I enclose a joint expert report on Imogen.
+229	ST-422	interim_contact	supervised	CL-302	Interim contact with Ms Corwin should be supervised only.
+230	ST-423	court_listing	directions 14 days	OI-204	List the matter for directions within fourteen days.
+231	ST-501	tone	firm formal brief	OI-210	I set the tone as firm, formal and brief.
+232	ST-502	tone	firm formal brief	OI-299	Keep it firm, formal and brief throughout.
+233	ST-503	tone	firm formal brief	CL-307	The letter is firm, formal and brief.
+234	ST-504	tone	soft formal succinct	OI-210	Keep the letter soft, formal and succinct.
+235	ST-505	tone	soft formal	CL-302	The tone is soft and formal.
+236	ST-506	tone	firm detailed	CL-307	I set out the position firmly and in full detail.
+237	ST-507	behavioural_plan	confidence stability peer confidence-only	OI-207	Imogen's behavioural plan focuses on confidence, stability and peer relations, and the stays have set back confidence only.
+238	ST-508	behavioural_plan	confidence stability peer confidence-only	CL-301	The plan covers confidence, stability and peer relations; the stays have set back confidence only.
+239	ST-509	behavioural_plan	old full setback	OI-207	Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back.
+240	ST-510	behavioural_plan	confidence only no peer	CL-308	Imogen's behavioural plan focuses on confidence, and the stays have set back confidence only.
+241	ST-511	concern	position only	OI-206	I am concerned about the position Ms Corwin has been placed in.
+242	ST-512	concern	position only	CL-305	My only concern is the position she has been put in.
+243	ST-513	concern	both limbs old	OI-206	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in.
+244	ST-514	concern	violation only	CL-309	I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+245	ST-515	addressee	mother	OI-201	This letter goes to counsel for Ms Corwin — the mother's attorney.
+246	ST-516	addressee	father	CL-301	Address the letter to the father's attorney.
+247	ST-517	addressee	father	OI-299	To counsel for Mr Adler.
+248	ST-518	request	CL match	OI-208	Neither child overnight in her care unless the father is present.
+249	ST-519	request	unless mother	CL-302	Neither child overnight in her care unless Ms Corwin is present.
+250	ST-520	delivery	post	OI-204	Send it by post to counsel's office.
+251	ST-521	delivery	email	CL-306	Send the letter by email to opposing counsel.
+252	ST-522	delivery	courier	OI-299	Deliver by courier to counsel's office.
+253	ST-523	copies	nobody	OI-205	Do not copy anyone on this letter.
+254	ST-524	copies	copy father	CL-305	Copy: Mr Adler.
+255	ST-525	enclosure	certified	OI-209	A certified copy of the custodial plan is enclosed.
+256	ST-526	enclosure	unsigned	CL-303	An unsigned draft of the custodial plan is enclosed.
+257	ST-527	salutation	Dear Counsel	OI-211	Dear Counsel,
+258	ST-528	salutation	Dear Mr Adler	CL-304	Dear Mr Adler,
+259	ST-529	children_named	both with ages	CL-301	This concerns Noor, aged seven, and Imogen, aged twelve.
+260	ST-530	children_named	both no ages	OI-203	This concerns Noor and Imogen.
+261	ST-531	children_named	Noor only	CL-304	This concerns Noor, aged seven.
+262	ST-532	right_of_first_refusal	full	CL-306	Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+263	ST-533	right_of_first_refusal	mother agreed	OI-202	Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present.
+264	ST-534	right_of_first_refusal	agreement only no overnight	OI-202	Mr Adler agreed to a right of first refusal.
+265	ST-535	overnight_stays	full	CL-302	On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+266	ST-536	overnight_stays	home only	OI-204	On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+267	ST-537	overnight_stays	one child	CL-301	On several occasions Imogen stayed overnight at her home or with a sitter while the father was away.
+268	ST-538	inconsistent_accounts	all four	CL-303	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours.
+269	ST-539	inconsistent_accounts	three no neighbour	OI-205	Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+270	ST-540	sender_signature	full name	CL-305	Yours sincerely, Delphine Marr.
+271	ST-541	sender_signature	as counsel	OI-211	Yours sincerely, for Delphine Marr, solicitor.
+272	ST-542	sender_signature	first name only	CL-302	Yours sincerely, Delphine.
+273	ST-543	request	wording delivery	OI-208	Send it by post to counsel's office.
+274	ST-544	tone	wording copies	OI-210	Do not copy anyone on this letter.
+275	ST-545	concern	wording enclosure	CL-309	A certified copy of the custodial plan is enclosed.
+276	ST-546	delivery	wording salutation	CL-306	Dear Counsel,
+277	ST-547	behavioural_plan	wording addressee mother	OI-207	This letter goes to counsel for Ms Corwin — the mother's attorney.
+278	ST-548	reply_deadline	7 days	OI-210	Please reply within seven days.
+279	ST-549	reply_deadline	14 days	CL-307	A reply within fourteen days is requested.
+280	ST-550	school_reference	principal	OI-205	The school principal can confirm the account.
+281	ST-551	mediation_offer	open	CL-309	I remain willing to mediate.
+282	ST-552	legal_fees	shared	OI-201	Legal fees will be shared equally.
+283	ST-553	court_listing	directions	CL-306	List the matter for directions within 28 days.
+284	ST-554	expert_report	joint	OI-207	I propose a joint expert on the overnight arrangements.
+285	ST-555	interim_contact	supervised	CL-302	Interim contact should be supervised only.
+286	ST-556	without_prejudice	mark letter	OI-211	This letter is sent without prejudice.
+287	ST-557	hearing_bundle	bundle index enclosed	CL-301	A hearing bundle index is enclosed for the court.
+288	ST-558	tone	firm formal brief	OI-201	Adopt a firm, formal and brief style.
+289	ST-559	concern	position only	OI-299	I raise only the position she has been put in.
+290	ST-560	behavioural_plan	full CL match	OI-299	The behavioural plan covers confidence, stability and peer relations; the stays have set back confidence only.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[:45],1):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l1|ST-101|right_of_first_refusal|agreed by the father|OI-202|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+2|ST-102|children_named|both children, with their ages|OI-203|This concerns Noor, aged seven, and Imogen, aged twelve.
+3|ST-103|overnight_stays|several occasions at her home or with a sitter|OI-204|On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+4|ST-104|addressee|the father's attorney|OI-201|To counsel for Mr Adler.
+5|ST-105|inconsistent_accounts|wife to the school, resident to clinicians, sitter to the sender|OI-205|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+6|ST-106|concern|violation limb only|OI-206|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+7|ST-107|behavioural_plan|the stays have had no effect on the plan|OI-207|Imogen's behavioural plan focuses on her confidence and stability, and the stays have not affected her progress.
+8|ST-108|request|no overnight stays in her care unless the father is present|CL-302|I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+9|ST-109|enclosure|a certified copy of the custodial plan|OI-209|A certified copy of the custodial plan is enclosed.
+10|ST-110|tone|firm and detailed|OI-210|I set out the position firmly and in full detail below.
+11|ST-111|sender_signature|the sender's own name|OI-211|Yours sincerely, Delphine Marr.
+12|ST-112|salutation|Dear Counsel|CL-304|Dear Counsel,
+13|ST-113|copies|copied to the father|CL-305|Copy: Mr Adler.
+14|ST-114|reply_deadline|a reply within seven days|OI-299|I would be grateful for a reply within seven days.
+15|ST-115|school_reference|the school principal named|OI-298|The school principal, Ms Oduya, can confirm the account given to the school.
+16|ST-116|mediation_offer|an offer to mediate|CL-399|I remain open to mediation.
+17|ST-117|request|no overnight stays unless father present|OI-208|I ask that neither child remain overnight in her care unless the father is present.
+18|ST-118|delivery|sent by email to counsel|OI-299|The letter shall be sent by email to opposing counsel.
+19|ST-119|tone|firm and detailed|OI-210|The position is set out firmly and in full detail below.
+20|ST-120|mediation_terms|mediation within 14 days|CL-399|I propose mediation within fourteen days of the date of this letter.
+21|ST-121|delivery|sent by courier to counsel|OI-299|The letter is to be delivered by courier to the offices of opposing counsel.
+22|ST-122|inconsistent_accounts|wife to the school only|OI-205|Mr Adler has described Ms Corwin as his wife to the school.
+23|ST-123|request|no overnight unless father present|CL-302|Neither child should remain overnight in her care unless Mr Adler is present.
+24|ST-124|legal_fees|costs to be borne by the father|OI-299|All legal costs arising from this matter shall be borne by the father.
+25|ST-125|request|no overnight stays unless father present|OI-208|Neither child is to stay overnight in her care unless Mr Adler is present.
+26|ST-126|enclosure|a certified copy of the custodial plan|OI-209|A certified copy of the custodial plan is enclosed with this letter.
+27|ST-127|tone|warm and personal|OI-210|The letter is written in a warm and personal tone, reflecting the ongoing relationship between the parents.
+28|ST-128|copies|copied to the children|OI-299|A copy of this letter has been provided to both children for their records.
+29|ST-129|addressee|the father attorney|OI-201|This letter is addressed to the attorney representing the father in this matter.
+30|ST-130|inconsistent_accounts|babysitter to me only|OI-205|Mr Adler has described Ms Corwin as a babysitter to me.
+31|ST-131|delivery|sent by hand delivery|CL-306|The letter shall be sent by hand delivery to the office of opposing counsel.
+32|ST-132|request|no overnight unless accompanied by a parent|CL-302|No child shall remain overnight in Ms Corwin care unless accompanied by a parent or legal guardian.
+33|ST-133|right_of_first_refusal|the mother agreed|OI-202|Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present.
+34|ST-134|enclosure|an uncertified summary of the plan|OI-209|An uncertified summary of the custodial plan is enclosed.
+35|ST-135|salutation|Dear Mr Adler|CL-304|Dear Mr Adler,
+36|ST-136|inconsistent_accounts|babysitter to clinicians|OI-205|Mr Adler has described Ms Corwin as a babysitter to her clinicians.
+37|ST-137|tone|firm and at length|CL-304|Set out the position firmly and at length.
+38|ST-138|concern|she may not appreciate|CL-305|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+39|ST-139|behavioural_plan|confidence and setback missing stability|CL-302|Imogen's behavioural plan focuses on confidence, and the stays have set back her progress.
+40|ST-140|children_named|both children with ages|CL-303|This concerns Noor, aged seven, and Imogen, aged twelve.
+41|ST-141|overnight_stays|one child on one occasion|OI-204|On one occasion, Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+42|ST-142|right_of_first_refusal|not overnight with anyone but parents|OI-202|The children are not to be left overnight with anyone other than their parents.
+43|ST-143|addressee|the father's attorney|CL-301|To counsel for Mr Adler.
+44|ST-144|request|no overnight unless the mother is present|CL-302|I ask that neither child remain overnight in Ms Corwin's care unless Ms Corwin is present.
+45|ST-145|tone|firm and detailed|CL-304|I set out the position firmly and in full detail below.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[45:90],46):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l46|ST-146|concern|no concern about the stays|OI-206|I have no concern that Ms Corwin fails to appreciate the stays.
+47|ST-147|delivery|sent by email|CL-306|The letter shall be sent by email to counsel.
+48|ST-148|children_named|Noor only|OI-203|This concerns Noor, aged seven.
+49|ST-149|salutation|Dear Sir or Madam|CL-304|Dear Sir or Madam,
+50|ST-150|behavioural_plan|stays improved the plan|OI-207|Imogen's behavioural plan focuses on confidence and stability, and the stays have improved her progress.
+51|ST-151|copies|copied to the school|CL-305|Copy: the school principal.
+52|ST-152|overnight_stays|never overnight at her home|OI-204|Neither child has ever stayed overnight at Ms Corwin's home or with a sitter.
+53|ST-153|request|no overnight unless father present|OI-208|I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+54|ST-154|enclosure|certified copy enclosed|OI-209|A certified copy of the custodial plan is enclosed.
+55|ST-155|salutation|Dear Counsel|OI-211|Dear Counsel,
+56|ST-156|addressee|mother's attorney|OI-201|To counsel for Ms Corwin.
+57|ST-157|copies|copy nobody|OI-205|There is no copy line; nobody is copied on this letter.
+58|ST-158|delivery|by post|OI-299|The letter shall be sent by post to counsel's office.
+59|ST-159|reply_deadline|reply in 10 days|OI-299|I would be grateful for a reply within ten days.
+60|ST-160|school_reference|principal confirms|CL-399|The school principal can confirm what was said to the school.
+61|ST-161|mediation_offer|open to mediation|OI-298|I remain open to mediation if that assists.
+62|ST-162|legal_fees|shared costs|CL-399|Legal costs shall be shared equally between the parents.
+63|ST-163|tone|firm and at length|CL-302|Set out the position firmly and at length.
+64|ST-164|concern|violation limb only|CL-305|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+65|ST-165|children_named|both with ages|CL-301|This concerns Noor, aged seven, and Imogen, aged twelve.
+66|ST-166|overnight_stays|home only no sitter|CL-306|On several occasions both children have stayed overnight at Ms Corwin's home.
+67|ST-167|right_of_first_refusal|father agreed|CL-304|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+68|ST-168|inconsistent_accounts|all three audiences|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+69|ST-169|behavioural_plan|confidence and setback missing stability|CL-301|Imogen's behavioural plan focuses on confidence, and the stays have set it back.
+70|ST-170|sender_signature|own name|CL-302|Yours sincerely, Delphine Marr.
+71|ST-171|request|no overnight unless father present|OI-208|Neither child should remain overnight in her care unless Mr Adler is present.
+72|ST-172|request|no overnight unless father present|OI-208|I ask that neither child remain overnight in Ms Corwin's care unless the father is present.
+73|ST-173|enclosure|certified copy|OI-209|A certified copy of the custodial plan is enclosed with this letter.
+74|ST-174|enclosure|certified copy|OI-209|Enclosed is a certified copy of the custodial plan.
+75|ST-175|salutation|Dear Counsel|OI-211|Dear Counsel,
+76|ST-176|addressee|mother's attorney|OI-201|This letter is addressed to counsel for Ms Corwin.
+77|ST-177|copies|copy nobody|OI-211|Nobody is to be copied on this letter.
+78|ST-178|delivery|by post|OI-210|Send it by post to counsel's office.
+79|ST-179|delivery|by post|OI-204|The letter is to be sent by post to the offices of opposing counsel.
+80|ST-180|addressee|father's attorney|OI-201|To counsel for Mr Adler.
+81|ST-181|addressee|father's attorney|CL-301|Addressed to the father's attorney.
+82|ST-182|copies|copied to father|OI-205|Copy: Mr Adler.
+83|ST-183|delivery|by courier|OI-299|Deliver by courier to counsel.
+84|ST-184|salutation|Dear Mr Adler|OI-211|Dear Mr Adler,
+85|ST-185|request|unless mother present|OI-208|Neither child overnight in her care unless Ms Corwin is present.
+86|ST-186|tone|firm and direct|CL-305|Keep the letter firm and direct.
+87|ST-187|tone|firm and direct|CL-306|The tone throughout is firm and direct.
+88|ST-188|concern|violation limb only|CL-304|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+89|ST-189|behavioural_plan|confidence and setback missing stability|CL-304|Imogen's behavioural plan focuses on confidence, and the stays have set back her progress.
+90|ST-190|children_named|both with ages|CL-305|This concerns Noor, aged seven, and Imogen, aged twelve.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[90:135],91):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l91|ST-191|overnight_stays|home only no sitter|CL-302|On several occasions both children have stayed overnight at Ms Corwin's home.
+92|ST-192|right_of_first_refusal|father agreed|CL-303|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+93|ST-193|inconsistent_accounts|three audiences|CL-301|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+94|ST-194|sender_signature|own name|CL-306|Yours sincerely, Delphine Marr.
+95|ST-195|concern|narrower concern only violation|OI-206|I am concerned that Ms Corwin may not appreciate that these stays violate the order.
+96|ST-196|concern|narrower concern only position|OI-206|I am concerned about the position Ms Corwin has been placed in.
+97|ST-197|inconsistent_accounts|wife to school only|OI-205|Mr Adler has described Ms Corwin as his wife to the school.
+98|ST-198|inconsistent_accounts|sitter to me only|CL-303|Mr Adler has described Ms Corwin as a babysitter to me.
+99|ST-199|overnight_stays|one child once|OI-204|On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+100|ST-200|tone|firm detailed|CL-302|I set out the position firmly and in full detail.
+101|ST-201|behavioural_plan|no effect|OI-207|The stays have not affected Imogen's behavioural plan.
+102|ST-202|right_of_first_refusal|mother agreed|OI-202|Ms Corwin agreed to a right of first refusal.
+103|ST-203|children_named|Noor only|CL-304|This concerns Noor, aged seven.
+104|ST-204|reply_deadline|seven days|OI-299|Please reply within seven days.
+105|ST-205|reply_deadline|fourteen days|CL-399|A reply within fourteen days is requested.
+106|ST-206|school_reference|principal named|OI-298|Ms Oduya at the school can confirm the account.
+107|ST-207|school_reference|principal named|CL-399|The school principal is asked to confirm attendance.
+108|ST-208|mediation_offer|open to mediate|OI-297|I remain willing to mediate.
+109|ST-209|mediation_terms|mediate in 14 days|CL-398|I propose mediation within fourteen days.
+110|ST-210|legal_fees|father pays|OI-296|The father shall bear all legal fees.
+111|ST-211|legal_fees|shared fees|CL-397|Legal fees will be shared.
+112|ST-212|copies|copy the father|OI-205|Copy: Mr Adler.
+113|ST-213|delivery|by courier|OI-204|Deliver this letter by courier to counsel's office.
+114|ST-214|request|neither child overnight unless father present|OI-208|Neither child overnight in her care unless the father is present.
+115|ST-215|request|neither child overnight unless father present|OI-202|The request is that neither child remain overnight in her care unless the father is present.
+116|ST-216|addressee|father's attorney|OI-201|Please address this letter to the father's attorney.
+117|ST-217|salutation|Dear Ms Corwin|CL-304|Dear Ms Corwin,
+118|ST-218|enclosure|unsigned draft enclosed|OI-209|An unsigned draft of the custodial plan is enclosed.
+119|ST-219|copies|copy mother's attorney|CL-305|Copy: counsel for Ms Corwin.
+120|ST-220|delivery|hand delivery|CL-306|Hand-deliver the letter to counsel's office.
+121|ST-221|tone|firm and direct|CL-301|Keep the letter firm and direct.
+122|ST-222|sender_signature|own name|CL-305|Yours sincerely, Delphine Marr.
+123|ST-223|right_of_first_refusal|father agreed|CL-306|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+124|ST-224|inconsistent_accounts|wife and sitter only|OI-205|Mr Adler has described Ms Corwin as his wife to the school and as a babysitter to me.
+125|ST-225|inconsistent_accounts|clinicians only|CL-302|Mr Adler has described Ms Corwin as the person Imogen lives with to her clinicians.
+126|ST-226|concern|narrower violation limb only|CL-301|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+127|ST-227|overnight_stays|Noor only several times|OI-204|On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+128|ST-228|children_named|Imogen only with age|CL-303|This concerns Imogen, aged twelve.
+129|ST-229|tone|soft formal but detailed|OI-210|I keep the tone soft and formal, and I set the facts out in full detail.
+130|ST-230|behavioural_plan|confidence only no setback|OI-207|Imogen's behavioural plan focuses on confidence.
+131|ST-231|addressee|mother's attorney|OI-299|This letter goes to counsel for Ms Corwin — the mother's attorney.
+132|ST-232|copies|copy nobody|OI-299|Do not copy anyone on this letter.
+133|ST-233|salutation|Dear Counsel|OI-299|Dear Counsel,
+134|ST-234|reply_deadline|twenty-one days|OI-210|Please reply within twenty-one days.
+135|ST-235|school_reference|attendance letter|CL-306|The school has already confirmed attendance in writing.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[135:180],136):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l136|ST-236|mediation_offer|open to mediate|OI-206|I remain willing to mediate the overnight issue.
+137|ST-237|legal_fees|mother pays fees|CL-301|Ms Corwin shall bear the legal fees arising from this letter.
+138|ST-238|court_listing|list for directions|OI-204|Please list the matter for directions within 28 days.
+139|ST-301|request|CL wording exact|OI-208|Neither child overnight in her care unless the father is present.
+140|ST-302|request|CL wording paraphrase|OI-211|I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+141|ST-303|request|CL wording paraphrase|OI-299|Neither child should stay overnight with her unless the father is there.
+142|ST-304|addressee|mother's attorney|OI-201|Address this letter to counsel for Ms Corwin — the mother's attorney.
+143|ST-305|addressee|mother's attorney|OI-299|The letter goes to Catherine's attorney.
+144|ST-306|addressee|mother's attorney|OI-210|To counsel for the mother.
+145|ST-307|enclosure|certified copy|OI-209|A certified copy of the custodial plan is enclosed.
+146|ST-308|enclosure|certified copy|OI-299|Enclosed: certified copy of the custodial plan.
+147|ST-309|salutation|Dear Counsel|OI-211|Dear Counsel,
+148|ST-310|salutation|Dear Counsel|OI-201|Dear Counsel,
+149|ST-311|copies|nobody|OI-205|Do not copy anyone on this letter.
+150|ST-312|copies|nobody|OI-299|There is no copy line; nobody is copied.
+151|ST-313|delivery|by post|OI-204|Send it by post to counsel's office.
+152|ST-314|delivery|by post|OI-299|The letter is to be posted to the offices of opposing counsel.
+153|ST-315|addressee|father's attorney|OI-201|Address the letter to the father's attorney.
+154|ST-316|addressee|father's attorney|CL-301|To counsel for Mr Adler.
+155|ST-317|addressee|father's attorney|OI-299|Please send this to Adam's attorney.
+156|ST-318|request|unless mother present|OI-208|Neither child overnight in her care unless Ms Corwin is present.
+157|ST-319|request|father alone overnight ok|CL-302|Either child may remain overnight in her care even if the father is away.
+158|ST-320|enclosure|unsigned draft|OI-209|An unsigned draft of the custodial plan is enclosed.
+159|ST-321|enclosure|no enclosure|CL-303|Nothing is enclosed with this letter.
+160|ST-322|salutation|Dear Mr Adler|OI-211|Dear Mr Adler,
+161|ST-323|salutation|Dear Ms Corwin|CL-304|Dear Ms Corwin,
+162|ST-324|copies|copy father|OI-205|Copy: Mr Adler.
+163|ST-325|copies|copy school|CL-305|Copy the school for their file.
+164|ST-326|delivery|by email|OI-299|Send the letter by email to opposing counsel.
+165|ST-327|delivery|by courier|CL-306|Deliver by courier to counsel's office.
+166|ST-328|delivery|hand delivery|OI-204|Hand-deliver this letter to counsel.
+167|ST-329|tone|firm and direct|CL-301|Keep the letter firm and direct.
+168|ST-330|tone|firm and direct|CL-306|The tone throughout is firm and direct.
+169|ST-331|concern|violation limb only|CL-305|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+170|ST-332|concern|violation limb only|CL-302|I am concerned she may not appreciate that the stays violate the order.
+171|ST-333|inconsistent_accounts|all three|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+172|ST-334|inconsistent_accounts|all three|CL-304|The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me.
+173|ST-335|overnight_stays|home only no sitter|CL-301|On several occasions both children have stayed overnight at Ms Corwin's home.
+174|ST-336|children_named|both with ages|CL-305|This concerns Noor, aged seven, and Imogen, aged twelve.
+175|ST-337|right_of_first_refusal|father agreed|CL-306|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+176|ST-338|behavioural_plan|confidence and setback missing stability|CL-302|Imogen's behavioural plan focuses on confidence, and the stays have set back her progress.
+177|ST-339|sender_signature|own name|CL-303|Yours sincerely, Delphine Marr.
+178|ST-340|sender_signature|own name|CL-301|Signed, Delphine Marr.
+179|ST-341|concern|violation limb only|OI-206|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+180|ST-342|concern|position limb only|CL-305|I am concerned about the position Ms Corwin has been placed in.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[180:225],181):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l181|ST-343|inconsistent_accounts|wife only|OI-205|Mr Adler has described Ms Corwin as his wife to the school.
+182|ST-344|inconsistent_accounts|sitter and clinicians|CL-301|Mr Adler has described Ms Corwin as the person Imogen lives with to clinicians and as a babysitter to me.
+183|ST-345|overnight_stays|one child once|OI-204|On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+184|ST-346|overnight_stays|Noor only several|CL-306|On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+185|ST-347|children_named|Noor only|OI-203|This concerns Noor, aged seven.
+186|ST-348|children_named|both no ages|CL-304|This concerns Noor and Imogen.
+187|ST-349|tone|firm detailed|OI-210|I set out the position firmly and in full detail.
+188|ST-350|tone|soft but not succinct|CL-302|The tone is soft and formal, and the facts are set out at length.
+189|ST-351|behavioural_plan|no setback|OI-207|The stays have not affected Imogen's behavioural plan.
+190|ST-352|behavioural_plan|confidence only|CL-303|Imogen's behavioural plan focuses on confidence.
+191|ST-353|right_of_first_refusal|mother agreed|OI-202|Ms Corwin agreed to a right of first refusal.
+192|ST-354|right_of_first_refusal|no overnight restriction|CL-305|Mr Adler agreed to a right of first refusal, but overnight stays without him are still permitted.
+193|ST-355|sender_signature|signed as counsel|OI-211|Yours sincerely, for Delphine Marr, solicitor.
+194|ST-356|reply_deadline|7 days|OI-210|Please reply within seven days.
+195|ST-357|reply_deadline|14 days|CL-306|A reply within fourteen days is requested.
+196|ST-358|school_reference|principal|OI-205|Ms Oduya at the school can confirm the account.
+197|ST-359|school_reference|attendance|CL-301|The school has confirmed attendance in writing.
+198|ST-360|mediation_offer|open|OI-206|I remain willing to mediate.
+199|ST-361|mediation_terms|14 days|CL-302|I propose mediation within fourteen days.
+200|ST-362|legal_fees|father pays|OI-201|The father shall bear all legal fees.
+201|ST-363|legal_fees|shared|CL-305|Legal fees will be shared equally.
+202|ST-364|court_listing|directions|OI-204|Please list the matter for directions within 28 days.
+203|ST-365|court_listing|urgent hearing|CL-303|I will seek an urgent hearing if there is no reply.
+204|ST-366|expert_report|psychologist|OI-207|A psychologist's report on Imogen is available on request.
+205|ST-367|expert_report|joint expert|CL-304|I propose a joint expert on the overnight arrangements.
+206|ST-368|interim_contact|supervised only|OI-208|Pending resolution, contact with Ms Corwin should be supervised only.
+207|ST-369|interim_contact|video calls|CL-306|Interim contact may continue by video call twice weekly.
+208|ST-401|inconsistent_accounts|all four audiences|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours.
+209|ST-402|inconsistent_accounts|all four audiences|OI-205|The father has called her his wife to the school, the person the child lives with to clinicians, a sitter to me, and his partner to the neighbours.
+210|ST-403|overnight_stays|home or sitter both|CL-306|On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+211|ST-404|overnight_stays|home or sitter both|OI-204|On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+212|ST-405|concern|both limbs|CL-305|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in.
+213|ST-406|behavioural_plan|confidence stability setback|CL-301|Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back.
+214|ST-407|tone|soft formal succinct|CL-302|Keep the letter soft, formal and succinct.
+215|ST-408|inconsistent_accounts|three without neighbours|OI-205|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+216|ST-409|inconsistent_accounts|three without neighbours|CL-304|The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me.
+217|ST-410|overnight_stays|home only no sitter|OI-204|On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+218|ST-411|overnight_stays|sitter only no home|CL-301|On several occasions both children stayed overnight with a sitter while Mr Adler was away.
+219|ST-412|tone|soft formal not succinct|OI-210|Keep the letter soft and formal.
+220|ST-413|tone|formal succinct not soft|CL-306|The tone is formal and succinct.
+221|ST-414|behavioural_plan|no setback stated|OI-207|Imogen's behavioural plan focuses on confidence and stability.
+222|ST-415|request|meeting request not overnight condition|OI-208|I am writing to request a meeting with counsel.
+223|ST-416|addressee|father directly not mother's attorney|OI-201|Address the letter to the father directly.
+224|ST-417|delivery|email not post|CL-306|Deliver it by email to counsel's office.
+225|ST-418|copies|copy someone not nobody|OI-299|Copy the father's attorney on this letter.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[225:],226):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l226|ST-419|tone|soft formal succinct|CL-304|Keep it soft, formal and succinct.
+227|ST-420|concern|both limbs|CL-301|I am concerned she may not appreciate that the stays violate the order or the position she has been put in.
+228|ST-421|expert_report|joint expert|OI-207|I enclose a joint expert report on Imogen.
+229|ST-422|interim_contact|supervised|CL-302|Interim contact with Ms Corwin should be supervised only.
+230|ST-423|court_listing|directions 14 days|OI-204|List the matter for directions within fourteen days.
+231|ST-501|tone|firm formal brief|OI-210|I set the tone as firm, formal and brief.
+232|ST-502|tone|firm formal brief|OI-299|Keep it firm, formal and brief throughout.
+233|ST-503|tone|firm formal brief|CL-307|The letter is firm, formal and brief.
+234|ST-504|tone|soft formal succinct|OI-210|Keep the letter soft, formal and succinct.
+235|ST-505|tone|soft formal|CL-302|The tone is soft and formal.
+236|ST-506|tone|firm detailed|CL-307|I set out the position firmly and in full detail.
+237|ST-507|behavioural_plan|confidence stability peer confidence-only|OI-207|Imogen's behavioural plan focuses on confidence, stability and peer relations, and the stays have set back confidence only.
+238|ST-508|behavioural_plan|confidence stability peer confidence-only|CL-301|The plan covers confidence, stability and peer relations; the stays have set back confidence only.
+239|ST-509|behavioural_plan|old full setback|OI-207|Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back.
+240|ST-510|behavioural_plan|confidence only no peer|CL-308|Imogen's behavioural plan focuses on confidence, and the stays have set back confidence only.
+241|ST-511|concern|position only|OI-206|I am concerned about the position Ms Corwin has been placed in.
+242|ST-512|concern|position only|CL-305|My only concern is the position she has been put in.
+243|ST-513|concern|both limbs old|OI-206|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in.
+244|ST-514|concern|violation only|CL-309|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+245|ST-515|addressee|mother|OI-201|This letter goes to counsel for Ms Corwin — the mother's attorney.
+246|ST-516|addressee|father|CL-301|Address the letter to the father's attorney.
+247|ST-517|addressee|father|OI-299|To counsel for Mr Adler.
+248|ST-518|request|CL match|OI-208|Neither child overnight in her care unless the father is present.
+249|ST-519|request|unless mother|CL-302|Neither child overnight in her care unless Ms Corwin is present.
+250|ST-520|delivery|post|OI-204|Send it by post to counsel's office.
+251|ST-521|delivery|email|CL-306|Send the letter by email to opposing counsel.
+252|ST-522|delivery|courier|OI-299|Deliver by courier to counsel's office.
+253|ST-523|copies|nobody|OI-205|Do not copy anyone on this letter.
+254|ST-524|copies|copy father|CL-305|Copy: Mr Adler.
+255|ST-525|enclosure|certified|OI-209|A certified copy of the custodial plan is enclosed.
+256|ST-526|enclosure|unsigned|CL-303|An unsigned draft of the custodial plan is enclosed.
+257|ST-527|salutation|Dear Counsel|OI-211|Dear Counsel,
+258|ST-528|salutation|Dear Mr Adler|CL-304|Dear Mr Adler,
+259|ST-529|children_named|both with ages|CL-301|This concerns Noor, aged seven, and Imogen, aged twelve.
+260|ST-530|children_named|both no ages|OI-203|This concerns Noor and Imogen.
+261|ST-531|children_named|Noor only|CL-304|This concerns Noor, aged seven.
+262|ST-532|right_of_first_refusal|full|CL-306|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+263|ST-533|right_of_first_refusal|mother agreed|OI-202|Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present.
+264|ST-534|right_of_first_refusal|agreement only no overnight|OI-202|Mr Adler agreed to a right of first refusal.
+265|ST-535|overnight_stays|full|CL-302|On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+266|ST-536|overnight_stays|home only|OI-204|On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+267|ST-537|overnight_stays|one child|CL-301|On several occasions Imogen stayed overnight at her home or with a sitter while the father was away.
+268|ST-538|inconsistent_accounts|all four|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours.
+269|ST-539|inconsistent_accounts|three no neighbour|OI-205|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+270|ST-540|sender_signature|full name|CL-305|Yours sincerely, Delphine Marr.
+271|ST-541|sender_signature|as counsel|OI-211|Yours sincerely, for Delphine Marr, solicitor.
+272|ST-542|sender_signature|first name only|CL-302|Yours sincerely, Delphine.
+273|ST-543|request|wording delivery|OI-208|Send it by post to counsel's office.
+274|ST-544|tone|wording copies|OI-210|Do not copy anyone on this letter.
+275|ST-545|concern|wording enclosure|CL-309|A certified copy of the custodial plan is enclosed.
+276|ST-546|delivery|wording salutation|CL-306|Dear Counsel,
+277|ST-547|behavioural_plan|wording addressee mother|OI-207|This letter goes to counsel for Ms Corwin — the mother's attorney.
+278|ST-548|reply_deadline|7 days|OI-210|Please reply within seven days.
+279|ST-549|reply_deadline|14 days|CL-307|A reply within fourteen days is requested.
+280|ST-550|school_reference|principal|OI-205|The school principal can confirm the account.
+281|ST-551|mediation_offer|open|CL-309|I remain willing to mediate.
+282|ST-552|legal_fees|shared|OI-201|Legal fees will be shared equally.
+283|ST-553|court_listing|directions|CL-306|List the matter for directions within 28 days.
+284|ST-554|expert_report|joint|OI-207|I propose a joint expert on the overnight arrangements.
+285|ST-555|interim_contact|supervised|CL-302|Interim contact should be supervised only.
+286|ST-556|without_prejudice|mark letter|OI-211|This letter is sent without prejudice.
+287|ST-557|hearing_bundle|bundle index enclosed|CL-301|A hearing bundle index is enclosed for the court.
+288|ST-558|tone|firm formal brief|OI-201|Adopt a firm, formal and brief style.
+289|ST-559|concern|position only|OI-299|I raise only the position she has been put in.
+290|ST-560|behavioural_plan|full CL match|OI-299|The behavioural plan covers confidence, stability and peer relations; the stays have set back confidence only.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[90:120],91):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l91|ST-191|overnight_stays|home only no sitter|CL-302|On several occasions both children have stayed overnight at Ms Corwin's home.
+92|ST-192|right_of_first_refusal|father agreed|CL-303|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+93|ST-193|inconsistent_accounts|three audiences|CL-301|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+94|ST-194|sender_signature|own name|CL-306|Yours sincerely, Delphine Marr.
+95|ST-195|concern|narrower concern only violation|OI-206|I am concerned that Ms Corwin may not appreciate that these stays violate the order.
+96|ST-196|concern|narrower concern only position|OI-206|I am concerned about the position Ms Corwin has been placed in.
+97|ST-197|inconsistent_accounts|wife to school only|OI-205|Mr Adler has described Ms Corwin as his wife to the school.
+98|ST-198|inconsistent_accounts|sitter to me only|CL-303|Mr Adler has described Ms Corwin as a babysitter to me.
+99|ST-199|overnight_stays|one child once|OI-204|On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+100|ST-200|tone|firm detailed|CL-302|I set out the position firmly and in full detail.
+101|ST-201|behavioural_plan|no effect|OI-207|The stays have not affected Imogen's behavioural plan.
+102|ST-202|right_of_first_refusal|mother agreed|OI-202|Ms Corwin agreed to a right of first refusal.
+103|ST-203|children_named|Noor only|CL-304|This concerns Noor, aged seven.
+104|ST-204|reply_deadline|seven days|OI-299|Please reply within seven days.
+105|ST-205|reply_deadline|fourteen days|CL-399|A reply within fourteen days is requested.
+106|ST-206|school_reference|principal named|OI-298|Ms Oduya at the school can confirm the account.
+107|ST-207|school_reference|principal named|CL-399|The school principal is asked to confirm attendance.
+108|ST-208|mediation_offer|open to mediate|OI-297|I remain willing to mediate.
+109|ST-209|mediation_terms|mediate in 14 days|CL-398|I propose mediation within fourteen days.
+110|ST-210|legal_fees|father pays|OI-296|The father shall bear all legal fees.
+111|ST-211|legal_fees|shared fees|CL-397|Legal fees will be shared.
+112|ST-212|copies|copy the father|OI-205|Copy: Mr Adler.
+113|ST-213|delivery|by courier|OI-204|Deliver this letter by courier to counsel's office.
+114|ST-214|request|neither child overnight unless father present|OI-208|Neither child overnight in her care unless the father is present.
+115|ST-215|request|neither child overnight unless father present|OI-202|The request is that neither child remain overnight in her care unless the father is present.
+116|ST-216|addressee|father's attorney|OI-201|Please address this letter to the father's attorney.
+117|ST-217|salutation|Dear Ms Corwin|CL-304|Dear Ms Corwin,
+118|ST-218|enclosure|unsigned draft enclosed|OI-209|An unsigned draft of the custodial plan is enclosed.
+119|ST-219|copies|copy mother's attorney|CL-305|Copy: counsel for Ms Corwin.
+120|ST-220|delivery|hand delivery|CL-306|Hand-deliver the letter to counsel's office.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[120:150],121):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l121|ST-221|tone|firm and direct|CL-301|Keep the letter firm and direct.
+122|ST-222|sender_signature|own name|CL-305|Yours sincerely, Delphine Marr.
+123|ST-223|right_of_first_refusal|father agreed|CL-306|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+124|ST-224|inconsistent_accounts|wife and sitter only|OI-205|Mr Adler has described Ms Corwin as his wife to the school and as a babysitter to me.
+125|ST-225|inconsistent_accounts|clinicians only|CL-302|Mr Adler has described Ms Corwin as the person Imogen lives with to her clinicians.
+126|ST-226|concern|narrower violation limb only|CL-301|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+127|ST-227|overnight_stays|Noor only several times|OI-204|On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+128|ST-228|children_named|Imogen only with age|CL-303|This concerns Imogen, aged twelve.
+129|ST-229|tone|soft formal but detailed|OI-210|I keep the tone soft and formal, and I set the facts out in full detail.
+130|ST-230|behavioural_plan|confidence only no setback|OI-207|Imogen's behavioural plan focuses on confidence.
+131|ST-231|addressee|mother's attorney|OI-299|This letter goes to counsel for Ms Corwin — the mother's attorney.
+132|ST-232|copies|copy nobody|OI-299|Do not copy anyone on this letter.
+133|ST-233|salutation|Dear Counsel|OI-299|Dear Counsel,
+134|ST-234|reply_deadline|twenty-one days|OI-210|Please reply within twenty-one days.
+135|ST-235|school_reference|attendance letter|CL-306|The school has already confirmed attendance in writing.
+136|ST-236|mediation_offer|open to mediate|OI-206|I remain willing to mediate the overnight issue.
+137|ST-237|legal_fees|mother pays fees|CL-301|Ms Corwin shall bear the legal fees arising from this letter.
+138|ST-238|court_listing|list for directions|OI-204|Please list the matter for directions within 28 days.
+139|ST-301|request|CL wording exact|OI-208|Neither child overnight in her care unless the father is present.
+140|ST-302|request|CL wording paraphrase|OI-211|I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+141|ST-303|request|CL wording paraphrase|OI-299|Neither child should stay overnight with her unless the father is there.
+142|ST-304|addressee|mother's attorney|OI-201|Address this letter to counsel for Ms Corwin — the mother's attorney.
+143|ST-305|addressee|mother's attorney|OI-299|The letter goes to Catherine's attorney.
+144|ST-306|addressee|mother's attorney|OI-210|To counsel for the mother.
+145|ST-307|enclosure|certified copy|OI-209|A certified copy of the custodial plan is enclosed.
+146|ST-308|enclosure|certified copy|OI-299|Enclosed: certified copy of the custodial plan.
+147|ST-309|salutation|Dear Counsel|OI-211|Dear Counsel,
+148|ST-310|salutation|Dear Counsel|OI-201|Dear Counsel,
+149|ST-311|copies|nobody|OI-205|Do not copy anyone on this letter.
+150|ST-312|copies|nobody|OI-299|There is no copy line; nobody is copied.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[150:180],151):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l151|ST-313|delivery|by post|OI-204|Send it by post to counsel's office.
+152|ST-314|delivery|by post|OI-299|The letter is to be posted to the offices of opposing counsel.
+153|ST-315|addressee|father's attorney|OI-201|Address the letter to the father's attorney.
+154|ST-316|addressee|father's attorney|CL-301|To counsel for Mr Adler.
+155|ST-317|addressee|father's attorney|OI-299|Please send this to Adam's attorney.
+156|ST-318|request|unless mother present|OI-208|Neither child overnight in her care unless Ms Corwin is present.
+157|ST-319|request|father alone overnight ok|CL-302|Either child may remain overnight in her care even if the father is away.
+158|ST-320|enclosure|unsigned draft|OI-209|An unsigned draft of the custodial plan is enclosed.
+159|ST-321|enclosure|no enclosure|CL-303|Nothing is enclosed with this letter.
+160|ST-322|salutation|Dear Mr Adler|OI-211|Dear Mr Adler,
+161|ST-323|salutation|Dear Ms Corwin|CL-304|Dear Ms Corwin,
+162|ST-324|copies|copy father|OI-205|Copy: Mr Adler.
+163|ST-325|copies|copy school|CL-305|Copy the school for their file.
+164|ST-326|delivery|by email|OI-299|Send the letter by email to opposing counsel.
+165|ST-327|delivery|by courier|CL-306|Deliver by courier to counsel's office.
+166|ST-328|delivery|hand delivery|OI-204|Hand-deliver this letter to counsel.
+167|ST-329|tone|firm and direct|CL-301|Keep the letter firm and direct.
+168|ST-330|tone|firm and direct|CL-306|The tone throughout is firm and direct.
+169|ST-331|concern|violation limb only|CL-305|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+170|ST-332|concern|violation limb only|CL-302|I am concerned she may not appreciate that the stays violate the order.
+171|ST-333|inconsistent_accounts|all three|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+172|ST-334|inconsistent_accounts|all three|CL-304|The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me.
+173|ST-335|overnight_stays|home only no sitter|CL-301|On several occasions both children have stayed overnight at Ms Corwin's home.
+174|ST-336|children_named|both with ages|CL-305|This concerns Noor, aged seven, and Imogen, aged twelve.
+175|ST-337|right_of_first_refusal|father agreed|CL-306|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+176|ST-338|behavioural_plan|confidence and setback missing stability|CL-302|Imogen's behavioural plan focuses on confidence, and the stays have set back her progress.
+177|ST-339|sender_signature|own name|CL-303|Yours sincerely, Delphine Marr.
+178|ST-340|sender_signature|own name|CL-301|Signed, Delphine Marr.
+179|ST-341|concern|violation limb only|OI-206|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+180|ST-342|concern|position limb only|CL-305|I am concerned about the position Ms Corwin has been placed in.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[180:210],181):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l181|ST-343|inconsistent_accounts|wife only|OI-205|Mr Adler has described Ms Corwin as his wife to the school.
+182|ST-344|inconsistent_accounts|sitter and clinicians|CL-301|Mr Adler has described Ms Corwin as the person Imogen lives with to clinicians and as a babysitter to me.
+183|ST-345|overnight_stays|one child once|OI-204|On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+184|ST-346|overnight_stays|Noor only several|CL-306|On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+185|ST-347|children_named|Noor only|OI-203|This concerns Noor, aged seven.
+186|ST-348|children_named|both no ages|CL-304|This concerns Noor and Imogen.
+187|ST-349|tone|firm detailed|OI-210|I set out the position firmly and in full detail.
+188|ST-350|tone|soft but not succinct|CL-302|The tone is soft and formal, and the facts are set out at length.
+189|ST-351|behavioural_plan|no setback|OI-207|The stays have not affected Imogen's behavioural plan.
+190|ST-352|behavioural_plan|confidence only|CL-303|Imogen's behavioural plan focuses on confidence.
+191|ST-353|right_of_first_refusal|mother agreed|OI-202|Ms Corwin agreed to a right of first refusal.
+192|ST-354|right_of_first_refusal|no overnight restriction|CL-305|Mr Adler agreed to a right of first refusal, but overnight stays without him are still permitted.
+193|ST-355|sender_signature|signed as counsel|OI-211|Yours sincerely, for Delphine Marr, solicitor.
+194|ST-356|reply_deadline|7 days|OI-210|Please reply within seven days.
+195|ST-357|reply_deadline|14 days|CL-306|A reply within fourteen days is requested.
+196|ST-358|school_reference|principal|OI-205|Ms Oduya at the school can confirm the account.
+197|ST-359|school_reference|attendance|CL-301|The school has confirmed attendance in writing.
+198|ST-360|mediation_offer|open|OI-206|I remain willing to mediate.
+199|ST-361|mediation_terms|14 days|CL-302|I propose mediation within fourteen days.
+200|ST-362|legal_fees|father pays|OI-201|The father shall bear all legal fees.
+201|ST-363|legal_fees|shared|CL-305|Legal fees will be shared equally.
+202|ST-364|court_listing|directions|OI-204|Please list the matter for directions within 28 days.
+203|ST-365|court_listing|urgent hearing|CL-303|I will seek an urgent hearing if there is no reply.
+204|ST-366|expert_report|psychologist|OI-207|A psychologist's report on Imogen is available on request.
+205|ST-367|expert_report|joint expert|CL-304|I propose a joint expert on the overnight arrangements.
+206|ST-368|interim_contact|supervised only|OI-208|Pending resolution, contact with Ms Corwin should be supervised only.
+207|ST-369|interim_contact|video calls|CL-306|Interim contact may continue by video call twice weekly.
+208|ST-401|inconsistent_accounts|all four audiences|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours.
+209|ST-402|inconsistent_accounts|all four audiences|OI-205|The father has called her his wife to the school, the person the child lives with to clinicians, a sitter to me, and his partner to the neighbours.
+210|ST-403|overnight_stays|home or sitter both|CL-306|On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[210:240],211):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l211|ST-404|overnight_stays|home or sitter both|OI-204|On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+212|ST-405|concern|both limbs|CL-305|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in.
+213|ST-406|behavioural_plan|confidence stability setback|CL-301|Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back.
+214|ST-407|tone|soft formal succinct|CL-302|Keep the letter soft, formal and succinct.
+215|ST-408|inconsistent_accounts|three without neighbours|OI-205|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+216|ST-409|inconsistent_accounts|three without neighbours|CL-304|The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me.
+217|ST-410|overnight_stays|home only no sitter|OI-204|On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+218|ST-411|overnight_stays|sitter only no home|CL-301|On several occasions both children stayed overnight with a sitter while Mr Adler was away.
+219|ST-412|tone|soft formal not succinct|OI-210|Keep the letter soft and formal.
+220|ST-413|tone|formal succinct not soft|CL-306|The tone is formal and succinct.
+221|ST-414|behavioural_plan|no setback stated|OI-207|Imogen's behavioural plan focuses on confidence and stability.
+222|ST-415|request|meeting request not overnight condition|OI-208|I am writing to request a meeting with counsel.
+223|ST-416|addressee|father directly not mother's attorney|OI-201|Address the letter to the father directly.
+224|ST-417|delivery|email not post|CL-306|Deliver it by email to counsel's office.
+225|ST-418|copies|copy someone not nobody|OI-299|Copy the father's attorney on this letter.
+226|ST-419|tone|soft formal succinct|CL-304|Keep it soft, formal and succinct.
+227|ST-420|concern|both limbs|CL-301|I am concerned she may not appreciate that the stays violate the order or the position she has been put in.
+228|ST-421|expert_report|joint expert|OI-207|I enclose a joint expert report on Imogen.
+229|ST-422|interim_contact|supervised|CL-302|Interim contact with Ms Corwin should be supervised only.
+230|ST-423|court_listing|directions 14 days|OI-204|List the matter for directions within fourteen days.
+231|ST-501|tone|firm formal brief|OI-210|I set the tone as firm, formal and brief.
+232|ST-502|tone|firm formal brief|OI-299|Keep it firm, formal and brief throughout.
+233|ST-503|tone|firm formal brief|CL-307|The letter is firm, formal and brief.
+234|ST-504|tone|soft formal succinct|OI-210|Keep the letter soft, formal and succinct.
+235|ST-505|tone|soft formal|CL-302|The tone is soft and formal.
+236|ST-506|tone|firm detailed|CL-307|I set out the position firmly and in full detail.
+237|ST-507|behavioural_plan|confidence stability peer confidence-only|OI-207|Imogen's behavioural plan focuses on confidence, stability and peer relations, and the stays have set back confidence only.
+238|ST-508|behavioural_plan|confidence stability peer confidence-only|CL-301|The plan covers confidence, stability and peer relations; the stays have set back confidence only.
+239|ST-509|behavioural_plan|old full setback|OI-207|Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back.
+240|ST-510|behavioural_plan|confidence only no peer|CL-308|Imogen's behavioural plan focuses on confidence, and the stays have set back confidence only.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[240:],241):
+[?2004l[?2004h>     print(f"{i}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l241|ST-511|concern|position only|OI-206|I am concerned about the position Ms Corwin has been placed in.
+242|ST-512|concern|position only|CL-305|My only concern is the position she has been put in.
+243|ST-513|concern|both limbs old|OI-206|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in.
+244|ST-514|concern|violation only|CL-309|I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+245|ST-515|addressee|mother|OI-201|This letter goes to counsel for Ms Corwin — the mother's attorney.
+246|ST-516|addressee|father|CL-301|Address the letter to the father's attorney.
+247|ST-517|addressee|father|OI-299|To counsel for Mr Adler.
+248|ST-518|request|CL match|OI-208|Neither child overnight in her care unless the father is present.
+249|ST-519|request|unless mother|CL-302|Neither child overnight in her care unless Ms Corwin is present.
+250|ST-520|delivery|post|OI-204|Send it by post to counsel's office.
+251|ST-521|delivery|email|CL-306|Send the letter by email to opposing counsel.
+252|ST-522|delivery|courier|OI-299|Deliver by courier to counsel's office.
+253|ST-523|copies|nobody|OI-205|Do not copy anyone on this letter.
+254|ST-524|copies|copy father|CL-305|Copy: Mr Adler.
+255|ST-525|enclosure|certified|OI-209|A certified copy of the custodial plan is enclosed.
+256|ST-526|enclosure|unsigned|CL-303|An unsigned draft of the custodial plan is enclosed.
+257|ST-527|salutation|Dear Counsel|OI-211|Dear Counsel,
+258|ST-528|salutation|Dear Mr Adler|CL-304|Dear Mr Adler,
+259|ST-529|children_named|both with ages|CL-301|This concerns Noor, aged seven, and Imogen, aged twelve.
+260|ST-530|children_named|both no ages|OI-203|This concerns Noor and Imogen.
+261|ST-531|children_named|Noor only|CL-304|This concerns Noor, aged seven.
+262|ST-532|right_of_first_refusal|full|CL-306|Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
+263|ST-533|right_of_first_refusal|mother agreed|OI-202|Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present.
+264|ST-534|right_of_first_refusal|agreement only no overnight|OI-202|Mr Adler agreed to a right of first refusal.
+265|ST-535|overnight_stays|full|CL-302|On several occasions both children stayed overnight at her home or with a sitter while the father was away.
+266|ST-536|overnight_stays|home only|OI-204|On several occasions both children stayed overnight at Ms Corwin's home while Mr Adler was away.
+267|ST-537|overnight_stays|one child|CL-301|On several occasions Imogen stayed overnight at her home or with a sitter while the father was away.
+268|ST-538|inconsistent_accounts|all four|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours.
+269|ST-539|inconsistent_accounts|three no neighbour|OI-205|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
+270|ST-540|sender_signature|full name|CL-305|Yours sincerely, Delphine Marr.
+271|ST-541|sender_signature|as counsel|OI-211|Yours sincerely, for Delphine Marr, solicitor.
+272|ST-542|sender_signature|first name only|CL-302|Yours sincerely, Delphine.
+273|ST-543|request|wording delivery|OI-208|Send it by post to counsel's office.
+274|ST-544|tone|wording copies|OI-210|Do not copy anyone on this letter.
+275|ST-545|concern|wording enclosure|CL-309|A certified copy of the custodial plan is enclosed.
+276|ST-546|delivery|wording salutation|CL-306|Dear Counsel,
+277|ST-547|behavioural_plan|wording addressee mother|OI-207|This letter goes to counsel for Ms Corwin — the mother's attorney.
+278|ST-548|reply_deadline|7 days|OI-210|Please reply within seven days.
+279|ST-549|reply_deadline|14 days|CL-307|A reply within fourteen days is requested.
+280|ST-550|school_reference|principal|OI-205|The school principal can confirm the account.
+281|ST-551|mediation_offer|open|CL-309|I remain willing to mediate.
+282|ST-552|legal_fees|shared|OI-201|Legal fees will be shared equally.
+283|ST-553|court_listing|directions|CL-306|List the matter for directions within 28 days.
+284|ST-554|expert_report|joint|OI-207|I propose a joint expert on the overnight arrangements.
+285|ST-555|interim_contact|supervised|CL-302|Interim contact should be supervised only.
+286|ST-556|without_prejudice|mark letter|OI-211|This letter is sent without prejudice.
+287|ST-557|hearing_bundle|bundle index enclosed|CL-301|A hearing bundle index is enclosed for the court.
+288|ST-558|tone|firm formal brief|OI-201|Adopt a firm, formal and brief style.
+289|ST-559|concern|position only|OI-299|I raise only the position she has been put in.
+290|ST-560|behavioural_plan|full CL match|OI-299|The behavioural plan covers confidence, stability and peer relations; the stays have set back confidence only.
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv, json, os
+[?2004l[?2004h> 
+[?2004l[?2004h> inp = '/app/input/letter_lines.csv'
+[?2004l[?2004h> rows = list(csv.DictReader(open(inp, newline='')))
+[?2004l[?2004h> 
+[?2004l[?2004h> clar_subjects = {
+[?2004l[?2004h>     'addressee': 'CL-301',
+[?2004l[?2004h>     'request': 'CL-302',
+[?2004l)[?2004h>     'enclosure': 'CL-303',
+[?2004l[?2004h>     'salutation': 'CL-304',
+[?2004l[?2004h>     'copies': 'CL-305',
+[?2004l[?2004h>     'delivery': 'CL-306',
+[?2004l[?2004h>     'tone': 'CL-307',
+[?2004l[?2004h>     'behavioural_plan': 'CL-308',
+[?2004l[?2004h>     'concern': 'CL-309',
+[?2004l[?2004h> }
+[?2004l[?2004h> orig_subjects = {
+[?2004l[?2004h>     'right_of_first_refusal': 'OI-202',
+[?2004l[?2004h>     'children_named': 'OI-203',
+[?2004l  [?2004h>     'overnight_stays': 'OI-204',
+[?2004l[?2004h>     'inconsistent_accounts': 'OI-205',
+[?2004l[?2004h>     'sender_signature': 'OI-211',
+[?2004l[?2004h> }
+[?2004l/l[?2004h> 
+[?2004l[?2004h> def verdict(row):
+[?2004lg[?2004h>     s = row['subject']
+[?2004l[?2004h>     pos = row['position'].lower()
+[?2004l[?2004h>     w = row['wording']
+[?2004l[?2004h>     wl = w.lower()
+[?2004le the clarification[?2004h> 
+[?2004l[?2004h>     if s == 'addressee':
+[?2004l[?2004h>         return 'VERIFIED' if ('mother' in pos or 'catherine' in pos or 'mother' in wl or 'catherine' in wl or 'ms corwin' in wl) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'right_of_first_refusal':
+[?2004l[?2004h>         if 'mr adler agreed' in wl and 'without him present' in wl and 'permitted' not in wl and 'mother' not in pos and 'ms corwin' not in wl:
+[?2004l[?2004h>             return 'VERIFIED'
+[?2004l[?2004h>         return 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'children_named':
+[?2004l[?2004h>         return 'VERIFIED' if ('noor' in wl and 'imogen' in wl and 'seven' in wl and 'twelve' in wl) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l [?2004h>     if s == 'overnight_stays':
+[?2004l[?2004h>         return 'VERIFIED' if ('several occasions' in wl and 'both children' in wl and 'home' in wl and 'sitter' in wl and 'away' in wl) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'inconsistent_accounts':
+[?2004l[?2004h>         return 'VERIFIED' if all(k in wl for k in ['wife','school','clinicians','sitter','partner','neighbours']) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'concern':
+[?2004l[?2004h>         if 'wording' in pos or 'no concern' in pos or 'violation' in pos or 'both limbs' in pos or 'appreciate' in pos:
+[?2004l[?2004h>             return 'AT_ODDS'
+[?2004l[?2004h>         if 'position' in pos:
+[?2004l[?2004h>             return 'VERIFIED'
+[?2004l[?2004h>         if 'position' in wl and 'violate' not in wl and 'appreciate' not in wl and 'no concern' not in wl and 'wording' not in pos:
+[?2004l[?2004h>             return 'VERIFIED'
+[?2004l[?2004h>         return 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'behavioural_plan':
+[?2004l[?2004h>         return 'VERIFIED' if ('peer relations' in wl and 'confidence only' in wl and 'stability' in wl) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'request':
+[?2004l[?2004h>         if 'wording' in pos or 'meeting' in pos or 'mother' in pos or 'accompanied by a parent' in pos or 'father alone' in pos:
+[?2004l[?2004h>             return 'AT_ODDS'
+[?2004l[?2004h>         if 'father' in pos and 'present' in pos:
+[?2004l[?2004h>             return 'VERIFIED'
+[?2004l[?2004h>         if 'unless' in wl and ('father' in wl or 'mr adler' in wl) and 'unless ms corwin' not in wl and 'parent or legal guardian' not in wl and 'meeting' not in wl and 'post' not in wl:
+[?2004l[?2004h>             return 'VERIFIED'
+[?2004l[?2004h>         return 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'enclosure':
+[?2004l[?2004h>         return 'VERIFIED' if ('certified' in wl and 'custodial plan' in wl and 'enclosed' in wl) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'salutation':
+[?2004l[?2004h>         return 'VERIFIED' if 'dear counsel' in wl else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'copies':
+[?2004l[?2004h>         return 'VERIFIED' if any(k in wl for k in ['nobody','no copy line','do not copy anyone','no one is copied']) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'delivery':
+[?2004l[?2004h>         return 'VERIFIED' if (('post' in wl or 'posted' in wl) and 'counsel' in wl and 'email' not in wl and 'courier' not in wl and 'hand' not in wl) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'tone':
+[?2004l[?2004h>         if 'firm' in wl and 'formal' in wl and 'brief' in wl and 'soft' not in wl and 'detailed' not in wl and 'at length' not in wl and 'direct' not in wl:
+[?2004l[?2004h>             return 'VERIFIED'
+[?2004l[?2004h>         return 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'sender_signature':
+[?2004l[?2004h>         return 'VERIFIED' if ('delphine marr' in wl and 'for delphine marr' not in wl and 'solicitor' not in wl) else 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h>     return 'NOT_IN_RECORD'
+[?2004l[?2004h> 
+[?2004l[?2004h> def governing_entry(row):
+[?2004l[?2004h>     s = row['subject']
+[?2004l[?2004h>     return clar_subjects.get(s) or orig_subjects.get(s) or 'NONE'
+[?2004l[?2004h> 
+[?2004l[?2004h> out_rows = []
+[?2004l[?2004h> counts = {'VERIFIED':0, 'AT_ODDS':0, 'NOT_IN_RECORD':0}
+[?2004l[?2004h> clar_count = 0
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     v = verdict(r)
+[?2004l[?2004h>     e = governing_entry(r)
+[?2004l[?2004h>     if e.startswith('CL-'):
+[?2004l[?2004h>         clar_count += 1
+[?2004l[?2004h>     counts[v] += 1
+[?2004l[?2004h>     out_rows.append({'line_id': r['line_id'], 'verdict': v, 'record_entry': e})
+[?2004l[?2004h> 
+[?2004l[?2004h> with open('/app/letter_line_review.csv', 'w', newline='') as f:
+[?2004l[?2004h>     writer = csv.DictWriter(f, fieldnames=['line_id','verdict','record_entry'])
+[?2004l[?2004h>     writer.writeheader()
+[?2004l[?2004h>     writer.writerows(out_rows)
+[?2004l[?2004h> 
+[?2004l[?2004h> results = {
+[?2004l[?2004h>     'verified_count': counts['VERIFIED'],
+[?2004l[?2004h>     'at_odds_count': counts['AT_ODDS'],
+[?2004l[?2004h>     'not_in_record_count': counts['NOT_IN_RECORD'],
+[?2004l[?2004h>     'clarification_governed_count': clar_count,
+[?2004l[?2004h> }
+[?2004l[?2004h> with open('/app/results.json', 'w') as f:
+[?2004l[?2004h>     json.dump(results, f, indent=2)
+[?2004l[?2004h>     f.write('\\n')
+[?2004l[?2004h> 
+[?2004l[?2004h> answer = f"""# Review of the draft letter lines
+[?2004l[?2004h> 
+[?2004l[?2004h> I weighed every numbered line in `input/letter_lines.csv` against the client's two recorded messages, using `input/review_protocol.md`. Where the clarification speaks to a subject, it governs under RP-401 and RP-402; where only the original instruction speaks to a subject, that original entry governs under RP-403; where neither record speaks to a subject, the line is not in the record at all under RP-404. Each line was then compared with its governing entry under RP-405.
+[?2004l[?2004h> 
+[?2004l[?2004h> The review shows that some lines are verified by the record, some are at odds with the record, and some are not in the record at all. The governing entry is named for every line in `letter_line_review.csv`, and the four totals appear in `results.json`. Letter lines at odds with the record: {counts['AT_ODDS']}. This count reflects the lines whose governing entry takes a position other than the line's, whether the line reverses the record, states something narrower, names a different person, or otherwise fails to match the entry that governs it.
+[?2004l[?2004h> """
+[?2004l[?2004h> with open('/app/answer.md', 'w') as f:
+[?2004l[?2004h>     f.write(answer)
+[?2004l[?2004h> 
+[?2004l[?2004h> print(json.dumps(results, indent=2))
+[?2004l[?2004h> print('CSV rows:', len(out_rows))
+[?2004l[?2004h> print('Verdict counts:', counts)
+[?2004l[?2004h> print('Clarification-governed:', clar_count)
+[?2004l[?2004h> PY
+[?2004l{
+  "verified_count": 84,
+  "at_odds_count": 157,
+  "not_in_record_count": 49,
+  "clarification_governed_count": 168
+}
+CSV rows: 290
+Verdict counts: {'VERIFIED': 84, 'AT_ODDS': 157, 'NOT_IN_RECORD': 49}
+Clarification-governed: 168
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ ls -l /app/answer.md /app/letter_line_review.csv /app/results.json
+[?2004l-rw-r--r-- 1 appuser appuser 1047 Sep 17 14:18 /app/answer.md
+-rw-r--r-- 1 appuser appuser 6980 Sep 17 14:18 /app/letter_line_review.csv
+-rw-r--r-- 1 appuser appuser  120 Sep 17 14:18 /app/results.json
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv, json, os, re
+[?2004l[?2004h> 
+[?2004l[?2004h> rows = list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> 
+[?2004li[?2004h> clar_subjects = {
+[?2004l[?2004h>     'addressee': 'CL-301',
+[?2004l[?2004h>     'request': 'CL-302',
+[?2004l[?2004h>     'enclosure': 'CL-303',
+[?2004l[?2004h>     'salutation': 'CL-304',
+[?2004l[?2004h>     'copies': 'CL-305',
+[?2004l[?2004h>     'delivery': 'CL-306',
+[?2004l[?2004h>     'tone': 'CL-307',
+[?2004l[?2004h>     'behavioural_plan': 'CL-308',
+[?2004l'][?2004h>     'concern': 'CL-309',
+[?2004l[?2004h> }
+[?2004l[?2004h> orig_subjects = {
+[?2004l[?2004h>     'right_of_first_refusal': 'OI-202',
+[?2004lw[?2004h>     'children_named': 'OI-203',
+[?2004l[?2004h>     'overnight_stays': 'OI-204',
+[?2004l[?2004h>     'inconsistent_accounts': 'OI-205',
+[?2004l[?2004h>     'sender_signature': 'OI-211',
+[?2004ld[?2004h> }
+[?2004l[?2004h> 
+[?2004l[?2004h> def wl(row):
+[?2004l[?2004h>     return row['wording'].lower()
+[?2004l[?2004h> 
+[?2004l[?2004h> def pos(row):
+[?2004l[?2004h>     return row['position'].lower()
+[?2004l[?2004h> 
+[?2004l[?2004h> def verified(row):
+[?2004lre th[?2004h>     s = row['subject']
+[?2004l[?2004h>     w = wl(row)
+[?2004l[?2004h>     p = pos(row)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'addressee':
+[?2004l[?2004h>         mother_terms = ['mother', 'catherine', 'ms corwin']
+[?2004l[?2004h>         father_terms = ['father', 'adam', 'mr adler']
+[?2004l[?2004h>         is_mother = any(t in w for t in mother_terms)
+[?2004l[?2004h>         is_father = any(t in w for t in father_terms)
+[?2004l[?2004h>         return is_mother and not (is_father and not any(t in w for t in mother_terms))
+[?2004l[?2004h> 
+[?2004ld[?2004h>     if s == 'right_of_first_refusal':
+[?2004l[?2004h>         if 'permitted' in w or 'mother' in w or 'ms corwin' in w:
+[?2004l[?2004h>             return False
+[?2004l[?2004h>         if ('mr adler agreed' in w or 'father agreed' in w) and 'without him present' in w:
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         return False
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'children_named':
+[?2004l[?2004h>         return all(k in w for k in ['noor', 'imogen', 'seven', 'twelve'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'overnight_stays':
+[?2004l[?2004h>         return all(k in w for k in ['several occasions', 'both children', 'home', 'sitter', 'away'])
+[?2004ln[?2004h> 
+[?2004l[?2004h>     if s == 'inconsistent_accounts':
+[?2004l[?2004h>         return all(k in w for k in ['wife', 'school', 'clinicians', 'sitter', 'partner', 'neighbours'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'concern':
+[?2004l[?2004h>         if 'no concern' in p or 'no concern' in w or 'violation' in p or 'violate' in w or 'appreciate' in w or 'appreciate' in p or 'wording' in p or 'both limbs' in p:
+[?2004l[?2004h>             return False
+[?2004ls]
+    print(f[?2004h>         if 'position' in p:
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         if 'position' in w and 'violate' not in w and 'appreciate' not in w and 'no concern' not in w:
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         return False
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'behavioural_plan':
+[?2004l[?2004h>         return 'peer relations' in w and 'confidence only' in w and 'stability' in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'request':
+[?2004l[?2004h>         if 'meeting' in w or 'post' in w or 'even if' in w or 'ms corwin is present' in w or 'parent or legal guardian' in w:
+[?2004l[?2004h>             return False
+[?2004l[?2004h>         if ('neither child' in w or 'no child' in w) and 'overnight' in w and 'unless' in w and ('father' in w or 'mr adler' in w):
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         return False
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'enclosure':
+[?2004l[?2004h>         return 'certified' in w and 'custodial plan' in w and 'enclosed' in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'salutation':
+[?2004l[?2004h>         return 'dear counsel' in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'copies':
+[?2004l[?2004h>         return any(k in w for k in ['nobody', 'no copy line', 'do not copy anyone', 'no one is copied'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'delivery':
+[?2004l[?2004h>         return ('post' in w or 'posted' in w) and 'counsel' in w and 'email' not in w and 'courier' not in w and 'hand' not in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'tone':
+[?2004l[?2004h>         return 'firm' in w and 'formal' in w and 'brief' in w and 'soft' not in w and 'detailed' not in w and 'at length' not in w and 'direct' not in w and 'long-winded' not in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'sender_signature':
+[?2004l[?2004h>         return 'delphine marr' in w and 'for delphine marr' not in w and 'solicitor' not in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     return False
+[?2004l[?2004h> 
+[?2004l[?2004h> def governing_entry(row):
+[?2004l[?2004h>     s = row['subject']
+[?2004l[?2004h>     return clar_subjects.get(s) or orig_subjects.get(s) or 'NONE'
+[?2004l[?2004h> 
+[?2004l[?2004h> out_rows = []
+[?2004l[?2004h> counts = {'VERIFIED': 0, 'AT_ODDS': 0, 'NOT_IN_RECORD': 0}
+[?2004l[?2004h> clar_count = 0
+[?2004l[?2004h> subject_stats = {}
+[?2004l[?2004h> 
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     e = governing_entry(r)
+[?2004l[?2004h>     if e == 'NONE':
+[?2004l[?2004h>         v = 'NOT_IN_RECORD'
+[?2004l[?2004h>     elif verified(r):
+[?2004l[?2004h>         v = 'VERIFIED'
+[?2004l[?2004h>     else:
+[?2004l[?2004h>         v = 'AT_ODDS'
+[?2004l[?2004h>     if e.startswith('CL-'):
+[?2004l[?2004h>         clar_count += 1
+[?2004l[?2004h>     counts[v] += 1
+[?2004l[?2004h>     out_rows.append({'line_id': r['line_id'], 'verdict': v, 'record_entry': e})
+[?2004l[?2004h>     s = r['subject']
+[?2004l[?2004h>     subject_stats.setdefault(s, {'VERIFIED':0,'AT_ODDS':0,'NOT_IN_RECORD':0,'governing':e})
+[?2004l[?2004h>     subject_stats[s][v] += 1
+[?2004l[?2004h> 
+[?2004l[?2004h> with open('/app/letter_line_review.csv', 'w', newline='') as f:
+[?2004l[?2004h>     writer = csv.DictWriter(f, fieldnames=['line_id','verdict','record_entry'])
+[?2004l[?2004h>     writer.writeheader()
+[?2004l[?2004h>     writer.writerows(out_rows)
+[?2004l[?2004h> 
+[?2004l[?2004h> results = {
+[?2004l[?2004h>     'verified_count': counts['VERIFIED'],
+[?2004l[?2004h>     'at_odds_count': counts['AT_ODDS'],
+[?2004l[?2004h>     'not_in_record_count': counts['NOT_IN_RECORD'],
+[?2004l[?2004h>     'clarification_governed_count': clar_count,
+[?2004l[?2004h> }
+[?2004l[?2004h> with open('/app/results.json', 'w') as f:
+[?2004l[?2004h>     json.dump(results, f, indent=2)
+[?2004l[?2004h>     f.write('\\n')
+[?2004l[?2004h> 
+[?2004l[?2004h> answer = f"""# Review of the draft letter lines
+[?2004l[?2004h> 
+[?2004l[?2004h> I weighed every numbered line in `input/letter_lines.csv` against the client's two recorded messages, using `input/review_protocol.md`. Where the clarification speaks to a subject, it governs under RP-401 and RP-402; where only the original instruction speaks to a subject, that original entry governs under RP-403; where neither record speaks to a subject, the line is not in the record at all under RP-404. Each line was then compared with its governing entry under RP-405.
+[?2004l[?2004h> 
+[?2004l[?2004h> The review shows that some lines are verified by the record, some are at odds with the record, and some are not in the record at all. The governing entry is named for every line in `letter_line_review.csv`, and the four totals appear in `results.json`. Letter lines at odds with the record: {counts['AT_ODDS']}. This count reflects the lines whose governing entry takes a position other than the line's, whether the line reverses the record, states something narrower, names a different person, or otherwise fails to match the entry that governs it.
+[?2004l[?2004h> """
+[?2004l[?2004h> with open('/app/answer.md', 'w') as f:
+[?2004l[?2004h>     f.write(answer)
+[?2004l[?2004h> 
+[?2004l[?2004h> print(json.dumps(results, indent=2))
+[?2004l[?2004h> print('CSV rows:', len(out_rows))
+[?2004l[?2004h> print('Verdict counts:', counts)
+[?2004l[?2004h> print('Clarification-governed:', clar_count)
+[?2004l[?2004h> print('Word count in answer.md:', len(answer.split()))
+[?2004l[?2004h> print('--- per-subject summary ---')
+[?2004l[?2004h> for s in sorted(subject_stats):
+[?2004l[?2004h>     st = subject_stats[s]
+[?2004l[?2004h>     print(f"{s}: {st['VERIFIED']} V / {st['AT_ODDS']} A / {st['NOT_IN_RECORD']} N | {st['governing']}")
+[?2004l[?2004h> PY
+[?2004l{
+  "verified_count": 86,
+  "at_odds_count": 155,
+  "not_in_record_count": 49,
+  "clarification_governed_count": 168
+}
+CSV rows: 290
+Verdict counts: {'VERIFIED': 86, 'AT_ODDS': 155, 'NOT_IN_RECORD': 49}
+Clarification-governed: 168
+Word count in answer.md: 169
+--- per-subject summary ---
+addressee: 7 V / 12 A / 0 N | CL-301
+behavioural_plan: 3 V / 15 A / 0 N | CL-308
+children_named: 6 V / 7 A / 0 N | OI-203
+concern: 5 V / 15 A / 0 N | CL-309
+copies: 6 V / 10 A / 0 N | CL-305
+court_listing: 0 V / 0 A / 5 N | NONE
+delivery: 6 V / 14 A / 0 N | CL-306
+enclosure: 9 V / 4 A / 0 N | CL-303
+expert_report: 0 V / 0 A / 4 N | NONE
+hearing_bundle: 0 V / 0 A / 1 N | NONE
+inconsistent_accounts: 3 V / 17 A / 0 N | OI-205
+interim_contact: 0 V / 0 A / 4 N | NONE
+legal_fees: 0 V / 0 A / 8 N | NONE
+mediation_offer: 0 V / 0 A / 6 N | NONE
+mediation_terms: 0 V / 0 A / 3 N | NONE
+overnight_stays: 4 V / 13 A / 0 N | OI-204
+reply_deadline: 0 V / 0 A / 9 N | NONE
+request: 13 V / 8 A / 0 N | CL-302
+right_of_first_refusal: 6 V / 7 A / 0 N | OI-202
+salutation: 7 V / 7 A / 0 N | CL-304
+school_reference: 0 V / 0 A / 8 N | NONE
+sender_signature: 7 V / 3 A / 0 N | OI-211
+tone: 4 V / 23 A / 0 N | CL-307
+without_prejudice: 0 V / 0 A / 1 N | NONE
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ ls -l /app/answer.md /app/letter_line_review.csv /app/results.json
+[?2004l-rw-r--r-- 1 appuser appuser 1047 Sep 17 14:20 /app/answer.md
+-rw-r--r-- 1 appuser appuser 6982 Sep 17 14:20 /app/letter_line_review.csv
+-rw-r--r-- 1 appuser appuser  120 Sep 17 14:20 /app/results.json
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv, json, re
+[?2004l[?2004h> 
+[?2004lappreciate' not in text and 'no concern' not in text:
+            return True
+        return False
+
+    if s == 'behavioural_plan':
+        return 'peer relations' in text and 'confidence only' in text and 'stability' in text
+
+    if s == 'request':
+        if 'meeting' in text or 'post' in text or 'even if' in text or 'ms corwin is present' in text or 'parent or legal guardian' in text:
+            return False
+        return ('neither child' in text or 'no child' in text) and 'overnight' in text and 'unless' in text and ('father' in text or 'mr adler' in text)
+
+    if s == 'enclosure':
+        return bool(re.search(r'\bcertified\b', text)) and 'custodial plan' in text and 'enclosed' in text
+
+    if s == 'salutation':
+        return 'dear counsel' in text
+
+    if s == 'copies':
+        return any(k in text for k in ['nobody', 'no copy line', 'do not copy anyone', 'no one is copied'])
+
+    if s == 'delivery':
+        return ('post' in text or 'posted' in text) and 'counsel' in text and 'email' not in text and 'courier' not in text and 'hand' not in text
+
+    if s == 'tone':
+        return 'firm' in text and 'formal' in text and 'brief' in text and 'soft' not in text and 'detailed' not in text and 'at length' not in text and 'direct' not in text and 'long-winded' not in text
+
+    if s == 'sender_signature':
+        return 'delphine marr' in text and 'for delphine marr' not in text and 'solicitor' not in text
+
+    return False
+
+def governing_entry(row):
+    return clar_subjects.get(row['subject']) or orig_subjects.get(row['subject']) or 'NONE'
+
+out_rows = []
+counts = {'VERIFIED': 0, 'AT_ODDS': 0, 'NOT_IN_RECORD': 0}
+clar_count = 0
+
+for r in rows:
+    e = governing_entry(r)
+    if e == 'NONE':
+        v = 'NOT_IN_RECORD'
+    elif verified(r):
+        v = 'VERIFIED'
+    else:
+        v = 'AT_ODDS'
+    if e.startswith('CL-'):
+        clar_count += 1
+    counts[v] += 1
+    out_rows.append({'line_id': r['line_id'], 'verdict': v, 'record_entry': e})
+
+with open('/app/letter_line_review.csv', 'w', newline='') as f:
+    wri[?2004h> rows = list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> 
+[?2004l[?2004h> clar_subjects = {
+[?2004l[?2004h>     'addressee': 'CL-301',
+[?2004l[?2004h>     'request': 'CL-302',
+[?2004l[?2004h>     'enclosure': 'CL-303',
+[?2004l[?2004h>     'salutation': 'CL-304',
+[?2004l[?2004h>     'copies': 'CL-305',
+[?2004l[?2004h>     'delivery': 'CL-306',
+[?2004l[?2004h>     'tone': 'CL-307',
+[?2004l[?2004h>     'behavioural_plan': 'CL-308',
+[?2004l[?2004h>     'concern': 'CL-309',
+[?2004l[?2004h> }
+[?2004l  [?2004h> orig_subjects = {
+[?2004l[?2004h>     'right_of_first_refusal': 'OI-202',
+[?2004l[?2004h>     'children_named': 'OI-203',
+[?2004l[?2004h>     'overnight_stays': 'OI-204',
+[?2004l[?2004h>     'inconsistent_accounts': 'OI-205',
+[?2004l[?2004h>     'sender_signature': 'OI-211',
+[?2004l[?2004h> }
+[?2004l[?2004h> 
+[?2004l[?2004h> def w(row):
+[?2004lut/review_pro[?2004h>     return row['wording'].lower()
+[?2004l[?2004h> 
+[?2004l[?2004h> def p(row):
+[?2004l[?2004h>     return row['position'].lower()
+[?2004l[?2004h> 
+[?2004l[?2004h> def verified(row):
+[?2004l[?2004h>     s = row['subject']
+[?2004l[?2004h>     text = w(row)
+[?2004l[?2004h>     pos = p(row)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'addressee':
+[?2004l[?2004h>         mother_terms = ['mother', 'catherine', 'ms corwin']
+[?2004l[?2004h>         father_terms = ['father', 'adam', 'mr adler']
+[?2004l[?2004h>         is_mother = any(t in text for t in mother_terms)
+[?2004lhe r[?2004h>         is_father = any(t in text for t in father_terms)
+[?2004l[?2004h>         return is_mother and not (is_father and not is_mother)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'right_of_first_refusal':
+[?2004l[?2004h>         if 'permitted' in text or 'mother' in text or 'ms corwin' in text:
+[?2004l[?2004h>             return False
+[?2004l[?2004h>         return ('mr adler agreed' in text or 'father agreed' in text) and 'without him present' in text
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'children_named':
+[?2004l[?2004h>         return all(k in text for k in ['noor', 'imogen', 'seven', 'twelve'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'overnight_stays':
+[?2004l[?2004h>         return all(k in text for k in ['several occasions', 'both children', 'home', 'sitter', 'away'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'inconsistent_accounts':
+[?2004l[?2004h>         return all(k in text for k in ['wife', 'school', 'clinicians', 'sitter', 'partner', 'neighbours'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'concern':
+[?2004l('An[?2004h>         if 'no concern' in pos or 'no concern' in text or 'violation' in pos or 'violate' in text or 'appreciate' in text or 'appreciate' in pos or 'wording' in pos or 'both limbs' in pos:
+[?2004l[?2004h>             return False
+[?2004l[?2004h>         if 'position' in pos:
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         if 'position' in text and 'violate' not in text and 'appreciate' not in text and 'no concern' not in text:
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         return False
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'behavioural_plan':
+[?2004l[?2004h>         return 'peer relations' in text and 'confidence only' in text and 'stability' in text
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'request':
+[?2004l[?2004h>         if 'meeting' in text or 'post' in text or 'even if' in text or 'ms corwin is present' in text or 'parent or legal guardian' in text:
+[?2004l[?2004h>             return False
+[?2004l[?2004h>         return ('neither child' in text or 'no child' in text) and 'overnight' in text and 'unless' in text and ('father' in text or 'mr adler' in text)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'enclosure':
+[?2004l[?2004h>         return bool(re.search(r'\bcertified\b', text)) and 'custodial plan' in text and 'enclosed' in text
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'salutation':
+[?2004l[?2004h>         return 'dear counsel' in text
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'copies':
+[?2004l[?2004h>         return any(k in text for k in ['nobody', 'no copy line', 'do not copy anyone', 'no one is copied'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'delivery':
+[?2004l[?2004h>         return ('post' in text or 'posted' in text) and 'counsel' in text and 'email' not in text and 'courier' not in text and 'hand' not in text
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'tone':
+[?2004l[?2004h>         return 'firm' in text and 'formal' in text and 'brief' in text and 'soft' not in text and 'detailed' not in text and 'at length' not in text and 'direct' not in text and 'long-winded' not in text
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'sender_signature':
+[?2004l[?2004h>         return 'delphine marr' in text and 'for delphine marr' not in text and 'solicitor' not in text
+[?2004l[?2004h> 
+[?2004l[?2004h>     return False
+[?2004l[?2004h> 
+[?2004l[?2004h> def governing_entry(row):
+[?2004l[?2004h>     return clar_subjects.get(row['subject']) or orig_subjects.get(row['subject']) or 'NONE'
+[?2004l[?2004h> 
+[?2004l[?2004h> out_rows = []
+[?2004l[?2004h> counts = {'VERIFIED': 0, 'AT_ODDS': 0, 'NOT_IN_RECORD': 0}
+[?2004l[?2004h> clar_count = 0
+[?2004l[?2004h> 
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     e = governing_entry(r)
+[?2004l[?2004h>     if e == 'NONE':
+[?2004l[?2004h>         v = 'NOT_IN_RECORD'
+[?2004l[?2004h>     elif verified(r):
+[?2004l[?2004h>         v = 'VERIFIED'
+[?2004l[?2004h>     else:
+[?2004l[?2004h>         v = 'AT_ODDS'
+[?2004l[?2004h>     if e.startswith('CL-'):
+[?2004l[?2004h>         clar_count += 1
+[?2004l[?2004h>     counts[v] += 1
+[?2004l[?2004h>     out_rows.append({'line_id': r['line_id'], 'verdict': v, 'record_entry': e})
+[?2004l[?2004h> 
+[?2004l[?2004h> with open('/app/letter_line_review.csv', 'w', newline='') as f:
+[?2004l[?2004h>     writer = csv.DictWriter(f, fieldnames=['line_id', 'verdict', 'record_entry'])
+[?2004l[?2004h>     writer.writeheader()
+[?2004l[?2004h>     writer.writerows(out_rows)
+[?2004l[?2004h> 
+[?2004l[?2004h> results = {
+[?2004l[?2004h>     'verified_count': counts['VERIFIED'],
+[?2004l[?2004h>     'at_odds_count': counts['AT_ODDS'],
+[?2004l[?2004h>     'not_in_record_count': counts['NOT_IN_RECORD'],
+[?2004l[?2004h>     'clarification_governed_count': clar_count,
+[?2004l[?2004h> }
+[?2004l[?2004h> with open('/app/results.json', 'w') as f:
+[?2004l[?2004h>     json.dump(results, f, indent=2)
+[?2004l[?2004h>     f.write('\\n')
+[?2004l[?2004h> 
+[?2004l[?2004h> answer = f"""# Review of the draft letter lines
+[?2004l[?2004h> 
+[?2004l[?2004h> I weighed every numbered line in `input/letter_lines.csv` against the client's record, using `input/review_protocol.md`. Where the clarification speaks to a subject, it governs under RP-401 and RP-402; where only the original instruction speaks to a subject, that original entry governs under RP-403; where neither record speaks to a subject, the line is not in the record at all under RP-404. Each line was then compared with its governing entry under RP-405.
+[?2004l[?2004h> 
+[?2004l[?2004h> The review shows that some lines are verified by the record, some are at odds with the record, and some are not in the record at all. The governing entry is named for every line in `letter_line_review.csv`, and the four totals appear in `results.json`. Letter lines at odds with the record: {counts['AT_ODDS']}. This count reflects the lines whose governing entry takes a position other than the line's, whether the line reverses the client's record, states something narrower, names a different person, or otherwise fails to match the entry that governs it.
+[?2004l[?2004h> """
+[?2004l[?2004h> with open('/app/answer.md', 'w') as f:
+[?2004l[?2004h>     f.write(answer)
+[?2004l[?2004h> 
+[?2004l[?2004h> print(json.dumps(results, indent=2))
+[?2004l[?2004h> print('CSV rows:', len(out_rows))
+[?2004l[?2004h> print('Verdict counts:', counts)
+[?2004l[?2004h> print('Clarification-governed:', clar_count)
+[?2004l[?2004h> print('Answer words:', len(answer.split()))
+[?2004l[?2004h> PY
+[?2004l{
+  "verified_count": 85,
+  "at_odds_count": 156,
+  "not_in_record_count": 49,
+  "clarification_governed_count": 168
+}
+CSV rows: 290
+Verdict counts: {'VERIFIED': 85, 'AT_ODDS': 156, 'NOT_IN_RECORD': 49}
+Clarification-governed: 168
+Answer words: 168
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv, json, re, os
+[?2004l[?2004h> for path in ['/app/answer.md', '/app/letter_line_review.csv', '/app/results.json']:
+[?2004l[?2004h>     assert os.path.exists(path), path
+[?2004l[?2004h> rows = list(csv.DictReader(open('/app/letter_line_review.csv', newline='')))
+[?2004l[?2004h> assert len(rows) == 290
+[?2004l[?2004h> assert list(rows[0].keys()) == ['line_id', 'verdict', 'record_entry']
+[?2004l[?2004h> assert all(r['verdict'] in {'VERIFIED','AT_ODDS','NOT_IN_RECORD'} for r in rows)
+[?2004l[?2004h> results = json.load(open('/app/results.json'))
+[?2004l[?2004h> assert list(results.keys()) == ['verified_count', 'at_odds_count', 'not_in_record_count', 'clarification_governed_count']
+[?2004l[?2004h> answer = open('/app/answer.md').read()
+[?2004l[?2004h> assert re.search(r'Letter lines at odds with the record: \d+', answer)
+[?2004l[?2004h> assert len(answer.split()) >= 60
+[?2004l[?2004h> print('Validation OK')
+[?2004l[?2004h> PY
+[?2004lTraceback (most recent call last):
+  File "<stdin>", line 8, in <module>
+  File "/usr/local/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/decoder.py", line 341, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 6 column 2 (char 118)
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ ls -l /app/answer.md /app/letter_line_review.csv /app/results.json
+[?2004l-rw-r--r-- 1 appuser appuser 1041 Sep 17 14:22 /app/answer.md
+-rw-r--r-- 1 appuser appuser 6981 Sep 17 14:22 /app/letter_line_review.csv
+-rw-r--r-- 1 appuser appuser  120 Sep 17 14:22 /app/results.json
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv, json
+[?2004l[?2004h> 
+[?2004l[?2004h> rows = list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> 
+[?2004l[?2004h> clar_subjects = {
+[?2004l[?2004h>     'addressee': 'CL-301',
+[?2004l[?2004h>     'request': 'CL-302',
+[?2004l[?2004h>     'enclosure': 'CL-303',
+[?2004l[?2004h>     'salutation': 'CL-304',
+[?2004l[?2004h>     'copies': 'CL-305',
+[?2004l[?2004h>     'delivery': 'CL-306',
+[?2004l[?2004h>     'tone': 'CL-307',
+[?2004l[?2004h>     'behavioural_plan': 'CL-308',
+[?2004l[?2004h>     'concern': 'CL-309',
+[?2004l[?2004h> }
+[?2004lub[?2004h> orig_subjects = {
+[?2004l[?2004h>     'right_of_first_refusal': 'OI-202',
+[?2004l[?2004h>     'children_named': 'OI-203',
+[?2004l[?2004h>     'overnight_stays': 'OI-204',
+[?2004l[?2004h>     'inconsistent_accounts': 'OI-205',
+[?2004l[?2004h>     'sender_signature': 'OI-211',
+[?2004l[?2004h> }
+[?2004l[?2004h> 
+[?2004l[?2004h> def text(row):
+[?2004l[?2004h>     return row['wording'].lower()
+[?2004l[?2004h> 
+[?2004l[?2004h> def pos(row):
+[?2004l[?2004h>     return row['position'].lower()
+[?2004l[?2004h> 
+[?2004l[?2004h> def verified(row):
+[?2004l[?2004h>     s = row['subject']
+[?2004le[?2004h>     w = text(row)
+[?2004l[?2004h>     p = pos(row)
+[?2004l[?2004h> 
+[?2004ld[?2004h>     if s == 'addressee':
+[?2004l[?2004h>         return any(t in w for t in ['mother', 'catherine', 'ms corwin'])
+[?2004l[?2004h> 
+[?2004ll[?2004h>     if s == 'right_of_first_refusal':
+[?2004l[?2004h>         if 'permitted' in w or 'mother' in w or 'ms corwin' in w:
+[?2004lh[?2004h>             return False
+[?2004l[?2004h>         return ('mr adler agreed' in w or 'father agreed' in w) and 'without him present' in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'children_named':
+[?2004l[?2004h>         return all(k in w for k in ['noor', 'imogen', 'seven', 'twelve'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'overnight_stays':
+[?2004le[?2004h>         return all(k in w for k in ['several occasions', 'both children', 'home', 'sitter', 'away'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'inconsistent_accounts':
+[?2004l[?2004h>         return all(k in w for k in ['wife', 'school', 'clinicians', 'sitter', 'partner', 'neighbours'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'concern':
+[?2004l[?2004h>         if 'no concern' in p or 'no concern' in w or 'violation' in p or 'violate' in w or 'appreciate' in w or 'appreciate' in p or 'wording' in p or 'both limbs' in p:
+[?2004l[?2004h>             return False
+[?2004l[?2004h>         if 'position' in p:
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         if 'position' in w and 'violate' not in w and 'appreciate' not in w and 'no concern' not in w:
+[?2004l[?2004h>             return True
+[?2004l[?2004h>         return False
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'behavioural_plan':
+[?2004l[?2004h>         return 'peer relations' in w and 'confidence only' in w and 'stability' in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'request':
+[?2004l[?2004h>         if 'meeting' in w or 'post' in w or 'even if' in w or 'ms corwin is present' in w or 'parent or legal guardian' in w:
+[?2004l[?2004h>             return False
+[?2004l[?2004h>         return ('neither child' in w or 'no child' in w) and 'overnight' in w and 'unless' in w and ('father' in w or 'mr adler' in w)
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'enclosure':
+[?2004lr[?2004h>         return 'certified' in w and 'uncertified' not in w and 'custodial plan' in w and 'enclosed' in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'salutation':
+[?2004l[?2004h>         return 'dear counsel' in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'copies':
+[?2004l[?2004h>         return any(k in w for k in ['nobody', 'no copy line', 'do not copy anyone', 'no one is copied'])
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'delivery':
+[?2004l[?2004h>         return ('post' in w or 'posted' in w) and 'counsel' in w and 'email' not in w and 'courier' not in w and 'hand' not in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'tone':
+[?2004l[?2004h>         soft_bad = 'soft' in w and 'not soft' not in w
+[?2004l[?2004h>         long_bad = 'long-winded' in w and 'not long-winded' not in w
+[?2004l[?2004h>         return 'firm' in w and 'formal' in w and 'brief' in w and not soft_bad and not long_bad and 'detailed' not in w and 'at length' not in w and 'direct' not in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     if s == 'sender_signature':
+[?2004l[?2004h>         return 'delphine marr' in w and 'for delphine marr' not in w and 'solicitor' not in w
+[?2004l[?2004h> 
+[?2004l[?2004h>     return False
+[?2004l[?2004h> 
+[?2004l[?2004h> def governing_entry(row):
+[?2004l[?2004h>     return clar_subjects.get(row['subject']) or orig_subjects.get(row['subject']) or 'NONE'
+[?2004l[?2004h> 
+[?2004l[?2004h> out_rows = []
+[?2004l[?2004h> counts = {'VERIFIED': 0, 'AT_ODDS': 0, 'NOT_IN_RECORD': 0}
+[?2004l[?2004h> clar_count = 0
+[?2004l[?2004h> 
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     e = governing_entry(r)
+[?2004l[?2004h>     if e == 'NONE':
+[?2004l[?2004h>         v = 'NOT_IN_RECORD'
+[?2004l[?2004h>     elif verified(r):
+[?2004l[?2004h>         v = 'VERIFIED'
+[?2004l[?2004h>     else:
+[?2004l[?2004h>         v = 'AT_ODDS'
+[?2004l[?2004h>     if e.startswith('CL-'):
+[?2004l[?2004h>         clar_count += 1
+[?2004l[?2004h>     counts[v] += 1
+[?2004l[?2004h>     out_rows.append({'line_id': r['line_id'], 'verdict': v, 'record_entry': e})
+[?2004l[?2004h> 
+[?2004l[?2004h> with open('/app/letter_line_review.csv', 'w', newline='') as f:
+[?2004l[?2004h>     writer = csv.DictWriter(f, fieldnames=['line_id', 'verdict', 'record_entry'])
+[?2004l[?2004h>     writer.writeheader()
+[?2004l[?2004h>     writer.writerows(out_rows)
+[?2004l[?2004h> 
+[?2004l[?2004h> results = {
+[?2004l[?2004h>     'verified_count': counts['VERIFIED'],
+[?2004l[?2004h>     'at_odds_count': counts['AT_ODDS'],
+[?2004l[?2004h>     'not_in_record_count': counts['NOT_IN_RECORD'],
+[?2004l[?2004h>     'clarification_governed_count': clar_count,
+[?2004l[?2004h> }
+[?2004l[?2004h> with open('/app/results.json', 'w') as f:
+[?2004l[?2004h>     json.dump(results, f, indent=2)
+[?2004l[?2004h>     f.write(chr(10))
+[?2004l[?2004h> 
+[?2004l[?2004h> answer = f"""# Review of the draft letter lines
+[?2004l[?2004h> 
+[?2004l[?2004h> I weighed every numbered line in `input/letter_lines.csv` against the client's record, using `input/review_protocol.md`. Where the clarification speaks to a subject, it governs under RP-401 and RP-402; where only the original instruction speaks to a subject, that original entry governs under RP-403; where neither record speaks to a subject, the line is not in the record at all under RP-404. Each line was then compared with its governing entry under RP-405.
+[?2004l[?2004h> 
+[?2004l[?2004h> The review shows that some lines are verified by the record, some are at odds with the record, and some are not in the record at all. The governing entry is named for every line in `letter_line_review.csv`, and the four totals appear in `results.json`. Letter lines at odds with the record: {counts['AT_ODDS']}. This count reflects the lines whose governing entry takes a position other than the line's, whether the line reverses the client's record, states something narrower, names a different person, or otherwise fails to match the entry that governs it.
+[?2004l[?2004h> """
+[?2004l[?2004h> with open('/app/answer.md', 'w') as f:
+[?2004l[?2004h>     f.write(answer)
+[?2004l[?2004h> 
+[?2004l[?2004h> print(json.dumps(results, indent=2))
+[?2004l[?2004h> print('CSV rows:', len(out_rows))
+[?2004l[?2004h> print('Verdict counts:', counts)
+[?2004l[?2004h> print('Clarification-governed:', clar_count)
+[?2004l[?2004h> print('Answer words:', len(answer.split()))
+[?2004l[?2004h> PY
+[?2004l{
+  "verified_count": 85,
+  "at_odds_count": 156,
+  "not_in_record_count": 49,
+  "clarification_governed_count": 168
+}
+CSV rows: 290
+Verdict counts: {'VERIFIED': 85, 'AT_ODDS': 156, 'NOT_IN_RECORD': 49}
+Clarification-governed: 168
+Answer words: 168
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv, json, os
+[?2004l[?2004h> for path in ['/app/answer.md', '/app/letter_line_review.csv', '/app/results.json']:
+[?2004l[?2004h>     assert os.path.exists(path), path
+[?2004l[?2004h> rows = list(csv.DictReader(open('/app/letter_line_review.csv', newline='')))
+[?2004l[?2004h> assert len(rows) == 290
+[?2004l[?2004h> assert list(rows[0].keys()) == ['line_id', 'verdict', 'record_entry']
+[?2004l[?2004h> assert all(r['verdict'] in {'VERIFIED', 'AT_ODDS', 'NOT_IN_RECORD'} for r in rows)
+[?2004l[?2004h> assert all(r['record_entry'] == 'NONE' or r['record_entry'].startswith('OI-') or r['record_entry'].startswith('CL-') for r in rows)
+[?2004l[?2004h> csv_counts = {'VERIFIED': 0, 'AT_ODDS': 0, 'NOT_IN_RECORD': 0}
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     csv_counts[r['verdict']] += 1
+[?2004l[?2004h> results = json.load(open('/app/results.json'))
+[?2004l[?2004h> assert list(results.keys()) == ['verified_count', 'at_odds_count', 'not_in_record_count', 'clarification_governed_count']
+[?2004l[?2004h> assert results['verified_count'] == csv_counts['VERIFIED']
+[?2004l[?2004h> assert results['at_odds_count'] == csv_counts['AT_ODDS']
+[?2004l[?2004h> assert results['not_in_record_count'] == csv_counts['NOT_IN_RECORD']
+[?2004l[?2004h> assert results['clarification_governed_count'] == sum(1 for r in rows if r['record_entry'].startswith('CL-'))
+[?2004l[?2004h> assert results['verified_count'] + results['at_odds_count'] + results['not_in_record_count'] == 290
+[?2004l[?2004h> answer = open('/app/answer.md').read()
+[?2004l[?2004h> prefix = 'Letter lines at odds with the record:'
+[?2004l[?2004h> assert prefix in answer
+[?2004l[?2004h> num = answer.split(prefix)[1].split()[0].rstrip('.')
+[?2004l[?2004h> assert num.isdigit() and int(num) == results['at_odds_count']
+[?2004l[?2004h> assert len(answer.split()) >= 60
+[?2004l[?2004h> print('Validation OK')
+[?2004l[?2004h> PY
+[?2004lValidation OK
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ ls -l /app/answer.md /app/letter_line_review.csv /app/results.json
+[?2004l-rw-r--r-- 1 appuser appuser 1041 Sep 17 14:25 /app/answer.md
+-rw-r--r-- 1 appuser appuser 6981 Sep 17 14:25 /app/letter_line_review.csv
+-rw-r--r-- 1 appuser appuser  119 Sep 17 14:25 /app/results.json
+[?2004h[01;32mappuser@c6d930b05da0[00m:[01;34m/app[00m$ 

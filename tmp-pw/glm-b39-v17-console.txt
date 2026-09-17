@@ -1,0 +1,26 @@
+[92m15:54:29 - LiteLLM:WARNING[0m: get_model_cost_map.py:454 - LiteLLM: Failed to fetch remote model cost map from https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json: timed out. Falling back to local backup.
+  4/4 Mean: 0.000 ---------------------------------------- 0:20:57 0:00:00
+
+adhoc • terminus-2 • glm-5.2
+┌────────┬────────────┬───────┬────────┬────────┐
+│ Trials │ Exceptions │  Mean │ Pass@2 │ Pass@4 │
+├────────┼────────────┼───────┼────────┼────────┤
+│      4 │          0 │ 0.000 │  0.000 │  0.000 │
+└────────┴────────────┴───────┴────────┴────────┘
+
+┌────────┬───────┐
+│ Reward │ Count │
+├────────┼───────┤
+│ 0.0    │     4 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 20m 57s
+Results written to C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17\res
+ult.json
+Inspect results by running `harbor view C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39`
+Share results by running `harbor upload C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17`
+

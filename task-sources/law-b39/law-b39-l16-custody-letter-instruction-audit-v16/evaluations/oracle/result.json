@@ -1,0 +1,117 @@
+{
+    "id": "325ef419-60ef-4dc1-8f89-e147d16bb969",
+    "task_name": "obi/law-b39-l16-custody-letter-instruction-audit",
+    "trial_name": "law-b39-l16-custody-letter-instr__4GuWkBi",
+    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-b39/oracle-b39-l16-v16/law-b39-l16-custody-letter-instr__4GuWkBi",
+    "task_id": {
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit-v16"
+    },
+    "source": null,
+    "task_checksum": "33ded10c91c4a63221c4a61e328cdc64bee4e2cf61c899268cccf57c9a3145c1",
+    "config": {
+        "task": {
+            "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit-v16",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "law-b39-l16-custody-letter-instr__4GuWkBi",
+        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v16",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": true,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "OPENAI_API_KEY": "****",
+                "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+                "JUDGE_MODEL": "openai/glm-5.2"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "d0e779d7-9646-47e8-ba74-02cb60de205a",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-09-17T10:35:40.052581Z",
+    "finished_at": "2026-09-17T10:36:10.495528Z",
+    "environment_setup": {
+        "started_at": "2026-09-17T10:35:40.333451Z",
+        "finished_at": "2026-09-17T10:35:57.651900Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-17T10:35:57.652154Z",
+        "finished_at": "2026-09-17T10:35:57.652488Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-09-17T10:35:57.652924Z",
+        "finished_at": "2026-09-17T10:35:59.558013Z"
+    },
+    "verifier": {
+        "started_at": "2026-09-17T10:35:59.561132Z",
+        "finished_at": "2026-09-17T10:36:05.899503Z"
+    },
+    "step_results": null
+}

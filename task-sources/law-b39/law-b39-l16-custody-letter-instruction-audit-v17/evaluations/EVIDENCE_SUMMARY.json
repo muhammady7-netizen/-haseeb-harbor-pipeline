@@ -1,0 +1,15 @@
+{
+  "difficulty_glm_5_2": {
+    "status": "FIXED_AND_VERIFIED",
+    "job": "glm-b39-l16-v17",
+    "passes": 0,
+    "total": 4,
+    "rewards": [
+      "0.0",
+      "0.0",
+      "0.0",
+      "0.0"
+    ],
+    "note": "GLM-5.2 accuracy@4 = 0/4 (strict 1.0 passes)"
+  }
+}

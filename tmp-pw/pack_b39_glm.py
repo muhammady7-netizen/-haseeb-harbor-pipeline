@@ -71,9 +71,16 @@ def normalize_artifacts(trial_dir: Path) -> None:
 def main():
     import argparse
 
+    global PACK
     ap = argparse.ArgumentParser()
-    ap.add_argument("--job", default="glm-b39-l16-v15")
+    ap.add_argument("--job", default="glm-b39-l16-v18")
+    ap.add_argument(
+        "--pack",
+        default=str(PACK),
+        help="Task pack root to write evaluations/glm-5.2 into",
+    )
     args = ap.parse_args()
+    PACK = Path(args.pack)
     job = JOBS / args.job
     if not job.exists():
         raise SystemExit(f"missing job {job}")

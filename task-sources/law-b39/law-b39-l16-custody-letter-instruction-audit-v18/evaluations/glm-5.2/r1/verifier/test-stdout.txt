@@ -1,0 +1,183 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 17 items
+
+../tests/test_outputs.py ...FFF...........                               [100%]
+
+=================================== FAILURES ===================================
+_______________________ test_deliverable[register_table] _______________________
+
+definition = VerifierDefinition(name='register_table', metadata=VerifierMetadata(how_justification='Parses letter_line_review.csv w...d_entry': 'id'}}, deterministic=DeterministicConfig(path='$', comparison='table_equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: register_table: row ST-134: verdict expected VERIFIED, got AT_ODDS; row ST-354: verdict expected VERIFIED, got AT_ODDS
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+______________________ test_deliverable[results_figures] _______________________
+
+definition = VerifierDefinition(name='results_figures', metadata=VerifierMetadata(how_justification='Reads results.json with json.r...'closed': True}, deterministic=DeterministicConfig(path='$', comparison='object_equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: results_figures: key verified_count: expected 90, got 88; key at_odds_count: expected 151, got 153
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+___________________ test_deliverable[answer_at_odds_figure] ____________________
+
+definition = VerifierDefinition(name='answer_at_odds_figure', metadata=VerifierMetadata(how_justification='Opens answer.md with md....51\\.00)\\b', deterministic=DeterministicConfig(path='$.text', comparison='regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: answer_at_odds_figure: assertion failed
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+=============================== warnings summary ===============================
+../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/tests/pytest-cache-files-cirimfsh'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:429
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:429: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/lastfailed: [Errno 13] Permission denied: '/tests/pytest-cache-files-ae6f77uj'
+    config.cache.set("cache/lastfailed", self.lastfailed)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_deliverable[answer_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[register_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[register_header]
+PASSED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure_exactly_one]
+PASSED ../tests/test_outputs.py::test_deliverable[results_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[answer_prose_floor]
+PASSED ../tests/test_outputs.py::test_incomplete_output[answer.md]
+PASSED ../tests/test_outputs.py::test_incomplete_output[letter_line_review.csv]
+PASSED ../tests/test_outputs.py::test_incomplete_output[results.json]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[at_odds_count]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[clarification_governed_count]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[not_in_record_count]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[verified_count]
+PASSED ../tests/test_outputs.py::test_adversarial_extra_key
+FAILED ../tests/test_outputs.py::test_deliverable[register_table] - Assertion...
+FAILED ../tests/test_outputs.py::test_deliverable[results_figures] - Assertio...
+FAILED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure] - As...
+=================== 3 failed, 14 passed, 2 warnings in 1.97s ===================
+{
+  "reward": 0.0,
+  "core_failures": [
+    "register_table",
+    "results_figures",
+    "answer_at_odds_figure"
+  ],
+  "passed": 6,
+  "total": 9,
+  "checks": [
+    {
+      "name": "answer_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1111111111,
+      "detail": "row ST-134: verdict expected VERIFIED, got AT_ODDS; row ST-354: verdict expected VERIFIED, got AT_ODDS"
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1111111111,
+      "detail": "key verified_count: expected 90, got 88; key at_odds_count: expected 151, got 153"
+    },
+    {
+      "name": "answer_at_odds_figure",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.1111111111,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "answer_at_odds_figure_exactly_one",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "answer_prose_floor",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.1111111112,
+      "detail": ""
+    }
+  ]
+}

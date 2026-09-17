@@ -1,0 +1,26 @@
+  4/4 Mean: 1.000 ---------------------------------------- 0:01:29 0:00:00
+
+adhoc • oracle
+┌────────┬────────────┬───────┬────────┬────────┐
+│ Trials │ Exceptions │  Mean │ Pass@2 │ Pass@4 │
+├────────┼────────────┼───────┼────────┼────────┤
+│      4 │          0 │ 1.000 │  1.000 │  1.000 │
+└────────┴────────────┴───────┴────────┴────────┘
+
+┌────────┬───────┐
+│ Reward │ Count │
+├────────┼───────┤
+│ 1.0    │     4 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 1m 29s
+Results written to C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\oracle-b39-l16-v17g
+\result.json
+Inspect results by running `harbor view C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39`
+Share results by running `harbor upload C:\Users\Haseeb 
+Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\oracle-b39-l16-v17g
+`
+

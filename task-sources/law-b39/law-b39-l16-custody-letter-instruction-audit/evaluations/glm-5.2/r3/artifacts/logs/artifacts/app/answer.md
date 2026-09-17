@@ -1,0 +1,3 @@
+# Review of the draft letter lines
+
+The draft was weighed line by line against the client's two messages, using the review protocol so that the clarification prevails on every subject it speaks to and the original instruction governs only where the clarification leaves the subject alone. Letter lines at odds with the record: 156. Where the clarification spoke, its entry governed no matter what the draft cited; where neither record spoke to a subject, the line was not in the record at all and nothing governed it. The table records each line's verdict and the governing entry, and the totals report how many lines were verified, how many were at odds, how many were not in the record, and how many were governed by the clarification rather than the original instruction.

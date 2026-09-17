@@ -1,0 +1,17 @@
+Skipping image OS validation for hb__3de1a513e8436edb0ea4aa5e66b792c4: docker inspect returned 1
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Trajectory dumped to C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\qc-out\harbor-jobs-b39\glm-b39-l16-v17g\law-b39-l16-custody-letter-instr__fC7M35H\agent\trajectory.json
+Collecting main service artifacts
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
