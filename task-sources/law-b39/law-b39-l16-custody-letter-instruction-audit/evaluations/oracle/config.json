@@ -2,8 +2,12 @@
     "task": {
         "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit"
     },
-    "trial_name": "law-b39-l16-custody-letter-instr__KpHxJ5k",
-    "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\law-b39-jobs-v2\\oracle-b39-v2",
+    "trial_name": "law-b39-l16-custody-letter-instr__Ek5igGD",
+    "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v11",
+    "environment": {
+        "type": "docker",
+        "force_build": true
+    },
     "verifier": {
         "env": {
             "OPENAI_API_KEY": "${OPENAI_API_KEY}",
@@ -11,5 +15,5 @@
             "JUDGE_MODEL": "openai/glm-5.2"
         }
     },
-    "job_id": "978f58ef-b877-4d63-9cba-4fa2b082959a"
+    "job_id": "cb8caa53-a56a-4025-90fb-309928bb1bb6"
 }

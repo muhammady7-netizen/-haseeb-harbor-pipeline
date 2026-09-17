@@ -1,13 +1,13 @@
 {
-    "id": "20038805-a3bf-4c80-b032-ef0f3eeb0387",
+    "id": "ba794f7f-3e75-4f55-b9cf-98f5cf9041d3",
     "task_name": "obi/law-b39-l16-custody-letter-instruction-audit",
-    "trial_name": "law-b39-l16-custody-letter-instr__KpHxJ5k",
-    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/AppData/Local/Temp/opencode/law-b39-jobs-v2/oracle-b39-v2/law-b39-l16-custody-letter-instr__KpHxJ5k",
+    "trial_name": "law-b39-l16-custody-letter-instr__Ek5igGD",
+    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-b39/oracle-b39-l16-v11/law-b39-l16-custody-letter-instr__Ek5igGD",
     "task_id": {
         "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit"
     },
     "source": null,
-    "task_checksum": "af8b57f071b5184757066f7f8569d7d42456b7825f92d226c0dbbc7d0451a30a",
+    "task_checksum": "26706a9a1e69953140501afa9b1ad7f7133d0fad226873e3909ccbd5dc296a69",
     "config": {
         "task": {
             "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit",
@@ -19,8 +19,8 @@
             "download_dir": null,
             "source": null
         },
-        "trial_name": "law-b39-l16-custody-letter-instr__KpHxJ5k",
-        "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\law-b39-jobs-v2\\oracle-b39-v2",
+        "trial_name": "law-b39-l16-custody-letter-instr__Ek5igGD",
+        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v11",
         "install_only": false,
         "timeout_multiplier": 1.0,
         "agent_timeout_multiplier": null,
@@ -46,7 +46,7 @@
         "environment": {
             "type": "docker",
             "import_path": null,
-            "force_build": false,
+            "force_build": true,
             "delete": true,
             "cpu_enforcement_policy": "auto",
             "memory_enforcement_policy": "auto",
@@ -72,7 +72,7 @@
         },
         "artifacts": [],
         "extra_instruction_paths": [],
-        "job_id": "978f58ef-b877-4d63-9cba-4fa2b082959a",
+        "job_id": "cb8caa53-a56a-4025-90fb-309928bb1bb6",
         "source_trial": null
     },
     "agent_info": {
@@ -95,23 +95,23 @@
     },
     "verifier_environment_mode": "shared",
     "exception_info": null,
-    "started_at": "2026-09-16T14:18:31.560704Z",
-    "finished_at": "2026-09-16T14:19:25.658270Z",
+    "started_at": "2026-09-17T09:14:41.713402Z",
+    "finished_at": "2026-09-17T09:15:13.945905Z",
     "environment_setup": {
-        "started_at": "2026-09-16T14:18:32.055044Z",
-        "finished_at": "2026-09-16T14:19:10.468356Z"
+        "started_at": "2026-09-17T09:14:42.004007Z",
+        "finished_at": "2026-09-17T09:15:02.128550Z"
     },
     "agent_setup": {
-        "started_at": "2026-09-16T14:19:10.468426Z",
-        "finished_at": "2026-09-16T14:19:10.468522Z"
+        "started_at": "2026-09-17T09:15:02.128633Z",
+        "finished_at": "2026-09-17T09:15:02.128746Z"
     },
     "agent_execution": {
-        "started_at": "2026-09-16T14:19:10.468654Z",
-        "finished_at": "2026-09-16T14:19:12.398083Z"
+        "started_at": "2026-09-17T09:15:02.128899Z",
+        "finished_at": "2026-09-17T09:15:03.935629Z"
     },
     "verifier": {
-        "started_at": "2026-09-16T14:19:14.964132Z",
-        "finished_at": "2026-09-16T14:19:21.234445Z"
+        "started_at": "2026-09-17T09:15:03.938110Z",
+        "finished_at": "2026-09-17T09:15:09.607565Z"
     },
     "step_results": null
 }

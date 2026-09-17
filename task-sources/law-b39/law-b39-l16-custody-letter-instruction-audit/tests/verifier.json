@@ -82,7 +82,7 @@
     {
       "name": "register_table",
       "metadata": {
-        "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals: every graded cell of 15 rows plus the full 16-row population as a row_set lock (duplicate-row and cross-product dumps fail the lock; a duplicated graded id is rejected outright), the delivered row order equal to the stated order, and the delivered column set closed to the stated header, with declared cell types {'record_entry': 'id'} normalised on both sides. A failure names the exact row and column.",
+        "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals: every graded cell of 42 rows plus the full 42-row population as a row_set lock.",
         "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).\"",
         "tag": "core"
       },
@@ -250,7 +250,7 @@
               "record_entry": "OI-210"
             },
             "ST-138": {
-              "verdict": "VERIFIED",
+              "verdict": "AT_ODDS",
               "record_entry": "OI-206"
             },
             "ST-139": {
@@ -352,11 +352,11 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 17,
+              "value": 16,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 18,
+              "value": 19,
               "tolerance": null
             },
             "not_in_record_count": {
@@ -379,9 +379,9 @@
     {
       "name": "answer_at_odds_figure",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to the label-colon-figure format from submission_format.md.",
-        "why_justification": "One at odds figure stands next to its label in the sentence that names the label.",
-        "tag": "incidental"
+        "how_justification": "Opens answer.md with md.extract_text. Accepts the required label+figure anywhere in the prose (including mid-sentence), with optional markdown emphasis around the label. Core: a wrong or missing at-odds figure fails the submission.",
+        "why_justification": "One at odds figure stands next to its label in the sentence that names the label. Entailed by: \"answer.md states `Letter lines at odds with the record: <count>` — the figure placed beside its label, in the very sentence that names the label.\"",
+        "tag": "core"
       },
       "source": {
         "type": "file",
@@ -395,7 +395,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:18|18\\.0|18\\.00|eighteen)\\b",
+        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:19|19\\.0|19\\.00|nineteen)\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -457,8 +457,8 @@
     {
       "name": "answer_prose_floor",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose containing the domain word 'record' (central to the task: the submission format requires 'Letter lines at odds with the record').",
-        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. The word 'record' is the core vocabulary of the task (the instruction, protocol and submission format all refer to the client's record). This check enforces the word count floor plus a domain content word as an incidental check (does not zero an otherwise perfect submission).",
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose containing the domain word 'record' (required by the submission format label 'Letter lines at odds with the record'). Accepts leading whitespace. Incidental only — does not zero an otherwise perfect submission.",
+        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. The word 'record' is the core vocabulary of the task. Structured correctness is graded by register_table and results_figures, not by this floor.",
         "tag": "incidental"
       },
       "source": {
@@ -473,7 +473,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)\\A(?:\\S+\\s+){59,}\\S+",
+        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)\\A\\s*(?:\\S+\\s+){59,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

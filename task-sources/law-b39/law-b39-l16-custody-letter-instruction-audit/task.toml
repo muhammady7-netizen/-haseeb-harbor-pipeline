@@ -1,5 +1,7 @@
 schema_version = "1.3"
-artifacts = ["answer.md", "letter_line_review.csv", "results.json"]
+# Empty on purpose: relative docker-compose cp paths fail against WORKDIR /app.
+# tests/test.sh copies graded deliverables into /logs/artifacts/app for Harbor export.
+artifacts = []
 
 [task]
 name = "obi/law-b39-l16-custody-letter-instruction-audit"

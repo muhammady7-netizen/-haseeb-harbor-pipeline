@@ -8,7 +8,7 @@ Deliver exactly these files, in your working directory:
 
 ## `answer.md`
 
-`answer.md` states `Letter lines at odds with the record: <count>` — the figure placed beside its label, in the very sentence that names the label. At least sixty words of prose. Each figure stands beside its label once, stated as the finding — not offered as one of two candidates.
+`answer.md` states `Letter lines at odds with the record: <count>` — the figure placed beside its label, in the very sentence that names the label (that sentence may appear anywhere in the review, including mid-paragraph). At least sixty words of prose that use the vocabulary of that required label (including the word `record`). Each figure stands beside its label once, stated as the finding — not offered as one of two candidates.
 
 ## `letter_line_review.csv`
 

@@ -22,4 +22,16 @@ python3 -c "import json;print(json.load(open('/logs/verifier/score.json'))['rewa
     > /logs/verifier/reward.txt
 
 cat /logs/verifier/score.json
+
+# Persist graded /app deliverables into Harbor's /logs/artifacts export root so
+# review snapshots match the in-container graded state (not pane reconstructions).
+# task.toml artifacts is empty on purpose: relative docker-compose cp paths fail
+# against WORKDIR /app; this copy is the export path Harbor actually collects.
+mkdir -p /logs/artifacts/app
+for f in answer.md letter_line_review.csv results.json; do
+  if [ -f "/app/$f" ]; then
+    cp -f "/app/$f" "/logs/artifacts/app/$f"
+  fi
+done
+
 exit 0
