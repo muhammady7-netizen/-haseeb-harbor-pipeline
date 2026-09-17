@@ -10,9 +10,9 @@ PACK = Path(
     r"C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline"
     r"\task-sources\law-b39\law-b39-l16-custody-letter-instruction-audit"
 )
-JOB = Path(
+JOBS = Path(
     r"C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline"
-    r"\qc-out\harbor-jobs-b39\glm-b39-l16-v11"
+    r"\qc-out\harbor-jobs-b39"
 )
 IGNORE = {
     "xdg-data",
@@ -69,15 +69,21 @@ def normalize_artifacts(trial_dir: Path) -> None:
 
 
 def main():
-    if not JOB.exists():
-        raise SystemExit(f"missing job {JOB}")
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--job", default="glm-b39-l16-v15")
+    args = ap.parse_args()
+    job = JOBS / args.job
+    if not job.exists():
+        raise SystemExit(f"missing job {job}")
     trials = []
-    for p in JOB.rglob("result.json"):
+    for p in job.rglob("result.json"):
         trial = p.parent
         if not (trial / "verifier" / "reward.txt").exists():
             continue
         # top-level trial dirs only
-        if trial.parent != JOB and trial.parent.parent != JOB:
+        if trial.parent != job and trial.parent.parent != job:
             # harbor nests: job/trial_name/
             pass
         trials.append(trial)
@@ -131,7 +137,7 @@ def main():
             data = {}
     data["difficulty_glm_5_2"] = {
         "status": "FIXED_AND_VERIFIED",
-        "job": "glm-b39-l16-v10",
+        "job": args.job,
         "passes": passes,
         "total": 4,
         "rewards": rewards,

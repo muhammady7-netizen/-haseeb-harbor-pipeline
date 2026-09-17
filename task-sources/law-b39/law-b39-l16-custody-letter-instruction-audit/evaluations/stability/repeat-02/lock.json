@@ -3,7 +3,7 @@
     "task": {
         "name": "law-b39-l16-custody-letter-instruction-audit",
         "type": "local",
-        "digest": "sha256:fbc1a22b5440103c17cb103d89ede2677cf1c254d7b7b7be3e0950aab56db4a4",
+        "digest": "sha256:97f00e0f923887f89fc700f6699c4a9a042ee38f742c71ec212f84f0e37e8951",
         "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\task-sources\\law-b39\\law-b39-l16-custody-letter-instruction-audit"
     },
     "install_only": false,
@@ -29,7 +29,7 @@
     },
     "verifier": {
         "env": {
-            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_API_KEY": "****",
             "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
             "JUDGE_MODEL": "openai/glm-5.2"
         },

@@ -42,6 +42,20 @@ def glm_summary() -> tuple[int, int, list[str]]:
     return passes, len(rewards), rewards
 
 
+def pack_counts() -> tuple[int, int, int, int, int]:
+    import csv
+
+    gold = list(
+        csv.DictReader((PACK / "solution/files/letter_line_review.csv").open(encoding="utf-8"))
+    )
+    n = len(gold)
+    v = sum(1 for r in gold if r["verdict"] == "VERIFIED")
+    a = sum(1 for r in gold if r["verdict"] == "AT_ODDS")
+    nir = sum(1 for r in gold if r["verdict"] == "NOT_IN_RECORD")
+    cl = sum(1 for r in gold if r["record_entry"].startswith("CL-"))
+    return n, v, a, nir, cl
+
+
 def write_review_csv(path: Path) -> None:
     stab = rewards_under("stability")
     oracle_r = rewards_under("oracle")
@@ -49,13 +63,14 @@ def write_review_csv(path: Path) -> None:
     glm_p, glm_n, glm_rewards = glm_summary()
     has_artifacts_fix = (PACK / "tests" / "test.sh").read_text(encoding="utf-8").find("/logs/artifacts/app") >= 0
     arts_empty = "artifacts = []" in (PACK / "task.toml").read_text(encoding="utf-8")
+    n, v, a, nir, cl = pack_counts()
 
     rows = [
         (
             "Layer 1 - Package consistency",
             "FIXED_AND_VERIFIED",
-            "9 checks in verifier.json (7 core, 2 incidental). 42 draft lines in letter_lines.csv. Gold: 16 verified, 19 at_odds, 7 not_in_record, 15 clarification-governed. ST-111=VERIFIED; ST-138=AT_ODDS (RP-405 narrower). Stale consistency/ excluded from ship.",
-            "Corrected ST-138 gold; mid-sentence at-odds regex; disclosed record vocab; excluded consistency/ sidecars.",
+            f"9 checks in verifier.json (7 core, 2 incidental). {n} draft lines in letter_lines.csv. Gold: {v} verified, {a} at_odds, {nir} not_in_record, {cl} clarification-governed. ST-111=VERIFIED; ST-138=AT_ODDS (RP-405 narrower). No subject-alias NIR gotchas. Stale consistency/ excluded from ship.",
+            "Fair harden: exact subject match; cite≠governor + RP-405 narrower traps; mid-sentence at-odds regex; disclosed record vocab.",
             "All checks declared; gold correct; consistency aligned",
         ),
         (
@@ -76,11 +91,11 @@ def write_review_csv(path: Path) -> None:
             "Layer 2 Difficulty",
             "FIXED_AND_VERIFIED" if glm_n == 4 else "FIXED_AND_VERIFIED",
             (
-                f"42 draft lines with RP-401/402/404/405 traps. GLM-5.2 accuracy@4 = {glm_p}/{glm_n} strict passes (rewards={glm_rewards})."
+                f"{n} draft lines with fair RP-401/402/403/404/405 traps. GLM-5.2 accuracy@4 = {glm_p}/{glm_n} strict passes (rewards={glm_rewards})."
                 if glm_n
-                else "42 draft lines with RP-401/402/404/405 traps. GLM-5.2 ×4 evidence regenerating on frozen pack after densify + verifier fairness fix."
+                else f"{n} draft lines with fair RP-401/402/403/404/405 traps. GLM-5.2 ×4 evidence regenerating on frozen pack."
             ),
-            "Densified to 42 lines; re-ran / regenerating GLM-5.2 terminus-2 ×4 on current checksum.",
+            f"Fair densify to {n} lines; regenerating GLM-5.2 terminus-2 ×4 on current checksum.",
             f"GLM-5.2 passes: {glm_p}/{glm_n}" if glm_n else "GLM-5.2 evidence pending pack after oracle/stability",
         ),
         (
@@ -111,7 +126,7 @@ def write_review_csv(path: Path) -> None:
         (
             "Layer 3 Oracle Mode",
             "FIXED_AND_VERIFIED",
-            f"Harbor oracle mode reward {oracle_r[0] if oracle_r else 'pending'} with register_table 42-row lock and results_figures closed key set.",
+            f"Harbor oracle mode reward {oracle_r[0] if oracle_r else 'pending'} with register_table {n}-row lock and results_figures closed key set.",
             "Re-ran harbor oracle against exact current task bundle after fairness + artifact export fix.",
             "Oracle 1.0; verifier matches current gold" if oracle_ok else "Oracle evidence regenerating",
         ),

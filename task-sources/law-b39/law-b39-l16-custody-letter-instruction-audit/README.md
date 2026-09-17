@@ -8,13 +8,13 @@ Audit a draft letter to opposing counsel against the client's two messages (orig
 - A line citing an original entry on a subject the clarification covers is still governed by the clarification
 - Lines on subjects neither record mentions are NOT_IN_RECORD with governing entry NONE
 - The draft may cite entries that don't exist in either record
-- Densified population: 42 draft lines with precedence, repeat-subject, NOT_IN_RECORD, and person-identity traps
+- Densified population: 138 draft lines with precedence, repeat-subject, NOT_IN_RECORD, and person-identity traps
 
 ## Bundle contents
 
-- `environment/input/`: letter_lines.csv (42 draft lines), original_instruction.md (11 entries), clarification.md (6 entries), review_protocol.md (6 rules), submission_format.md (layout spec)
-- `solution/files/`: answer.md, letter_line_review.csv, results.json (gold: 16 verified / 19 at_odds / 7 not_in_record / 15 clarification-governed)
-- `tests/verifier.json`: 9 deterministic checks (7 core, 2 incidental): file existence, CSV header, table_equals with 42-row row_set lock, results object_equals, at-odds figure as core (markdown-tolerant), anti-hedge, and a 60+ word prose floor requiring the domain word `record` (incidental; not a keyword-set lookahead soup)
+- `environment/input/`: letter_lines.csv (138 draft lines), original_instruction.md (11 entries), clarification.md (6 entries), review_protocol.md (6 rules), submission_format.md (layout spec)
+- `solution/files/`: answer.md, letter_line_review.csv, results.json (gold: 56 verified / 60 at_odds / 22 not_in_record / 55 clarification-governed)
+- `tests/verifier.json`: 9 deterministic checks (7 core, 2 incidental): file existence, CSV header, table_equals with 138-row row_set lock, results object_equals, at-odds figure as core (markdown-tolerant), anti-hedge, and a 60+ word prose floor requiring the domain word `record` (incidental; not a keyword-set lookahead soup)
 - `task.toml`: `artifacts = []`; `tests/test.sh` copies graded `/app` deliverables into `/logs/artifacts/app` for Harbor export
 
 ## Reward shape

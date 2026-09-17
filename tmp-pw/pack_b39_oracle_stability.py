@@ -100,7 +100,12 @@ def normalize_artifacts(trial_dir: Path) -> None:
 
 
 def main():
-    job_name = "oracle-b39-l16-v11"
+    import argparse
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--job", default="oracle-b39-l16-v15")
+    args = ap.parse_args()
+    job_name = args.job
     trials = find_trials(job_name)
     print("job", job_name, "trials", len(trials))
     good = []
