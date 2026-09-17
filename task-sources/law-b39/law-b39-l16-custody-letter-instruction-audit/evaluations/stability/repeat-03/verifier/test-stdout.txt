@@ -1,0 +1,105 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 17 items
+
+../tests/test_outputs.py .................                               [100%]
+
+=============================== warnings summary ===============================
+../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/tests/pytest-cache-files-63xnznm4'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_deliverable[answer_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[register_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[register_header]
+PASSED ../tests/test_outputs.py::test_deliverable[register_table]
+PASSED ../tests/test_outputs.py::test_deliverable[results_figures]
+PASSED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure]
+PASSED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure_exactly_one]
+PASSED ../tests/test_outputs.py::test_deliverable[results_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[answer_prose_floor]
+PASSED ../tests/test_outputs.py::test_incomplete_output[answer.md]
+PASSED ../tests/test_outputs.py::test_incomplete_output[letter_line_review.csv]
+PASSED ../tests/test_outputs.py::test_incomplete_output[results.json]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[at_odds_count]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[clarification_governed_count]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[not_in_record_count]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[verified_count]
+PASSED ../tests/test_outputs.py::test_adversarial_extra_key
+======================== 17 passed, 1 warning in 1.83s =========================
+{
+  "reward": 1.0,
+  "core_failures": [],
+  "passed": 9,
+  "total": 9,
+  "checks": [
+    {
+      "name": "answer_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "answer_at_odds_figure",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "answer_at_odds_figure_exactly_one",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.1111111111,
+      "detail": ""
+    },
+    {
+      "name": "answer_prose_floor",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.1111111112,
+      "detail": ""
+    }
+  ]
+}

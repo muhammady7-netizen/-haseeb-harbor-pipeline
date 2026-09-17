@@ -82,8 +82,8 @@
     {
       "name": "register_table",
       "metadata": {
-        "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals: every graded cell of 15 rows plus the full 16-row population as a row_set lock (duplicate-row and cross-product dumps fail the lock; a duplicated graded id is rejected outright), the delivered row order equal to the stated order, and the delivered column set closed to the stated header, with declared cell types {'record_entry': 'id'} normalised on both sides. A failure names the exact row and column.",
-        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).\"",
+        "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals: every graded cell of 138 rows plus the full 138-row population as a row_set lock.",
+        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-\u2026` or `CL-\u2026`; `NONE` when neither record speaks to the subject).\"",
         "tag": "core"
       },
       "source": {
@@ -112,6 +112,10 @@
             "ST-103": {
               "verdict": "VERIFIED",
               "record_entry": "OI-204"
+            },
+            "ST-104": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
             },
             "ST-105": {
               "verdict": "VERIFIED",
@@ -161,17 +165,13 @@
               "verdict": "NOT_IN_RECORD",
               "record_entry": "NONE"
             },
-            "ST-104": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-301"
-            },
             "ST-117": {
               "verdict": "VERIFIED",
               "record_entry": "CL-302"
             },
             "ST-118": {
-              "verdict": "NOT_IN_RECORD",
-              "record_entry": "NONE"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
             },
             "ST-119": {
               "verdict": "AT_ODDS",
@@ -210,8 +210,8 @@
               "record_entry": "OI-210"
             },
             "ST-128": {
-              "verdict": "NOT_IN_RECORD",
-              "record_entry": "NONE"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-305"
             },
             "ST-129": {
               "verdict": "AT_ODDS",
@@ -250,7 +250,7 @@
               "record_entry": "OI-210"
             },
             "ST-138": {
-              "verdict": "VERIFIED",
+              "verdict": "AT_ODDS",
               "record_entry": "OI-206"
             },
             "ST-139": {
@@ -268,6 +268,390 @@
             "ST-142": {
               "verdict": "AT_ODDS",
               "record_entry": "OI-202"
+            },
+            "ST-143": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
+            },
+            "ST-144": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-302"
+            },
+            "ST-145": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-210"
+            },
+            "ST-146": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-206"
+            },
+            "ST-147": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
+            },
+            "ST-148": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-203"
+            },
+            "ST-149": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-304"
+            },
+            "ST-150": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-207"
+            },
+            "ST-151": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-305"
+            },
+            "ST-152": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-204"
+            },
+            "ST-153": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-154": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-303"
+            },
+            "ST-155": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-304"
+            },
+            "ST-156": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-301"
+            },
+            "ST-157": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-305"
+            },
+            "ST-158": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-306"
+            },
+            "ST-159": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-160": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-161": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-162": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-163": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-210"
+            },
+            "ST-164": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-206"
+            },
+            "ST-165": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-203"
+            },
+            "ST-166": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-204"
+            },
+            "ST-167": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-202"
+            },
+            "ST-168": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-205"
+            },
+            "ST-169": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-207"
+            },
+            "ST-170": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-211"
+            },
+            "ST-171": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-172": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-173": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-303"
+            },
+            "ST-174": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-303"
+            },
+            "ST-175": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-304"
+            },
+            "ST-176": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-301"
+            },
+            "ST-177": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-305"
+            },
+            "ST-178": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-306"
+            },
+            "ST-179": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-306"
+            },
+            "ST-180": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
+            },
+            "ST-181": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
+            },
+            "ST-182": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-305"
+            },
+            "ST-183": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
+            },
+            "ST-184": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-304"
+            },
+            "ST-185": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-302"
+            },
+            "ST-186": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-210"
+            },
+            "ST-187": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-210"
+            },
+            "ST-188": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-206"
+            },
+            "ST-189": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-207"
+            },
+            "ST-190": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-203"
+            },
+            "ST-191": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-204"
+            },
+            "ST-192": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-202"
+            },
+            "ST-193": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-205"
+            },
+            "ST-194": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-211"
+            },
+            "ST-195": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-206"
+            },
+            "ST-196": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-206"
+            },
+            "ST-197": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-198": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-199": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-204"
+            },
+            "ST-200": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-210"
+            },
+            "ST-201": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-207"
+            },
+            "ST-202": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-202"
+            },
+            "ST-203": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-203"
+            },
+            "ST-204": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-205": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-206": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-207": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-208": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-209": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-210": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-211": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-212": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-305"
+            },
+            "ST-213": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
+            },
+            "ST-214": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-215": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-302"
+            },
+            "ST-216": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
+            },
+            "ST-217": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-304"
+            },
+            "ST-218": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-303"
+            },
+            "ST-219": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-305"
+            },
+            "ST-220": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
+            },
+            "ST-221": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-210"
+            },
+            "ST-222": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-211"
+            },
+            "ST-223": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-202"
+            },
+            "ST-224": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-225": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-226": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-206"
+            },
+            "ST-227": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-204"
+            },
+            "ST-228": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-203"
+            },
+            "ST-229": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-210"
+            },
+            "ST-230": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-207"
+            },
+            "ST-231": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-301"
+            },
+            "ST-232": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-305"
+            },
+            "ST-233": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-304"
+            },
+            "ST-234": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-235": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-236": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-237": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-238": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             }
           },
           "row_set": [
@@ -312,7 +696,103 @@
             "ST-139",
             "ST-140",
             "ST-141",
-            "ST-142"
+            "ST-142",
+            "ST-143",
+            "ST-144",
+            "ST-145",
+            "ST-146",
+            "ST-147",
+            "ST-148",
+            "ST-149",
+            "ST-150",
+            "ST-151",
+            "ST-152",
+            "ST-153",
+            "ST-154",
+            "ST-155",
+            "ST-156",
+            "ST-157",
+            "ST-158",
+            "ST-159",
+            "ST-160",
+            "ST-161",
+            "ST-162",
+            "ST-163",
+            "ST-164",
+            "ST-165",
+            "ST-166",
+            "ST-167",
+            "ST-168",
+            "ST-169",
+            "ST-170",
+            "ST-171",
+            "ST-172",
+            "ST-173",
+            "ST-174",
+            "ST-175",
+            "ST-176",
+            "ST-177",
+            "ST-178",
+            "ST-179",
+            "ST-180",
+            "ST-181",
+            "ST-182",
+            "ST-183",
+            "ST-184",
+            "ST-185",
+            "ST-186",
+            "ST-187",
+            "ST-188",
+            "ST-189",
+            "ST-190",
+            "ST-191",
+            "ST-192",
+            "ST-193",
+            "ST-194",
+            "ST-195",
+            "ST-196",
+            "ST-197",
+            "ST-198",
+            "ST-199",
+            "ST-200",
+            "ST-201",
+            "ST-202",
+            "ST-203",
+            "ST-204",
+            "ST-205",
+            "ST-206",
+            "ST-207",
+            "ST-208",
+            "ST-209",
+            "ST-210",
+            "ST-211",
+            "ST-212",
+            "ST-213",
+            "ST-214",
+            "ST-215",
+            "ST-216",
+            "ST-217",
+            "ST-218",
+            "ST-219",
+            "ST-220",
+            "ST-221",
+            "ST-222",
+            "ST-223",
+            "ST-224",
+            "ST-225",
+            "ST-226",
+            "ST-227",
+            "ST-228",
+            "ST-229",
+            "ST-230",
+            "ST-231",
+            "ST-232",
+            "ST-233",
+            "ST-234",
+            "ST-235",
+            "ST-236",
+            "ST-237",
+            "ST-238"
           ],
           "row_set_ordered": true,
           "columns": [
@@ -352,19 +832,19 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 17,
+              "value": 56,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 18,
+              "value": 60,
               "tolerance": null
             },
             "not_in_record_count": {
-              "value": 7,
+              "value": 22,
               "tolerance": null
             },
             "clarification_governed_count": {
-              "value": 15,
+              "value": 55,
               "tolerance": null
             }
           },
@@ -379,9 +859,9 @@
     {
       "name": "answer_at_odds_figure",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to the label-colon-figure format from submission_format.md.",
-        "why_justification": "One at odds figure stands next to its label in the sentence that names the label.",
-        "tag": "incidental"
+        "how_justification": "Opens answer.md with md.extract_text. Accepts the required label+figure anywhere in the prose (including mid-sentence), with optional markdown emphasis around the label. Core: a wrong or missing at-odds figure fails the submission.",
+        "why_justification": "One at odds figure stands next to its label in the sentence that names the label. Entailed by: \"answer.md states `Letter lines at odds with the record: <count>` \u2014 the figure placed beside its label, in the very sentence that names the label.\"",
+        "tag": "core"
       },
       "source": {
         "type": "file",
@@ -395,7 +875,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:18|18\\.0|18\\.00|eighteen)\\b",
+        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:60|60\\.0|60\\.00|sixty)\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -457,8 +937,8 @@
     {
       "name": "answer_prose_floor",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose containing the domain word 'record' (central to the task: the submission format requires 'Letter lines at odds with the record').",
-        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. The word 'record' is the core vocabulary of the task (the instruction, protocol and submission format all refer to the client's record). This check enforces the word count floor plus a domain content word as an incidental check (does not zero an otherwise perfect submission).",
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=60 words of prose containing the domain word 'record' (required by the submission format label 'Letter lines at odds with the record'). Accepts leading whitespace. Incidental only \u2014 does not zero an otherwise perfect submission.",
+        "why_justification": "submission_format.md requires answer.md to have at least sixty words of prose. The word 'record' is the core vocabulary of the task. Structured correctness is graded by register_table and results_figures, not by this floor.",
         "tag": "incidental"
       },
       "source": {
@@ -473,7 +953,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)\\A(?:\\S+\\s+){59,}\\S+",
+        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)\\A\\s*(?:\\S+\\s+){59,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

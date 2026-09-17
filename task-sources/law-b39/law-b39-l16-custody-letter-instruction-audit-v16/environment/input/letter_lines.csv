@@ -1,0 +1,208 @@
+line_id,subject,position,cited_entry,wording
+ST-101,right_of_first_refusal,agreed by the father,OI-202,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-102,children_named,"both children, with their ages",OI-203,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-103,overnight_stays,several occasions at her home or with a sitter,OI-204,On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+ST-104,addressee,the father's attorney,OI-201,To counsel for Mr Adler.
+ST-105,inconsistent_accounts,"wife to the school, resident to clinicians, sitter to the sender",OI-205,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-106,concern,she may not appreciate the violation,OI-206,"I am concerned that Ms Corwin may not fully appreciate that these stays violate the custodial order, or the position she has been placed in."
+ST-107,behavioural_plan,the stays have had no effect on the plan,OI-207,"Imogen's behavioural plan focuses on her confidence and stability, and the stays have not affected her progress."
+ST-108,request,no overnight stays in her care unless the father is present,CL-302,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+ST-109,enclosure,a certified copy of the custodial plan,OI-209,A certified copy of the custodial plan is enclosed.
+ST-110,tone,firm and detailed,OI-210,I set out the position firmly and in full detail below.
+ST-111,sender_signature,the sender's own name,OI-211,"Yours sincerely, Delphine Marr."
+ST-112,salutation,Dear Counsel,CL-304,"Dear Counsel,"
+ST-113,copies,copied to the father,CL-305,Copy: Mr Adler.
+ST-114,reply_deadline,a reply within seven days,OI-299,I would be grateful for a reply within seven days.
+ST-115,school_reference,the school principal named,OI-298,"The school principal, Ms Oduya, can confirm the account given to the school."
+ST-116,mediation_offer,an offer to mediate,CL-399,I remain open to mediation.
+ST-117,request,no overnight stays unless father present,OI-208,I ask that neither child remain overnight in her care unless the father is present.
+ST-118,delivery,sent by email to counsel,OI-299,The letter shall be sent by email to opposing counsel.
+ST-119,tone,firm and detailed,OI-210,The position is set out firmly and in full detail below.
+ST-120,mediation_terms,mediation within 14 days,CL-399,I propose mediation within fourteen days of the date of this letter.
+ST-121,delivery,sent by courier to counsel,OI-299,The letter is to be delivered by courier to the offices of opposing counsel.
+ST-122,inconsistent_accounts,wife to the school only,OI-205,Mr Adler has described Ms Corwin as his wife to the school.
+ST-123,request,no overnight unless father present,CL-302,Neither child should remain overnight in her care unless Mr Adler is present.
+ST-124,legal_fees,costs to be borne by the father,OI-299,All legal costs arising from this matter shall be borne by the father.
+ST-125,request,no overnight stays unless father present,OI-208,Neither child is to stay overnight in her care unless Mr Adler is present.
+ST-126,enclosure,a certified copy of the custodial plan,OI-209,A certified copy of the custodial plan is enclosed with this letter.
+ST-127,tone,warm and personal,OI-210,"The letter is written in a warm and personal tone, reflecting the ongoing relationship between the parents."
+ST-128,copies,copied to the children,OI-299,A copy of this letter has been provided to both children for their records.
+ST-129,addressee,the father attorney,OI-201,This letter is addressed to the attorney representing the father in this matter.
+ST-130,inconsistent_accounts,babysitter to me only,OI-205,Mr Adler has described Ms Corwin as a babysitter to me.
+ST-131,delivery,sent by hand delivery,CL-306,The letter shall be sent by hand delivery to the office of opposing counsel.
+ST-132,request,no overnight unless accompanied by a parent,CL-302,No child shall remain overnight in Ms Corwin care unless accompanied by a parent or legal guardian.
+ST-133,right_of_first_refusal,the mother agreed,OI-202,"Ms Corwin agreed to a right of first refusal, so the children are not to be left overnight without her present."
+ST-134,enclosure,an uncertified summary of the plan,OI-209,An uncertified summary of the custodial plan is enclosed.
+ST-135,salutation,Dear Mr Adler,CL-304,"Dear Mr Adler,"
+ST-136,inconsistent_accounts,babysitter to clinicians,OI-205,Mr Adler has described Ms Corwin as a babysitter to her clinicians.
+ST-137,tone,soft formal and succinct,CL-304,"The position is set out softly, formally and succinctly below."
+ST-138,concern,she may not appreciate,CL-305,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-139,behavioural_plan,confidence and stability and stays set back,CL-302,"Imogen's behavioural plan focuses on confidence and stability, and the stays have set back her progress."
+ST-140,children_named,both children with ages,CL-303,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-141,overnight_stays,one child on one occasion,OI-204,"On one occasion, Imogen stayed overnight at Ms Corwin's home while Mr Adler was away."
+ST-142,right_of_first_refusal,not overnight with anyone but parents,OI-202,The children are not to be left overnight with anyone other than their parents.
+ST-143,addressee,the father's attorney,CL-301,To counsel for Mr Adler.
+ST-144,request,no overnight unless the mother is present,CL-302,I ask that neither child remain overnight in Ms Corwin's care unless Ms Corwin is present.
+ST-145,tone,firm and detailed,CL-304,I set out the position firmly and in full detail below.
+ST-146,concern,no concern about the stays,OI-206,I have no concern that Ms Corwin fails to appreciate the stays.
+ST-147,delivery,sent by email,CL-306,The letter shall be sent by email to counsel.
+ST-148,children_named,Noor only,OI-203,"This concerns Noor, aged seven."
+ST-149,salutation,Dear Sir or Madam,CL-304,"Dear Sir or Madam,"
+ST-150,behavioural_plan,stays improved the plan,OI-207,"Imogen's behavioural plan focuses on confidence and stability, and the stays have improved her progress."
+ST-151,copies,copied to the school,CL-305,Copy: the school principal.
+ST-152,overnight_stays,never overnight at her home,OI-204,Neither child has ever stayed overnight at Ms Corwin's home or with a sitter.
+ST-153,request,no overnight unless father present,OI-208,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+ST-154,enclosure,certified copy enclosed,OI-209,A certified copy of the custodial plan is enclosed.
+ST-155,salutation,Dear Counsel,OI-211,"Dear Counsel,"
+ST-156,addressee,mother's attorney,OI-201,To counsel for Ms Corwin.
+ST-157,copies,copy nobody,OI-205,There is no copy line; nobody is copied on this letter.
+ST-158,delivery,by post,OI-299,The letter shall be sent by post to counsel's office.
+ST-159,reply_deadline,reply in 10 days,OI-299,I would be grateful for a reply within ten days.
+ST-160,school_reference,principal confirms,CL-399,The school principal can confirm what was said to the school.
+ST-161,mediation_offer,open to mediation,OI-298,I remain open to mediation if that assists.
+ST-162,legal_fees,shared costs,CL-399,Legal costs shall be shared equally between the parents.
+ST-163,tone,soft formal succinct,CL-302,"The position is set out softly, formally and succinctly below."
+ST-164,concern,full concern both limbs,CL-305,"I am concerned that Ms Corwin may not fully appreciate that these stays violate the custodial order, or the position she has been placed in."
+ST-165,children_named,both with ages,CL-301,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-166,overnight_stays,several occasions both children,CL-306,On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+ST-167,right_of_first_refusal,father agreed,CL-304,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-168,inconsistent_accounts,all three audiences,CL-303,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-169,behavioural_plan,stays set it back,CL-301,"Imogen's behavioural plan focuses on her confidence and stability, and the stays have set it back."
+ST-170,sender_signature,own name,CL-302,"Yours sincerely, Delphine Marr."
+ST-171,request,no overnight unless father present,OI-208,Neither child should remain overnight in her care unless Mr Adler is present.
+ST-172,request,no overnight unless father present,OI-208,I ask that neither child remain overnight in Ms Corwin's care unless the father is present.
+ST-173,enclosure,certified copy,OI-209,A certified copy of the custodial plan is enclosed with this letter.
+ST-174,enclosure,certified copy,OI-209,Enclosed is a certified copy of the custodial plan.
+ST-175,salutation,Dear Counsel,OI-211,"Dear Counsel,"
+ST-176,addressee,mother's attorney,OI-201,This letter is addressed to counsel for Ms Corwin.
+ST-177,copies,copy nobody,OI-211,Nobody is to be copied on this letter.
+ST-178,delivery,by post,OI-210,Send it by post to counsel's office.
+ST-179,delivery,by post,OI-204,The letter is to be sent by post to the offices of opposing counsel.
+ST-180,addressee,father's attorney,OI-201,To counsel for Mr Adler.
+ST-181,addressee,father's attorney,CL-301,Addressed to the father's attorney.
+ST-182,copies,copied to father,OI-205,Copy: Mr Adler.
+ST-183,delivery,by courier,OI-299,Deliver by courier to counsel.
+ST-184,salutation,Dear Mr Adler,OI-211,"Dear Mr Adler,"
+ST-185,request,unless mother present,OI-208,Neither child overnight in her care unless Ms Corwin is present.
+ST-186,tone,soft formal succinct,CL-305,"Keep the letter soft, formal and succinct."
+ST-187,tone,soft formal succinct,CL-306,"The tone is soft, formal and succinct throughout."
+ST-188,concern,full two-limb concern,CL-304,"I am concerned that Ms Corwin may not fully appreciate that these stays violate the custodial order, or the position she has been placed in."
+ST-189,behavioural_plan,stays set it back,CL-304,"Imogen's behavioural plan focuses on confidence and stability, and the stays have set back her progress."
+ST-190,children_named,both with ages,CL-305,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-191,overnight_stays,several occasions both,CL-302,On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+ST-192,right_of_first_refusal,father agreed,CL-303,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-193,inconsistent_accounts,three audiences,CL-301,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-194,sender_signature,own name,CL-306,"Yours sincerely, Delphine Marr."
+ST-195,concern,narrower concern only violation,OI-206,I am concerned that Ms Corwin may not appreciate that these stays violate the order.
+ST-196,concern,narrower concern only position,OI-206,I am concerned about the position Ms Corwin has been placed in.
+ST-197,inconsistent_accounts,wife to school only,OI-205,Mr Adler has described Ms Corwin as his wife to the school.
+ST-198,inconsistent_accounts,sitter to me only,CL-303,Mr Adler has described Ms Corwin as a babysitter to me.
+ST-199,overnight_stays,one child once,OI-204,On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-200,tone,firm detailed,CL-302,I set out the position firmly and in full detail.
+ST-201,behavioural_plan,no effect,OI-207,The stays have not affected Imogen's behavioural plan.
+ST-202,right_of_first_refusal,mother agreed,OI-202,Ms Corwin agreed to a right of first refusal.
+ST-203,children_named,Noor only,CL-304,"This concerns Noor, aged seven."
+ST-204,reply_deadline,seven days,OI-299,Please reply within seven days.
+ST-205,reply_deadline,fourteen days,CL-399,A reply within fourteen days is requested.
+ST-206,school_reference,principal named,OI-298,Ms Oduya at the school can confirm the account.
+ST-207,school_reference,principal named,CL-399,The school principal is asked to confirm attendance.
+ST-208,mediation_offer,open to mediate,OI-297,I remain willing to mediate.
+ST-209,mediation_terms,mediate in 14 days,CL-398,I propose mediation within fourteen days.
+ST-210,legal_fees,father pays,OI-296,The father shall bear all legal fees.
+ST-211,legal_fees,shared fees,CL-397,Legal fees will be shared.
+ST-212,copies,copy the father,OI-205,Copy: Mr Adler.
+ST-213,delivery,by courier,OI-204,Deliver this letter by courier to counsel's office.
+ST-214,request,neither child overnight unless father present,OI-208,Neither child overnight in her care unless the father is present.
+ST-215,request,neither child overnight unless father present,OI-202,The request is that neither child remain overnight in her care unless the father is present.
+ST-216,addressee,father's attorney,OI-201,Please address this letter to the father's attorney.
+ST-217,salutation,Dear Ms Corwin,CL-304,"Dear Ms Corwin,"
+ST-218,enclosure,unsigned draft enclosed,OI-209,An unsigned draft of the custodial plan is enclosed.
+ST-219,copies,copy mother's attorney,CL-305,Copy: counsel for Ms Corwin.
+ST-220,delivery,hand delivery,CL-306,Hand-deliver the letter to counsel's office.
+ST-221,tone,soft formal succinct,CL-301,"Keep the letter soft, formal and succinct."
+ST-222,sender_signature,own name,CL-305,"Yours sincerely, Delphine Marr."
+ST-223,right_of_first_refusal,father agreed,CL-306,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-224,inconsistent_accounts,wife and sitter only,OI-205,Mr Adler has described Ms Corwin as his wife to the school and as a babysitter to me.
+ST-225,inconsistent_accounts,clinicians only,CL-302,Mr Adler has described Ms Corwin as the person Imogen lives with to her clinicians.
+ST-226,concern,narrower violation limb only,CL-301,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-227,overnight_stays,Noor only several times,OI-204,On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-228,children_named,Imogen only with age,CL-303,"This concerns Imogen, aged twelve."
+ST-229,tone,soft formal but detailed,OI-210,"I keep the tone soft and formal, and I set the facts out in full detail."
+ST-230,behavioural_plan,confidence only no setback,OI-207,Imogen's behavioural plan focuses on confidence.
+ST-231,addressee,mother's attorney,OI-299,This letter goes to counsel for Ms Corwin — the mother's attorney.
+ST-232,copies,copy nobody,OI-299,Do not copy anyone on this letter.
+ST-233,salutation,Dear Counsel,OI-299,"Dear Counsel,"
+ST-234,reply_deadline,twenty-one days,OI-210,Please reply within twenty-one days.
+ST-235,school_reference,attendance letter,CL-306,The school has already confirmed attendance in writing.
+ST-236,mediation_offer,open to mediate,OI-206,I remain willing to mediate the overnight issue.
+ST-237,legal_fees,mother pays fees,CL-301,Ms Corwin shall bear the legal fees arising from this letter.
+ST-238,court_listing,list for directions,OI-204,Please list the matter for directions within 28 days.
+ST-301,request,CL wording exact,OI-208,Neither child overnight in her care unless the father is present.
+ST-302,request,CL wording paraphrase,OI-211,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
+ST-303,request,CL wording paraphrase,OI-299,Neither child should stay overnight with her unless the father is there.
+ST-304,addressee,mother's attorney,OI-201,Address this letter to counsel for Ms Corwin — the mother's attorney.
+ST-305,addressee,mother's attorney,OI-299,The letter goes to Catherine's attorney.
+ST-306,addressee,mother's attorney,OI-210,To counsel for the mother.
+ST-307,enclosure,certified copy,OI-209,A certified copy of the custodial plan is enclosed.
+ST-308,enclosure,certified copy,OI-299,Enclosed: certified copy of the custodial plan.
+ST-309,salutation,Dear Counsel,OI-211,"Dear Counsel,"
+ST-310,salutation,Dear Counsel,OI-201,"Dear Counsel,"
+ST-311,copies,nobody,OI-205,Do not copy anyone on this letter.
+ST-312,copies,nobody,OI-299,There is no copy line; nobody is copied.
+ST-313,delivery,by post,OI-204,Send it by post to counsel's office.
+ST-314,delivery,by post,OI-299,The letter is to be posted to the offices of opposing counsel.
+ST-315,addressee,father's attorney,OI-201,Address the letter to the father's attorney.
+ST-316,addressee,father's attorney,CL-301,To counsel for Mr Adler.
+ST-317,addressee,father's attorney,OI-299,Please send this to Adam's attorney.
+ST-318,request,unless mother present,OI-208,Neither child overnight in her care unless Ms Corwin is present.
+ST-319,request,father alone overnight ok,CL-302,Either child may remain overnight in her care even if the father is away.
+ST-320,enclosure,unsigned draft,OI-209,An unsigned draft of the custodial plan is enclosed.
+ST-321,enclosure,no enclosure,CL-303,Nothing is enclosed with this letter.
+ST-322,salutation,Dear Mr Adler,OI-211,"Dear Mr Adler,"
+ST-323,salutation,Dear Ms Corwin,CL-304,"Dear Ms Corwin,"
+ST-324,copies,copy father,OI-205,Copy: Mr Adler.
+ST-325,copies,copy school,CL-305,Copy the school for their file.
+ST-326,delivery,by email,OI-299,Send the letter by email to opposing counsel.
+ST-327,delivery,by courier,CL-306,Deliver by courier to counsel's office.
+ST-328,delivery,hand delivery,OI-204,Hand-deliver this letter to counsel.
+ST-329,tone,soft formal succinct,CL-301,"Keep the letter soft, formal and succinct."
+ST-330,tone,soft formal succinct,CL-306,"The tone throughout is soft, formal and succinct."
+ST-331,concern,full two-limb,CL-305,"I am concerned that Ms Corwin may not fully appreciate that these stays violate the custodial order, or the position she has been placed in."
+ST-332,concern,full two-limb,CL-302,I am concerned she may not appreciate that the stays violate the order or the position she has been put in.
+ST-333,inconsistent_accounts,all three,CL-303,"Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me."
+ST-334,inconsistent_accounts,all three,CL-304,"The father has called her his wife to the school, the person the child lives with to clinicians, and a sitter to me."
+ST-335,overnight_stays,several both,CL-301,On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
+ST-336,children_named,both with ages,CL-305,"This concerns Noor, aged seven, and Imogen, aged twelve."
+ST-337,right_of_first_refusal,father agreed,CL-306,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-338,behavioural_plan,set back,CL-302,"Imogen's behavioural plan focuses on confidence and stability, and the stays have set back her progress."
+ST-339,sender_signature,own name,CL-303,"Yours sincerely, Delphine Marr."
+ST-340,sender_signature,own name,CL-301,"Signed, Delphine Marr."
+ST-341,concern,violation limb only,OI-206,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
+ST-342,concern,position limb only,CL-305,I am concerned about the position Ms Corwin has been placed in.
+ST-343,inconsistent_accounts,wife only,OI-205,Mr Adler has described Ms Corwin as his wife to the school.
+ST-344,inconsistent_accounts,sitter and clinicians,CL-301,Mr Adler has described Ms Corwin as the person Imogen lives with to clinicians and as a babysitter to me.
+ST-345,overnight_stays,one child once,OI-204,On one occasion Imogen stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-346,overnight_stays,Noor only several,CL-306,On several occasions Noor stayed overnight at Ms Corwin's home while Mr Adler was away.
+ST-347,children_named,Noor only,OI-203,"This concerns Noor, aged seven."
+ST-348,children_named,both no ages,CL-304,This concerns Noor and Imogen.
+ST-349,tone,firm detailed,OI-210,I set out the position firmly and in full detail.
+ST-350,tone,soft but not succinct,CL-302,"The tone is soft and formal, and the facts are set out at length."
+ST-351,behavioural_plan,no setback,OI-207,The stays have not affected Imogen's behavioural plan.
+ST-352,behavioural_plan,confidence only,CL-303,Imogen's behavioural plan focuses on confidence.
+ST-353,right_of_first_refusal,mother agreed,OI-202,Ms Corwin agreed to a right of first refusal.
+ST-354,right_of_first_refusal,no overnight restriction,CL-305,"Mr Adler agreed to a right of first refusal, but overnight stays without him are still permitted."
+ST-355,sender_signature,signed as counsel,OI-211,"Yours sincerely, for Delphine Marr, solicitor."
+ST-356,reply_deadline,7 days,OI-210,Please reply within seven days.
+ST-357,reply_deadline,14 days,CL-306,A reply within fourteen days is requested.
+ST-358,school_reference,principal,OI-205,Ms Oduya at the school can confirm the account.
+ST-359,school_reference,attendance,CL-301,The school has confirmed attendance in writing.
+ST-360,mediation_offer,open,OI-206,I remain willing to mediate.
+ST-361,mediation_terms,14 days,CL-302,I propose mediation within fourteen days.
+ST-362,legal_fees,father pays,OI-201,The father shall bear all legal fees.
+ST-363,legal_fees,shared,CL-305,Legal fees will be shared equally.
+ST-364,court_listing,directions,OI-204,Please list the matter for directions within 28 days.
+ST-365,court_listing,urgent hearing,CL-303,I will seek an urgent hearing if there is no reply.
+ST-366,expert_report,psychologist,OI-207,A psychologist's report on Imogen is available on request.
+ST-367,expert_report,joint expert,CL-304,I propose a joint expert on the overnight arrangements.
+ST-368,interim_contact,supervised only,OI-208,"Pending resolution, contact with Ms Corwin should be supervised only."
+ST-369,interim_contact,video calls,CL-306,Interim contact may continue by video call twice weekly.

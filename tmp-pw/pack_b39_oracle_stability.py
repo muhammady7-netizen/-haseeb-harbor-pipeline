@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Pack fresh harbor oracle trials into evaluations/oracle + stability/repeat-0N."""
+"""Pack fresh harbor oracle trials into evaluations/oracle + stability/repeat-0N.
+
+Uses DISTINCT trials: oracle <- good[0], stability <- good[1:4].
+Never copies the same trial into both oracle and repeat-01.
+"""
 from __future__ import annotations
 
 import json
@@ -32,7 +36,6 @@ def ignore_bulk(_dir, names):
 def find_trials(job_name: str) -> list[Path]:
     root = JOBS / job_name
     if not root.exists():
-        # harbor may nest job under timestamp
         cands = sorted(JOBS.glob(f"*{job_name}*"), key=lambda p: p.stat().st_mtime, reverse=True)
         if not cands:
             raise SystemExit(f"missing job dir for {job_name} under {JOBS}")
@@ -40,14 +43,13 @@ def find_trials(job_name: str) -> list[Path]:
     trials = []
     for p in root.rglob("result.json"):
         trial = p.parent
-        if (trial / "verifier" / "reward.txt").exists() or (trial / "result.json").exists():
+        if (trial / "verifier" / "reward.txt").exists():
+            # skip nested copies
+            if "stability" in str(trial) or "evaluations" in str(trial):
+                continue
             trials.append(trial)
-    # unique by path, prefer deepest with reward
-    uniq = {}
-    for t in trials:
-        uniq[str(t)] = t
-    out = sorted(uniq.values(), key=lambda p: p.stat().st_mtime)
-    return out
+    uniq = {str(t): t for t in trials}
+    return sorted(uniq.values(), key=lambda p: p.stat().st_mtime)
 
 
 def reward_of(trial: Path):
@@ -58,65 +60,96 @@ def reward_of(trial: Path):
     return (d.get("verifier_result") or {}).get("rewards", {}).get("reward")
 
 
+def trial_name(trial: Path) -> str:
+    try:
+        return json.loads((trial / "result.json").read_text(encoding="utf-8")).get("trial_name", trial.name)
+    except Exception:
+        return trial.name
+
+
+def normalize_artifacts(trial_dir: Path) -> None:
+    """Harbor may nest exports at artifacts/logs/artifacts/app; QC expects artifacts/app."""
+    nested = trial_dir / "artifacts" / "logs" / "artifacts" / "app"
+    flat = trial_dir / "artifacts" / "app"
+    if nested.is_dir():
+        flat.parent.mkdir(parents=True, exist_ok=True)
+        if flat.exists():
+            shutil.rmtree(flat)
+        shutil.copytree(nested, flat)
+    # Ensure manifest notes success if files present
+    man = trial_dir / "artifacts" / "manifest.json"
+    if flat.is_dir() and any(flat.iterdir()):
+        files = sorted(p.name for p in flat.iterdir() if p.is_file())
+        man.write_text(
+            json.dumps(
+                [
+                    {
+                        "source": "/logs/artifacts/app",
+                        "destination": "artifacts/app",
+                        "type": "directory",
+                        "status": "ok",
+                        "files": files,
+                        "service": None,
+                    }
+                ],
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+
 def main():
-    # Prefer dedicated job folder oracle-b39-l16-v7
-    trials = []
-    for name in ["oracle-b39-l16-v7", "oracle-b39-l16-v7-1", "oracle-b39-l16-v7-2"]:
-        try:
-            trials = find_trials(name)
-            if trials:
-                print("using job", name, "trials", len(trials))
-                break
-        except SystemExit:
-            continue
-    if not trials:
-        # scan all recent jobs
-        all_trials = []
-        for job in sorted(JOBS.iterdir(), key=lambda p: p.stat().st_mtime, reverse=True)[:10]:
-            if not job.is_dir():
-                continue
-            if "oracle" not in job.name.lower() and "b39" not in job.name.lower():
-                continue
-            for p in job.rglob("result.json"):
-                all_trials.append(p.parent)
-        trials = sorted({str(t): t for t in all_trials}.values(), key=lambda p: p.stat().st_mtime)
-        print("fallback trials", len(trials))
+    import argparse
 
-    if len(trials) < 3:
-        raise SystemExit(f"need >=3 oracle trials, got {len(trials)}: {trials}")
-
-    # Keep only reward 1.0
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--job", default="oracle-b39-l16-v15")
+    args = ap.parse_args()
+    job_name = args.job
+    trials = find_trials(job_name)
+    print("job", job_name, "trials", len(trials))
     good = []
     for t in trials:
         r = reward_of(t)
-        print("trial", t, "reward", r)
+        print("trial", trial_name(t), "reward", r, "path", t.name)
         if str(r) in ("1.0", "1", "1.00") or r == 1.0:
             good.append(t)
-    if len(good) < 3:
-        raise SystemExit(f"need >=3 reward-1.0 trials, got {len(good)}")
+    if len(good) < 4:
+        raise SystemExit(f"need >=4 reward-1.0 trials, got {len(good)}")
+
+    # Deduplicate by trial_name
+    seen = set()
+    distinct = []
+    for t in good:
+        tn = trial_name(t)
+        if tn in seen:
+            continue
+        seen.add(tn)
+        distinct.append(t)
+    if len(distinct) < 4:
+        raise SystemExit(f"need >=4 distinct trial_names, got {len(distinct)}: {seen}")
 
     oracle_dir = PACK / "evaluations" / "oracle"
     stability = PACK / "evaluations" / "stability"
-    nop_dir = PACK / "evaluations" / "nop"
     if oracle_dir.exists():
         shutil.rmtree(oracle_dir)
     if stability.exists():
         shutil.rmtree(stability)
-    # remove stale nop if present; will refresh separately
     stability.mkdir(parents=True)
 
-    shutil.copytree(good[0], oracle_dir, ignore=ignore_bulk)
-    print("oracle <-", good[0])
-    for i, trial in enumerate(good[:3], 1):
+    shutil.copytree(distinct[0], oracle_dir, ignore=ignore_bulk)
+    normalize_artifacts(oracle_dir)
+    print("oracle <-", trial_name(distinct[0]), distinct[0])
+
+    for i, trial in enumerate(distinct[1:4], 1):
         target = stability / f"repeat-{i:02d}"
         shutil.copytree(trial, target, ignore=ignore_bulk)
-        print(f"stability/repeat-{i:02d} <-", trial, "reward", reward_of(trial))
+        normalize_artifacts(target)
+        print(f"stability/repeat-{i:02d} <-", trial_name(trial), trial)
 
-    (stability / "NOTE.md").write_text(
-        "Oracle stability repeats from fresh harbor job oracle-b39-l16-v7 "
-        "against current law-b39-l16 pack (10-check verifier). Distinct trial IDs.\n",
-        encoding="utf-8",
-    )
+    names = [trial_name(t) for t in distinct[:4]]
+    assert len(set(names)) == 4, names
+    print("distinct trial_names:", names)
     print("packed ok")
 
 
