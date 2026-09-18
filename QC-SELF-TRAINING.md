@@ -1,4 +1,4 @@
-# QC Self-Training — 13 Findings I Missed on law-b39
+# QC Self-Training — 16 Findings I Missed on law-b39
 
 **Lesson date:** 2026-09-17
 **Task:** law-b39-l16-custody-letter-instruction-audit
@@ -264,6 +264,47 @@ for step in traj:
 
 ---
 
+### FINDING 14 — review.csv cites stale counts that don't match the bundle
+**What I found:** review.csv Layer 5 row says "results_figures 105/176/44/163" but the actual gold results.json has 100/181/44/202. The review.csv was not updated after the last gold change.
+**Why I missed it:** I never compared the counts cited in review.csv against the actual gold results.json.
+**The check I must run:**
+```
+1. Read review.csv
+2. Find every count cited (verified_count, at_odds_count, etc.)
+3. Compare each to solution/files/results.json
+4. If any differ → review.csv stale → FAIL
+```
+
+---
+
+### FINDING 15 — golden_trajectory embedded CSV has wrong row count
+**What I found:** golden_trajectory.json step 6 embeds letter_line_review.csv with 324 data rows, but the actual gold has 325 data rows. One row is missing from the trajectory.
+**Why I missed it:** I checked the embedded results.json counts (Finding 13) but never checked the embedded CSV row count.
+**The check I must run:**
+```
+1. Read golden_trajectory.json
+2. Find the step that writes letter_line_review.csv
+3. Count the embedded data rows
+4. Compare to solution/files/letter_line_review.csv row count
+5. If they differ → trajectory CSV is stale → FAIL
+```
+
+---
+
+### FINDING 16 — Oracle trajectory shows stale counts (run before gold update)
+**What I found:** The oracle trajectory's embedded results.json shows `104/177/44/162` but the current gold has `100/181/44/202`. The oracle was run BEFORE golden_trajectory.json was updated. The oracle artifacts/app/ has the correct gold (100/181/44/202) because solve.sh copies solution/files/ at run time. But the trajectory was emitted from the old golden_trajectory.json.
+**Why I missed it:** I checked the golden_trajectory.json file itself (Finding 13) but never checked the ORACLE'S trajectory.json to see if it matches the current golden_trajectory.json.
+**The check I must run:**
+```
+1. Read evaluations/oracle/agent/trajectory.json
+2. Find the step that writes results.json
+3. Compare the embedded counts to solution/files/results.json
+4. If they differ → oracle was run with a stale golden_trajectory → re-oracle needed
+5. Also check: do the oracle artifacts/app/results.json match the gold? (they will if solve.sh copies solution/files/)
+```
+
+---
+
 ## THE 7-LAYER CHECK I MUST RUN EVERY TIME
 
 ### Layer 0 — Read the content (5 min)
@@ -360,6 +401,9 @@ for step in traj:
 - Duplicated sentences in the data → densification broke realism
 - "wording is X" placeholder text → synthetic, not a real letter
 - golden_trajectory.json embeds old counts that differ from solution/files/results.json → trajectory contradicts gold
+- golden_trajectory.json embedded CSV has fewer rows than solution/files/letter_line_review.csv → trajectory CSV is stale
+- review.csv cites counts that don't match solution/files/results.json → review.csv is stale
+- review.csv cites paths that don't exist in the package → review.csv references stale files
 
 ---
 

@@ -66,6 +66,12 @@ Before saying "ship it," run ALL 7 layers. Do not skip any. Do not run only the 
 - [ ] Check `instruction_verifier_consistency` (mandatory subcheck — cannot be averaged away)
 - [ ] Check `failure_cause_validity` (mandatory subcheck — cannot be averaged away)
 - [ ] Every P1 is a blocker. Every P2 is a weakness.
+- [ ] **review.csv count audit:** extract every number cited in review.csv, compare to actual gold/verifier/stability/difficulty (Finding 14)
+- [ ] **review.csv cited path audit:** every path cited in change_made must exist in the package
+- [ ] **README count audit:** extract numbers from README and compare to shipped check_count
+- [ ] **Stray verifier.json.* variants:** check tests/ for verifier.json.* files
+- [ ] **golden_check.json/summary.json audit:** if these exist, their counts must match shipped verifier
+- [ ] **task_checksum consistency:** all runs must have the same checksum
 
 ## Layer 7 — Realism (2 min)
 - [ ] Read `letter_lines.csv` wording column. Are there:
