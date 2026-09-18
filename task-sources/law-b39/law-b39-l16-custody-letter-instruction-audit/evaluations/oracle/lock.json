@@ -3,7 +3,7 @@
     "task": {
         "name": "law-b39-task",
         "type": "local",
-        "digest": "sha256:2a0f7b998eb789ea6847885cb6bd83c8c79c1b48d865e7ca59a696b66b7912a8",
+        "digest": "sha256:f19d66658a18dab1026fad0743b051796a2fa199fa01c7cb4b6ba20507ade349",
         "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task"
     },
     "install_only": false,
@@ -29,7 +29,7 @@
     },
     "verifier": {
         "env": {
-            "OPENAI_API_KEY": "****",
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
             "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
             "JUDGE_MODEL": "openai/glm-5.2"
         },

@@ -1,13 +1,13 @@
 {
-    "id": "0b7a598a-bab0-42fb-884e-41ae6900deac",
+    "id": "d5e5e886-c6de-46a6-b514-c7a4a85fb4ea",
     "task_name": "obi/law-b39-l16-custody-letter-instruction-audit",
-    "trial_name": "law-b39-task__FCJEa8x",
-    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-b39/oracle-b39-l16-v5-rp407/law-b39-task__FCJEa8x",
+    "trial_name": "law-b39-task__DW2kPXj",
+    "trial_uri": "file:////workspace/qc-out/harbor-jobs-b39/oracle-b39-l16-v8/law-b39-task__DW2kPXj",
     "task_id": {
         "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task"
     },
     "source": null,
-    "task_checksum": "665fd6150772a4b18ec1a43c2623e50e08fc75157801fcd36a83a53d91928ab4",
+    "task_checksum": "e44e9bec4379b9fc598957549a8a90461c480de74237fb689b3cbc552fef363e",
     "config": {
         "task": {
             "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task",
@@ -19,8 +19,8 @@
             "download_dir": null,
             "source": null
         },
-        "trial_name": "law-b39-task__FCJEa8x",
-        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v5-rp407",
+        "trial_name": "law-b39-task__DW2kPXj",
+        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v8",
         "install_only": false,
         "timeout_multiplier": 1.0,
         "agent_timeout_multiplier": null,
@@ -64,7 +64,7 @@
             "override_timeout_sec": null,
             "max_timeout_sec": null,
             "env": {
-                "OPENAI_API_KEY": "****",
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}",
                 "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
                 "JUDGE_MODEL": "openai/glm-5.2"
             },
@@ -72,7 +72,7 @@
         },
         "artifacts": [],
         "extra_instruction_paths": [],
-        "job_id": "73a36eb4-69ef-4327-a44e-d3daa383e414",
+        "job_id": "a37109fd-ed98-4a6e-9230-0250d5b220d7",
         "source_trial": null
     },
     "agent_info": {
@@ -95,23 +95,23 @@
     },
     "verifier_environment_mode": "shared",
     "exception_info": null,
-    "started_at": "2026-09-18T14:28:15.256765Z",
-    "finished_at": "2026-09-18T14:28:43.979655Z",
+    "started_at": "2026-09-18T13:00:07.485008Z",
+    "finished_at": "2026-09-18T13:00:45.996382Z",
     "environment_setup": {
-        "started_at": "2026-09-18T14:28:15.849758Z",
-        "finished_at": "2026-09-18T14:28:31.479967Z"
+        "started_at": "2026-09-18T13:00:08.139915Z",
+        "finished_at": "2026-09-18T13:00:31.975746Z"
     },
     "agent_setup": {
-        "started_at": "2026-09-18T14:28:31.480015Z",
-        "finished_at": "2026-09-18T14:28:31.480092Z"
+        "started_at": "2026-09-18T13:00:31.975839Z",
+        "finished_at": "2026-09-18T13:00:31.975957Z"
     },
     "agent_execution": {
-        "started_at": "2026-09-18T14:28:31.480205Z",
-        "finished_at": "2026-09-18T14:28:33.327699Z"
+        "started_at": "2026-09-18T13:00:31.976067Z",
+        "finished_at": "2026-09-18T13:00:33.899855Z"
     },
     "verifier": {
-        "started_at": "2026-09-18T14:28:33.330104Z",
-        "finished_at": "2026-09-18T14:28:39.565992Z"
+        "started_at": "2026-09-18T13:00:33.902690Z",
+        "finished_at": "2026-09-18T13:00:40.719647Z"
     },
     "step_results": null
 }

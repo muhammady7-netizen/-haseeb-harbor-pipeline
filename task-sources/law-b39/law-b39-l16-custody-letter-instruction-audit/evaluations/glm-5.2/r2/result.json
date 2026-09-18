@@ -1,0 +1,156 @@
+{
+    "id": "990828e2-80a7-4794-be0e-f8d742a92c11",
+    "task_name": "obi/law-b39-l16-custody-letter-instruction-audit",
+    "trial_name": "law-b39-task__PCGhmZy",
+    "trial_uri": "file:////workspace/qc-out/harbor-jobs-b39/glm-b39-l16-v8/law-b39-task__PCGhmZy",
+    "task_id": {
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task"
+    },
+    "source": null,
+    "task_checksum": "875f7833cfe53cefff8786f08d6afe2141070c37ce5c95ab76ab341055f226f9",
+    "config": {
+        "task": {
+            "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "law-b39-task__PCGhmZy",
+        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\glm-b39-l16-v8",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "terminus-2",
+            "import_path": null,
+            "model_name": "openai/glm-5.2",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": 1800.0,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "extra_body": {
+                    "max_tokens": 16000
+                }
+            },
+            "env": {
+                "OPENAI_API_KEY": "****",
+                "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": true,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "OPENAI_API_KEY": "****",
+                "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+                "JUDGE_MODEL": "openai/glm-5.2"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "cafc41d0-b4cc-4242-af1d-eac24099d14a",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "terminus-2",
+        "version": "2.0.0",
+        "model_info": {
+            "name": "glm-5.2",
+            "provider": "openai"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 634677,
+        "n_cache_tokens": 280256,
+        "n_output_tokens": 161168,
+        "cost_usd": 0.6986223600000001,
+        "rollout_details": [],
+        "metadata": {
+            "n_episodes": 23,
+            "api_request_times_msec": [
+                3289.220094680786,
+                7603.552341461182,
+                5996.615648269653,
+                25966.906785964966,
+                11073.578834533691,
+                26047.956943511963,
+                43934.38458442688,
+                46966.665506362915,
+                63173.8498210907,
+                36131.50334358215,
+                83812.92223930359,
+                145781.3639640808,
+                75664.63446617126,
+                73262.27736473083,
+                2741.417407989502,
+                69448.64153862,
+                17458.800315856934,
+                51263.33284378052,
+                42851.3240814209,
+                3012.176275253296,
+                47424.97110366821,
+                1769.078016281128,
+                114533.90502929688
+            ],
+            "summarization_count": 0
+        }
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-09-18T13:21:42.852800Z",
+    "finished_at": "2026-09-18T13:40:12.293187Z",
+    "environment_setup": {
+        "started_at": "2026-09-18T13:21:43.589510Z",
+        "finished_at": "2026-09-18T13:21:55.084389Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-18T13:21:55.084428Z",
+        "finished_at": "2026-09-18T13:22:22.073412Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-09-18T13:22:22.073564Z",
+        "finished_at": "2026-09-18T13:40:01.912198Z"
+    },
+    "verifier": {
+        "started_at": "2026-09-18T13:40:01.914967Z",
+        "finished_at": "2026-09-18T13:40:07.504798Z"
+    },
+    "step_results": null
+}

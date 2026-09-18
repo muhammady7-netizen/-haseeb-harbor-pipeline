@@ -1,12 +1,9 @@
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ asciinema rec --stdin /logs/agent/recording.cast
-[?2004l
-[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
 [0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ clear
-[?2004l
-[H[J[3J[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ ls -la /app/input
-[?2004l
-total 60
+[?2004l[H[J[3J[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ ls -la /app/input
+[?2004ltotal 60
 dr-xr-xr-x 1 root root  4096 Sep 18 12:57 [0m[01;34m.[0m
 drwxrwxrwx 1 root root  4096 Sep 18 12:58 [34;42m..[0m
 -r-xr-xr-x 1 root root  1925 Sep 18 12:54 [01;32mclarification.md[0m
@@ -15,8 +12,7 @@ drwxrwxrwx 1 root root  4096 Sep 18 12:58 [34;42m..[0m
 -r-xr-xr-x 1 root root  3651 Sep 18 08:45 [01;32mreview_protocol.md[0m
 -r-xr-xr-x 1 root root  1782 Sep 18 12:54 [01;32msubmission_format.md[0m
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '\n--- letter_lines.csv ---\n'; cat /app/input/letter_lines.csv
-[?2004l
-
+[?2004l
 --- letter_lines.csv ---
 line_id,subject,position,cited_entry,wording
 ST-101,right_of_first_refusal,agreed by the father,OI-202,"Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present."
@@ -345,8 +341,7 @@ ST-593,tone,warm and conversational,CL-305,The tone should be warm and conversat
 ST-594,concern,both limbs,CL-303,"I have a concern that she may not appreciate the stays contravene the order, as well as about the position she has been put in."
 ST-595,behavioural_plan,no effect on plan,CL-302,The stays have had no effect on Imogen's behavioural plan.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '\n--- original_instruction.md ---\n'; cat /app/input/original_instruction.md
-[?2004l
-
+[?2004l
 --- original_instruction.md ---
 # Original instruction — the client's first message
 
@@ -396,8 +391,7 @@ Keep it soft, formal and succinct — all three. (Superseded wherever the clarif
 
 Sign it in my own name as Delphine Marr — the full name is required; do not sign as counsel or on behalf of anyone else.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '\n--- clarification.md ---\n'; cat /app/input/clarification.md
-[?2004l
-
+[?2004l
 --- clarification.md ---
 # Clarification — the client's later message
 
@@ -447,8 +441,7 @@ Interim contact arrangements must address all three aspects of the behavioural p
 
 Lines marked 'without prejudice' are settlement offers and must use a soft, conciliatory tone — the opposite of the firm tone the clarification requires for the rest of the letter. This entry takes precedence over CL-307 for any line whose subject is without_prejudice, even when the line's wording addresses the tone of the letter.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '\n--- review_protocol.md ---\n'; cat /app/input/review_protocol.md
-[?2004l
-
+[?2004l
 --- review_protocol.md ---
 # Review protocol — letter to opposing counsel
 
@@ -499,8 +492,7 @@ When a governing entry's position has two or more required limbs (for example, a
 In the answer, `Letter lines at odds with the record` is the number of lines whose governing entry takes a position
 other than the line's.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '\n--- submission_format.md ---\n'; cat /app/input/submission_format.md
-[?2004l
-
+[?2004l
 --- submission_format.md ---
 # Submission format
 
@@ -548,8 +540,7 @@ Shape example (placeholder values):
 }
 ```
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '%s\n' '--- original_instruction.md ---'; nl -ba /app/input/original_instruction.md
-[?2004l
---- original_instruction.md ---
+[?2004l--- original_instruction.md ---
      1	# Original instruction — the client's first message
      2	
      3	I am Delphine Marr. What follows is what I asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
@@ -598,8 +589,7 @@ Shape example (placeholder values):
     46	
     47	Sign it in my own name as Delphine Marr — the full name is required; do not sign as counsel or on behalf of anyone else.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '%s\n' '--- clarification.md ---'; nl -ba /app/input/clarification.md
-[?2004l
---- clarification.md ---
+[?2004l--- clarification.md ---
      1	# Clarification — the client's later message
      2	
      3	What the client added afterwards, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses; any subject missing here is one the clarification leaves alone.
@@ -648,8 +638,7 @@ Shape example (placeholder values):
     46	
     47	Lines marked 'without prejudice' are settlement offers and must use a soft, conciliatory tone — the opposite of the firm tone the clarification requires for the rest of the letter. This entry takes precedence over CL-307 for any line whose subject is without_prejudice, even when the line's wording addresses the tone of the letter.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '%s\n' '--- review_protocol.md ---'; nl -ba /app/input/review_protocol.md
-[?2004l
---- review_protocol.md ---
+[?2004l--- review_protocol.md ---
      1	# Review protocol — letter to opposing counsel
      2	
      3	Governs every line in `letter_lines.csv`, weighed against `original_instruction.md` and
@@ -699,22 +688,14 @@ Shape example (placeholder values):
     47	In the answer, `Letter lines at odds with the record` is the number of lines whose governing entry takes a position
     48	other than the line's.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> print('rows', len(rows))
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     print(r['line_id'], '|', r['subject'], '|', r['position'], '|', r['cited_entry'], '|', r['wording'])
-[?2004l
-[?2004h> PY
-[?2004l
-rows 325
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> print('rows', len(rows))
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     print(r['line_id'], '|', r['subject'], '|', r['position'], '|', r['cited_entry'], '|', r['wording'])
+[?2004l[?2004h> PY
+[?2004lrows 325
 ST-101 | right_of_first_refusal | agreed by the father | OI-202 | Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
 ST-102 | children_named | both children, with their ages | OI-203 | This concerns Noor, aged seven, and Imogen, aged twelve.
 ST-103 | overnight_stays | several occasions at her home or with a sitter | OI-204 | On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
@@ -1041,8 +1022,7 @@ ST-593 | tone | warm and conversational | CL-305 | The tone should be warm and c
 ST-594 | concern | both limbs | CL-303 | I have a concern that she may not appreciate the stays contravene the order, as well as about the position she has been put in.
 ST-595 | behavioural_plan | no effect on plan | CL-302 | The stays have had no effect on Imogen's behavioural plan.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '%s\n' '--- review_protocol.md lines 1-120 ---'; nl -ba /app/input/review_protocol.md | sed -n '1,120p'
-[?2004l
---- review_protocol.md lines 1-120 ---
+[?2004l--- review_protocol.md lines 1-120 ---
      1	# Review protocol — letter to opposing counsel
      2	
      3	Governs every line in `letter_lines.csv`, weighed against `original_instruction.md` and
@@ -1092,25 +1072,16 @@ ST-595 | behavioural_plan | no effect on plan | CL-302 | The stays have had no e
     47	In the answer, `Letter lines at odds with the record` is the number of lines whose governing entry takes a position
     48	other than the line's.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '%s\n' '--- review_protocol.md lines 121-240 ---'; nl -ba /app/input/review_protocol.md | sed -n '121,240p'
-[?2004l
---- review_protocol.md lines 121-240 ---
+[?2004l--- review_protocol.md lines 121-240 ---
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> print('total rows', len(rows))
-[?2004l
-[?2004h> for i,r in enumerate(rows[:80], 1):
-[?2004l
-[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-total rows 325
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> print('total rows', len(rows))
+[?2004l[?2004h> for i,r in enumerate(rows[:80], 1):
+[?2004l[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
+[?2004l[?2004h> PY
+[?2004ltotal rows 325
 001 | ST-101 | right_of_first_refusal | agreed by the father | OI-202 | Mr Adler agreed to a right of first refusal, so the children are not to be left overnight without him present.
 002 | ST-102 | children_named | both children, with their ages | OI-203 | This concerns Noor, aged seven, and Imogen, aged twelve.
 003 | ST-103 | overnight_stays | several occasions at her home or with a sitter | OI-204 | On several occasions both children have stayed overnight at Ms Corwin's home or with a sitter while Mr Adler was away.
@@ -1192,20 +1163,13 @@ total rows 325
 079 | ST-179 | delivery | by post | OI-204 | The letter is to be sent by post to the offices of opposing counsel.
 080 | ST-180 | addressee | father's attorney | OI-201 | To counsel for Mr Adler.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> for i,r in enumerate(rows[80:160], 81):
-[?2004l
-[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-081 | ST-181 | addressee | father's attorney | CL-301 | Addressed to the father's attorney.
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> for i,r in enumerate(rows[80:160], 81):
+[?2004l[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
+[?2004l[?2004h> PY
+[?2004l081 | ST-181 | addressee | father's attorney | CL-301 | Addressed to the father's attorney.
 082 | ST-182 | copies | copied to father | OI-205 | Copy: Mr Adler.
 083 | ST-183 | delivery | by courier | OI-299 | Deliver by courier to counsel.
 084 | ST-184 | salutation | Dear Mr Adler | OI-211 | Dear Mr Adler,
@@ -1286,20 +1250,13 @@ total rows 325
 159 | ST-321 | enclosure | no enclosure | CL-303 | Nothing is enclosed with this letter.
 160 | ST-322 | salutation | Dear Mr Adler | OI-211 | Dear Mr Adler,
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> for i,r in enumerate(rows[160:240], 161):
-[?2004l
-[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-161 | ST-323 | salutation | Dear Ms Corwin | CL-304 | Dear Ms Corwin,
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> for i,r in enumerate(rows[160:240], 161):
+[?2004l[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
+[?2004l[?2004h> PY
+[?2004l161 | ST-323 | salutation | Dear Ms Corwin | CL-304 | Dear Ms Corwin,
 162 | ST-324 | copies | copy father | OI-205 | Copy: Mr Adler.
 163 | ST-325 | copies | copy school | CL-305 | Copy the school for their file.
 164 | ST-326 | delivery | by email | OI-299 | Send the letter by email to opposing counsel.
@@ -1380,20 +1337,13 @@ total rows 325
 239 | ST-509 | behavioural_plan | old full setback | OI-207 | Imogen's behavioural plan focuses on confidence and stability, and the stays have set it back.
 240 | ST-510 | behavioural_plan | confidence only no peer | CL-308 | Imogen's behavioural plan focuses on confidence, and the stays have set back confidence only.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> for i,r in enumerate(rows[240:320], 241):
-[?2004l
-[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-241 | ST-511 | concern | position only | OI-206 | I am concerned about the position Ms Corwin has been placed in.
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> for i,r in enumerate(rows[240:320], 241):
+[?2004l[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
+[?2004l[?2004h> PY
+[?2004l241 | ST-511 | concern | position only | OI-206 | I am concerned about the position Ms Corwin has been placed in.
 242 | ST-512 | concern | position only | CL-305 | My only concern is the position she has been put in.
 243 | ST-513 | concern | both limbs old | OI-206 | I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in.
 244 | ST-514 | concern | violation only | CL-309 | I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
@@ -1474,75 +1424,43 @@ total rows 325
 319 | ST-589 | request | neither child overnight unless father present | CL-309 | Neither child ought to stay overnight in Ms Corwin's care unless Mr Adler is present.
 320 | ST-590 | request | unless mother present | CL-304 | Neither child should stay overnight with her unless the mother is present.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> for i,r in enumerate(rows[320:400], 321):
-[?2004l
-[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-321 | ST-591 | enclosure | certified copy | CL-306 | Enclosed with this letter is a certified copy of the custodial plan.
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> for i,r in enumerate(rows[320:400], 321):
+[?2004l[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
+[?2004l[?2004h> PY
+[?2004l321 | ST-591 | enclosure | certified copy | CL-306 | Enclosed with this letter is a certified copy of the custodial plan.
 322 | ST-592 | enclosure | uncertified summary | CL-307 | Enclosed is an uncertified draft summary of the custodial plan.
 323 | ST-593 | tone | warm and conversational | CL-305 | The tone should be warm and conversational throughout.
 324 | ST-594 | concern | both limbs | CL-303 | I have a concern that she may not appreciate the stays contravene the order, as well as about the position she has been put in.
 325 | ST-595 | behavioural_plan | no effect on plan | CL-302 | The stays have had no effect on Imogen's behavioural plan.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> for i,r in enumerate(rows[400:480], 401):
-[?2004l
-[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
-[?2004l
-[?2004h>     rows=list(csv.DictReader(f))
-[?2004l
-[?2004h> for i,r in enumerate(rows[480:], 481):
-[?2004l
-[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> print('total rows:', len(rows))
-[?2004l
-[?2004h> print('subjects:')
-[?2004l
-[?2004h> for s,n in collections.Counter(r['subject'] for r in rows).items():
-[?2004l
-[?2004h>     print(f'{s}\t{n}')
-[?2004l
-[?2004h> print('\nunique cited entries:')
-[?2004l
-[?2004h> for c,n in sorted(collections.Counter(r['cited_entry'] for r in rows).items()):
-[?2004l
-[?2004h>     print(f'{c}\t{n}')
-[?2004l
-[?2004h> PY
-[?2004l
-total rows: 325
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> for i,r in enumerate(rows[400:480], 401):
+[?2004l[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
+[?2004l[?2004h> PY
+[?2004l[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv
+[?2004l[?2004h> with open('/app/input/letter_lines.csv', newline='') as f:
+[?2004l[?2004h>     rows=list(csv.DictReader(f))
+[?2004l[?2004h> for i,r in enumerate(rows[480:], 481):
+[?2004l[?2004h>     print(f"{i:03d} | {r['line_id']} | {r['subject']} | {r['position']} | {r['cited_entry']} | {r['wording']}")
+[?2004l[?2004h> PY
+[?2004l[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> print('total rows:', len(rows))
+[?2004l[?2004h> print('subjects:')
+[?2004l[?2004h> for s,n in collections.Counter(r['subject'] for r in rows).items():
+[?2004l[?2004h>     print(f'{s}\t{n}')
+[?2004l[?2004h> print('\nunique cited entries:')
+[?2004l[?2004h> for c,n in sorted(collections.Counter(r['cited_entry'] for r in rows).items()):
+[?2004l[?2004h>     print(f'{c}\t{n}')
+[?2004l[?2004h> PY
+[?2004ltotal rows: 325
 subjects:
 right_of_first_refusal	13
 children_named	13
@@ -1600,18 +1518,12 @@ OI-297	1
 OI-298	3
 OI-299	25
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for i,r in enumerate(rows[:50], 1):
-[?2004l
-[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-001|ST-101|right_of_first_refusal|agreed by the father|OI-202
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[:50], 1):
+[?2004l[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004l001|ST-101|right_of_first_refusal|agreed by the father|OI-202
 002|ST-102|children_named|both children, with their ages|OI-203
 003|ST-103|overnight_stays|several occasions at her home or with a sitter|OI-204
 004|ST-104|addressee|the father's attorney|OI-201
@@ -1662,18 +1574,12 @@ OI-299	25
 049|ST-149|salutation|Dear Sir or Madam|CL-304
 050|ST-150|behavioural_plan|stays improved the plan|OI-207
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for i,r in enumerate(rows[50:100], 51):
-[?2004l
-[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-051|ST-151|copies|copied to the school|CL-305
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[50:100], 51):
+[?2004l[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004l051|ST-151|copies|copied to the school|CL-305
 052|ST-152|overnight_stays|never overnight at her home|OI-204
 053|ST-153|request|no overnight unless father present|OI-208
 054|ST-154|enclosure|certified copy enclosed|OI-209
@@ -1724,18 +1630,12 @@ OI-299	25
 099|ST-199|overnight_stays|one child once|OI-204
 100|ST-200|tone|firm detailed|CL-302
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for i,r in enumerate(rows[100:150], 101):
-[?2004l
-[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-101|ST-201|behavioural_plan|no effect|OI-207
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[100:150], 101):
+[?2004l[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004l101|ST-201|behavioural_plan|no effect|OI-207
 102|ST-202|right_of_first_refusal|mother agreed|OI-202
 103|ST-203|children_named|Noor only|CL-304
 104|ST-204|reply_deadline|seven days|OI-299
@@ -1786,18 +1686,12 @@ OI-299	25
 149|ST-311|copies|nobody|OI-205
 150|ST-312|copies|nobody|OI-299
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for i,r in enumerate(rows[150:200], 151):
-[?2004l
-[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-151|ST-313|delivery|by post|OI-204
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[150:200], 151):
+[?2004l[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004l151|ST-313|delivery|by post|OI-204
 152|ST-314|delivery|by post|OI-299
 153|ST-315|addressee|father's attorney|OI-201
 154|ST-316|addressee|father's attorney|CL-301
@@ -1848,18 +1742,12 @@ OI-299	25
 199|ST-361|mediation_terms|14 days|CL-302
 200|ST-362|legal_fees|father pays|OI-201
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for i,r in enumerate(rows[200:250], 201):
-[?2004l
-[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-201|ST-363|legal_fees|shared|CL-305
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[200:250], 201):
+[?2004l[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004l201|ST-363|legal_fees|shared|CL-305
 202|ST-364|court_listing|directions|OI-204
 203|ST-365|court_listing|urgent hearing|CL-303
 204|ST-366|expert_report|psychologist|OI-207
@@ -1910,18 +1798,12 @@ OI-299	25
 249|ST-519|request|unless mother|CL-302
 250|ST-520|delivery|post|OI-204
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for i,r in enumerate(rows[250:300], 251):
-[?2004l
-[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-251|ST-521|delivery|email|CL-306
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[250:300], 251):
+[?2004l[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004l251|ST-521|delivery|email|CL-306
 252|ST-522|delivery|courier|OI-299
 253|ST-523|copies|nobody|OI-205
 254|ST-524|copies|copy father|CL-305
@@ -1972,18 +1854,12 @@ OI-299	25
 299|ST-569|interim_contact|confidence the only aspect set back|CL-308
 300|ST-570|interim_contact|confidence only despite citation|CL-310
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for i,r in enumerate(rows[300:], 301):
-[?2004l
-[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-301|ST-571|without_prejudice|soft conciliatory tone|CL-307
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for i,r in enumerate(rows[300:], 301):
+[?2004l[?2004h>     print(f"{i:03d}|{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004l301|ST-571|without_prejudice|soft conciliatory tone|CL-307
 302|ST-572|without_prejudice|soft tone settlement offer|CL-311
 303|ST-573|without_prejudice|conciliatory and open|OI-210
 304|ST-574|without_prejudice|soft and measured|CL-307
@@ -2009,22 +1885,14 @@ OI-299	25
 324|ST-594|concern|both limbs|CL-303
 325|ST-595|behavioural_plan|no effect on plan|CL-302
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> combos=collections.Counter((r['subject'], r['position'], r['cited_entry']) for r in rows)
-[?2004l
-[?2004h> print('unique combos:', len(combos))
-[?2004l
-[?2004h> for (s,p,c),n in sorted(combos.items()):
-[?2004l
-[?2004h>     print(f'{s}|{p}|{c}|{n}')
-[?2004l
-[?2004h> PY
-[?2004l
-unique combos: 286
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> combos=collections.Counter((r['subject'], r['position'], r['cited_entry']) for r in rows)
+[?2004l[?2004h> print('unique combos:', len(combos))
+[?2004l[?2004h> for (s,p,c),n in sorted(combos.items()):
+[?2004l[?2004h>     print(f'{s}|{p}|{c}|{n}')
+[?2004l[?2004h> PY
+[?2004lunique combos: 286
 addressee|father|CL-301|1
 addressee|father|OI-299|1
 addressee|father directly not mother's attorney|OI-201|1
@@ -2312,42 +2180,24 @@ without_prejudice|soft and measured|CL-307|1
 without_prejudice|soft conciliatory tone|CL-307|1
 without_prejudice|soft tone settlement offer|CL-311|1
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import re, csv
-[?2004l
-[?2004h> records={}
-[?2004l
-[?2004h> for path, prefix in [('/app/input/original_instruction.md','OI'),('/app/input/clarification.md','CL')]:
-[?2004l
-[?2004h>     txt=open(path).read()
-[?2004l
-[?2004h>     for m in re.finditer(r'^## (OI-\d+|CL-\d+) `([^`]+)`\n(.*?)(?=\n## |\Z)', txt, re.M|re.S):
-[?2004l
-[?2004h>         eid, subject, body = m.groups()
-[?2004l
-[?2004h>         records[eid]=(subject, body.strip())
-[?2004l
-[?2004h> print('Record entries:')
-[?2004l
-[?2004h> for eid in sorted(records):
-[?2004l
-[?2004h>     print(eid, records[eid][0], '::', records[eid][1].replace('\n',' ')[:120])
-[?2004l
-[?2004h> print('\nRows with CL cited_entry for different subject (RP-407 candidates):')
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     c=r['cited_entry']
-[?2004l
-[?2004h>     if c.startswith('CL-') and c in records and records[c][0] != r['subject']:
-[?2004l
-[?2004h>         print(r['line_id'], 'subject=', r['subject'], 'cited=', c, 'cited_subject=', records[c][0], 'position=', r['position'])
-[?2004l
-[?2004h> PY
-[?2004l
-Record entries:
+[?2004l[?2004h> import re, csv
+[?2004l[?2004h> records={}
+[?2004l[?2004h> for path, prefix in [('/app/input/original_instruction.md','OI'),('/app/input/clarification.md','CL')]:
+[?2004l[?2004h>     txt=open(path).read()
+[?2004l[?2004h>     for m in re.finditer(r'^## (OI-\d+|CL-\d+) `([^`]+)`\n(.*?)(?=\n## |\Z)', txt, re.M|re.S):
+[?2004l[?2004h>         eid, subject, body = m.groups()
+[?2004l[?2004h>         records[eid]=(subject, body.strip())
+[?2004l[?2004h> print('Record entries:')
+[?2004l[?2004h> for eid in sorted(records):
+[?2004l[?2004h>     print(eid, records[eid][0], '::', records[eid][1].replace('\n',' ')[:120])
+[?2004l[?2004h> print('\nRows with CL cited_entry for different subject (RP-407 candidates):')
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     c=r['cited_entry']
+[?2004l[?2004h>     if c.startswith('CL-') and c in records and records[c][0] != r['subject']:
+[?2004l[?2004h>         print(r['line_id'], 'subject=', r['subject'], 'cited=', c, 'cited_subject=', records[c][0], 'position=', r['position'])
+[?2004l[?2004h> PY
+[?2004lRecord entries:
 CL-301 addressee :: To be clear: Adam is the father. The letter goes to Catherine's attorney — the mother's attorney — not to Adam's.
 CL-302 request :: The request stands: neither child overnight in her care unless the father is present.
 CL-303 enclosure :: Yes, enclose the certified copy of the custodial plan.
@@ -2484,22 +2334,14 @@ ST-593 subject= tone cited= CL-305 cited_subject= copies position= warm and conv
 ST-594 subject= concern cited= CL-303 cited_subject= enclosure position= both limbs
 ST-595 subject= behavioural_plan cited= CL-302 cited_subject= request position= no effect on plan
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> print('subjects:', ', '.join(sorted(collections.Counter(r['subject'] for r in rows))))
-[?2004l
-[?2004h> print('total:', len(rows))
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     print(f"{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
-[?2004l
-[?2004h> PY
-[?2004l
-subjects: addressee, behavioural_plan, children_named, concern, copies, court_listing, delivery, enclosure, expert_report, hearing_bundle, inconsistent_accounts, interim_contact, legal_fees, mediation_offer, mediation_terms, overnight_stays, reply_deadline, request, right_of_first_refusal, salutation, school_reference, sender_signature, tone, without_prejudice
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> print('subjects:', ', '.join(sorted(collections.Counter(r['subject'] for r in rows))))
+[?2004l[?2004h> print('total:', len(rows))
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     print(f"{r['line_id']}|{r['subject']}|{r['position']}|{r['cited_entry']}")
+[?2004l[?2004h> PY
+[?2004lsubjects: addressee, behavioural_plan, children_named, concern, copies, court_listing, delivery, enclosure, expert_report, hearing_bundle, inconsistent_accounts, interim_contact, legal_fees, mediation_offer, mediation_terms, overnight_stays, reply_deadline, request, right_of_first_refusal, salutation, school_reference, sender_signature, tone, without_prejudice
 total: 325
 ST-101|right_of_first_refusal|agreed by the father|OI-202
 ST-102|children_named|both children, with their ages|OI-203
@@ -2827,30 +2669,18 @@ ST-593|tone|warm and conversational|CL-305
 ST-594|concern|both limbs|CL-303
 ST-595|behavioural_plan|no effect on plan|CL-302
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY' > /tmp/positions_by_subject.txt
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> by=collections.defaultdict(list)
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     by[r['subject']].append(r['position'])
-[?2004l
-[?2004h> for s in sorted(by):
-[?2004l
-[?2004h>     print(f'### {s} ({len(by[s])})')
-[?2004l
-[?2004h>     for p,n in sorted(collections.Counter(by[s]).items()):
-[?2004l
-[?2004h>         print(f'{n}\t{p}')
-[?2004l
-[?2004h> PY
-[?2004l
-[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ sed -n '1,120p' /tmp/positions_by_subject.txt
-[?2004l
-### addressee (21)
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> by=collections.defaultdict(list)
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     by[r['subject']].append(r['position'])
+[?2004l[?2004h> for s in sorted(by):
+[?2004l[?2004h>     print(f'### {s} ({len(by[s])})')
+[?2004l[?2004h>     for p,n in sorted(collections.Counter(by[s]).items()):
+[?2004l[?2004h>         print(f'{n}\t{p}')
+[?2004l[?2004h> PY
+[?2004l[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ sed -n '1,120p' /tmp/positions_by_subject.txt
+[?2004l### addressee (21)
 2	father
 1	father directly not mother's attorney
 7	father's attorney
@@ -2971,8 +2801,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
 1	confidence stability peer relations all three
 1	confidence stability peer relations jointly
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ sed -n '121,240p' /tmp/positions_by_subject.txt
-[?2004l
-1	confidence the aspect set back
+[?2004l1	confidence the aspect set back
 1	confidence the only aspect set back
 2	supervised
 1	supervised only
@@ -3085,12 +2914,9 @@ ST-595|behavioural_plan|no effect on plan|CL-302
 1	soft conciliatory tone
 1	soft tone settlement offer
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ sed -n '241,360p' /tmp/positions_by_subject.txt
-[?2004l
-[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ sed -n '361,480p' /tmp/positions_by_subject.txt
-[?2004l
-[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '1,80p'
-[?2004l
-     1	### addressee (21)
+[?2004l[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ sed -n '361,480p' /tmp/positions_by_subject.txt
+[?2004l[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '1,80p'
+[?2004l     1	### addressee (21)
      2	2	father
      3	1	father directly not mother's attorney
      4	7	father's attorney
@@ -3171,8 +2997,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
     79	1	an uncertified summary of the plan
     80	1	certified
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '81,160p'
-[?2004l
-    81	5	certified copy
+[?2004l    81	5	certified copy
     82	1	certified copy enclosed
     83	1	no enclosure
     84	1	uncertified summary
@@ -3253,8 +3078,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    159	1	fourteen days
    160	1	reply in 10 days
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '1,40p'
-[?2004l
-     1	### addressee (21)
+[?2004l     1	### addressee (21)
      2	2	father
      3	1	father directly not mother's attorney
      4	7	father's attorney
@@ -3295,8 +3119,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
     39	1	no concern about the stays
     40	1	position limb only
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '41,80p'
-[?2004l
-    41	4	position only
+[?2004l    41	4	position only
     42	1	she may not appreciate
     43	6	violation limb only
     44	1	violation only
@@ -3337,8 +3160,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
     79	1	an uncertified summary of the plan
     80	1	certified
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '81,120p'
-[?2004l
-    81	5	certified copy
+[?2004l    81	5	certified copy
     82	1	certified copy enclosed
     83	1	no enclosure
     84	1	uncertified summary
@@ -3379,8 +3201,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    119	1	confidence stability peer relations all three
    120	1	confidence stability peer relations jointly
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '121,170p'
-[?2004l
-   121	1	confidence the aspect set back
+[?2004l   121	1	confidence the aspect set back
    122	1	confidence the only aspect set back
    123	2	supervised
    124	1	supervised only
@@ -3431,8 +3252,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    169	3	neither child overnight unless father present
    170	1	no overnight stays in her care unless the father is present
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '1,80p'
-[?2004l
-     1	### addressee (21)
+[?2004l     1	### addressee (21)
      2	2	father
      3	1	father directly not mother's attorney
      4	7	father's attorney
@@ -3513,8 +3333,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
     79	1	an uncertified summary of the plan
     80	1	certified
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '81,120p'
-[?2004l
-    81	5	certified copy
+[?2004l    81	5	certified copy
     82	1	certified copy enclosed
     83	1	no enclosure
     84	1	uncertified summary
@@ -3555,8 +3374,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    119	1	confidence stability peer relations all three
    120	1	confidence stability peer relations jointly
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '121,170p'
-[?2004l
-   121	1	confidence the aspect set back
+[?2004l   121	1	confidence the aspect set back
    122	1	confidence the only aspect set back
    123	2	supervised
    124	1	supervised only
@@ -3607,8 +3425,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    169	3	neither child overnight unless father present
    170	1	no overnight stays in her care unless the father is present
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '171,220p'
-[?2004l
-   171	2	no overnight stays unless father present
+[?2004l   171	2	no overnight stays unless father present
    172	1	no overnight unless accompanied by a parent
    173	4	no overnight unless father present
    174	1	no overnight unless the mother is present
@@ -3659,8 +3476,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    219	1	warm and personal
    220	1	wording copies
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '81,100p'
-[?2004l
-    81	5	certified copy
+[?2004l    81	5	certified copy
     82	1	certified copy enclosed
     83	1	no enclosure
     84	1	uncertified summary
@@ -3681,8 +3497,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
     99	1	babysitter to clinicians
    100	1	babysitter to me only
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '101,120p'
-[?2004l
-   101	1	clinicians only
+[?2004l   101	1	clinicians only
    102	1	sitter and clinicians
    103	1	sitter to me only
    104	1	three audiences
@@ -3703,8 +3518,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    119	1	confidence stability peer relations all three
    120	1	confidence stability peer relations jointly
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '121,140p'
-[?2004l
-   121	1	confidence the aspect set back
+[?2004l   121	1	confidence the aspect set back
    122	1	confidence the only aspect set back
    123	2	supervised
    124	1	supervised only
@@ -3725,8 +3539,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    139	1	14 days
    140	1	mediate in 14 days
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '141,160p'
-[?2004l
-   141	1	mediation within 14 days
+[?2004l   141	1	mediation within 14 days
    142	### overnight_stays (17)
    143	1	Noor only several
    144	1	Noor only several times
@@ -3747,8 +3560,7 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    159	1	fourteen days
    160	1	reply in 10 days
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/positions_by_subject.txt | sed -n '161,181p'
-[?2004l
-   161	1	seven days
+[?2004l   161	1	seven days
    162	1	twenty-one days
    163	### request (23)
    164	1	CL match
@@ -3770,24 +3582,15 @@ ST-595|behavioural_plan|no effect on plan|CL-302
    180	1	agreement only no overnight
    181	4	father agreed
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> for s in ['addressee','right_of_first_refusal','children_named','overnight_stays','inconsistent_accounts']:
-[?2004l
-[?2004h>     print(f'### {s}')
-[?2004l
-[?2004h>     for r in rows:
-[?2004l
-[?2004h>         if r['subject']==s:
-[?2004l
-[?2004h>             print(f"{r['line_id']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-### addressee
+[?2004l[?2004h> import csv
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> for s in ['addressee','right_of_first_refusal','children_named','overnight_stays','inconsistent_accounts']:
+[?2004l[?2004h>     print(f'### {s}')
+[?2004l[?2004h>     for r in rows:
+[?2004l[?2004h>         if r['subject']==s:
+[?2004l[?2004h>             print(f"{r['line_id']}|{r['position']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l### addressee
 ST-104|the father's attorney|OI-201|To counsel for Mr Adler.
 ST-129|the father attorney|OI-201|This letter is addressed to the attorney representing the father in this matter.
 ST-143|the father's attorney|CL-301|To counsel for Mr Adler.
@@ -3877,8 +3680,7 @@ ST-409|three without neighbours|CL-304|The father has called her his wife to the
 ST-538|all four|CL-303|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours.
 ST-539|three no neighbour|OI-205|Mr Adler has described Ms Corwin as his wife to the school, as the person Imogen lives with to her clinicians, and as a babysitter to me.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /app/input/original_instruction.md | sed -n '1,120p'
-[?2004l
-     1	# Original instruction — the client's first message
+[?2004l     1	# Original instruction — the client's first message
      2	
      3	I am Delphine Marr. What follows is what I asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
      4	
@@ -3926,8 +3728,7 @@ ST-539|three no neighbour|OI-205|Mr Adler has described Ms Corwin as his wife to
     46	
     47	Sign it in my own name as Delphine Marr — the full name is required; do not sign as counsel or on behalf of anyone else.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /app/input/clarification.md | sed -n '1,120p'
-[?2004l
-     1	# Clarification — the client's later message
+[?2004l     1	# Clarification — the client's later message
      2	
      3	What the client added afterwards, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses; any subject missing here is one the clarification leaves alone.
      4	
@@ -3975,22 +3776,14 @@ ST-539|three no neighbour|OI-205|Mr Adler has described Ms Corwin as his wife to
     46	
     47	Lines marked 'without prejudice' are settlement offers and must use a soft, conciliatory tone — the opposite of the firm tone the clarification requires for the rest of the letter. This entry takes precedence over CL-307 for any line whose subject is without_prejudice, even when the line's wording addresses the tone of the letter.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import re
-[?2004l
-[?2004h> for path in ['/app/input/original_instruction.md','/app/input/clarification.md']:
-[?2004l
-[?2004h>     print(path)
-[?2004l
-[?2004h>     txt=open(path).read()
-[?2004l
-[?2004h>     for m in re.finditer(r'^## (OI-\d+|CL-\d+) `([^`]+)`', txt, re.M):
-[?2004l
-[?2004h>         print(m.group(1), m.group(2))
-[?2004l
-[?2004h> PY
-[?2004l
-/app/input/original_instruction.md
+[?2004l[?2004h> import re
+[?2004l[?2004h> for path in ['/app/input/original_instruction.md','/app/input/clarification.md']:
+[?2004l[?2004h>     print(path)
+[?2004l[?2004h>     txt=open(path).read()
+[?2004l[?2004h>     for m in re.finditer(r'^## (OI-\d+|CL-\d+) `([^`]+)`', txt, re.M):
+[?2004l[?2004h>         print(m.group(1), m.group(2))
+[?2004l[?2004h> PY
+[?2004l/app/input/original_instruction.md
 OI-201 addressee
 OI-202 right_of_first_refusal
 OI-203 children_named
@@ -4015,28 +3808,17 @@ CL-309 concern
 CL-310 interim_contact
 CL-311 without_prejudice
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY' > /tmp/position_samples.txt
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> seen={}
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     key=(r['subject'], r['position'])
-[?2004l
-[?2004h>     seen.setdefault(key, r)
-[?2004l
-[?2004h> for (s,p),r in sorted(seen.items()):
-[?2004l
-[?2004h>     print(f"{s}|{p}|{r['line_id']}|{r['cited_entry']}|{r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/position_samples.txt | sed -n '1,70p'
-[?2004l
-     1	addressee|father|ST-516|CL-301|Address the letter to the father's attorney.
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> seen={}
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     key=(r['subject'], r['position'])
+[?2004l[?2004h>     seen.setdefault(key, r)
+[?2004l[?2004h> for (s,p),r in sorted(seen.items()):
+[?2004l[?2004h>     print(f"{s}|{p}|{r['line_id']}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/position_samples.txt | sed -n '1,70p'
+[?2004l     1	addressee|father|ST-516|CL-301|Address the letter to the father's attorney.
      2	addressee|father directly not mother's attorney|ST-416|OI-201|Address the letter to the father directly.
      3	addressee|father's attorney|ST-180|OI-201|To counsel for Mr Adler.
      4	addressee|mother|ST-515|OI-201|This letter goes to counsel for Ms Corwin — the mother's attorney.
@@ -4107,8 +3889,7 @@ CL-311 without_prejudice
     69	delivery|wording salutation|ST-546|CL-306|Dear Counsel,
     70	enclosure|a certified copy of the custodial plan|ST-109|OI-209|A certified copy of the custodial plan is enclosed.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/position_samples.txt | sed -n '71,140p'
-[?2004l
-    71	enclosure|an uncertified summary of the plan|ST-134|OI-209|An uncertified summary of the custodial plan is enclosed.
+[?2004l    71	enclosure|an uncertified summary of the plan|ST-134|OI-209|An uncertified summary of the custodial plan is enclosed.
     72	enclosure|certified|ST-525|OI-209|A certified copy of the custodial plan is enclosed.
     73	enclosure|certified copy|ST-173|OI-209|A certified copy of the custodial plan is enclosed with this letter.
     74	enclosure|certified copy enclosed|ST-154|OI-209|A certified copy of the custodial plan is enclosed.
@@ -4179,8 +3960,7 @@ CL-311 without_prejudice
    139	reply_deadline|14 days|ST-357|CL-306|A reply within fourteen days is requested.
    140	reply_deadline|7 days|ST-356|OI-210|Please reply within seven days.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ nl -ba /tmp/position_samples.txt | sed -n '141,210p'
-[?2004l
-   141	reply_deadline|a reply within seven days|ST-114|OI-299|I would be grateful for a reply within seven days.
+[?2004l   141	reply_deadline|a reply within seven days|ST-114|OI-299|I would be grateful for a reply within seven days.
    142	reply_deadline|fourteen days|ST-205|CL-399|A reply within fourteen days is requested.
    143	reply_deadline|reply in 10 days|ST-159|OI-299|I would be grateful for a reply within ten days.
    144	reply_deadline|seven days|ST-204|OI-299|Please reply within seven days.
@@ -4249,30 +4029,18 @@ CL-311 without_prejudice
    207	without_prejudice|soft conciliatory tone|ST-571|CL-307|Without prejudice, I write in a conciliatory spirit to explore whether common ground can be found for the children's sake.
    208	without_prejudice|soft tone settlement offer|ST-572|CL-311|Marked without prejudice, this letter is framed softly and without rancour, as befits a genuine attempt to settle.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> seen={}
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     seen.setdefault((r['subject'], r['position']), r)
-[?2004l
-[?2004h> for s in ['addressee','right_of_first_refusal','children_named','concern','behavioural_plan']:
-[?2004l
-[?2004h>     print(f'### {s}')
-[?2004l
-[?2004h>     for (subj,p),r in sorted(seen.items()):
-[?2004l
-[?2004h>         if subj==s:
-[?2004l
-[?2004h>             print(f"{r['line_id']}|{p}|{r['cited_entry']}|{r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-### addressee
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> seen={}
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     seen.setdefault((r['subject'], r['position']), r)
+[?2004l[?2004h> for s in ['addressee','right_of_first_refusal','children_named','concern','behavioural_plan']:
+[?2004l[?2004h>     print(f'### {s}')
+[?2004l[?2004h>     for (subj,p),r in sorted(seen.items()):
+[?2004l[?2004h>         if subj==s:
+[?2004l[?2004h>             print(f"{r['line_id']}|{p}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l### addressee
 ST-516|father|CL-301|Address the letter to the father's attorney.
 ST-416|father directly not mother's attorney|OI-201|Address the letter to the father directly.
 ST-180|father's attorney|OI-201|To counsel for Mr Adler.
@@ -4327,30 +4095,18 @@ ST-150|stays improved the plan|OI-207|Imogen's behavioural plan focuses on confi
 ST-107|the stays have had no effect on the plan|OI-207|Imogen's behavioural plan focuses on her confidence and stability, and the stays have not affected her progress.
 ST-547|wording addressee mother|OI-207|This letter goes to counsel for Ms Corwin — the mother's attorney.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
-[?2004l
-[?2004h> seen={}
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     seen.setdefault((r['subject'], r['position']), r)
-[?2004l
-[?2004h> for s in ['copies','court_listing','delivery','enclosure','expert_report','hearing_bundle','interim_contact','legal_fees','mediation_offer','mediation_terms','overnight_stays','reply_deadline','request','salutation','school_reference','sender_signature','tone','without_prejudice']:
-[?2004l
-[?2004h>     print(f'### {s}')
-[?2004l
-[?2004h>     for (subj,p),r in sorted(seen.items()):
-[?2004l
-[?2004h>         if subj==s:
-[?2004l
-[?2004h>             print(f"{r['line_id']}|{p}|{r['cited_entry']}|{r['wording']}")
-[?2004l
-[?2004h> PY
-[?2004l
-### copies
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/input/letter_lines.csv', newline='')))
+[?2004l[?2004h> seen={}
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     seen.setdefault((r['subject'], r['position']), r)
+[?2004l[?2004h> for s in ['copies','court_listing','delivery','enclosure','expert_report','hearing_bundle','interim_contact','legal_fees','mediation_offer','mediation_terms','overnight_stays','reply_deadline','request','salutation','school_reference','sender_signature','tone','without_prejudice']:
+[?2004l[?2004h>     print(f'### {s}')
+[?2004l[?2004h>     for (subj,p),r in sorted(seen.items()):
+[?2004l[?2004h>         if subj==s:
+[?2004l[?2004h>             print(f"{r['line_id']}|{p}|{r['cited_entry']}|{r['wording']}")
+[?2004l[?2004h> PY
+[?2004l### copies
 ST-182|copied to father|OI-205|Copy: Mr Adler.
 ST-128|copied to the children|OI-299|A copy of this letter has been provided to both children for their records.
 ST-113|copied to the father|CL-305|Copy: Mr Adler.
@@ -4511,284 +4267,145 @@ ST-574|soft and measured|CL-307|Sent without prejudice, the letter adopts a soft
 ST-571|soft conciliatory tone|CL-307|Without prejudice, I write in a conciliatory spirit to explore whether common ground can be found for the children's sake.
 ST-572|soft tone settlement offer|CL-311|Marked without prejudice, this letter is framed softly and without rancour, as befits a genuine attempt to settle.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ cat > /tmp/review_letter.py <<'PY'
-[?2004l
-[?2004h> import csv, json, re, collections
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> INPUT='/app/input/letter_lines.csv'
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> # Record entries by id
-[?2004l
-[?2004h> records = {}
-[?2004l
-[?2004h> for path in ['/app/input/original_instruction.md','/app/input/clarification.md']:
-[?2004l
-[?2004h>     txt=open(path).read()
-[?2004l
-[?2004h>     for m in re.finditer(r'^## (OI-\d+|CL-\d+) `([^`]+)`\n(.*?)(?=\n## |\Z)', txt, re.M|re.S):
-[?2004l
-[?2004h>         eid, subject, body = m.groups()
-[?2004l
-[?2004h>         records[eid]=(subject, body.strip())
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> orig_subjects = {eid: subj for eid,(subj,_) in records.items() if eid.startswith('OI-')}
-[?2004l
-[?2004h> clar_subjects = {eid: subj for eid,(subj,_) in records.items() if eid.startswith('CL-')}
-[?2004l
-[?2004h> subject_to_orig = {subj:eid for eid,subj in orig_subjects.items()}
-[?2004l
-[?2004h> subject_to_clar = {subj:eid for eid,subj in clar_subjects.items()}
-[?2004l
-[?2004h> 
-[?2004l
-w[?2004h> # Verified position strings for each governing entry.
-[?2004l
-[?2004h> verified_by_entry = {
-[?2004l
-s[?2004h>     'OI-201': {'father','father\'s attorney','the father attorney','the father\'s attorney'},
-[?2004l
-[?2004h>     'CL-301': {'mother','mother\'s attorney'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-202': {'agreed by the father','father agreed','full'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-203': {'both children with ages','both children, with their ages','both with ages'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-204': {'full','home or sitter both','several occasions at her home or with a sitter'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-205': {'all four','all four audiences'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-206': {'both limbs','both limbs old'},
-[?2004l
-[?2004h>     'CL-309': {'position only','narrower concern only position','position limb only'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-207': {'confidence stability setback','old full setback'},
-[?2004l
-e[?2004h>     'CL-308': {'CL match confidence-only setback','full CL match','confidence stability peer confidence-only'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-208': {'CL match','CL wording exact','CL wording paraphrase','neither child overnight unless father present','no overnight stays in her care unless the father is present','no overnight stays unless father present','no overnight unless father present'},
-[?2004l
-[?2004h>     'CL-302': {'CL match','CL wording exact','CL wording paraphrase','neither child overnight unless father present','no overnight stays in her care unless the father is present','no overnight stays unless father present','no overnight unless father present'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-209': {'a certified copy of the custodial plan','certified','certified copy','certified copy enclosed'},
-[?2004l
-[?2004h>     'CL-303': {'a certified copy of the custodial plan','certified','certified copy','certified copy enclosed'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'OI-210': {'soft formal succinct'},
-[?2004l
-[?2004h>     'CL-307': {'firm formal brief'},
-[?2004l
-[?2004h> 
-[?2004l
-elivery met[?2004h>     'OI-211': {'full name','own name','the sender\'s own name'},
-[?2004l
-[?2004h> 
-[?2004l
-u[?2004h>     'CL-304': {'Dear Counsel'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'CL-305': {'copy nobody','nobody'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'CL-306': {'by post','post'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'CL-310': {'all three addressed together','all three aspects jointly','all three aspects together','confidence stability peer relations all three','confidence stability peer relations jointly'},
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h>     'CL-311': {'conciliatory and open','gentle settlement tone','soft and measured','soft conciliatory tone','soft tone settlement offer'},
-[?2004l
-[?2004h> }
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> not_in_record_subjects = {
-[?2004l
-[?2004h>     'court_listing','expert_report','hearing_bundle','legal_fees',
-[?2004l
-[?2004h>     'mediation_offer','mediation_terms','reply_deadline','school_reference'
-[?2004l
-s[?2004h> }
-[?2004l
-[?2004h> 
-[?2004l
-([?2004h> def governing_entry(row):
-[?2004l
-[?2004h>     s=row['subject']; c=row['cited_entry']
-[?2004l
-[?2004h>     if s in not_in_record_subjects:
-[?2004l
-f[?2004h>         return 'NONE'
-[?2004l
-[?2004h>     # RP-407: if cited is an existing CL entry for a different subject, and the line's subject has an original entry, original governs.
-[?2004l
-[?2004h>     if c.startswith('CL-') and c in records and records[c][0] != s and s in subject_to_orig:
-[?2004l
-[?2004h>         return subject_to_orig[s]
-[?2004l
-[?2004h>     # If the clarification speaks to the subject, clarification governs (RP-401/RP-402).
-[?2004l
-[?2004h>     if s in subject_to_clar:
-[?2004l
-[?2004h>         return subject_to_clar[s]
-[?2004l
-[?2004h>     # If only the original speaks to the subject, original governs (RP-403).
-[?2004l
-[?2004h>     if s in subject_to_orig:
-[?2004l
-[?2004h>         return subject_to_orig[s]
-[?2004l
-[?2004h>     # Neither record speaks to the subject (RP-404).
-[?2004l
-[?2004h>     return 'NONE'
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> def verdict(row, gov):
-[?2004l
-[?2004h>     if gov == 'NONE':
-[?2004l
-[?2004h>         return 'NOT_IN_RECORD'
-[?2004l
-[?2004h>     if row['position'] in verified_by_entry.get(gov, set()):
-[?2004l
-[?2004h>         return 'VERIFIED'
-[?2004l
-[?2004h>     return 'AT_ODDS'
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> rows=list(csv.DictReader(open(INPUT, newline='')))
-[?2004l
-[?2004h> out_rows=[]
-[?2004l
-[?2004h> for r in rows:
-[?2004l
-[?2004h>     gov=governing_entry(r)
-[?2004l
-[?2004h>     v=verdict(r, gov)
-[?2004l
-[?2004h>     out_rows.append({'line_id': r['line_id'], 'verdict': v, 'record_entry': gov})
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> with open('/app/letter_line_review.csv','w',newline='') as f:
-[?2004l
-[?2004h>     w=csv.DictWriter(f, fieldnames=['line_id','verdict','record_entry'])
-[?2004l
-[?2004h>     w.writeheader()
-[?2004l
-[?2004h>     w.writerows(out_rows)
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> counts=collections.Counter(r['verdict'] for r in out_rows)
-[?2004l
-[?2004h> clar_gov=sum(1 for r in out_rows if r['record_entry'].startswith('CL-'))
-[?2004l
-[?2004h> results={
-[?2004l
-[?2004h>     'verified_count': counts['VERIFIED'],
-[?2004l
-[?2004h>     'at_odds_count': counts['AT_ODDS'],
-[?2004l
-[?2004h>     'not_in_record_count': counts['NOT_IN_RECORD'],
-[?2004l
-[?2004h>     'clarification_governed_count': clar_gov,
-[?2004l
-[?2004h> }
-[?2004l
-[?2004h> with open('/app/results.json','w') as f:
-[?2004l
-[?2004h>     json.dump(results, f, indent=2)
-[?2004l
-[?2004h>     f.write('\n')
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> answer = f"""# Review of draft letter lines against the client's record
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> I checked every numbered line in the draft letter against the client's two messages, applying the review protocol exactly. Where the clarification speaks to a subject, it prevails over the original instruction; where the clarification leaves a subject alone, the original entry still governs; where neither record speaks to a subject, the line is not in the record at all. I also followed the cross-subject citation exception: a clarification citation meant for another subject does not displace the original entry for the line's own subject when that original entry exists.
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> The draft contains {len(rows)} numbered lines. After weighing each line against the governing record entry, {counts['VERIFIED']} lines are verified by the record, {counts['NOT_IN_RECORD']} lines are not in the record at all, and {counts['AT_ODDS']} lines take a position that conflicts with or narrows the client's instructions. Letter lines at odds with the record: {counts['AT_ODDS']}. This count is the figure I am relying on; it is not one of two candidates. The remaining lines either match the record entry that governs them or fall outside the record because no entry addresses their subject.
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> The most common problems are lines that drop required limbs from compound instructions, such as tone entries that keep only part of the required tone, concern entries that raise or omit a limb the client revised, and behavioural-plan entries that do not carry the full position stated in the governing entry. Other lines are at odds because they name the wrong addressee, describe the wrong delivery method, or seek a different overnight condition. Lines on subjects such as legal fees, court listings, expert reports, hearing bundles, mediation terms, reply deadlines, and school references are not in the record at all, because neither the original instruction nor the clarification addresses those subjects.
-[?2004l
-[?2004h> """
-[?2004l
-[?2004h> with open('/app/answer.md','w') as f:
-[?2004l
-[?2004h>     f.write(answer)
-[?2004l
-[?2004h> 
-[?2004l
-[?2004h> print('rows', len(rows))
-[?2004l
-[?2004h> print('counts', dict(counts))
-[?2004l
-[?2004h> print('clar_gov', clar_gov)
-[?2004l
-[?2004h> print('results', results)
-[?2004l
-[?2004h> print('\nGoverning entry counts:')
-[?2004l
-[?2004h> for gov,n in sorted(collections.Counter(r['record_entry'] for r in out_rows).items()):
-[?2004l
-[?2004h>     print(gov, n)
-[?2004l
-[?2004h> print('\nAT_ODDS positions by governing entry:')
-[?2004l
-[?2004h> for gov in sorted(set(r['record_entry'] for r in out_rows if r['verdict']=='AT_ODDS')):
-[?2004l
-[?2004h>     positions=sorted({row['position'] for row in rows if row['line_id'] in {r['line_id'] for r in out_rows if r['record_entry']==gov and r['verdict']=='AT_ODDS'}})
-[?2004l
-[?2004h>     print(gov, positions)
-[?2004l
-[?2004h> print('\nNOT_IN_RECORD subjects:')
-[?2004l
-[?2004h> for s in sorted(not_in_record_subjects):
-[?2004l
-[?2004h>     ids=[r['line_id'] for r in rows if r['subject']==s]
-[?2004l
-[?2004h>     print(s, len(ids), ids)
-[?2004l
-[?2004h> PY
-[?2004l
-[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 /tmp/review_letter.py
-[?2004l
-rows 325
+[?2004l[?2004h> import csv, json, re, collections
+[?2004l[?2004h> 
+[?2004l[?2004h> INPUT='/app/input/letter_lines.csv'
+[?2004l[?2004h> 
+[?2004l[?2004h> # Record entries by id
+[?2004l[?2004h> records = {}
+[?2004l[?2004h> for path in ['/app/input/original_instruction.md','/app/input/clarification.md']:
+[?2004l[?2004h>     txt=open(path).read()
+[?2004l[?2004h>     for m in re.finditer(r'^## (OI-\d+|CL-\d+) `([^`]+)`\n(.*?)(?=\n## |\Z)', txt, re.M|re.S):
+[?2004l[?2004h>         eid, subject, body = m.groups()
+[?2004l[?2004h>         records[eid]=(subject, body.strip())
+[?2004l[?2004h> 
+[?2004l[?2004h> orig_subjects = {eid: subj for eid,(subj,_) in records.items() if eid.startswith('OI-')}
+[?2004l[?2004h> clar_subjects = {eid: subj for eid,(subj,_) in records.items() if eid.startswith('CL-')}
+[?2004l[?2004h> subject_to_orig = {subj:eid for eid,subj in orig_subjects.items()}
+[?2004l[?2004h> subject_to_clar = {subj:eid for eid,subj in clar_subjects.items()}
+[?2004l[?2004h> 
+[?2004lw[?2004h> # Verified position strings for each governing entry.
+[?2004l[?2004h> verified_by_entry = {
+[?2004ls[?2004h>     'OI-201': {'father','father\'s attorney','the father attorney','the father\'s attorney'},
+[?2004l[?2004h>     'CL-301': {'mother','mother\'s attorney'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-202': {'agreed by the father','father agreed','full'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-203': {'both children with ages','both children, with their ages','both with ages'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-204': {'full','home or sitter both','several occasions at her home or with a sitter'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-205': {'all four','all four audiences'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-206': {'both limbs','both limbs old'},
+[?2004l[?2004h>     'CL-309': {'position only','narrower concern only position','position limb only'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-207': {'confidence stability setback','old full setback'},
+[?2004le[?2004h>     'CL-308': {'CL match confidence-only setback','full CL match','confidence stability peer confidence-only'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-208': {'CL match','CL wording exact','CL wording paraphrase','neither child overnight unless father present','no overnight stays in her care unless the father is present','no overnight stays unless father present','no overnight unless father present'},
+[?2004l[?2004h>     'CL-302': {'CL match','CL wording exact','CL wording paraphrase','neither child overnight unless father present','no overnight stays in her care unless the father is present','no overnight stays unless father present','no overnight unless father present'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-209': {'a certified copy of the custodial plan','certified','certified copy','certified copy enclosed'},
+[?2004l[?2004h>     'CL-303': {'a certified copy of the custodial plan','certified','certified copy','certified copy enclosed'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'OI-210': {'soft formal succinct'},
+[?2004l[?2004h>     'CL-307': {'firm formal brief'},
+[?2004l[?2004h> 
+[?2004lelivery met[?2004h>     'OI-211': {'full name','own name','the sender\'s own name'},
+[?2004l[?2004h> 
+[?2004lu[?2004h>     'CL-304': {'Dear Counsel'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'CL-305': {'copy nobody','nobody'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'CL-306': {'by post','post'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'CL-310': {'all three addressed together','all three aspects jointly','all three aspects together','confidence stability peer relations all three','confidence stability peer relations jointly'},
+[?2004l[?2004h> 
+[?2004l[?2004h>     'CL-311': {'conciliatory and open','gentle settlement tone','soft and measured','soft conciliatory tone','soft tone settlement offer'},
+[?2004l[?2004h> }
+[?2004l[?2004h> 
+[?2004l[?2004h> not_in_record_subjects = {
+[?2004l[?2004h>     'court_listing','expert_report','hearing_bundle','legal_fees',
+[?2004l[?2004h>     'mediation_offer','mediation_terms','reply_deadline','school_reference'
+[?2004ls[?2004h> }
+[?2004l[?2004h> 
+[?2004l([?2004h> def governing_entry(row):
+[?2004l[?2004h>     s=row['subject']; c=row['cited_entry']
+[?2004l[?2004h>     if s in not_in_record_subjects:
+[?2004lf[?2004h>         return 'NONE'
+[?2004l[?2004h>     # RP-407: if cited is an existing CL entry for a different subject, and the line's subject has an original entry, original governs.
+[?2004l[?2004h>     if c.startswith('CL-') and c in records and records[c][0] != s and s in subject_to_orig:
+[?2004l[?2004h>         return subject_to_orig[s]
+[?2004l[?2004h>     # If the clarification speaks to the subject, clarification governs (RP-401/RP-402).
+[?2004l[?2004h>     if s in subject_to_clar:
+[?2004l[?2004h>         return subject_to_clar[s]
+[?2004l[?2004h>     # If only the original speaks to the subject, original governs (RP-403).
+[?2004l[?2004h>     if s in subject_to_orig:
+[?2004l[?2004h>         return subject_to_orig[s]
+[?2004l[?2004h>     # Neither record speaks to the subject (RP-404).
+[?2004l[?2004h>     return 'NONE'
+[?2004l[?2004h> 
+[?2004l[?2004h> def verdict(row, gov):
+[?2004l[?2004h>     if gov == 'NONE':
+[?2004l[?2004h>         return 'NOT_IN_RECORD'
+[?2004l[?2004h>     if row['position'] in verified_by_entry.get(gov, set()):
+[?2004l[?2004h>         return 'VERIFIED'
+[?2004l[?2004h>     return 'AT_ODDS'
+[?2004l[?2004h> 
+[?2004l[?2004h> rows=list(csv.DictReader(open(INPUT, newline='')))
+[?2004l[?2004h> out_rows=[]
+[?2004l[?2004h> for r in rows:
+[?2004l[?2004h>     gov=governing_entry(r)
+[?2004l[?2004h>     v=verdict(r, gov)
+[?2004l[?2004h>     out_rows.append({'line_id': r['line_id'], 'verdict': v, 'record_entry': gov})
+[?2004l[?2004h> 
+[?2004l[?2004h> with open('/app/letter_line_review.csv','w',newline='') as f:
+[?2004l[?2004h>     w=csv.DictWriter(f, fieldnames=['line_id','verdict','record_entry'])
+[?2004l[?2004h>     w.writeheader()
+[?2004l[?2004h>     w.writerows(out_rows)
+[?2004l[?2004h> 
+[?2004l[?2004h> counts=collections.Counter(r['verdict'] for r in out_rows)
+[?2004l[?2004h> clar_gov=sum(1 for r in out_rows if r['record_entry'].startswith('CL-'))
+[?2004l[?2004h> results={
+[?2004l[?2004h>     'verified_count': counts['VERIFIED'],
+[?2004l[?2004h>     'at_odds_count': counts['AT_ODDS'],
+[?2004l[?2004h>     'not_in_record_count': counts['NOT_IN_RECORD'],
+[?2004l[?2004h>     'clarification_governed_count': clar_gov,
+[?2004l[?2004h> }
+[?2004l[?2004h> with open('/app/results.json','w') as f:
+[?2004l[?2004h>     json.dump(results, f, indent=2)
+[?2004l[?2004h>     f.write('\n')
+[?2004l[?2004h> 
+[?2004l[?2004h> answer = f"""# Review of draft letter lines against the client's record
+[?2004l[?2004h> 
+[?2004l[?2004h> I checked every numbered line in the draft letter against the client's two messages, applying the review protocol exactly. Where the clarification speaks to a subject, it prevails over the original instruction; where the clarification leaves a subject alone, the original entry still governs; where neither record speaks to a subject, the line is not in the record at all. I also followed the cross-subject citation exception: a clarification citation meant for another subject does not displace the original entry for the line's own subject when that original entry exists.
+[?2004l[?2004h> 
+[?2004l[?2004h> The draft contains {len(rows)} numbered lines. After weighing each line against the governing record entry, {counts['VERIFIED']} lines are verified by the record, {counts['NOT_IN_RECORD']} lines are not in the record at all, and {counts['AT_ODDS']} lines take a position that conflicts with or narrows the client's instructions. Letter lines at odds with the record: {counts['AT_ODDS']}. This count is the figure I am relying on; it is not one of two candidates. The remaining lines either match the record entry that governs them or fall outside the record because no entry addresses their subject.
+[?2004l[?2004h> 
+[?2004l[?2004h> The most common problems are lines that drop required limbs from compound instructions, such as tone entries that keep only part of the required tone, concern entries that raise or omit a limb the client revised, and behavioural-plan entries that do not carry the full position stated in the governing entry. Other lines are at odds because they name the wrong addressee, describe the wrong delivery method, or seek a different overnight condition. Lines on subjects such as legal fees, court listings, expert reports, hearing bundles, mediation terms, reply deadlines, and school references are not in the record at all, because neither the original instruction nor the clarification addresses those subjects.
+[?2004l[?2004h> """
+[?2004l[?2004h> with open('/app/answer.md','w') as f:
+[?2004l[?2004h>     f.write(answer)
+[?2004l[?2004h> 
+[?2004l[?2004h> print('rows', len(rows))
+[?2004l[?2004h> print('counts', dict(counts))
+[?2004l[?2004h> print('clar_gov', clar_gov)
+[?2004l[?2004h> print('results', results)
+[?2004l[?2004h> print('\nGoverning entry counts:')
+[?2004l[?2004h> for gov,n in sorted(collections.Counter(r['record_entry'] for r in out_rows).items()):
+[?2004l[?2004h>     print(gov, n)
+[?2004l[?2004h> print('\nAT_ODDS positions by governing entry:')
+[?2004l[?2004h> for gov in sorted(set(r['record_entry'] for r in out_rows if r['verdict']=='AT_ODDS')):
+[?2004l[?2004h>     positions=sorted({row['position'] for row in rows if row['line_id'] in {r['line_id'] for r in out_rows if r['record_entry']==gov and r['verdict']=='AT_ODDS'}})
+[?2004l[?2004h>     print(gov, positions)
+[?2004l[?2004h> print('\nNOT_IN_RECORD subjects:')
+[?2004l[?2004h> for s in sorted(not_in_record_subjects):
+[?2004l[?2004h>     ids=[r['line_id'] for r in rows if r['subject']==s]
+[?2004l[?2004h>     print(s, len(ids), ids)
+[?2004l[?2004h> PY
+[?2004l[?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 /tmp/review_letter.py
+[?2004lrows 325
 counts {'VERIFIED': 104, 'AT_ODDS': 177, 'NOT_IN_RECORD': 44}
 clar_gov 162
 results {'verified_count': 104, 'at_odds_count': 177, 'not_in_record_count': 44, 'clarification_governed_count': 162}
@@ -4852,40 +4469,29 @@ mediation_terms 3 ['ST-120', 'ST-209', 'ST-361']
 reply_deadline 9 ['ST-114', 'ST-159', 'ST-204', 'ST-205', 'ST-234', 'ST-356', 'ST-357', 'ST-548', 'ST-549']
 school_reference 8 ['ST-115', 'ST-160', 'ST-206', 'ST-207', 'ST-235', 'ST-358', 'ST-359', 'ST-550']
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ cat /app/results.json
-[?2004l
-{
+[?2004l{
   "verified_count": 104,
   "at_odds_count": 177,
   "not_in_record_count": 44,
   "clarification_governed_count": 162
 }
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '\nCSV header and row count:\n'; head -1 /app/letter_line_review.csv; wc -l /app/letter_line_review.csv
-[?2004l
-
+[?2004l
 CSV header and row count:
-line_id,verdict,record_entry
-
+line_id,verdict,record_entry
 326 /app/letter_line_review.csv
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv, collections
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/letter_line_review.csv', newline='')))
-[?2004l
-[?2004h> print('csv rows', len(rows))
-[?2004l
-[?2004h> print('verdict totals', dict(collections.Counter(r['verdict'] for r in rows)))
-[?2004l
-[?2004h> print('record entry totals', dict(collections.Counter(r['record_entry'] for r in rows)))
-[?2004l
-[?2004h> PY
-[?2004l
-csv rows 325
+[?2004l[?2004h> import csv, collections
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/letter_line_review.csv', newline='')))
+[?2004l[?2004h> print('csv rows', len(rows))
+[?2004l[?2004h> print('verdict totals', dict(collections.Counter(r['verdict'] for r in rows)))
+[?2004l[?2004h> print('record entry totals', dict(collections.Counter(r['record_entry'] for r in rows)))
+[?2004l[?2004h> PY
+[?2004lcsv rows 325
 verdict totals {'VERIFIED': 104, 'AT_ODDS': 177, 'NOT_IN_RECORD': 44}
 record entry totals {'OI-202': 13, 'OI-203': 13, 'OI-204': 17, 'CL-301': 19, 'OI-205': 20, 'CL-309': 10, 'CL-308': 11, 'CL-302': 21, 'CL-303': 13, 'CL-307': 13, 'OI-211': 10, 'CL-304': 14, 'CL-305': 16, 'NONE': 44, 'CL-306': 20, 'OI-210': 17, 'OI-206': 13, 'OI-207': 10, 'CL-310': 14, 'CL-311': 11, 'OI-201': 2, 'OI-208': 2, 'OI-209': 2}
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ printf '\n--- answer.md ---\n'; cat /app/answer.md
-[?2004l
-
+[?2004l
 --- answer.md ---
 # Review of draft letter lines against the client's record
 
@@ -4895,38 +4501,22 @@ The draft contains 325 numbered lines. After weighing each line against the gove
 
 The most common problems are lines that drop required limbs from compound instructions, such as tone entries that keep only part of the required tone, concern entries that raise or omit a limb the client revised, and behavioural-plan entries that do not carry the full position stated in the governing entry. Other lines are at odds because they name the wrong addressee, describe the wrong delivery method, or seek a different overnight condition. Lines on subjects such as legal fees, court listings, expert reports, hearing bundles, mediation terms, reply deadlines, and school references are not in the record at all, because neither the original instruction nor the clarification addresses those subjects.
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ python3 - <<'PY'
-[?2004l
-[?2004h> import csv, json, os, collections
-[?2004l
-[?2004h> files=['/app/answer.md','/app/letter_line_review.csv','/app/results.json']
-[?2004l
-[?2004h> for f in files:
-[?2004l
-[?2004h>     print(f, 'exists=', os.path.exists(f), 'size=', os.path.getsize(f) if os.path.exists(f) else None)
-[?2004l
-[?2004h> rows=list(csv.DictReader(open('/app/letter_line_review.csv', newline='')))
-[?2004l
-[?2004h> print('csv_header', rows[0].keys() if rows else None)
-[?2004l
-[?2004h> print('csv_rows', len(rows))
-[?2004l
-[?2004h> print('verdict_counts', dict(collections.Counter(r['verdict'] for r in rows)))
-[?2004l
-[?2004h> res=json.load(open('/app/results.json'))
-[?2004l
-[?2004h> print('json_keys', sorted(res))
-[?2004l
-[?2004h> print('json', res)
-[?2004l
-[?2004h> ans=open('/app/answer.md').read()
-[?2004l
-[?2004h> print('answer_has_required_label', 'Letter lines at odds with the record: 177' in ans)
-[?2004l
-[?2004h> print('answer_words', len(ans.split()))
-[?2004l
-[?2004h> PY
-[?2004l
-/app/answer.md exists= True size= 1868
+[?2004l[?2004h> import csv, json, os, collections
+[?2004l[?2004h> files=['/app/answer.md','/app/letter_line_review.csv','/app/results.json']
+[?2004l[?2004h> for f in files:
+[?2004l[?2004h>     print(f, 'exists=', os.path.exists(f), 'size=', os.path.getsize(f) if os.path.exists(f) else None)
+[?2004l[?2004h> rows=list(csv.DictReader(open('/app/letter_line_review.csv', newline='')))
+[?2004l[?2004h> print('csv_header', rows[0].keys() if rows else None)
+[?2004l[?2004h> print('csv_rows', len(rows))
+[?2004l[?2004h> print('verdict_counts', dict(collections.Counter(r['verdict'] for r in rows)))
+[?2004l[?2004h> res=json.load(open('/app/results.json'))
+[?2004l[?2004h> print('json_keys', sorted(res))
+[?2004l[?2004h> print('json', res)
+[?2004l[?2004h> ans=open('/app/answer.md').read()
+[?2004l[?2004h> print('answer_has_required_label', 'Letter lines at odds with the record: 177' in ans)
+[?2004l[?2004h> print('answer_words', len(ans.split()))
+[?2004l[?2004h> PY
+[?2004l/app/answer.md exists= True size= 1868
 /app/letter_line_review.csv exists= True size= 7785
 /app/results.json exists= True size= 120
 csv_header dict_keys(['line_id', 'verdict', 'record_entry'])
@@ -4937,8 +4527,7 @@ json {'verified_count': 104, 'at_odds_count': 177, 'not_in_record_count': 44, 'c
 answer_has_required_label True
 answer_words 302
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ ls -l /app/answer.md /app/letter_line_review.csv /app/results.json
-[?2004l
--rw-r--r-- 1 appuser appuser 1868 Sep 18 13:16 /app/answer.md
+[?2004l-rw-r--r-- 1 appuser appuser 1868 Sep 18 13:16 /app/answer.md
 -rw-r--r-- 1 appuser appuser 7785 Sep 18 13:16 /app/letter_line_review.csv
 -rw-r--r-- 1 appuser appuser  120 Sep 18 13:16 /app/results.json
 [?2004h[01;32mappuser@a6811c071403[00m:[01;34m/app[00m$ 

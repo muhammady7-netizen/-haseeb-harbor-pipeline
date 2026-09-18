@@ -8,7 +8,7 @@ collected 17 items
 
 =============================== warnings summary ===============================
 ../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475
-  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/tests/pytest-cache-files-ff05sak4'
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/tests/pytest-cache-files-slxfe7em'
     config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
@@ -31,7 +31,7 @@ PASSED ../tests/test_outputs.py::test_negative_corrupted_value[clarification_gov
 PASSED ../tests/test_outputs.py::test_negative_corrupted_value[not_in_record_count]
 PASSED ../tests/test_outputs.py::test_negative_corrupted_value[verified_count]
 PASSED ../tests/test_outputs.py::test_adversarial_extra_key
-======================== 17 passed, 1 warning in 2.11s =========================
+======================== 17 passed, 1 warning in 2.07s =========================
 {
   "reward": 1.0,
   "core_failures": [],

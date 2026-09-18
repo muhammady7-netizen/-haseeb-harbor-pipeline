@@ -1,0 +1,33 @@
+{
+    "task": {
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task"
+    },
+    "trial_name": "law-b39-task__vHkog4B",
+    "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\glm-b39-l16-v8",
+    "agent": {
+        "name": "terminus-2",
+        "model_name": "openai/glm-5.2",
+        "override_timeout_sec": 1800.0,
+        "kwargs": {
+            "extra_body": {
+                "max_tokens": 16000
+            }
+        },
+        "env": {
+            "OPENAI_API_KEY": "****",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1"
+        }
+    },
+    "environment": {
+        "type": "docker",
+        "force_build": true
+    },
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "****",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        }
+    },
+    "job_id": "cafc41d0-b4cc-4242-af1d-eac24099d14a"
+}
