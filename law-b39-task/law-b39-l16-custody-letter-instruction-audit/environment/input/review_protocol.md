@@ -28,12 +28,6 @@ Weighed against its governing entry, a line is VERIFIED when the position it tak
 `record_entry` holds the id of the entry that governs the line, spelled as the records spell it, or `NONE` (`RP-406`).
 
 
-## RP-407 Cross-subject citation exception
-
-Notwithstanding RP-401, when a line's `cited_entry` is a clarification entry (CL-…) that speaks to a subject different from the line's own `subject`, the original instruction entry for the line's `subject` governs — not the clarification entry for the line's subject. The line is weighed against that original instruction entry, and the `record_entry` column reports the original instruction entry, not the clarification. (RP-407)
-
-This applies only when the cited_entry is a clarification entry for a *different* subject. When the cited_entry is a clarification entry for the *same* subject, RP-401 applies normally. When the cited_entry is an original entry or NONE, RP-401 and RP-403 apply as before.
-
 ## RP-408 Compound positions
 
 When a governing entry's position has two or more required limbs (for example, a marking and a tone requirement), a line that asserts only one limb and drops the others takes something narrower than the entry's own position, and is AT_ODDS (`RP-408`). The line is VERIFIED only when it takes the entry's full position, including every required limb.

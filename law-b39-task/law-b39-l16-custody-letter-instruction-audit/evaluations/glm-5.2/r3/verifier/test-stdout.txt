@@ -26,7 +26,7 @@ definition = VerifierDefinition(name='register_table', metadata=VerifierMetadata
         )["result"]
         detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
 >       assert outcome["success"], f"{definition.name}: {detail}"
-E       AssertionError: register_table: row ST-559: verdict expected VERIFIED, got AT_ODDS
+E       AssertionError: register_table: row ST-586: verdict expected AT_ODDS, got VERIFIED; row ST-587: verdict expected VERIFIED, got AT_ODDS; row ST-587: record_entry expected OI-201, got CL-301; row ST-588: verdict expected AT_ODDS, got VERIFIED; row ST-588: record_entry expected OI-201, got CL-301; row ST-589: record_entry expected OI-208, got CL-302; and 3 more defects
 E       assert False
 
 /tests/test_outputs.py:144: AssertionError
@@ -49,7 +49,7 @@ definition = VerifierDefinition(name='results_figures', metadata=VerifierMetadat
         )["result"]
         detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
 >       assert outcome["success"], f"{definition.name}: {detail}"
-E       AssertionError: results_figures: key verified_count: expected 104, got 103; key at_odds_count: expected 177, got 178
+E       AssertionError: results_figures: key verified_count: expected 100, got 101; key at_odds_count: expected 181, got 180; key clarification_governed_count: expected 202, got 208
 E       assert False
 
 /tests/test_outputs.py:144: AssertionError
@@ -78,11 +78,11 @@ E       assert False
 /tests/test_outputs.py:144: AssertionError
 =============================== warnings summary ===============================
 ../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475
-  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/tests/pytest-cache-files-qu0ls3_0'
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/tests/pytest-cache-files-2xmtxb_g'
     config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
 
 ../usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:429
-  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:429: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/lastfailed: [Errno 13] Permission denied: '/tests/pytest-cache-files-e4i3eeco'
+  /usr/local/lib/python3.12/site-packages/_pytest/cacheprovider.py:429: PytestCacheWarning: could not create cache path /tests/.pytest_cache/v/cache/lastfailed: [Errno 13] Permission denied: '/tests/pytest-cache-files-y4p5m63g'
     config.cache.set("cache/lastfailed", self.lastfailed)
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
@@ -105,7 +105,7 @@ PASSED ../tests/test_outputs.py::test_adversarial_extra_key
 FAILED ../tests/test_outputs.py::test_deliverable[register_table] - Assertion...
 FAILED ../tests/test_outputs.py::test_deliverable[results_figures] - Assertio...
 FAILED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure] - As...
-=================== 3 failed, 14 passed, 2 warnings in 2.23s ===================
+=================== 3 failed, 14 passed, 2 warnings in 2.93s ===================
 {
   "reward": 0.0,
   "core_failures": [
@@ -142,14 +142,14 @@ FAILED ../tests/test_outputs.py::test_deliverable[answer_at_odds_figure] - As...
       "tag": "core",
       "passed": false,
       "weight": 0.1111111111,
-      "detail": "row ST-559: verdict expected VERIFIED, got AT_ODDS"
+      "detail": "row ST-586: verdict expected AT_ODDS, got VERIFIED; row ST-587: verdict expected VERIFIED, got AT_ODDS; row ST-587: record_entry expected OI-201, got CL-301; row ST-588: verdict expected AT_ODDS, got "
     },
     {
       "name": "results_figures",
       "tag": "core",
       "passed": false,
       "weight": 0.1111111111,
-      "detail": "key verified_count: expected 104, got 103; key at_odds_count: expected 177, got 178"
+      "detail": "key verified_count: expected 100, got 101; key at_odds_count: expected 181, got 180; key clarification_governed_count: expected 202, got 208"
     },
     {
       "name": "answer_at_odds_figure",

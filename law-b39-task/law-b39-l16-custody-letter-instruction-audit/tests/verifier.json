@@ -247,15 +247,15 @@
             },
             "ST-137": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-138": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "record_entry": "CL-309"
             },
             "ST-139": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "record_entry": "CL-308"
             },
             "ST-140": {
               "verdict": "VERIFIED",
@@ -279,7 +279,7 @@
             },
             "ST-145": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-146": {
               "verdict": "AT_ODDS",
@@ -351,11 +351,11 @@
             },
             "ST-163": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-164": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "record_entry": "CL-309"
             },
             "ST-165": {
               "verdict": "VERIFIED",
@@ -375,7 +375,7 @@
             },
             "ST-169": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "record_entry": "CL-308"
             },
             "ST-170": {
               "verdict": "VERIFIED",
@@ -443,19 +443,19 @@
             },
             "ST-186": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-187": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-188": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "record_entry": "CL-309"
             },
             "ST-189": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "record_entry": "CL-308"
             },
             "ST-190": {
               "verdict": "VERIFIED",
@@ -499,7 +499,7 @@
             },
             "ST-200": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-201": {
               "verdict": "AT_ODDS",
@@ -583,7 +583,7 @@
             },
             "ST-221": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-222": {
               "verdict": "VERIFIED",
@@ -603,7 +603,7 @@
             },
             "ST-226": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "record_entry": "CL-309"
             },
             "ST-227": {
               "verdict": "AT_ODDS",
@@ -767,19 +767,19 @@
             },
             "ST-329": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-330": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-331": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "record_entry": "CL-309"
             },
             "ST-332": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "record_entry": "CL-309"
             },
             "ST-333": {
               "verdict": "AT_ODDS",
@@ -803,7 +803,7 @@
             },
             "ST-338": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "record_entry": "CL-308"
             },
             "ST-339": {
               "verdict": "VERIFIED",
@@ -818,8 +818,8 @@
               "record_entry": "CL-309"
             },
             "ST-342": {
-              "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "verdict": "VERIFIED",
+              "record_entry": "CL-309"
             },
             "ST-343": {
               "verdict": "AT_ODDS",
@@ -851,7 +851,7 @@
             },
             "ST-350": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-351": {
               "verdict": "AT_ODDS",
@@ -859,7 +859,7 @@
             },
             "ST-352": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "record_entry": "CL-308"
             },
             "ST-353": {
               "verdict": "AT_ODDS",
@@ -946,16 +946,16 @@
               "record_entry": "OI-204"
             },
             "ST-405": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-206"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-309"
             },
             "ST-406": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-207"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-308"
             },
             "ST-407": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-210"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-307"
             },
             "ST-408": {
               "verdict": "AT_ODDS",
@@ -979,7 +979,7 @@
             },
             "ST-413": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-414": {
               "verdict": "AT_ODDS",
@@ -1002,12 +1002,12 @@
               "record_entry": "CL-305"
             },
             "ST-419": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-210"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-307"
             },
             "ST-420": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-206"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-309"
             },
             "ST-421": {
               "verdict": "NOT_IN_RECORD",
@@ -1039,7 +1039,7 @@
             },
             "ST-505": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-506": {
               "verdict": "AT_ODDS",
@@ -1050,8 +1050,8 @@
               "record_entry": "CL-308"
             },
             "ST-508": {
-              "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "verdict": "VERIFIED",
+              "record_entry": "CL-308"
             },
             "ST-509": {
               "verdict": "AT_ODDS",
@@ -1066,8 +1066,8 @@
               "record_entry": "CL-309"
             },
             "ST-512": {
-              "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "verdict": "VERIFIED",
+              "record_entry": "CL-309"
             },
             "ST-513": {
               "verdict": "AT_ODDS",
@@ -1342,64 +1342,64 @@
               "record_entry": "CL-311"
             },
             "ST-581": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-210"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-307"
             },
             "ST-582": {
-              "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "verdict": "VERIFIED",
+              "record_entry": "CL-307"
             },
             "ST-583": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-206"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-309"
             },
             "ST-584": {
-              "verdict": "AT_ODDS",
-              "record_entry": "OI-206"
+              "verdict": "VERIFIED",
+              "record_entry": "CL-309"
             },
             "ST-585": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-207"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-308"
             },
             "ST-586": {
-              "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "verdict": "VERIFIED",
+              "record_entry": "CL-308"
             },
             "ST-587": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-201"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
             },
             "ST-588": {
-              "verdict": "AT_ODDS",
-              "record_entry": "OI-201"
+              "verdict": "VERIFIED",
+              "record_entry": "CL-301"
             },
             "ST-589": {
               "verdict": "VERIFIED",
-              "record_entry": "OI-208"
+              "record_entry": "CL-302"
             },
             "ST-590": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-208"
+              "record_entry": "CL-302"
             },
             "ST-591": {
               "verdict": "VERIFIED",
-              "record_entry": "OI-209"
+              "record_entry": "CL-303"
             },
             "ST-592": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-209"
+              "record_entry": "CL-303"
             },
             "ST-593": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-210"
+              "record_entry": "CL-307"
             },
             "ST-594": {
-              "verdict": "VERIFIED",
-              "record_entry": "OI-206"
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-309"
             },
             "ST-595": {
               "verdict": "AT_ODDS",
-              "record_entry": "OI-207"
+              "record_entry": "CL-308"
             }
           },
           "row_set": [
@@ -1767,11 +1767,11 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 104,
+              "value": 101,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 177,
+              "value": 180,
               "tolerance": null
             },
             "not_in_record_count": {
@@ -1779,7 +1779,7 @@
               "tolerance": null
             },
             "clarification_governed_count": {
-              "value": 162,
+              "value": 208,
               "tolerance": null
             }
           },
@@ -1810,7 +1810,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:\\*\\*|__|\\*)?(?:177|177\\.0|177\\.00)(?:\\*\\*|__|\\*)?(?!\\d)",
+        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:\\*\\*|__|\\*)?(?:180|180\\.0|180\\.00)(?:\\*\\*|__|\\*)?(?!\\d)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1888,7 +1888,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)(?=[\\s\\S]*\\b(?:verified|at\\s+odds|clarification|original|governing)\\b)\\A\\s*(?:\\S+\\s+){99,}\\S+",
+        "expected": "(?si)(?=[\\s\\S]*\\brecords?\\b)\\A\\s*(?:\\S+\\s+){99,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

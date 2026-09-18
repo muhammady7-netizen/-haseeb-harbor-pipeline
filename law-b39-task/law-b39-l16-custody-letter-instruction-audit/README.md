@@ -14,7 +14,7 @@ Audit a draft letter to opposing counsel against the client's two messages (orig
 ## Bundle contents
 
 - `environment/input/`: letter_lines.csv (325 draft lines), original_instruction.md (11 entries), clarification.md (8 entries), review_protocol.md (8 rules), submission_format.md (layout spec)
-- `solution/files/`: answer.md, letter_line_review.csv, results.json (gold: 104 verified / 177 at_odds / 44 not_in_record / 162 clarification-governed)
+- `solution/files/`: answer.md, letter_line_review.csv, results.json (gold: 100 verified / 181 at_odds / 44 not_in_record / 202 clarification-governed)
 - `tests/verifier.json`: 9 deterministic checks (7 core, 2 incidental): file existence, CSV header, table_equals with 325-row row_set lock, results object_equals, at-odds figure as core (markdown-tolerant, with a `(?!\d|[.,]\d)` boundary guard so `177.5`/`177,5` cannot pose as `177`), anti-hedge, and a 100+ word prose floor requiring the domain word `record` AND at least one domain keyword (`verified`, `at odds`, `clarification`, `original`, `governing`) (incidental; rejects a hollow word-repeat with no domain vocabulary)
 - `task.toml`: `artifacts = []`; `tests/test.sh` copies graded `/app` deliverables into `/logs/artifacts/app` for Harbor export
 

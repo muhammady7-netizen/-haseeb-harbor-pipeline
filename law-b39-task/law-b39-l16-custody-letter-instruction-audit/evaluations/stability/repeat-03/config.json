@@ -1,19 +1,19 @@
 {
     "task": {
-        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task"
+        "path": "/workspace"
     },
-    "trial_name": "law-b39-task__tTM7cS9",
-    "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-b39\\oracle-b39-l16-v8",
+    "trial_name": "law-b39-task__oiwXoVD",
+    "trials_dir": "/workspace",
     "environment": {
         "type": "docker",
         "force_build": true
     },
     "verifier": {
         "env": {
-            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_API_KEY": "****",
             "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
             "JUDGE_MODEL": "openai/glm-5.2"
         }
     },
-    "job_id": "a37109fd-ed98-4a6e-9230-0250d5b220d7"
+    "job_id": "6962acdd-a033-48aa-a25f-63463e565e85"
 }

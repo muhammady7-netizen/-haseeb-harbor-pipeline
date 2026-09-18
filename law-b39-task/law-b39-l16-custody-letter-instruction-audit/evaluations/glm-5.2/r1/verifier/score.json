@@ -1,7 +1,11 @@
 {
-  "reward": 1.0,
-  "core_failures": [],
-  "passed": 9,
+  "reward": 0.0,
+  "core_failures": [
+    "register_table",
+    "results_figures",
+    "answer_at_odds_figure"
+  ],
+  "passed": 6,
   "total": 9,
   "checks": [
     {
@@ -28,23 +32,23 @@
     {
       "name": "register_table",
       "tag": "core",
-      "passed": true,
+      "passed": false,
       "weight": 0.1111111111,
-      "detail": ""
+      "detail": "row ST-586: verdict expected AT_ODDS, got VERIFIED; row ST-587: verdict expected VERIFIED, got AT_ODDS; row ST-587: record_entry expected OI-201, got CL-301; row ST-588: verdict expected AT_ODDS, got "
     },
     {
       "name": "results_figures",
       "tag": "core",
-      "passed": true,
+      "passed": false,
       "weight": 0.1111111111,
-      "detail": ""
+      "detail": "key verified_count: expected 100, got 101; key at_odds_count: expected 181, got 180; key clarification_governed_count: expected 202, got 208"
     },
     {
       "name": "answer_at_odds_figure",
       "tag": "core",
-      "passed": true,
+      "passed": false,
       "weight": 0.1111111111,
-      "detail": ""
+      "detail": "assertion failed"
     },
     {
       "name": "answer_at_odds_figure_exactly_one",

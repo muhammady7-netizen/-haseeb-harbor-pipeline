@@ -3,8 +3,8 @@
     "task": {
         "name": "law-b39-task",
         "type": "local",
-        "digest": "sha256:f19d66658a18dab1026fad0743b051796a2fa199fa01c7cb4b6ba20507ade349",
-        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\law-b39-task"
+        "digest": "sha256:e6b0af1d2a3860305c186e8b801c26ea8f0a42f90e263807814a6f74be243f2e",
+        "path": "/workspace"
     },
     "install_only": false,
     "timeout_multiplier": 1.0,
@@ -19,10 +19,6 @@
             "extra_body": {
                 "max_tokens": 16000
             }
-        },
-        "env": {
-            "OPENAI_API_KEY": "****",
-            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1"
         },
         "mcp_servers": []
     },
