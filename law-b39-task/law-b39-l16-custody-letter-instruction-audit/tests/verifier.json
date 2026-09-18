@@ -83,7 +83,7 @@
       "name": "register_table",
       "metadata": {
         "how_justification": "Parses letter_line_review.csv with csv.read_rows and applies table_equals: every graded cell of 325 rows plus the full 325-row population as a row_set lock.",
-        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-…` or `CL-…`; `NONE` when neither record speaks to the subject).\"",
+        "why_justification": "Verdict and record entry are checked line by line in numbered order, every cell against its gold value. Entailed by: \"The lines of `input/letter_lines.csv` appear in their numbered order, one row apiece, each carrying the verdict and the governing entry (`OI-\u2026` or `CL-\u2026`; `NONE` when neither record speaks to the subject).\"",
         "tag": "core"
       },
       "source": {
@@ -926,8 +926,8 @@
               "record_entry": "CL-310"
             },
             "ST-369": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-401": {
               "verdict": "VERIFIED",
@@ -1014,8 +1014,8 @@
               "record_entry": "NONE"
             },
             "ST-422": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-423": {
               "verdict": "NOT_IN_RECORD",
@@ -1238,8 +1238,8 @@
               "record_entry": "NONE"
             },
             "ST-555": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-556": {
               "verdict": "AT_ODDS",
@@ -1262,8 +1262,8 @@
               "record_entry": "CL-308"
             },
             "ST-561": {
-              "verdict": "VERIFIED",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-562": {
               "verdict": "VERIFIED",
@@ -1278,32 +1278,32 @@
               "record_entry": "CL-310"
             },
             "ST-565": {
-              "verdict": "VERIFIED",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-566": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-567": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-568": {
               "verdict": "AT_ODDS",
               "record_entry": "CL-310"
             },
             "ST-569": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-310"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-570": {
               "verdict": "AT_ODDS",
               "record_entry": "CL-310"
             },
             "ST-571": {
-              "verdict": "VERIFIED",
-              "record_entry": "CL-311"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-572": {
               "verdict": "VERIFIED",
@@ -1314,20 +1314,20 @@
               "record_entry": "CL-311"
             },
             "ST-574": {
-              "verdict": "VERIFIED",
-              "record_entry": "CL-311"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-575": {
               "verdict": "VERIFIED",
               "record_entry": "CL-311"
             },
             "ST-576": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-311"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-577": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-311"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-578": {
               "verdict": "AT_ODDS",
@@ -1338,8 +1338,8 @@
               "record_entry": "CL-311"
             },
             "ST-580": {
-              "verdict": "AT_ODDS",
-              "record_entry": "CL-311"
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             },
             "ST-581": {
               "verdict": "VERIFIED",
@@ -1767,19 +1767,19 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 104,
+              "value": 100,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 177,
+              "value": 168,
               "tolerance": null
             },
             "not_in_record_count": {
-              "value": 44,
+              "value": 57,
               "tolerance": null
             },
             "clarification_governed_count": {
-              "value": 162,
+              "value": 149,
               "tolerance": null
             }
           },
@@ -1795,7 +1795,7 @@
       "name": "answer_at_odds_figure",
       "metadata": {
         "how_justification": "Opens answer.md with md.extract_text. Accepts the required label+figure anywhere in the prose (including mid-sentence), with optional markdown emphasis around the figure (plain, **bold**, *italic*, __bold__). Core: a wrong or missing at-odds figure fails the submission.",
-        "why_justification": "One at odds figure stands next to its label in the sentence that names the label. Entailed by: \"answer.md states `Letter lines at odds with the record: <count>` — the figure placed beside its label, in the very sentence that names the label.\"",
+        "why_justification": "One at odds figure stands next to its label in the sentence that names the label. Entailed by: \"answer.md states `Letter lines at odds with the record: <count>` \u2014 the figure placed beside its label, in the very sentence that names the label.\"",
         "tag": "core"
       },
       "source": {
@@ -1810,7 +1810,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:\\*\\*|__|\\*)?(?:177|177\\.0|177\\.00)(?:\\*\\*|__|\\*)?(?!\\d|[.,]\\d)",
+        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:\\*\\*|__|\\*)?(?:168|168\\.0|168\\.00)(?:\\*\\*|__|\\*)?(?!\\d)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1872,7 +1872,7 @@
     {
       "name": "answer_prose_floor",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=100 words of prose containing the domain word 'record' (required by the submission format label 'Letter lines at odds with the record') and at least one domain keyword (verified, at odds, clarification, original, or governing), so a hollow word-repeat with no domain vocabulary cannot satisfy the floor. Accepts leading whitespace. Incidental only — does not zero an otherwise perfect submission.",
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=100 words of prose containing the domain word 'record' (required by the submission format label 'Letter lines at odds with the record') and at least one domain keyword (verified, at odds, clarification, original, or governing), so a hollow word-repeat with no domain vocabulary cannot satisfy the floor. Accepts leading whitespace. Incidental only \u2014 does not zero an otherwise perfect submission.",
         "why_justification": "submission_format.md requires answer.md to have at least one hundred words of prose containing the word 'record' and at least one domain keyword. The word 'record' is the core vocabulary of the task. Structured correctness is graded by register_table and results_figures, not by this floor.",
         "tag": "incidental"
       },
@@ -1888,7 +1888,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)\\A\\s*(?:\\S+\\s+){99,}\\S+",
+        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)(?=[\\s\\S]*\\b(?:verified|at\\s+odds|clarification|original|governing)\\b)\\A\\s*(?:\\S+\\s+){99,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

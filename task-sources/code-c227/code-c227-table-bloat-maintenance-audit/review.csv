@@ -1,0 +1,15 @@
+review_check,status,review_notes,change_made,what_to_record
+Layer 1 - Package consistency,FIXED_AND_VERIFIED,Canonical grid: tests/verifier.json (76 checks) via score.py. LF pack. Oracle/stability/GLM evidence totals match verifier length.,score.py + verifier.json (76); Harbor re-ran on current tree.,verifier.json 76; evidence total aligned
+Layer 1 - Clarity and scope,FIXED_AND_VERIFIED,Instruction discloses densify traps including T-45 stale-tighten.,memo_t45 core check in verifier.json.,Rules disclosed
+Layer 1 - Realism and leakage,PASS,Realistic DB maintenance audit. Gold only under solution/.,,No leakage
+Layer 2 Difficulty,FIXED_AND_VERIFIED,"GLM-5.2 terminus-2 ×4 on current verifier.json (76 checks): rewards=[0.98, 0.9, 0.9, 0.98] (0/4 at 1.0). Bundled under evaluations/glm-5.2.",Fresh GLM×4 on score.py grid,GLM 0/4
+Layer 2 Solvability,FIXED_AND_VERIFIED,Oracle 1.0 on current grid. Non-oracle 1.0 not yet observed on current grid (MODEL/SPEC disposition after GLM).,Harbor oracle job oracle-c227-score-v1.,Oracle-backed; GLM solvability recorded
+Layer 2 Stability,FIXED_AND_VERIFIED,Three Harbor oracle repeats at reward 1.0 on the same 76-check grid (job oracle-c227-score-v1).,Packed evaluations/stability/repeat-01..03 from Harbor oracle attempts.,stability 1.0 x3 on 76-check grid
+Layer 3 Oracle Mode,FIXED_AND_VERIFIED,Harbor oracle reward 1.0 via score.py / verifier.json (76).,evaluations/oracle from oracle-c227-score-v1.,Oracle 1.0
+Layer 4 - Environment and files,FIXED_AND_VERIFIED,LF texts; USER appuser; /tests lock marker; COPY input/ only; score.py + rl_world_verifiers.,Aligned packaging.,No packaging failures
+"Layer 4 - Connectors, MCPs, and CLIs",N/A,Non-connector.,,N/A
+Layer 4 - Deliverables and artifact quality,PASS,Gold deliverables match instruction.,,Deliverables complete
+Layer 5 - Verifier coverage and fairness,FIXED_AND_VERIFIED,score.py core gate over 76 verifier.json checks including T-45 densify.,Evidence total == verifier.json length.,Fair disclosed grading
+Layer 5 - LLM judge consistency,N/A,No LLM judge.,,N/A
+Layer 5 - Reward hacking and exploitability,FIXED_AND_VERIFIED,No tests COPY; /tests lock marker; structured CSV/JSON; memo regex not token-bag.,Kept hardening; score.py reward trap.,Exploit paths blocked
+Cross-trial - Calibration,FIXED_AND_VERIFIED,"Oracle+stability current. GLM bundled at evaluations/glm-5.2 rewards=[0.98, 0.9, 0.9, 0.98].",review.csv cites only present evaluation paths.,Fresh Harbor evidence on current tree

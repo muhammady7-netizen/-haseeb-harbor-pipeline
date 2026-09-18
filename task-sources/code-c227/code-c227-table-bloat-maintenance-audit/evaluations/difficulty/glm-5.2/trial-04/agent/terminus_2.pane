@@ -1,0 +1,668 @@
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ asciinema rec --stdin /logs/agent/recording.cast
+[?2004l
+[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ clear
+[?2004l
+[H[J[3J[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ ls -la /app
+[?2004l
+total 12
+drwxrwxrwx 1 root root 4096 Sep 18 12:49 [0m[34;42m.[0m
+drwxr-xr-x 1 root root 4096 Sep 18 13:11 [01;34m..[0m
+dr-xr-xr-x 1 root root 4096 Sep 18 12:48 [01;34minput[0m
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ find /app/input -maxdepth 2 -type f -printf '%p\n'
+[?2004l
+/app/input/table_health.csv
+/app/input/maintenance_policy.md
+/app/input/reindex_log.csv
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ for f in /app/input/*; do echo "===== $f ====="; sed -n '1,200p' "$f"; done
+[?2004l
+===== /app/input/maintenance_policy.md =====
+# Table maintenance & vacuum policy (DBOPS-31)
+
+This decides whether a table's maintenance state is compliant. Where the database's own
+health dashboard disagrees, this policy decides.
+
+## 1. Autovacuum
+
+A table with autovacuum disabled is `AUTOVACUUM_DISABLED`. This is checked first and
+overrides every other check for that table, whatever its current bloat ratio reads.
+
+**Manual vacuum override:** if the `vacuum_type` field is `manual`, autovacuum is
+considered disabled even when `autovacuum_enabled` is `True` — a manual vacuum
+overrides and supersedes the automatic schedule, so the table no longer has
+automatic autovacuum protection. A table with `vacuum_type=manual` is
+`AUTOVACUUM_DISABLED` regardless of its `autovacuum_enabled` value.
+
+## 2. Bloat ratio computation and cap by size class
+
+**The `bloat_ratio` field in the export is computed with Python's default rounding
+(round-half-even) and is NOT reliable.** The correct bloat ratio must be computed
+as `dead_pages / total_pages` using **round-half-up** to 2 decimal places. The
+`bloat_ratio` field may give incorrect results for ratios that fall exactly on a
+rounding boundary (e.g. 0.205). Always compute from `dead_pages` and `total_pages`.
+
+The bloat ratio is not read directly from the export — it is **computed** as
+`dead_pages / total_pages`, rounded to 2 decimal places using **round-half-up**
+(0.205 rounds to 0.21, not 0.20). A table whose computed bloat ratio is at or below
+its size class cap is compliant; a table whose computed ratio is **over** its cap
+(strictly greater than) is `BLOAT_THRESHOLD_EXCEEDED`.
+
+
+Size class is determined by `total_pages`: a table with **>= 500 total pages** is
+`large` (cap 0.2); a table with **< 500 total pages** is `small` (cap 0.4).
+
+**The `size_class` column in the export is a legacy field and is NOT reliable** —
+it may not match the classification computed from `total_pages`. Always compute
+size class from `total_pages` using the threshold above, never read it from the
+`size_class` column. When documenting size-class traps in the audit memo, cite the
+plain `total_pages` digit form (e.g. 1000 / 500, not 1,000) and the compute/computed
+size-class concept; mention autovacuum, reindex, or stale day counts when those
+rules decide the finding.
+
+| computed size class | total_pages threshold | max bloat ratio |
+|---|---|---|
+| large | >= 500 | 0.2 |
+| small | < 500 | 0.4 |
+
+Any export `size_class` value other than the computed large/small classes above
+(including traps such as `medium`) is ignored — always classify from `total_pages`
+and apply the corresponding large/small bloat cap.
+
+Size class matching is case-insensitive (e.g. `Large` matches `large`). A table over its own cap is `BLOAT_THRESHOLD_EXCEEDED` — **unless** the table is marked
+under an approved active reindex operation **and** appears in `reindex_log.csv`
+with `approved=True` **and** the `valid_until` date in `reindex_log.csv` is on
+or after the `audit_date` (i.e., `valid_until >= audit_date`). A table with
+`maintenance_active=True` but no matching `approved=True` entry, or whose
+approval has expired (`valid_until < audit_date`), is NOT exempt — the reindex
+is unapproved or expired, and the bloat check applies normally. A table whose computed ratio
+**equals** its cap (e.g. 0.20 for large) is NOT over the cap and is not flagged.
+
+## 3. Statistics staleness
+
+A table whose planner statistics were last refreshed more than 30 days ago is
+`STALE_STATISTICS`. The staleness is computed as calendar days from the `audit_date`
+and `last_analyzed` fields (both in `YYYY-MM-DD` format):
+`(audit_date - last_analyzed).days`. A difference of exactly 30 days is NOT stale
+(the policy says 'more than 30 days').
+
+**The `days_since_analyze` field in the export is a legacy estimate and is NOT
+reliable** — it may differ from the actual date-based computation. Always compute
+staleness from the `audit_date` and `last_analyzed` date fields, never from the
+`days_since_analyze` field. Using the `days_since_analyze` field will produce
+incorrect results.
+
+### Stale-stats cap tightening
+
+When a table's statistics are stale (more than 30 days since last analyzed), the
+bloat cap for that table is **reduced by 0.05** — stale statistics mean the bloat
+measurement cannot be trusted, so a tighter threshold is applied. This tightening
+is applied **before** the bloat check: if the tightened cap is exceeded, the finding
+is `BLOAT_THRESHOLD_EXCEEDED` (not `STALE_STATISTICS`), because bloat is checked
+before staleness in the finding precedence. A table whose ratio exceeds the tightened
+cap but not the original cap is still `BLOAT_THRESHOLD_EXCEEDED`.
+
+For example, a large table (normal cap 0.2) with stale stats has a tightened cap of
+0.15. A ratio of 0.18 would be under the normal cap (0.18 < 0.2) but over the
+tightened cap (0.18 > 0.15), so the finding is `BLOAT_THRESHOLD_EXCEEDED`.
+
+### Processing order
+
+Tables are processed in order of `last_analyzed` date (ascending — oldest first).
+The processing order determines the sequence in which rules are evaluated and
+is the order in which the audit rows should appear in the output. A table with an
+earlier `last_analyzed` date is processed before a table with a later date.
+If two tables have the same `last_analyzed` date, they are processed in `table_name`
+alphabetical order.
+
+## 4. Finding names
+
+`AUTOVACUUM_DISABLED`, `BLOAT_THRESHOLD_EXCEEDED`, `STALE_STATISTICS`, or `none`.
+===== /app/input/reindex_log.csv =====
+table_name,approved,valid_until
+T-05,False,2026-09-15
+T-10,True,2026-09-15
+T-16,True,2026-08-25
+T-28,True,2026-09-15
+T-29,True,2026-08-25
+T-37,True,2026-08-25
+T-38,False,2026-09-15
+===== /app/input/table_health.csv =====
+table_name,size_class,total_pages,dead_pages,bloat_ratio,autovacuum_enabled,vacuum_type,audit_date,last_analyzed,days_since_analyze,maintenance_active
+T-01,large,1000,100,0.1,True,auto,2026-09-01,2026-08-22,15,False
+T-02,large,1000,350,0.35,True,auto,2026-09-01,2026-08-27,10,False
+T-03,small,1000,150,0.15,False,auto,2026-09-01,2026-08-27,10,False
+T-04,small,1000,100,0.1,True,auto,2026-09-01,2026-07-18,50,False
+T-05,large,1000,550,0.55,True,auto,2026-09-01,2026-08-27,10,True
+T-06,small,1000,250,0.25,True,auto,2026-09-01,2026-08-22,15,False
+T-07,large,1000,120,0.12,True,auto,2026-09-01,2026-08-12,25,False
+T-08,small,1000,450,0.45,True,auto,2026-09-01,2026-08-24,13,False
+T-09,large,1000,190,0.19,True,auto,2026-09-01,2026-08-02,35,False
+T-10,large,1000,210,0.21,True,auto,2026-09-01,2026-08-01,36,True
+T-11,small,1000,410,0.41,False,auto,2026-09-01,2026-08-27,10,False
+T-12,large,1000,200,0.2,True,auto,2026-09-01,2026-08-17,20,False
+T-13,small,1000,500,0.5,False,auto,2026-09-01,2026-07-13,55,False
+T-14,small,1000,400,0.4,True,auto,2026-09-01,2026-08-22,15,False
+T-15,large,1000,200,0.2,True,auto,2026-09-01,2026-08-12,25,False
+T-16,large,1000,200,0.2,True,auto,2026-09-01,2026-08-01,36,True
+T-17,small,1000,400,0.4,False,auto,2026-09-01,2026-07-13,55,False
+T-18,large,1000,205,0.2,True,auto,2026-09-01,2026-08-22,15,False
+T-19,small,1000,405,0.41,True,auto,2026-09-01,2026-08-17,20,False
+T-20,large,1000,100,0.1,True,manual,2026-09-01,2026-08-22,15,False
+T-21,large,1000,200,0.2,True,manual,2026-09-01,2026-07-18,50,False
+T-26,large,1000,180,0.18,True,auto,2026-09-01,2026-07-27,41,False
+T-27,small,1000,380,0.38,True,auto,2026-09-01,2026-07-17,51,False
+T-28,large,1000,250,0.25,True,auto,2026-09-01,2026-08-22,15,True
+T-29,large,1000,250,0.25,True,auto,2026-09-01,2026-08-22,15,True
+T-30,large,1000,200,0.2,True,auto,2026-09-01,2026-07-27,40,False
+T-31,large,400,120,0.3,True,auto,2026-09-01,2026-08-22,15,False
+T-32,large,400,160,0.4,True,auto,2026-09-01,2026-08-22,15,False
+T-31,large,400,120,0.3,True,auto,2026-09-01,2026-08-22,15,False
+T-32,large,400,160,0.4,True,auto,2026-09-01,2026-08-22,15,False
+T-33,small,200,41,0.2,True,auto,2026-09-01,2026-08-22,10,False
+T-34,small,500,100,0.20,True,auto,2026-09-01,2026-08-22,10,False
+T-35,small,500,110,0.22,True,auto,2026-09-01,2026-08-22,10,False
+T-36,large,1000,180,0.18,True,auto,2026-09-01,2026-07-28,20,False
+T-37,large,1000,250,0.25,True,auto,2026-09-01,2026-08-22,10,True
+T-38,small,300,100,0.33,True,auto,2026-09-01,2026-08-22,10,True
+T-39,large,1000,50,0.05,True,manual,2026-09-01,2026-08-22,10,False
+T-40,large,1000,50,0.05,True,auto,2026-09-01,2026-07-28,25,False
+T-41,small,300,120,0.40,True,auto,2026-09-01,2026-08-22,10,False
+T-42,large,1000,200,0.20,True,auto,2026-09-01,2026-07-28,20,False
+T-43,small,100,21,0.21,True,auto,2026-09-01,2026-08-22,10,False
+T-44,medium,600,500,0.83,True,auto,2026-09-01,2026-08-22,10,False
+T-45,small,1000,155,0.16,True,auto,2026-09-01,2026-07-30,10,False
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l
+[?2004h> import csv, json
+[?2004l
+[?2004h> from datetime import date
+[?2004l
+[?2004h> from decimal import Decimal, ROUND_HALF_UP
+[?2004l
+[?2004h> from collections import OrderedDict
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> health='/app/input/table_health.csv'
+[?2004l
+[?2004h> reindex='/app/input/reindex_log.csv'
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> def days_between(a,b):
+[?2004l
+[?2004h>     return (date.fromisoformat(a)-date.fromisoformat(b)).days
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> def ratio_round_half_up(dead,total):
+[?2004l
+[?2004h>     return Decimal(dead)/Decimal(total)
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> def fmt_ratio(d):
+[?2004l
+[?2004h>     return str(d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> # load reindex
+[?2004l
+[?2004h> reidx={}
+[?2004l
+[?2004h> with open(reindex,newline='') as f:
+[?2004l
+[?2004h>     for r in csv.DictReader(f):
+[?2004l
+[?2004h>         reidx[r['table_name']]=r
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> # load health dedupe by table_name
+[?2004l
+[?2004h> tables=OrderedDict()
+[?2004l
+[?2004h> with open(health,newline='') as f:
+[?2004l
+[?2004h>     for r in csv.DictReader(f):
+[?2004l
+[?2004h>         tables.setdefault(r['table_name'], r)
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> rows=[]
+[?2004l
+[?2004h> for tn,r in tables.items():
+[?2004l
+[?2004h>     total=int(r['total_pages'])
+[?2004l
+[?2004h>     dead=int(r['dead_pages'])
+[?2004l
+[?2004h>     size_class='large' if total>=500 else 'small'
+[?2004l
+[?2004h>     cap=Decimal('0.2') if size_class=='large' else Decimal('0.4')
+[?2004l
+[?2004h>     raw=Decimal(dead)/Decimal(total)
+[?2004l
+[?2004h>     ratio=raw.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+[?2004l
+[?2004h>     stale=days_between(r['audit_date'], r['last_analyzed']) > 30
+[?2004l
+[?2004h>     stale_days=days_between(r['audit_date'], r['last_analyzed'])
+[?2004l
+[?2004h>     eff_cap=cap
+[?2004l
+[?2004h>     if stale:
+[?2004l
+[?2004h>         eff_cap=cap-Decimal('0.05')
+[?2004l
+[?2004h>     autovac_disabled = (r['autovacuum_enabled'].lower()!='true') or (r['vacuum_type'].lower()=='manual')
+[?2004l
+[?2004h>     # reindex exemption
+[?2004l
+[?2004h>     rl=reidx.get(tn)
+[?2004l
+[?2004h>     exempt=False
+[?2004l
+[?2004h>     if r['maintenance_active'].lower()=='true' and rl is not None:
+[?2004l
+[?2004h>         approved=rl['approved'].lower()=='true'
+[?2004l
+[?2004h>         valid=rl['valid_until'] >= r['audit_date']
+[?2004l
+[?2004h>         exempt=approved and valid
+[?2004l
+[?2004h>     if autovac_disabled:
+[?2004l
+[?2004h>         finding='AUTOVACUUM_DISABLED'
+[?2004l
+[?2004h>     elif (not exempt) and ratio > eff_cap:
+[?2004l
+[?2004h>         finding='BLOAT_THRESHOLD_EXCEEDED'
+[?2004l
+[?2004h>     elif stale:
+[?2004l
+[?2004h>         finding='STALE_STATISTICS'
+[?2004l
+[?2004h>     else:
+[?2004l
+[?2004h>         finding='none'
+[?2004l
+[?2004h>     rows.append({
+[?2004l
+[?2004h>         'table_name':tn,
+[?2004l
+[?2004h>         'last_analyzed':r['last_analyzed'],
+[?2004l
+[?2004h>         'total_pages':total,
+[?2004l
+[?2004h>         'dead_pages':dead,
+[?2004l
+[?2004h>         'raw':str(raw),
+[?2004l
+[?2004h>         'ratio':fmt_ratio(ratio),
+[?2004l
+[?2004h>         'size_class':size_class,
+[?2004l
+[?2004h>         'cap':str(cap),
+[?2004l
+[?2004h>         'eff_cap':str(eff_cap),
+[?2004l
+[?2004h>         'stale':stale,
+[?2004l
+[?2004h>         'stale_days':stale_days,
+[?2004l
+[?2004h>         'autovac_disabled':autovac_disabled,
+[?2004l
+[?2004h>         'exempt':exempt,
+[?2004l
+[?2004h>         'maintenance_active':r['maintenance_active'],
+[?2004l
+[?2004h>         'finding':finding
+[?2004l
+[?2004h>     })
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> rows.sort(key=lambda x:(x['last_analyzed'], x['table_name']))
+[?2004l
+[?2004h> for x in rows:
+[?2004l
+[?2004h>     print(f"{x['table_name']} last={x['last_analyzed']} total={x['total_pages']} dead={x['dead_pages']} raw={x['raw']} ratio={x['ratio']} class={x['size_class']} cap={x['cap']} eff={x['eff_cap']} stale={x['stale']} days={x['stale_days']} autodis={x['autovac_disabled']} exempt={x['exempt']} finding={x['finding']}")
+[?2004l
+[?2004h> print('counts')
+[?2004l
+[?2004h> from collections import Counter
+[?2004l
+[?2004h> c=Counter(x['finding'] for x in rows)
+[?2004l
+[?2004h> print(c)
+[?2004l
+[?2004h> print('flagged', sum(1 for x in rows if x['finding']!='none'))
+[?2004l
+[?2004h> print('rows', len(rows))
+[?2004l
+[?2004h> PY
+[?2004l
+T-13 last=2026-07-13 total=1000 dead=500 raw=0.5 ratio=0.50 class=large cap=0.2 eff=0.15 stale=True days=50 autodis=True exempt=False finding=AUTOVACUUM_DISABLED
+T-17 last=2026-07-13 total=1000 dead=400 raw=0.4 ratio=0.40 class=large cap=0.2 eff=0.15 stale=True days=50 autodis=True exempt=False finding=AUTOVACUUM_DISABLED
+T-27 last=2026-07-17 total=1000 dead=380 raw=0.38 ratio=0.38 class=large cap=0.2 eff=0.15 stale=True days=46 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-04 last=2026-07-18 total=1000 dead=100 raw=0.1 ratio=0.10 class=large cap=0.2 eff=0.15 stale=True days=45 autodis=False exempt=False finding=STALE_STATISTICS
+T-21 last=2026-07-18 total=1000 dead=200 raw=0.2 ratio=0.20 class=large cap=0.2 eff=0.15 stale=True days=45 autodis=True exempt=False finding=AUTOVACUUM_DISABLED
+T-26 last=2026-07-27 total=1000 dead=180 raw=0.18 ratio=0.18 class=large cap=0.2 eff=0.15 stale=True days=36 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-30 last=2026-07-27 total=1000 dead=200 raw=0.2 ratio=0.20 class=large cap=0.2 eff=0.15 stale=True days=36 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-36 last=2026-07-28 total=1000 dead=180 raw=0.18 ratio=0.18 class=large cap=0.2 eff=0.15 stale=True days=35 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-40 last=2026-07-28 total=1000 dead=50 raw=0.05 ratio=0.05 class=large cap=0.2 eff=0.15 stale=True days=35 autodis=False exempt=False finding=STALE_STATISTICS
+T-42 last=2026-07-28 total=1000 dead=200 raw=0.2 ratio=0.20 class=large cap=0.2 eff=0.15 stale=True days=35 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-45 last=2026-07-30 total=1000 dead=155 raw=0.155 ratio=0.16 class=large cap=0.2 eff=0.15 stale=True days=33 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-10 last=2026-08-01 total=1000 dead=210 raw=0.21 ratio=0.21 class=large cap=0.2 eff=0.15 stale=True days=31 autodis=False exempt=True finding=STALE_STATISTICS
+T-16 last=2026-08-01 total=1000 dead=200 raw=0.2 ratio=0.20 class=large cap=0.2 eff=0.15 stale=True days=31 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-09 last=2026-08-02 total=1000 dead=190 raw=0.19 ratio=0.19 class=large cap=0.2 eff=0.2 stale=False days=30 autodis=False exempt=False finding=none
+T-07 last=2026-08-12 total=1000 dead=120 raw=0.12 ratio=0.12 class=large cap=0.2 eff=0.2 stale=False days=20 autodis=False exempt=False finding=none
+T-15 last=2026-08-12 total=1000 dead=200 raw=0.2 ratio=0.20 class=large cap=0.2 eff=0.2 stale=False days=20 autodis=False exempt=False finding=none
+T-12 last=2026-08-17 total=1000 dead=200 raw=0.2 ratio=0.20 class=large cap=0.2 eff=0.2 stale=False days=15 autodis=False exempt=False finding=none
+T-19 last=2026-08-17 total=1000 dead=405 raw=0.405 ratio=0.41 class=large cap=0.2 eff=0.2 stale=False days=15 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-01 last=2026-08-22 total=1000 dead=100 raw=0.1 ratio=0.10 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=none
+T-06 last=2026-08-22 total=1000 dead=250 raw=0.25 ratio=0.25 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-14 last=2026-08-22 total=1000 dead=400 raw=0.4 ratio=0.40 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-18 last=2026-08-22 total=1000 dead=205 raw=0.205 ratio=0.21 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-20 last=2026-08-22 total=1000 dead=100 raw=0.1 ratio=0.10 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=True exempt=False finding=AUTOVACUUM_DISABLED
+T-28 last=2026-08-22 total=1000 dead=250 raw=0.25 ratio=0.25 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=True finding=none
+T-29 last=2026-08-22 total=1000 dead=250 raw=0.25 ratio=0.25 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-31 last=2026-08-22 total=400 dead=120 raw=0.3 ratio=0.30 class=small cap=0.4 eff=0.4 stale=False days=10 autodis=False exempt=False finding=none
+T-32 last=2026-08-22 total=400 dead=160 raw=0.4 ratio=0.40 class=small cap=0.4 eff=0.4 stale=False days=10 autodis=False exempt=False finding=none
+T-33 last=2026-08-22 total=200 dead=41 raw=0.205 ratio=0.21 class=small cap=0.4 eff=0.4 stale=False days=10 autodis=False exempt=False finding=none
+T-34 last=2026-08-22 total=500 dead=100 raw=0.2 ratio=0.20 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=none
+T-35 last=2026-08-22 total=500 dead=110 raw=0.22 ratio=0.22 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-37 last=2026-08-22 total=1000 dead=250 raw=0.25 ratio=0.25 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-38 last=2026-08-22 total=300 dead=100 raw=0.3333333333333333333333333333 ratio=0.33 class=small cap=0.4 eff=0.4 stale=False days=10 autodis=False exempt=False finding=none
+T-39 last=2026-08-22 total=1000 dead=50 raw=0.05 ratio=0.05 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=True exempt=False finding=AUTOVACUUM_DISABLED
+T-41 last=2026-08-22 total=300 dead=120 raw=0.4 ratio=0.40 class=small cap=0.4 eff=0.4 stale=False days=10 autodis=False exempt=False finding=none
+T-43 last=2026-08-22 total=100 dead=21 raw=0.21 ratio=0.21 class=small cap=0.4 eff=0.4 stale=False days=10 autodis=False exempt=False finding=none
+T-44 last=2026-08-22 total=600 dead=500 raw=0.8333333333333333333333333333 ratio=0.83 class=large cap=0.2 eff=0.2 stale=False days=10 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-08 last=2026-08-24 total=1000 dead=450 raw=0.45 ratio=0.45 class=large cap=0.2 eff=0.2 stale=False days=8 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-02 last=2026-08-27 total=1000 dead=350 raw=0.35 ratio=0.35 class=large cap=0.2 eff=0.2 stale=False days=5 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-03 last=2026-08-27 total=1000 dead=150 raw=0.15 ratio=0.15 class=large cap=0.2 eff=0.2 stale=False days=5 autodis=True exempt=False finding=AUTOVACUUM_DISABLED
+T-05 last=2026-08-27 total=1000 dead=550 raw=0.55 ratio=0.55 class=large cap=0.2 eff=0.2 stale=False days=5 autodis=False exempt=False finding=BLOAT_THRESHOLD_EXCEEDED
+T-11 last=2026-08-27 total=1000 dead=410 raw=0.41 ratio=0.41 class=large cap=0.2 eff=0.2 stale=False days=5 autodis=True exempt=False finding=AUTOVACUUM_DISABLED
+counts
+Counter({'BLOAT_THRESHOLD_EXCEEDED': 18, 'none': 13, 'AUTOVACUUM_DISABLED': 7, 'STALE_STATISTICS': 3})
+flagged 28
+rows 41
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l
+[?2004h> import csv, json
+[?2004l
+[?2004h> from datetime import date
+[?2004l
+[?2004h> from decimal import Decimal, ROUND_HALF_UP
+[?2004l
+[?2004h> from collections import OrderedDict
+[?2004l
+[?2004h> 
+[?2004l
+ys do not override the autovacuum finding.",
+"T-17 is AUTOVACUUM_DISABLED because autovacuum is false and checked first; the large class is computed from total_pages 1000, its bloat ratio is 0.40 over cap 0.2, and 50 stale stats days are not the finding.",
+"T-27 is BLOAT_THRESHOLD_EXCEEDED because stats are stale for 46 days, so the large class computed from total_pages 1000 has a tightened cap of 0.15, and ratio 0.38 is over that effective cap.",
+"T-04 is STALE_STATISTICS because date math gives 45 stale days, ignoring the legacy days_since_analyze field; the large class computed from total_pages 1000 has ratio 0.10 under tightened cap 0.15, so staleness remains.",
+"T-21 is AUTOVACUUM_DISABLED because manual vacuum overrides autovacuum even though enabled; the large class computed from total_pages 1000 has ratio 0.20 and cap 0.2, but the manual vacuum override is checked first.",
+"T-26 is BLOAT_THRESHOLD_EXCEEDED since stats are stale for 36 days, the large class computed from total_pages 1000 tightens cap t[?2004h> health_path = '/app/input/table_health.csv'
+[?2004l
+[?2004h> reindex_path = '/app/input/reindex_log.csv'
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> reidx = {}
+[?2004l
+[?2004h> with open(reindex_path, newline='') as f:
+[?2004l
+[?2004h>     for r in csv.DictReader(f):
+[?2004l
+[?2004h>         reidx[r['table_name']] = r
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> tables = OrderedDict()
+[?2004l
+[?2004h> with open(health_path, newline='') as f:
+[?2004l
+[?2004h>     for r in csv.DictReader(f):
+[?2004l
+[?2004h>         tables.setdefault(r['table_name'], r)
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> rows = []
+[?2004l
+[?2004h> for tn, r in tables.items():
+[?2004l
+[?2004h>     total = int(r['total_pages'])
+[?2004l
+[?2004h>     dead = int(r['dead_pages'])
+[?2004l
+[?2004h>     size_class = 'large' if total >= 500 else 'small'
+[?2004l
+ed[?2004h>     cap = Decimal('0.2') if size_class == 'large' else Decimal('0.4')
+[?2004l
+[?2004h>     raw = Decimal(dead) / Decimal(total)
+[?2004l
+[?2004h>     ratio = raw.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+[?2004l
+[?2004h>     stale_days = (date.fromisoformat(r['audit_date']) - date.fromisoformat(r['last_analyzed'])).days
+[?2004l
+[?2004h>     stale = stale_days > 30
+[?2004l
+[?2004h>     eff_cap = cap - Decimal('0.05') if stale else cap
+[?2004l
+[?2004h>     autovac_disabled = r['autovacuum_enabled'].lower() != 'true' or r['vacuum_type'].lower() == 'manual'
+[?2004l
+[?2004h> 
+[?2004l
+c[?2004h>     rl = reidx.get(tn)
+[?2004l
+[?2004h>     exempt = False
+[?2004l
+a[?2004h>     if r['maintenance_active'].lower() == 'true' and rl is not None:
+[?2004l
+[?2004h>         exempt = rl['approved'].lower() == 'true' and rl['valid_until'] >= r['audit_date']
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h>     if autovac_disabled:
+[?2004l
+[?2004h>         finding = 'AUTOVACUUM_DISABLED'
+[?2004l
+[?2004h>     elif not exempt and ratio > eff_cap:
+[?2004l
+[?2004h>         finding = 'BLOAT_THRESHOLD_EXCEEDED'
+[?2004l
+[?2004h>     elif stale:
+[?2004l
+[?2004h>         finding = 'STALE_STATISTICS'
+[?2004l
+[?2004h>     else:
+[?2004l
+[?2004h>         finding = 'none'
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h>     rows.append({
+[?2004l
+ ove[?2004h>         'table_name': tn,
+[?2004l
+[?2004h>         'last_analyzed': r['last_analyzed'],
+[?2004l
+[?2004h>         'total_pages': total,
+[?2004l
+[?2004h>         'dead_pages': dead,
+[?2004l
+d[?2004h>         'raw': str(raw),
+[?2004l
+[?2004h>         'ratio': str(ratio),
+[?2004l
+[?2004h>         'size_class': size_class,
+[?2004l
+[?2004h>         'cap': str(cap),
+[?2004l
+H[?2004h>         'eff_cap': str(eff_cap),
+[?2004l
+[?2004h>         'stale': stale,
+[?2004l
+[?2004h>         'stale_days': stale_days,
+[?2004l
+[?2004h>         'autovac_disabled': autovac_disabled,
+[?2004l
+[?2004h>         'exempt': exempt,
+[?2004l
+[?2004h>         'finding': finding,
+[?2004l
+[?2004h>     })
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> rows.sort(key=lambda x: (x['last_analyzed'], x['table_name']))
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> with open('/app/bloat_audit.csv', 'w', newline='') as f:
+[?2004l
+[?2004h>     w = csv.writer(f)
+[?2004l
+[?2004h>     w.writerow(['table_name', 'size_class', 'bloat_ratio', 'finding'])
+[?2004l
+[?2004h>     for x in rows:
+[?2004l
+[?2004h>         w.writerow([x['table_name'], x['size_class'], x['ratio'], x['finding']])
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> counts = {
+[?2004l
+[?2004h>     'flagged_count': sum(1 for x in rows if x['finding'] != 'none'),
+[?2004l
+[?2004h>     'autovacuum_disabled_count': sum(1 for x in rows if x['finding'] == 'AUTOVACUUM_DISABLED'),
+[?2004l
+[?2004h>     'bloat_exceeded_count': sum(1 for x in rows if x['finding'] == 'BLOAT_THRESHOLD_EXCEEDED'),
+[?2004l
+[?2004h>     'stale_statistics_count': sum(1 for x in rows if x['finding'] == 'STALE_STATISTICS'),
+[?2004l
+[?2004h>     'compliant_count': sum(1 for x in rows if x['finding'] == 'none'),
+[?2004l
+[?2004h> }
+[?2004l
+ut[?2004h> with open('/app/results.json', 'w') as f:
+[?2004l
+[?2004h>     json.dump(counts, f, indent=2)
+[?2004l
+[?2004h>     f.write('\n')
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> bullets = [
+[?2004l
+[?2004h> "T-13 is AUTOVACUUM_DISABLED because autovacuum_enabled is false and checked first; the large class is computed from total_pages 1000, its bloat ratio is 0.50 over cap 0.2, and 50 stale stats days do not override the autovacuum finding.",
+[?2004l
+[?2004h> "T-17 is AUTOVACUUM_DISABLED because autovacuum is false and checked first; the large class is computed from total_pages 1000, its bloat ratio is 0.40 over cap 0.2, and 50 stale stats days are not the finding.",
+[?2004l
+[?2004h> "T-27 is BLOAT_THRESHOLD_EXCEEDED because stats are stale for 46 days, so the large class computed from total_pages 1000 has a tightened cap of 0.15, and ratio 0.38 is over that effective cap.",
+[?2004l
+[?2004h> "T-04 is STALE_STATISTICS because date math gives 45 stale days, ignoring the legacy days_since_analyze field; the large class computed from total_pages 1000 has ratio 0.10 under tightened cap 0.15, so staleness remains.",
+[?2004l
+[?2004h> "T-21 is AUTOVACUUM_DISABLED because manual vacuum overrides autovacuum even though enabled; the large class computed from total_pages 1000 has ratio 0.20 and cap 0.2, but the manual vacuum override is checked first.",
+[?2004l
+[?2004h> "T-26 is BLOAT_THRESHOLD_EXCEEDED since stats are stale for 36 days, the large class computed from total_pages 1000 tightens cap to 0.15, and ratio 0.18 exceeds that effective cap though it is under normal cap 0.2.",
+[?2004l
+[?2004h> "T-30 is BLOAT_THRESHOLD_EXCEEDED because 36 stale days tighten the large cap computed from total_pages 1000 to 0.15, and ratio 0.20 is over that effective cap despite equaling the original 0.2 cap.",
+[?2004l
+[?2004h> "T-36 is BLOAT_THRESHOLD_EXCEEDED since 35 stale stats days tighten the large class computed from total_pages 1000 to cap 0.15, and ratio 0.18 is over the effective cap.",
+[?2004l
+[?2004h> "T-40 is STALE_STATISTICS because date computation yields 35 stale days, not the legacy days_since_analyze of 25; its large class computed from total_pages 1000 has ratio 0.05 under tightened cap 0.15, so staleness remains.",
+[?2004l
+[?2004h> "T-42 is BLOAT_THRESHOLD_EXCEEDED because 35 stale days tighten the large cap computed from total_pages 1000 to 0.15, so ratio 0.20 is over the effective cap even though it equals the original 0.2 cap.",
+[?2004l
+[?2004h> "T-45 is BLOAT_THRESHOLD_EXCEEDED because 33 stale days tighten the large class computed from total_pages 1000 to cap 0.15, and round-half-up makes the dead_pages/total_pages ratio 0.16 from 0.155, which is over the effective cap.",
+[?2004l
+/bloat_[?2004h> "T-10 is STALE_STATISTICS because date math gives 31 stale days, ignoring legacy days_since_analyze; its approved active reindex is valid, exempting the bloat check, but the large class computed from total_pages 1000 still has ratio 0.21 over cap 0.2.",
+[?2004l
+[?2004h> "T-16 is BLOAT_THRESHOLD_EXCEEDED because its reindex approval expired on 2026-08-25, so bloat applies; 31 stale days tighten the large cap computed from total_pages 1000 to 0.15, and ratio 0.20 is over that effective cap.",
+[?2004l
+[?2004h> "T-19 is BLOAT_THRESHOLD_EXCEEDED because the large class computed from total_pages 1000 has cap 0.2, and round-half-up makes the dead_pages/total_pages ratio 0.41 from 0.405, so it is over the cap.",
+[?2004l
+[?2004h> "T-06 is BLOAT_THRESHOLD_EXCEEDED because the large class computed from total_pages 1000 has ratio 0.25 over cap 0.2, with no stale stats or reindex exemption.",
+[?2004l
+[?2004h> "T-14 is BLOAT_THRESHOLD_EXCEEDED because the large class computed from total_pages 1000 has ratio 0.40 over cap 0.2, and stats are not stale.",
+[?2004l
+[?2004h> "T-18 is BLOAT_THRESHOLD_EXCEEDED because round-half-up raises the dead_pages/total_pages ratio from 0.205 to 0.21, which is over cap 0.2 for the large class computed from total_pages 1000.",
+[?2004l
+[?2004h> "T-20 is AUTOVACUUM_DISABLED because manual vacuum overrides autovacuum even though enabled; the large class computed from total_pages 1000 has ratio 0.10 under cap 0.2, but the manual vacuum override is checked first.",
+[?2004l
+[?2004h> "T-29 is BLOAT_THRESHOLD_EXCEEDED because its reindex approval expired on 2026-08-25, so bloat applies; the large class computed from total_pages 1000 has ratio 0.25 over cap 0.2.",
+[?2004l
+[?2004h> "T-35 is BLOAT_THRESHOLD_EXCEEDED because total_pages 500 computes a large class with cap 0.2, and ratio 0.22 is over that cap.",
+[?2004l
+[?2004h> "T-37 is BLOAT_THRESHOLD_EXCEEDED because its reindex approval expired on 2026-08-25, so bloat applies; the large class computed from total_pages 1000 has ratio 0.25 over cap 0.2.",
+[?2004l
+[?2004h> "T-39 is AUTOVACUUM_DISABLED because manual vacuum overrides autovacuum even though enabled; the large class computed from total_pages 1000 has ratio 0.05 under cap 0.2, but the manual vacuum override is checked first.",
+[?2004l
+[?2004h> "T-44 is BLOAT_THRESHOLD_EXCEEDED because the export medium trap is ignored and the computed large class comes from total_pages 600 with cap 0.2, so ratio 0.83 is over the cap.",
+[?2004l
+[?2004h> "T-08 is BLOAT_THRESHOLD_EXCEEDED because the large class computed from total_pages 1000 has ratio 0.45 over cap 0.2, with no stale stats or reindex exemption.",
+[?2004l
+[?2004h> "T-02 is BLOAT_THRESHOLD_EXCEEDED because the large class computed from total_pages 1000 has ratio 0.35 over cap 0.2, and stats are not stale.",
+[?2004l
+[?2004h> "T-03 is AUTOVACUUM_DISABLED because autovacuum_enabled is false and checked first; the large class computed from total_pages 1000 has ratio 0.15 under cap 0.2, but the disabled autovacuum overrides.",
+[?2004l
+[?2004h> "T-05 is BLOAT_THRESHOLD_EXCEEDED because its reindex is unapproved, so bloat applies; the large class computed from total_pages 1000 has ratio 0.55 over cap 0.2.",
+[?2004l
+[?2004h> "T-11 is AUTOVACUUM_DISABLED because autovacuum_enabled is false and checked first; the large class computed from total_pages 1000 has ratio 0.41 over cap 0.2, but the disabled autovacuum overrides.",
+[?2004l
+[?2004h> ]
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> memo = "# Bloat Maintenance Memo\n\n"
+[?2004l
+[?2004h> memo += "The audit computes bloat_ratio as dead_pages/total_pages with round-half-up to two decimals, computes size_class from total_pages, and ignores the export size_class column including the medium trap. Autovacuum is checked first, bloat is checked next with stale-statistics cap tightening, and stale statistics are checked last.\n\n"
+[?2004l
+[?2004h> memo += "## Non-compliant findings\n\n"
+[?2004l
+[?2004h> for b in bullets:
+[?2004l
+[?2004h>     memo += "- " + b + "\n"
+[?2004l
+[?2004h> memo += "\n## Active reindex and cap-equality notes\n\n"
+[?2004l
+[?2004h> memo += "- T-28 has an approved active reindex valid through 2026-09-15, so its bloat ratio 0.25 over cap 0.2 is exempt and the finding is none.\n"
+[?2004l
+[?2004h> memo += "- A computed ratio exactly equaling its size-class cap is compliant because the policy uses strictly greater than; thus T-12, T-15, T-32, T-34, and T-41 are none, while T-42 is not because stale stats tighten its cap.\n"
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> with open('/app/bloat_memo.md', 'w') as f:
+[?2004l
+[?2004h>     f.write(memo)
+[?2004l
+[?2004h> PY
+[?2004l
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ ls -l /app/bloat_audit.csv /app/bloat_memo.md /app/results.json
+[?2004l
+-rw-r--r-- 1 appuser appuser 1446 Sep 18 13:17 /app/bloat_audit.csv
+-rw-r--r-- 1 appuser appuser 6260 Sep 18 13:17 /app/bloat_memo.md
+-rw-r--r-- 1 appuser appuser  146 Sep 18 13:17 /app/results.json
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ cat /app/results.json
+[?2004l
+{
+  "flagged_count": 28,
+  "autovacuum_disabled_count": 7,
+  "bloat_exceeded_count": 18,
+  "stale_statistics_count": 3,
+  "compliant_count": 13
+}
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ ls -l /app/bloat_audit.csv /app/bloat_memo.md /app/results.json
+[?2004l
+-rw-r--r-- 1 appuser appuser 1446 Sep 18 13:17 /app/bloat_audit.csv
+-rw-r--r-- 1 appuser appuser 6260 Sep 18 13:17 /app/bloat_memo.md
+-rw-r--r-- 1 appuser appuser  146 Sep 18 13:17 /app/results.json
+[?2004h[01;32mappuser@45d02f43f68b[00m:[01;34m/app[00m$ 

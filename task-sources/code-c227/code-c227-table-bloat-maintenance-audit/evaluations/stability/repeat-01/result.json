@@ -1,0 +1,117 @@
+{
+    "id": "b2f2ee94-6993-4808-b3b0-33befd4baaa4",
+    "task_name": "obi/code-c227-table-bloat-maintenance-audit",
+    "trial_name": "code-c227-table-bloat-maintenanc__9USKE43",
+    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-c227/oracle-c227-score-v1/code-c227-table-bloat-maintenanc__9USKE43",
+    "task_id": {
+        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\code-c227-work\\code-c227-table-bloat-maintenance-audit"
+    },
+    "source": null,
+    "task_checksum": "fc3f19dc652e5bbbbc8c7ad6b3f3dc7f1cda54246da0f6aef4b75da0b3f0c862",
+    "config": {
+        "task": {
+            "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\code-c227-work\\code-c227-table-bloat-maintenance-audit",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "code-c227-table-bloat-maintenanc__9USKE43",
+        "trials_dir": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\qc-out\\harbor-jobs-c227\\oracle-c227-score-v1",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": true,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+                "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+                "JUDGE_MODEL": "openai/glm-5.2"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "94401169-8e39-4b2a-be0a-37af295c6417",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-09-18T12:50:45.684291Z",
+    "finished_at": "2026-09-18T12:51:11.675350Z",
+    "environment_setup": {
+        "started_at": "2026-09-18T12:50:45.776739Z",
+        "finished_at": "2026-09-18T12:51:01.703335Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-18T12:51:01.703372Z",
+        "finished_at": "2026-09-18T12:51:01.703442Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-09-18T12:51:01.703542Z",
+        "finished_at": "2026-09-18T12:51:03.388687Z"
+    },
+    "verifier": {
+        "started_at": "2026-09-18T12:51:03.390642Z",
+        "finished_at": "2026-09-18T12:51:06.877394Z"
+    },
+    "step_results": null
+}

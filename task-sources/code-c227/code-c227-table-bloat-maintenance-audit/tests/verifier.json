@@ -1,0 +1,2008 @@
+{
+  "task_id": "code-c227-table-bloat-maintenance-audit",
+  "verifiers": [
+    {
+      "name": "audit_exists",
+      "metadata": {
+        "how_justification": "Checks bloat_audit.csv exists.",
+        "why_justification": "Audit CSV required",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_exists",
+      "metadata": {
+        "how_justification": "Checks bloat_memo.md exists.",
+        "why_justification": "Memo required",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Checks results.json exists.",
+        "why_justification": "Results JSON required",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "t01_finding",
+      "metadata": {
+        "how_justification": "T-01 finding must be none.",
+        "why_justification": "Gold finding for T-01.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-01\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t02_finding",
+      "metadata": {
+        "how_justification": "T-02 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-02.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-02\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t03_finding",
+      "metadata": {
+        "how_justification": "T-03 finding must be AUTOVACUUM_DISABLED.",
+        "why_justification": "Gold finding for T-03.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-03\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t04_finding",
+      "metadata": {
+        "how_justification": "T-04 finding must be STALE_STATISTICS.",
+        "why_justification": "Gold finding for T-04.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-04\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?STALE_STATISTICS\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t05_finding",
+      "metadata": {
+        "how_justification": "T-05 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-05.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-05\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t06_finding",
+      "metadata": {
+        "how_justification": "T-06 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-06.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-06\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t07_finding",
+      "metadata": {
+        "how_justification": "T-07 finding must be none.",
+        "why_justification": "Gold finding for T-07.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-07\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t08_finding",
+      "metadata": {
+        "how_justification": "T-08 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-08.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-08\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t09_finding",
+      "metadata": {
+        "how_justification": "T-09 finding must be none.",
+        "why_justification": "Gold finding for T-09.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-09\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t10_finding",
+      "metadata": {
+        "how_justification": "T-10 finding must be STALE_STATISTICS.",
+        "why_justification": "Gold finding for T-10.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-10\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?STALE_STATISTICS\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t11_finding",
+      "metadata": {
+        "how_justification": "T-11 finding must be AUTOVACUUM_DISABLED.",
+        "why_justification": "Gold finding for T-11.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-11\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t12_finding",
+      "metadata": {
+        "how_justification": "T-12 finding must be none.",
+        "why_justification": "Gold finding for T-12.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-12\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t13_finding",
+      "metadata": {
+        "how_justification": "T-13 finding must be AUTOVACUUM_DISABLED.",
+        "why_justification": "Gold finding for T-13.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-13\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t14_finding",
+      "metadata": {
+        "how_justification": "T-14 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-14.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-14\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t15_finding",
+      "metadata": {
+        "how_justification": "T-15 finding must be none.",
+        "why_justification": "Gold finding for T-15.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-15\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t16_finding",
+      "metadata": {
+        "how_justification": "T-16 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-16.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-16\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t17_finding",
+      "metadata": {
+        "how_justification": "T-17 finding must be AUTOVACUUM_DISABLED.",
+        "why_justification": "Gold finding for T-17.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-17\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t18_finding",
+      "metadata": {
+        "how_justification": "T-18 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-18.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-18\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t19_finding",
+      "metadata": {
+        "how_justification": "T-19 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-19.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-19\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t20_finding",
+      "metadata": {
+        "how_justification": "T-20 finding must be AUTOVACUUM_DISABLED.",
+        "why_justification": "Gold finding for T-20.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-20\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t21_finding",
+      "metadata": {
+        "how_justification": "T-21 finding must be AUTOVACUUM_DISABLED.",
+        "why_justification": "Gold finding for T-21.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-21\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t26_finding",
+      "metadata": {
+        "how_justification": "T-26 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-26.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-26\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t27_finding",
+      "metadata": {
+        "how_justification": "T-27 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-27.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-27\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t28_finding",
+      "metadata": {
+        "how_justification": "T-28 finding must be none.",
+        "why_justification": "Gold finding for T-28.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-28\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t29_finding",
+      "metadata": {
+        "how_justification": "T-29 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-29.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-29\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t30_finding",
+      "metadata": {
+        "how_justification": "T-30 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-30.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-30\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t31_finding",
+      "metadata": {
+        "how_justification": "T-31 finding must be none.",
+        "why_justification": "Gold finding for T-31.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-31\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t32_finding",
+      "metadata": {
+        "how_justification": "T-32 finding must be none.",
+        "why_justification": "Gold finding for T-32.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-32\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t33_finding",
+      "metadata": {
+        "how_justification": "T-33 finding must be none.",
+        "why_justification": "Gold finding for T-33.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-33\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t34_finding",
+      "metadata": {
+        "how_justification": "T-34 finding must be none.",
+        "why_justification": "Gold finding for T-34.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-34\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t35_finding",
+      "metadata": {
+        "how_justification": "T-35 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-35.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-35\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t36_finding",
+      "metadata": {
+        "how_justification": "T-36 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-36.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-36\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t37_finding",
+      "metadata": {
+        "how_justification": "T-37 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-37.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-37\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t38_finding",
+      "metadata": {
+        "how_justification": "T-38 finding must be none.",
+        "why_justification": "Gold finding for T-38.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-38\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t39_finding",
+      "metadata": {
+        "how_justification": "T-39 finding must be AUTOVACUUM_DISABLED.",
+        "why_justification": "Gold finding for T-39.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-39\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t40_finding",
+      "metadata": {
+        "how_justification": "T-40 finding must be STALE_STATISTICS.",
+        "why_justification": "Gold finding for T-40.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-40\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?STALE_STATISTICS\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t41_finding",
+      "metadata": {
+        "how_justification": "T-41 finding must be none.",
+        "why_justification": "Gold finding for T-41.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-41\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t42_finding",
+      "metadata": {
+        "how_justification": "T-42 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-42.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-42\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t43_finding",
+      "metadata": {
+        "how_justification": "T-43 finding must be none.",
+        "why_justification": "Gold finding for T-43.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-43\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t44_finding",
+      "metadata": {
+        "how_justification": "T-44 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-44.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-44\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t45_finding",
+      "metadata": {
+        "how_justification": "T-45 finding must be BLOAT_THRESHOLD_EXCEEDED.",
+        "why_justification": "Gold finding for T-45.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T\\-45\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "result_flagged_count",
+      "metadata": {
+        "how_justification": "results.json flagged_count == 28.",
+        "why_justification": "Aggregate flagged_count must match gold.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 28,
+        "deterministic": {
+          "path": "$.flagged_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_autovacuum_disabled_count",
+      "metadata": {
+        "how_justification": "results.json autovacuum_disabled_count == 7.",
+        "why_justification": "Aggregate autovacuum_disabled_count must match gold.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 7,
+        "deterministic": {
+          "path": "$.autovacuum_disabled_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_bloat_exceeded_count",
+      "metadata": {
+        "how_justification": "results.json bloat_exceeded_count == 18.",
+        "why_justification": "Aggregate bloat_exceeded_count must match gold.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 18,
+        "deterministic": {
+          "path": "$.bloat_exceeded_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_stale_statistics_count",
+      "metadata": {
+        "how_justification": "results.json stale_statistics_count == 3.",
+        "why_justification": "Aggregate stale_statistics_count must match gold.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 3,
+        "deterministic": {
+          "path": "$.stale_statistics_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_compliant_count",
+      "metadata": {
+        "how_justification": "results.json compliant_count == 13.",
+        "why_justification": "Aggregate compliant_count must match gold.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 13,
+        "deterministic": {
+          "path": "$.compliant_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_t02",
+      "metadata": {
+        "how_justification": "Memo discusses T-02 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-02.{0,200}?(bloat|exceed|over|cap|0\\.35|large|threshold)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t03",
+      "metadata": {
+        "how_justification": "Memo discusses T-03 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-03.{0,200}?(autovacuum|disabled|first|override|AUTOVACUUM_DISABLED)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t04",
+      "metadata": {
+        "how_justification": "Memo discusses T-04 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-04.{0,200}?(stale|statistics|45|days|30|STALE_STATISTICS|refresh|outdated)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t05",
+      "metadata": {
+        "how_justification": "Memo discusses T-05 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-05.{0,200}?(reindex|maintenance|exempt|active|none)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t08",
+      "metadata": {
+        "how_justification": "Memo discusses T-08 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-08.{0,200}?(bloat|exceed|over|cap|0\\.45|small|threshold)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t10",
+      "metadata": {
+        "how_justification": "Memo discusses T-10 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-10.{0,200}?(stale|statistics|31|days|30|reindex|exempt|STALE_STATISTICS)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t11",
+      "metadata": {
+        "how_justification": "Memo discusses T-11 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-11.{0,200}?(autovacuum|disabled|first|override|priority|AUTOVACUUM_DISABLED|bloat|cap)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t12",
+      "metadata": {
+        "how_justification": "Memo discusses T-12 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-12.{0,200}?(equal|cap|0\\.20|0\\.2|not over|boundary|at the cap|threshold|none|compliant)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t13",
+      "metadata": {
+        "how_justification": "Memo discusses T-13 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-13.{0,200}?(autovacuum|disabled|first|override|priority|AUTOVACUUM_DISABLED|bloat|stale)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t14",
+      "metadata": {
+        "how_justification": "Memo discusses T-14 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-14.{0,200}?(equal|cap|0\\.40|0\\.4|not over|boundary|small|threshold|none|compliant)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t15",
+      "metadata": {
+        "how_justification": "Memo discusses T-15 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-15.{0,200}?(0\\.200|0\\.2|equal|same|numeric|large|cap|none|compliant)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_maintenance",
+      "metadata": {
+        "how_justification": "Memo regex: memo_maintenance",
+        "why_justification": "Memo discusses reindex/maintenance exemption",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)re-?index|maintenance|exempt",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_size_class",
+      "metadata": {
+        "how_justification": "Memo discusses maintenance/size class discussion",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)size[\\s-]?class|large|small|cap|0\\.[24]",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t16",
+      "metadata": {
+        "how_justification": "Memo discusses T-16 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-16.{0,200}?(stale|statistics|31|days|30|reindex|exempt|boundary|0\\.20|cap|STALE_STATISTICS)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t17",
+      "metadata": {
+        "how_justification": "Memo discusses T-17 explanation",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-17.{0,200}?(autovacuum|disabled|first|override|priority|AUTOVACUUM_DISABLED|boundary|0\\.40|cap)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t18",
+      "metadata": {
+        "how_justification": "Memo discusses T-18 rounding trap",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-18.{0,200}?(bloat|exceed|over|cap|0\\.21|large|round|0\\.205|threshold)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t19",
+      "metadata": {
+        "how_justification": "Memo discusses T-19 rounding trap",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-19.{0,200}?(bloat|exceed|over|cap|0\\.41|small|round|0\\.405|threshold)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t20",
+      "metadata": {
+        "how_justification": "Memo discusses T-20 manual vacuum",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-20.{0,200}?(manual|vacuum|override|autovacuum|disabled|AUTOVACUUM_DISABLED)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t21",
+      "metadata": {
+        "how_justification": "Memo discusses T-21 manual vacuum",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-21.{0,200}?(manual|vacuum|override|autovacuum|disabled|AUTOVACUUM_DISABLED)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t26",
+      "metadata": {
+        "how_justification": "Memo discusses T-26",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-26.{0,200}?(stale|tighten|cap|bloat|BLOAT_THRESHOLD_EXCEEDED)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t27",
+      "metadata": {
+        "how_justification": "Memo discusses T-27",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-27.{0,200}?(stale|tighten|cap|bloat|BLOAT_THRESHOLD_EXCEEDED)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t28",
+      "metadata": {
+        "how_justification": "Memo discusses T-28",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-28.{0,200}?(reindex|approved|expired|valid|bloat|exempt|none|BLOAT_THRESHOLD_EXCEEDED)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t29",
+      "metadata": {
+        "how_justification": "Memo discusses T-29",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-29.{0,200}?(reindex|approved|expired|valid|bloat|exempt|none|BLOAT_THRESHOLD_EXCEEDED)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t30",
+      "metadata": {
+        "how_justification": "Memo discusses T-30",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-30.{0,200}?(stale|tighten|cap|0\\.15|0\\.20|0\\.2|bloat|BLOAT_THRESHOLD_EXCEEDED|effective)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t31",
+      "metadata": {
+        "how_justification": "Memo discusses T-31",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-31.{0,200}?(total|400|small|cap|0\\.4|none|compliant)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t32",
+      "metadata": {
+        "how_justification": "Memo discusses T-32",
+        "why_justification": "Substantive memo check",
+        "tag": "incidental",
+        "weight": 0.02
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-32.{0,200}?(total|400|small|cap|0\\.4|none|compliant)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t45",
+      "metadata": {
+        "how_justification": "Memo regex: memo_t45",
+        "why_justification": "T-45 densify trap: stale-tighten large cap must be explained in memo",
+        "tag": "core",
+        "weight": null
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)T-45.{0,600}?0\\.16.{0,400}?(?:0\\.15|tighten|tightened|stale|33).{0,300}?BLOAT_THRESHOLD_EXCEEDED",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    }
+  ]
+}

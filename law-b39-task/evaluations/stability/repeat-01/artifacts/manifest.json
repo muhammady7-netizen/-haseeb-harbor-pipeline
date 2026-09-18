@@ -1,14 +1,9 @@
 [
   {
-    "source": "/logs/artifacts/app",
-    "destination": "artifacts/app",
+    "source": "/logs/artifacts",
+    "destination": "artifacts/logs/artifacts",
     "type": "directory",
-    "status": "ok",
-    "files": [
-      "answer.md",
-      "letter_line_review.csv",
-      "results.json"
-    ],
+    "status": "empty",
     "service": null
   }
 ]

@@ -1,0 +1,776 @@
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ asciinema rec --stdin /logs/agent/recording.cast
+[?2004l
+[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ clear
+[?2004l
+[H[J[3J[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ ls -la
+[?2004l
+total 12
+drwxrwxrwx 1 root root 4096 Sep 18 12:49 [0m[34;42m.[0m
+drwxr-xr-x 1 root root 4096 Sep 18 13:11 [01;34m..[0m
+dr-xr-xr-x 1 root root 4096 Sep 18 12:48 [01;34minput[0m
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ find /app/input -maxdepth 2 -type f -printf '%p\n'
+[?2004l
+/app/input/table_health.csv
+/app/input/maintenance_policy.md
+/app/input/reindex_log.csv
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ sed -n '1,200p' /app/input/maintenance_policy.md
+[?2004l
+# Table maintenance & vacuum policy (DBOPS-31)
+
+This decides whether a table's maintenance state is compliant. Where the database's own
+health dashboard disagrees, this policy decides.
+
+## 1. Autovacuum
+
+A table with autovacuum disabled is `AUTOVACUUM_DISABLED`. This is checked first and
+overrides every other check for that table, whatever its current bloat ratio reads.
+
+**Manual vacuum override:** if the `vacuum_type` field is `manual`, autovacuum is
+considered disabled even when `autovacuum_enabled` is `True` — a manual vacuum
+overrides and supersedes the automatic schedule, so the table no longer has
+automatic autovacuum protection. A table with `vacuum_type=manual` is
+`AUTOVACUUM_DISABLED` regardless of its `autovacuum_enabled` value.
+
+## 2. Bloat ratio computation and cap by size class
+
+**The `bloat_ratio` field in the export is computed with Python's default rounding
+(round-half-even) and is NOT reliable.** The correct bloat ratio must be computed
+as `dead_pages / total_pages` using **round-half-up** to 2 decimal places. The
+`bloat_ratio` field may give incorrect results for ratios that fall exactly on a
+rounding boundary (e.g. 0.205). Always compute from `dead_pages` and `total_pages`.
+
+The bloat ratio is not read directly from the export — it is **computed** as
+`dead_pages / total_pages`, rounded to 2 decimal places using **round-half-up**
+(0.205 rounds to 0.21, not 0.20). A table whose computed bloat ratio is at or below
+its size class cap is compliant; a table whose computed ratio is **over** its cap
+(strictly greater than) is `BLOAT_THRESHOLD_EXCEEDED`.
+
+
+Size class is determined by `total_pages`: a table with **>= 500 total pages** is
+`large` (cap 0.2); a table with **< 500 total pages** is `small` (cap 0.4).
+
+**The `size_class` column in the export is a legacy field and is NOT reliable** —
+it may not match the classification computed from `total_pages`. Always compute
+size class from `total_pages` using the threshold above, never read it from the
+`size_class` column. When documenting size-class traps in the audit memo, cite the
+plain `total_pages` digit form (e.g. 1000 / 500, not 1,000) and the compute/computed
+size-class concept; mention autovacuum, reindex, or stale day counts when those
+rules decide the finding.
+
+| computed size class | total_pages threshold | max bloat ratio |
+|---|---|---|
+| large | >= 500 | 0.2 |
+| small | < 500 | 0.4 |
+
+Any export `size_class` value other than the computed large/small classes above
+(including traps such as `medium`) is ignored — always classify from `total_pages`
+and apply the corresponding large/small bloat cap.
+
+Size class matching is case-insensitive (e.g. `Large` matches `large`). A table over its own cap is `BLOAT_THRESHOLD_EXCEEDED` — **unless** the table is marked
+under an approved active reindex operation **and** appears in `reindex_log.csv`
+with `approved=True` **and** the `valid_until` date in `reindex_log.csv` is on
+or after the `audit_date` (i.e., `valid_until >= audit_date`). A table with
+`maintenance_active=True` but no matching `approved=True` entry, or whose
+approval has expired (`valid_until < audit_date`), is NOT exempt — the reindex
+is unapproved or expired, and the bloat check applies normally. A table whose computed ratio
+**equals** its cap (e.g. 0.20 for large) is NOT over the cap and is not flagged.
+
+## 3. Statistics staleness
+
+A table whose planner statistics were last refreshed more than 30 days ago is
+`STALE_STATISTICS`. The staleness is computed as calendar days from the `audit_date`
+and `last_analyzed` fields (both in `YYYY-MM-DD` format):
+`(audit_date - last_analyzed).days`. A difference of exactly 30 days is NOT stale
+(the policy says 'more than 30 days').
+
+**The `days_since_analyze` field in the export is a legacy estimate and is NOT
+reliable** — it may differ from the actual date-based computation. Always compute
+staleness from the `audit_date` and `last_analyzed` date fields, never from the
+`days_since_analyze` field. Using the `days_since_analyze` field will produce
+incorrect results.
+
+### Stale-stats cap tightening
+
+When a table's statistics are stale (more than 30 days since last analyzed), the
+bloat cap for that table is **reduced by 0.05** — stale statistics mean the bloat
+measurement cannot be trusted, so a tighter threshold is applied. This tightening
+is applied **before** the bloat check: if the tightened cap is exceeded, the finding
+is `BLOAT_THRESHOLD_EXCEEDED` (not `STALE_STATISTICS`), because bloat is checked
+before staleness in the finding precedence. A table whose ratio exceeds the tightened
+cap but not the original cap is still `BLOAT_THRESHOLD_EXCEEDED`.
+
+For example, a large table (normal cap 0.2) with stale stats has a tightened cap of
+0.15. A ratio of 0.18 would be under the normal cap (0.18 < 0.2) but over the
+tightened cap (0.18 > 0.15), so the finding is `BLOAT_THRESHOLD_EXCEEDED`.
+
+### Processing order
+
+Tables are processed in order of `last_analyzed` date (ascending — oldest first).
+The processing order determines the sequence in which rules are evaluated and
+is the order in which the audit rows should appear in the output. A table with an
+earlier `last_analyzed` date is processed before a table with a later date.
+If two tables have the same `last_analyzed` date, they are processed in `table_name`
+alphabetical order.
+
+## 4. Finding names
+
+`AUTOVACUUM_DISABLED`, `BLOAT_THRESHOLD_EXCEEDED`, `STALE_STATISTICS`, or `none`.
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ printf '\n--- table_health.csv ---\n'; sed -n '1,200p' /app/input/table_health.csv
+[?2004l
+
+--- table_health.csv ---
+table_name,size_class,total_pages,dead_pages,bloat_ratio,autovacuum_enabled,vacuum_type,audit_date,last_analyzed,days_since_analyze,maintenance_active
+T-01,large,1000,100,0.1,True,auto,2026-09-01,2026-08-22,15,False
+T-02,large,1000,350,0.35,True,auto,2026-09-01,2026-08-27,10,False
+T-03,small,1000,150,0.15,False,auto,2026-09-01,2026-08-27,10,False
+T-04,small,1000,100,0.1,True,auto,2026-09-01,2026-07-18,50,False
+T-05,large,1000,550,0.55,True,auto,2026-09-01,2026-08-27,10,True
+T-06,small,1000,250,0.25,True,auto,2026-09-01,2026-08-22,15,False
+T-07,large,1000,120,0.12,True,auto,2026-09-01,2026-08-12,25,False
+T-08,small,1000,450,0.45,True,auto,2026-09-01,2026-08-24,13,False
+T-09,large,1000,190,0.19,True,auto,2026-09-01,2026-08-02,35,False
+T-10,large,1000,210,0.21,True,auto,2026-09-01,2026-08-01,36,True
+T-11,small,1000,410,0.41,False,auto,2026-09-01,2026-08-27,10,False
+T-12,large,1000,200,0.2,True,auto,2026-09-01,2026-08-17,20,False
+T-13,small,1000,500,0.5,False,auto,2026-09-01,2026-07-13,55,False
+T-14,small,1000,400,0.4,True,auto,2026-09-01,2026-08-22,15,False
+T-15,large,1000,200,0.2,True,auto,2026-09-01,2026-08-12,25,False
+T-16,large,1000,200,0.2,True,auto,2026-09-01,2026-08-01,36,True
+T-17,small,1000,400,0.4,False,auto,2026-09-01,2026-07-13,55,False
+T-18,large,1000,205,0.2,True,auto,2026-09-01,2026-08-22,15,False
+T-19,small,1000,405,0.41,True,auto,2026-09-01,2026-08-17,20,False
+T-20,large,1000,100,0.1,True,manual,2026-09-01,2026-08-22,15,False
+T-21,large,1000,200,0.2,True,manual,2026-09-01,2026-07-18,50,False
+T-26,large,1000,180,0.18,True,auto,2026-09-01,2026-07-27,41,False
+T-27,small,1000,380,0.38,True,auto,2026-09-01,2026-07-17,51,False
+T-28,large,1000,250,0.25,True,auto,2026-09-01,2026-08-22,15,True
+T-29,large,1000,250,0.25,True,auto,2026-09-01,2026-08-22,15,True
+T-30,large,1000,200,0.2,True,auto,2026-09-01,2026-07-27,40,False
+T-31,large,400,120,0.3,True,auto,2026-09-01,2026-08-22,15,False
+T-32,large,400,160,0.4,True,auto,2026-09-01,2026-08-22,15,False
+T-31,large,400,120,0.3,True,auto,2026-09-01,2026-08-22,15,False
+T-32,large,400,160,0.4,True,auto,2026-09-01,2026-08-22,15,False
+T-33,small,200,41,0.2,True,auto,2026-09-01,2026-08-22,10,False
+T-34,small,500,100,0.20,True,auto,2026-09-01,2026-08-22,10,False
+T-35,small,500,110,0.22,True,auto,2026-09-01,2026-08-22,10,False
+T-36,large,1000,180,0.18,True,auto,2026-09-01,2026-07-28,20,False
+T-37,large,1000,250,0.25,True,auto,2026-09-01,2026-08-22,10,True
+T-38,small,300,100,0.33,True,auto,2026-09-01,2026-08-22,10,True
+T-39,large,1000,50,0.05,True,manual,2026-09-01,2026-08-22,10,False
+T-40,large,1000,50,0.05,True,auto,2026-09-01,2026-07-28,25,False
+T-41,small,300,120,0.40,True,auto,2026-09-01,2026-08-22,10,False
+T-42,large,1000,200,0.20,True,auto,2026-09-01,2026-07-28,20,False
+T-43,small,100,21,0.21,True,auto,2026-09-01,2026-08-22,10,False
+T-44,medium,600,500,0.83,True,auto,2026-09-01,2026-08-22,10,False
+T-45,small,1000,155,0.16,True,auto,2026-09-01,2026-07-30,10,False
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ printf '\n--- reindex_log.csv ---\n'; sed -n '1,200p' /app/input/reindex_log.csv
+[?2004l
+
+--- reindex_log.csv ---
+table_name,approved,valid_until
+T-05,False,2026-09-15
+T-10,True,2026-09-15
+T-16,True,2026-08-25
+T-28,True,2026-09-15
+T-29,True,2026-08-25
+T-37,True,2026-08-25
+T-38,False,2026-09-15
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ cat > /app/gen_audit.py <<'PY'
+[?2004l
+[?2004h> import csv,json,datetime
+[?2004l
+[?2004h> from decimal import Decimal,ROUND_HALF_UP
+[?2004l
+[?2004h> from collections import OrderedDict
+[?2004l
+[?2004h> def t(v): return v.strip().lower()=='true'
+[?2004l
+[?2004h> def q(x): return Decimal(x).quantize(Decimal('0.01'),rounding=ROUND_HALF_UP)
+[?2004l
+[?2004h> rows=OrderedDict()
+[?2004l
+[?2004h> for r in csv.DictReader(open('/app/input/table_health.csv')):
+[?2004l
+[?2004h>     if r['table_name'] not in rows: rows[r['table_name']]=r
+[?2004l
+[?2004h> rx={}
+[?2004l
+[?2004h> for r in csv.DictReader(open('/app/input/reindex_log.csv')):
+[?2004l
+[?2004h>     rx[r['table_name']]=(t(r['approved']),datetime.date.fromisoformat(r['valid_until']))
+[?2004l
+[?2004h> recs=[]
+[?2004l
+[?2004h> for r in rows.values():
+[?2004l
+[?2004h>     tp=int(r['total_pages']); dp=int(r['dead_pages'])
+[?2004l
+[?2004h>     ratio=q(Decimal(dp)/Decimal(tp))
+[?2004l
+[?2004h>     sc='large' if tp>=500 else 'small'
+[?2004l
+[?2004h>     cap=Decimal('0.20') if sc=='large' else Decimal('0.40')
+[?2004l
+[?2004h>     ad=datetime.date.fromisoformat(r['audit_date']); la=datetime.date.fromisoformat(r['last_analyzed'])
+[?2004l
+[?2004h>     days=(ad-la).days; stale=days>30
+[?2004l
+[?2004h>     ec=cap-Decimal('0.05') if stale else cap
+[?2004l
+[?2004h>     auto=(not t(r['autovacuum_enabled'])) or r['vacuum_type'].strip().lower()=='manual'
+[?2004l
+[?2004h>     ex=False
+[?2004l
+[?2004h>     if t(r['maintenance_active']):
+[?2004l
+[?2004h>         a,v=rx.get(r['table_name'],(False,None))
+[?2004l
+[?2004h>         if a and v and v>=ad: ex=True
+[?2004l
+[?2004h>     if auto: f='AUTOVACUUM_DISABLED'
+[?2004l
+[?2004h>     elif ex: f='STALE_STATISTICS' if stale else 'none'
+[?2004l
+[?2004h>     elif ratio>ec: f='BLOAT_THRESHOLD_EXCEEDED'
+[?2004l
+[?2004h>     elif stale: f='STALE_STATISTICS'
+[?2004l
+[?2004h>     else: f='none'
+[?2004l
+[?2004h>     recs.append((la,r['table_name'],sc,ratio,f))
+[?2004l
+[?2004h> recs.sort(key=lambda x:(x[0],x[1]))
+[?2004l
+[?2004h> with open('/app/bloat_audit.csv','w',newline='') as fo:
+[?2004l
+[?2004h>     w=csv.writer(fo); w.writerow(['table_name','size_class','bloat_ratio','finding'])
+[?2004l
+[?2004h>     for x in recs: w.writerow([x[1],x[2],x[3],x[4]])
+[?2004l
+[?2004h> c={'flagged_count':0,'autovacuum_disabled_count':0,'bloat_exceeded_count':0,'stale_statistics_count':0,'compliant_count':0}
+[?2004l
+[?2004h> for x in recs:
+[?2004l
+[?2004h>     f=x[4]
+[?2004l
+[?2004h>     if f!='none': c['flagged_count']+=1
+[?2004l
+[?2004h>     if f=='AUTOVACUUM_DISABLED': c['autovacuum_disabled_count']+=1
+[?2004l
+[?2004h>     if f=='BLOAT_THRESHOLD_EXCEEDED': c['bloat_exceeded_count']+=1
+[?2004l
+[?2004h>     if f=='STALE_STATISTICS': c['stale_statistics_count']+=1
+[?2004l
+[?2004h>     if f=='none': c['compliant_count']+=1
+[?2004l
+[?2004h> json.dump(c,open('/app/results.json','w'),indent=2)
+[?2004l
+[?2004h> print('generated',len(recs),'rows')
+[?2004l
+[?2004h> PY
+[?2004l
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ python3 /app/gen_audit.py
+[?2004l
+generated 41 rows
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ printf '\n--- results.json ---\n'; cat /app/results.json; printf '\n--- bloat_audit.csv ---\n'; cat /app/bloat_audit.csv
+[?2004l
+
+--- results.json ---
+{
+  "flagged_count": 28,
+  "autovacuum_disabled_count": 7,
+  "bloat_exceeded_count": 18,
+  "stale_statistics_count": 3,
+  "compliant_count": 13
+}
+--- bloat_audit.csv ---
+table_name,size_class,bloat_ratio,finding
+
+T-13,large,0.50,AUTOVACUUM_DISABLED
+
+T-17,large,0.40,AUTOVACUUM_DISABLED
+
+T-27,large,0.38,BLOAT_THRESHOLD_EXCEEDED
+
+T-04,large,0.10,STALE_STATISTICS
+
+T-21,large,0.20,AUTOVACUUM_DISABLED
+
+T-26,large,0.18,BLOAT_THRESHOLD_EXCEEDED
+
+T-30,large,0.20,BLOAT_THRESHOLD_EXCEEDED
+
+T-36,large,0.18,BLOAT_THRESHOLD_EXCEEDED
+
+T-40,large,0.05,STALE_STATISTICS
+
+T-42,large,0.20,BLOAT_THRESHOLD_EXCEEDED
+
+T-45,large,0.16,BLOAT_THRESHOLD_EXCEEDED
+
+T-10,large,0.21,STALE_STATISTICS
+
+T-16,large,0.20,BLOAT_THRESHOLD_EXCEEDED
+
+T-09,large,0.19,none
+
+T-07,large,0.12,none
+
+T-15,large,0.20,none
+
+T-12,large,0.20,none
+
+T-19,large,0.41,BLOAT_THRESHOLD_EXCEEDED
+
+T-01,large,0.10,none
+
+T-06,large,0.25,BLOAT_THRESHOLD_EXCEEDED
+
+T-14,large,0.40,BLOAT_THRESHOLD_EXCEEDED
+
+T-18,large,0.21,BLOAT_THRESHOLD_EXCEEDED
+
+T-20,large,0.10,AUTOVACUUM_DISABLED
+
+T-28,large,0.25,none
+
+T-29,large,0.25,BLOAT_THRESHOLD_EXCEEDED
+
+T-31,small,0.30,none
+
+T-32,small,0.40,none
+
+T-33,small,0.21,none
+
+T-34,large,0.20,none
+
+T-35,large,0.22,BLOAT_THRESHOLD_EXCEEDED
+
+T-37,large,0.25,BLOAT_THRESHOLD_EXCEEDED
+
+T-38,small,0.33,none
+
+T-39,large,0.05,AUTOVACUUM_DISABLED
+
+T-41,small,0.40,none
+
+T-43,small,0.21,none
+
+T-44,large,0.83,BLOAT_THRESHOLD_EXCEEDED
+
+T-08,large,0.45,BLOAT_THRESHOLD_EXCEEDED
+
+T-02,large,0.35,BLOAT_THRESHOLD_EXCEEDED
+
+T-03,large,0.15,AUTOVACUUM_DISABLED
+
+T-05,large,0.55,BLOAT_THRESHOLD_EXCEEDED
+
+T-11,large,0.41,AUTOVACUUM_DISABLED
+
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l
+[?2004h> import csv,datetime
+[?2004l
+[?2004h> from decimal import Decimal,ROUND_HALF_UP
+[?2004l
+[?2004h> from collections import OrderedDict
+[?2004l
+[?2004h> def t(v): return v.strip().lower()=='true'
+[?2004l
+[?2004h> def q(x): return Decimal(x).quantize(Decimal('0.01'),rounding=ROUND_HALF_UP)
+[?2004l
+[?2004h> rows=OrderedDict()
+[?2004l
+[?2004h> for r in csv.DictReader(open('/app/input/table_health.csv')):
+[?2004l
+[?2004h>     if r['table_name'] not in rows: rows[r['table_name']]=r
+[?2004l
+[?2004h> rx={}
+[?2004l
+[?2004h> for r in csv.DictReader(open('/app/input/reindex_log.csv')):
+[?2004l
+[?2004h>     rx[r['table_name']]=(t(r['approved']),datetime.date.fromisoformat(r['valid_until']))
+[?2004l
+[?2004h> for r in rows.values():
+[?2004l
+[?2004h>     tp=int(r['total_pages']); dp=int(r['dead_pages']); ratio=q(Decimal(dp)/Decimal(tp))
+[?2004l
+[?2004h>     sc='large' if tp>=500 else 'small'; cap=Decimal('0.20') if sc=='large' else Decimal('0.40')
+[?2004l
+[?2004h>     ad=datetime.date.fromisoformat(r['audit_date']); la=datetime.date.fromisoformat(r['last_analyzed']); days=(ad-la).days
+[?2004l
+[?2004h>     stale=days>30; ec=cap-Decimal('0.05') if stale else cap
+[?2004l
+[?2004h>     auto=(not t(r['autovacuum_enabled'])) or r['vacuum_type'].strip().lower()=='manual'
+[?2004l
+[?2004h>     ex=False
+[?2004l
+[?2004h>     if t(r['maintenance_active']):
+[?2004l
+[?2004h>         a,v=rx.get(r['table_name'],(False,None))
+[?2004l
+[?2004h>         if a and v and v>=ad: ex=True
+[?2004l
+[?2004h>     print(f"{r['table_name']} tp={tp} dp={dp} ratio={ratio} sc={sc} cap={cap} days={days} stale={stale} eff={ec} auto={auto} exempt={ex} vt={r['vacuum_type']} maint={r['maintenance_active']} finding=")
+[?2004l
+[?2004h> PY
+[?2004l
+T-01 tp=1000 dp=100 ratio=0.10 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-02 tp=1000 dp=350 ratio=0.35 sc=large cap=0.20 days=5 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-03 tp=1000 dp=150 ratio=0.15 sc=large cap=0.20 days=5 stale=False eff=0.20 auto=True exempt=False vt=auto maint=False finding=
+T-04 tp=1000 dp=100 ratio=0.10 sc=large cap=0.20 days=45 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+T-05 tp=1000 dp=550 ratio=0.55 sc=large cap=0.20 days=5 stale=False eff=0.20 auto=False exempt=False vt=auto maint=True finding=
+T-06 tp=1000 dp=250 ratio=0.25 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-07 tp=1000 dp=120 ratio=0.12 sc=large cap=0.20 days=20 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-08 tp=1000 dp=450 ratio=0.45 sc=large cap=0.20 days=8 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-09 tp=1000 dp=190 ratio=0.19 sc=large cap=0.20 days=30 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-10 tp=1000 dp=210 ratio=0.21 sc=large cap=0.20 days=31 stale=True eff=0.15 auto=False exempt=True vt=auto maint=True finding=
+T-11 tp=1000 dp=410 ratio=0.41 sc=large cap=0.20 days=5 stale=False eff=0.20 auto=True exempt=False vt=auto maint=False finding=
+T-12 tp=1000 dp=200 ratio=0.20 sc=large cap=0.20 days=15 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-13 tp=1000 dp=500 ratio=0.50 sc=large cap=0.20 days=50 stale=True eff=0.15 auto=True exempt=False vt=auto maint=False finding=
+T-14 tp=1000 dp=400 ratio=0.40 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-15 tp=1000 dp=200 ratio=0.20 sc=large cap=0.20 days=20 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-16 tp=1000 dp=200 ratio=0.20 sc=large cap=0.20 days=31 stale=True eff=0.15 auto=False exempt=False vt=auto maint=True finding=
+T-17 tp=1000 dp=400 ratio=0.40 sc=large cap=0.20 days=50 stale=True eff=0.15 auto=True exempt=False vt=auto maint=False finding=
+T-18 tp=1000 dp=205 ratio=0.21 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-19 tp=1000 dp=405 ratio=0.41 sc=large cap=0.20 days=15 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-20 tp=1000 dp=100 ratio=0.10 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=True exempt=False vt=manual maint=False finding=
+T-21 tp=1000 dp=200 ratio=0.20 sc=large cap=0.20 days=45 stale=True eff=0.15 auto=True exempt=False vt=manual maint=False finding=
+T-26 tp=1000 dp=180 ratio=0.18 sc=large cap=0.20 days=36 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+T-27 tp=1000 dp=380 ratio=0.38 sc=large cap=0.20 days=46 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+T-28 tp=1000 dp=250 ratio=0.25 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=True vt=auto maint=True finding=
+T-29 tp=1000 dp=250 ratio=0.25 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=True finding=
+T-30 tp=1000 dp=200 ratio=0.20 sc=large cap=0.20 days=36 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+T-31 tp=400 dp=120 ratio=0.30 sc=small cap=0.40 days=10 stale=False eff=0.40 auto=False exempt=False vt=auto maint=False finding=
+T-32 tp=400 dp=160 ratio=0.40 sc=small cap=0.40 days=10 stale=False eff=0.40 auto=False exempt=False vt=auto maint=False finding=
+T-33 tp=200 dp=41 ratio=0.21 sc=small cap=0.40 days=10 stale=False eff=0.40 auto=False exempt=False vt=auto maint=False finding=
+T-34 tp=500 dp=100 ratio=0.20 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-35 tp=500 dp=110 ratio=0.22 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-36 tp=1000 dp=180 ratio=0.18 sc=large cap=0.20 days=35 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+T-37 tp=1000 dp=250 ratio=0.25 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=True finding=
+T-38 tp=300 dp=100 ratio=0.33 sc=small cap=0.40 days=10 stale=False eff=0.40 auto=False exempt=False vt=auto maint=True finding=
+T-39 tp=1000 dp=50 ratio=0.05 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=True exempt=False vt=manual maint=False finding=
+T-40 tp=1000 dp=50 ratio=0.05 sc=large cap=0.20 days=35 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+T-41 tp=300 dp=120 ratio=0.40 sc=small cap=0.40 days=10 stale=False eff=0.40 auto=False exempt=False vt=auto maint=False finding=
+T-42 tp=1000 dp=200 ratio=0.20 sc=large cap=0.20 days=35 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+T-43 tp=100 dp=21 ratio=0.21 sc=small cap=0.40 days=10 stale=False eff=0.40 auto=False exempt=False vt=auto maint=False finding=
+T-44 tp=600 dp=500 ratio=0.83 sc=large cap=0.20 days=10 stale=False eff=0.20 auto=False exempt=False vt=auto maint=False finding=
+T-45 tp=1000 dp=155 ratio=0.16 sc=large cap=0.20 days=33 stale=True eff=0.15 auto=False exempt=False vt=auto maint=False finding=
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ cat > /app/gen_memo.py <<'PY'
+[?2004l
+[?2004h> import csv, datetime
+[?2004l
+[?2004h> from decimal import Decimal, ROUND_HALF_UP
+[?2004l
+[?2004h> from collections import OrderedDict
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> def t(v): return v.strip().lower() == 'true'
+[?2004l
+no[?2004h> def q(x): return Decimal(x).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> rows = OrderedDict()
+[?2004l
+[?2004h> for r in csv.DictReader(open('/app/input/table_health.csv')):
+[?2004l
+[?2004h>     if r['table_name'] not in rows:
+[?2004l
+d([?2004h>         rows[r['table_name']] = r
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> rx = {}
+[?2004l
+[?2004h> for r in csv.DictReader(open('/app/input/reindex_log.csv')):
+[?2004l
+[?2004h>     rx[r['table_name']] = (t(r['approved']), datetime.date.fromisoformat(r['valid_until']))
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> recs = []
+[?2004l
+[?2004h> for r in rows.values():
+[?2004l
+[?2004h>     tp = int(r['total_pages'])
+[?2004l
+[?2004h>     dp = int(r['dead_pages'])
+[?2004l
+[?2004h>     ratio = q(Decimal(dp) / Decimal(tp))
+[?2004l
+n[?2004h>     pre = Decimal(dp) / Decimal(tp)
+[?2004l
+[?2004h>     sc = 'large' if tp >= 500 else 'small'
+[?2004l
+[?2004h>     cap = Decimal('0.20') if sc == 'large' else Decimal('0.40')
+[?2004l
+[?2004h>     ad = datetime.date.fromisoformat(r['audit_date'])
+[?2004l
+[?2004h>     la = datetime.date.fromisoformat(r['last_analyzed'])
+[?2004l
+[?2004h>     days = (ad - la).days
+[?2004l
+[?2004h>     stale = days > 30
+[?2004l
+[?2004h>     ec = cap - Decimal('0.05') if stale else cap
+[?2004l
+[?2004h>     auto = (not t(r['autovacuum_enabled'])) or r['vacuum_type'].strip().lower() == 'manual'
+[?2004l
+[?2004h>     ex = False
+[?2004l
+[?2004h>     approved = False
+[?2004l
+[?2004h>     valid_until = None
+[?2004l
+[?2004h>     if t(r['maintenance_active']):
+[?2004l
+[?2004h>         approved, valid_until = rx.get(r['table_name'], (False, None))
+[?2004l
+[?2004h>         if approved and valid_until and valid_until >= ad:
+[?2004l
+[?2004h>             ex = True
+[?2004l
+[?2004h>     if auto:
+[?2004l
+[?2004h>         f = 'AUTOVACUUM_DISABLED'
+[?2004l
+[?2004h>     elif ex:
+[?2004l
+[?2004h>         f = 'STALE_STATISTICS' if stale else 'none'
+[?2004l
+[?2004h>     elif ratio > ec:
+[?2004l
+[?2004h>         f = 'BLOAT_THRESHOLD_EXCEEDED'
+[?2004l
+[?2004h>     elif stale:
+[?2004l
+[?2004h>         f = 'STALE_STATISTICS'
+[?2004l
+[?2004h>     else:
+[?2004l
+[?2004h>         f = 'none'
+[?2004l
+[?2004h>     recs.append(dict(name=r['table_name'], exp_sc=r['size_class'], tp=tp, dp=dp, ratio=ratio,
+[?2004l
+[?2004h>                     pre=pre, sc=sc, cap=cap, days=days, stale=stale, ec=ec, auto=auto,
+[?2004l
+[?2004h>                     ex=ex, approved=approved, valid_until=valid_until, maint=t(r['maintenance_active']),
+[?2004l
+[?2004h>                     vt=r['vacuum_type'], f=f, la=la))
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> recs.sort(key=lambda x: (x['la'], x['name']))
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> lines = []
+[?2004l
+[?2004h> lines.append("# Monthly table maintenance audit memo")
+[?2004l
+[?2004h> lines.append("")
+[?2004l
+[?2004h> lines.append("Audit date: 2026-09-01. Bloat ratios were computed as `dead_pages / total_pages` with round-half-up to 2 decimal places, and `size_class` was computed from `total_pages`, ignoring the export `size_class` column. A computed ratio equal to the size-class cap is compliant because only a ratio strictly over the cap is flagged; for example, a large table with ratio 0.20 or a small table with ratio 0.40 is not over cap.")
+[?2004l
+[?2004h> lines.append("")
+[?2004l
+[?2004h> lines.append("## Flagged findings")
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> for x in recs:
+[?2004l
+[?2004h>     if x['f'] == 'none':
+[?2004l
+[?2004h>         continue
+[?2004l
+[?2004h>     name = x['name']
+[?2004l
+[?2004h>     f = x['f']
+[?2004l
+[?2004h>     ratio = x['ratio']
+[?2004l
+[?2004h>     cap = x['cap']
+[?2004l
+[?2004h>     sc = x['sc']
+[?2004l
+[?2004h>     tp = x['tp']
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h>     if f == 'AUTOVACUUM_DISABLED':
+[?2004l
+[?2004h>         if x['vt'] == 'manual':
+[?2004l
+[?2004h>             reason = "manual vacuum overrides autovacuum even though autovacuum_enabled=True"
+[?2004l
+[?2004h>         else:
+[?2004l
+[?2004h>             reason = "autovacuum is disabled and overrides every other check"
+[?2004l
+[?2004h>         s = f"- **{name}**: AUTOVACUUM_DISABLED applies because {reason}; computed {sc} from {tp} total_pages, ratio {ratio}, cap {cap}."
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h>     elif f == 'BLOAT_THRESHOLD_EXCEEDED':
+[?2004l
+[?2004h>         parts = [f"computed {sc} from {tp} total_pages", f"ratio {ratio}", f"normal cap {cap}"]
+[?2004l
+[?2004h>         if x['stale']:
+[?2004l
+[?2004h>             parts.append(f"stale stats {x['days']} days tighten the effective cap to {x['ec']}")
+[?2004l
+[?2004h>             parts.append("days_since_analyze ignored")
+[?2004l
+[?2004h>         if x['pre'] in (Decimal('0.405'), Decimal('0.205'), Decimal('0.155')):
+[?2004l
+[?2004h>             parts.append(f"round-half-up of {x['pre']} gives {ratio}")
+[?2004l
+[?2004h>         if x['exp_sc'].strip().lower() == 'medium':
+[?2004l
+[?2004h>             parts.append("export size_class medium trap ignored")
+[?2004l
+[?2004h>         if x['maint']:
+[?2004l
+[?2004h>             if not x['approved']:
+[?2004l
+[?2004h>                 parts.append("unapproved reindex does not exempt bloat")
+[?2004l
+[?2004h>             elif x['valid_until'] and not (x['valid_until'] >= datetime.date.fromisoformat('2026-09-01')):
+[?2004l
+[?2004h>                 parts.append(f"reindex expired (valid_until {x['valid_until']})")
+[?2004l
+[?2004h>         s = f"- **{name}**: BLOAT_THRESHOLD_EXCEEDED applies because " + "; ".join(parts) + "."
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h>     else:  # STALE_STATISTICS
+[?2004l
+[?2004h>         parts = [f"computed {sc} from {tp} total_pages", f"ratio {ratio}", f"normal cap {cap}",
+[?2004l
+[?2004h>                  f"stale stats {x['days']} days tighten the effective cap to {x['ec']}",
+[?2004l
+[?2004h>                  "days_since_analyze ignored"]
+[?2004l
+[?2004h>         if x['ex']:
+[?2004l
+[?2004h>             parts.append(f"approved active reindex exempts bloat (valid_until {x['valid_until']})")
+[?2004l
+[?2004h>         s = f"- **{name}**: STALE_STATISTICS applies because " + "; ".join(parts) + "."
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h>     lines.append(s)
+[?2004l
+[?2004h> 
+[?2004l
+[?2004h> open('/app/bloat_memo.md', 'w').write("\n".join(lines) + "\n")
+[?2004l
+[?2004h> print("wrote memo", len([x for x in recs if x['f'] != 'none']), "findings")
+[?2004l
+[?2004h> PY
+[?2004l
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ python3 /app/gen_memo.py
+[?2004l
+wrote memo 28 findings
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ ls -l /app/bloat_audit.csv /app/bloat_memo.md /app/results.json
+[?2004l
+-rw-r--r-- 1 appuser appuser 1446 Sep 18 13:17 /app/bloat_audit.csv
+-rw-r--r-- 1 appuser appuser 5375 Sep 18 13:21 /app/bloat_memo.md
+-rw-r--r-- 1 appuser appuser  145 Sep 18 13:17 /app/results.json
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l
+[?2004h> import csv, json
+[?2004l
+[?2004h> from collections import Counter
+[?2004l
+[?2004h> rows = list(csv.DictReader(open('/app/bloat_audit.csv')))
+[?2004l
+[?2004h> print('csv_rows', len(rows))
+[?2004l
+[?2004h> print('json', json.load(open('/app/results.json')))
+[?2004l
+[?2004h> print('findings', Counter(r['finding'] for r in rows))
+[?2004l
+[?2004h> PY
+[?2004l
+csv_rows 41
+json {'flagged_count': 28, 'autovacuum_disabled_count': 7, 'bloat_exceeded_count': 18, 'stale_statistics_count': 3, 'compliant_count': 13}
+findings Counter({'BLOAT_THRESHOLD_EXCEEDED': 18, 'none': 13, 'AUTOVACUUM_DISABLED': 7, 'STALE_STATISTICS': 3})
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ printf '\n--- bloat_memo.md ---\n'
+[?2004l
+
+--- bloat_memo.md ---
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ sed -n '1,120p' /app/bloat_memo.md
+[?2004l
+# Monthly table maintenance audit memo
+
+Audit date: 2026-09-01. Bloat ratios were computed as `dead_pages / total_pages` with round-half-up to 2 decimal places, and `size_class` was computed from `total_pages`, ignoring the export `size_class` column. A computed ratio equal to the size-class cap is compliant because only a ratio strictly over the cap is flagged; for example, a large table with ratio 0.20 or a small table with ratio 0.40 is not over cap.
+
+## Flagged findings
+- **T-13**: AUTOVACUUM_DISABLED applies because autovacuum is disabled and overrides every other check; computed large from 1000 total_pages, ratio 0.50, cap 0.20.
+- **T-17**: AUTOVACUUM_DISABLED applies because autovacuum is disabled and overrides every other check; computed large from 1000 total_pages, ratio 0.40, cap 0.20.
+- **T-27**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.38; normal cap 0.20; stale stats 46 days tighten the effective cap to 0.15; days_since_analyze ignored.
+- **T-04**: STALE_STATISTICS applies because computed large from 1000 total_pages; ratio 0.10; normal cap 0.20; stale stats 45 days tighten the effective cap to 0.15; days_since_analyze ignored.
+- **T-21**: AUTOVACUUM_DISABLED applies because manual vacuum overrides autovacuum even though autovacuum_enabled=True; computed large from 1000 total_pages, ratio 0.20, cap 0.20.
+- **T-26**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.18; normal cap 0.20; stale stats 36 days tighten the effective cap to 0.15; days_since_analyze ignored.
+- **T-30**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.20; normal cap 0.20; stale stats 36 days tighten the effective cap to 0.15; days_since_analyze ignored.
+- **T-36**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.18; normal cap 0.20; stale stats 35 days tighten the effective cap to 0.15; days_since_analyze ignored.
+- **T-40**: STALE_STATISTICS applies because computed large from 1000 total_pages; ratio 0.05; normal cap 0.20; stale stats 35 days tighten the effective cap to 0.15; days_since_analyze ignored.
+- **T-42**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.20; normal cap 0.20; stale stats 35 days tighten the effective cap to 0.15; days_since_analyze ignored.
+- **T-45**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.16; normal cap 0.20; stale stats 33 days tighten the effective cap to 0.15; days_since_analyze ignored; round-half-up of 0.155 gives 0.16.
+- **T-10**: STALE_STATISTICS applies because computed large from 1000 total_pages; ratio 0.21; normal cap 0.20; stale stats 31 days tighten the effective cap to 0.15; days_since_analyze ignored; approved active reindex exempts bloat (valid_until 2026-09-15).
+- **T-16**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.20; normal cap 0.20; stale stats 31 days tighten the effective cap to 0.15; days_since_analyze ignored; reindex expired (valid_until 2026-08-25).
+- **T-19**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.41; normal cap 0.20; round-half-up of 0.405 gives 0.41.
+- **T-06**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.25; normal cap 0.20.
+- **T-14**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.40; normal cap 0.20.
+- **T-18**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.21; normal cap 0.20; round-half-up of 0.205 gives 0.21.
+- **T-20**: AUTOVACUUM_DISABLED applies because manual vacuum overrides autovacuum even though autovacuum_enabled=True; computed large from 1000 total_pages, ratio 0.10, cap 0.20.
+- **T-29**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.25; normal cap 0.20; reindex expired (valid_until 2026-08-25).
+- **T-35**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 500 total_pages; ratio 0.22; normal cap 0.20.
+- **T-37**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.25; normal cap 0.20; reindex expired (valid_until 2026-08-25).
+- **T-39**: AUTOVACUUM_DISABLED applies because manual vacuum overrides autovacuum even though autovacuum_enabled=True; computed large from 1000 total_pages, ratio 0.05, cap 0.20.
+- **T-44**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 600 total_pages; ratio 0.83; normal cap 0.20; export size_class medium trap ignored.
+- **T-08**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.45; normal cap 0.20.
+- **T-02**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.35; normal cap 0.20.
+- **T-03**: AUTOVACUUM_DISABLED applies because autovacuum is disabled and overrides every other check; computed large from 1000 total_pages, ratio 0.15, cap 0.20.
+- **T-05**: BLOAT_THRESHOLD_EXCEEDED applies because computed large from 1000 total_pages; ratio 0.55; normal cap 0.20; unapproved reindex does not exempt bloat.
+- **T-11**: AUTOVACUUM_DISABLED applies because autovacuum is disabled and overrides every other check; computed large from 1000 total_pages, ratio 0.41, cap 0.20.
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ python3 - <<'PY'
+[?2004l
+[?2004h> import csv,json,collections,os
+[?2004l
+[?2004h> files=['bloat_audit.csv','bloat_memo.md','results.json']
+[?2004l
+[?2004h> for f in files:
+[?2004l
+[?2004h>     print(f, os.path.exists(f), os.path.getsize(f))
+[?2004l
+[?2004h> rows=list(csv.DictReader(open('/app/bloat_audit.csv')))
+[?2004l
+[?2004h> print('rows',len(rows))
+[?2004l
+[?2004h> print('header',','.join(rows[0].keys()))
+[?2004l
+[?2004h> print('findings',collections.Counter(r['finding'] for r in rows))
+[?2004l
+[?2004h> print('results',json.load(open('/app/results.json')))
+[?2004l
+[?2004h> print('memo_bullets',sum(1 for line in open('/app/bloat_memo.md') if line.startswith('- **')))
+[?2004l
+[?2004h> PY
+[?2004l
+bloat_audit.csv True 1446
+bloat_memo.md True 5375
+results.json True 145
+rows 41
+header table_name,size_class,bloat_ratio,finding
+findings Counter({'BLOAT_THRESHOLD_EXCEEDED': 18, 'none': 13, 'AUTOVACUUM_DISABLED': 7, 'STALE_STATISTICS': 3})
+results {'flagged_count': 28, 'autovacuum_disabled_count': 7, 'bloat_exceeded_count': 18, 'stale_statistics_count': 3, 'compliant_count': 13}
+memo_bullets 28
+[?2004h[01;32mappuser@7174e9fb4e09[00m:[01;34m/app[00m$ 

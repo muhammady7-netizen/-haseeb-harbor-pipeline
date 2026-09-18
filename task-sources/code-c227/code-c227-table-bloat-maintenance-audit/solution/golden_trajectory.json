@@ -1,0 +1,34 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "agent": {
+    "name": "oracle",
+    "version": "harbor-0.21"
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "user",
+      "message": "Run monthly table maintenance review on table export."
+    },
+    {
+      "step_id": 2,
+      "source": "oracle",
+      "message": "Load policy and health export; parse 42 input rows (40 surviving after duplicate collapse)."
+    },
+    {
+      "step_id": 3,
+      "source": "oracle",
+      "message": "Check autovacuum (incl manual override); compute bloat from dead_pages/total_pages (round-half-up); compute size class from total_pages."
+    },
+    {
+      "step_id": 4,
+      "source": "oracle",
+      "message": "Apply stale cap tightening; check reindex exemptions; apply priority: AUTOVACUUM > BLOAT > STALE > none. Sort by last_analyzed ascending."
+    },
+    {
+      "step_id": 5,
+      "source": "oracle",
+      "message": "Wrote bloat_audit.csv (40 rows), bloat_memo.md (explanatory prose per table), results.json (flagged=27, autovacuum=7, bloat=17, stale=3, compliant=13)."
+    }
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "reward": 0.9,
+  "core_failures": [],
+  "passed": 71,
+  "total": 76,
+  "checks": [
+    {
+      "name": "audit_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "memo_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t01_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t02_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t03_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t04_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t05_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t06_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t07_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t08_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t09_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t10_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t11_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t12_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t13_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t14_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t15_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t16_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t17_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t18_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t19_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t20_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t21_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t26_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t27_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t28_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t29_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t30_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t31_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t32_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t33_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t34_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t35_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t36_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t37_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t38_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t39_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t40_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t41_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t42_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t43_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t44_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "t45_finding",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "result_flagged_count",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "result_autovacuum_disabled_count",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "result_bloat_exceeded_count",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "result_stale_statistics_count",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "result_compliant_count",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    },
+    {
+      "name": "memo_t02",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t03",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t04",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t05",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t08",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t10",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t11",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t12",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.02,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "memo_t13",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t14",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t15",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.02,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "memo_maintenance",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_size_class",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t16",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t17",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t18",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t19",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t20",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t21",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t26",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t27",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t28",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.02,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "memo_t29",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t30",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.02,
+      "detail": ""
+    },
+    {
+      "name": "memo_t31",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.02,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "memo_t32",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.02,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "memo_t45",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0096,
+      "detail": ""
+    }
+  ]
+}

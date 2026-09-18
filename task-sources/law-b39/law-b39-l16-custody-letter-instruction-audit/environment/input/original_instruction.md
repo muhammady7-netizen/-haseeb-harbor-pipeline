@@ -1,0 +1,47 @@
+# Original instruction — the client's first message
+
+I am Delphine Marr. What follows is what I asked for to begin with, one entry per subject. The subject shown on each entry is the value the draft's `subject` column uses.
+
+## OI-201 `addressee`
+
+Address the letter to the father's attorney.
+
+## OI-202 `right_of_first_refusal`
+
+Say that Mr Adler — the father — agreed to a right of first refusal, and that the children are not to be left overnight without him present. Both the agreement and the overnight restriction must appear.
+
+## OI-203 `children_named`
+
+Name both children with their ages: Noor, aged seven, and Imogen, aged twelve. Both names and both ages are required.
+
+## OI-204 `overnight_stays`
+
+State that on several occasions both children stayed overnight at her home or with a sitter while the father was away — both places must be mentioned, both children, and several occasions.
+
+## OI-205 `inconsistent_accounts`
+
+Note that the father has called her his wife to the school, the person the child lives with to clinicians, a sitter to me, and his partner to the neighbours. All four audiences are required.
+
+## OI-206 `concern`
+
+Say I am concerned she may not appreciate that the stays violate the order or the position she has been put in — both limbs. (Superseded wherever the clarification speaks to concern.)
+
+## OI-207 `behavioural_plan`
+
+Say the behavioural plan is about confidence and stability and the stays have set it back — confidence, stability, and setback all required. (Superseded wherever the clarification speaks to behavioural_plan.)
+
+## OI-208 `request`
+
+Ask that neither child remain overnight in her care unless the father is present.
+
+## OI-209 `enclosure`
+
+Say a certified copy of the custodial plan is enclosed.
+
+## OI-210 `tone`
+
+Keep it soft, formal and succinct — all three. (Superseded wherever the clarification speaks to tone.)
+
+## OI-211 `sender_signature`
+
+Sign it in my own name as Delphine Marr — the full name is required; do not sign as counsel or on behalf of anyone else.

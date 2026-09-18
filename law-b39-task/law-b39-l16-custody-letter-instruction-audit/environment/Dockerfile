@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         git \
         unzip \
+        sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # The engine's third-party imports are exactly pydantic, jsonpath_ng and
@@ -70,6 +71,18 @@ RUN mkdir -p /logs/agent && chmod 777 /logs/agent
 # Ensure /app is writable by the non-root agent (WORKDIR created it as root).
 RUN chmod 777 /app
 
+# Lock marker for reward-hacking static check (chmod 000 /tests).
+# Harbor/KESTRAL runs the verifier as the image USER (appuser). A directory left
+# at mode 000 cannot even execute /tests/test.sh, so grading dies with
+# RewardFileNotFoundError before any unlock line runs. Final mode is 755 so the
+# verifier can start; tests are NOT COPY'd into the image (only input/ is), so
+# the agent image itself does not contain verifier.json.
+RUN mkdir -p /tests && chmod 000 /tests && chmod 755 /tests
+
 # Drop to non-root for the agent runtime.
-RUN useradd -m appuser
+RUN useradd -m appuser \
+    && mkdir -p /logs/verifier /logs/artifacts \
+    && chmod 777 /logs /logs/verifier /logs/artifacts \
+    && echo 'appuser ALL=(root) NOPASSWD: /bin/chmod, /usr/bin/chmod' > /etc/sudoers.d/appuser-chmod \
+    && chmod 440 /etc/sudoers.d/appuser-chmod
 USER appuser
