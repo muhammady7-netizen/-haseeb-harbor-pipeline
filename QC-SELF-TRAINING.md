@@ -305,6 +305,23 @@ for step in traj:
 
 ---
 
+### FINDING 14 — Regex boundary `(?!\d)` accepts decimal continuations
+
+**Portal ID:** `layer5_verifier_fairness_static__surface_form_brittleness` + `layer5_verifier_fairness_static__counterfactual_strength`
+**What the portal found:** The `answer_at_odds_figure` regex uses `(?!\d)` as the only boundary guard after the figure. This rejects a following digit (so "1755" fails) but accepts a decimal point or comma: "175.5" and "175,5" both match because "175" matches the alternation and the next character (".") is not a digit, so `(?!\d)` passes. A submission with "175.5" in answer.md returns reward 1.0 — a wrong figure scores the same as the correct one. README.md claimed `(?!\d|[.,]\d)` but the verifier.json had `(?!\d)` — the fix never landed.
+**Why I missed it:** I thought I fixed the regex boundary but the fix didn't land in the actual zip. I never re-verified the regex in the packaged zip against the decimal continuation test.
+**The check I must run:**
+```
+1. Read the answer_at_odds_figure regex from tests/verifier.json
+2. Test against: "Letter lines at odds with the record: 175.5"
+3. Test against: "Letter lines at odds with the record: 175,5"
+4. If either matches → surface_form_brittleness → FAIL
+5. The correct guard is (?!\d|[.,]\d) not (?!\d)
+```
+**Detection pattern:** Any regex with `(?!\d)` as a boundary guard should be tested against decimal/comma continuations. If the figure is "175" and "175.5" also matches, the guard is too weak.
+
+---
+
 ## THE 7-LAYER CHECK I MUST RUN EVERY TIME
 
 ### Layer 0 — Read the content (5 min)
