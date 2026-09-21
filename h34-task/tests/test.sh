@@ -1,3 +1,6 @@
+# Resolve JUDGE_MODEL for rubric checks
+export JUDGE_MODEL="${JUDGE_MODEL:-openai/glm-5.2}"
+
 #!/bin/bash
 # Harbor verifier entrypoint. Harbor copies this to /tests/test.sh and runs it
 # from the task working directory; reward is read back from
