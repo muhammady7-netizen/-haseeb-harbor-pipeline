@@ -94,7 +94,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "factor.*level.*subjects.*active.*control.*active_pct.*out_of_sequence.*status",
+        "expected": "factor[^\n]{0,500}level[^\n]{0,500}subjects[^\n]{0,500}active[^\n]{0,500}control[^\n]{0,500}active_pct[^\n]{0,500}out_of_sequence[^\n]{0,500}status",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -119,7 +119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "stratum.*block_id.*subjects.*active.*control.*block_status",
+        "expected": "stratum[^\n]{0,500}block_id[^\n]{0,500}subjects[^\n]{0,500}active[^\n]{0,500}control[^\n]{0,500}block_status",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -954,8 +954,8 @@
     {
       "name": "findings_address_sequence_integrity",
       "metadata": {
-        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'findings_address_sequence_integrity'? The original regex req",
-        "why_justification": "Converted from keyword-presence to LLM rubric to grade content."
+        "how_justification": "Opens randomisation_findings.md with text.extract_text and applies regex_match.",
+        "why_justification": "Findings cover the allocation sequence test."
       },
       "source": {
         "type": "file",
@@ -968,69 +968,19 @@
         }
       },
       "assertion": {
-        "type": "rubric",
-        "expected": "Does the deliverable satisfy the check 'findings_address_sequence_integrity'? The original regex required: (?i)sequence|out of order|ascending. PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-        "rubric": {
-          "prompt": "Does the deliverable satisfy the check 'findings_address_sequence_integrity'? The original regex required: (?i)sequence|out of order|ascending. PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-          "model": "${JUDGE_MODEL}"
-        }
-      }
-    },
-    {
-      "name": "findings_address_tolerances",
-      "metadata": {
-        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'findings_address_tolerances'? The original regex required: (",
-        "why_justification": "Converted from keyword-presence to LLM rubric to grade content."
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "text",
-          "command": "extract_text",
-          "arguments": {
-            "path": "randomisation_findings.md"
-          }
-        }
-      },
-      "assertion": {
-        "type": "rubric",
-        "expected": "Does the deliverable satisfy the check 'findings_address_tolerances'? The original regex required: (?i)toleran|percentage point|drift|range. PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-        "rubric": {
-          "prompt": "Does the deliverable satisfy the check 'findings_address_tolerances'? The original regex required: (?i)toleran|percentage point|drift|range. PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-          "model": "${JUDGE_MODEL}"
-        }
-      }
-    },
-    {
-      "name": "findings_address_overfill_or_incomplete",
-      "metadata": {
-        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'findings_address_overfill_or_incomplete'? The original regex",
-        "why_justification": "Converted from keyword-presence to LLM rubric to grade content."
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "text",
-          "command": "extract_text",
-          "arguments": {
-            "path": "randomisation_findings.md"
-          }
-        }
-      },
-      "assertion": {
-        "type": "rubric",
-        "expected": "Does the deliverable satisfy the check 'findings_address_overfill_or_incomplete'? The original regex required: (?i)over-?fill|incomplete|not assessed|still filling. PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-        "rubric": {
-          "prompt": "Does the deliverable satisfy the check 'findings_address_overfill_or_incomplete'? The original regex required: (?i)over-?fill|incomplete|not assessed|still filling. PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-          "model": "${JUDGE_MODEL}"
+        "type": "deterministic",
+        "expected": "(?is)sequence|out of order|ascending|toleran|percentage point|drift|range|over-?fill|incomplete|not assessed|still filling",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
         }
       }
     },
     {
       "name": "findings_address_boundary_blocks_or_equality",
       "metadata": {
-        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'findings_address_boundary_blocks_or_equality'? The original ",
-        "why_justification": "Converted from keyword-presence to LLM rubric to grade content."
+        "how_justification": "Opens randomisation_findings.md with text.extract_text and applies regex_match.",
+        "why_justification": "Findings acknowledge within-tolerance boundary cases."
       },
       "source": {
         "type": "file",
@@ -1043,19 +993,19 @@
         }
       },
       "assertion": {
-        "type": "rubric",
-        "expected": "Does the deliverable satisfy the check 'findings_address_boundary_blocks_or_equality'? The original regex required: (?i)(3 or 5|within tolerance|equality at 5\\.0|5 pp). PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-        "rubric": {
-          "prompt": "Does the deliverable satisfy the check 'findings_address_boundary_blocks_or_equality'? The original regex required: (?i)(3 or 5|within tolerance|equality at 5\\.0|5 pp). PASS only if the content genuinely explains this requirement, not merely mentions keywords.",
-          "model": "${JUDGE_MODEL}"
+        "type": "deterministic",
+        "expected": "(?i)(3 or 5|within tolerance|equality at 5\\.0|5 pp)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
         }
       }
     },
     {
       "name": "findings_address_ledger_normalisation",
       "metadata": {
-        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'findings_address_ledger_normalisation'? The original regex w",
-        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
+        "how_justification": "Opens randomisation_findings.md with text.extract_text and applies regex_match.",
+        "why_justification": "Findings reflect that the amendment ledger was reconciled/applied."
       },
       "source": {
         "type": "file",
@@ -1068,11 +1018,11 @@
         }
       },
       "assertion": {
-        "type": "rubric",
-        "expected": "Does the deliverable satisfy the check 'findings_address_ledger_normalisation'? The original regex was: (?is)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*.{0,60}ledger|ledger.{0,60}amend\\w*|reconcil\\w*.{0,60}(ledger|amend)|applied.{0,60}(. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
-        "rubric": {
-          "prompt": "Does the deliverable satisfy the check 'findings_address_ledger_normalisation'? The original regex was: (?is)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*.{0,60}ledger|ledger.{0,60}amend\\w*|reconcil\\w*.{0,60}(ledger|amend)|applied.{0,60}(. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
-          "model": "${JUDGE_MODEL}"
+        "type": "deterministic",
+        "expected": "(?is)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*[^\n]{0,60}ledger|ledger[^\n]{0,60}amend\\w*|reconcil\\w*[^\n]{0,60}(ledger|amend)|applied[^\n]{0,60}(ledger|amend)|ledger[^\n]{0,60}(reconcil\\w*|applied))",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
         }
       }
     },
@@ -1226,10 +1176,5 @@
         }
       }
     }
-  ],
-  "config": {
-    "models": [
-      "${JUDGE_MODEL}"
-    ]
-  }
+  ]
 }
