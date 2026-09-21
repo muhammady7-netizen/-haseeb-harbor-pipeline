@@ -594,7 +594,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 61,
+        "expected": 63,
         "deterministic": {
           "path": "$.acknowledgement_breaches",
           "comparison": "equals"
@@ -619,7 +619,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 25,
+        "expected": 27,
         "deterministic": {
           "path": "$.unapproved_acknowledgement_results",
           "comparison": "equals"
@@ -644,7 +644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 43,
+        "expected": 45,
         "deterministic": {
           "path": "$.missing_escalation_results",
           "comparison": "equals"
@@ -669,7 +669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 60,
+        "expected": 63,
         "deterministic": {
           "path": "$.results_compliant",
           "comparison": "equals"
@@ -694,7 +694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.*\\bR-02\\b)(?=.*(?:limit|window|notif|telephon|30[\\s-]?min|late))",
+        "expected": "(?is)\\bR-02\\b[\\s\\S]*(?:limit|window|notif|telephon|30[\\s-]?min|late)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -719,7 +719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.*\\bR-09\\b)(?=.*(?:notif|telephon|240|late))",
+        "expected": "(?is)\\bR-09\\b[\\s\\S]*(?:notif|telephon|240|late)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -744,7 +744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.*\\bR-03\\b)(?=.*(?:limit|window|80\\s*min|60[\\s-]?min|acknowled))",
+        "expected": "(?is)\\bR-03\\b[\\s\\S]*(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -769,7 +769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.*\\bR-10\\b)(?=.*(?:acknowledg|no valid|absent|none|unacknowledged))",
+        "expected": "(?is)\\bR-10\\b[\\s\\S]*(?:acknowledg|no valid|absent|none|unacknowledged)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -794,7 +794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.*\\bR-15\\b)(?=.*(?:acknowledg|late|510|480|after.hours|midnight|continu))",
+        "expected": "(?is)\\bR-15\\b[\\s\\S]*(?:acknowledg|late|510|480|after.hours|midnight|continu)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -819,7 +819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.*\\bR-16\\b)(?=.*(?:notification|late|17:59|931|escalat|missing|boundary|core.hours))",
+        "expected": "(?is)\\bR-16\\b[\\s\\S]*(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1794,7 +1794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.*\\bR-40\\b)(?=.*(?:notif|31|30[\\s-]?min|late|limit|window))",
+        "expected": "(?is)\\bR-40\\b[\\s\\S]*(?:notif|31|30[\\s-]?min|late|limit|window)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
