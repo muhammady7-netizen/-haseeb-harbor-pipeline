@@ -1,0 +1,43 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "agent": {
+    "name": "oracle",
+    "version": "harbor-0.21"
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "user",
+      "message": "# Task\n\nAudit the critical results register against the trust's critical results procedure and its\nsupporting site / roster / closed-day / amendment documents. Save `results_audit.csv` with the columns\n`result_id,tier,clock_start,notification_minutes,acknowledgement_minutes,acknowledged_by_role,escalation_status,findings`\ncovering every graded result on the register, where the two minute figures are measured from the\nclock start you derive, `acknowledgement_minutes` is left empty where there is no acknowledgement\nthe procedure recognises, and where present is a whole number (e.g. `5`, not `5.0`), and `findings`\nlists every finding against that result or records it as compliant. Then write `results_memo.md`\ncovering the late notifications, the late or absent acknowledgements, which results should have\nbeen escalated and were not, and which long elapsed times are not breaches at all.\n\nThe `findings` column must use only these semicolon-separated category codes: `notification_late`\nfor a late notification, `acknowledgement_late` for a late or absent acknowledgement,\n`acknowledger_unapproved` for an acknowledgement by a role the procedure does not recognise,\n`escalation_missing` for a missed acknowledgement window with no escalation on the register, or\n`compliant` if the result has no finding. A result may carry more than one code, separated by\nsemicolons.\n\nThe `escalation_status` column must use one of: `not_required` when the acknowledgement was within\nits window, `recorded` when the window was missed and an escalation appears on the register, or\n`missing` when the window was missed and no escalation appears. The `clock_start` column must use\nISO 8601 format `YYYY-MM-DDTHH:MM` (e.g. `2026-06-16T08:00`).\n\nThe `results_memo.md` must name each result by its ID (e.g. R-03) and explain the finding: late\nnotifications must mention the notification window or the computed notification minutes, late\nacknowledgements must mention the acknowledgement window or the computed acknowledgement minutes,\nunapproved acknowledgers must be named by role, and missing escalations must note the absence. A\nmemo that merely lists result IDs and finding labels without explaining the breach does not\nsatisfy this requirement.\n\nWhen an acknowledger role is not approved by the procedure (for example ward_clerk, nurse_hca, or\nphlebotomist), that entry is not a recognised acknowledgement: leave acknowledgement_minutes empty,\nrecord acknowledger_unapproved in findings, and in the memo name the role using the register token\n(e.g. ward_clerk) or the words unapproved / not on the approved list (prose forms such as\n\"ward clerk\" are also acceptable). Where an unapproved role means there is no recognised\nacknowledgement and the acknowledgement window has been missed, record both\n`acknowledger_unapproved` and `acknowledgement_late` (and `escalation_missing` when no escalation\nappears). In the memo, when explaining long elapsed times that are not breaches, state the reason\nin plain language (for example inclusive window limits, site core-hours clock start, a trust\nclosed day, or a dated procedure amendment); naming a particular result ID is optional.\n\nReconcile the procedure at `input/critical_results_procedure.md` with\n`input/site_core_hours.md`, `input/approved_roles_roster.md`, `input/bank_holidays.csv`, and\n`input/procedure_amendment_2026-07-01.md`. Audit every graded row in\n`input/critical_results.csv` against those documents and the escalation register at\n`input/escalations.csv`.\n\n- The attachments are provided read-only at: `input/critical_results_procedure.md`; `input/site_core_hours.md`; `input/approved_roles_roster.md`; `input/bank_holidays.csv`; `input/procedure_amendment_2026-07-01.md`; `input/critical_results.csv`; `input/escalations.csv`. Read them there.\n- Save your deliverables into your current working directory using exactly these filenames:\n    - `results_audit.csv` - Result-level critical results audit\n    - `results_memo.md` - Markdown critical results memo\n    - `results.json` - a JSON object whose values are integer counts for the keys `notification_breaches`, `acknowledgement_breaches`, `unapproved_acknowledgement_results`, `missing_escalation_results`, `results_compliant` (do not use arrays of result IDs)\n- Writing those files is the required deliverable and must be your final action; confirm each one exists before you answer.\n- Leave every deliverable in the starting working directory (the same folder you begin in). Do not nest them under `output/` or any other subdirectory.\n"
+    },
+    {
+      "step_id": 2,
+      "source": "oracle",
+      "message": "Ran solution/solve.sh to install gold deliverables (results_audit.csv, results_memo.md, results.json).",
+      "tool_calls": [
+        {
+          "tool_call_id": "oracle-solve-sh",
+          "function_name": "bash",
+          "arguments": {
+            "command": "bash solution/solve.sh"
+          }
+        }
+      ]
+    },
+    {
+      "step_id": 3,
+      "source": "oracle",
+      "message": "Derive clock starts; compute notification and acknowledgement minutes."
+    },
+    {
+      "step_id": 4,
+      "source": "oracle",
+      "message": "Apply escalation / role / compliant findings per procedure."
+    },
+    {
+      "step_id": 5,
+      "source": "oracle",
+      "message": "Wrote gold results_audit.csv, results_memo.md, results.json."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+subject_id,revision,record_status,site,disease_severity,block_id,sequence_no,arm,randomised_date
+SUBJ-003,1,current,,,,,active,
+SUBJ-003,2,current,,,,,control,
+SUBJ-003,4, Current ,,,,,CONTROL,
+SUBJ-004,1,current,,,,, Active ,
+SUBJ-005,2,current,,,,,active,
+SUBJ-008,2,current,,,,,active,
+SUBJ-011,1,current,,severe,,,,
+SUBJ-011,3, Current ,,mild,,,,
+SUBJ-015,8,void,,,,,,
+SUBJ-016,1,current,,,,16,,
+subj-016,3,current,,,,12,,2026/01/18
+SUBJ-017,1,current,,,,,ACTIVE,
+SUBJ-018,2, VOID ,,,,,,
+SUBJ-018,6,current,,,,,,
+SUBJ-019,1,current,,,,,active,
+SUBJ-019,3,current,,,,,control,
+SUBJ-019,5,CURRENT,,,,,control,
+SUBJ-020,1,current,,,,,control,
+SUBJ-020,4,current,, Mild ,,,,
+SUBJ-021,2,current,,,,,control,
+SUBJ-022,1,current,,,,,CONTROL,
+SUBJ-025,2, VOID ,,,,,,
+SUBJ-025,6,current,,,,,,
+SUBJ-026,1,current,,,,,control,
+SUBJ-026,4,current,,,,,"   ",
+SUBJ-027,9,void,,,,,,
+subj-028,2,current,,,,12,,2026-01-13
+subj-028,7,current,,,,08,,2026/01/14
+SUBJ-029,5,current,,,,,control,
+SUBJ-031,3,current,,,,,ACTIVE,
+SUBJ-032,2,current,,,,, Active ,
+SUBJ-033,2,current,,,,,control,
+SUBJ-034,1,current,,,,,control,
+SUBJ-036,6,current,s3,,,18,,
+SUBJ-036,10,current,s2,,B6,18,,
+SUBJ-041,2,current,,,,,control,
+SUBJ-044,1,current,S1,,,7,,2026/01/12
+SUBJ-044,5,current,S1,,B2,07,,2026/01/12
+SUBJ-045,2,current,,,,,control,
+SUBJ-046,2,current,,,,,control,
+SUBJ-049,6,current,,severe,,,,
+SUBJ-050,2,current,,,,,active,
+SUBJ-051,9,void,,,,,,
+SUBJ-070,1,current,S3,mild,B9,17,active,2026-01-24
+SUBJ-071,1,current,S3,severe,B9,18,control,2026-01-25
+SUBJ-072,1,current,S3,severe,B7,19, Active ,2026-01-14
+SUBJ-X01,1,current,S1,mild,BX,99,active,2026-01-02
+SUBJ-X01,9, void ,,,,,,
+SUBJ-X02,1,current,S2,severe,BX,88,control,2026-01-03
+SUBJ-X02,2,VOID,,,,,,
+SUBJ-X03,1,current,S1,mild,BX,77,active,2026-01-01
+SUBJ-X03,4,current,,,,,control,
+SUBJ-X03,8, void ,,,,,,
+SUBJ-X04,1,current,s3,severe,B8,13,active,2026/01/20
+SUBJ-X04,3, VOID ,,,,,,
+SUBJ-X04,7,current,S3,severe,B8,13,control,2026/01/20
+SUBJ-X05,1,current,S1,mild,B1,99,control,2026-01-04
+SUBJ-X05,4,current,S1,mild,B1,99,control,2026-01-04
+SUBJ-X06,1,current,S2,mild,B5,19,active,2026/01/16
+SUBJ-053,1,current,,,,B4,,,
+SUBJ-053,3,current,,,,,,
+SUBJ-054,1,current,,,,,,
+SUBJ-054,3,void,,,,,,
+SUBJ-054,5,current,,,,,,
+SUBJ-054,7,void,,,,,,
+SUBJ-055,2,current,,Mild,,,,
+SUBJ-056,1,current,,,,,,2026-01-14
+SUBJ-057,1,current,,,,,active,
+SUBJ-057,3,current,,,,,,
+SUBJ-058,2,void,,,,,,
+SUBJ-058,5,current,,,,,,
+SUBJ-059,3,current,S3,mild,B7,,,
+SUBJ-060,1,current,,,,,,2026-01-14

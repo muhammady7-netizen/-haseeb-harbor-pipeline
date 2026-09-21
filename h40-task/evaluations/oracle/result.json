@@ -1,0 +1,8 @@
+{
+    "model": "oracle",
+    "overall_pass": true,
+    "reward": 1.0,
+    "task_name": "obi/health-h40-critical-result-acknowledgement",
+    "trial_name": "health-h40-critical-result-ackno__DtKWiRf",
+    "task_checksum": "26425b86948cc3e20351eb4417f4721c73ac862c8f2d28c6bbd281426dd511e4"
+}

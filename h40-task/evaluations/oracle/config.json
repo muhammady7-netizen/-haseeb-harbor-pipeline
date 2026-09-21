@@ -1,0 +1,4 @@
+{
+  "model": "oracle",
+  "verifier": "tests/verifier.json"
+}

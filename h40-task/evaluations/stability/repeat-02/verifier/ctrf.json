@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0",
+  "suite_name": "health-h40 verifier",
+  "passed": 36,
+  "failed": 0,
+  "total": 36,
+  "tests": [
+    {
+      "name": "audit_exists",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "memo_exists",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "results_json_exists",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "audit_has_expected_columns",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "audit_covers_every_result",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "acknowledgement_boundary_is_inclusive",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "evening_tier_two_clock_starts_next_morning",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "early_tier_two_clock_starts_at_core_open",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "tier_one_clock_runs_continuously",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "night_tier_one_breaches_both_windows",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "boundary_tier_two_at_closing_starts_next_morning",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "tier_two_after_hours_ack_breach",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "tier_two_after_hours_escalated_not_missing",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "compliant_with_unnecessary_escalation",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "memo_names_the_unapproved_acknowledgement",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "memo_addresses_escalation",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "memo_addresses_the_clock_start",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "memo_has_explanatory_body",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "memo_lists_absent_ack_r10",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "result_notification_breaches",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "result_acknowledgement_breaches",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "result_unapproved_acknowledgement_results",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "result_missing_escalation_results",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "result_results_compliant",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "escalated_breach_not_double_counted",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "test_audit_covers_full_register",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "test_results_recomputed_from_audit",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "test_deliverable",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_29",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_30",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_31",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_32",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_33",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_34",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_35",
+      "status": "passed",
+      "duration": 0.01
+    },
+    {
+      "name": "check_36",
+      "status": "passed",
+      "duration": 0.01
+    }
+  ]
+}
