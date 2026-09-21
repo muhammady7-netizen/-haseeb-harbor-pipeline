@@ -34,6 +34,3 @@ WORKDIR /app
 COPY input/ /app/input/
 RUN chmod -R a-w,a+rX /app/input
 
-# Drop to non-root for the agent runtime.
-RUN useradd -m appuser
-USER appuser

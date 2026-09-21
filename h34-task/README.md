@@ -45,3 +45,7 @@ A clinical-trial randomisation balance audit for study AR-118. The model receive
 ## QC notes
 
 Delivery Gate requires `evaluations/` (oracle + GLM r1–r5 + stability), fractional `tests/test.sh`, oracle `golden_trajectory.json`, and a completed 14-row `review.csv`. README claims must agree with bundled Harbor evidence.
+
+## Row-count checks
+
+Added row-count checks for CSV deliverables to reject duplicated-row counterexamples. The pytest layer in test_outputs.py also enforces exact row sets.

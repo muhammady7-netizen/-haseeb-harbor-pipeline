@@ -34,3 +34,7 @@ A pathology critical-results audit for Ardleigh Trust (procedure CR-7). The mode
 ## Grading
 
 Deterministic checks in `tests/verifier.json` via vendored `rl_world_verifiers` (`tests/test.sh` → pytest).
+
+## Row-count checks
+
+Added row-count checks for CSV deliverables to reject duplicated-row counterexamples. The pytest layer in test_outputs.py also enforces exact row sets.

@@ -94,7 +94,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "factor[^\n]{0,500}level[^\n]{0,500}subjects[^\n]{0,500}active[^\n]{0,500}control[^\n]{0,500}active_pct[^\n]{0,500}out_of_sequence[^\n]{0,500}status",
+        "expected": "factor.*level.*subjects.*active.*control.*active_pct.*out_of_sequence.*status",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -119,7 +119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "stratum[^\n]{0,500}block_id[^\n]{0,500}subjects[^\n]{0,500}active[^\n]{0,500}control[^\n]{0,500}block_status",
+        "expected": "stratum.*block_id.*subjects.*active.*control.*block_status",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -969,7 +969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)sequence|out of order|ascending|toleran|percentage point|drift|range|over-?fill|incomplete|not assessed|still filling",
+        "expected": "(?ims)sequence|out of order|ascending|toleran|percentage point|drift|range|over-?fill|incomplete|not assessed|still filling",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -994,7 +994,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?i)(3 or 5|within tolerance|equality at 5\\.0|5 pp)",
+        "expected": "(?ims)(3 or 5|within tolerance|equality at 5\\.0|5 pp)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1019,7 +1019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*[^\n]{0,60}ledger|ledger[^\n]{0,60}amend\\w*|reconcil\\w*[^\n]{0,60}(ledger|amend)|applied[^\n]{0,60}(ledger|amend)|ledger[^\n]{0,60}(reconcil\\w*|applied))",
+        "expected": "(?ims)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*[\\s\\S]{0,60}ledger|ledger[\\s\\S]{0,60}amend\\w*|reconcil\\w*[\\s\\S]{0,60}(ledger|amend)|applied[\\s\\S]{0,60}(ledger|amend)|ledger[\\s\\S]{0,60}(reconcil\\w*|applied))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

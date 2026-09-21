@@ -69,7 +69,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)result_id[\\s\\S]{0,500}tier[\\s\\S]{0,500}clock_start[\\s\\S]{0,500}notification_minutes[\\s\\S]{0,500}acknowledgement_minutes[\\s\\S]{0,500}acknowledged_by_role[\\s\\S]{0,500}escalation_status[\\s\\S]{0,500}findings",
+        "expected": "result_id.*tier.*clock_start.*notification_minutes.*acknowledgement_minutes.*acknowledged_by_role.*escalation_status.*findings",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -94,7 +94,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=[\\s\\S]{0,500}\\bR\\-01\\b)",
+        "expected": "(?s)(?=.*\\bR\\-01\\b)(?=.*\\bR\\-02\\b)(?=.*\\bR\\-03\\b)(?=.*\\bR\\-04\\b)(?=.*\\bR\\-05\\b)(?=.*\\bR\\-06\\b)(?=.*\\bR\\-07\\b)(?=.*\\bR\\-08\\b)(?=.*\\bR\\-09\\b)(?=.*\\bR\\-10\\b)(?=.*\\bR\\-11\\b)(?=.*\\bR\\-12\\b)(?=.*\\bR\\-13\\b)(?=.*\\bR\\-14\\b)(?=.*\\bR\\-15\\b)(?=.*\\bR\\-16\\b)(?=.*\\bR\\-17\\b)(?=.*\\bR\\-18\\b)(?=.*\\bR\\-19\\b)(?=.*\\bR\\-20\\b)(?=.*\\bR\\-21\\b)(?=.*\\bR\\-22\\b)(?=.*\\bR\\-23\\b)(?=.*\\bR\\-24\\b)(?=.*\\bR\\-25\\b)(?=.*\\bR\\-26\\b)(?=.*\\bR\\-27\\b)(?=.*\\bR\\-28\\b)(?=.*\\bR\\-29\\b)(?=.*\\bR\\-30\\b)(?=.*\\bR\\-31\\b)(?=.*\\bR\\-32\\b)(?=.*\\bR\\-33\\b)(?=.*\\bR\\-34\\b)(?=.*\\bR\\-35\\b)(?=.*\\bR\\-36\\b)(?=.*\\bR\\-37\\b)(?=.*\\bR\\-38\\b)(?=.*\\bR\\-39\\b)(?=.*\\bR\\-40\\b)(?=.*\\bR\\-41\\b)(?=.*\\bR\\-42\\b)(?=.*\\bR\\-43\\b)(?=.*\\bR\\-44\\b)(?=.*\\bR\\-45\\b)(?=.*\\bR\\-46\\b)(?=.*\\bR\\-47\\b)(?=.*\\bR\\-48\\b)(?=.*\\bR\\-49\\b)(?=.*\\bR\\-50\\b)(?=.*\\bR\\-51\\b)(?=.*\\bR\\-52\\b)(?=.*\\bR\\-53\\b)(?=.*\\bR\\-54\\b)(?=.*\\bR\\-55\\b)(?=.*\\bR\\-56\\b)(?=.*\\bR\\-57\\b)(?=.*\\bR\\-58\\b)(?=.*\\bR\\-59\\b)(?=.*\\bR\\-60\\b)(?=.*\\bR\\-61\\b)(?=.*\\bR\\-62\\b)(?=.*\\bR\\-63\\b)(?=.*\\bR\\-64\\b)(?=.*\\bR\\-65\\b)(?=.*\\bR\\-66\\b)(?=.*\\bR\\-67\\b)(?=.*\\bR\\-68\\b)(?=.*\\bR\\-69\\b)(?=.*\\bR\\-70\\b)(?=.*\\bR\\-71\\b)(?=.*\\bR\\-72\\b)(?=.*\\bR\\-73\\b)(?=.*\\bR\\-74\\b)(?=.*\\bR\\-75\\b)(?=.*\\bR\\-76\\b)(?=.*\\bR\\-77\\b)(?=.*\\bR\\-78\\b)(?=.*\\bR\\-79\\b)(?=.*\\bR\\-80\\b)(?=.*\\bR\\-81\\b)(?=.*\\bR\\-82\\b)(?=.*\\bR\\-83\\b)(?=.*\\bR\\-84\\b)(?=.*\\bR\\-85\\b)(?=.*\\bR\\-86\\b)(?=.*\\bR\\-87\\b)(?=.*\\bR\\-88\\b)(?=.*\\bR\\-89\\b)(?=.*\\bR\\-90\\b)(?=.*\\bR\\-91\\b)(?=.*\\bR\\-92\\b)(?=.*\\bR\\-93\\b)(?=.*\\bR\\-94\\b)(?=.*\\bR\\-95\\b)(?=.*\\bR\\-96\\b)(?=.*\\bR\\-97\\b)(?=.*\\bR\\-98\\b)(?=.*\\bR\\-99\\b)(?=.*\\bR\\-100\\b)(?=.*\\bR\\-101\\b)(?=.*\\bR\\-102\\b)(?=.*\\bR\\-103\\b)(?=.*\\bR\\-104\\b)(?=.*\\bR\\-105\\b)(?=.*\\bR\\-106\\b)(?=.*\\bR\\-107\\b)(?=.*\\bR\\-108\\b)(?=.*\\bR\\-109\\b)(?=.*\\bR\\-110\\b)(?=.*\\bR\\-111\\b)(?=.*\\bR\\-112\\b)(?=.*\\bR\\-113\\b)(?=.*\\bR\\-114\\b)(?=.*\\bR\\-115\\b)(?=.*\\bR\\-116\\b)(?=.*\\bR\\-117\\b)(?=.*\\bR\\-118\\b)(?=.*\\bR\\-119\\b)(?=.*\\bR\\-120\\b)(?=.*\\bR\\-121\\b)(?=.*\\bR\\-122\\b)(?=.*\\bR\\-123\\b)(?=.*\\bR\\-124\\b)(?=.*\\bR\\-125\\b)(?=.*\\bR\\-126\\b)(?=.*\\bR\\-127\\b)(?=.*\\bR\\-128\\b)(?=.*\\bR\\-129\\b)(?=.*\\bR\\-130\\b)(?=.*\\bR\\-131\\b)(?=.*\\bR\\-132\\b)(?=.*\\bR\\-133\\b)(?=.*\\bR\\-134\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -119,7 +119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-05\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-05\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -144,7 +144,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-08\\x22?\\s*,[^\\n]*2026-06-16[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-08\\x22?\\s*,[^\\n]*2026-06-16[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -169,7 +169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-11\\x22?\\s*,[^\\n]*2026-06-16[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-11\\x22?\\s*,[^\\n]*2026-06-16[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -194,7 +194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-12\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-12\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -219,7 +219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-13\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*(late|breach|overdue|fail)",
+        "expected": "(?mi)^\\x22?R-13\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*(late|breach|overdue|fail)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -244,7 +244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-06\\x22?\\s*,[^\\n]*(unapprov|not[_ ]?approved|invalid|unauthoris|ward_clerk)",
+        "expected": "(?mi)^\\x22?R-06\\x22?\\s*,[^\\n]*(unapprov|not[_ ]?approved|invalid|unauthoris|ward_clerk)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -269,7 +269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-04\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*escalation_missing",
+        "expected": "(?mi)^\\x22?R-04\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*escalation_missing",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -294,7 +294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-03\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "expected": "(?mi)^\\x22?R-03\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -319,7 +319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-14\\x22?\\s*,[^\\n]*2026-06-17[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-14\\x22?\\s*,[^\\n]*2026-06-17[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -344,7 +344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-15\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*510(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*(late|breach|overdue|fail)",
+        "expected": "(?mi)^\\x22?R-15\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*510(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*(late|breach|overdue|fail)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -369,7 +369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-15\\x22?\\s*,[^\\n]*(recorded|escalated|present|yes|complete)",
+        "expected": "(?mi)^\\x22?R-15\\x22?\\s*,[^\\n]*(recorded|escalated|present|yes|complete)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -394,7 +394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-16\\x22?\\s*,[^\\n]*2026-06-15[T ]17:59[^\\n]*(late|breach|overdue|fail)",
+        "expected": "(?mi)^\\x22?R-16\\x22?\\s*,[^\\n]*2026-06-15[T ]17:59[^\\n]*(late|breach|overdue|fail)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -419,7 +419,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-16\\x22?\\s*,[^\\n]*(missing|absent|none|not[_ ]?escalat|no[_ ]?escalat)",
+        "expected": "(?mi)^\\x22?R-16\\x22?\\s*,[^\\n]*(missing|absent|none|not[_ ]?escalat|no[_ ]?escalat)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -444,7 +444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-17\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-17\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -469,7 +469,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-06\\b[\\s\\S]{0,500}(?:unapproved|ward[_\\s-]?clerk|not on the approved|cannot act|not recognised|not recognized)",
+        "expected": "(?ims)\\bR-06\\b[\\s\\S]{0,500}(?:unapproved|ward[_\\s-]?clerk|not on the approved|cannot act|not recognised|not recognized)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -494,7 +494,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:core[- ]?hours|clock[- ]?starts?|clock begins|next[- ]?morning|next day|following (?:day|morning)|start of business|(?:working|business|opening) hours|0?8:00|0?9:00|8\\s*(?:am|a\\.m\\.)|overnight|out[- ]?of[- ]?hours|18:00|17:59|amendment|supersed)",
+        "expected": "(?ims)(?:core[- ]?hours|clock[- ]?starts?|clock begins|next[- ]?morning|next day|following (?:day|morning)|start of business|(?:working|business|opening) hours|0?8:00|0?9:00|8\\s*(?:am|a\\.m\\.)|overnight|out[- ]?of[- ]?hours|18:00|17:59|amendment|supersed)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -519,7 +519,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=[\\s\\S]{0,500}\\b(?:R-04|R-13|R-16|R-35)\\b)[\\s\\S]{0,600}(?:escalat|escalation register|missing)",
+        "expected": "(?ims)(?=[\\s\\S]{0,500}\\b(?:R-04|R-13|R-16|R-35)\\b)[\\s\\S]{0,600}(?:escalat|escalation register|missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -694,7 +694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-02\\b[\\s\\S]{0,300}(?:limit|window|notif|telephon|30[\\s-]?min|late)",
+        "expected": "(?ims)\\bR-02\\b[\\s\\S]{0,300}(?:limit|window|notif|telephon|30[\\s-]?min|late)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -719,7 +719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-09\\b[\\s\\S]{0,300}(?:notif|telephon|240|late)",
+        "expected": "(?ims)\\bR-09\\b[\\s\\S]{0,300}(?:notif|telephon|240|late)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -744,7 +744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-03\\b[\\s\\S]{0,300}(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)",
+        "expected": "(?ims)\\bR-03\\b[\\s\\S]{0,300}(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -769,7 +769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-10\\b[\\s\\S]{0,300}(?:acknowledg|no valid|absent|none|unacknowledged)",
+        "expected": "(?ims)\\bR-10\\b[\\s\\S]{0,300}(?:acknowledg|no valid|absent|none|unacknowledged)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -794,7 +794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-15\\b[\\s\\S]{0,300}(?:acknowledg|late|510|480|after.hours|midnight|continu)",
+        "expected": "(?ims)\\bR-15\\b[\\s\\S]{0,300}(?:acknowledg|late|510|480|after.hours|midnight|continu)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -819,7 +819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-16\\b[\\s\\S]{0,300}(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)",
+        "expected": "(?ims)\\bR-16\\b[\\s\\S]{0,300}(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -844,7 +844,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=[\\s\\S]{900,})\\A\\s*(?:\\S+\\s+){99,}\\S+",
+        "expected": "(?ims)(?=[\\s\\S]*\\b(?:window|clock|escalat|unapproved|notification|acknowledg|breach|compliant|inclusive|core)\\b)\\A\\s*(?:\\S+\\s+){99,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -869,7 +869,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-06\\x22?\\s*,[^\\n]*\\bward_clerk\\b",
+        "expected": "(?mi)^\\x22?R-06\\x22?\\s*,[^\\n]*\\bward_clerk\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -894,7 +894,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-22\\x22?\\s*,[^\\n]*\\bnurse_hca\\b",
+        "expected": "(?mi)^\\x22?R-22\\x22?\\s*,[^\\n]*\\bnurse_hca\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -919,7 +919,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-35\\x22?\\s*,[^\\n]*\\bphlebotomist\\b",
+        "expected": "(?mi)^\\x22?R-35\\x22?\\s*,[^\\n]*\\bphlebotomist\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -944,7 +944,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-34\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-34\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -969,7 +969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-35\\b[^\\n]{0,500}(?:unapprov|missing|absent)",
+        "expected": "(?mi)^\\x22?R-35\\x22?\\s*,[^\\n]*(?=.*unapprov)(?=.*(?:missing|absent))(?=.*(?:acknowledgement_late|late|unapprov))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -994,7 +994,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-35\\b[\\s\\S]{0,500}(?:unapproved|phlebotomist|not on the approved|not recognised|not recognized)",
+        "expected": "(?ims)\\bR-35\\b[\\s\\S]{0,500}(?:unapproved|phlebotomist|not on the approved|not recognised|not recognized)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1019,7 +1019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:inclusive|exactly|within (?:its|the) (?:window|limit)|not a (?:finding|breach)|core.?hours|weekend|Sunday)[\\s\\S]{0,200}(?:compliant|within|not a (?:finding|breach)|met)",
+        "expected": "(?ims)(?:inclusive|exactly|within (?:its|the) (?:window|limit)|not a (?:finding|breach)|core.?hours|weekend|Sunday)[\\s\\S]{0,200}(?:compliant|within|not a (?:finding|breach)|met)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1044,7 +1044,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-06\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-06\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1069,7 +1069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-22\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-22\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1094,7 +1094,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-01\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-01\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1119,7 +1119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-02\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-02\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1144,7 +1144,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-07\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-07\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1169,7 +1169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-09\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-09\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1194,7 +1194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-10\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "expected": "(?mi)^\\x22?R-10\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1219,7 +1219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-18\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-18\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1244,7 +1244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-19\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-19\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1269,7 +1269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-20\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-20\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1294,7 +1294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-21\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-21\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1319,7 +1319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-23\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-23\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1344,7 +1344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-24\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "expected": "(?mi)^\\x22?R-24\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1369,7 +1369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-25\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-25\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1394,7 +1394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-26\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-26\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1419,7 +1419,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-28\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-28\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1444,7 +1444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-29\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "expected": "(?mi)^\\x22?R-29\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1469,7 +1469,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-30\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "expected": "(?mi)^\\x22?R-30\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1494,7 +1494,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-31\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-31\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1519,7 +1519,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-32\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "expected": "(?mi)^\\x22?R-32\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1544,7 +1544,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-33\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "expected": "(?mi)^\\x22?R-33\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1569,7 +1569,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-36\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-36\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1594,7 +1594,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-37\\x22?\\s*,[^\\n]*2026-06-21[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-37\\x22?\\s*,[^\\n]*2026-06-21[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1619,7 +1619,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-38\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-38\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1644,7 +1644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-36\\x22?\\s*,[^\\n]*\\badvanced_nurse_practitioner\\b",
+        "expected": "(?mi)^\\x22?R-36\\x22?\\s*,[^\\n]*\\badvanced_nurse_practitioner\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1669,7 +1669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:midnight|Saturday|Sunday|weekend|inclusive|19:00|18:00|advanced_nurse)[\\s\\S]{0,300}(?:compliant|within|not a (?:finding|breach)|exactly)",
+        "expected": "(?ims)(?:midnight|Saturday|Sunday|weekend|inclusive|19:00|18:00|advanced_nurse)[\\s\\S]{0,300}(?:compliant|within|not a (?:finding|breach)|exactly)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1694,7 +1694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-31\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*35(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-31\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*35(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1719,7 +1719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-39\\x22?\\s*,[^\\n]*2026-06-21[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-39\\x22?\\s*,[^\\n]*2026-06-21[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1744,7 +1744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-40\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-40\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1769,7 +1769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-41\\x22?\\s*,[^\\n]*2026-06-22[T ]17:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-41\\x22?\\s*,[^\\n]*2026-06-22[T ]17:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1794,7 +1794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-40\\b[\\s\\S]{0,300}(?:notif|31|30[\\s-]?min|late|limit|window)",
+        "expected": "(?ims)\\bR-40\\b[\\s\\S]{0,300}(?:notif|31|30[\\s-]?min|late|limit|window)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1819,7 +1819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-57\\x22?\\s*,[^\\n]*2026-06-27[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*420(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-57\\x22?\\s*,[^\\n]*2026-06-27[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*420(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1844,7 +1844,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-58\\x22?\\s*,[^\\n]*2026-06-27[T ]17:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-58\\x22?\\s*,[^\\n]*2026-06-27[T ]17:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1869,7 +1869,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-59\\x22?\\s*,[^\\n]*2026-06-28[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-59\\x22?\\s*,[^\\n]*2026-06-28[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1894,7 +1894,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-60\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-60\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1919,7 +1919,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-61\\x22?\\s*,[^\\n]*advanced_nurse_practitioner[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,\\s*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-61\\x22?\\s*,[^\\n]*advanced_nurse_practitioner[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,\\s*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1944,7 +1944,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledgement_late)^\\x22?R-62\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-62\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1969,7 +1969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledgement_late)^\\x22?R-63\\x22?\\s*,[^\\n]*2026-06-29[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-63\\x22?\\s*,[^\\n]*2026-06-29[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1994,7 +1994,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-64\\x22?\\s*,[^\\n]*2026-06-26[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-64\\x22?\\s*,[^\\n]*2026-06-26[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2019,7 +2019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-65\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*10(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*physician_associate[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-65\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*10(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*physician_associate[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2044,7 +2044,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-66\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*59(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-66\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*59(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2069,7 +2069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-60\\b[\\s\\S]{0,400}(?:notif|241|240|late|window)",
+        "expected": "(?ims)\\bR-60\\b[\\s\\S]{0,400}(?:notif|241|240|late|window)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2094,7 +2094,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-65\\b[\\s\\S]{0,500}(?:unapproved|physician[_\\s-]?associate|not on the approved|not recognised|not recognized)",
+        "expected": "(?ims)\\bR-65\\b[\\s\\S]{0,500}(?:unapproved|physician[_\\s-]?associate|not on the approved|not recognised|not recognized)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2119,7 +2119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:pre[- ]?clock|before\\s+(?:the\\s+)?clock(?:\\s+start)?|notif(?:y|ication|ied)[\\s\\S]{0,100}(?:clock\\s+start|as\\s+0)|0\\s*min(?:ute)?s?[\\s\\S]{0,80}(?:notif|clock)|17:59|evening[\\s\\S]{0,60}(?:close|clock|release)|before\\s+(?:site\\s+)?(?:open|core[- ]?hours))",
+        "expected": "(?ims)(?:pre[- ]?clock|before\\s+(?:the\\s+)?clock(?:\\s+start)?|notif(?:y|ication|ied)[\\s\\S]{0,100}(?:clock\\s+start|as\\s+0)|0\\s*min(?:ute)?s?[\\s\\S]{0,80}(?:notif|clock)|17:59|evening[\\s\\S]{0,60}(?:close|clock|release)|before\\s+(?:site\\s+)?(?:open|core[- ]?hours))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2144,7 +2144,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-67\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-67\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2169,7 +2169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledgement_late)^\\x22?R-68\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-68\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2194,7 +2194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledgement_late)^\\x22?R-69\\x22?\\s*,[^\\n]*2026-07-04[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-69\\x22?\\s*,[^\\n]*2026-07-04[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2219,7 +2219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-70\\x22?\\s*,[^\\n]*2026-07-04[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-70\\x22?\\s*,[^\\n]*2026-07-04[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2244,7 +2244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-71\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-71\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2269,7 +2269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-72\\x22?\\s*,\\s*\\x22?1\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-72\\x22?\\s*,\\s*\\x22?1\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2294,7 +2294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-73\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*10(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*nurse_practitioner[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-73\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*10(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*nurse_practitioner[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2319,7 +2319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-74\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*35(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*clinical_fellow[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-74\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*35(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*clinical_fellow[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2344,7 +2344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-75\\x22?\\s*,[^\\n]*2026-07-04[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-75\\x22?\\s*,[^\\n]*2026-07-04[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2369,7 +2369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-76\\x22?\\s*,[^\\n]*2026-07-05[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-76\\x22?\\s*,[^\\n]*2026-07-05[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2394,7 +2394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-77\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-77\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2419,7 +2419,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-78\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-78\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2444,7 +2444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-79\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-79\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2469,7 +2469,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-80\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*5(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*locum_consultant[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-80\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*5(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*locum_consultant[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2494,7 +2494,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bR-72\\b[\\s\\S]{0,400}(?:notif|31|late|window)|\\bR-77\\b[\\s\\S]{0,400}(?:notif|241|late|window))",
+        "expected": "(?ims)(?:\\bR-72\\b[\\s\\S]{0,400}(?:notif|31|late|window)|\\bR-77\\b[\\s\\S]{0,400}(?:notif|241|late|window))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2519,7 +2519,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bR-73\\b[\\s\\S]{0,500}(?:unapproved|nurse[_\\s-]?practitioner|not on the approved)|\\bR-80\\b[\\s\\S]{0,500}(?:unapproved|locum[_\\s-]?consultant|not on the approved))",
+        "expected": "(?ims)(?:\\bR-73\\b[\\s\\S]{0,500}(?:unapproved|nurse[_\\s-]?practitioner|not on the approved)|\\bR-80\\b[\\s\\S]{0,500}(?:unapproved|locum[_\\s-]?consultant|not on the approved))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2544,7 +2544,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:inclusive|exact(?:ly)?\\s+(?:60|240|480)|within\\s+(?:the\\s+)?(?:window|limit)|not\\s+a\\s+(?:breach|finding)|pre[- ]?clock|before\\s+(?:the\\s+)?clock|tier[- ]?2[\\s\\S]{0,80}(?:240|480|window|limit))",
+        "expected": "(?ims)(?:inclusive|exact(?:ly)?\\s+(?:60|240|480)|within\\s+(?:the\\s+)?(?:window|limit)|not\\s+a\\s+(?:breach|finding)|pre[- ]?clock|before\\s+(?:the\\s+)?clock|tier[- ]?2[\\s\\S]{0,80}(?:240|480|window|limit))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2569,7 +2569,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-81\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*12(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*specialty_doctor[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-81\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*12(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*specialty_doctor[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2594,7 +2594,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-82\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*40(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*consultant_on_call[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-82\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*40(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*consultant_on_call[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2619,7 +2619,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-83\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*8(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\banp\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-83\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*8(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\banp\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2644,7 +2644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-84\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*senior_house_officer[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-84\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*senior_house_officer[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2669,7 +2669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-85\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*35(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*st_registrar[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-85\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*35(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*st_registrar[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2694,7 +2694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-86\\x22?\\s*,\\s*\\x22?1\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*120(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*200(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-86\\x22?\\s*,\\s*\\x22?1\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*120(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*200(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2719,7 +2719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-87\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*120(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*200(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-87\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*120(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*200(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2744,7 +2744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-88\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*450(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-88\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*450(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2769,7 +2769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-89\\x22?\\s*,[^\\n]*2026-07-12[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-89\\x22?\\s*,[^\\n]*2026-07-12[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2794,7 +2794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledgement_late)^\\x22?R-90\\x22?\\s*,[^\\n]*2026-07-12[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-90\\x22?\\s*,[^\\n]*2026-07-12[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2819,7 +2819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledgement_late)^\\x22?R-91\\x22?\\s*,[^\\n]*2026-07-13[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-91\\x22?\\s*,[^\\n]*2026-07-13[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2844,7 +2844,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-93\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*locum_registrar[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-93\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*locum_registrar[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2869,7 +2869,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-94\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "expected": "(?mi)^\\x22?R-94\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2894,7 +2894,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-95\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*270(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-95\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*270(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2919,7 +2919,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-96\\x22?\\s*,[^\\n]*2026-07-13[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-96\\x22?\\s*,[^\\n]*2026-07-13[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2944,7 +2944,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-97\\x22?\\s*,[^\\n]*2026-07-13[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-97\\x22?\\s*,[^\\n]*2026-07-13[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2969,7 +2969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-98\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*advanced_nurse_practitioner[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-98\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*advanced_nurse_practitioner[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -2994,7 +2994,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-99\\x22?\\s*,\\s*\\x22?1\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-99\\x22?\\s*,\\s*\\x22?1\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*61(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3019,7 +3019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-100\\x22?\\s*,[^\\n]*2026-07-09[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-100\\x22?\\s*,[^\\n]*2026-07-09[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3044,7 +3044,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-101\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*40(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*clinical_scientist[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-101\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*40(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*clinical_scientist[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3069,7 +3069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-102\\x22?\\s*,[^\\n]*2026-07-09[T ]17:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-102\\x22?\\s*,[^\\n]*2026-07-09[T ]17:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3094,7 +3094,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-103\\x22?\\s*,[^\\n]*2026-07-10[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-103\\x22?\\s*,[^\\n]*2026-07-10[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3119,7 +3119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-104\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*staff_grade[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-104\\x22?\\s*,[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*staff_grade[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3144,7 +3144,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-105\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*45(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*foundation_doctor[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-105\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*45(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*foundation_doctor[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3169,7 +3169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bR-82\\b[\\s\\S]{0,500}(?:recorded|escalat|consultant_on_call|unapproved)|\\bR-93\\b[\\s\\S]{0,500}(?:recorded|escalat|locum_registrar|unapproved)|\\bR-105\\b[\\s\\S]{0,500}(?:recorded|escalat|foundation_doctor|unapproved))",
+        "expected": "(?ims)(?:\\bR-82\\b[\\s\\S]{0,500}(?:recorded|escalat|consultant_on_call|unapproved)|\\bR-93\\b[\\s\\S]{0,500}(?:recorded|escalat|locum_registrar|unapproved)|\\bR-105\\b[\\s\\S]{0,500}(?:recorded|escalat|foundation_doctor|unapproved))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3194,7 +3194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bR-86\\b[\\s\\S]{0,400}(?:notif|120|late|window|tier)|\\bR-99\\b[\\s\\S]{0,400}(?:notif|31|late|window))",
+        "expected": "(?ims)(?:\\bR-86\\b[\\s\\S]{0,400}(?:notif|120|late|window|tier)|\\bR-99\\b[\\s\\S]{0,400}(?:notif|31|late|window))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3219,7 +3219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:next\\s+(?:open\\s+)?morning|following\\s+(?:open\\s+)?morning|after\\s+(?:hours|close|site\\s+close)|(?:18:00|17:00)[\\s\\S]{0,80}clock|core[- ]?hours?\\s+clock|clock\\s+starts?\\s+(?:at|the\\s+next|next)|out[- ]?of[- ]?hours|evening\\s+release|deferred?\\s+(?:to|until)\\s+(?:the\\s+)?next)",
+        "expected": "(?ims)(?:next\\s+(?:open\\s+)?morning|following\\s+(?:open\\s+)?morning|after\\s+(?:hours|close|site\\s+close)|(?:18:00|17:00)[\\s\\S]{0,80}clock|core[- ]?hours?\\s+clock|clock\\s+starts?\\s+(?:at|the\\s+next|next)|out[- ]?of[- ]?hours|evening\\s+release|deferred?\\s+(?:to|until)\\s+(?:the\\s+)?next)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3244,7 +3244,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bR-81\\b[\\s\\S]{0,500}(?:unapproved|specialty_doctor|not on the approved)|\\bR-83\\b[\\s\\S]{0,500}(?:unapproved|\\banp\\b|not on the approved))",
+        "expected": "(?ims)(?:\\bR-81\\b[\\s\\S]{0,500}(?:unapproved|specialty_doctor|not on the approved)|\\bR-83\\b[\\s\\S]{0,500}(?:unapproved|\\banp\\b|not on the approved))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3269,7 +3269,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-106\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-106\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3294,7 +3294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-107\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-107\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3319,7 +3319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-108\\x22?\\s*,[^\\n]*(?:\\bSpR\\b|specialty_registrar)[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-108\\x22?\\s*,[^\\n]*(?:\\bSpR\\b|specialty_registrar)[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3344,7 +3344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-109\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\bspr\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-109\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\bspr\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3369,7 +3369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-110\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-110\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3394,7 +3394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledgement_late)^\\x22?R-111\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-111\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*481(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3419,7 +3419,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-112\\x22?\\s*,[^\\n]*2026-07-15[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-112\\x22?\\s*,[^\\n]*2026-07-15[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3444,7 +3444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-113\\x22?\\s*,[^\\n]*2026-07-14[T ]16:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-113\\x22?\\s*,[^\\n]*2026-07-14[T ]16:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3469,7 +3469,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-114\\x22?\\s*,[^\\n]*(?:\\bANP\\b|advanced_nurse_practitioner)[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-114\\x22?\\s*,[^\\n]*(?:\\bANP\\b|advanced_nurse_practitioner)[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3494,7 +3494,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-115\\x22?\\s*,[^\\n]*(?:\\bCons\\b|consultant)[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-115\\x22?\\s*,[^\\n]*(?:\\bCons\\b|consultant)[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3519,7 +3519,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-116\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "expected": "(?mi)^\\x22?R-116\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*241(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3544,7 +3544,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-117\\x22?\\s*,[^\\n]*2026-07-15[T ]17:45[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*nurse_practitioner[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-117\\x22?\\s*,[^\\n]*2026-07-15[T ]17:45[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*nurse_practitioner[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3569,7 +3569,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-118\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-118\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3594,7 +3594,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:closed\\s+day|bank\\s+holiday|trust\\s+closed|holiday|skip(?:ping)?\\s+closed|next\\s+open\\s+(?:morning|day)|closed[- ]day\\s+defer|amendment|supersed|effective)",
+        "expected": "(?ims)(?:closed\\s+day|bank\\s+holiday|trust\\s+closed|holiday|skip(?:ping)?\\s+closed|next\\s+open\\s+(?:morning|day)|closed[- ]day\\s+defer|amendment|supersed|effective)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3619,7 +3619,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bR-107\\b[\\s\\S]{0,500}(?:notif|ack|late|window|\\\\d+\\\\s*min)|\\bR-111\\b[\\s\\S]{0,500}(?:481|ack|late|window|\\\\d+\\\\s*min))",
+        "expected": "(?ims)(?:\\bR-107\\b[\\s\\S]{0,500}(?:notif|ack|late|window|\\\\d+\\\\s*min)|\\bR-111\\b[\\s\\S]{0,500}(?:481|ack|late|window|\\\\d+\\\\s*min))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3644,7 +3644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bR-108\\b[\\s\\S]{0,400}(?:SpR|alias|approved|compliant)|\\bR-109\\b[\\s\\S]{0,500}(?:spr|unapproved|alias|not on the approved))",
+        "expected": "(?ims)(?:\\bR-108\\b[\\s\\S]{0,400}(?:SpR|alias|approved|compliant)|\\bR-109\\b[\\s\\S]{0,500}(?:spr|unapproved|alias|not on the approved))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3669,7 +3669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-117\\b[\\s\\S]{0,500}(?:nurse_practitioner|unapproved|recorded|escalat)",
+        "expected": "(?ims)\\bR-117\\b[\\s\\S]{0,500}(?:nurse_practitioner|unapproved|recorded|escalat)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3694,7 +3694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-119\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,\\s*\\x22?\\s*180(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*420(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-119\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,\\s*\\x22?\\s*180(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*420(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3719,7 +3719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-120\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\bcons\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-120\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\bcons\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3744,7 +3744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-121\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-14[T ]17:00[^\\n]*,\\s*\\x22?\\s*930(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*1380(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-121\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-14[T ]17:00[^\\n]*,\\s*\\x22?\\s*930(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*1380(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3769,7 +3769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-122\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-122\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3794,7 +3794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-123\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*120(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*360(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-123\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*120(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*360(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3819,7 +3819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-124\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-124\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3844,7 +3844,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}notification_late)^\\x22?R-125\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-125\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-15[T ]17:30[^\\n]*,[^\\n]*(?=.*notification_late)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3869,7 +3869,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-126\\x22?\\s*,[^\\n]*2026-07-15[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-126\\x22?\\s*,[^\\n]*2026-07-15[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3894,7 +3894,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-127\\x22?\\s*,[^\\n]*2026-07-15[T ]17:00[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-127\\x22?\\s*,[^\\n]*2026-07-15[T ]17:00[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3919,7 +3919,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-128\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-128\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3944,7 +3944,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-129\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-129\\x22?\\s*,[^\\n]*2026-07-18[T ]0?8:00[^\\n]*,\\s*\\x22?\\s*0(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*479(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3969,7 +3969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)^\\x22?R-130\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "expected": "(?mi)^\\x22?R-130\\x22?\\s*,\\s*\\x22?2\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -3994,7 +3994,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-131\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\bcons\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-131\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\bcons\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -4019,7 +4019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-132\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\banp\\b[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-132\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\banp\\b[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -4044,7 +4044,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-133\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\banp\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*",
+        "expected": "(?mi)^\\x22?R-133\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*\\banp\\b[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?=.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -4069,7 +4069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?=[\\s\\S]{0,500}acknowledger_unapproved)^\\x22?R-134\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*nurse_practitioner[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?![\\s\\S]{0,500}escalation_missing)",
+        "expected": "(?mi)^\\x22?R-134\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*nurse_practitioner[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
