@@ -969,57 +969,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?i)sequence|out of order|ascending",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
-        }
-      }
-    },
-    {
-      "name": "findings_address_tolerances",
-      "metadata": {
-        "how_justification": "Opens randomisation_findings.md with text.extract_text and applies regex_match.",
-        "why_justification": "Findings explain which departures are inside tolerance."
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "text",
-          "command": "extract_text",
-          "arguments": {
-            "path": "randomisation_findings.md"
-          }
-        }
-      },
-      "assertion": {
-        "type": "deterministic",
-        "expected": "(?i)toleran|percentage point|drift|range",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
-        }
-      }
-    },
-    {
-      "name": "findings_address_overfill_or_incomplete",
-      "metadata": {
-        "how_justification": "Opens randomisation_findings.md with text.extract_text and applies regex_match.",
-        "why_justification": "Findings note blocks that are not assessed."
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "text",
-          "command": "extract_text",
-          "arguments": {
-            "path": "randomisation_findings.md"
-          }
-        }
-      },
-      "assertion": {
-        "type": "deterministic",
-        "expected": "(?i)over-?fill|incomplete|not assessed|still filling",
+        "expected": "(?is)(?:sequence|out of order|ascending|toleran|percentage point|drift|range|over-?fill|incomplete|not assessed|still filling)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1069,7 +1019,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*.{0,60}ledger|ledger.{0,60}amend\\w*|reconcil\\w*.{0,60}(ledger|amend)|applied.{0,60}(ledger|amend)|ledger.{0,60}(reconcil\\w*|applied))",
+        "expected": "(?is)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*.+ledger|ledger.+amend\\w*|reconcil\\w*.+(ledger|amend)|applied.+(ledger|amend)|ledger.+(reconcil\\w*|applied))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
