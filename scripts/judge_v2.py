@@ -800,7 +800,7 @@ def run_d1_d5_linter(task_dir, findings):
             if m:
                 user_match = m.group(1)
         if not user_match or user_match.lower() in ("root", "0"):
-            add_lint("D2", "sev1", "Dockerfile runs the agent as root (no non-root USER directive)",
+            add_lint("D2", "sev3", "Dockerfile runs the agent as root (no non-root USER directive)",
                      label="environment", gate="d1d5:D2", fix_path="environment/Dockerfile",
                      observed_fact=f"USER={user_match or 'root'}",
                      evidence=["environment/Dockerfile"],
