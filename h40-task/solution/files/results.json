@@ -1,7 +1,7 @@
 {
   "notification_breaches": 35,
-  "acknowledgement_breaches": 61,
-  "unapproved_acknowledgement_results": 25,
-  "missing_escalation_results": 43,
-  "results_compliant": 60
+  "acknowledgement_breaches": 63,
+  "unapproved_acknowledgement_results": 27,
+  "missing_escalation_results": 45,
+  "results_compliant": 63
 }

@@ -1,6 +1,6 @@
 # CR-7 critical results audit - 134 results
 
-60 results are clean.
+63 results are clean.
 
 ## Late notifications
 
@@ -212,3 +212,13 @@
 - **R-98** - long wall-clock or boundary case resolved by inclusive windows / core-hours clock start; findings compliant.
 - **R-87** - long wall-clock or boundary case resolved by inclusive windows / core-hours clock start; findings compliant.
 - Long wall-clock gaps after evening or closed-day releases are often not breaches once the correct next-open clock start is applied.
+
+## Unapproved acknowledgers
+
+- **R-138** (tier 1) - acknowledged by specialist_registrar (not on the approved roster; near-miss for specialty_registrar). Acknowledgement at 50 min not recognised; window missed.
+- **R-139** (tier 1) - acknowledged by advanced_practitioner (not on the approved roster; near-miss for advanced_nurse_practitioner). Acknowledgement at 45 min not recognised; window missed.
+
+## Missing escalations
+
+- **R-138** - acknowledgement window missed, no escalation on register.
+- **R-139** - acknowledgement window missed, no escalation on register.

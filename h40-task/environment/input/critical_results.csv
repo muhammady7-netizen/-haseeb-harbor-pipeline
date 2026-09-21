@@ -136,3 +136,8 @@ R-131,2,troponin,RIVERSIDE,2026-07-15T17:20,2026-07-15T17:30,2026-07-15T18:00,co
 R-132,2,potassium,RIVERSIDE,2026-07-15T17:50,2026-07-15T18:00,2026-07-15T18:20,anp,RB-527,
 R-133,2,magnesium,RIVERSIDE,2026-07-16T17:30,2026-07-16T18:00,2026-07-16T18:30,anp,RB-528,
 R-134,2,magnesium,RIVERSIDE,2026-07-16 17:45,2026-07-18 09:30,2026-07-18 10:00,nurse_practitioner,RB-529,holiday+site unapproved with recorded escalation
+R-135,2,calcium,RIVERSIDE,2026-07-20T18:00,2026-07-21T09:25,2026-07-21T09:50,consultant,MB-135,exactly at amended close
+R-136,2,glucose,MAIN,2026-07-10T18:00,2026-07-11T08:15,2026-07-11T08:30,specialty_registrar,MB-136,exactly at baseline close
+R-137,2,lactate,RIVERSIDE,2026-07-10T17:00,2026-07-11T08:20,2026-07-11T08:45,consultant,MB-137,exactly at baseline RIVERSIDE close
+R-138,1,potassium,MAIN,2026-07-22T10:00,2026-07-22T10:20,2026-07-22T10:50,specialist_registrar,MB-138,near-miss role specialist_registrar
+R-139,1,magnesium,MAIN,2026-07-22T11:00,2026-07-22T11:15,2026-07-22T11:45,advanced_practitioner,MB-139,near-miss role advanced_practitioner

@@ -694,7 +694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-02\\b[\\s\\S]{0,300}(?:limit|window|notif|telephon|30[\\s-]?min|late)",
+        "expected": "(?is)(?=.*\\bR-02\\b)(?=.*(?:limit|window|notif|telephon|30[\\s-]?min|late))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -719,7 +719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-09\\b[\\s\\S]{0,300}(?:notif|telephon|240|late)",
+        "expected": "(?is)(?=.*\\bR-09\\b)(?=.*(?:notif|telephon|240|late))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -744,7 +744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-03\\b[\\s\\S]{0,300}(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)",
+        "expected": "(?is)(?=.*\\bR-03\\b)(?=.*(?:limit|window|80\\s*min|60[\\s-]?min|acknowled))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -769,7 +769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-10\\b[\\s\\S]{0,300}(?:acknowledg|no valid|absent|none|unacknowledged)",
+        "expected": "(?is)(?=.*\\bR-10\\b)(?=.*(?:acknowledg|no valid|absent|none|unacknowledged))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -794,7 +794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-15\\b[\\s\\S]{0,300}(?:acknowledg|late|510|480|after.hours|midnight|continu)",
+        "expected": "(?is)(?=.*\\bR-15\\b)(?=.*(?:acknowledg|late|510|480|after.hours|midnight|continu))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -819,7 +819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-16\\b[\\s\\S]{0,300}(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)",
+        "expected": "(?is)(?=.*\\bR-16\\b)(?=.*(?:notification|late|17:59|931|escalat|missing|boundary|core.hours))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1669,7 +1669,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(?:midnight|Saturday|Sunday|weekend|inclusive|19:00|18:00|advanced_nurse)[\\s\\S]{0,300}(?:compliant|within|not a (?:finding|breach)|exactly)",
+        "expected": "(?ims)(?:midnight|Saturday|Sunday|weekend|inclusive|19:00|18:00|advanced_nurse)[\\s\\S]*(?:compliant|within|not a (?:finding|breach)|exactly)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1794,7 +1794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)\\bR-40\\b[\\s\\S]{0,300}(?:notif|31|30[\\s-]?min|late|limit|window)",
+        "expected": "(?is)(?=.*\\bR-40\\b)(?=.*(?:notif|31|30[\\s-]?min|late|limit|window))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -4070,6 +4070,578 @@
       "assertion": {
         "type": "deterministic",
         "expected": "(?mi)^\\x22?R-134\\x22?\\s*,[^\\n]*2026-07-18[T ]0?9:00[^\\n]*,[^\\n]*,\\s*\\x22?\\s*\\x22?\\s*,[^\\n]*nurse_practitioner[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)(?!.*escalation_missing)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-27_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-27 clock_start is 2026-06-17T17:59",
+        "why_justification": "Row R-27 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-27\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-17T17:59\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-42_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-42 clock_start is 2026-06-24T08:00",
+        "why_justification": "Row R-42 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-42\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-24T08:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-43_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-43 clock_start is 2026-06-24T08:00",
+        "why_justification": "Row R-43 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-43\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-24T08:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-44_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-44 clock_start is 2026-06-24T14:00",
+        "why_justification": "Row R-44 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-44\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-24T14:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-45_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-45 clock_start is 2026-06-24T14:00",
+        "why_justification": "Row R-45 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-45\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-24T14:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-46_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-46 clock_start is 2026-06-24T09:00",
+        "why_justification": "Row R-46 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-46\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-24T09:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-47_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-47 clock_start is 2026-06-24T09:00",
+        "why_justification": "Row R-47 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-47\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-24T09:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-48_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-48 clock_start is 2026-06-24T10:00",
+        "why_justification": "Row R-48 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-48\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-24T10:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-49_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-49 clock_start is 2026-06-20T17:59",
+        "why_justification": "Row R-49 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-49\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-20T17:59\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-50_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-50 clock_start is 2026-06-25T00:00",
+        "why_justification": "Row R-50 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-50\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-25T00:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-51_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-51 clock_start is 2026-06-25T23:59",
+        "why_justification": "Row R-51 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-51\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-25T23:59\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-52_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-52 clock_start is 2026-06-25T15:00",
+        "why_justification": "Row R-52 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-52\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-25T15:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-53_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-53 clock_start is 2026-06-25T03:00",
+        "why_justification": "Row R-53 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-53\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-25T03:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-54_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-54 clock_start is 2026-06-21T17:59",
+        "why_justification": "Row R-54 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-54\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-21T17:59\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-55_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-55 clock_start is 2026-06-22T08:00",
+        "why_justification": "Row R-55 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-55\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-22T08:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-56_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-56 clock_start is 2026-06-25T11:00",
+        "why_justification": "Row R-56 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-56\\s*,\\s*\\d+\\s*,\\s*2026\\-06\\-25T11:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-92_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-92 clock_start is 2026-07-11T08:00",
+        "why_justification": "Row R-92 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-92\\s*,\\s*\\d+\\s*,\\s*2026\\-07\\-11T08:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-135_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-135 clock_start is 2026-07-21T09:00",
+        "why_justification": "Row R-135 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-135\\s*,\\s*\\d+\\s*,\\s*2026\\-07\\-21T09:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-136_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-136 clock_start is 2026-07-11T08:00",
+        "why_justification": "Row R-136 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-136\\s*,\\s*\\d+\\s*,\\s*2026\\-07\\-11T08:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-137_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-137 clock_start is 2026-07-11T08:00",
+        "why_justification": "Row R-137 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-137\\s*,\\s*\\d+\\s*,\\s*2026\\-07\\-11T08:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-138_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-138 clock_start is 2026-07-22T10:00",
+        "why_justification": "Row R-138 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-138\\s*,\\s*\\d+\\s*,\\s*2026\\-07\\-22T10:00\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_R-139_clock_start",
+      "metadata": {
+        "how_justification": "Checks R-139 clock_start is 2026-07-22T11:00",
+        "why_justification": "Row R-139 clock_start must match the derived value",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^R\\-139\\s*,\\s*\\d+\\s*,\\s*2026\\-07\\-22T11:00\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
