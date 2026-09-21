@@ -1,0 +1,96 @@
+{
+  "hits": [
+    {
+      "i": 33,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#a41d17 | Sep 10, 09:24 PM | Open | → | gen-g806-leadership-brief-rhetorical-style-audit#6e2a1c | Sep 10, 09:22 PM | Open | →"
+    },
+    {
+      "i": 61,
+      "chunk": "→ | code-c251-pdf-form-field-conversion-audit#1ddef3 | Sep 10, 08:22 PM | Open | → | gen-g986-festival-key-art-billing-parity-audit#1ec20c | Sep 10, 08:20 PM | Changes needed | Open"
+    },
+    {
+      "i": 90,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#312d0a | Sep 10, 08:18 PM | Open | → | code-c249-recurring-report-source-selection-audit#fe61f7 | Sep 10, 08:17 PM | Changes needed | Open"
+    },
+    {
+      "i": 173,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#c64de9 | Sep 10, 01:36 AM | Changes needed | Open | → | gen-g986-festival-key-art-billing-parity-audit#01d95f | Sep 10, 01:36 AM | Changes needed"
+    },
+    {
+      "i": 218,
+      "chunk": "→ | gen-g857-department-directory-categorization-auditv7#da436e | 7 versions · Sep 10, 12:16 AM | Open | → | code-c251-pdf-form-field-conversion-auditv2#656a79 | 2 versions · Sep 9, 11:17 PM | Changes needed | Open"
+    },
+    {
+      "i": 222,
+      "chunk": "→ | code-c251-pdf-form-field-conversion-auditv2#656a79 | 2 versions · Sep 9, 11:17 PM | Changes needed | Open | → | gen-g986-festival-key-art-billing-parity-auditv2#64cdab | 2 versions · Sep 9, 11:11 PM | Changes needed"
+    },
+    {
+      "i": 290,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#fae8c6 | Sep 9, 05:59 PM | ⚠ pipeline error | Open | → | gen-g826-tender-document-brand-style-audit#3e4e90 | Sep 9, 05:15 PM | Needs your review"
+    },
+    {
+      "i": 325,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#1e1bf1 | Sep 9, 02:36 PM | ⚠ pipeline error | Open | → | health-h40-critical-result-acknowledgement#78120a | Sep 9, 02:30 PM | Ready to submit"
+    },
+    {
+      "i": 339,
+      "chunk": "→ | code-c251-pdf-form-field-conversion-audit#eca5e8 | Sep 9, 01:43 PM | Changes needed | Open | → | gen-g857-department-directory-categorization-audit#af1fe6 | Sep 9, 01:32 PM | Changes needed"
+    },
+    {
+      "i": 344,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#af1fe6 | Sep 9, 01:32 PM | Changes needed | Open | → | gen-g857-department-directory-categorization-audit#07a0cc | Sep 9, 01:29 PM | Open"
+    },
+    {
+      "i": 349,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#07a0cc | Sep 9, 01:29 PM | Open | → | fin-f44-facility-interest-reviewv2#646db9 | 2 versions · Sep 9, 01:03 PM | Open | →"
+    },
+    {
+      "i": 357,
+      "chunk": "→ | code-c251-pdf-form-field-conversion-auditv2#3e11d1 | 2 versions · Sep 9, 11:13 AM | Changes needed | Open | → | health-h34-randomisation-balance#b4ada9 | Sep 9, 04:15 AM | Changes needed"
+    },
+    {
+      "i": 450,
+      "chunk": "→ | gen-g857-department-directory-categorization-audit#1c618f | Sep 9, 01:02 AM | Changes needed | Open | → | gen-g826-tender-document-brand-style-audit#1feb30 | Sep 9, 01:00 AM | Changes needed"
+    },
+    {
+      "i": 484,
+      "chunk": "→ | code-c251-pdf-form-field-conversion-auditv5#9a5325 | 5 versions · Sep 8, 01:29 AM | Changes needed | Open | → | Submitted to the pipeline | Every task you have handed over, newest first. | 42"
+    },
+    {
+      "i": 637,
+      "chunk": "Submitted bundle | gen-g857-department-directory-categorization-audit | v1 | Sep 10, 12:02 AM | Pipeline error | Ready for finalization | legacy score unavailable | auto-pipeline-evaluation-0411e16ec4134511 | Submitted bundle"
+    },
+    {
+      "i": 645,
+      "chunk": "Submitted bundle | gen-g857-department-directory-categorization-audit | v1 | Sep 9, 11:34 PM | Pipeline error | Ready for finalization | legacy score unavailable | auto-pipeline-evaluation-1ee3ab186d1b47d0 | Submitted bundle"
+    },
+    {
+      "i": 1309,
+      "chunk": "legacy score unavailable | UPLOAD-THIS-TO-QC-gen-g857-5d6077-v7-sna-rihn | landed in | gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g857-5d6077-v7-sna-rihn/ | copy | Why it was rejected 11 | These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again. | error | Most artifacts align (task.toml, instruction.md, README.md, environment/input/*, solution/files/*, tests/verifier.json all describe the same three-file deliverable and I confirmed the golden files satisfy all 86 spec checks plus the 2 extra pytest checks). The aggregate fails because of the instruction/verifier subcheck: tests/verifier.json 'memo_has_explanatory_body' imposes an undisclosed >=2200-character minimum on directory_memo.md, and four memo regexes (memo_explains_true_token_only, memo_explains_whitespace_prior_blocks, memo_explains_internal_id_spaces, memo_explains_case_insensitive_parents) grade memo topics the instruction never enumerates."
+    },
+    {
+      "i": 1311,
+      "chunk": "landed in | gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g857-5d6077-v7-sna-rihn/ | copy | Why it was rejected 11 | These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again. | error | Most artifacts align (task.toml, instruction.md, README.md, environment/input/*, solution/files/*, tests/verifier.json all describe the same three-file deliverable and I confirmed the golden files satisfy all 86 spec checks plus the 2 extra pytest checks). The aggregate fails because of the instruction/verifier subcheck: tests/verifier.json 'memo_has_explanatory_body' imposes an undisclosed >=2200-character minimum on directory_memo.md, and four memo regexes (memo_explains_true_token_only, memo_explains_whitespace_prior_blocks, memo_explains_internal_id_spaces, memo_explains_case_insensitive_parents) grade memo topics the instruction never enumerates. | HARBOR-CHECK-1 | EVIDENCE"
+    },
+    {
+      "i": 1885,
+      "chunk": "legacy score unavailable | UPLOAD-THIS-TO-QC-gen-g857-6bc9ad-v2-sna-kxuy | landed in | gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g857-6bc9ad-v2-sna-kxuy/ | copy | QC report | Report folder (.zip) | Submitted bundle"
+    },
+    {
+      "i": 1887,
+      "chunk": "landed in | gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g857-6bc9ad-v2-sna-kxuy/ | copy | QC report | Report folder (.zip) | Submitted bundle"
+    }
+  ],
+  "details": [
+    {
+      "name": "code-c251-pdf-form-field-conversion-audit",
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-db0490a135ad1cc1e0d71549021ddef3-v1",
+      "text": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\n←\nAll tasks\ncode-c251-pdf-form-field-conversion-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n2\nClient PreQC\nnot run yet\n3\nReview findings\n✓\nReview record\n5\nEvaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nNot run yet\nhas not run on this task yet\nRun client preQC\nView report\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.\n\nComplete\nCheck with QC reviewer\nView details\nThe QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.\nQC-Oracle-GLM check (3-task limit)\nNot run yet\nhas not run on this task yet\nRun QC-Oracle-GLM\nView report\nwhat each gate checks\nYou are the judge. what good QC takes — read once\nRun history\nno runs yet\n\nNo runs yet. Start a gate above and its runs will be listed here, newest first.\n\nRESULT\nNo run open\n\nRun a gate above, or pick an earlier run to read its findings, score and report.\n\nUse this guide to do your own read of the task\n0/20 answered\nSaved\nNot scored — it feeds the report card and the tracker.\nTask readiness"
+    },
+    {
+      "name": "gen-g857-department-directory-categorization-audit",
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-bc4890be9be34fc115b6db0a6ba41d17-v1",
+      "text": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\n←\nAll tasks\ngen-g857-department-directory-categorization-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n✓\nClient PreQC\n3\nReview findings\n6 to decide\n✓\nReview record\n5\nEvaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nLast run: Review required\nReview required · 6 trainer finding(s) · 2 h ago\nRe-run client preQC\nView report\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.\n\nComplete\nCheck with QC reviewer\nView details\nThe QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.\nQC-Oracle-GLM check (3-task limit)\nNot run yet\nhas not run on this task yet\nRun QC-Oracle-GLM\nView report\nwhat each gate checks\nYou are the judge. what good QC takes — read once\n\nNEEDS ATTENTION\n\n6 PreQC findings to review\n\nClient PreQC is advisory: confirm each finding or dismiss it with a note. It does not hold the evaluation or Submit, and each upload is reviewed afresh.\n\n6\ni\nCLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR\ng857_unmapped.csv schema and contents not verified\nReview issue\ni\nCLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR\nno_undeclared_status regex allows false positives\nReview issue\ni\nCLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR\ng857_headcount.json schema not fully enforced\nReview issue\ni\nCLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR\nCycle detection requirement not graded\nReview issue\ni\nCLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR\nDuplicate person_id keys not rejected\nReview issue\ni\nCLIENT PREQC (INTERNAL GATE · ADVISORY) · MINOR\nrolled_up_count not cross-validated against tree structure\nReview issue\nRun history\n1 run · latest Review\nCLIENT PREQC (INTERNAL GATE · ADVISORY)\nClient preQC (Internal Gate · advisory)\nLegacy QC1\nReview required\n6 trainer finding(s)\nSep 10, 10:07 PM · took 29s\nreport\nzip\nRESULT\nClient preQC (Internal Gate · advisory)\nReview required\n6 trainer finding(s)\nOpen the QC report\nDownload the report folder (.zip)\n\nThe .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report.html.\n\nDATA\nreport.json\nPreview the report here\n\nYOUR DECISIONS\n\n0/6\nfindings dispositioned by you\nMajor / high / medium 5\nmajor\ng857_unmapped.csv schema and contents not verified\nQC1-1\nConfirm issue\nMark false positive\nmajor\nno_undeclared_status regex allows false positives\nQC1-2\nConfirm issue\nMark false positive\nmajor\ng857_headcount.json schema not fully enforced\nQC1-3\nConfirm issue\nMark false positive\nmajor\nCycle detection requirement not graded\nQC1-4\nConfirm issue\nMark false positive\nmajor\nDuplicate person_id keys not rejected\nQC1-5\nConfirm issue\nMark false positive\nMinor / low 1\nminor\nrolled_up_count not cross-validated against tree structure\nQC1-6\nConfirm issue\nMark false positive\nHow to act on category findings\nReport card — the script's result and your checklist, harmonized\nUse this guide to do your own read of the task\n0/20 answered\nSaved\nNot scored — it feeds the report card and the tracker.\nTask readiness"
+    }
+  ]
+}

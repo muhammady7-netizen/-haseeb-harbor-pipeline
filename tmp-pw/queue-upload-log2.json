@@ -1,0 +1,19 @@
+{
+  "at": "2026-09-10T20:10:59.571Z",
+  "results": [
+    {
+      "short": "health-h40",
+      "phase": "gates",
+      "started": false,
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-0f5e7ea213cebcd75662f8b0281f1da7-v1",
+      "head": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\n←\nAll tasks\nhealth-h40-critical-result-acknowledgement\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n2\nClient PreQC\nnot run yet\n3\nReview findings\n✓\nReview record\n5\nEvaluation\nevaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nNot run yet\nhas not run on this task yet\nRun client preQC\nView report\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_V"
+    },
+    {
+      "short": "code-c227",
+      "phase": "gates",
+      "started": true,
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-3a68a4668fe6d080ac4779cd324e6dc6-v1",
+      "head": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\n←\nAll tasks\ncode-c227-table-bloat-maintenance-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n2\nClient PreQC\ndid not finish\n3\nReview findings\n4\nReview record\n5\nEvaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nLast run: errored\nDid not finish — open it to see why · just now\nRe-run client preQC\nView report\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as P"
+    }
+  ]
+}

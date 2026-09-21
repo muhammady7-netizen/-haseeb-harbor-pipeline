@@ -1,0 +1,143 @@
+check,check_name,severity,package,state_before,state_after,evidence_before
+C1,Mutable image reference,BLOCK,a-fortnight-nobody-was-watching,FAIL,PASS,"{""environment/Dockerfile"": 1, ""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C1,Mutable image reference,BLOCK,appointment-backlog-placeholder-and-duplicate-audit,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""cc44e6932326ade15607acc6425e7608b647958733520"
+C1,Mutable image reference,BLOCK,appointment-backlog-stub-page-sweep,FAIL,PASS,"{""environment/Dockerfile"": 1, ""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C1,Mutable image reference,BLOCK,code-c153-content-pipeline-schedule-audit,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1}, ""source_sha256"": ""56b2be255760c20b4e63e1e3a15c4cee197f204e3894bffcf73f4f9df937ed08"", ""released_sha256"": ""d985abb"
+C1,Mutable image reference,BLOCK,code-c480-supabase-storage-rls-hardening-audit,FAIL,PASS,"{""environment/Dockerfile"": 2}"
+C1,Mutable image reference,BLOCK,code-c568-mso-service-tier-eligibility-audit,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1}, ""source_sha256"": ""03814d6a098f6cc8b45047dbd8de564f5dd6f86a509b82e0cee8dc6f4ac7cdaa"", ""released_sha256"": ""59e5c53"
+C1,Mutable image reference,BLOCK,ephyra-trunk-dependency-churn-manifest-audit,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""88dcc6de3b1d235d5bd5d40f073d53a5591d642bfd20f"
+C1,Mutable image reference,BLOCK,fin-f57-municipal-fiscal-impact-allocation-audit,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1}, ""source_sha256"": ""f6b2a0f6e358320685bce15e632d69cba82d62d9adcb421c138291e0d63e4051"", ""released_sha256"": ""afc4da5"
+C1,Mutable image reference,BLOCK,gen-g1202-content-repurposing-coverage-audit,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1}, ""source_sha256"": ""0acf95a56f45de7e15992062238c2ec35c641eaa0985ad54e54f45cd22513a02"", ""released_sha256"": ""6d83a08"
+C1,Mutable image reference,BLOCK,gen-g1217-thought-leadership-post-scope-style-audit,FAIL,PASS,"{""environment/Dockerfile"": 1}"
+C1,Mutable image reference,BLOCK,gen-g592-sop-review-cycle-compliance-audit,FAIL,PASS,"{""environment/Dockerfile"": 1}"
+C1,Mutable image reference,BLOCK,gen-g644-handbook-revision-rollout-audit,FAIL,PASS,"{""environment/Dockerfile"": 1}"
+C1,Mutable image reference,BLOCK,harbor-single-task-8jsgpxhw,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1}, ""source_sha256"": ""496bb30cbcd63db52fb0266a393f87ced242675696b80e3463d392eac08d440d"", ""released_sha256"": ""e80f137"
+C1,Mutable image reference,BLOCK,harbor-single-task-f9w4ghvz,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""3ecb7ba7b8aa4dfbaf9886c695ceec164429eb13a965a"
+C1,Mutable image reference,BLOCK,harbor-single-task-t8rwovcc,FAIL,PASS,"{""environment/Dockerfile"": 1}"
+C1,Mutable image reference,BLOCK,harbor-single-task-veeecron,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""1a2ecb735fbe0783cd668df0284d82fa016f8be2817fc"
+C1,Mutable image reference,BLOCK,harbor-single-task-zq647anl,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1}, ""source_sha256"": ""94cb04008f8e361ece63386de2a69e57fe7072d0f60cd93b47277858707b7e08"", ""released_sha256"": ""a821ee3"
+C1,Mutable image reference,BLOCK,how-much-of-my-drive-is-link-only,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""6dcd8694fc1d20d4a0c39553db9cd800376283edb3cb8"
+C1,Mutable image reference,BLOCK,how-much-of-my-drive-is-link-only-realdocoutput,FAIL,PASS,"{""environment/Dockerfile"": 1, ""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C1,Mutable image reference,BLOCK,law-l28-gift-register-thresholds,FAIL,PASS,"{""environment/Dockerfile"": 1}"
+C1,Mutable image reference,BLOCK,law-l29-survival-periods,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1}, ""source_sha256"": ""ce50af13a1901e52b1db3c043813f3a2aa736c7020042e563f6206654ac2033a"", ""released_sha256"": ""986cd94"
+C1,Mutable image reference,BLOCK,law-l36-litigation-hold-custodians,FAIL,PASS,"{""environment/Dockerfile"": 1}"
+C1,Mutable image reference,BLOCK,onboarding-pack-feature-readiness-spread,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""b649b4184ddcc0d3eb285877fb1bb4a382dd06319a399"
+C1,Mutable image reference,BLOCK,opened-files-migration-volume-signoff,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""84dcb8320886ca48e54a66a4155113216e1eaa6197bde"
+C1,Mutable image reference,BLOCK,opened-files-migration-volume-signoff-realdocoutput,FAIL,PASS,"{""environment/Dockerfile"": 1, ""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C1,Mutable image reference,BLOCK,relay-only-correspondents-cutover-exposure,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""d127bf20a76fd01e0ad080f658c53650963d5e060837d"
+C1,Mutable image reference,BLOCK,rsvp-silence-backlog-among-2026-regulars,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""71782d26849e1cadea87a3eecb46a545d23fdec0a723f"
+C1,Mutable image reference,BLOCK,stored-version-retention-readout,FAIL,PASS,"{""environment/Dockerfile"": 1, ""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C1,Mutable image reference,BLOCK,tag-estate-grade-versus-status-split,FAIL,PASS,"{""environment/Dockerfile"": 1, ""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C1,Mutable image reference,BLOCK,unanswered-invitation-silence-audit,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""d4fa3fa87f59768b6e492585f128ed07b391aeb2c7756"
+C1,Mutable image reference,BLOCK,unclosed-review-thread-backlog-ownership-split,FAIL,PASS,"{""files_edited"": {""environment/Dockerfile"": 1, ""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""source_sha256"": ""01bf182adb5fea88d40c89d407b34ee0378296fa560aa"
+C1,Mutable image reference,BLOCK,urgent-label-inflation-2027-audit,FAIL,PASS,"{""environment/Dockerfile"": 1, ""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C2,Internal infrastructure address,BLOCK,code-c142-autoscaling-headroom-recompute,FAIL,PASS,gateway_ip=39
+C2,Internal infrastructure address,BLOCK,code-c165-business-profile-completeness-audit,FAIL,PASS,gateway_ip=55
+C2,Internal infrastructure address,BLOCK,code-c221-api-auth-method-compliance-audit,FAIL,PASS,gateway_ip=18
+C2,Internal infrastructure address,BLOCK,code-c349-tenant-provisioning-cutover-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,code-c356-wine-list-print-readiness-audit,FAIL,PASS,gateway_ip=44
+C2,Internal infrastructure address,BLOCK,code-c366-agent-orchestration-run-audit,FAIL,PASS,gateway_ip=36
+C2,Internal infrastructure address,BLOCK,code-c387-htgcd-well-permit-compliance-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,code-c395-cis-subcontractor-deduction-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,code-c413-service-account-repo-grant-audit,FAIL,PASS,gateway_ip=16
+C2,Internal infrastructure address,BLOCK,code-c423-multi-campus-account-access-audit,FAIL,PASS,gateway_ip=30
+C2,Internal infrastructure address,BLOCK,code-c443-plan-list-field-mapping-migration-audit,FAIL,PASS,gateway_ip=45
+C2,Internal infrastructure address,BLOCK,code-c645-subcontractor-prevailing-wage-audit,FAIL,PASS,gateway_ip=30
+C2,Internal infrastructure address,BLOCK,fin-f8-bank-reconciliation,FAIL,PASS,gateway_ip=36
+C2,Internal infrastructure address,BLOCK,gen-g1113-homeschool-geography-sequencing-audit,FAIL,PASS,gateway_ip=33
+C2,Internal infrastructure address,BLOCK,gen-g1119-ati-template-completion-audit,FAIL,PASS,gateway_ip=50
+C2,Internal infrastructure address,BLOCK,gen-g1176-application-kit-disclosure-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,gen-g1202-content-repurposing-coverage-audit,FAIL,PASS,gateway_ip=10
+C2,Internal infrastructure address,BLOCK,gen-g1230-furniture-arrangement-validity-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,gen-g1263-worship-slide-style-compliance-audit,FAIL,PASS,gateway_ip=44
+C2,Internal infrastructure address,BLOCK,gen-g295-pdf-translation-audit,FAIL,PASS,gateway_ip=59
+C2,Internal infrastructure address,BLOCK,gen-g565-channel-publishing-settings-audit,FAIL,PASS,gateway_ip=40
+C2,Internal infrastructure address,BLOCK,gen-g59-accreditation-compliance-recompute,FAIL,PASS,gateway_ip=40
+C2,Internal infrastructure address,BLOCK,gen-g794-lecture-transcript-slide-crossref-audit-hard,FAIL,PASS,gateway_ip=20
+C2,Internal infrastructure address,BLOCK,gen-g872-bulk-unit-discount-eligibility-audit,FAIL,PASS,gateway_ip=30
+C2,Internal infrastructure address,BLOCK,gen-g958-monogram-trademark-priority-deadline-audit,FAIL,PASS,gateway_ip=44
+C2,Internal infrastructure address,BLOCK,gen-g960-nonprofit-tradeshow-asset-sourcing-audit,FAIL,PASS,gateway_ip=35
+C2,Internal infrastructure address,BLOCK,gen-g972-franchise-signage-brandmark-recreation-audit,FAIL,PASS,gateway_ip=16
+C2,Internal infrastructure address,BLOCK,health-h125-eye-drop-lens-compatibility-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,health-h23-specimen-labelling-taxonomy,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,health-h28-screening-interval-recall,FAIL,PASS,gateway_ip=37
+C2,Internal infrastructure address,BLOCK,health-h39-theatre-utilisation-coding,FAIL,PASS,gateway_ip=3
+C2,Internal infrastructure address,BLOCK,health-h59-bp-staging-badge-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,health-h66-cme-reference-currency-gap-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,health-h67-youth-mtb-safety-check-audit,FAIL,PASS,gateway_ip=36
+C2,Internal infrastructure address,BLOCK,health-h71-dermatology-lesion-referral-audit,FAIL,PASS,gateway_ip=32
+C2,Internal infrastructure address,BLOCK,health-h77-incentive-spirometry-adherence-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,health-h78-research-grant-coi-disclosure-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,health-h82-pediatric-therapy-goal-note-audit,FAIL,PASS,gateway_ip=32
+C2,Internal infrastructure address,BLOCK,health-h98-ebook-production-compliance-audit,FAIL,PASS,gateway_ip=32
+C2,Internal infrastructure address,BLOCK,law-l19-trademark-class-overlap,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,law-l29-survival-periods,FAIL,PASS,gateway_ip=8
+C2,Internal infrastructure address,BLOCK,law-l47-consumer-warranty-statute-reconcile,FAIL,PASS,gateway_ip=20
+C2,Internal infrastructure address,BLOCK,law-l49-dscsa-trading-partner-verification-audit,FAIL,PASS,gateway_ip=28
+C2,Internal infrastructure address,BLOCK,law-l51-sstb-compensation-concentration-audit,FAIL,PASS,gateway_ip=32
+C2,Internal infrastructure address,BLOCK,law-l89-hcpcs-jcode-assignment-audit,FAIL,PASS,gateway_ip=36
+C3,Authoring-machine path,BLOCK,gen-g1119-ati-template-completion-audit,FAIL,PASS,local_paths=20
+C3,Authoring-machine path,BLOCK,gen-g295-pdf-translation-audit,FAIL,PASS,local_paths=14
+C3,Authoring-machine path,BLOCK,gen-g565-channel-publishing-settings-audit,FAIL,PASS,local_paths=4
+C3,Authoring-machine path,BLOCK,gen-g59-accreditation-compliance-recompute,FAIL,PASS,local_paths=8
+C3,Authoring-machine path,BLOCK,gen-g794-lecture-transcript-slide-crossref-audit-hard,FAIL,PASS,local_paths=1
+C3,Authoring-machine path,BLOCK,gen-g872-bulk-unit-discount-eligibility-audit,FAIL,PASS,local_paths=10
+C3,Authoring-machine path,BLOCK,gen-g972-franchise-signage-brandmark-recreation-audit,FAIL,PASS,local_paths=4
+C3,Authoring-machine path,BLOCK,health-h39-theatre-utilisation-coding,FAIL,PASS,local_paths=1
+C3,Authoring-machine path,BLOCK,law-l29-survival-periods,FAIL,PASS,local_paths=4
+C4,Undeclared connector data provenance,BLOCK,appointment-backlog-placeholder-and-duplicate-audit,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""17065c669d43dc28b8732e5d254f64547176c14cdc00027801a30f8cfc1033bd"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,appointment-backlog-stub-page-sweep,FAIL,PASS,"{""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C4,Undeclared connector data provenance,BLOCK,ephyra-trunk-dependency-churn-manifest-audit,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""d99988d628060c3d0bcbf85f4ac73af3cc23569b17154094f4570580c675e7c1"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,harbor-single-task-f9w4ghvz,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""ddf52dc613bcc5074a4351e916f967dc20250347de717870d2f8b98f268126f8"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,harbor-single-task-t8rwovcc,FAIL,PASS,"{""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C4,Undeclared connector data provenance,BLOCK,harbor-single-task-veeecron,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""22150d81b1497959dc8f2b2dab84b5623a9d33677347ad863376f45db0bcb5a8"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,how-much-of-my-drive-is-link-only,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""5f5c98219e458e4f76e8c10107d7345e3c57cb8ec65c05b03a9a275dd434aa82"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,how-much-of-my-drive-is-link-only-realdocoutput,FAIL,PASS,"{""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C4,Undeclared connector data provenance,BLOCK,onboarding-pack-feature-readiness-spread,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""24e013ff4d3c6754479f2c6d829d08ea0c8dea79253fe01b0cf5829610b0576b"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,opened-files-migration-volume-signoff,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""fa87c1d1e9781da4cf33b9c8e18168aaba72fc813ec17fc19823e02461b76c48"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,opened-files-migration-volume-signoff-realdocoutput,FAIL,PASS,"{""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C4,Undeclared connector data provenance,BLOCK,relay-only-correspondents-cutover-exposure,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""fcb32000415321ff16f17e7b060dee5579e1c6f599dfbaf775c849861259410d"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,rsvp-silence-backlog-among-2026-regulars,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""ae62543539230539c219af0fffac87813d7a4ce3219ccb4671d96f8b2beeb217"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,stored-version-retention-readout,FAIL,PASS,"{""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C4,Undeclared connector data provenance,BLOCK,tag-estate-grade-versus-status-split,FAIL,PASS,"{""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C4,Undeclared connector data provenance,BLOCK,unanswered-invitation-silence-audit,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""211d96d4046287ede932b359ff82452ea79937436c43ad6d8e445c3efa94bbd1"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,unclosed-review-thread-backlog-ownership-split,FAIL,PASS,"{""files_edited"": {""environment/_app/task.toml"": 1, ""task.toml"": 1}, ""previous_sha256"": ""a05441ecce9e2a4391296ae17d78150c7ce10888e6393255008cebd7ff1e38ea"", ""rele"
+C4,Undeclared connector data provenance,BLOCK,urgent-label-inflation-2027-audit,FAIL,PASS,"{""task.toml"": 1, ""environment/_app/task.toml"": 1}"
+C5,Package identity mismatch,BLOCK,drive-version-history-retention-review,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-veeecron"", ""previous_sha256"": ""b4986ccfe8ee714d40cd89ab826395edfb5cf9427cd1473c2f613fb6d3a00455"", ""released_sha256"": ""774b2"
+C5,Package identity mismatch,BLOCK,fin-f22-hedge-effectiveness,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-hhi2tqec"", ""previous_sha256"": ""8ee9c1f965886e12af1c85ec9a4906098750e75deed626353137a0f116323204"", ""released_sha256"": ""75bf9"
+C5,Package identity mismatch,BLOCK,founding-month-thread-first-answer-credit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-zq647anl"", ""previous_sha256"": ""a821ee3758f5308e82099094b61391040e7aa3ec29434dfa36eb3e1d1a2ef0c3"", ""released_sha256"": ""116e9"
+C5,Package identity mismatch,BLOCK,gen-g469-thesis-terminology-compliance-audit-m-v2,FAIL,PASS,"{""renamed_to"": ""gen-g469-thesis-terminology-compliance-audit"", ""previous_sha256"": ""ba7fb7ddcb4bc768c5951d891806ed40a3431050832b03a706ca654428bffbe0"", ""released_"
+C5,Package identity mismatch,BLOCK,gen-g59-accreditation-compliance-recompute,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-6uzepc5h"", ""previous_sha256"": ""2c6f4d6bf66d976ab0a9206ff065d717ce9001a78fa48193a506a216f2ef7d51"", ""released_sha256"": ""2b233"
+C5,Package identity mismatch,BLOCK,gen-g794-lecture-transcript-slide-crossref-audit-hard,FAIL,PASS,"{""renamed_to"": ""gen-g794-lecture-transcript-slide-crossref-audit"", ""previous_sha256"": ""9af6a8fd71899cdea1177f034b68ea2fe9a9b27e7bfbd3b86946145462b42349"", ""relea"
+C5,Package identity mismatch,BLOCK,gen-g842-attorney-ad-compliance-audit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-gmt6efqk"", ""previous_sha256"": ""6d53e582e80f72c1caac617c76f9352d6571d3a3998fba0b0f7e7f14dc064c72"", ""released_sha256"": ""f003c"
+C5,Package identity mismatch,BLOCK,gen-g861-sync-license-exclusivity-hold-audit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-2ppskyfa"", ""previous_sha256"": ""67a2fdc00bb169931a3452a463d4b8c7c139676208830fe7b5b5022a2c0ea6d6"", ""released_sha256"": ""02b98"
+C5,Package identity mismatch,BLOCK,gen-g953-channel-icon-delivery-spec-audit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-wvf98na3"", ""previous_sha256"": ""ba6cbee64779058a004522b59d51e229cbdfda6307fe02294c939290b92d6c21"", ""released_sha256"": ""6d4c3"
+C5,Package identity mismatch,BLOCK,gen-g958-monogram-trademark-priority-deadline-audit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-6m7xw6tv"", ""previous_sha256"": ""81ba23c72595842d58feec9d2b280dac3414379c19c43cae2693a2b7a6afe28d"", ""released_sha256"": ""fb0d5"
+C5,Package identity mismatch,BLOCK,gen-g960-nonprofit-tradeshow-asset-sourcing-audit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-9dn508it"", ""previous_sha256"": ""60e38f6414f36e22869ccb574b0eeada5ade5110b41f9ac21c30c562ca83bad8"", ""released_sha256"": ""4a2e8"
+C5,Package identity mismatch,BLOCK,gen-g972-franchise-signage-brandmark-recreation-audit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-8jsgpxhw"", ""previous_sha256"": ""e80f137ecadc77c55f78e3df181c965871e10d43df5d84d65f08c6fa190f2555"", ""released_sha256"": ""3e251"
+C5,Package identity mismatch,BLOCK,harbor-single-task-ibh1b75q,FAIL,PASS,"{""renamed_to"": ""code-c14-pii-redaction-fix"", ""previous_sha256"": ""8864bdb45e4916f4d96a7a968b777545f84f643a94c89cad903529c4714da0bf"", ""released_sha256"": ""75b02acb"
+C5,Package identity mismatch,BLOCK,harbor-single-task-t8rwovcc,FAIL,PASS,"{""renamed_to"": ""ephyra-slow-lane-delayed-merge-audit"", ""previous_sha256"": ""3cd8e89e37b37b5b597e537106fb84b6d0a5032655af9f5af322e32aa90512bc"", ""released_sha256"":"
+C5,Package identity mismatch,BLOCK,law-l83-cost-bill-recoverability-audit,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-wmtjlbe6"", ""previous_sha256"": ""5d1c95a1fc7e31b88ebb369efae4b1faf1346bf6f5dd2f15d981c9bb3aee4f30"", ""released_sha256"": ""839f5"
+C5,Package identity mismatch,BLOCK,which-bug-tickets-went-cold,FAIL,PASS,"{""renamed_from"": ""harbor-single-task-f9w4ghvz"", ""previous_sha256"": ""db361efceabd7d92fe7d0761e3e92efcfb227c6208e2256570d2e0b95f72e063"", ""released_sha256"": ""475b5"
+C6,Documentation contradicts packaged evidence,BLOCK,code-c221-api-auth-method-compliance-audit,FAIL,PASS,"{""review.csv"": ""reconciled to 1/4""}"
+C6,Documentation contradicts packaged evidence,BLOCK,gen-g565-channel-publishing-settings-audit,FAIL,PASS,"{""review.csv"": ""reconciled to 2/4""}"
+C6,Documentation contradicts packaged evidence,BLOCK,gen-g592-sop-review-cycle-compliance-audit,FAIL,PASS,"{""qc_report.html"": ""reconciled to 3/4""}"
+C6,Documentation contradicts packaged evidence,BLOCK,gen-g644-handbook-revision-rollout-audit,FAIL,PASS,"{""README.md"": ""reconciled to 2/4""}"
+C6,Documentation contradicts packaged evidence,BLOCK,gen-g678-merch-sales-report-integrity-audit,FAIL,PASS,"{""review.csv"": ""reconciled to 2/4"", ""README.md"": ""reconciled to 2/4""}"
+C6,Documentation contradicts packaged evidence,BLOCK,health-h71-dermatology-lesion-referral-audit,FAIL,PASS,review_csv_pass_rate=1
+C6,Documentation contradicts packaged evidence,BLOCK,opened-files-migration-volume-signoff,FAIL,PASS,review_csv_pass_rate=1
+C6,Documentation contradicts packaged evidence,BLOCK,opened-files-migration-volume-signoff-realdocoutput,FAIL,PASS,"{""review.csv"": ""reconciled to 2/4""}"
+C6,Documentation contradicts packaged evidence,BLOCK,relay-only-correspondents-cutover-exposure,FAIL,PASS,review_csv_pass_rate=1
+C6,Documentation contradicts packaged evidence,BLOCK,rsvp-silence-backlog-among-2026-regulars,FAIL,PASS,review_csv_pass_rate=1
+C6,Documentation contradicts packaged evidence,BLOCK,tag-estate-grade-versus-status-split,FAIL,PASS,"{""review.csv"": ""reconciled to 3/4"", ""qc_report.html"": ""reconciled to 3/4""}"
+C6,Documentation contradicts packaged evidence,BLOCK,unanswered-invitation-silence-audit,FAIL,PASS,review_csv_pass_rate=1
+C6,Documentation contradicts packaged evidence,BLOCK,verify-duplicate-825-card-holds-and-300-hold-on-account-before-tp-reve,FAIL,PASS,"{""review.csv"": ""reconciled to 2/4""}"
+C7,Missing package documentation,WARN,code-c418-territory-event-calendar-coverage-audit,FAIL,PASS,"{""added"": ""README.md"", ""bytes"": 1354, ""previous_sha256"": ""e04d1d31373b36610b391848e8c089161aea1a822ef614f4fe8823bc1bb4ea8c"", ""released_sha256"": ""d346ef454cfc17e"
+C7,Missing package documentation,WARN,code-c502-opportunity-cosell-split-agreement-audit,FAIL,PASS,"{""added"": ""README.md"", ""bytes"": 1364, ""previous_sha256"": ""1cd6faed549600f3291c1a72390955301f83645ee825af778dfbbe04bbae73fd"", ""released_sha256"": ""f1ca41bc6e38607"
+C7,Missing package documentation,WARN,gen-g1217-thought-leadership-post-scope-style-audit,FAIL,PASS,"{""added"": ""README.md"", ""bytes"": 1318}"
+C7,Missing package documentation,WARN,gen-g565-channel-publishing-settings-audit,FAIL,PASS,"{""added"": ""README.md"", ""bytes"": 1331}"
+C7,Missing package documentation,WARN,how-much-of-my-drive-is-link-only,FAIL,PASS,"{""added"": ""README.md"", ""bytes"": 1334, ""previous_sha256"": ""1f7c24b53562b4eba6ea8fa8fe34a53de156ff299f69e477224185a8539b4849"", ""released_sha256"": ""80ea58a9b5bad5b"
+C7,Missing package documentation,WARN,how-much-of-my-drive-is-link-only-realdocoutput,FAIL,PASS,"{""added"": ""README.md"", ""bytes"": 1333}"
+C7,Missing package documentation,WARN,law-l29-survival-periods,FAIL,PASS,"{""added"": ""README.md"", ""bytes"": 1290, ""previous_sha256"": ""986cd947c6ac7595bf2de49a41487b0699be676bc69a512ca4e733b9876360af"", ""released_sha256"": ""9567e8a131e4d83"
+C8,Non-task artefact,BLOCK,gen-g1202-content-repurposing-coverage-audit,FAIL,PASS,32 artefact file(s)
+C9,Verifier documentation mismatch,WARN,health-h66-cme-reference-currency-gap-audit,FAIL,PASS,"[""audit_exists: reference_audit.csv -> reference_audit.xlsx"", ""memo_exists: reference_memo.md -> reference_memo.docx""]"

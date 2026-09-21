@@ -1,0 +1,10 @@
+[
+  {
+    "short": "fin-f39",
+    "uploaded": true,
+    "gates": true,
+    "preqc": false,
+    "oracle": true,
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-d09f3e79ded320c787b15498063ef758-v1"
+  }
+]

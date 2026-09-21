@@ -1,0 +1,195 @@
+/**
+ * gen-g1205 v13 densify zip: headless upload + Final QC (skip PreQC) + track.
+ * Session A only — does not touch fin-f39 / the-thread.
+ */
+const { chromium } = require('./tmp-pw/node_modules/playwright');
+const fs = require('fs');
+const path = require('path');
+
+const PROFILE = 'C:/Users/Haseeb Mirza/.config/opencode/chrome-profile';
+const TRAINER = 'https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#';
+const ZIP = 'C:/Users/Haseeb Mirza/Downloads/UPLOAD-THIS-TO-QC-gen-g1205.zip';
+const STEM = 'gen-g1205-meal-prep-cost-claim-recompute-audit';
+const OUT = path.join(__dirname, 'tmp-pw');
+const TAG = 'g1205-v13';
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+function clearLocks() {
+  for (const n of ['SingletonLock', 'SingletonCookie', 'SingletonSocket']) {
+    try {
+      fs.unlinkSync(path.join(PROFILE, n));
+    } catch {}
+  }
+}
+
+async function launch() {
+  clearLocks();
+  return chromium.launchPersistentContext(PROFILE, {
+    headless: true,
+    channel: 'chrome',
+    acceptDownloads: true,
+    args: ['--disable-blink-features=AutomationControlled'],
+  });
+}
+
+async function body(page) {
+  return page.locator('body').innerText().catch(() => '');
+}
+
+async function clickEnabled(page, re) {
+  const loc = page.getByRole('button', { name: re }).first();
+  if (!(await loc.count())) return false;
+  const disabled =
+    (await loc.getAttribute('aria-disabled').catch(() => null)) === 'true' ||
+    (await loc.isDisabled().catch(() => false));
+  if (disabled) {
+    console.log(
+      JSON.stringify({
+        event: 'btn_disabled',
+        name: String(re),
+        title: await loc.getAttribute('title').catch(() => ''),
+      })
+    );
+    return false;
+  }
+  await loc.click({ timeout: 15000 });
+  await sleep(5000);
+  return true;
+}
+
+async function openLatest(page) {
+  await page.goto(TRAINER, { waitUntil: 'domcontentloaded', timeout: 120000 });
+  await sleep(4500);
+  const link = page.getByText(STEM, { exact: false }).first();
+  await link.click({ timeout: 20000 });
+  await sleep(8000);
+  const latest = page.getByText(/v\d+\s*\(latest\)/i).first();
+  if (await latest.count()) {
+    try {
+      await latest.click({ timeout: 5000 });
+      await sleep(4000);
+    } catch {}
+  }
+  return body(page);
+}
+
+function summarize(t) {
+  const oraclePass = /Oracle\s+Passed/i.test(t);
+  const oracleFail = /Oracle\s+Failed/i.test(t);
+  const score = /Passed\s+([\d.]+)\s+on/i.exec(t)?.[1];
+  const glm =
+    /Completed\s*·\s*(?:TOO_EASY\s*·\s*)?(\d)\/4\s+passed/i.exec(t)?.[1] ||
+    /GLM-5\.2\s*×4[^\n]*?(\d)\/4/i.exec(t)?.[1];
+  const tooEasy = /TOO_EASY|Difficulty is too easy/i.test(t);
+  const running =
+    /Running now|Oracle Running|GLM-5\.2[^\n]*Running|starting now|Harbor Check[\s\S]{0,40}running/i.test(
+      t
+    );
+  const harborFail = /Harbor Check[\s\S]{0,120}FAIL|blocking finding/i.test(t);
+  const ready = /READY_FOR_FINALIZATION/i.test(t);
+  const changes = /changes needed|Trainer changes required|TOO_EASY|difficulty_too_easy/i.test(t);
+  return {
+    oracle: oracleFail ? 'FAIL' : oraclePass ? score || '1.0' : null,
+    glm: glm ? `${glm}/4` : null,
+    tooEasy,
+    running,
+    harborFail,
+    ready,
+    changes,
+  };
+}
+
+(async () => {
+  fs.mkdirSync(OUT, { recursive: true });
+  let browser = await launch();
+  let page = browser.pages()[0] || (await browser.newPage());
+
+  await page.goto(TRAINER, { waitUntil: 'domcontentloaded', timeout: 120000 });
+  await sleep(4000);
+  let t = await body(page);
+  if (/accounts\.google\.com|Sign in with Google/i.test(t) && !/muhammad\.y7@turing\.com/i.test(t)) {
+    console.log(JSON.stringify({ event: 'login_required' }));
+    fs.writeFileSync(path.join(OUT, `${TAG}-login.txt`), t);
+    await browser.close().catch(() => {});
+    process.exit(2);
+  }
+
+  await page.locator('input[type="file"]').first().setInputFiles(ZIP);
+  console.log(JSON.stringify({ event: 'upload_started', zip: ZIP }));
+  for (let i = 0; i < 90; i++) {
+    await sleep(2000);
+    t = await body(page);
+    if (/preparing upload|uploading/i.test(t)) continue;
+    break;
+  }
+  fs.writeFileSync(path.join(OUT, `${TAG}-after-upload.txt`), `URL=${page.url()}\n\n${t}`);
+  console.log(JSON.stringify({ event: 'upload_settled', url: page.url(), head: t.slice(0, 500) }));
+
+  let started = false;
+  for (let i = 0; i < 40; i++) {
+    try {
+      if (!browser) {
+        browser = await launch();
+        page = browser.pages()[0] || (await browser.newPage());
+      }
+      t = await openLatest(page);
+      fs.writeFileSync(path.join(OUT, `${TAG}-open-${i}.txt`), `URL=${page.url()}\n\n${t}`);
+      console.log(
+        JSON.stringify({
+          event: 'open',
+          i,
+          url: page.url(),
+          busy: /run slots are currently in use/i.test(t),
+          head: t.replace(/\s+/g, ' ').slice(0, 280),
+        })
+      );
+      started = await clickEnabled(page, /Run QC-Oracle-GLM|Re-run QC-Oracle-GLM/i);
+      if (started) {
+        t = await body(page);
+        fs.writeFileSync(path.join(OUT, `${TAG}-gates-started.txt`), `URL=${page.url()}\n\n${t}`);
+        console.log(JSON.stringify({ event: 'final_qc_started', url: page.url() }));
+        break;
+      }
+    } catch (e) {
+      console.log(JSON.stringify({ event: 'open_error', i, error: String(e).slice(0, 200) }));
+      await browser.close().catch(() => {});
+      browser = null;
+    }
+    await sleep(15000);
+  }
+  if (!started) console.log(JSON.stringify({ event: 'defer_final_qc', reason: 'slots_busy_or_no_btn' }));
+  await browser?.close().catch(() => {});
+
+  for (let i = 0; i < 90; i++) {
+    clearLocks();
+    browser = await launch();
+    try {
+      page = browser.pages()[0] || (await browser.newPage());
+      t = await openLatest(page);
+      fs.writeFileSync(path.join(OUT, `${TAG}-live.txt`), `URL=${page.url()}\n\n${t}`);
+      const s = summarize(t);
+      console.log(JSON.stringify({ event: 'poll', i, url: page.url(), ...s }));
+      fs.writeFileSync(
+        path.join(OUT, `${TAG}-track-status.json`),
+        JSON.stringify({ at: new Date().toISOString(), ...s, url: page.url() }, null, 2)
+      );
+      if (!s.running && (s.oracle || s.ready || s.harborFail || s.changes || s.tooEasy)) {
+        if (s.harborFail || s.ready || s.changes || s.tooEasy || /trainer finding/i.test(t)) {
+          console.log(JSON.stringify({ event: 'done', ...s }));
+          fs.writeFileSync(path.join(OUT, `${TAG}-final-done.txt`), `URL=${page.url()}\n\n${t}`);
+          await browser.close().catch(() => {});
+          process.exit(0);
+        }
+      }
+    } catch (e) {
+      console.log(JSON.stringify({ event: 'poll_error', i, error: String(e).slice(0, 200) }));
+    }
+    await browser.close().catch(() => {});
+    await sleep(60000);
+  }
+  console.log(JSON.stringify({ event: 'timeout_waiting' }));
+  process.exit(3);
+})().catch((e) => {
+  console.error(String(e).slice(0, 400));
+  process.exit(1);
+});

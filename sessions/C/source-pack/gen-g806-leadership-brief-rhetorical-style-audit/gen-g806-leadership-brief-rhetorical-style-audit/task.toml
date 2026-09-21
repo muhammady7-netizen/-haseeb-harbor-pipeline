@@ -1,0 +1,31 @@
+schema_version = "1.3"
+# Empty on purpose: relative docker-compose cp paths fail against WORKDIR /app.
+# tests/test.sh copies graded deliverables into /logs/artifacts for Harbor export.
+artifacts = []
+
+[task]
+name = "obi/gen-g806-leadership-brief-rhetorical-style-audit"
+description = "Evaluate whether leadership briefs answer executive questions in a usable decision sequence"
+authors = []
+keywords = ["harbor", "shannon-200", "gen", "non-connector", "offline"]
+
+[metadata]
+source_config = "infra/task-harness/configs/shannon-200/task_gen_G806_leadership_brief_rhetorical_style_audit"
+
+[verifier]
+timeout_sec = 600.0
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

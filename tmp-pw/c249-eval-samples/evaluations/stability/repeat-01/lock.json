@@ -1,0 +1,12 @@
+{
+  "environment": {
+    "type": "docker",
+    "digest": "sha256:54e74b1097331a46bb7e35d4ab9e42dd32e0c319471d17fc676c27de4ba8a7e1",
+    "image": "python:3.12-slim-bookworm"
+  },
+  "verifier": {
+    "grid": "tests/verifier.json",
+    "grid_sha256": "54e74b1097331a46bb7e35d4ab9e42dd32e0c319471d17fc676c27de4ba8a7e1",
+    "check_count": 51
+  }
+}

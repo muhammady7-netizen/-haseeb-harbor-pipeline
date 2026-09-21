@@ -1,0 +1,8 @@
+table_name,approved,valid_until
+T-05,False,2026-09-15
+T-10,True,2026-09-15
+T-16,True,2026-08-25
+T-28,True,2026-09-15
+T-29,True,2026-08-25
+T-37,True,2026-08-25
+T-38,False,2026-09-15

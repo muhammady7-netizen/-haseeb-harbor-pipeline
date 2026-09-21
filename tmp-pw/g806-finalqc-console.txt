@@ -1,0 +1,45 @@
+{"event":"LIFE","life":1}
+{"event":"LAUNCHED","attempt":1}
+{"event":"open_count","n":0}
+{"event":"stem_count","stemN":2}
+{"event":"opened","onTask":true,"url":"https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1"}
+{"event":"has_result_no_reclick","oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null}
+{"event":"POLL","round":1,"at":"2026-09-10T22:29:47.962Z","onTask":true,"skipped_preqc":true,"oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null,"head":"Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com ← All tasks gen-g806-leadership-brief-rhetorical-style-audit v1 · latest Harbor package ↑ Upload new version ✓ Upload ✓ Client PreQC 3 Review findings 7 to decide ✓ Review record 5 Evaluation 32 to decide 6 Submit Client preQC (Internal Gate · advisory) Last run: Review required Review required · 7 trainer finding(s) · 2 h ago Re-run client preQC View report Your 3 run slots are "}
+{"event":"CLOSED_ONCE"}
+{"event":"TRACK_RESULT","r":"DONE","life":1}
+{"event":"LIFE","life":2}
+{"event":"LAUNCHED","attempt":1}
+{"event":"open_count","n":0}
+{"event":"stem_count","stemN":2}
+{"event":"opened","onTask":true,"url":"https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1"}
+{"event":"has_result_no_reclick","oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null}
+{"event":"POLL","round":1,"at":"2026-09-10T22:32:12.677Z","onTask":true,"skipped_preqc":true,"oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null,"head":"Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com ← All tasks gen-g806-leadership-brief-rhetorical-style-audit v1 · latest Harbor package ↑ Upload new version ✓ Upload ✓ Client PreQC 3 Review findings 7 to decide ✓ Review record 5 Evaluation 32 to decide 6 Submit Client preQC (Internal Gate · advisory) Last run: Review required Review required · 7 trainer finding(s) · 2 h ago Re-run client preQC View report Your 3 run slots are "}
+{"event":"CLOSED_ONCE"}
+{"event":"TRACK_RESULT","r":"DONE","life":2}
+{"event":"LIFE","life":3}
+{"event":"LAUNCHED","attempt":1}
+{"event":"open_count","n":0}
+{"event":"stem_count","stemN":2}
+{"event":"opened","onTask":true,"url":"https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1"}
+{"event":"has_result_no_reclick","oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null}
+{"event":"POLL","round":1,"at":"2026-09-10T22:34:37.508Z","onTask":true,"skipped_preqc":true,"oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null,"head":"Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com ← All tasks gen-g806-leadership-brief-rhetorical-style-audit v1 · latest Harbor package ↑ Upload new version ✓ Upload ✓ Client PreQC 3 Review findings 7 to decide ✓ Review record 5 Evaluation 32 to decide 6 Submit Client preQC (Internal Gate · advisory) Last run: Review required Review required · 7 trainer finding(s) · 2 h ago Re-run client preQC View report Your 3 run slots are "}
+{"event":"CLOSED_ONCE"}
+{"event":"TRACK_RESULT","r":"DONE","life":3}
+{"event":"LIFE","life":4}
+{"event":"LAUNCHED","attempt":1}
+{"event":"open_count","n":0}
+{"event":"stem_count","stemN":2}
+{"event":"opened","onTask":true,"url":"https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1"}
+{"event":"has_result_no_reclick","oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null}
+{"event":"POLL","round":1,"at":"2026-09-10T22:37:01.816Z","onTask":true,"skipped_preqc":true,"oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null,"head":"Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com ← All tasks gen-g806-leadership-brief-rhetorical-style-audit v1 · latest Harbor package ↑ Upload new version ✓ Upload ✓ Client PreQC 3 Review findings 7 to decide ✓ Review record 5 Evaluation 32 to decide 6 Submit Client preQC (Internal Gate · advisory) Last run: Review required Review required · 7 trainer finding(s) · 2 h ago Re-run client preQC View report Your 3 run slots are "}
+{"event":"CLOSED_ONCE"}
+{"event":"TRACK_RESULT","r":"DONE","life":4}
+{"event":"LIFE","life":5}
+{"event":"LAUNCHED","attempt":1}
+{"event":"open_count","n":0}
+{"event":"stem_count","stemN":2}
+{"event":"opened","onTask":true,"url":"https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1"}
+{"event":"has_result_no_reclick","oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null}
+{"event":"POLL","round":1,"at":"2026-09-10T22:39:26.159Z","onTask":true,"skipped_preqc":true,"oracleFail":false,"oraclePass":true,"glm":"0","running":false,"slotsFull":true,"readySubmit":false,"homeStatus":null,"head":"Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com ← All tasks gen-g806-leadership-brief-rhetorical-style-audit v1 · latest Harbor package ↑ Upload new version ✓ Upload ✓ Client PreQC 3 Review findings 7 to decide ✓ Review record 5 Evaluation 32 to decide 6 Submit Client preQC (Internal Gate · advisory) Last run: Review required Review required · 7 trainer finding(s) · 2 h ago Re-run client preQC View report Your 3 run slots are "}
+{"event":"CLOSED_ONCE"}
+{"event":"TRACK_RESULT","r":"DONE","life":5}

@@ -1,0 +1,15 @@
+{
+  "event": "POLL",
+  "round": 1,
+  "at": "2026-09-10T22:39:26.159Z",
+  "onTask": true,
+  "skipped_preqc": true,
+  "oracleFail": false,
+  "oraclePass": true,
+  "glm": "0",
+  "running": false,
+  "slotsFull": true,
+  "readySubmit": false,
+  "homeStatus": null,
+  "head": "Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com ← All tasks gen-g806-leadership-brief-rhetorical-style-audit v1 · latest Harbor package ↑ Upload new version ✓ Upload ✓ Client PreQC 3 Review findings 7 to decide ✓ Review record 5 Evaluation 32 to decide 6 Submit Client preQC (Internal Gate · advisory) Last run: Review required Review required · 7 trainer finding(s) · 2 h ago Re-run client preQC View report Your 3 run slots are "
+}

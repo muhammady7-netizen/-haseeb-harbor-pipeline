@@ -1,0 +1,683 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+Upload a task to QC
+
+Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.
+
+Drop a task here, or click to browse
+One Harbor task package as .zip.
+ reading the bundle…
+What a Harbor task package looks like
+Recent tasks
+
+Resume a previous QC review.
+
+117
+L16 custody letter instruction audit
+law-b39-l16-custody-letter-instruction-audit
+Sep 16, 01:44 PM
+#6b909f
+View pipeline error
+Open task
+→
+L16 custody letter instruction audit
+law-b39-l16-custody-letter-instruction-audit
+5 versions · Sep 16, 08:16 AM
+v5
+#e83a3c
+View pipeline error · v4
+Open task
+→
+L16 custody letter instruction audit
+law-b39-l16-custody-letter-instruction-audit
+Sep 15, 01:27 AM
+#b01b4f
+View pipeline error
+Open task
+→
+L16 custody letter instruction audit
+Needs your review
+law-b39-l16-custody-letter-instruction-audit
+Sep 14, 10:41 PM
+#4ffe63
+Pipeline report
+Open task
+→
+L16 custody letter instruction audit
+law-b39-l16-custody-letter-instruction-audit
+Sep 14, 09:46 PM
+#ecf0b4
+View pipeline error
+Open task
+→
+L16 custody letter instruction audit
+law-b39-l16-custody-letter-instruction-audit
+Sep 14, 09:42 PM
+#a684d7
+Open task
+→
+Facility interest review
+Changes needed
+fin-f44-facility-interest-review
+4 versions · Sep 14, 12:21 PM
+v4
+#38b6ac
+Pipeline report
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 11:53 AM
+#dd771e
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 11:48 AM
+#943cd6
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 11:43 AM
+#74c3ac
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 11:37 AM
+#294ea9
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 11:33 AM
+#79df99
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+11 versions · Sep 14, 11:29 AM
+v11
+#bee437
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 10:41 AM
+#714fca
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 10:37 AM
+#e80ce2
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 10:31 AM
+#df297e
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 10:29 AM
+#605884
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 10:25 AM
+#4e3de4
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 10:24 AM
+#e29e48
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 10:20 AM
+#976ed1
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 10:17 AM
+#d73715
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 10:17 AM
+#602d81
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 10:08 AM
+#8f1af1
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 10:07 AM
+#6e3661
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 10:03 AM
+#56b865
+Open task
+→
+Facility interest review
+fin-f44-facility-interest-review
+Sep 14, 09:58 AM
+#6003f1
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 09:54 AM
+#6df8de
+Open task
+→
+Pdf form field conversion audit
+code-c251-pdf-form-field-conversion-audit
+18 versions · Sep 14, 09:51 AM
+v18
+#efc4ea
+View pipeline error · v5
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 09:48 AM
+#375f15
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 09:43 AM
+#6bd1db
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 09:42 AM
+#eb9dab
+Open task
+→
+Department directory categorization audit
+gen-g857-department-directory-categorization-audit
+25 versions · Sep 14, 09:39 AM
+v25
+#411c81
+View pipeline error
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 09:36 AM
+#8b270a
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 09:33 AM
+#6904f3
+Open task
+→
+Leadership brief rhetorical style audit
+gen-g806-leadership-brief-rhetorical-style-audit
+4 versions · Sep 14, 09:20 AM
+v4
+#853846
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 09:19 AM
+#e2c0ff
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 09:14 AM
+#2e7bae
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 09:13 AM
+#05a19e
+Open task
+→
+Pdf form field conversion audit
+code-c251-pdf-form-field-conversion-audit
+2 versions · Sep 14, 09:09 AM
+v2
+#572124
+Open task
+→
+Meal prep cost claim recompute audit
+gen-g1205-meal-prep-cost-claim-recompute-audit
+Sep 14, 09:03 AM
+#490259
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 09:01 AM
+#970cfa
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 08:50 AM
+#cce232
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 08:36 AM
+#193862
+Open task
+→
+Critical result acknowledgement
+health-h40-critical-result-acknowledgement
+Sep 14, 08:12 AM
+#1468ff
+View pipeline error
+Open task
+→
+Recurring report source selection audit
+code-c249-recurring-report-source-selection-audit
+Sep 14, 08:11 AM
+#6ed871
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 14, 07:21 AM
+#2ac89e
+Open task
+→
+Critical result acknowledgement
+health-h40-critical-result-acknowledgement
+Sep 14, 06:10 AM
+#809663
+Open task
+→
+Facility interest review
+Changes needed
+fin-f44-facility-interest-review
+14 versions · Sep 13, 11:06 PM
+v24
+#b91f97
+Pipeline report
+Open task
+→
+Critical result acknowledgement
+Changes needed
+health-h40-critical-result-acknowledgement
+Sep 13, 10:43 PM
+#415be3
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Needs your review
+gen-g806-leadership-brief-rhetorical-style-audit
+2 versions · Sep 13, 10:27 PM
+v2
+#93684b
+Pipeline report
+Open task
+→
+Distributable profits
+Changes needed
+fin-f39-distributable-profits
+Sep 13, 10:03 PM
+#cbeb6b
+Pipeline report
+Open task
+→
+Distributable profits
+Changes needed
+fin-f39-distributable-profits
+Sep 13, 09:29 PM
+#c172f7
+Pipeline report
+Open task
+→
+Critical result acknowledgement
+Needs your review
+health-h40-critical-result-acknowledgement
+Sep 13, 07:41 PM
+#64c81c
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Changes needed
+gen-g806-leadership-brief-rhetorical-style-audit
+Sep 13, 07:11 PM
+#2185a9
+Pipeline report
+Open task
+→
+Distributable profits
+Changes needed
+fin-f39-distributable-profits
+Sep 13, 07:06 PM
+#572b1d
+Pipeline report
+Open task
+→
+Distributable profits
+Needs your review
+fin-f39-distributable-profits
+Sep 13, 04:25 PM
+#958526
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Needs your review
+gen-g806-leadership-brief-rhetorical-style-audit
+2 versions · Sep 13, 04:07 PM
+v2
+#8dc4a7
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+✓ accepted
+code-c227-table-bloat-maintenance-audit
+Sep 13, 03:37 PM
+#bcfd6e
+Pipeline report
+Open task
+→
+Distributable profits
+Changes needed
+fin-f39-distributable-profits
+Sep 13, 03:18 PM
+#f3e7a8
+Pipeline report
+Open task
+→
+Critical result acknowledgement
+Changes needed
+health-h40-critical-result-acknowledgement
+Sep 13, 02:25 PM
+#4182ac
+Pipeline report
+Open task
+→
+Distributable profits
+Needs your review
+fin-f39-distributable-profits
+Sep 13, 02:06 PM
+#9fe5b9
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+✓ accepted
+code-c227-table-bloat-maintenance-audit
+Sep 13, 12:25 PM
+#6c917a
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+Changes needed
+code-c227-table-bloat-maintenance-audit
+Sep 13, 11:43 AM
+#2e53c2
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Needs your review
+gen-g806-leadership-brief-rhetorical-style-audit
+Sep 13, 11:40 AM
+#49bce4
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+Changes needed
+code-c227-table-bloat-maintenance-audit
+Sep 13, 11:10 AM
+#0051cc
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Changes needed
+gen-g806-leadership-brief-rhetorical-style-audit
+Sep 13, 10:42 AM
+#825692
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+Changes needed
+code-c227-table-bloat-maintenance-audit
+Sep 13, 10:27 AM
+#07885d
+Pipeline report
+Open task
+→
+Distributable profits
+Changes needed
+fin-f39-distributable-profits
+Sep 13, 10:04 AM
+#0a20ac
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+Changes needed
+code-c227-table-bloat-maintenance-audit
+Sep 13, 09:23 AM
+#0c48b7
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Changes needed
+gen-g806-leadership-brief-rhetorical-style-audit
+Sep 13, 08:49 AM
+#340f71
+Pipeline report
+Open task
+→
+Distributable profits
+Needs your review
+fin-f39-distributable-profits
+Sep 13, 07:50 AM
+#a15bdc
+Pipeline report
+Open task
+→
+Distributable profits
+Needs your review
+fin-f39-distributable-profits
+Sep 13, 06:51 AM
+#e63b7e
+Pipeline report
+Open task
+→
+Critical result acknowledgement
+Changes needed
+health-h40-critical-result-acknowledgement
+Sep 13, 06:48 AM
+#31c86f
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Needs your review
+gen-g806-leadership-brief-rhetorical-style-audit
+Sep 13, 05:44 AM
+#21bf4c
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+✕ rejected
+code-c227-table-bloat-maintenance-audit
+Sep 13, 05:42 AM
+#60892b
+Pipeline report
+Open task
+→
+Distributable profits
+Needs your review
+fin-f39-distributable-profits
+Sep 13, 05:37 AM
+#9d124e
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Changes needed
+gen-g806-leadership-brief-rhetorical-style-audit
+Sep 13, 05:21 AM
+#94044b
+Pipeline report
+Open task
+→
+Leadership brief rhetorical style audit
+Changes needed
+gen-g806-leadership-brief-rhetorical-style-audit
+2 versions · Sep 12, 11:14 PM
+v2
+#09b8d4
+Pipeline report
+Open task
+→
+Critical result acknowledgement
+Needs your review
+health-h40-critical-result-acknowledgement
+Sep 12, 10:47 PM
+#08763e
+Pipeline report
+Open task
+→
+Distributable profits
+Changes needed
+fin-f39-distributable-profits
+Sep 12, 10:36 PM
+#be95ba
+Pipeline report
+Open task
+→
+Distributable profits
+Needs your review
+fin-f39-distributable-profits
+Sep 12, 09:17 PM
+#b1f602
+Pipeline report
+Open task
+→
+Distributable profits
+Needs your review
+fin-f39-distributable-profits
+Sep 12, 07:29 PM
+#b1e077
+Pipeline report
+Open task
+→
+Critical result acknowledgement
+Changes needed
+health-h40-critical-result-acknowledgement
+Sep 12, 07:19 PM
+#ae24ba
+Pipeline report
+Open task
+→
+UPLOAD THIS TO QC gen g806
+Needs your review
+UPLOAD-THIS-TO-QC-gen-g806
+4 versions · Sep 12, 07:02 PM
+v6
+#772487
+Pipeline report
+Open task
+→
+UPLOAD THIS TO QC gen g806
+UPLOAD-THIS-TO-QC-gen-g806
+2 versions · Sep 12, 06:58 PM
+v2
+#777188
+Pipeline report · v1
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 12, 06:29 PM
+#4ab794
+View pipeline error
+Open task
+→
+UPLOAD THIS TO QC gen g806
+UPLOAD-THIS-TO-QC-gen-g806
+2 versions · Sep 12, 04:22 PM
+v2
+#b55b74
+Pipeline report · v1
+Open task
+→
+Distributable profits
+fin-f39-distributable-profits
+Sep 12, 03:33 PM
+#fc808d
+Open task
+→
+Critical result acknowledgement
+Needs your review
+health-h40-critical-result-acknowledgement
+Sep 12, 02:53 PM
+#f8137d
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+code-c227-table-bloat-maintenance-audit
+Sep 12, 02:42 PM
+#e56d15
+Open task
+→
+Critical result acknowledgement
+Changes needed
+health-h40-critical-result-acknowledgement
+Sep 12, 09:29 AM
+#694e7c
+Pipeline report
+Open task
+→
+Distributable profits
+Changes needed
+fin-f39-distributable-profits
+Sep 12, 06:40 AM
+#4b5bc0
+Pipeline report
+Open task
+→
+Table bloat maintenance audit
+Changes needed
+code-c227-table-bloat-maintenance-audit
+Sep 12, 06:

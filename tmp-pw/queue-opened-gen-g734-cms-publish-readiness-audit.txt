@@ -1,0 +1,340 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+gen-g734-cms-publish-readiness-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+✓
+Client PreQC
+3
+Review findings
+5 to decide
+✓
+Review record
+5
+Evaluation
+24 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Last run: Review required
+Review required · 5 trainer finding(s) · 6 h ago
+Re-run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check again
+View details
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 24 trainer finding(s) · 1 h ago
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+24 blocking issues and 6 findings to review
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+30
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__cross_artifact_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__declared_executed_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__instruction_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_instruction_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_realism_leakage
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_realism_leakage__domain_correctness
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__eligible_strict_pass
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__instruction_environment_sufficiency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__solution_legitimacy
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static__rollout_legitimacy
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__check_independence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__counterfactual_strength
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__coverage_depth
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__requirement_traceability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__scoring_proportionality
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__frozen_identity
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__per_check_stability
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__repeat_count
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__reward_equality
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__verifier_judge_config_identity
+Review issue
+Run history
+3 runs · latest PASS
+CLIENT PREQC (INTERNAL GATE · ADVISORY)
+Client preQC (Internal Gate · advisory)
+Legacy QC1
+Review required
+5 trainer finding(s)
+Sep 10, 08:59 PM · took 13s
+report
+zip
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 0/4 passed
+24 trainer finding(s)
+Sep 11, 01:31 AM · took 2316s
+report
+zip
+REVIEW.CSV CHECK
+review.csv check
+Complete
+14 areas resolved · QC reviewer: reads as a real review
+Sep 11, 01:59 AM · took 1.714s
+RESULT
+review.csv check
+Complete
+14 review areas written down · every row resolved
+
+The verdict above is the structural one, and it is the half that decides whether this package can be submitted: review.csv, in the bundle at review.csv, either carries a resolved row for every review area or it does not. What the QC reviewer made of the writing is below, and blocks nothing.
+
+WHAT THE QC REVIEWER READ
+ADVISORY
+Reads as a real review
+
+The QC reviewer found notes specific to this task.
+
+QC REVIEWER'S REASON
+
+The review rows cite task-specific details throughout — 178 verifier checks, 98 countable posts, 62-row publish_audit.csv, readiness_memo.md at 10336 chars, specific post IDs (P-02, P-09, P-45, P-54, P-50, P-55) tied to clause-scoped memo checks, and a named GLM trial (glm-g734-v10b-1). The FIXED_AND_VERIFIED rows describe concrete findings (rotated-grounds grading gap), specific changes (6 new memo_p*_reason checks), and rechecks that distinguish success from failure. N/A rows are justified in task-specific terms.
+
+QUOTED FROM THE FILE
+178 checks in verifier.json (80 original + 6 clause-scoped memo id-to-reason checks). Gold matches inventory: publish_audit.csv; readiness_memo.md; results.json. Dockerfile pinned by sha256. golden_trajectory.json is oracle ATIF.
+
+Found in the file, so this reading was made on what the record actually says.
+
+zai-org/GLM-5.2 · rubric review-csv-2026-08d · took 1.714s
+
+THE RECORD ITSELF
+Layer 1 - Package consistency
+PASS
+
+178 checks in verifier.json (80 original + 6 clause-scoped memo id-to-reason checks). Gold matches inventory: publish_audit.csv; readiness_memo.md; results.json. Dockerfile pinned by sha256. golden_trajectory.json is oracle ATIF.
+
+WHAT TO RECORD
+All checks declared; gold correct
+Layer 1 - Clarity and scope
+PASS
+
+Instruction binds publish_readiness_standard.md (including named files editorial_signoff.csv and post_publish_log.csv). Deliverables and results.json keys are explicit. One canonical reading for every finding.
+
+WHAT TO RECORD
+All rules disclosed; one canonical reading
+Layer 1 - Realism and leakage
+PASS
+
+Realistic CMS post-publish readiness audit. Gold only under solution/; no answer-bearing filenames in agent-visible input.
+
+WHAT TO RECORD
+No gold leakage into agent-visible input
+Layer 2 Difficulty
+PASS
+
+GLM-5.2 v10b battery (98 posts; 178 checks): 1/5 at reward=1.0; first-four 1/4 within the 2/4 hard-band gate. Edge cases include evergreen tokens, register last-wins, slash dates, FAQ parsing, and compound findings.
+
+WHAT TO RECORD
+GLM difficulty from register parsing traps and compound findings
+Layer 2 Solvability
+FIXED_AND_VERIFIED
+
+Oracle solve.sh installs gold and scores reward 1.0. GLM trial glm-g734-v10b-1 reaches reward 1.0 (86/96). golden_trajectory.json is oracle-style ATIF (agent.name=oracle) not copied from any GLM run.
+
+CHANGED
+Confirmed golden_trajectory.json is oracle ATIF not GLM-copied
+WHAT TO RECORD
+Oracle 1.0 and GLM reward-1.0 evidence
+Layer 2 Stability
+PASS
+TURING RUNS THIS
+
+Stability will be run by platform (3 oracle repeats at 1.0).
+
+WHAT TO RECORD
+Platform runs stability
+Layer 3 Oracle Mode
+PASS
+
+Oracle 1.0 with 178 checks including 6 new clause-scoped memo checks that close the rotated-grounds grading gap.
+
+WHAT TO RECORD
+Oracle 1.0
+Layer 4 - Environment and files
+FIXED_AND_VERIFIED
+
+3 input files under environment/input/ (publish_readiness_standard.md; post_publish_log.csv; editorial_signoff.csv). 98 countable posts after last-wins collapse and omit rules.
+
+CHANGED
+Added 6 clause-scoped memo id-to-reason verifier checks
+WHAT TO RECORD
+No environment issues
+Layer 4 - Connectors, MCPs, and CLIs
+N/A
+
+Non-connector task. No MCP gym or Docker connector.
+
+WHAT TO RECORD
+N/A
+Layer 4 - Deliverables and artifact quality
+PASS
+
+62-row publish_audit.csv with 7 columns. readiness_memo.md at 10336 chars (exceeds 3000 floor). results.json with 4 keys. All deliverables match gold.
+
+WHAT TO RECORD
+Deliverables complete and match gold
+Layer 5 - Verifier coverage and fairness
+FIXED_AND_VERIFIED
+
+178 checks declared. 6 new clause-scoped memo checks tie each task id to its reason (P-02; P-09; P-45; P-54; P-50; P-55). Neutral check names. Header validated. Row count enforced. No LLM judge.
+
+CHANGED
+Added 6 memo_p*_reason checks to close rotated-grounds grading gap
+WHAT TO RECORD
+All checks fair and declared
+Layer 5 - LLM judge consistency
+N/A
+
+No LLM judge; all 178 checks are deterministic regex/equals.
+
+WHAT TO RECORD
+N/A
+Layer 5 - Reward hacking and exploitability
+FIXED_AND_VERIFIED
+
+No answer leakage. Neutral check names. Rotated-grounds counterexample now rejected by 6 new memo checks. All exploit paths closed.
+
+CHANGED
+Added clause-scoped memo checks to reject rotated-grounds exploit
+WHAT TO RECORD
+No reward hacking
+Cross-trial - Calibration
+PASS
+TURING RUNS THIS
+
+Oracle 1.0. GLM 1/4 at reward 1.0 within difficulty gate. Difficulty from register parsing traps; compound findings; and evergreen token rules.
+
+WHAT TO RECORD
+Difficulty from parsing traps and compound findings
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

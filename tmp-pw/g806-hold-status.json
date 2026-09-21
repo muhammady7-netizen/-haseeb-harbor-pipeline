@@ -1,0 +1,14 @@
+{
+  "event": "POLL",
+  "round": 1,
+  "at": "2026-09-10T21:08:25.850Z",
+  "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-58a3a86e0067ef5b91601705a8772487-v1",
+  "onTask": true,
+  "oracleFail": false,
+  "oraclePass": false,
+  "glm": null,
+  "running": false,
+  "doneUi": true,
+  "preqc": false,
+  "head": "Shannon QC Control QC Resources GLM access ✓ muhammad.y7@turing.com Upload a task to QC Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots. Drop a task here, or click to browse One Harbor task package as .zip. What a Harbor task package looks like Submitted to the pipeline Every task you have handed over, newest first. 42 fin-f44-facility-interest-review v1 Sep 10, 12:29 AM Rejected · 15 findings Ready for finalization legacy score unavailable auto-pipeline-evaluation-920a0c3ff8d74a50 Why it was rejected 15 These come from the pipeline's final QC. Fix t"
+}

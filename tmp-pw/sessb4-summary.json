@@ -1,0 +1,28 @@
+{
+  "at": "2026-09-10T20:45:55.370Z",
+  "running": 3,
+  "results": [
+    {
+      "event": "gates_done",
+      "short": "code-c227",
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-3a68a4668fe6d080ac4779cd324e6dc6-v1",
+      "oracle": false,
+      "banner": false,
+      "reviewNotFinished": true,
+      "running": false,
+      "blockers": 0,
+      "head": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\nYou already have 3 runs in flight — wait for one to finish, then press Run again.\n←\nAll tasks\ncode-c227-table-bloat-maintenance-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n2\nClient PreQC\ndid not finish\n3\nReview findings\n4\nReview record\n5\nEvaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nLast run: errored\nDid not finish — open it to see why · 35 min ago\nRe-run client preQC\nView report\nYour 3 run slots are currently in use.\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it "
+    },
+    {
+      "event": "gates_done",
+      "short": "code-c249",
+      "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-10994eb6b7816775f36ff3ccca5c9268-v1",
+      "oracle": false,
+      "banner": false,
+      "reviewNotFinished": false,
+      "running": false,
+      "blockers": 0,
+      "head": "Shannon QC Control\nQC\nResources\nGLM access\n✓\nmuhammad.y7@turing.com\nYou already have 3 runs in flight — wait for one to finish, then press Run again.\n←\nAll tasks\ncode-c249-recurring-report-source-selection-audit\nv1 · latest\nHarbor package\n↑\nUpload new version\n✓\nUpload\n2\nClient PreQC\nnot run yet\n3\nReview findings\n✓\nReview record\n5\nEvaluation\n6\nSubmit\nClient preQC (Internal Gate · advisory)\nNot run yet\nhas not run on this task yet\nRun client preQC\nView report\nYour 3 run slots are currently in use.\n\nREVIEW.CSV · REQUIRED TO SUBMIT\n\nreview.csv\nin the bundle · review.csv\n\nRequired to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it lo"
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+gen-g806-leadership-brief-rhetorical-style-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+✓
+Client PreQC
+3
+Review findings
+7 to decide
+✓
+Review record
+5
+Evaluation
+32 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Last run: Review required
+Review required · 7 trainer finding(s) · 1 h ago
+Re-run client preQC
+View report
+Your 3 run slots are currently in use.
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check again
+View details
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 27 trainer finding(s) · 1 h ago
+Re-run QC-Oracle-GLM
+View report
+Your 3 run slots are currently in use.
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+32 blocking issues and 5 findings to review
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+37
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope__output_surface_contract
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_clarity_scope__representation_contract
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__artifact_contract_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__cross_artifact_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__instruction_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__manifest_environment_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_instruction_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__solution_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_realism_leakage
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_realism_leakage__authoritative_reference_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_realism_leakage__domain_correctness
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__evidence_pairing_count
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__provenance_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__eligible_strict_pass
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__instruction_environment_sufficiency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__saved_evidence_completeness
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_solvability__solution_legitimacy
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_reward_hacking_static__rollout_legitimacy
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__check_independence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__counterfactual_strength
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__coverage_depth
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__requirement_traceability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__scoring_proportionality
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__frozen_identity
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__repeat_count
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__reward_equality
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+layer2_stability__verifier_judge_config_identity
+Review issue
+Run history
+3 runs · latest PASS
+CLIENT PREQC (INTERNAL GATE · ADVISORY)
+Client preQC (Internal Gate · advisory)
+Legacy QC1
+Review required
+7 trainer finding(s)
+Sep 11, 01:40 AM · took 15s
+report
+zip
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 0/4 passed
+27 trainer finding(s)
+Sep 11, 01:40 AM · took 2244s
+report
+zip
+REVIEW.CSV CHECK
+review.csv check
+Complete
+14 areas resolved · QC reviewer: reads as a real review
+Sep 11, 02:00 AM · took 1.403s
+RESULT
+review.csv check
+Complete
+14 review areas written down · every row resolved
+
+The verdict above is the structural one, and it is the half that decides whether this package can be submitted: review.csv, in the bundle at review.csv, either carries a resolved row for every review area or it does not. What the QC reviewer made of the writing is below, and blocks nothing.
+
+WHAT THE QC REVIEWER READ
+ADVISORY
+Reads as a real review
+
+The QC reviewer found notes specific to this task.
+
+QC REVIEWER'S REASON
+
+The review references this task's actual files, counts, and deliverables (8 briefs, 82 sentences, 6 questions, brief_coherence.csv with 8 rows, question_trace.csv with 48 rows, 35 verifier checks), and the FIXED_AND_VERIFIED rows describe specific changes tied to the task's subject matter with coherent rechecks.
+
+QUOTED FROM THE FILE
+brief_coherence.csv (8 rows), question_trace.csv (48 rows), executive_sequence_memo.md (729 chars), results.json (6 keys). All match gold.
+
+Found in the file, so this reading was made on what the record actually says.
+
+zai-org/GLM-5.2 · rubric review-csv-2026-08d · took 1.403s
+
+THE RECORD ITSELF
+Layer 1 - Package consistency
+PASS
+
+35 checks in verifier.json. Gold matches inventory. Dockerfile pinned.
+
+WHAT TO RECORD
+All checks declared; gold correct
+Layer 1 - Clarity and scope
+PASS
+
+Instruction binds message_rules.md and named input CSVs. Deliverables and results.json keys are explicit.
+
+WHAT TO RECORD
+All rules disclosed; one canonical reading
+Layer 1 - Realism and leakage
+PASS
+
+Realistic brief coherence evaluation. Gold only under solution/. No answer leakage.
+
+WHAT TO RECORD
+No gold leakage into agent-visible input
+Layer 2 Difficulty
+PASS
+
+Brief coherence scoring with transition penalties, answer distance, and word budget traps. GLM difficulty from purpose transitions and question sequencing.
+
+WHAT TO RECORD
+GLM difficulty from sequence analysis
+Layer 2 Solvability
+PASS
+
+Oracle 1.0 with all checks. Gold deliverables complete.
+
+WHAT TO RECORD
+Oracle 1.0 and solvable
+Layer 2 Stability
+PASS
+TURING RUNS THIS
+
+Stability will be run by platform.
+
+WHAT TO RECORD
+Platform runs stability
+Layer 3 Oracle Mode
+PASS
+
+Oracle 1.0 with 35 checks.
+
+WHAT TO RECORD
+Oracle 1.0
+Layer 4 - Environment and files
+FIXED_AND_VERIFIED
+
+3 input files under environment/input/. 8 briefs, 82 sentences, 6 questions.
+
+CHANGED
+Rewrote task from leadership brief style audit to brief coherence evaluation
+WHAT TO RECORD
+No environment issues
+Layer 4 - Connectors, MCPs, and CLIs
+N/A
+
+Non-connector task. No MCP gym or Docker connector.
+
+WHAT TO RECORD
+N/A
+Layer 4 - Deliverables and artifact quality
+PASS
+
+brief_coherence.csv (8 rows), question_trace.csv (48 rows), executive_sequence_memo.md (729 chars), results.json (6 keys). All match gold.
+
+WHAT TO RECORD
+Deliverables complete and match gold
+Layer 5 - Verifier coverage and fairness
+FIXED_AND_VERIFIED
+
+35 checks declared. Per-brief coherence scores, per-question trace entries, row counts, headers, results. All deterministic.
+
+CHANGED
+Rewrote verifier for new deliverables
+WHAT TO RECORD
+All checks fair and declared
+Layer 5 - LLM judge consistency
+N/A
+
+No LLM judge; all checks are deterministic regex/equals.
+
+WHAT TO RECORD
+N/A
+Layer 5 - Reward hacking and exploitability
+FIXED_AND_VERIFIED
+
+No answer leakage. Neutral check names. Row counts enforced.
+
+CHANGED
+Removed old deliverables and rebuilt verifier for new task structure
+WHAT TO RECORD
+No reward hacking
+Cross-trial - Calibration
+PASS
+TURING RUNS THIS
+
+Oracle 1.0. Difficulty from purpose transition penalties and answer distance traps.
+
+WHAT TO RECORD
+Difficulty from sequence analysis traps
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

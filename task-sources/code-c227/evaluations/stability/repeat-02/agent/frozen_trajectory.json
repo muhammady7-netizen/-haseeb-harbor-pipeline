@@ -1,0 +1,21 @@
+{
+  "schema_version": "ATIF-v1.7",
+  "session_id": "c227-stability-repeat-02",
+  "agent": {
+    "name": "oracle",
+    "version": "1.0.0"
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "agent",
+      "message": "Install frozen gold deliverables into workspace."
+    },
+    {
+      "step_id": 2,
+      "source": "agent",
+      "message": "Run pytest tests/test_outputs.py --ctrf and record genuine stdout (166/166)."
+    }
+  ],
+  "final_answer": "Gold deliverables verified 166/166 via real pytest --ctrf."
+}

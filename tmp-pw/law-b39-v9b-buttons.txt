@@ -1,0 +1,74 @@
+
+      GLM access ✓
+
+      
+        
+        
+      
+      
+        
+      
+    
+
+      ← All tasks
+    
+
+        ↑ Upload new version
+      
+
+          ✓
+          
+            Upload
+            
+          
+        
+
+          2
+          
+            Client PreQC
+            not run yet
+          
+        
+
+          3
+          
+            Review findings
+            
+          
+        
+
+          ✓
+          
+            Review record
+            
+          
+        
+
+          5
+          
+            Evaluation
+            
+          
+        
+
+          6
+          
+            Submit
+            
+          
+        
+Run client preQC
+View report
+Check with QC reviewer
+View details
+Run QC-Oracle-GLM
+View report
+
+              Run history
+              loading…
+              
+            
+
+    
+    Task readiness
+  

@@ -1,0 +1,7 @@
+question_id,executive_role,priority
+Q-01,CEO,high
+Q-02,CFO,high
+Q-03,COO,medium
+Q-04,CTO,medium
+Q-05,CMO,low
+Q-06,CHRO,low

@@ -1,0 +1,303 @@
+URL=https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-ca1119aff2993a64d8334d705d99ae43-v1
+
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+health-h40-critical-result-acknowledgement
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+9 to decide
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: Review required
+Review required · 9 trainer finding(s) · 42 min ago
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+9 blocking issues and 1 finding to review
+
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+
+10
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__instruction_verifier_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer1_package_consistency__manifest_environment_consistency
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer2_difficulty__failure_cause_validity
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__requirement_traceability
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__semantic_equivalence
+Review issue
+!
+QC-ORACLE-GLM CHECK · BLOCKER
+layer5_verifier_fairness_static__surface_form_brittleness
+Review issue
+i
+QC-ORACLE-GLM CHECK · MINOR
+Difficulty advisory
+Review issue
+Run history
+1 run · latest Review
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Review required
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 3/4 passed
+9 trainer finding(s)
+Sep 12, 02:28 AM · took 2454s
+report
+zip
+RESULT
+QC-Oracle-GLM check
+Review required
+9 trainer finding(s)
+Finalization held: 9 blocking finding(s) await disposition: confirm each one or justify it as a false positive with a note. Submit to pipeline
+Execution evidence — Oracle + four GLM runs
+
+These are the five scored trials. Oracle replays the golden solution once to prove the task is solvable; the next four rows are independent GLM-5.2 attempts used to measure difficulty.
+
+step	trial	status	result	Harbor view	download
+1	Oracle golden replay	PASS	1.0 on _iUyQj8S (1/1 graded)	View Oracle in Harbor	trajectory (.zip)
+2	GLM-5.2 run 1	completed	reward 1	View GLM run 1 in Harbor	trajectory (.zip)
+3	GLM-5.2 run 2	completed	reward 0.9811320755	View GLM run 2 in Harbor	trajectory (.zip)
+4	GLM-5.2 run 3	completed	reward 1	View GLM run 3 in Harbor	trajectory (.zip)
+5	GLM-5.2 run 4	completed	reward 1	View GLM run 4 in Harbor	trajectory (.zip)
+
+Difficulty: 3 of 4 GLM runs solved the task.
+
+FINAL VALIDATION — HARBOR CHECK
+
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+
+FAIL · 0 finding(s) screened out · gs://obi-harbor-pipeline/results/trainer-evaluation-aa01e53286074ef1-a1/_harbor_check/runs/evaluation-aa01e53286074ef1-a1/status.json
+
+Pipeline batch trainer-evaluation-aa01e53286074ef1-a1 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-d7bms
+
+YOUR DECISIONS
+
+0/9
+findings dispositioned by you
+Blocking — blocker / critical 9
+blocker
+layer1_package_consistency
+layer1_package_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency Executable core is sound (I ran tests/test_outputs.py against solution/files with HARBOR_TASK_WORKSPACE: 159/159 pass, and an independent reimplementation of the documented rules reproduced solution/files/results_audit.csv row-for-row and all five counts). But two subchecks fail: (a) five memo checks in tests/verifier.json demand specific non-breach result IDs although instruction.md line 41 says "naming a particular result ID is optional"; (b) package mirrors are stale (README.md lists 3 of the 6 read-only inputs, solution/golden_trajectory.json embeds an obsolete 3-attachment instruction, review.csv cites 34 checks and results_compliant=14 vs the actual 147 checks and 53).
+IMPACT
+Five memo checks in the verifier reject instruction-compliant memos that omit specific result IDs. README, golden trajectory, and review.csv also list outdated input and check counts.
+SMALLEST FIX
+Remove the specific-result-ID requirements from the five memo checks in tests/verifier.json so they accept any plain-language non-breach explanation. Update README.md to list all six input files. Update solution/golden_trajectory.json to reflect the current six-attachment instruction. Update review.csv to show 147 checks and 53 compliant results.
+VERIFY
+Run tests/test_outputs.py against solution/files and confirm all 159 checks pass, then grep README.md for all six input filenames.
+Review note (optional)
+blocker
+layer1_package_consistency__instruction_verifier_consistency
+layer1_package_consistency__instruction_verifier_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__instruction_verifier_consistency Verifier-only requirement. instruction.md line 39-41 states that when explaining long elapsed times that are not breaches, "naming a particular result ID is optional". Yet tests/verifier.json checks memo_explains_pre_clock_or_1759 (needs R-57|R-58|R-64), memo_explains_tier_or_preclock_non_breach (R-70|R-71|R-76), memo_explains_r89_or_r103_non_breach (R-89|R-98|R-103), memo_addresses_the_clock_start (R-08|R-11|R-14|R-16) and memo_lists_r106_or_r110_holiday all require one of a specific undisclosed ID set to be anchored to that explanation. evaluations/difficulty/r2 lost exactly the first three of these while its memo did give the plain-language non-breach explanation naming other IDs (R-08/R-37/R-39, R-14/R-23/R-59, R-106/R-110/R-118). Conversely every material instruction requirement is graded somewhere, so the defect is verifier-only surplus, not missing coverage.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. A memo that gives correct plain-language non-breach explanations using other valid result IDs fails three verifier checks, as seen in difficulty/r2.
+SMALLEST FIX
+Edit tests/verifier.json to remove the hard-coded result-ID lists from these five memo checks. Accept any memo that explains the correct non-breach concepts in plain language, regardless of which result IDs it cites as examples.
+VERIFY
+Re-run the verifier against the difficulty/r2 memo output and confirm the three memo checks now pass.
+Review note (optional)
+blocker
+layer1_package_consistency__manifest_environment_consistency
+layer1_package_consistency__manifest_environment_consistency
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer1_package_consistency__manifest_environment_consistency Harness-facing declarations are fine (task.toml: no mcp_servers, no artifacts, verifier timeout 600s; Dockerfile pins python:3.12-slim by digest and pre-installs exactly the engine deps pytest/pydantic/jsonpath-ng/tenacity; input/ copied and chmod a-w,a+rX). But the package mirrors are stale and contradictory: README.md "Inputs" lists only critical_results_procedure.md, critical_results.csv and escalations.csv, omitting site_core_hours.md, approved_roles_roster.md and bank_holidays.csv, which are mandatory to the answer; solution/golden_trajectory.json step 1 mirrors an obsolete instruction (3 attachments, no site/roster/holiday documents); review.csv records "(34 checks)" and golden counts 6/11/2/4/14 while the shipped verifier has 147 definitions and golden_results.json is 30/52/20/36/53.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The mirrors contradict the shipped task: README omits three mandatory inputs, the golden trajectory references an old 3-attachment instruction, and review.csv records 34 checks instead of 147.
+SMALLEST FIX
+Add site_core_hours.md, approved_roles_roster.md, and bank_holidays.csv to the README.md Inputs section. Replace the 3-attachment instruction in solution/golden_trajectory.json with the current six-attachment version. Update review.csv to show 147 checks and the golden counts 30/52/20/36/53.
+VERIFY
+Open README.md and confirm all six input files are listed; open review.csv and confirm it shows 147 checks.
+Review note (optional)
+blocker
+layer2_difficulty
+layer2_difficulty
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty Evidence count and provenance are adequate and the distribution itself is acceptable (first 4 eligible GLM-5.2 attempts: r1=1.0, r2=0.9811320755, r3=1.0, r4=1.0, i.e. 3/4 strict passes), but the mandatory failure_cause_validity subcheck fails: the single non-pass is caused by the verifier demanding non-breach explanation IDs that instruction.md declares optional, not by task difficulty. Fractional score preserved: 0.9811320755 (156/159).
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The r2 trial scored 156/159 only because the verifier rejected an instruction-compliant memo for omitting optional result IDs, invalidating the difficulty evidence.
+SMALLEST FIX
+Fix the five memo checks in tests/verifier.json as described in the instruction-verifier consistency finding, then re-run the r2 trial to obtain a clean difficulty distribution.
+VERIFY
+Re-run the r2 evaluation and confirm its reward reflects task difficulty rather than a verifier-only ID requirement.
+Review note (optional)
+blocker
+layer2_difficulty__failure_cause_validity
+layer2_difficulty__failure_cause_validity
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer2_difficulty__failure_cause_validity evaluations/difficulty/r2 failed only memo_explains_pre_clock_or_1759, memo_explains_tier_or_preclock_non_breach and memo_explains_r89_or_r103_non_breach (verifier/test-stdout.txt). Its trajectory shows the memo did contain a full plain-language non-breach section - inclusive limits (citing R-14, R-23, R-59, R-25, R-36, R-51, R-61, R-67), core-hours clock start (R-08, R-37, R-39) and trust closed days (R-106, R-110, R-118) - i.e. precisely what instruction.md asks for, including its statement that "naming a particular result ID is optional". The failure is therefore a verifier defect (hidden required ID sets), not task difficulty; r2's audit CSV and results.json were otherwise fully correct (156 checks passed, including all row and count checks).
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The r2 memo gave correct plain-language non-breach explanations with valid example IDs, but the verifier rejected it for not using a hidden set of IDs, making the failure a verifier defect.
+SMALLEST FIX
+Remove the hard-coded result-ID requirements from the five memo checks in tests/verifier.json so any correct plain-language non-breach explanation passes. Re-run the r2 trial to confirm the failure disappears.
+VERIFY
+Run the verifier on the r2 memo and confirm the three memo checks now pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static
+layer5_verifier_fairness_static
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static Coverage, routing, execution, weighting and anti-mimicry design are strong (147 deterministic row/count assertions plus 12 cross-consistency python tests; reward recomputation confirmed: 156/159 = 0.9811320755). But three mandatory subchecks fail on the same defect: five memo checks require specific non-breach result IDs that instruction.md declares optional, so a materially equivalent, instruction-compliant memo is rejected (demonstrated by evaluations/difficulty/r2).
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. A memo that explains non-breach results correctly but cites different example IDs fails three reward-bearing checks, as demonstrated by the r2 trial.
+SMALLEST FIX
+Edit tests/verifier.json to remove the specific result-ID gates from the five memo checks. Accept any memo that gives the correct plain-language non-breach explanation regardless of which result IDs it cites.
+VERIFY
+Run the verifier against the r2 memo and confirm all five memo checks pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__requirement_traceability
+layer5_verifier_fairness_static__requirement_traceability
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__requirement_traceability Every material instruction requirement is tested (files exist; schema; full 118-row coverage; clock_start; both minute figures; empty acknowledgement_minutes for unapproved roles; escalation_status trichotomy; findings vocabulary; five integer counts; memo breach detail). However memo_explains_pre_clock_or_1759, memo_explains_tier_or_preclock_non_breach, memo_explains_r89_or_r103_non_breach, memo_addresses_the_clock_start and memo_lists_r106_or_r110_holiday are reward-bearing verifier-only requirements: they force particular result IDs into the non-breach discussion, which instruction.md line 41 explicitly makes optional.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. The verifier rewards checks that force specific result IDs into the memo, but the instructions say naming particular IDs is optional.
+SMALLEST FIX
+Remove the specific-ID requirements from these five checks in tests/verifier.json so they grade the non-breach explanation content rather than particular result IDs.
+VERIFY
+Open tests/verifier.json and confirm none of the five memo checks gate on a closed set of result IDs.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__semantic_equivalence
+layer5_verifier_fairness_static__semantic_equivalence
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__semantic_equivalence Most variation is tolerated (finding order via set lookaheads, optional quoting, 60 vs 60.0, 8:00 vs 08:00, T vs space in clock_start, compliant|ok|pass|none|no_finding synonyms, prose or token role names in the memo). But the non-breach memo checks reject materially equivalent correct prose: a memo that explains inclusive limits, the core-hours clock start and closed days while illustrating them with R-08/R-14/R-23/R-37/R-39/R-59/R-106/R-110/R-118 fails three checks purely because it did not name R-57/R-58/R-64, R-70/R-71/R-76 or R-89/R-98/R-103 - exactly the r2 outcome, and exactly the freedom instruction.md grants.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency. A memo explaining inclusive limits, clock start, and closed days with valid example IDs fails three checks because it did not name a hidden required set.
+SMALLEST FIX
+Change the five memo checks in tests/verifier.json to accept any correct non-breach explanation regardless of which result IDs are cited as examples, matching the freedom the instructions grant.
+VERIFY
+Run the verifier on a memo that uses only R-08, R-14, and R-106 as examples and confirm the memo checks pass.
+Review note (optional)
+blocker
+layer5_verifier_fairness_static__surface_form_brittleness
+layer5_verifier_fairness_static__surface_form_brittleness
+Confirm issue
+Mark false positive
+GATE / OWNER
+internal · owner: trainer · blocks submission when confirmed
+EVIDENCE
+harbor check · layer5_verifier_fairness_static__surface_form_brittleness The lexical matchers are mostly well built, but two brittleness classes are real. (1) The memo_explains_* / memo_addresses_the_clock_start / memo_lists_r106_or_r110_holiday matchers gate on an undisclosed closed set of result IDs within a .{0,300}-.{0,500} proximity window, so correct content phrased around other IDs is rejected (confirmed failure in difficulty/r2). (2) Role matchers require the register spelling (\bCons\b, \bANP\b, SpR, ward_clerk), so an agent that canonicalises an alias in acknowledged_by_role loses checks even though the roster defines the mapping. Mimicry risk is low in the other direction: [REDACTED] cannot satisfy the exact per-row minute values and the five count assertions.
+IMPACT
+Same root cause as l1.package_consistency::layer1_package_consistency for the memo checks. Separately, role matchers in the verifier reject acknowledged_by_role values that use roster-defined aliases instead of the exact register spelling.
+SMALLEST FIX
+Remove the closed result-ID sets from the five memo matchers in tests/verifier.json. Add the roster-defined aliases to the role matchers so that canonicalised role names in acknowledged_by_role pass.
+VERIFY
+Run the verifier on a memo using alternate result IDs and a results file using roster aliases; confirm both pass.
+Review note (optional)
+Minor / low 1
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report_v2.html.
+
+DATA
+report.json
+Preview the report here
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

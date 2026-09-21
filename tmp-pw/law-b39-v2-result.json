@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "step": "review",
+  "folderUrl": "https://drive.google.com/drive/folders/1nXcKPyHmrJxPuig-ptnrwfnt_Mi57U9Y",
+  "errors": [
+    "download.saveAs: Target page, context or browser has been closed\n    at fillAndSubmitReview (C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\tmp-pw-law-b39-v2-headless.js:309:16)\n    at async C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\tmp-pw-law-b39-v2-headless.js:370:17"
+  ]
+}

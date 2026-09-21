@@ -1,0 +1,37 @@
+[
+  {
+    "short": "gen-g1205",
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-85cfa7f72f124d9edf685f508d5192be-v1",
+    "clicked": false,
+    "slotsFull": false,
+    "lastRun": null,
+    "oracle": "Oracle/golden reward-1.0 paths do not make those restrictive lexicons fair.",
+    "glm": "GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task ve",
+    "tooEasy": false,
+    "findings": null,
+    "changes": false,
+    "crashed": false,
+    "rewards": [
+      "reward in evaluations/difficulty/r1 (memo_disputes_loan_c), r2 and r3 (memo_disputes_loan_b) and evaluations/platform/modal/run (memo_confirms_loan_d). Conversely two stated formatting rules ('plain number with no currency symbol', 'total row must carry an empty reference column') are not graded at all — the total-row regex only needs total|sum|overall|net plus 388[,.]?710 somewhere on the line.",
+      "reward 1.0 — 0.96, 0.96, 0.96, 1.0) are all fine, but failure_cause_validity fails: each of the three sub-1.0 attempts got every substantive figure right and lost exactly one check to the line-anchored memo regex (r1 memo_disputes_loan_c; r2 and r3 memo_disputes_loan_b). The observed non-passes reflect a verifier surface-form defect, not task difficulty; per the aggregation rule a failed mandatory subcheck fails the area. Fractional scores preserved: 0.96 / 0.96 / 0.96 / 1.0.",
+      "reward in evaluations/difficulty/r1..r3 and evaluations/platform/modal/run. Additionally memo_states_overall_net_position grades an 'overall settlement position' statement that the instruction does not request of the memo. In the other direction, two stated CSV requirements ('plain number with no currency symbol'; 'the total row must carry an empty reference column') have no check — the amount regexes such as 79[,.]?520[,.]?55 match happily inside '£79,520.55'.",
+      "reward is available for fabricated narrative content. Interface use, golden access and state spoofing are all clean.",
+      "reward 1.0 while the memo deliverable — one of the three the instruction requires — is entirely fabricated. Notably the checked-in review.csv claims this exact gap was closed with per-line reference+amount+reason lookaheads, a substantive-body length gate and an explanatory-language check, but tests/verifier.json contains no such checks.",
+      "reward 1.0) is within the bar, but failure_cause_validity fails: every sub-1.0 attempt (r1 and r3 at 0.9411764706, r4 at 0.8823529412) lost points solely on the memo_t0X_explained lexical matchers while all data checks passed, so the observed difficulty reflects a verifier surface-form defect rather than task difficulty."
+    ]
+  },
+  {
+    "short": "the-thread",
+    "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-5cc146d448ffc4f0a07bba4ad679dd1f-v1",
+    "clicked": true,
+    "slotsFull": false,
+    "lastRun": null,
+    "oracle": "Oracle Waiting",
+    "glm": "GLM-5.2 ×4 difficulty Waiting",
+    "tooEasy": false,
+    "findings": null,
+    "changes": false,
+    "crashed": true,
+    "rewards": []
+  }
+]

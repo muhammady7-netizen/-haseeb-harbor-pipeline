@@ -1,0 +1,15 @@
+{
+  "at": "2026-09-10T21:44:17.312Z",
+  "oracle": "1.0",
+  "glmRunning": false,
+  "glmWaiting": false,
+  "glmFrac": "0/4",
+  "ones": 6,
+  "running": false,
+  "harborFail": true,
+  "harborPass": true,
+  "ready": false,
+  "changes": false,
+  "glmDone": true,
+  "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-6183c5072ed5fbd2ff923a821ff077d3-v1"
+}

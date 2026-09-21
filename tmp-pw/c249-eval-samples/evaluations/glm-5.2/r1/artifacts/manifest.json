@@ -1,0 +1,24 @@
+{
+  "deliverables": [
+    {
+      "path": "report_source_audit.csv",
+      "sha256": "1d7ebd3af7c9ffef2461da91f28e9b0b005659ab995ba4a23105236d4d1d5267",
+      "bytes": 1700
+    },
+    {
+      "path": "report_source_memo.md",
+      "sha256": "40069e2e2560dbd4076c52c20bee9a081bc32782b2f746edf2ce4744b75b7c6e",
+      "bytes": 4975
+    },
+    {
+      "path": "results.json",
+      "sha256": "55e6ecd51a72f260bb031c316f85ec24acd4346ebc3d8eb6112521055d386042",
+      "bytes": 148
+    }
+  ],
+  "identity": {
+    "report_source_audit.csv": "1d7ebd3af7c9ffef2461da91f28e9b0b005659ab995ba4a23105236d4d1d5267",
+    "report_source_memo.md": "40069e2e2560dbd4076c52c20bee9a081bc32782b2f746edf2ce4744b75b7c6e",
+    "results.json": "55e6ecd51a72f260bb031c316f85ec24acd4346ebc3d8eb6112521055d386042"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-11T18:58:48.058Z",
+  "oracle": null,
+  "glm": null,
+  "tooEasy": false,
+  "running": false,
+  "harborFail": false,
+  "ready": false,
+  "changes": true,
+  "url": "https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-e86ad926a3cd0b88156a325a0288e6dd-v1"
+}

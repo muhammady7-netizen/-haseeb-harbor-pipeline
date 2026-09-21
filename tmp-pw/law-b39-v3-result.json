@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "step": "done",
+  "folderUrl": "https://drive.google.com/drive/folders/1nXcKPyHmrJxPuig-ptnrwfnt_Mi57U9Y",
+  "errors": [],
+  "localCsv": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\haseeb-pipeline\\tmp-pw\\law-b39-generated-review.csv",
+  "submitBody": "",
+  "downloadError": "Error: download.saveAs: Target page, context or browser has been closed"
+}

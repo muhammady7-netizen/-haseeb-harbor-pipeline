@@ -1,0 +1,16 @@
+{
+  "job_name": "oracle-c249-stability-v4",
+  "jobs_dir": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-c249",
+  "n_concurrent_trials": 2,
+  "n_attempts": 3,
+  "agents": [
+    {
+      "name": "oracle"
+    }
+  ],
+  "tasks": [
+    {
+      "path": "C:/Users/Haseeb Mirza/Documents/Codex/2026-08-17/this-is-the-very-beginning-of/tasks/code-c249-work/code-c249-recurring-report-source-selection-audit"
+    }
+  ]
+}

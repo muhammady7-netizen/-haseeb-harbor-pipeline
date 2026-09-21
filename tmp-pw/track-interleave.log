@@ -1,0 +1,29 @@
+
+2026-09-11T01:37:25.3680334+05:00 interleave start — claim on chrome-free windows
+2026-09-11T01:37:25.6503332+05:00 tick=0 playwrightChrome=1
+2026-09-11T01:37:40.8243180+05:00 tick=1 playwrightChrome=0
+2026-09-11T01:37:43.9569539+05:00 claiming window
+2026-09-11T01:37:45.4395680+05:00 once exit=1
+2026-09-11T01:37:45.5432310+05:00 g857 pre=True ev=False run=False | c251 pre= ev= run=
+2026-09-11T01:38:30.6890845+05:00 tick=2 playwrightChrome=1
+2026-09-11T01:38:45.8093807+05:00 tick=3 playwrightChrome=1
+2026-09-11T01:39:00.9459020+05:00 tick=4 playwrightChrome=1
+2026-09-11T01:39:16.1875833+05:00 tick=5 playwrightChrome=0
+2026-09-11T01:39:19.3240400+05:00 claiming window
+2026-09-11T01:39:32.8718036+05:00 once exit=1
+2026-09-11T01:39:32.8757967+05:00 g857 pre=True ev=False run=False | c251 pre= ev= run=
+2026-09-11T01:40:18.0241970+05:00 tick=6 playwrightChrome=2
+2026-09-11T01:40:33.2083148+05:00 tick=7 playwrightChrome=1
+2026-09-11T01:40:48.3719372+05:00 tick=8 playwrightChrome=2
+2026-09-11T01:41:03.5812953+05:00 tick=9 playwrightChrome=2
+2026-09-11T01:41:18.7598519+05:00 tick=10 playwrightChrome=1
+2026-09-11T01:41:33.8951959+05:00 tick=11 playwrightChrome=1
+2026-09-11T01:41:49.0745361+05:00 tick=12 playwrightChrome=0
+2026-09-11T01:42:07.4507292+05:00 tick=13 playwrightChrome=1
+2026-09-11T01:42:22.6316726+05:00 tick=14 playwrightChrome=1
+2026-09-11T01:42:37.7878892+05:00 tick=15 playwrightChrome=1
+2026-09-11T01:42:52.9454404+05:00 tick=16 playwrightChrome=1
+2026-09-11T01:43:08.1017505+05:00 tick=17 playwrightChrome=0
+2026-09-11T01:43:11.2540724+05:00 claiming window
+2026-09-11T01:43:46.1050409+05:00 once exit=1
+2026-09-11T01:43:46.1142610+05:00 g857 pre=False ev=False run=True | c251 pre=False ev=False run=False

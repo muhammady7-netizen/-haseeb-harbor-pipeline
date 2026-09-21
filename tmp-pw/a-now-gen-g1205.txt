@@ -1,0 +1,671 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+Upload a task to QC
+
+Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.
+
+Drop a task here, or click to browse
+One Harbor task package as .zip.
+What a Harbor task package looks like
+Recent tasks
+
+Resume a previous QC review.
+
+144
+fin-f39-distributable-profits#3ef758
+Sep 12, 12:58 AM
+QC running
+Open
+→
+health-h40-critical-result-acknowledgement#214042
+Sep 12, 12:33 AM
+Changes needed
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#dae83c
+Sep 12, 12:05 AM
+Open
+→
+health-h40-critical-result-acknowledgement#88e6dd
+Sep 11, 11:53 PM
+Changes needed
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#5192be
+Sep 11, 11:45 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#3bf04a
+Sep 11, 10:04 PM
+Open
+→
+code-c227-table-bloat-maintenance-audit#e6d4fb
+Sep 11, 10:01 PM
+Open
+→
+code-c249-recurring-report-source-selection-audit#a6bcf9
+Sep 11, 10:01 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#31680b
+Sep 11, 09:41 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#0ccfb6
+Sep 11, 09:38 PM
+Changes needed
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#af9927
+Sep 11, 09:38 PM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#70f11b
+Sep 11, 09:34 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#6a9257
+Sep 11, 08:20 PM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#0ab0b1
+Sep 11, 07:24 PM
+Changes needed
+Open
+→
+code-c251-pdf-form-field-conversion-audit#e578f5
+Sep 11, 06:46 PM
+Open
+→
+gen-g857-department-directory-categorization-audit#c534ed
+Sep 11, 06:44 PM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#7c3a92
+Sep 11, 06:29 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#1508fa
+Sep 11, 06:25 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#d0f9d4
+Sep 11, 06:24 PM
+Changes needed
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#0bbbf7
+Sep 11, 05:37 PM
+Needs your review
+Open
+→
+code-c249-recurring-report-source-selection-audit#e7a1d3
+Sep 11, 05:33 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#7470ab
+Sep 11, 05:21 PM
+Needs your review
+Open
+→
+code-c251-pdf-form-field-conversion-audit#90a229
+Sep 11, 04:53 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#d84e3b
+Sep 11, 04:52 PM
+Open
+→
+fin-f39-distributable-profits#683901
+Sep 11, 04:36 PM
+Changes needed
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#e230e3
+Sep 11, 04:27 PM
+Needs your review
+Open
+→
+code-c251-pdf-form-field-conversion-audit#88e197
+Sep 11, 04:13 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-auditv2#772487
+2 versions · Sep 11, 04:05 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#53d292
+Sep 11, 03:59 PM
+Needs your review
+Open
+→
+gen-g857-department-directory-categorization-audit#b4ee6e
+Sep 11, 03:58 PM
+Open
+→
+fin-f39-distributable-profits#d77527
+Sep 11, 03:51 PM
+Needs your review
+Open
+→
+fin-f44-facility-interest-reviewv10#b91f97
+10 versions · Sep 11, 03:36 PM
+Open
+→
+code-c251-pdf-form-field-conversion-audit#ca77c8
+Sep 11, 03:24 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#c4fcbd
+Sep 11, 03:21 PM
+Open
+→
+fin-f39-distributable-profits#b24e5f
+Sep 11, 03:41 AM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#553f11
+Sep 11, 03:28 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#005784
+Sep 11, 03:07 AM
+Open
+→
+health-h40-critical-result-acknowledgement#f7c9fe
+Sep 11, 02:47 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-auditv2#f077d3
+2 versions · Sep 11, 02:46 AM
+Open
+→
+code-c227-table-bloat-maintenance-audit#6cd5c0
+Sep 11, 02:46 AM
+Open
+→
+gen-g857-department-directory-categorization-audit#f114e1
+Sep 11, 02:44 AM
+Open
+→
+code-c249-recurring-report-source-selection-audit#5c9268
+Sep 11, 01:45 AM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-auditv2#fae8c6
+2 versions · Sep 11, 01:28 AM
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#452347
+Sep 11, 01:07 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#4e6dc6
+Sep 11, 01:06 AM
+Open
+→
+health-h40-critical-result-acknowledgement#1f1da7
+Sep 11, 12:35 AM
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#dec109
+Sep 10, 11:11 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#2ec13b
+Sep 10, 10:58 PM
+Changes needed
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#4762bd
+Sep 10, 10:11 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#66cf43
+Sep 10, 10:07 PM
+Open
+→
+gen-g857-department-directory-categorization-audit#a41d17
+Sep 10, 09:24 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#6e2a1c
+Sep 10, 09:22 PM
+Open
+→
+health-h40-critical-result-acknowledgement#24d742
+Sep 10, 09:21 PM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#f7177e
+Sep 10, 08:59 PM
+Open
+→
+code-c249-recurring-report-source-selection-audit#74a2f8
+Sep 10, 08:58 PM
+Open
+→
+fin-f44-facility-interest-review#975840
+Sep 10, 08:23 PM
+Open
+→
+code-c251-pdf-form-field-conversion-audit#1ddef3
+Sep 10, 08:22 PM
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#1ec20c
+Sep 10, 08:20 PM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#92e747
+Sep 10, 08:20 PM
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#13389c
+Sep 10, 08:20 PM
+Open
+→
+fin-f33-cash-pool-interest-allocation
+Sep 10, 08:20 PM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#6f7637
+Sep 10, 08:19 PM
+Open
+→
+gen-g857-department-directory-categorization-audit#312d0a
+Sep 10, 08:18 PM
+Open
+→
+code-c249-recurring-report-source-selection-audit#fe61f7
+Sep 10, 08:17 PM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#89b709
+Sep 10, 08:14 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#a82eaf
+Sep 10, 03:53 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#85e9e1
+Sep 10, 03:44 AM
+Open
+→
+health-h40-critical-result-acknowledgement#2c707d
+Sep 10, 03:24 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#828fe6
+Sep 10, 03:23 AM
+Changes needed
+Open
+→
+fin-f44-facility-interest-review#747cc7
+Sep 10, 03:10 AM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#b253cd
+Sep 10, 02:49 AM
+Changes needed
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#48cd98
+Sep 10, 02:43 AM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#0f5b64
+Sep 10, 02:30 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#0ea3b2
+Sep 10, 02:26 AM
+Open
+→
+fin-f44-facility-interest-review#127831
+Sep 10, 02:15 AM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#3bf076
+Sep 10, 02:10 AM
+Changes needed
+Open
+→
+the-thread-hands-back-its-own-opener#79dd1f
+Sep 10, 02:09 AM
+QC running
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#271d39
+Sep 10, 01:43 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#204370
+Sep 10, 01:42 AM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#c64de9
+Sep 10, 01:36 AM
+Changes needed
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#01d95f
+Sep 10, 01:36 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#986ef3
+Sep 10, 01:32 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#7dde84
+Sep 10, 01:03 AM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#fccce3
+Sep 10, 12:51 AM
+Changes needed
+Open
+→
+fin-f44-facility-interest-review#d22475
+Sep 10, 12:43 AM
+Open
+→
+health-h34-randomisation-balance#b9740c
+Sep 10, 12:33 AM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#c30493
+Sep 10, 12:28 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#d6078c
+Sep 10, 12:25 AM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-auditv7#da436e
+7 versions · Sep 10, 12:16 AM
+Open
+→
+code-c251-pdf-form-field-conversion-auditv2#656a79
+2 versions · Sep 9, 11:17 PM
+Changes needed
+Open
+→
+gen-g986-festival-key-art-billing-parity-auditv2#64cdab
+2 versions · Sep 9, 11:11 PM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#46b2e8
+Sep 9, 11:07 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#24f64d
+Sep 9, 11:06 PM
+Open
+→
+fin-f39-distributable-profits#95fa0b
+Sep 9, 11:05 PM
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#3b7537
+Sep 9, 11:03 PM
+Open
+→
+health-h34-randomisation-balance#5704c4
+Sep 9, 10:53 PM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#bb9ba2
+Sep 9, 10:52 PM
+Changes needed
+Open
+→
+fin-f44-facility-interest-review#9717e8
+Sep 9, 10:52 PM
+Open
+→
+code-c249-recurring-report-source-selection-audit#9337dc
+Sep 9, 10:47 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#68f7c1
+Sep 9, 10:40 PM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#d1283b
+Sep 9, 10:38 PM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#0afa2f
+Sep 9, 06:00 PM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#3e4e90
+Sep 9, 05:15 PM
+Open
+→
+fin-f39-distributable-profits#cddeb2
+Sep 9, 04:50 PM
+Open
+→
+gen-g826-tender-document-brand-style-audit#370dc4
+Sep 9, 04:48 PM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#ad1c98
+Sep 9, 04:10 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#4b1ce4
+Sep 9, 03:55 PM
+Open
+→
+gen-g826-tender-document-brand-style-audit#f6f519
+Sep 9, 03:10 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#1e1bf1
+Sep 9, 02:36 PM
+Open
+→
+health-h40-critical-result-acknowledgement#78120a
+Sep 9, 02:30 PM
+Open
+→
+gen-g734-cms-publish-readiness-auditv2#06b4e4
+2 versions · Sep 9, 02:02 PM
+Open
+→
+code-c251-pdf-form-field-conversion-audit#eca5e8
+Sep 9, 01:43 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#af1fe6
+Sep 9, 01:32 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#07a0cc
+Sep 9, 01:29 PM
+Open
+→
+fin-f44-facility-interest-reviewv2#646db9
+2 versions · Sep 9, 01:03 PM
+Open
+→
+code-c251-pdf-form-field-conversion-auditv2#3e11d1
+2 versions · Sep 9, 11:13 AM
+Changes needed
+Open
+→
+health-h34-randomisation-balance#b4ada9
+Sep 9, 04:15 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#86eb0b
+Sep 9, 04:07 AM
+Open
+→
+code-c227-table-bloat-maintenance-audit#abba08
+Sep 9, 04:03 AM
+Open
+→
+fin-f55-trust-principal-income-allocation-audit#48855d
+Sep 9, 03:47 AM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#5a724c
+Sep 9, 03:31 AM
+Open
+→
+fin-f44-facility-interest-review#402c1e
+Sep 9, 03:27 AM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#28c64a
+Sep 9, 03:25 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#6f6625
+Sep 9, 03:09 AM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#9b2ffe
+Sep 9, 03:02 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#306e2b
+Sep 9, 02:59 AM
+Open
+→
+fin-f44-facility-interest-review#eecc4b
+Sep 9, 02:58 AM
+Open
+→
+fin-f55-trust-principal-income-allocation-audit#554c70
+Sep 9, 02:57 AM
+Open
+→
+gen-g734-cms-publish-readiness-auditv3#979626
+3 versions · Sep 9, 02:56 AM
+Open
+→
+gen-g734-cms-publish-readiness-auditv2#6c572f
+2 versions · Sep 9, 02:46 AM
+Open
+→
+code-c227-table-bloat-maintenance-audit#a2e8de
+Sep 9, 02:01 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#ef4712
+Sep 9, 01:55 AM
+Open
+→
+code-c249-recurring-report-source-selection-audit#21f1fb
+Sep 9, 01:52 AM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#775351
+Sep 9, 01:37 AM
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#f86380
+Sep 9, 01:02 AM
+Open
+→
+gen-g857-department-directory-categorization-audit#1c618f
+Sep 9, 01:02 AM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#1feb30
+Sep 9, 01:00 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#f33e03
+Sep 9, 01:00 AM
+Open
+→
+the-thread-hands-back-its-own-openerv3#f2b9d8
+3 versions · Sep 8, 02:30 PM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-auditv14#7bb1ed
+12 versions · Sep 8, 02:28 PM
+Open
+→
+fin-f39-distributable-profitsv9#d6b62e
+7 versions · Sep 8, 02:24 AM
+Open
+→
+gen-g826-tender-document-brand-style-auditv7#21e1f6
+6 versions · Sep 8, 02:15 AM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-auditv3#cdc5d9
+3 versions · Sep 8, 02:13 AM
+Open
+→
+code-c251-pdf-form-field-conversion-auditv5#9a5325
+5 versions · Sep 8, 01:29 AM
+Changes needed
+Open
+→

@@ -1,0 +1,89 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+gen-g1205-meal-prep-cost-claim-recompute-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+evaluation
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+Your 3 run slots are currently in use.
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check again
+View details
+QC-Oracle-GLM check (3-task limit)
+Running now
+running now
+Running…
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+Run history
+2 runs · latest running
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+Oracle Waiting
+GLM-5.2 ×4 difficulty Waiting
+running · 13s
+REVIEW.CSV CHECK
+review.csv check
+Complete
+14 areas resolved · QC reviewer: reads as a real review
+Sep 11, 11:46 PM · took 1.759s
+RESULT
+evaluation
+13s
+Execution status — Oracle then GLM ×4
+ORACLE GOLDEN REPLAY
+
+Waiting Waiting for Oracle result.
+
+Result not available yet
+
+GLM-5.2 ×4 DIFFICULTY
+
+Waiting Waiting for Oracle to pass.
+
+Result not available yet Result not available yet Result not available yet Result not available yet
+
+Live evaluation logs
+Trainer-only execution output
+
+Oracle + GLM ×4 + Harbor Check normally takes around 50 minutes — one Oracle golden replay, four GLM-5.2 trials, then Harbor Check. Some runs finish sooner; large or connector-heavy tasks can run longer. Nothing is lost if you navigate away.
+
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

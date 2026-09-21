@@ -1,0 +1,104 @@
+﻿[
+    {
+        "short":  "fin-f33",
+        "source":  "UPLOAD-THIS-TO-QC-fin-f33.zip",
+        "kb":  295,
+        "mtime":  "2026-09-07T23:20:57"
+    },
+    {
+        "short":  "fin-f39",
+        "source":  "UPLOAD-THIS-TO-QC-fin-f39-v16.zip",
+        "kb":  64,
+        "mtime":  "2026-09-08T02:20:07"
+    },
+    {
+        "short":  "fin-f44",
+        "source":  "UPLOAD-THIS-TO-QC-fin-f44.zip",
+        "kb":  84,
+        "mtime":  "2026-09-04T00:12:15"
+    },
+    {
+        "short":  "fin-f53",
+        "source":  "UPLOAD-THIS-TO-QC-fin-f53-f00622-v31-delivery-01f09090.zip",
+        "kb":  547,
+        "mtime":  "2026-09-01T03:59:25"
+    },
+    {
+        "short":  "fin-f55",
+        "source":  "UPLOAD-THIS-TO-QC-fin-f55-v20.zip",
+        "kb":  218,
+        "mtime":  "2026-09-03T02:31:38"
+    },
+    {
+        "short":  "health-h34",
+        "source":  "health-h34-randomisation-balance-v11.zip",
+        "kb":  66,
+        "mtime":  "2026-09-07T23:16:11"
+    },
+    {
+        "short":  "health-h40",
+        "source":  "UPLOAD-THIS-TO-QC-health-h40.zip",
+        "kb":  312,
+        "mtime":  "2026-09-01T02:12:11"
+    },
+    {
+        "short":  "code-c227",
+        "source":  "UPLOAD-THIS-TO-QC-code-c227-v3.zip",
+        "kb":  588,
+        "mtime":  "2026-09-07T23:55:54"
+    },
+    {
+        "short":  "code-c249",
+        "source":  "UPLOAD-THIS-TO-QC-code-c249.zip",
+        "kb":  59,
+        "mtime":  "2026-09-03T02:26:25"
+    },
+    {
+        "short":  "code-c251",
+        "source":  "UPLOAD-THIS-TO-QC-code-c251.zip",
+        "kb":  64,
+        "mtime":  "2026-09-08T01:32:20"
+    },
+    {
+        "short":  "gen-g734",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g734.zip",
+        "kb":  373,
+        "mtime":  "2026-09-07T23:21:03"
+    },
+    {
+        "short":  "gen-g806",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g806.zip",
+        "kb":  72,
+        "mtime":  "2026-09-08T02:18:40"
+    },
+    {
+        "short":  "gen-g826",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g826.zip",
+        "kb":  64,
+        "mtime":  "2026-09-08T02:17:19"
+    },
+    {
+        "short":  "gen-g857",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g857.zip",
+        "kb":  284,
+        "mtime":  "2026-09-07T23:19:44"
+    },
+    {
+        "short":  "gen-g986",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g986.zip",
+        "kb":  244,
+        "mtime":  "2026-09-03T03:44:39"
+    },
+    {
+        "short":  "gen-g1205",
+        "source":  "UPLOAD-THIS-TO-QC-gen-g1205.zip",
+        "kb":  239,
+        "mtime":  "2026-09-08T02:28:05"
+    },
+    {
+        "short":  "the-thread",
+        "source":  "UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own-opener-v4.zip",
+        "kb":  1001,
+        "mtime":  "2026-09-08T01:17:17"
+    }
+]

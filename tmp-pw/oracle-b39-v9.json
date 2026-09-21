@@ -1,0 +1,23 @@
+{
+    "verifier":  {
+                     "env":  {
+                                 "JUDGE_MODEL":  "openai/glm-5.2",
+                                 "OPENAI_BASE_URL":  "http://34.41.10.8:4000/v1",
+                                 "OPENAI_API_KEY":  "${OPENAI_API_KEY}"
+                             }
+                 },
+    "tasks":  [
+                  {
+                      "path":  "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/task-sources/law-b39/law-b39-l16-custody-letter-instruction-audit"
+                  }
+              ],
+    "agents":  [
+                   {
+                       "name":  "oracle"
+                   }
+               ],
+    "n_concurrent_trials":  1,
+    "job_name":  "oracle-b39-l16-v9-empty",
+    "n_attempts":  3,
+    "jobs_dir":  "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-b39"
+}

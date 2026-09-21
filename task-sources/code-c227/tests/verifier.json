@@ -1,0 +1,855 @@
+{
+  "task_id": "code-C227-table-bloat-maintenance-audit",
+  "verifiers": [
+    {
+      "name": "audit_exactly_n_rows",
+      "metadata": {
+        "how_justification": "Counts data rows in bloat_audit.csv. Must match the expected count.",
+        "why_justification": "Counts data rows in bloat_audit.csv. Must match the expected count (17 tables + header = 18 lines)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)^(?:[^\\n]*\\n){18}(?!.)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t09_none",
+      "metadata": {
+        "how_justification": "T-09 bloat under cap, stats 30 days (not more than 30).",
+        "why_justification": "T-09 must receive finding none (boundary: 30 is not >30)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\\"?T-09\\\"?\\s*,(?:[^,\\n]*,)*\\s*\\\"?none\\\"?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t10_stale_statistics",
+      "metadata": {
+        "how_justification": "T-10 reindex exempts bloat but NOT stale stats.",
+        "why_justification": "T-10 must receive finding STALE_STATISTICS (reindex doesn't exempt stale)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\\"?T-10\\\"?\\s*,(?:[^,\\n]*,)*\\s*\\\"?STALE_STATISTICS\\\"?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t11_autovacuum_disabled",
+      "metadata": {
+        "how_justification": "T-11 autovacuum disabled overrides bloat.",
+        "why_justification": "T-11 must receive finding AUTOVACUUM_DISABLED (priority over bloat)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\\"?T-11\\\"?\\s*,(?:[^,\\n]*,)*\\s*\\\"?AUTOVACUUM_DISABLED\\\"?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "audit_exists",
+      "metadata": {
+        "how_justification": "Checks bloat_audit.csv is present as a file in the workspace.",
+        "why_justification": "Audit delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_exists",
+      "metadata": {
+        "how_justification": "Checks bloat_memo.md is present as a file in the workspace.",
+        "why_justification": "Memo delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "bloat_flagged",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-02 flagged over the large-table bloat cap."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-02\\x22?\\s*,[^\\n]*BLOAT_THRESHOLD_EXCEEDED",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "disabled_flagged",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-03 flagged for disabled autovacuum."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-03\\x22?\\s*,[^\\n]*AUTOVACUUM_DISABLED",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "stale_flagged",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-04 flagged for stale statistics."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-04\\x22?\\s*,[^\\n]*STALE_STATISTICS",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trap_clean",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-05 under active maintenance reads none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-05\\x22?\\s*,[^\\n]*\\bnone\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "small_bloat_flagged",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-08 flagged over the small-table bloat cap."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-08\\x22?\\s*,[^\\n]*BLOAT_THRESHOLD_EXCEEDED",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_maintenance_reindex",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo mentions a reindex or maintenance concept (any form, any position)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)re-?index\\w*|maintenance|rebuild|re-?index",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_maintenance_exempt",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo references T-05 (the active-maintenance table) \u2014 combined with memo_maintenance_reindex this confirms the memo explains the T-05 finding without pinning specific wording."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)\\bT-05\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_size_class",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the size-class-specific bloat cap."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)size[\\s\\-]class\\w*|size\\s+(?:class|category)|large[\\s\\-]table|small[\\s\\-]table|table\\s+size",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_bloat_cap",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo references the bloat cap or threshold concept (any form, any position)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)cap|max(?:imum)?\\s+bloat|threshold|limit|maximum|ceiling|allowance|budget|over\\s+ratio|exceed",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t01_clean",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-01 is a compliant large table \u2014 finding must be none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-01\\x22?\\s*,[^\\n]*\\bnone\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t06_clean",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-06 is a compliant small table \u2014 finding must be none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-06\\x22?\\s*,[^\\n]*\\bnone\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t07_clean",
+      "metadata": {
+        "how_justification": "Opens bloat_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "T-07 is a compliant large table \u2014 finding must be none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?T-07\\x22?\\s*,[^\\n]*\\bnone\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t02_explained",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the T-02 bloat finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(T-02|T02).{0,300}?(?:bloat|exceed|threshold|over[\\s\\-]?ratio)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t03_explained",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the T-03 autovacuum finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(T-03|T03).{0,300}?(?:autovacuum|auto[\\s\\-]?vacuum|vacuum)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t04_explained",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the T-04 stale statistics finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(T-04|T04).{0,300}?(?:stale|outdated|old|not\\s+refresh|not\\s+update|expired)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_t08_explained",
+      "metadata": {
+        "how_justification": "Opens bloat_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the T-08 small-table bloat finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(T-08|T08).{0,300}?(?:bloat|exceed|threshold|over[\\s\\-]?ratio)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Checks results.json is present as a file in the workspace.",
+        "why_justification": "Derived figures delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_flagged_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.flagged_count.",
+        "why_justification": "Derived figure `flagged_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 9,
+        "deterministic": {
+          "path": "$.flagged_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_autovacuum_disabled_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.autovacuum_disabled_count.",
+        "why_justification": "Derived figure `autovacuum_disabled_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 3,
+        "deterministic": {
+          "path": "$.autovacuum_disabled_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_bloat_exceeded_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.bloat_exceeded_count.",
+        "why_justification": "Derived figure `bloat_exceeded_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 3,
+        "deterministic": {
+          "path": "$.bloat_exceeded_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_stale_statistics_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.stale_statistics_count.",
+        "why_justification": "Derived figure `stale_statistics_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 3,
+        "deterministic": {
+          "path": "$.stale_statistics_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_compliant_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.compliant_count.",
+        "why_justification": "Derived figure `compliant_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 8,
+        "deterministic": {
+          "path": "$.compliant_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "t12_boundary_none",
+      "metadata": {
+        "how_justification": "T-12 bloat ratio 0.20 is exactly at the large cap (not over).",
+        "why_justification": "T-12 bloat 0.20 = cap, not > cap -> none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T-12\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t13_boundary_none",
+      "metadata": {
+        "how_justification": "T-13 bloat ratio 0.40 is exactly at the small cap (not over).",
+        "why_justification": "T-13 bloat 0.40 = cap, not > cap -> none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T-13\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t14_maintenance_stale",
+      "metadata": {
+        "how_justification": "T-14 maintenance exempts bloat but NOT stale stats (45 > 30).",
+        "why_justification": "T-14 bloat exempt due to maintenance, but stats 45 > 30 -> STALE_STATISTICS."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T-14\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?STALE_STATISTICS\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t15_autovacuum_overrides_stale",
+      "metadata": {
+        "how_justification": "T-15 autovacuum disabled overrides stale stats (60 > 30).",
+        "why_justification": "T-15 autovacuum disabled overrides everything -> AUTOVACUUM_DISABLED."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T-15\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?AUTOVACUUM_DISABLED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t16_small_under_cap",
+      "metadata": {
+        "how_justification": "T-16 small table 0.25 under small cap 0.40 (but over large cap 0.20).",
+        "why_justification": "T-16 judged against small cap 0.40, 0.25 < 0.40 -> none."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T-16\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?none\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "t17_small_over_cap",
+      "metadata": {
+        "how_justification": "T-17 small table 0.45 over small cap 0.40.",
+        "why_justification": "T-17 judged against small cap 0.40, 0.45 > 0.40 -> BLOAT_THRESHOLD_EXCEEDED."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "bloat_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^(?:[^,\\n]*,)*\\s*\\x22?T-17\\x22?\\s*,(?:[^,\\n]*,)*\\s*\\x22?BLOAT_THRESHOLD_EXCEEDED\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    }
+  ]
+}

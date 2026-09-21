@@ -1,0 +1,2131 @@
+URL=https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-e86ad926a3cd0b88156a325a0288e6dd-v1
+
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+Upload a task to QC
+
+Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.
+
+Drop a task here, or click to browse
+One Harbor task package as .zip.
+What a Harbor task package looks like
+Recent tasks
+
+Resume a previous QC review.
+
+141
+health-h40-critical-result-acknowledgement#88e6dd
+Sep 11, 11:53 PM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#5192be
+Sep 11, 11:45 PM
+Open
+→
+gen-g857-department-directory-categorization-audit#3bf04a
+Sep 11, 10:04 PM
+Open
+→
+code-c227-table-bloat-maintenance-audit#e6d4fb
+Sep 11, 10:01 PM
+Open
+→
+code-c249-recurring-report-source-selection-audit#a6bcf9
+Sep 11, 10:01 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#31680b
+Sep 11, 09:41 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#0ccfb6
+Sep 11, 09:38 PM
+Changes needed
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#af9927
+Sep 11, 09:38 PM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#70f11b
+Sep 11, 09:34 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#6a9257
+Sep 11, 08:20 PM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#0ab0b1
+Sep 11, 07:24 PM
+Changes needed
+Open
+→
+code-c251-pdf-form-field-conversion-audit#e578f5
+Sep 11, 06:46 PM
+Open
+→
+gen-g857-department-directory-categorization-audit#c534ed
+Sep 11, 06:44 PM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#7c3a92
+Sep 11, 06:29 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#1508fa
+Sep 11, 06:25 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#d0f9d4
+Sep 11, 06:24 PM
+Changes needed
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#0bbbf7
+Sep 11, 05:37 PM
+Needs your review
+Open
+→
+code-c249-recurring-report-source-selection-audit#e7a1d3
+Sep 11, 05:33 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#7470ab
+Sep 11, 05:21 PM
+Needs your review
+Open
+→
+code-c251-pdf-form-field-conversion-audit#90a229
+Sep 11, 04:53 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#d84e3b
+Sep 11, 04:52 PM
+Open
+→
+fin-f39-distributable-profits#683901
+Sep 11, 04:36 PM
+Changes needed
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#e230e3
+Sep 11, 04:27 PM
+Needs your review
+Open
+→
+code-c251-pdf-form-field-conversion-audit#88e197
+Sep 11, 04:13 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-auditv2#772487
+2 versions · Sep 11, 04:05 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#53d292
+Sep 11, 03:59 PM
+Needs your review
+Open
+→
+gen-g857-department-directory-categorization-audit#b4ee6e
+Sep 11, 03:58 PM
+Open
+→
+fin-f39-distributable-profits#d77527
+Sep 11, 03:51 PM
+Needs your review
+Open
+→
+fin-f44-facility-interest-reviewv10#b91f97
+10 versions · Sep 11, 03:36 PM
+Open
+→
+code-c251-pdf-form-field-conversion-audit#ca77c8
+Sep 11, 03:24 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#c4fcbd
+Sep 11, 03:21 PM
+Open
+→
+fin-f39-distributable-profits#b24e5f
+Sep 11, 03:41 AM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#553f11
+Sep 11, 03:28 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#005784
+Sep 11, 03:07 AM
+Open
+→
+health-h40-critical-result-acknowledgement#f7c9fe
+Sep 11, 02:47 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-auditv2#f077d3
+2 versions · Sep 11, 02:46 AM
+Open
+→
+code-c227-table-bloat-maintenance-audit#6cd5c0
+Sep 11, 02:46 AM
+Open
+→
+gen-g857-department-directory-categorization-audit#f114e1
+Sep 11, 02:44 AM
+Open
+→
+code-c249-recurring-report-source-selection-audit#5c9268
+Sep 11, 01:45 AM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-auditv2#fae8c6
+2 versions · Sep 11, 01:28 AM
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#452347
+Sep 11, 01:07 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#4e6dc6
+Sep 11, 01:06 AM
+Open
+→
+health-h40-critical-result-acknowledgement#1f1da7
+Sep 11, 12:35 AM
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#dec109
+Sep 10, 11:11 PM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#2ec13b
+Sep 10, 10:58 PM
+Changes needed
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#4762bd
+Sep 10, 10:11 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#66cf43
+Sep 10, 10:07 PM
+Open
+→
+gen-g857-department-directory-categorization-audit#a41d17
+Sep 10, 09:24 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#6e2a1c
+Sep 10, 09:22 PM
+Open
+→
+health-h40-critical-result-acknowledgement#24d742
+Sep 10, 09:21 PM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#f7177e
+Sep 10, 08:59 PM
+Open
+→
+code-c249-recurring-report-source-selection-audit#74a2f8
+Sep 10, 08:58 PM
+Open
+→
+fin-f44-facility-interest-review#975840
+Sep 10, 08:23 PM
+Open
+→
+code-c251-pdf-form-field-conversion-audit#1ddef3
+Sep 10, 08:22 PM
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#1ec20c
+Sep 10, 08:20 PM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#92e747
+Sep 10, 08:20 PM
+Open
+→
+fin-f53-deposit-account-fee-assessment-audit#13389c
+Sep 10, 08:20 PM
+Open
+→
+fin-f33-cash-pool-interest-allocation
+Sep 10, 08:20 PM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#6f7637
+Sep 10, 08:19 PM
+Open
+→
+gen-g857-department-directory-categorization-audit#312d0a
+Sep 10, 08:18 PM
+Open
+→
+code-c249-recurring-report-source-selection-audit#fe61f7
+Sep 10, 08:17 PM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#89b709
+Sep 10, 08:14 PM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#a82eaf
+Sep 10, 03:53 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#85e9e1
+Sep 10, 03:44 AM
+Open
+→
+health-h40-critical-result-acknowledgement#2c707d
+Sep 10, 03:24 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#828fe6
+Sep 10, 03:23 AM
+Changes needed
+Open
+→
+fin-f44-facility-interest-review#747cc7
+Sep 10, 03:10 AM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#b253cd
+Sep 10, 02:49 AM
+Changes needed
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#48cd98
+Sep 10, 02:43 AM
+Needs your review
+Open
+→
+health-h40-critical-result-acknowledgement#0f5b64
+Sep 10, 02:30 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#0ea3b2
+Sep 10, 02:26 AM
+Open
+→
+fin-f44-facility-interest-review#127831
+Sep 10, 02:15 AM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#3bf076
+Sep 10, 02:10 AM
+Changes needed
+Open
+→
+the-thread-hands-back-its-own-opener#79dd1f
+Sep 10, 02:09 AM
+QC running
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#271d39
+Sep 10, 01:43 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#204370
+Sep 10, 01:42 AM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#c64de9
+Sep 10, 01:36 AM
+Changes needed
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#01d95f
+Sep 10, 01:36 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#986ef3
+Sep 10, 01:32 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#7dde84
+Sep 10, 01:03 AM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#fccce3
+Sep 10, 12:51 AM
+Changes needed
+Open
+→
+fin-f44-facility-interest-review#d22475
+Sep 10, 12:43 AM
+Open
+→
+health-h34-randomisation-balance#b9740c
+Sep 10, 12:33 AM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#c30493
+Sep 10, 12:28 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#d6078c
+Sep 10, 12:25 AM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-auditv7#da436e
+7 versions · Sep 10, 12:16 AM
+Open
+→
+code-c251-pdf-form-field-conversion-auditv2#656a79
+2 versions · Sep 9, 11:17 PM
+Changes needed
+Open
+→
+gen-g986-festival-key-art-billing-parity-auditv2#64cdab
+2 versions · Sep 9, 11:11 PM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#46b2e8
+Sep 9, 11:07 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#24f64d
+Sep 9, 11:06 PM
+Open
+→
+fin-f39-distributable-profits#95fa0b
+Sep 9, 11:05 PM
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#3b7537
+Sep 9, 11:03 PM
+Open
+→
+health-h34-randomisation-balance#5704c4
+Sep 9, 10:53 PM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#bb9ba2
+Sep 9, 10:52 PM
+Changes needed
+Open
+→
+fin-f44-facility-interest-review#9717e8
+Sep 9, 10:52 PM
+✕ rejected
+Open
+→
+code-c249-recurring-report-source-selection-audit#9337dc
+Sep 9, 10:47 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#68f7c1
+Sep 9, 10:40 PM
+Changes needed
+Open
+→
+gen-g734-cms-publish-readiness-audit#d1283b
+Sep 9, 10:38 PM
+Changes needed
+Open
+→
+health-h40-critical-result-acknowledgement#0afa2f
+Sep 9, 06:00 PM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#3e4e90
+Sep 9, 05:15 PM
+Open
+→
+fin-f39-distributable-profits#cddeb2
+Sep 9, 04:50 PM
+⚠ pipeline error
+Open
+→
+gen-g826-tender-document-brand-style-audit#370dc4
+Sep 9, 04:48 PM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#ad1c98
+Sep 9, 04:10 PM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#4b1ce4
+Sep 9, 03:55 PM
+✕ rejected
+Open
+→
+gen-g826-tender-document-brand-style-audit#f6f519
+Sep 9, 03:10 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#1e1bf1
+Sep 9, 02:36 PM
+⚠ pipeline error
+Open
+→
+health-h40-critical-result-acknowledgement#78120a
+Sep 9, 02:30 PM
+Open
+→
+gen-g734-cms-publish-readiness-auditv2#06b4e4
+2 versions · Sep 9, 02:02 PM
+Open
+→
+code-c251-pdf-form-field-conversion-audit#eca5e8
+Sep 9, 01:43 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#af1fe6
+Sep 9, 01:32 PM
+Changes needed
+Open
+→
+gen-g857-department-directory-categorization-audit#07a0cc
+Sep 9, 01:29 PM
+Open
+→
+fin-f44-facility-interest-reviewv2#646db9
+2 versions · Sep 9, 01:03 PM
+Open
+→
+code-c251-pdf-form-field-conversion-auditv2#3e11d1
+2 versions · Sep 9, 11:13 AM
+Changes needed
+Open
+→
+health-h34-randomisation-balance#b4ada9
+Sep 9, 04:15 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#86eb0b
+Sep 9, 04:07 AM
+✕ rejected
+Open
+→
+code-c227-table-bloat-maintenance-audit#abba08
+Sep 9, 04:03 AM
+Open
+→
+fin-f55-trust-principal-income-allocation-audit#48855d
+Sep 9, 03:47 AM
+✓ accepted
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#5a724c
+Sep 9, 03:31 AM
+Open
+→
+fin-f44-facility-interest-review#402c1e
+Sep 9, 03:27 AM
+⚠ pipeline error
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#28c64a
+Sep 9, 03:25 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#6f6625
+Sep 9, 03:09 AM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#9b2ffe
+Sep 9, 03:02 AM
+Changes needed
+Open
+→
+code-c249-recurring-report-source-selection-audit#306e2b
+Sep 9, 02:59 AM
+Open
+→
+fin-f44-facility-interest-review#eecc4b
+Sep 9, 02:58 AM
+Open
+→
+fin-f55-trust-principal-income-allocation-audit#554c70
+Sep 9, 02:57 AM
+Open
+→
+gen-g734-cms-publish-readiness-auditv3#979626
+3 versions · Sep 9, 02:56 AM
+Open
+→
+gen-g734-cms-publish-readiness-auditv2#6c572f
+2 versions · Sep 9, 02:46 AM
+Open
+→
+code-c227-table-bloat-maintenance-audit#a2e8de
+Sep 9, 02:01 AM
+Changes needed
+Open
+→
+code-c227-table-bloat-maintenance-audit#ef4712
+Sep 9, 01:55 AM
+Open
+→
+code-c249-recurring-report-source-selection-audit#21f1fb
+Sep 9, 01:52 AM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-audit#775351
+Sep 9, 01:37 AM
+Open
+→
+gen-g986-festival-key-art-billing-parity-audit#f86380
+Sep 9, 01:02 AM
+Open
+→
+gen-g857-department-directory-categorization-audit#1c618f
+Sep 9, 01:02 AM
+Changes needed
+Open
+→
+gen-g826-tender-document-brand-style-audit#1feb30
+Sep 9, 01:00 AM
+Changes needed
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-audit#f33e03
+Sep 9, 01:00 AM
+Open
+→
+the-thread-hands-back-its-own-openerv3#f2b9d8
+3 versions · Sep 8, 02:30 PM
+Open
+→
+gen-g1205-meal-prep-cost-claim-recompute-auditv14#7bb1ed
+13 versions · Sep 8, 02:28 PM
+Open
+→
+fin-f39-distributable-profitsv9#d6b62e
+8 versions · Sep 8, 02:24 AM
+Open
+→
+gen-g826-tender-document-brand-style-auditv7#21e1f6
+7 versions · Sep 8, 02:15 AM
+Open
+→
+gen-g806-leadership-brief-rhetorical-style-auditv3#cdc5d9
+3 versions · Sep 8, 02:13 AM
+Open
+→
+code-c251-pdf-form-field-conversion-auditv5#9a5325
+5 versions · Sep 8, 01:29 AM
+Changes needed
+Open
+→
+Submitted to the pipeline
+
+Every task you have handed over, newest first.
+
+42
+fin-f44-facility-interest-review
+v1
+Sep 10, 12:29 AM
+Rejected · 15 findings
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-920a0c3ff8d74a50
+Why it was rejected 15
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Aggregate fails because two mandatory subchecks fail. (a) instruction_verifier_consistency: the six memo regexes in tests/verifier.json (e.g. memo_disputes_loan_b_with_reference_amounts_and_reason) impose a reward-bearing requirement found nowhere in instruction.md — the invoice reference, a numeric amount and a reason keyword must all appear on the SAME physical line of interest_memo.md. (b) solution_instruction_consistency: instruction.md:25 states 'the total row must carry an empty reference column', but solution/files/interest_review.csv's last row is 'Total,,421312.33,...' i.e. 'Total' is in the reference column and the description is empty. Otherwise the package is coherent: gold deliverables pass all 25 declared checks (verified by replaying every assertion in tests/verifier.json against solution/files/*), inputs support the arithmetic, and environment/Dockerfile matches the declared offline non-connector task.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency · harbor-check
+error
+Every graded value traces to the instruction (CSV amounts, total, results.json keys), but six of the seven memo checks add an undisclosed surface-form requirement: the regexes are (?mi)^...$ anchored, so reference + amount + reason keyword must co-occur on one physical line. instruction.md only asks the memo to 'set out each line we are disputing and why...'. This verifier-only requirement is reward-bearing and demonstrably cost reward in evaluations/difficulty/r1 (memo_disputes_loan_c), r2 and r3 (memo_disputes_loan_b) and evaluations/platform/modal/run (memo_confirms_loan_d). Conversely two stated formatting rules ('plain number with no currency symbol', 'total row must carry an empty reference column') are not graded at all — the total-row regex only needs total|sum|overall|net plus 388[,.]?710 somewhere on the line.
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__instruction_verifier_consistency · harbor-check
+error
+solution/files/interest_review.csv violates an explicit instruction rule: instruction.md:25 requires the total row to carry an empty reference column, but the gold row is 'Total,,421312.33,388710.29,32602.04,' — reference='Total', description empty. (The GLM r2 run in evaluations/difficulty/r2 wrote the instruction-conformant ',Total,421312.33,...'.) Everything else lines up: all three deliverables are produced, results.json has the five required keys as numbers, and the memo covers disputed lines, the confirmed-but-odd line and the item in the bank's favour. Impact on grading is nil (both forms satisfy review_includes_correct_total), but the reference answer contradicts its own stated output contract.
+HARBOR-CHECK-3
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__solution_instruction_consistency · harbor-check
+error
+Aggregate fails on representation_contract: an undisclosed representation choice (memo reference/amount/reason on one physical line) changes reward, as shown by four separate checked-in runs losing a check for line-wrapping alone. Output surface, process disclosure and readability are all fine.
+HARBOR-CHECK-4
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope · harbor-check
+error
+Two undisclosed representation choices change reward. (1) The six memo regexes are line-anchored ((?mi)^...$), so a memo must place the invoice reference, a numeric amount and a reason keyword on one physical line; instruction.md never says this, and normal Markdown structuring (heading with the reference, then a table of amounts, then a prose reason) fails — see evaluations/difficulty/r2/agent, whose memo section '### INV-2202 - Interest on Loan B - overcharge 1767.12' followed by '...computed this on a **360-day year**...' on later lines failed memo_disputes_loan_b although every number was right. (2) The instruction demands an empty reference cell on the total row while solution/files/interest_review.csv puts 'Total' there, so the authoritative example contradicts the stated representation rule. Rounding (half-up, 2dp), 'plain number, no currency symbol' and results.json numeric typing are, by contrast, properly disclosed.
+HARBOR-CHECK-5
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope__representation_contract · harbor-check
+error
+Pairing (4 eligible GLM-5.2 attempts), provenance and the strict-pass distribution (1/4 at reward 1.0 — 0.96, 0.96, 0.96, 1.0) are all fine, but failure_cause_validity fails: each of the three sub-1.0 attempts got every substantive figure right and lost exactly one check to the line-anchored memo regex (r1 memo_disputes_loan_c; r2 and r3 memo_disputes_loan_b). The observed non-passes reflect a verifier surface-form defect, not task difficulty; per the aggregation rule a failed mandatory subcheck fails the area. Fractional scores preserved: 0.96 / 0.96 / 0.96 / 1.0.
+HARBOR-CHECK-6
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty · harbor-check
+error
+The three imperfect attempts are verifier-caused, not capability-caused. In r2 and r3 the sole failure is memo_disputes_loan_b_with_reference_amounts_and_reason and in r1 it is memo_disputes_loan_c...; in all three every CSV row check, the total check and all five results.json equals-checks passed, i.e. the recomputation was completely correct. r2's saved memo (agent/opencode.txt) contains a full, correct Loan B dispute ('### INV-2202 - Interest on Loan B - overcharge 1767.12' with '...computed this on a **360-day year**: 8,000,000 x 6.45% x 90 / 360 = 129,000.00. The agreement requires actual days over 365...'), which fails only because the regex needs reference + amount + reason keyword on one physical line. The same defect struck evaluations/platform/modal/run (claude-opus-5, memo_confirms_loan_d), and that trial's own sanity_review.md calls it 'a phrasing near-miss on a strict regex'.
+HARBOR-CHECK-7
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty__failure_cause_validity · harbor-check
+error
+Aggregate fails: requirement_traceability, coverage_depth, semantic_equivalence, surface_form_brittleness and counterfactual_strength all fail because of the seven memo checks. The 12 CSV checks and 6 results.json checks are sound and well targeted, but that strength must not mask the memo-grading defect, which is both over-strict (rejects correct, well-structured memos — four checked-in runs lost a check purely on line wrapping) and under-strict (accepts a 7-line token stub with fabricated amounts).
+HARBOR-CHECK-8
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static · harbor-check
+error
+Reward-bearing verifier-only requirement: the memo regexes require the reference, a number and a reason keyword on the same physical line — instruction.md requires per-line reasoning but never this co-location, and it cost reward in evaluations/difficulty/r1..r3 and evaluations/platform/modal/run. Additionally memo_states_overall_net_position grades an 'overall settlement position' statement that the instruction does not request of the memo. In the other direction, two stated CSV requirements ('plain number with no currency symbol'; 'the total row must carry an empty reference column') have no check — the amount regexes such as 79[,.]?520[,.]?55 match happily inside '£79,520.55'.
+HARBOR-CHECK-9
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__requirement_traceability · harbor-check
+error
+The memo half of the rubric is shallow enough that a materially wrong memo passes it in full. Each memo regex needs only a reference token, ANY 2+ digit number, and one word from a very broad list (memo_confirms_loan_d accepts 'day' or 'next'; memo_disputes_loan_c accepts 'change' or 'period'), and memo_states_overall_net_position matches any text containing 'net', 'total' or a number. A seven-line file such as 'Loan B 1.00 year / Loan C 1.00 margin / commitment 1.00 undrawn / Loan D 1.00 day / Loan E 1.00 margin / utilisation 1.00 due / total' satisfies all 7 memo checks (28% of reward) with fabricated figures and no reasoning. The CSV row checks are also digit-truncated (13[,.]?592, 88[,.]?241, 12[,.]?534, 3[,.]?205[,.]?48, 388[,.]?710), so a penny-wrong recomputation passes several of them. The results.json checks are exact and do carry real depth.
+HARBOR-CHECK-10
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__coverage_depth · harbor-check
+error
+Materially equivalent correct memos are rejected. Because the memo regexes are line-anchored, the ordinary Markdown idiom 'heading names the invoice / table gives the amounts / prose gives the reason' fails even when all three elements are present — proven by evaluations/difficulty/r2, whose memo states the Loan B dispute completely and correctly yet fails memo_disputes_loan_b, and by evaluations/platform/modal/run failing memo_confirms_loan_d on wording. The reason-keyword whitelists also miss natural synonyms (e.g. a Loan B explanation phrased purely as 'the bank annualised over the wrong denominator' with no 360/365/year/basis/actual token), and the required ordering reference -> number -> keyword rejects the equally valid 'On a 365-day year, INV-2202 is 127,232.88'. Nothing in instruction.md requires any exact form.
+HARBOR-CHECK-11
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__semantic_equivalence · harbor-check
+error
+Every memo matcher is a (?mi)^...$ line regex demanding an ordered triple on one physical line, so identical content fails or passes purely on where a line break lands — the single largest defect in this package, empirically responsible for the only failures in four separate checked-in model runs (r1, r2, r3, modal/run) that otherwise computed every figure correctly. It also under-checks relative to its own criterion name: 'memo_disputes_loan_b_with_reference_amounts_and_reason' accepts any 2+ digit number rather than 127,232.88 or 1,767.12, so a wrong answer can pass by mimicking tokens. Secondary brittleness: review_has_correct_row_count hard-codes exactly nine non-empty lines, so a quoted embedded newline or an extra subtotal row fails; the CSV amount regexes truncate to 5-6 significant digits. These semantic requirements should be structured field assertions (parse the CSV columns, compare per-row values with tolerance) or a judged rubric, not line regexes.
+HARBOR-CHECK-12
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__surface_form_brittleness · harbor-check
+error
+The verifier cannot reliably separate a genuine submission from a plausible defective one. Negative case it accepts: correct CSV/results plus a [REDACTED] memo with invented amounts passes all 7 memo checks (see coverage_depth) — full 25/25 while the required narrative work is skipped. Positive case it rejects: correct, well-reasoned memos in evaluations/difficulty/r1..r3 and evaluations/platform/modal/run were each marked failing on one memo check for line breaks and wording. Incomplete case it does catch: a partial CSV fails review_has_correct_row_count and the per-row checks, and wrong derived totals fail the exact results.json equals-checks. Net: the discriminating power sits entirely in the numeric buckets, and the memo buckets are close to noise.
+HARBOR-CHECK-13
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__counterfactual_strength · harbor-check
+error
+Aggregate fails on rollout_legitimacy: a plausible shortcut passes — a memo containing seven short lines with invented amounts and one topical keyword each satisfies all seven memo checks, so 28% of reward is available for fabricated narrative content. Interface use, golden access and state spoofing are all clean.
+HARBOR-CHECK-14
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_reward_hacking_static · harbor-check
+error
+Because the memo is graded only by line regexes needing a reference token, ANY 2+ digit number and one broad keyword, fabricated per-line claims survive grading: e.g. 'INV-2202 Loan B 1.00 year' / 'INV-2204 Loan C 1.00 margin' / 'INV-2203 commitment 1.00 undrawn' / 'INV-2205 Loan D 1.00 day' / 'INV-2206 Loan E 1.00 margin' / 'utilisation 1.00 due' / 'total' passes memo_disputes_loan_b/c/commitment_fee, memo_confirms_loan_d, memo_disputes_loan_e, memo_explains_uncharged_utilisation_fee and memo_states_overall_net_position. Combined with a correct CSV and results.json this yields reward 1.0 while the memo deliverable — one of the three the instruction requires — is entirely fabricated. Notably the checked-in review.csv claims this exact gap was closed with per-line reference+amount+reason lookaheads, a substantive-body length gate and an explanatory-language check, but tests/verifier.json contains no such checks.
+HARBOR-CHECK-15
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_reward_hacking_static__rollout_legitimacy · harbor-check
+Submitted bundle
+gen-g857-department-directory-categorization-audit
+v1
+Sep 10, 12:02 AM
+Pipeline error
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-0411e16ec4134511
+Submitted bundle
+gen-g857-department-directory-categorization-audit
+v1
+Sep 9, 11:34 PM
+Pipeline error
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-1ee3ab186d1b47d0
+Submitted bundle
+fin-f55-trust-principal-income-allocation-audit
+v1
+Sep 9, 10:44 PM
+Accepted
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-e08f4aad8c074959
+landed in
+gs://obi-harbor-pipeline/tasks/finalisation_client_qc_accepted_iteration_2/fin-f55-trust-principal-income-allocation-audit/c16e76f95359dfa0c3ce9acb4ccac46f7bf07383d855e084ed9c0dd798298f51.zip
+copy
+Submitted bundle
+fin-f39-distributable-profits
+v1
+Sep 9, 10:38 PM
+Pipeline error
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-9a15103a9dd94c9a
+Submitted bundle
+fin-f44-facility-interest-review
+v1
+Sep 9, 10:36 PM
+Pipeline error
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-05aa6f7b1ae2444b
+Submitted bundle
+code-c227-table-bloat-maintenance-audit
+v1
+Sep 9, 04:38 PM
+Rejected · 14 findings
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-315a47b03a4742d3
+Why it was rejected 14
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Aggregate fails because three mandatory subchecks fail. Most concretely, solution/golden_results.json ships {flagged_count:6, autovacuum_disabled_count:2, bloat_exceeded_count:2, stale_statistics_count:2, compliant_count:5} while the shipped gold deliverable solution/files/results.json and tests/verifier.json (result_* checks) require 9/3/3/3/8; README.md, review.csv and solution/golden_trajectory.json all describe an 11-table / 28-check task while environment/input/table_health.csv has 17 tables (T-01..T-17) and tests/verifier.json contains 34 verifiers.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency · harbor-check
+error
+Multiple package sources contradict each other: (a) solution/golden_results.json (6/2/2/2/5) vs solution/files/results.json and verifier expectations (9/3/3/3/8); (b) README.md ('11 tables', '28 deterministic checks', '9 per-table CSV regex checks'), review.csv ('28 checks', '11 tables', GLM runs 'all at 0.704') and solution/golden_trajectory.json ('bloat_audit.csv (11 tables)') vs the actual 17-row input and 34-verifier spec; (c) solution/files/bloat_memo.md opens with '# Table maintenance audit — 8 tables ... 4 are compliant and 4 carry a finding' while the same solution reports 17 tables, 9 flagged, 8 compliant; (d) environment/input/table_health.csv rows T-09/T-10/T-11 place values inconsistently with the header (autovacuum_enabled='enabled'/'disabled', days_since_analyze='no'/'yes', maintenance_active=30/31/5), and the gold answer for T-10 (STALE_STATISTICS, verifier check t10_stale_statistics) is only reachable by silently swapping the last two columns for those rows.
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__cross_artifact_consistency · harbor-check
+error
+Reward-bearing verifier-only requirements exist. audit_exactly_n_rows requires '(?is)^(?:[^\n]*\n){18}(?!.)', i.e. exactly 18 newline-terminated lines including a mandatory trailing newline; instruction.md only says 'one row per table'. memo_t02/t03/t04/t08_explained require a specific token order inside a clause containing no '.', ';' or '|' (e.g. T-02 needs 'bloat' before 'large[- ]table'; T-08 needs 'small' before 'bloat'); instruction.md only asks for a memo 'explaining each finding'. Conversely the instruction's requirement to explain every finding is graded for only 4 of the 9 flagged tables (T-10/T-14/T-15/T-17 explanations are ungraded).
+HARBOR-CHECK-3
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__instruction_verifier_consistency · harbor-check
+error
+All three deliverables are produced, but solution/files/bloat_memo.md is materially wrong about its own audit: the header states '8 tables' and '4 are compliant and 4 carry a finding' and its summary table lists only T-01..T-08, while the same gold audits 17 tables with 9 findings and 8 compliant (solution/files/results.json). The gold also relies on undisclosed reinterpretation of input rows T-09..T-11 (treating 'no'/'yes' as maintenance_active and 30/31/5 as days_since_analyze) that the header of environment/input/table_health.csv contradicts.
+HARBOR-CHECK-4
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__solution_instruction_consistency · harbor-check
+error
+Aggregate fails because representation_contract fails: undisclosed formatting requirements (exact 18 newline-terminated CSV lines; memo phrasing that must keep table id, finding keyword and size-class keyword in one punctuation-free clause in a fixed order) change reward, as demonstrated by evaluations/difficulty/r1, r3, r4 and both platform mirror runs losing points on substantively correct memos.
+HARBOR-CHECK-5
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope · harbor-check
+error
+Undisclosed representation choices are reward-bearing. (1) audit_exactly_n_rows demands exactly 18 newline-terminated lines: an otherwise identical CSV lacking a final newline fails (verified against solution/files/bloat_audit.csv: True with trailing newline, False without). (2) memo_t02/t03/t04/t08_explained require the reason keyword to appear after the table id within a run of characters excluding '.', ';' and '|', in a fixed keyword order that differs per table ('bloat' then 'large-table' for T-02, but 'small' then 'bloat' for T-08) — so a Markdown table memo (pipes) or a memo using 'vs.' or ';' fails, as happened in evaluations/platform/modal/run (Claude wrote its explanations as a Markdown table) and evaluations/difficulty/r1 ('T-02 (large, bloat 0.35 vs. large cap 0.20) — 0.15 over the large-table cap'). instruction.md discloses none of this.
+HARBOR-CHECK-6
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope__representation_contract · harbor-check
+error
+Four eligible GLM-5.2 pairs exist and the strict-pass distribution (1/4 at reward 1.0) is within the bar, but failure_cause_validity fails: every sub-1.0 attempt (r1 and r3 at 0.9411764706, r4 at 0.8823529412) lost points solely on the memo_t0X_explained lexical matchers while all data checks passed, so the observed difficulty reflects a verifier surface-form defect rather than task difficulty.
+HARBOR-CHECK-7
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty · harbor-check
+error
+All failures are verifier defects, not difficulty. r1 and r3 failed only memo_t02_explained and memo_t04_explained; r4 failed only memo_t02/t03/t04/t08_explained — every CSV finding, row-count and results.json check passed in all three. The memos were substantively correct: r1 wrote '**T-02** (large, bloat 0.35 vs. large cap 0.20) — 0.15 over the large-table cap' (rejected because the clause scope [^;.|] breaks on the abbreviation 'vs.'), and r4 wrote '**T-04** (small, bloat 0.10, 45 days): bloat is fine; only the statistics are stale' (rejected because of the ';'). The same four memo checks failed for both platform mirror runs (evaluations/platform/e2b/codex and evaluations/platform/modal/run, both 30/34), where Claude presented explanations in a Markdown table whose '|' characters make those regexes unsatisfiable.
+HARBOR-CHECK-8
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty__failure_cause_validity · harbor-check
+error
+Aggregate fails: requirement_traceability, semantic_equivalence, surface_form_brittleness, scoring_proportionality and counterfactual_strength fail. The core defect is the memo_t0X_explained clause-scoped regexes, which reject correct explanations for incidental punctuation or Markdown form (observed in three GLM runs and both mirror runs), plus row regexes for T-01..T-08 that match a finding token anywhere in the row.
+HARBOR-CHECK-9
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static · harbor-check
+error
+Two reward-bearing requirements exist only in the verifier: audit_exactly_n_rows' exact-18-newline-terminated-lines rule (instruction says only 'one row per table'), and the memo checks' fixed intra-clause keyword ordering and punctuation-free-clause rule (instruction says only 'explaining each finding'). In the other direction, the instruction's requirement to explain every finding is traced for only T-02/T-03/T-04/T-08 plus a bare '\bT-05\b' mention; explanations for the T-10, T-14, T-15 and T-17 findings are untested.
+HARBOR-CHECK-10
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__requirement_traceability · harbor-check
+error
+Materially equivalent correct memos are rejected. memo_t02_explained requires 'bloat' before 'large[\s-]?table' while memo_t08_explained requires 'small' before 'bloat', so a memo with consistent phrasing ('T-02 exceeds the bloat cap for large tables. T-08 exceeds the bloat cap for small tables.') cannot satisfy both. Clause scope excludes '.', ';' and '|', so 'vs.' (difficulty/r1), a semicolon (difficulty/r4) or presenting explanations in a Markdown table (platform/modal/run) all fail despite correct content. Instruction.md nowhere requires a particular wording, ordering or punctuation.
+HARBOR-CHECK-11
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__semantic_equivalence · harbor-check
+error
+Every lexical matcher was inspected. (1) audit_exactly_n_rows '(?is)^(?:[^\n]*\n){18}(?!.)' silently requires a trailing newline — an identical CSV without one fails (verified on the gold file). (2) memo_t02/t03/t04/t08_explained are fitted to the gold's exact phrasing; abbreviations, semicolons, sentence breaks, pipes and reversed-but-equivalent keyword order all cause false negatives, empirically costing 2-4 checks in four separate bundled runs. (3) Conversely, the T-01..T-08 row checks are unanchored ('(?mi)^T-05?\s*,[^\n]*\bnone\b'), so a wrong finding plus any note containing the token ('none of the caps apply') passes, and 'BLOAT_THRESHOLD_EXCEEDED' anywhere in the T-02 row satisfies bloat_flagged even in a comment column — the matcher checks less than its criterion claims, unlike the anchored t09..t17 variants.
+HARBOR-CHECK-12
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__surface_form_brittleness · harbor-check
+error
+Uniform 1/34 weighting misprices both directions. Cosmetic memo wording dominates: a fully correct audit lost 4/34 purely for punctuation/Markdown form (both mirror runs, 0.882). Meanwhile a fatal omission is heavily masked by partial credit — omitting bloat_memo.md entirely still scores 25/34 ≈ 0.735, and omitting results.json entirely still scores 28/34 ≈ 0.824, so failing to deliver a required deliverable costs less than phrasing a correct memo differently.
+HARBOR-CHECK-13
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__scoring_proportionality · harbor-check
+error
+The verifier cannot cleanly separate genuine from defective submissions. Negative case leakage: because bloat_flagged/disabled_flagged/stale_flagged/trap_clean/t01/t06/t07_clean only require the token somewhere in the row, a row such as 'T-05,large,0.55,BLOAT_THRESHOLD_EXCEEDED,"no exemption, none applied"' passes trap_clean with the wrong finding. Incomplete case: a memo containing only four [REDACTED] sentences and demonstrably false summary text passes all eight memo checks — the shipped gold itself passes while stating '8 tables … 4 are compliant' for a 17-table, 9-finding audit. Positive case: correct submissions are rejected for wording (see surface_form_brittleness).
+HARBOR-CHECK-14
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__counterfactual_strength · harbor-check
+Submitted bundle
+code-c249-recurring-report-source-selection-audit
+v1
+Sep 9, 02:47 PM
+Rejected · 16 findings
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-d551da96acb242c6
+Why it was rejected 16
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Aggregate fails because three mandatory subchecks fail. instruction.md/tests/verifier.json contain reward-bearing requirements never disclosed to the agent (memo clause punctuation, CSV byte-level formatting), the declared per-check fractional score bucket in tests/test.sh + README.md can never activate (pytest-json-ctrf collapses the 33 parametrized cases to one CTRF entry, so reward is binary), and README.md/review.csv describe a different task version (13 runs / 14 rows / 26 checks / memo_inclusive_cutover / >=1200-char memo) than the shipped environment/input/report_run_log.csv (15 runs) and tests/verifier.json (33 checks).
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency · harbor-check
+error
+The core executable set (task.toml, instruction.md, environment/Dockerfile, environment/input/*, solution/files/*, tests/*) is complete and jointly gradable — I replayed all 33 verifier assertions against solution/files and all 33 pass. However two checked-in package artifacts are stale and contradict the shipped task: README.md says 'input/report_run_log.csv — 13 logged runs' while the file holds 15 runs (RUN-01..RUN-21), and README.md advertises 'Fractional reward computed per check', which the actual tests/test.sh + CTRF path cannot deliver. review.csv is stale for the entire Layer-5 record: it describes 26 checks, 14 audit rows, a memo_inclusive_cutover check and a '>=1200 chars, >=8 sentences' memo_substantive_body — none of which exist in tests/verifier.json (33 checks, 16 rows, memo_substantive_body = '(?s)^.{1,}').
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__cross_artifact_consistency · harbor-check
+error
+Two reward-bearing verifier-only requirements exist. (1) memo_run{10,13,17}_source_mismatch_detail and memo_run{02,19}_row_count_detail scope their lookaheads with `[^;]`, so a memo that separates the used source from the required source with a semicolon fails, even though instruction.md only asks to state 'what source was used and what should have been used'. This is not hypothetical: evaluations/difficulty/r3/agent/opencode.txt writes 'Source used: `live`; source that should have been used: `archive`' for RUN-10/13/17 and fails all five memo detail checks. (2) audit_exactly_16_rows anchors on `\Arun_id,...,finding\n(?:.*\n){16}\Z`, which additionally requires LF (not CRLF) line endings, an unquoted header and a trailing newline — none disclosed in instruction.md. I verified a CRLF or fully-quoted rendering of the golden CSV fails that check.
+HARBOR-CHECK-3
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__instruction_verifier_consistency · harbor-check
+error
+All 33 definitions in tests/verifier.json do execute (test-stdout shows '33 items'), but the declared fractional score bucket cannot receive evidence. tests/test.sh derives partial reward from /logs/verifier/ctrf.json ('passed/total'); pytest-json-ctrf writes a single collapsed entry for the parametrized test ({'tests':1,...,'retries':32}, verified in evaluations/difficulty/r3/verifier/ctrf.json). Consequently evaluations/difficulty/r4 with 32/33 checks passing and r3 with 28/33 both recorded reward 0.0000, not 0.9697/0.8485. README.md's declared 'Fractional reward computed per check' is therefore unreachable.
+HARBOR-CHECK-4
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__declared_executed_verifier_consistency · harbor-check
+error
+Aggregate fails because the mandatory representation_contract subcheck fails: undisclosed representation choices (memo clause punctuation and CSV newline/quoting/trailing-newline form) change reward, as demonstrated by evaluations/difficulty/r3 and r4. The other three subchecks pass.
+HARBOR-CHECK-5
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope · harbor-check
+error
+Undisclosed representation choices decide reward. (a) The memo detail checks forbid a semicolon between the run ID and the required token ([^;] in the lookahead scope); instruction.md says nothing about punctuation, and evaluations/difficulty/r3's memo — arguably the clearest possible phrasing, 'Source used: `live`; source that should have been used: `archive`' — is rejected on all five memo checks. (b) audit_exactly_16_rows requires LF endings, an unquoted header row and a trailing newline; I confirmed the golden CSV re-emitted with CRLF (Python csv.writer's default) or with quoted fields fails, though instruction.md only names the columns.
+HARBOR-CHECK-6
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope__representation_contract · harbor-check
+error
+Evidence pairing, provenance and the 2/4 strict-pass distribution are all fine, but the mandatory failure_cause_validity subcheck fails: neither recorded failure reflects task difficulty. evaluations/difficulty/r4 produced a fully correct audit (32/33 checks green) and r3 produced a fully correct audit (28/33), and both were scored 0.0 because of the `[^;]` memo-regex scoping plus the CTRF collapse that turns any single miss into reward 0.0. A failed mandatory subcheck cannot be averaged away.
+HARBOR-CHECK-7
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty · harbor-check
+error
+Both recorded failures are verifier defects, not capability limits. r4 (evaluations/difficulty/r4/agent/opencode.txt) wrote a memo stating for RUN-10 'The run recorded `source_used = live`. It should have used `archive`.' — materially exactly what the rubric asks — yet memo_run10_source_mismatch_detail fails because an earlier parenthetical in the same bullet contains a semicolon that terminates the `[^;]` scope; I reproduced this by replaying the regex against the recovered memo. r3's memo says 'Source used: `live`; source that should have been used: `archive`' for RUN-10/13/17 and fails all five memo detail checks on the same semicolon. Both agents' CSV, counts and reasoning were identical to the golden. The 0.0 rewards then come from the CTRF collapse (32/33 and 28/33 → 0.0000).
+HARBOR-CHECK-8
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty__failure_cause_validity · harbor-check
+error
+Aggregate fails on multiple mandatory subchecks: requirement_traceability (verifier-only memo punctuation and CSV byte-format requirements), semantic_equivalence and surface_form_brittleness (the `[^;]` clause scoping rejects the clearest correct phrasings — proven against two saved evaluation memos), score_bucket_activation and aggregation_normalization (the declared per-check fractional reward collapses to binary via the single-entry CTRF), scoring_proportionality (one incidental punctuation choice zeroes a 32/33 submission), and counterfactual_strength (three of four genuinely correct submissions in evidence were scored 0.0).
+HARBOR-CHECK-9
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static · harbor-check
+error
+Every instruction requirement does have a check (files exist; per-run findings; 16-row count; missing job; memo detail per finding; five results.json keys), but two reward-bearing requirements exist only in the verifier: the memo must avoid a semicolon between the run ID and each required token (memo_run{10,13,17,02,19}_* `[^;]` scoping) and the CSV must use LF endings, an unquoted header and a trailing newline (audit_exactly_16_rows `\A...\n(?:.*\n){16}\Z`). Neither appears in instruction.md. Additionally, the instruction's requirement that the CSV 'carry the run's identifying columns from the log' is only checked at the header level — I confirmed a CSV whose job_name/run_date/source_used/reported_row_count are all 'x' still passes all 16 row checks and audit_exactly_16_rows.
+HARBOR-CHECK-10
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__requirement_traceability · harbor-check
+error
+Materially equivalent correct memos are rejected. Replaying memo_run10_source_mismatch_detail against a memo written as 'RUN-10 used live; it should have used archive.' fails, as does the real memo in evaluations/difficulty/r3 ('Source used: `live`; source that should have been used: `archive`') and the real memo in evaluations/difficulty/r4 (semicolon in an intervening parenthetical). The failure is caused solely by punctuation, not by meaning; other paraphrases ('Run 10 pulled from live when archive was required', lowercase, 'RUN 10') do pass, so the matcher's tolerance is arbitrary rather than principled. instruction.md nowhere requires a specific clause form.
+HARBOR-CHECK-11
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__semantic_equivalence · harbor-check
+error
+Two matcher families are brittle. (1) The five memo detail regexes scope with `(?:(?!RUN...\d)[^;])*?`; any semicolon between the run ID and the required token — including one inside an unrelated parenthetical — rejects a correct explanation (demonstrated on the r3 and r4 memos and on the modal claude run, evaluations/platform/modal/run/verifier/test-stdout.txt: 3 failed / 30 passed on the same three checks). (2) audit_exactly_16_rows is byte-exact: I confirmed the golden CSV fails it when re-emitted with CRLF endings (Python csv.writer's default), when fully quoted, or without a trailing newline. In the other direction the row regexes check less than they claim — a row 'RUN-01,x,x,x,0,none' with fabricated identifying columns passes.
+HARBOR-CHECK-12
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__surface_form_brittleness · harbor-check
+error
+The package represents per-check partial credit as active coverage (README.md: 'Fractional reward computed per check'; tests/test.sh's passed/total branch; models.effective_weights assigning 1/33 to each unweighted verifier), but that bucket can never receive evidence: pytest-json-ctrf records the parametrized test as one entry with retries=32, so ctrf.json always reports tests=1. Confirmed in evaluations/difficulty/r3/verifier/ctrf.json (tests 1, passed 0, failed 1) and r1 (tests 1, passed 1). Effective reward is binary 1.0/0.0.
+HARBOR-CHECK-13
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__score_bucket_activation · harbor-check
+error
+Declared math and effective math differ. Declared: 33 equally weighted checks, reward = passed/total. Recomputed on the saved cases: evaluations/difficulty/r4 passed 32/33 → should be 0.9697 but verifier/reward.txt is '0.0000' and reward.json {'reward': 0.0}; r3 passed 28/33 → should be 0.8485, recorded 0.0000; evaluations/platform/modal/run passed 30/33 → recorded 0.0000. The cause is tests/test.sh reading the collapsed CTRF (passed 0 / total 1).
+HARBOR-CHECK-14
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__aggregation_normalization · harbor-check
+error
+A cosmetic issue dominates the reward. Because of the CTRF collapse, failing the single memo_run10 check for an intervening semicolon — with all 16 audit rows, the row count, all five results.json values and the other four memo checks correct — takes reward from 1.0 to 0.0 (evaluations/difficulty/r4). Conversely, no fatal omission is distinguished from a punctuation slip: both score exactly 0.0.
+HARBOR-CHECK-15
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__scoring_proportionality · harbor-check
+error
+The negative direction is adequate — I confirmed an all-`none` CSV fails row_run-10/13/17 and a memo missing the RUN-02 numbers fails memo_run02 — but the positive direction is not: the verifier cannot reliably accept a genuine solution. Three of the four genuinely correct submissions in the saved evidence (difficulty r3, difficulty r4, platform/modal/run) were scored 0.0 despite correct findings, correct counts and correct memo reasoning, on phrasing alone. An adversarial CSV with correct run_id/finding pairs but fabricated identifying columns also passes.
+HARBOR-CHECK-16
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__counterfactual_strength · harbor-check
+Submitted bundle
+obi/gen-g1205-meal-prep-cost-claim-recompute-audit
+v9
+Sep 3, 03:43 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g1205-f65504-v9-sna-flbo
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g1205-f65504-v9-sna-flbo/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Eligible GLM-5.2 pass rate 4/4 exceeds the 75% submission ceiling.
+l2.difficulty:3c52acc16eb31fb0
+EVIDENCE
+The task does not provide the required difficulty discrimination on the reviewed trials.
+WHAT TO CHANGE
+Adjust intended task semantics only if the reviewed run evidence confirms the task is too easy; otherwise generate or repair the required trials.
+SOURCE
+l2.difficulty · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f39-distributable-profits
+v11
+Sep 3, 02:31 AM
+Rejected · 2 findings
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f39-v32-563842-v11-sna-pdig
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f39-v32-563842-v11-sna-pdig/
+copy
+Why it was rejected 2
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Eligible GLM-5.2 pass rate 4/4 exceeds the 75% submission ceiling.
+l2.difficulty:3c52acc16eb31fb0
+EVIDENCE
+The task does not provide the required difficulty discrimination on the reviewed trials.
+WHAT TO CHANGE
+Adjust intended task semantics only if the reviewed run evidence confirms the task is too easy; otherwise generate or repair the required trials.
+SOURCE
+l2.difficulty · qc
+error
+memo_has_explanatory_body imposes an unstated 1200-character floor on dividend_memo.md, so a concise memo that still explains every required adjustment can fail despite matching the instruction and the other memo content checks.
+l5.verifier_fairness:225113e479e467b1
+EVIDENCE
+The instruction requires a memo that explains each adjustment, each item left alone, and what the board may declare; it does not set a length. A complete ~800–1100 character memo can satisfy every memo_* keyword check and still fail this regex, which is enough to keep Harbor reward below 1.0. Stub prevention is already covered by the substance-anchored memo checks, so the floor only extra-punishes valid brevity.
+WHAT TO CHANGE
+Remove memo_has_explanatory_body from tests/verifier.json, or replace the 1200-character regex with a stub-only floor far below a complete explanation. Keep the existing memo_* content anchors.
+SOURCE
+l5.verifier_fairness · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f44-facility-interest-review
+v3
+Sep 3, 01:27 AM
+Rejected · 3 findings
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f44-e46171-v3-sna-bfpl
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f44-e46171-v3-sna-bfpl/
+copy
+Why it was rejected 3
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Eligible GLM-5.2 pass rate 4/4 exceeds the 75% submission ceiling.
+l2.difficulty:3c52acc16eb31fb0
+EVIDENCE
+The task does not provide the required difficulty discrimination on the reviewed trials.
+WHAT TO CHANGE
+Adjust intended task semantics only if the reviewed run evidence confirms the task is too easy; otherwise generate or repair the required trials.
+SOURCE
+l2.difficulty · qc
+error
+Memo regexes require unstated reason-token lists and reject instruction-compliant paraphrases, Markdown/hyphen identifier variants, and equivalent why-wording that the instruction does not pin.
+l5.verifier_fairness:a16d3da6dba71b3b
+EVIDENCE
+A memo that does exactly what instruction.md asks—identify disputed lines and why, confirm a line that looks wrong, and note the utilisation amount that runs in the bank's favour—can still fail four of six memo checks. Concrete misses include hyphenated Loan-B/C/D, 'Loan **D**' with emphasis between the words, a confirmation that quotes 'even though it looks wrong' without business-day vocabulary, a Loan C why that says the spread reduced after the cert, a Loan B why that cites the wrong denominator/accrual fraction, and 'The utilisation fee of 3,205.48 runs in the bank's favour.' Oracle/golden reward-1.0 paths do not make those restrictive lexicons fair.
+WHAT TO CHANGE
+Keep the memo artifact as the evidence target, but stop requiring unstated reason lexicons. Accept hyphen/space and Markdown emphasis around loan identifiers, and accept instruction-language paraphrases (looks wrong; bank's favour/favor; equivalent why verbs). Smallest regex repair: add those alternates (and treat the third lookahead as optional once the line and an amount are present), or replace these regex_match checks with a single semantic check of the three memo duties in instruction.md.
+SOURCE
+l5.verifier_fairness · qc
+error
+review_includes_correct_total requires the literal cell token Total, which the instruction never pins.
+l5.verifier_fairness:44781564b0584ca8
+EVIDENCE
+An otherwise correct total row labeled Sum, Summary, NET, or Overall with 376176.04 is instruction-compliant and fails the CSV regex. That is an unstated exact-wording requirement on a row the prompt only describes as 'a total row'.
+WHAT TO CHANGE
+Assert the recomputed total amount on the total row without requiring the literal 'Total' (for example accept (?i)(total|sum|overall|net) or check the last data row's amount_due_gbp).
+SOURCE
+l5.verifier_fairness · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f55-trust-principal-income-allocation-audit
+v25
+Sep 3, 01:06 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f55-3c7582-v25-sna-cvnb
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f55-3c7582-v25-sna-cvnb/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+results.json keys are named but never defined, and the allocation-vs-brokerage precedence rule makes brokerage_discrepancy_count (and flagged_count) graded values an agent must guess.
+l1.clarity_scope:4205b803469a018f
+EVIDENCE
+A capable agent can produce the audit CSV with the disclosed single-finding precedence and still fail result_brokerage_discrepancy_count or result_flagged_count by counting every brokerage/CSV amount mismatch (including rows whose emitted finding is an allocation error) instead of counting only emitted brokerage_discrepancy_uncorrected labels, or by treating flagged_count as all rows versus non-correct rows. Those keys are part of the deliverable contract and are separately asserted.
+WHAT TO CHANGE
+In instruction.md, define each results.json key in one sentence next to the filename: txn_count is unique post-dedup rows; flagged_count is rows whose finding is not correct; gain_misallocation_count / fee_not_split_count / brokerage_discrepancy_count count rows whose emitted finding equals gain_misallocated_to_income, fee_not_split, and brokerage_discrepancy_uncorrected respectively (so dual allocation+amount-mismatch rows are not in brokerage_discrepancy_count). Drop the unused `correct` cite requirement if the memo is not graded for it.
+SOURCE
+l1.clarity_scope · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g734-cms-publish-readiness-audit
+v4
+Sep 3, 12:36 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g734-e35574-v4-sna-fqik
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g734-e35574-v4-sna-fqik/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Eligible GLM-5.2 pass rate 4/4 exceeds the 75% submission ceiling.
+l2.difficulty:3c52acc16eb31fb0
+EVIDENCE
+The task does not provide the required difficulty discrimination on the reviewed trials.
+WHAT TO CHANGE
+Adjust intended task semantics only if the reviewed run evidence confirms the task is too easy; otherwise generate or repair the required trials.
+SOURCE
+l2.difficulty · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g1205-meal-prep-cost-claim-recompute-audit
+v8
+Sep 3, 12:35 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g1205-f65504-v8-sna-zmgc
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g1205-f65504-v8-sna-zmgc/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Eligible GLM-5.2 pass rate 4/4 exceeds the 75% submission ceiling.
+l2.difficulty:3c52acc16eb31fb0
+EVIDENCE
+The task does not provide the required difficulty discrimination on the reviewed trials.
+WHAT TO CHANGE
+Adjust intended task semantics only if the reviewed run evidence confirms the task is too easy; otherwise generate or repair the required trials.
+SOURCE
+l2.difficulty · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtZ2VuLWc5ODYtY2Y1ODdmLXY0
+v4
+Sep 3, 12:33 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g986-cf587f-v4-sna-xiuh
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g986-cf587f-v4-sna-xiuh/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Eligible GLM-5.2 pass rate 4/4 exceeds the 75% submission ceiling.
+l2.difficulty:3c52acc16eb31fb0
+EVIDENCE
+The task does not provide the required difficulty discrimination on the reviewed trials.
+WHAT TO CHANGE
+Adjust intended task semantics only if the reviewed run evidence confirms the task is too easy; otherwise generate or repair the required trials.
+SOURCE
+l2.difficulty · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtdGhlLXRocmVhZC1oYW5kcy1iYWNrLWl0cy1vd24tLTUzZGRkOC12Mg
+v2
+Sep 2, 11:55 PM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own--53ddd8-v2-sna-bbxw
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own--53ddd8-v2-sna-bbxw/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Eligible GLM-5.2 pass rate 4/4 exceeds the 75% submission ceiling.
+l2.difficulty:0b2af2369c840e23
+EVIDENCE
+The task does not provide the required difficulty discrimination on the reviewed trials.
+WHAT TO CHANGE
+Adjust intended task semantics only if the reviewed run evidence confirms the task is too easy; otherwise generate or repair the required trials.
+SOURCE
+l2.difficulty · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g986-festival-key-art-billing-parity-audit
+v25
+Sep 1, 06:28 PM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f39-9fcd69-v25-sna-xofp
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f39-9fcd69-v25-sna-xofp/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Memo checks memo_billing, memo_parity, memo_baked, memo_credit, and memo_non_mfn require rigid adjacent token sequences (billing order, size ratio, below floor, finish code, credit block, not MFN) within 600 characters of PSTR- or poster. The public contract only requires key_art_memo.md as a Markdown memo that explains findings and does not pin those phrases, spacing, or order.
+l5.verifier_fairness:71c8e4d8c89f798c
+EVIDENCE
+Instruction-valid memos that use Markdown emphasis (**billing** order), hyphenation (billing-order), linking words (below the floor), or equivalent explanations (exempt from MFN; logos burned in) fail, so the verifier does not reward all valid solutions.
+WHAT TO CHANGE
+In tests/verifier.json, loosen the five memo regexes to allow optional Markdown markers, hyphen/space variants, and a short linking-word gap between required tokens, or replace them with a semantic check that the memo discusses each finding category and at least one poster.
+SOURCE
+l5.verifier_fairness · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtaGVhbHRoLWgzNC01NGY4MjktdjE
+v24
+Sep 1, 06:26 PM
+Rejected · 3 findings
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-health-h34-54f829-v1-sna-qbrh
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-health-h34-54f829-v1-sna-qbrh/
+copy
+Why it was rejected 3
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+results.json is a graded deliverable whose keys are named but whose value types and units are never stated, while the verifier requires JSON numbers (a one-decimal percentage and four integer counts) and will reject equally reasonable arrays.
+l1.clarity_scope:c97716b7b8c52443
+EVIDENCE
+A capable agent can complete the audit tables and findings correctly and still fail four deterministic checks by writing list-shaped values such as out_of_sequence_allocations: ["SUBJ-028"] or strata_outside_tolerance: ["S2"], which the plural key names allow. That is a hidden representation rule, not ordinary formatting judgment.
+WHAT TO CHANGE
+In the results.json bullet of instruction.md, state that the values are JSON numbers, not arrays or names: active_proportion_pct is the overall active percentage to one decimal, and strata_outside_tolerance, blocks_assessed, blocks_outside_tolerance, and out_of_sequence_allocations are integer counts.
+SOURCE
+l1.clarity_scope · qc
+error
+Stratum CSV regexes require a blank out_of_sequence field on overall/mild/severe rows while site rows require 0 or 1; the instruction never pins empty versus 0/N/A.
+l5.verifier_fairness:7d7c88485c954cbb
+EVIDENCE
+Valid tables that use 0 (or another N/A token) on levels the charter does not sequence-test fail three correlated checks even when counts, 73.1 percents, labels, and within/outside_tolerance statuses are correct. That over-penalizes one unstated formatting choice.
+WHAT TO CHANGE
+In tests/verifier.json, change the out_of_sequence slot on balance_overall_numeric_row, balance_severity_mild_numeric_row, and balance_severity_severe_numeric_row from empty-only `\x22?\x22?` to accept empty or zero (`\x22?(?:0(?:\.0+)?)?\x22?`). Keep site S1/S2/S3 requiring 0 and 1.
+SOURCE
+l5.verifier_fairness · qc
+error
+results.json checks require integer 1 for keys the instruction only names, so list-of-identifier values that correctly name S2, B6, and SUBJ-028 are rejected.
+l5.verifier_fairness:fefc2ea60eacdba6
+EVIDENCE
+Instruction-compliant results.json objects that record the one out-of-tolerance stratum/block and the one out-of-sequence allocation as arrays fail equals-1 checks. The key out_of_sequence_allocations is especially list-like, so this is type brittleness rather than a fact error.
+WHAT TO CHANGE
+Either state in instruction.md that those three keys must be integer counts (1, 1, 1), or accept both integer 1 and a one-element array of the correct identifier.
+SOURCE
+l5.verifier_fairness · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g1205-meal-prep-cost-claim-recompute-audit
+v40
+Sep 1, 04:15 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f44-1c45e0-v40-sna-gjgg
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f44-1c45e0-v40-sna-gjgg/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtaGVhbHRoLWgzNC1UQVNLLU9OTFktMDk2YzYyLXYyMw
+v23
+Sep 1, 03:04 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-health-h34-TASK-ONLY-096c62-v23-sna-ohnt
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-health-h34-TASK-ONLY-096c62-v23-sna-ohnt/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtZ2VuLWc4NTctNWQ2MDc3LXY3
+v7
+Sep 1, 03:01 AM
+Rejected · 11 findings
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g857-5d6077-v7-sna-rihn
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g857-5d6077-v7-sna-rihn/
+copy
+Why it was rejected 11
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Most artifacts align (task.toml, instruction.md, README.md, environment/input/*, solution/files/*, tests/verifier.json all describe the same three-file deliverable and I confirmed the golden files satisfy all 86 spec checks plus the 2 extra pytest checks). The aggregate fails because of the instruction/verifier subcheck: tests/verifier.json 'memo_has_explanatory_body' imposes an undisclosed >=2200-character minimum on directory_memo.md, and four memo regexes (memo_explains_true_token_only, memo_explains_whitespace_prior_blocks, memo_explains_internal_id_spaces, memo_explains_case_insensitive_parents) grade memo topics the instruction never enumerates.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency · harbor-check
+error
+Reward-bearing verifier-only requirements exist. tests/verifier.json check 'memo_has_explanatory_body' expects regex '(?s)^(?=[\s\S]{2200,})' — a 2200-character memo floor that neither instruction.md nor the binding standard states. Additionally memo_explains_true_token_only, memo_explains_whitespace_prior_blocks, memo_explains_internal_id_spaces and memo_explains_case_insensitive_parents require memo coverage of topics beyond the instruction's enumerated set ('the trim, alias last-wins, blank-id, and literal slide-parent edge cases'). Conversely, all instruction requirements (three files, per-department findings, five derived counts) are graded.
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_package_consistency__instruction_verifier_consistency · harbor-check
+error
+Fails because the mandatory representation subcheck fails: the memo is graded against an undisclosed 2200-character floor and against ordered lexical regexes whose required wording is nowhere stated, so an equally correct but shorter or differently-phrased memo loses reward. Output surface, process disclosure and readability are otherwise clean.
+HARBOR-CHECK-3
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope · harbor-check
+error
+The CSV header order and 'no extra blank rows' are disclosed by the binding standard ('Deliverable shape'), which is fine. But tests/verifier.json 'memo_has_explanatory_body' silently requires >=2200 characters of memo text, and several memo checks require specific word order/vocabulary (e.g. memo_explains_blank_ids_do_not_collide requires the literal token 'blank' or 'whitespace' — 'empty registry ids are excluded from duplicate detection' fails). These undisclosed representation choices change reward. The finding regexes also require unquoted CSV fields (e.g. '(?mi)^\x22?DEPT-02\x22?\s*,.*none\s*$' rejects a QUOTE_ALL-written row), a formatting choice the standard does not forbid.
+HARBOR-CHECK-4
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer1_clarity_scope__representation_contract · harbor-check
+error
+The four paired GLM 5.2 attempts under evaluations/difficulty/r1-r4 score 1.0, 1.0, 0.9886363636, 1.0 — three of four strict passes, above the maximum of two. The separate evaluations/glm-5.2/r1-r5 battery agrees (four of five at 1.0). Additionally the sole sub-1.0 run failed on a verifier wording defect, not on task difficulty.
+HARBOR-CHECK-5
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty · harbor-check
+error
+Rewards from evaluations/difficulty/r*/verifier/reward_meta.txt: r1 passed=88/88 reward=1.0, r2 88/88 = 1.0, r3 87/88 = 0.9886363636, r4 88/88 = 1.0. Three of four eligible attempts earn exactly 1.0, exceeding the 'no more than two of four' bar. The fractional 0.9886 score is preserved separately but is a near-miss, not a failure.
+HARBOR-CHECK-6
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty__strict_pass_distribution · harbor-check
+error
+The only non-perfect run, difficulty/r3, failed exactly one check: 'FAILED test_deliverable[memo_explains_whitespace_prior_blocks]' in verifier/test-stdout.txt. Its memo (in agent/trajectory.json) does state the rule correctly — 'The trimmed prior_parent is non-empty (whitespace-only is empty after trim...)' and cites 'DEPT-35 (whitespace-only prior_parent)' — but does not match the regex's required '(whitespace|blank|empty).{0,80}prior.{0,100}(never|not|no|block|grant|exception)' ordering window. That is a verifier surface-form defect, not a capability failure.
+HARBOR-CHECK-7
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer2_difficulty__failure_cause_validity · harbor-check
+error
+Coverage of the audit CSV and counts is strong, but three mandatory subchecks fail: requirement_traceability (undisclosed 2200-char memo floor and memo topics absent from the instruction), semantic_equivalence and surface_form_brittleness (ordered prose regexes and unquoted-CSV assumptions reject correct submissions — demonstrated by evaluations/difficulty/r3 losing a check for a memo that states the rule correctly).
+HARBOR-CHECK-8
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static · harbor-check
+error
+Every instruction requirement is tested (three files exist; 62 per-department findings; five results.json counts; audit/results consistency). However 'memo_has_explanatory_body' is a reward-bearing verifier-only requirement (regex '(?s)^(?=[\s\S]{2200,})', a length floor stated nowhere), and four memo checks grade topics (true-token exactness, whitespace-only prior, internal id spaces, case-insensitive parent equality) that instruction.md does not list among the edge cases it asks the memo to cover.
+HARBOR-CHECK-9
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__requirement_traceability · harbor-check
+error
+Materially equivalent correct memos are rejected. memo_explains_blank_ids_do_not_collide requires the literal 'blank' or 'whitespace' plus a negation token within tight windows, so 'Empty registry ids are excluded from duplicate detection' fails; memo_explains_whitespace_prior_blocks requires the whitespace word BEFORE the word 'prior', so 'A prior_parent that is only whitespace never grants the exception' matches only by luck of window overlap and r3's correct phrasing did not match at all. On the CSV side, an RFC-4180-valid quoted row ('"DEPT-02","Facilities Maintenance","none"') fails '(?mi)^\x22?DEPT-02\x22?\s*,.*none\s*$' and audit_header_exact, though quoting is never prohibited.
+HARBOR-CHECK-10
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__semantic_equivalence · harbor-check
+error
+The 14 memo checks are ordered keyword regexes with character-distance windows, which is both brittle and, in places, weaker than claimed: memo_explains_true_token_only's second group includes the bare alternatives '1' and 'Y' under (?i), so almost any sentence containing 'true' followed by a word with a 'y' satisfies it; memo_explains_misplaced_department accepts a bare '-' within 280 chars. So correct-but-differently-worded memos fail (proved by evaluations/difficulty/r3) while [REDACTED] prose can pass. The audit regexes additionally assume unquoted CSV output.
+HARBOR-CHECK-11
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+layer5_verifier_fairness_static__surface_form_brittleness · harbor-check
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtaGVhbHRoLWgzNC1UQVNLLU9OTFktMDk2YzYyLXYyMA
+v20
+Sep 1, 02:25 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-health-h34-TASK-ONLY-096c62-v20-sna-mktm
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-health-h34-TASK-ONLY-096c62-v20-sna-mktm/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g986-festival-key-art-billing-parity-audit
+v22
+Sep 1, 01:53 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f39-9fcd69-v22-sna-ziod
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f39-9fcd69-v22-sna-ziod/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtdGhlLXRocmVhZC1oYW5kcy1iYWNrLWl0cy1vd24tLTQ3OTY4MC12Nw
+v7
+Sep 1, 01:16 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own--479680-v7-sna-axik
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own--479680-v7-sna-axik/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtaGVhbHRoLWgzNC1UQVNLLU9OTFktMDk2YzYyLXYxOQ
+v19
+Aug 31, 11:46 PM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-health-h34-TASK-ONLY-096c62-v19-sna-ibvu
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-health-h34-TASK-ONLY-096c62-v19-sna-ibvu/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/code-c227-table-bloat-maintenance-audit
+v25
+Aug 31, 05:37 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintena-97d912-v25-sna-fpgn
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintena-97d912-v25-sna-fpgn/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f55-trust-principal-income-allocation-audit
+v16
+Aug 31, 05:22 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f55-3c7582-v16-sna-fkrq
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f55-3c7582-v16-sna-fkrq/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g806-leadership-brief-rhetorical-style-audit
+v28
+Aug 30, 11:12 PM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g1205-13a041-v28-sna-uysg
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g1205-13a041-v28-sna-uysg/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f39-distributable-profits
+v31
+Aug 30, 10:25 PM
+Rejected · 4 findings
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f53-f00622-v31-sna-yrud
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f53-f00622-v31-sna-yrud/
+copy
+Why it was rejected 4
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+schedule_arithmetic_check mandates literal negative signs for deduction amounts that the instruction never requires, rejecting valid schedules that present deductions as positive magnitudes with 'Deduct'/'Less' treatment labels.
+l5.verifier_fairness:59ad4673949d9f7c
+EVIDENCE
+An otherwise-correct schedule presenting deductions as positive magnitudes (or parenthesised negatives) fails this single check. The difficulty/r2, r3, and r4 runs passed all 30 other checks but failed only schedule_arithmetic_check and received reward 0.0, so a fully valid solution is zeroed. The lookaheads (?=.*-180)(?=.*-260)(?=.*-55) demand a hyphen-minus immediately before 180/260/55, which the instruction's columns item,amount_gbp,treatment do not pin; the treatment column exists precisely to describe add/deduct, so unsigned magnitudes are a valid presentation.
+WHAT TO CHANGE
+Make the sign optional in the deduction lookaheads and rely on the 2,280,000 total to confirm arithmetic direction, e.g. change the assertion to (?is)(?=.*2[,.]?455[,.]?000)(?=.*2[,.]?280[,.]?000)(?=.*-?180[,.]?000)(?=.*-?260[,.]?000)(?=.*320[,.]?000)(?=.*-?55[,.]?000).
+SOURCE
+l5.verifier_fairness · qc
+error
+memo_addresses_mill_lane rejects valid board memos that explain the Mill Lane surplus as 'not a realised profit' / 'not crystallised' / 'outside distributable profits', because its second concept group lacks an amount/deduct fallback and a 'not a realised' alternative, unlike every sibling memo check.
+l5.verifier_fairness:86973944ece1f2c7
+EVIDENCE
+A complete instruction-compliant memo that uses a retained-earnings synonym (e.g. 'Opening accumulated profits are £2,455,000'), describes other unrealised items via 'deduct' plus their amounts, and explains Mill Lane as 'the gain has not crystallised and is outside distributable profits' passes all 30 other checks but fails only memo_addresses_mill_lane. Given the observed all-or-nothing reward (difficulty runs at 30/31 received 0.0), an otherwise-correct solution is zeroed. The sibling checks memo_addresses_the_two_fair_value_gains and memo_explains_fair_value_treatment include 'not\s+a\s+realised' and amount/deduct fallbacks; memo_addresses_mill_lane omits both, so it alone rejects the equivalent 'not a realised profit' phrasing.
+WHAT TO CHANGE
+Add fallbacks mirroring the sibling checks, e.g. add not\s+(?:a\s+)?(?:realis|distribut|available|crystallis)|non.?distribut|outside\s+distribut|not\s+includ and an amount/deduct alternative to the Mill Lane second concept group.
+SOURCE
+l5.verifier_fairness · qc
+error
+The memo and schedule verifiers use dotall regex (presence/keyword co-occurrence anywhere in the document) instead of coherent-explanation or arithmetic checks, so an agent who knows the correct numbers can earn full reward (31/31 = 1.0) with a keyword-salad memo and an unstructured CSV, bypassing the instruction's 'explaining each adjustment' and 'showing the build from retained earnings' requirements.
+l5.reward_hacking:b951c1f9ed97d94e
+EVIDENCE
+All 13 memo content checks use (?is) (dotall) so that . matches newlines — keyword pairs need only appear anywhere in the document, not on the same line. The four memo_explains_* checks are weaker still: their two regex groups share keywords (e.g. realis|dispos|sold|added|distribut|surplus|gain in both groups), so two occurrences of the same keyword satisfy the check with no numbers and no explanation. memo_has_explanatory_body only requires 500+ characters. On the schedule side, schedule_arithmetic_check is a set of lookaheads asserting each key number appears somewhere (?is)(?=.*2[,.]?455[,.]?000)(?=.*2[,.]?280[,.]?000)(?=.*-180)(?=.*-260)(?=.*320)(?=.*-55) — it does not parse the CSV, verify row order, or confirm the figures add up. schedule_starts_from_retained_earnings only checks the phrase appears anywhere, not that it is the first data row. Consequently an agent can write a 500+ character memo listing required keywords and numbers in arbitrary order (e.g. 'revaluation surplus 320 realised … fair value 180 unrealised deduct … development cost 260 capitalised intangible deduct … provision litigation Denby 140 charged not added back … unquoted private company 55 unrealised deduct … special circumstances development 100 not deduct … Mill Lane sale contract unrealised still held … cannot exceed not lawful') and a CSV with the correct numbers in any row order, and pass all 31 checks without coherent explanation or a real build from retained earnings. The instruction's explicit requirements to 'explain each adjustment' and 'show the build from retained earnings' are not enforced.
+WHAT TO CHANGE
+Remove the `s` (dotall) flag from all memo regex patterns so that `.` does not cross newlines, forcing keyword pairs to co-occur on the same line (a stronger proxy for coherent explanation). For the memo_explains_* checks, require a topic keyword AND a treatment keyword on the same line, and drop the shared-keyword self-match (e.g. require a number such as 320 or 260 on the same line as the treatment keyword). Replace schedule_arithmetic_check with a real CSV parse that sums the amount_gbp column from the retained-earnings row to the distributable-profits row and verifies the running total. Anchor schedule_starts_from_retained_earnings to the first data row (e.g. ^[^,]*retained\s+earnings).
+SOURCE
+l5.reward_hacking · qc
+error
+The same task uses two incompatible reward computation methods across evaluation axes for the same 31 verifiers. The difficulty axis applies binary all-or-nothing scoring: a single aggregated pytest test passes (reward 1.0) only if all 31 verifiers pass, and fails (reward 0.0) if any single verifier fails. The glm-5.2 axis applies proportional scoring: reward = passing_verifiers / 31 = 26/31 = 0.8387096774. The difficulty/r2 run fails only at schedule_arithmetic_check (verifier #25 of 31) yet receives reward 0.0, while the glm-5.2/r1-r4 runs each fail 5 of 31 verifiers yet receive 0.8387096774. A better-performing run receives a lower reward than a worse-performing run.
+cross_trial.calibration:899b8cbbe66cadb6
+EVIDENCE
+Rewards do not reflect real differences in task performance across trials. A difficulty-axis run that passes at least 24 of 31 verifiers (failing at #25) is scored as a complete failure (0.0), while a glm-5.2-axis run that passes only 26 of 31 verifiers receives substantial partial credit (0.8387). Cross-trial reward comparison is invalid: identical task performance yields 0.0 on one axis and a fractional score on another. The binary difficulty scoring collapses all partial-credit outcomes into a single 0.0 bucket, destroying the performance signal that the proportional glm-5.2 scoring preserves. The reward file formats also differ (difficulty: reward.txt with '0.0'/'1'; glm-5.2: reward.json with {"reward": 0.8387096774}), further confirming distinct evaluation harnesses for the same task.
+WHAT TO CHANGE
+Use a single reward computation method across all evaluation axes for this task. Either (a) apply proportional scoring (passing_verifiers / 31) on the difficulty axis so that difficulty/r2 receives a reward proportional to its passing verifier count rather than 0.0, or (b) apply binary all-or-nothing scoring on the glm-5.2 axis so that runs failing any verifier receive 0.0. The reward file format should also be consistent across axes (both reward.txt or both reward.json) to avoid format-driven scoring differences.
+SOURCE
+cross_trial.calibration · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f55-trust-principal-income-allocation-audit
+v6
+Aug 30, 06:01 PM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f55-3c7582-v6-sna-bwvq
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f55-3c7582-v6-sna-bwvq/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f44-facility-interest-review
+v10
+Aug 30, 09:35 AM
+Accepted
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g1205-5e7a5a-v10-sna-fxtw
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g1205-5e7a5a-v10-sna-fxtw/
+copy
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g806-leadership-brief-rhetorical-style-audit
+v18
+Aug 30, 09:22 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g1205-13a041-v18-sna-astm
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g1205-13a041-v18-sna-astm/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f39-distributable-profits
+v24
+Aug 30, 08:37 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f53-f00622-v24-sna-ptsk
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f53-f00622-v24-sna-ptsk/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f33-cash-pool-interest-allocation
+v8
+Aug 29, 09:23 PM
+Accepted
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f33-690543-v8-sna-nmon
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f33-690543-v8-sna-nmon/
+copy
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtdGhlLXRocmVhZC1oYW5kcy1iYWNrLWl0cy1vd24tLTQ3OTY4MC12NQ
+v5
+Aug 29, 09:08 PM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own--479680-v5-sna-eocm
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-the-thread-hands-back-its-own--479680-v5-sna-eocm/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Oracle did not reach reward 1.0
+GATE-ORACLE-REJECTED
+EVIDENCE
+the verifier disagreed with itself over 6 gradings of one trajectory: rubric:recount_carries_a_total_line__state, rubric:recount_covers_all_four_rooms__state, rubric:recount_post_exists__state. Gate recorded 4 graded attempt(s) out of an allowance of 3.
+WHAT TO CHANGE
+Correct the task, golden solution, or verifier and submit a new version.
+SOURCE
+oracle · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g826-tender-document-brand-style-audit
+v11
+Aug 29, 08:57 PM
+Rejected · 2 findings
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g826-9be4ed-v11-sna-dzrh
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g826-9be4ed-v11-sna-dzrh/
+copy
+Why it was rejected 2
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+The memo_processing_order verifier uses a literal-phrase regex that rejects valid instruction-compliant presentations of the 'processing order' topic (markdown emphasis on a single word such as 'processing *order*', and paraphrases such as '## Processing Steps' / 'order of operations'), even though the instruction only requires the memo to cover the topic, not to use a specific phrase. The md source reads raw Markdown (no emphasis stripping), so emphasis characters remain in $.text and break the adjacency requirement.
+l5.verifier_fairness:f50f8d8e60924519
+EVIDENCE
+A memo that covers the processing-order topic using Markdown emphasis on one word (e.g., 'processing *order*') or a synonymous heading/phrase (e.g., 'Processing Steps', 'order of operations', 'audit sequence: keep last row, exclude, find, waive') fails the memo_processing_order check. This causes an instruction-compliant submission to lose a check (and potentially its reward) for a non-violation of any explicit requirement.
+WHAT TO CHANGE
+Broaden the regex to (a) allow Markdown emphasis characters (* and _) in the inter-word gaps and (b) accept the natural paraphrases. For example replace the expected with: (?is)\bprocessing[\s\-*_]*(order|steps|sequence)\b|\border\s+of\s+(processing|operations|steps)\b|\blast[\s\-*_]*row[\s\-*_]*wins\b|\bdedup|\bduplicat|\bcollops|\bcolaps. The minimal change is adding `*_` to the character classes (fixes 'processing *order*') and adding `steps|sequence`/`operations|steps` alternates (fixes the paraphrases).
+SOURCE
+l5.verifier_fairness · qc
+error
+The verifier contract never validates that the `finding` column in `tender_style_audit.csv` contains the correct per-document finding. The primary objective is to audit each document against BS-07 and assign one of five finding codes, but no verifier checks any finding value. An agent can write 147 rows with arbitrary findings (e.g., all `none`), hardcode `results.json` with the five expected summary counts, and include required memo keywords to pass all 30 checks and earn reward 1.0 without auditing a single document.
+l5.reward_hacking:94aa40e26a795816
+EVIDENCE
+An agent obtains full reward (all 30 deterministic checks pass, reward 1.0) without completing the primary objective of correctly auditing documents. The `audit_data_row_count` regex matches the finding column with `[^
+]*` (any text), the 13 `excluded_doc_XX_absent` checks only verify absence of specific doc IDs, the 2 sort checks only verify ordering, and the 5 `result_*_count` checks read summary numbers directly from `results.json` (via `json.read_file` on `$.doc_count` etc.) rather than computing them from the CSV. No verifier reads the input files to cross-reference. This means the substantive audit output — the finding assigned to each of the 147 surviving documents — is entirely unconstrained and unaudited.
+WHAT TO CHANGE
+Add deterministic per-document finding checks that verify specific `doc_id,finding` pairs in `tender_style_audit.csv` against the expected values (e.g., regex assertions like `(?im)^doc-2\s*,\s*PRIMARY_COLOR_NONCOMPLIANT\s*$` for spot-checked documents across all finding categories). Additionally, add at least one check that computes a summary count (e.g., flagged_count) from the CSV text and compares it to the value in `results.json`, so the two outputs cannot diverge. The smallest sufficient fix is a handful of per-document finding-value regex checks covering each of the five finding codes.
+SOURCE
+l5.reward_hacking · qc
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f53-deposit-account-fee-assessment-audit
+v1
+Aug 28, 09:00 AM
+Pipeline error
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f53-f00622-v1-sna-swci
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f53-f00622-v1-sna-swci/
+copy
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/gen-g734-cms-publish-readiness-audit
+v18
+Aug 28, 03:42 AM
+Accepted
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f53-62197a-v18-sna-wjyi
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f53-62197a-v18-sna-wjyi/
+copy
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtaGVhbHRoLWg0MC0xYzQwMWUtdjQ
+v4
+Aug 28, 12:48 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-health-h40-1c401e-v4-sna-zwez
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-health-h40-1c401e-v4-sna-zwez/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Oracle did not reach reward 1.0
+GATE-ORACLE-REJECTED
+EVIDENCE
+no attempt reached 1.0 over 4 graded run(s); no escalation run exists. Gate recorded 4 graded attempt(s) out of an allowance of 3.
+WHAT TO CHANGE
+Correct the task, golden solution, or verifier and submit a new version.
+SOURCE
+oracle · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+obi/fin-f53-deposit-account-fee-assessment-audit
+v14
+Aug 27, 10:00 PM
+Accepted
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-fin-f53-62197a-v14-sna-dxcu
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-fin-f53-62197a-v14-sna-dxcu/
+copy
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtZ2VuLWc4MjYtZWU3OWJlLXYx
+v6
+Aug 27, 02:18 PM
+Accepted
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g826-ee79be-v1-sna-xgux
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g826-ee79be-v1-sna-xgux/
+copy
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+QC report
+Report folder (.zip)
+Submitted bundle
+shannon~VVBMT0FELVRISVMtVE8tUUMtZ2VuLWc4NTctNmJjOWFkLXYy
+v2
+Aug 27, 07:37 AM
+Pipeline error
+Ready for finalization
+legacy score unavailable
+UPLOAD-THIS-TO-QC-gen-g857-6bc9ad-v2-sna-kxuy
+landed in
+gs://obi-harbor-pipeline/tasks/qc_platform_sync/UPLOAD-THIS-TO-QC-gen-g857-6bc9ad-v2-sna-kxuy/
+copy
+QC report
+Report folder (.zip)
+Submitted bundle

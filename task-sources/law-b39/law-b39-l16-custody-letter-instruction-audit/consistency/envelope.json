@@ -1,0 +1,84 @@
+{
+ "task": "task_law_b39_l16_custody_letter_instruction_audit",
+ "n": 3,
+ "input_surface": [
+  "prompt",
+  "input/clarification.md",
+  "input/original_instruction.md",
+  "input/review_protocol.md",
+  "input/submission_format.md",
+  "solution values (neutral serialization)"
+ ],
+ "renderings": [
+  {
+   "api_failure": false,
+   "checks_pass": true,
+   "failed_checks": [],
+   "values_match_gold": true,
+   "files": [
+    "answer.md",
+    "letter_line_review.csv",
+    "results.json"
+   ],
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "70a7df72652cd4a92e7cbde4f9b8d47468720be3cf4a18e4d99736a28f0a07dd",
+   "stamped_at": "2026-09-13T02:55:07+01:00"
+  },
+  {
+   "api_failure": false,
+   "checks_pass": true,
+   "failed_checks": [],
+   "values_match_gold": true,
+   "files": [
+    "answer.md",
+    "letter_line_review.csv",
+    "results.json"
+   ],
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "70a7df72652cd4a92e7cbde4f9b8d47468720be3cf4a18e4d99736a28f0a07dd",
+   "stamped_at": "2026-09-13T02:55:07+01:00"
+  },
+  {
+   "api_failure": false,
+   "checks_pass": true,
+   "failed_checks": [],
+   "values_match_gold": true,
+   "files": [
+    "answer.md",
+    "letter_line_review.csv",
+    "results.json"
+   ],
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "70a7df72652cd4a92e7cbde4f9b8d47468720be3cf4a18e4d99736a28f0a07dd",
+   "stamped_at": "2026-09-13T02:55:07+01:00"
+  }
+ ],
+ "findings": [],
+ "verdict": "pass",
+ "schema": 2,
+ "model": "glm-5.2",
+ "pool": [
+  {
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "slots": 3
+  }
+ ],
+ "pool_families": [
+  "glm"
+ ],
+ "pool_mode": "single-family",
+ "author_family": "claude",
+ "revision_key": "70a7df72652cd4a92e7cbde4f9b8d47468720be3cf4a18e4d99736a28f0a07dd",
+ "stamped_at": "2026-09-13T02:55:07+01:00"
+}
