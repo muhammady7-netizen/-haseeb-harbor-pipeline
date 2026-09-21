@@ -1,4 +1,6 @@
-passed=0
-failed=76
-total=76
-reward=0.9
+passed=54
+failed=1
+total=55
+reward=0.9818181818
+pytest_status=1
+source=ctrf_summary

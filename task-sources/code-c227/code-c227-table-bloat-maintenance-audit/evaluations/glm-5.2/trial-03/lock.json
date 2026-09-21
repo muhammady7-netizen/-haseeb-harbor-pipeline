@@ -3,8 +3,8 @@
     "task": {
         "name": "code-c227-table-bloat-maintenance-audit",
         "type": "local",
-        "digest": "sha256:d989e65021a9ae563ffe35e2a450271c283874f8f618bf54cf596518e23f28b9",
-        "path": "C:\\Users\\Haseeb Mirza\\Documents\\Codex\\2026-08-17\\this-is-the-very-beginning-of\\tasks\\code-c227-work\\code-c227-table-bloat-maintenance-audit"
+        "digest": "sha256:1fd49990254b837f9f937409060af42e510829401d774438da7d2f2d80155a4b",
+        "path": "/workspace"
     },
     "install_only": false,
     "timeout_multiplier": 3.0,
@@ -27,7 +27,7 @@
             }
         },
         "env": {
-            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_API_KEY": "****",
             "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1"
         },
         "mcp_servers": []
@@ -45,7 +45,7 @@
     },
     "verifier": {
         "env": {
-            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_API_KEY": "****",
             "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
             "JUDGE_MODEL": "openai/glm-5.2"
         },

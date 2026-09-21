@@ -1,0 +1,245 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+code-c227-table-bloat-maintenance-audit
+v2 · latest
+Harbor package
+SWITCH VERSION
+v2 (latest) — not run · Sep 21, 12:47 PM
+v1 — not run · Sep 21, 12:46 PM
+V1
+·
+V2
+·
+↑
+Upload new version
+✓
+Upload
+✓
+Client PreQC
+!
+Review findings
+changes needed
+✓
+Review record
+5
+Evaluation
+6
+Submit
+Client preQC (Internal Gate · advisory)
+Last run: Trainer changes required
+Trainer changes required · 7 trainer finding(s) · 2 min ago
+Re-run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Not run yet
+has not run on this task yet
+Run QC-Oracle-GLM
+View report
+what each gate checks
+You are the judge. what good QC takes — read once
+
+NEEDS ATTENTION
+
+7 PreQC findings to review
+
+Client PreQC is advisory: confirm each finding or dismiss it with a note. It does not hold the evaluation or Submit, and each upload is reviewed afresh.
+
+7
+i
+CLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR
+Prose deliverable graded by reward-hackable regex
+Review issue
+i
+CLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR
+Prose deliverable graded by reward-hackable regex
+Review issue
+i
+CLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR
+Prose deliverable graded by reward-hackable regex
+Review issue
+i
+CLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR
+Prose deliverable graded by reward-hackable regex
+Review issue
+i
+CLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR
+Prose deliverable graded only by keyword/ID-presence regexes
+Review issue
+i
+CLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR
+Golden trajectory contradicts gold results
+Review issue
+i
+CLIENT PREQC (INTERNAL GATE · ADVISORY) · MAJOR
+The Dockerfile ends as a non-root user
+Review issue
+Run history
+1 run · latest Changes required
+CLIENT PREQC (INTERNAL GATE · ADVISORY)
+Client preQC (Internal Gate · advisory)
+Deterministic PreQC
+Trainer changes required
+7 trainer finding(s)
+Sep 21, 12:56 PM · took 2s
+report
+zip
+RESULT
+Client preQC (Internal Gate · advisory)
+Trainer changes required
+7 trainer finding(s)
+Open the QC report
+Download the report folder (.zip)
+
+The .zip is the whole deliverable: script outputs, your worksheet and your dispositions. Upload it to the batch's Drive location; a lone results.json is an incomplete report. Just the report? download qc_report.html.
+
+DATA
+report.json
+Preview the report here
+
+YOUR DECISIONS
+
+Blocking — blocker / critical 7
+major
+Prose deliverable graded by reward-hackable regex
+QC1-1
+deterministic
+
+This is a deterministic bundle-lint finding. Fix the task and re-run PreQC to clear it; it cannot be dismissed as a false positive.
+
+GATE / OWNER
+internal · owner: client-preqc · blocks Oracle/GLM: fix the task and re-run PreQC to clear
+EVIDENCE
+pattern=(?is)(T-02|T02).{0,300}?(?:bloat|exceed|threshold|over[\s\-]?ratio)
+IMPACT
+Verifier 'memo_t02_explained' grades a prose target (bloat_memo.md) with regex_match but `.*`/`.{0,N}` slack lets arbitrary filler satisfy the match. A keyword-stuffed stub can pass while a genuine explanation is not checked for substance. Replace with an LLM rubric on content or a key-fact set-membership check.
+SMALLEST FIX
+fixable
+VERIFY
+D1.prose_regex_grading passes on a corrected task
+major
+Prose deliverable graded by reward-hackable regex
+QC1-2
+deterministic
+
+This is a deterministic bundle-lint finding. Fix the task and re-run PreQC to clear it; it cannot be dismissed as a false positive.
+
+GATE / OWNER
+internal · owner: client-preqc · blocks Oracle/GLM: fix the task and re-run PreQC to clear
+EVIDENCE
+pattern=(?is)(T-03|T03).{0,300}?(?:autovacuum|auto[\s\-]?vacuum|vacuum)
+IMPACT
+Verifier 'memo_t03_explained' grades a prose target (bloat_memo.md) with regex_match but `.*`/`.{0,N}` slack lets arbitrary filler satisfy the match. A keyword-stuffed stub can pass while a genuine explanation is not checked for substance. Replace with an LLM rubric on content or a key-fact set-membership check.
+SMALLEST FIX
+fixable
+VERIFY
+D1.prose_regex_grading passes on a corrected task
+major
+Prose deliverable graded by reward-hackable regex
+QC1-3
+deterministic
+
+This is a deterministic bundle-lint finding. Fix the task and re-run PreQC to clear it; it cannot be dismissed as a false positive.
+
+GATE / OWNER
+internal · owner: client-preqc · blocks Oracle/GLM: fix the task and re-run PreQC to clear
+EVIDENCE
+pattern=(?is)(T-04|T04).{0,300}?(?:stale|outdated|old|not\s+refresh|not\s+update|expired)
+IMPACT
+Verifier 'memo_t04_explained' grades a prose target (bloat_memo.md) with regex_match but `.*`/`.{0,N}` slack lets arbitrary filler satisfy the match. A keyword-stuffed stub can pass while a genuine explanation is not checked for substance. Replace with an LLM rubric on content or a key-fact set-membership check.
+SMALLEST FIX
+fixable
+VERIFY
+D1.prose_regex_grading passes on a corrected task
+major
+Prose deliverable graded by reward-hackable regex
+QC1-4
+deterministic
+
+This is a deterministic bundle-lint finding. Fix the task and re-run PreQC to clear it; it cannot be dismissed as a false positive.
+
+GATE / OWNER
+internal · owner: client-preqc · blocks Oracle/GLM: fix the task and re-run PreQC to clear
+EVIDENCE
+pattern=(?is)(T-08|T08).{0,300}?(?:bloat|exceed|threshold|over[\s\-]?ratio)
+IMPACT
+Verifier 'memo_t08_explained' grades a prose target (bloat_memo.md) with regex_match but `.*`/`.{0,N}` slack lets arbitrary filler satisfy the match. A keyword-stuffed stub can pass while a genuine explanation is not checked for substance. Replace with an LLM rubric on content or a key-fact set-membership check.
+SMALLEST FIX
+fixable
+VERIFY
+D1.prose_regex_grading passes on a corrected task
+major
+Prose deliverable graded only by keyword/ID-presence regexes
+QC1-5
+deterministic
+
+This is a deterministic bundle-lint finding. Fix the task and re-run PreQC to clear it; it cannot be dismissed as a false positive.
+
+GATE / OWNER
+internal · owner: client-preqc · blocks Oracle/GLM: fix the task and re-run PreQC to clear
+EVIDENCE
+items=memo_bloat_cap, memo_maintenance_exempt, memo_maintenance_reindex, memo_size_class
+IMPACT
+4 regex_match items grade the prose target 'bloat_memo.md' by bare literal presence (no `.*`, lookahead, or quantifier), so the memo is scored only by which tokens appear, not whether the explanation is correct or coherent. A stub that lists the IDs passes. Grade the claim with an LLM rubric on content, or bind each token to its required assertion instead of mere presence.
+SMALLEST FIX
+fixable
+VERIFY
+D1.prose_regex_grading passes on a corrected task
+major
+Golden trajectory contradicts gold results
+QC1-6
+deterministic
+
+This is a deterministic bundle-lint finding. Fix the task and re-run PreQC to clear it; it cannot be dismissed as a false positive.
+
+GATE / OWNER
+internal · owner: client-preqc · blocks Oracle/GLM: fix the task and re-run PreQC to clear
+EVIDENCE
+flagged_count: trajectory 9 vs gold 28; autovacuum_disabled_count: trajectory 3 vs gold 7; bloat_exceeded_count: trajectory 3 vs gold 18; compliant_count: trajectory 8 vs gold 13
+IMPACT
+solution/golden_trajectory.json prints values that differ from solution/files/results.json.
+SMALLEST FIX
+fixable
+VERIFY
+D21.notes_contradict_runs passes on a corrected task
+major
+The Dockerfile ends as a non-root user
+QC1-7
+deterministic
+
+This is a deterministic bundle-lint finding. Fix the task and re-run PreQC to clear it; it cannot be dismissed as a false positive.
+
+GATE / OWNER
+internal · owner: client-preqc · blocks Oracle/GLM: fix the task and re-run PreQC to clear
+EVIDENCE
+environment/Dockerfile USER appuser
+IMPACT
+The pipeline stops on this before any model runs, so the task would park with a stage error instead of being evaluated.
+SMALLEST FIX
+Keep the image as root (remove the final USER line or end with `USER root`) and set the account the agent should use under [agent] in task.toml instead.
+VERIFY
+Re-run preQC; PF9.agent_user_not_root must report no finding.
+How to act on category findings
+Report card — the script's result and your checklist, harmonized
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

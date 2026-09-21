@@ -1,0 +1,223 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+obi/code-c227-table-bloat-maintenance-audit
+v25 · rejected
+Harbor package
+SWITCH VERSION
+v37 (latest) — not run · Sep 2, 01:31 AM
+v36 — not run · Sep 2, 12:31 AM
+v35 — not run · Sep 2, 12:31 AM
+v34 — not run · Sep 1, 10:18 PM
+v33 — rejected by final QC · Sep 1, 02:40 AM
+v32 — not run · Sep 1, 02:33 AM
+v31 — not run · Sep 1, 02:07 AM
+v30 — not run · Aug 31, 11:02 PM
+v29 — not run · Aug 31, 10:24 PM
+v28 — not run · Aug 31, 06:53 PM
+v27 — not run · Aug 31, 04:03 PM
+v26 — not run · Aug 31, 01:54 PM
+v25 — rejected by final QC · Aug 31, 05:32 AM
+v24 — not run · Aug 31, 05:21 AM
+v23 — not run · Aug 30, 11:15 PM
+v22 — not run · Aug 30, 11:06 PM
+v21 — not run · Aug 30, 11:03 PM
+v20 — not run · Aug 30, 10:34 PM
+v19 — not run · Aug 30, 09:23 PM
+v18 — not run · Aug 30, 09:09 PM
+v17 — not run · Aug 30, 07:33 PM
+v16 — not run · Aug 30, 07:30 PM
+v15 — not run · Aug 30, 06:04 PM
+v14 — not run · Aug 30, 03:54 PM
+v13 — not run · Aug 30, 02:50 PM
+v12 — not run · Aug 30, 02:38 PM
+v11 — not run · Aug 30, 02:26 PM
+v10 — not run · Aug 30, 11:25 AM
+v9 — not run · Aug 30, 10:40 AM
+v8 — not run · Aug 30, 10:32 AM
+v7 — not run · Aug 30, 10:18 AM
+v6 — not run · Aug 30, 10:01 AM
+v5 — not run · Aug 30, 09:47 AM
+v4 — not run · Aug 30, 09:30 AM
+v3 — not run · Aug 30, 08:52 AM
+v2 — not run · Aug 30, 08:17 AM
+v1 — not run · Aug 30, 05:17 AM
+V1
+·
+V2
+·
+V3
+·
+V4
+·
+V5
+·
+V6
+·
+V7
+·
+V8
+·
+V9
+·
+V10
+·
+V11
+·
+V12
+·
+V13
+·
+V14
+·
+V15
+·
+V16
+·
+V17
+·
+V18
+·
+V19
+·
+V20
+·
+V21
+·
+V22
+·
+V23
+·
+V24
+·
+V25
+Rejected
+V26
+·
+V27
+·
+V28
+·
+V29
+·
+V30
+·
+V31
+·
+V32
+·
+V33
+Rejected
+V34
+·
+V35
+·
+V36
+·
+V37
+·
+↑
+Upload new version
+!
+Upload
+new version needed
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+5
+Evaluation
+!
+Submit
+rejected
+✕
+Final QC rejected this version
+Aug 31, 06:21 AM · batch auto-UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintena-97d912-v25-sna-fpgn
+
+Every item below has to be addressed in a new version of this task. This one has already been handed over and cannot be resubmitted.
+
+error
+GLM-5.2 solved every scored difficulty run
+DIFFICULTY-GLM-TOO-EASY
+EVIDENCE
+GLM-5.2 received reward 1.0 in all 4/4 scored difficulty runs
+WHAT TO CHANGE
+Increase the task difficulty so GLM-5.2 does not solve every scored run, then submit a new version.
+SOURCE
+difficulty · agent
+Noted, but not blocking
+intake the submitted evidence does not grade this revision of the task, so the model runs will be repeated
+agent 4 of 4 model runs solved this task, above the target of 2; delivered anyway
+Hide what the pipeline did
+18 steps
+intake
+the submitted bundle was admitted; package checks are advisory
+code-c227-table-bloat-maintenance-audit
+intake · Freshness
+the submitted evidence does not grade this revision of the task, so the model runs will be repeated
+code-c227-table-bloat-maintenance-audit
+oracle · Preparing credentials
+Preparing credentials
+code-c227-table-bloat-maintenance-audit
+oracle · Starting Harbor
+Starting Harbor
+code-c227-table-bloat-maintenance-audit
+oracle · Classifying result
+Classifying result
+code-c227-table-bloat-maintenance-audit
+oracle · Classified
+graded 1 attempt(s); best reward 1.0
+code-c227-table-bloat-maintenance-audit
+oracle · Uploading artifacts
+Uploading artifacts
+code-c227-table-bloat-maintenance-audit
+gate
+pass: 1.0 on _66nUjEg (1/1 graded)
+code-c227-table-bloat-maintenance-audit
+agent · Preparing credentials
+Preparing credentials
+code-c227-table-bloat-maintenance-audit
+agent · Starting Harbor
+Starting Harbor
+code-c227-table-bloat-maintenance-audit
+agent · Classifying result
+Classifying result
+code-c227-table-bloat-maintenance-audit
+agent · Classified
+graded 4 attempt(s); best reward 1.0
+code-c227-table-bloat-maintenance-audit
+agent · Re-grading the trajectory
+Re-grading the trajectory
+code-c227-table-bloat-maintenance-audit
+agent · Uploading artifacts
+Uploading artifacts
+code-c227-table-bloat-maintenance-audit
+agent
+4 of 4 model runs solved this task, above the target of 2; delivered anyway
+code-c227-table-bloat-maintenance-audit
+post-gate
+pass: 1.0 on _JrXYHPA (4/4 graded)
+code-c227-table-bloat-maintenance-audit
+e2b
+the sandbox settled; gpt-5.6-sol solved the task
+code-c227-table-bloat-maintenance-audit
+modal
+the sandbox settled; claude-opus-5 solved the task
+code-c227-table-bloat-maintenance-audit
+You are the judge. what good QC takes — read once
+Run history
+loading…
+RESULT
+No run open
+
+Run a gate above, or pick an earlier run to read its findings, score and report.
+
+Task readiness

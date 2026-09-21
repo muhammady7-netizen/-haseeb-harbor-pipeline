@@ -1,0 +1,45 @@
+{
+    "job_name":  "glm-c227-v11-full",
+    "agent_timeout_multiplier":  3,
+    "timeout_multiplier":  3,
+    "n_concurrent_trials":  2,
+    "environment":  {
+                        "type":  "docker",
+                        "force_build":  true
+                    },
+    "agents":  [
+                   {
+                       "model_name":  "openai/glm-5.2",
+                       "kwargs":  {
+                                      "model_info":  {
+                                                         "max_input_tokens":  128000,
+                                                         "max_output_tokens":  16384
+                                                     },
+                                      "max_turns":  80,
+                                      "llm_call_kwargs":  {
+                                                              "max_tokens":  16384
+                                                          }
+                                  },
+                       "name":  "terminus-2",
+                       "env":  {
+                                   "OPENAI_BASE_URL":  "http://34.41.10.8:4000/v1",
+                                   "OPENAI_API_KEY":  "${OPENAI_API_KEY}"
+                               },
+                       "override_timeout_sec":  7200
+                   }
+               ],
+    "verifier":  {
+                     "env":  {
+                                 "JUDGE_MODEL":  "openai/glm-5.2",
+                                 "OPENAI_BASE_URL":  "http://34.41.10.8:4000/v1",
+                                 "OPENAI_API_KEY":  "${OPENAI_API_KEY}"
+                             }
+                 },
+    "tasks":  [
+                  {
+                      "path":  "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/tmp-pw/c227-fix-accepted/code-c227-table-bloat-maintenance-audit"
+                  }
+              ],
+    "jobs_dir":  "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-c227",
+    "n_attempts":  4
+}

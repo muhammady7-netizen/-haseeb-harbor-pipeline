@@ -1,0 +1,199 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+Upload a task to QC
+
+Client PreQC uses GLM-5.2 to review the instruction and verifier source before evaluation. It is required, cached per task version, and does not consume one of the three evaluation slots.
+
+Drop a task here, or click to browse
+One Harbor task package as .zip.
+What a Harbor task package looks like
+Submitted to the pipeline
+
+Every task you have handed over, newest first.
+
+50
+law-b39-l16-custody-letter-instruction-audit
+v1
+Sep 20, 02:05 AM
+Accepted
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-ec8e730b8e82453a
+landed in
+gs://obi-harbor-pipeline/tasks/finalisation_client_qc_accepted_iteration_2/law-b39-l16-custody-letter-instruction-audit/950736579ee0ca9cab45cd2d2d2352ad0c4b9614dae3277d290d0c4747904f85.zip
+copy
+Pipeline report
+Submitted bundle
+law-b39-l16-custody-letter-instruction-audit
+v1
+Sep 20, 12:06 AM
+Rejected · 1 finding
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-8c51491192bc4374
+Why it was rejected 1
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Finding (brittle_prose_matcher): answer_at_odds_figure_exactly_one: The check is a not_regex_match on raw md.extract_text text that fails answer.md whenever a `NUMBER (or|alternatively|possibly|either|maybe|perhaps) NUMBER` (or `N / N`) pattern occurs within 70 chars of the label on the same line: regex `(?is)\bL...record\w*\b(?:(?![.!?](?:\s|$)|\n).){0,70}?...\d[\d,]*...[^\w\n;.|/]*(?:\b(?:or|alternatively|possibly|either|maybe|perhaps)\b|\s/\s)[^\w\n;.|/]*\d[\d,]*...`. instruction.md/submission_format.md only say the figure must be 'stated as the finding — not offered as one of two candidates'; they never state a 70-char window and never forbid citing two record-entry ids with 'or' near the label. A valid, non-hedged review that states the figure as the sole finding but discusses record entries on the same line trips it, e.g. `Letter lines at odds with the record: 197; the addressee turns on CL-301 or OI-201 under RP-401.` — the regex matches the '301 or 201' digits inside the CL-/OI- ids within the window, so not_regex_match fails (incidental, ~0.111 reward lost via score.py) although 197 is stated as the only candidate figure. (Golden avoids this only because its figure sits on its own line, where the trailing newline stops the 70-char window.)
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer5_verifier_fairness_static__surface_form_brittleness · harbor-check
+Pipeline report
+Submitted bundle
+law-b39-l16-custody-letter-instruction-audit
+v2
+Sep 18, 11:54 PM
+Rejected · 2 findings
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-f990512edf2843ed
+Why it was rejected 2
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Finding (stale_or_inconsistent_evidence): see the assessment below. Assessment: The aggregate FAILs because two mandatory subchecks FAIL. (1) `layer5_verifier_fairness_static__surface_form_brittleness` FAILs: the `answer_at_odds_figure` core check uses trailing guard `(?!\d)` but README.md line 18 claims `(?!\d|[.,]\d)`, so wrong figures "175.5"/"175,5" match the `175` alternative and pass (confirmed by `decimal_test` probe: reward=1.0). (2) `layer5_verifier_fairness_static__counterfactual_strength` FAILs: the same defect means a defective submission (figure=175.5) scores 1.0 identically to gold — the verifier cannot distinguish it. All other mandatory subchecks PASS: requirement_traceability traces every material instruction requirement to an appropriate check; coverage_depth is deep (register_table checks all 320 rows × 2 cells, results_figures checks 4 closed keys); evidence_routing reads the correct artifacts; semantic_equivalence accepts markdown emphasis, case-insensitive verdicts, float results, and numeric strings; verifier_execution_completeness runs all 9 declared checks; score_bucket_activation allows all 9 checks to affect reward; aggregation_normalization matches the declared core-gate + incidental-weight model; scoring_proportionality gates core failures to 0.0; check_independence avoids reward multiplication; process_grading_justification grades only deliverable files.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer5_verifier_fairness_static · harbor-check
+error
+Finding (brittle_structured_matcher): see the assessment below. Finding (verifier_misses_requirement): see the assessment below. Assessment: The `answer_at_odds_figure` core check (verifier.json line ~1788) uses regex `(?is)Letter\s+lines\s+at\s+odds\s+with\s+the\s+record\s*:\s*(?:\*\*|__|\*)?(?:175|175\.0|175\.00)(?:\*\*|__|\*)?(?!\d)`. The trailing boundary guard is only `(?!\d)`, not the `(?!\d|[.,]\d)` claimed in README.md line 18 ("with a `(?!\d|[.,]\d)` boundary guard so `177.5`/`177,5` cannot pose as `177`"). Because the regex alternation tries `175` first and `(?!\d)` only rejects trailing digits (not decimal points or commas), a wrong figure "175.5" or "175,5" matches via the `175` alternative. Direct Python execution against a temp copy of the gold workspace confirmed: fig="175.5" → answer_at_odds_figure success=True; fig="175,5" → success=True; fig="1750" → success=False; fig="200" → success=False. This is a wrong answer passing by mimicking the "175" token, and the matcher checks less than its README documentation claims. Additionally, the `answer_prose_floor` incidental check (verifier.json line ~1866) regex `(?si)(?=[\s\S]*\brecords?\b)\A\s*(?:\S+\s+){99,}\S+` checks only for "record" and 100+ words, but its metadata claims "and at least one domain keyword (verified, at odds, clarification, original, or governing), so a hollow word-repeat with no domain vocabulary cannot satisfy the floor" — a hollow 100-word repeat of "record" passes (confirmed by probe), so this matcher also checks less than its criterion claims.
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer5_verifier_fairness_static__surface_form_brittleness · harbor-check
+Pipeline report
+Submitted bundle
+law-b39-l16-custody-letter-instruction-audit
+v1
+Sep 18, 05:18 PM
+Rejected · 6 findings
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-1eea2873e4f4446f
+Why it was rejected 6
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Finding (stale_or_inconsistent_evidence): see the assessment below. Assessment: The task carries a reward-bearing ambiguity in the interaction between RP-407 (review_protocol.md: "Notwithstanding RP-401, when a line's cited_entry is a clarification entry (CL-…) that speaks to a subject different from the line's own subject, the original instruction entry for the line's subject governs — not the clarification entry for the line's subject") and the "(Superseded wherever the clarification speaks to …)" notes attached only to OI-206/OI-207/OI-210 in original_instruction.md. The golden solution (solution/files/letter_line_review.csv, mirrored in tests/verifier.json register_table) consistently uses the CL entry — not the OI entry — for all 40 cross-subject-CL rows whose subject is tone, concern or behavioural_plan (the three superseded subjects), while using the OI entry for the 6 non-superseded cross-subject rows (addressee/request/enclosure). This "superseded OI falls back to CL under RP-407" rule is nowhere disclosed: RP-407 has no superseded carve-out, and the superseded notes merely restate RP-401. The plain meaning of RP-407 ("Notwithstanding RP-401, the OI entry governs") points to OI for all 46 cross-subject rows, and that literal reading is the natural one: all five checked-in model attempts (difficulty r1–r3, platform/e2b/codex, platform/modal/run claude-opus) produced exactly 162 CL-governed (=202−40) and 177 at-odds/104-verified, i.e. they routed to OI for the 40 superseded rows and scored reward 0.0 via register_table. A defensible, disclosed reading of the protocol therefore scores 0.0 while only an unstated interpretation scores 1.0. Because the mandatory subcheck layer1_clarity_scope__representation_contract fails (the canonical governing-entry id for 40 rows is not uniquely determined by disclosed rules), the aggregate fails.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer1_clarity_scope · harbor-check
+error
+Finding (ambiguous_rule_contested_gold): register_table, results_figures, answer_at_odds_figure: Two binding clauses conflict for cross-subject CL- citations on superseded subjects. RP-401 (review_protocol.md): 'On any subject the clarification speaks to, the clarification prevails... the governing entry is always the clarification entry and never the original one... no matter which entry the draft cites.' RP-407: 'Notwithstanding RP-401, when a line\'s cited_entry is a clarification entry (CL-…) that speaks to a subject different from the line\'s own subject, the original instruction entry for the line\'s subject governs — not the clarification entry for the line\'s subject.' Original_instruction.md marks OI-206 concern, OI-207 behavioural_plan, OI-210 tone '(Superseded wherever the clarification speaks to <subject>.)'. For ST-137 (subject=tone, cited_entry=CL-304 salutation=different subject), RP-407's 'Notwithstanding RP-401' literally yields OI-210, while RP-401+the superseded note yields CL-307. Gold demands CL-307 (verifier.json register_table rows ST-137/138/139 expected CL-307/CL-309/CL-308). Runs r1/r2/r3 all supplied OI-210/OI-206/OI-207 here (r1 answer.md explicitly reasoned 'when a line cited a clarification entry for a different subject, the original instruction entry... governed instead (RP-407), so a concern, tone, behavioural_plan... line could be weighed against the original position'). The verdict itself flips: ST-585 (subject=behavioural_plan, cited_entry=CL-309 different subject) is gold AT_ODDS/
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer1_realism_leakage__domain_correctness · harbor-check
+error
+Finding (stale_or_inconsistent_evidence): see the assessment below. Assessment: The 9-check deterministic verifier is structurally sound (7 core gating to 0.0, 2 incidental adding weight; gold=1.0) and reward-hacking isolation is clean, but three mandatory subchecks fail. (1) surface_form_brittleness: the core `answer_at_odds_figure` regex in tests/verifier.json:1813 ends in `(?!\d)` only, so a materially wrong figure "181.5" or "181,5" passes the CORE gate (probe fig1815b reward=1.0, probe figcomma reward=1.0) — README.md:18 and review.csv row 12 claim the guard is `(?!\d|[.,]\d)`, contradicting the actual verifier. (2) coverage_depth/counterfactual_strength: `answer_prose_floor` metadata (tests/verifier.json:1875) claims to require "at least one domain keyword (verified, at odds, clarification, original, or governing)" but the regex `(?s)(?=[\s\S]*\brecord\b)\A\s*(?:\S+\s+){99,}\S+` only checks lowercase `\brecord\b` + 100 words; a hollow 100x"word"+record passes (python probe), and the wrong figure 181.5 is not distinguished from 181. (3) semantic_equivalence: the prose-floor `\brecord\b` is case-sensitive while the figure regex is `(?i)`, so an answer "Letter lines at odds with the Record: 181" passes the core figure check but fails the incidental prose floor (python probe: figure=True, floor=False) — a materially equivalent "Record" rejected. The aggregate fails because a broad reward must not hide these specific defects.
+HARBOR-CHECK-3
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer5_verifier_fairness_static · harbor-check
+error
+Finding (shallow_prose_grading): answer_prose_floor / answer_at_odds_figure / answer_at_odds_figure_exactly_one: answer.md checks are existence, the single figure 181 (core), a not-two-candidates guard (incidental), and a 100-word+'record' length floor (incidental); the digest states 'prose deliverable answer.md has no rubric/judge item'. instruction.md asks for a 'written review' but no judge grades its content. Counterexample: 'Letter lines at odds with the record: 181.' followed by ~90 words of lorem ipsum passes all four answer.md checks despite carrying no review of the findings; the 'vocabulary of that required label' requirement is satisfied by the mandatory label sentence alone. Finding (shallow_prose_grading): see the assessment below. Assessment: Two core/incidental checks validate less than they claim, so a materially wrong or hollow output satisfies them. (1) The CORE `answer_at_odds_figure` check (tests/verifier.json:1813) is declared as the gate that "a wrong or missing at-odds figure fails the submission", but its regex `(...)(?!\d)` accepts "181.5" and "181,5" — figures that are materially wrong (the count is the integer 181). probe verify fig1815b and figcomma both return reward=1.0 with all checks passing, so a wrong figure in the prose passes the core gate; the check does not validate the figure's correctness beyond a leading-digit boundary. (2) The incidental `answer_prose_floor` (tests/verifier.json:1875) metadata claims it requires "at least one domain keyword (verified, at odds, clarification, original, or governing), so a hollow word-repeat with no domain vocabulary cannot satisfy the floor", but the regex only asserts `\brecord\b` + >=100 words; a python probe confirms `re.search` over 100x"word" + "record" (no domain keyword) returns True. A hollow word-repeat therefore satisfies the floor. Both checks check materially less substantive content than their declared criteria.
+HARBOR-CHECK-4
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer5_verifier_fairness_static__coverage_depth · harbor-check
+error
+Finding (brittle_prose_matcher): see the assessment below. Finding (brittle_structured_matcher): see the assessment below. Assessment: The verifier rejects a materially equivalent correct representation for incidental casing. submission_format.md:11 requires ">=100 words of prose that use the vocabulary of that required label (including the word `record`)" — a word, not a case-specific token. The CORE `answer_at_odds_figure` regex uses `(?i)` (case-insensitive for the label), but the incidental `answer_prose_floor` regex `(?s)(?=[\s\S]*\brecord\b)\A\s*(?:\S+\s+){99,}\S+` (tests/verifier.json:1891) has NO `(?i)` and uses a case-sensitive `\brecord\b`. A python probe confirms: an answer "Letter lines at odds with the Record: 181" + 100 filler words passes the core figure check (re.search with `(?i)` -> True) but FAILS the prose floor (re.search with case-sensitive `\brecord\b` -> False), dropping reward from 1.0 to 0.889. "Record" at sentence start is the same word as "record"; the two checks disagree on case for the identical required word, so a materially equivalent correct representation is rejected without an explicit lowercase-form requirement.
+HARBOR-CHECK-5
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer5_verifier_fairness_static__semantic_equivalence · harbor-check
+error
+Finding (brittle_prose_matcher): answer_prose_floor: Regex `(?s)(?=[\s\S]*\brecord\b)\A\s*(?:\S+\s+){99,}\S+` requires `record` case-sensitively with no text normalization; submission_format.md says only 'including the word `record`' (no case/plural rule), and answer_at_odds_figure uses `(?i)`. Counterexample: an answer.md with label 'Letter Lines At Odds With The Record: 181' plus 100+ words that never use lowercase 'record' passes answer_at_odds_figure (case-insensitive label) but fails answer_prose_floor; 'records' (plural) also does not satisfy \brecord\b. Finding (verifier_misses_requirement): see the assessment below. Assessment: Two surface-form matchers are unsafe. (1) The CORE `answer_at_odds_figure` regex (tests/verifier.json:1813) ends in `(?!\d)` only; "." and "," are not digits, so "181.5" and "181,5" — materially wrong figures — pass the core gate (probe fig1815b reward=1.0, figcomma reward=1.0). README.md:18 and review.csv row 12 claim the guard is `(?!\d|[.,]\d)` to block exactly `177.5`/`177,5`, contradicting the actual verifier; the matcher checks less than its criterion claims and a wrong answer passes by mimicking the "181" token then appending a decimal continuation. (2) The incidental `answer_prose_floor` regex (tests/verifier.json:1891) uses a case-sensitive `\brecord\b`; an answer with "Record" (the same word, capital at sentence start) is rejected (python probe), while the case-insensitive figure regex accepts it — incidental case brittleness on the required vocabulary word. (3) The anti-hedge `answer_at_odds_figure_exactly_one` not_regex_match is appropriately scoped (incidental, rejects "X or Y" hedging) and is not a defect.
+HARBOR-CHECK-6
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+review-001/layer5_verifier_fairness_static__surface_form_brittleness · harbor-check
+Pipeline report
+Submitted bundle
+law-b39-l16-custody-letter-instruction-audit
+v3
+Sep 18, 04:38 PM
+Rejected · 9 findings
+Ready for finalization
+legacy score unavailable
+auto-pipeline-evaluation-a19477f6f1bd4933
+Why it was rejected 9
+
+These come from the pipeline's final QC. Fix them, then upload a new version of this task and run the Delivery Gate again.
+
+error
+Aggregate FAILs because three mandatory subchecks fail: calibration_profile (0/6 strict passes not plausibly explained by task performance; glm-gce/2 0.0 is entirely defect-caused by the RP-407 gold contradiction; Oracle 1.0 is on the defective gold, not valid evidence of a solvable task as disclosed), score_eligibility (defective-grading cell glm-gce/2 counted as model performance; register_table enforces gold contradicting RP-407), and criterion_level_anomalies (all five deliverable-producing trials across all three providers/harnesses fail the identical register_table check with the same ST-137 error; one defective check drives all 0.0 rewards without a supported task-performance difference). failure_attribution and harness_comparability pass. Per the aggregate rule, a failed mandatory subcheck fails the whole criterion; the failed subchecks are not averaged or voted away.
+HARBOR-CHECK-1
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration · harbor-check
+error
+Configured denominator 6, score-eligible denominator 6 (all six cells score_eligible=true per evidence.json), 0/6 strict passes (all reward 0.0 confirmed in each trial result.json and verifier/reward.txt). The reward profile is not plausibly explained by task performance. glm-gce/2 (trial 2b8cf99982928831, difficulty/r2) produced the exact literal-RP407 answer (results.json 100/168/57/149, ST-137=OI-210) with zero genuine verdict errors (verified_count=100 matches gold; the 13 at_odds/not_in_record differences are entirely from the 13 interim_contact/without_prejudice rows shifted to NONE by RP-407), yet scored 0.0 solely because register_table enforces gold values (CL-307) that contradict disclosed review_protocol.md RP-407. Its 80 register_table defects are all record_entry/verdict changes from faithfully applying RP-407, not genuine errors. The Oracle 1.0 (solvability/r1, documented in evidence.json) does not supply valid passing Oracle solvability evidence of a coherent solvable task as disclosed, because the Oracle materializes the gold that itself contradicts RP-407, and the review layer2_solvability__instruction_environment_sufficiency FAILs (task not faithfully solvable from agent-visible instruction). With 0 strict passes and no complete legitimate model or Oracle evidence of a coherent solvable task, the zero-GLM-passes-with-valid-Oracle exception does not apply. The 0.0 rewards for all five deliverable-producing trials are driven by the known defective register_table check (core gate: any core failure yields reward 0.0).
+HARBOR-CHECK-2
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration__calibration_profile · harbor-check
+error
+All five deliverable-producing trials (glm-gce/2, glm-gce/3, glm-gce/4, claude-modal/1, gpt-e2b/1) fail the identical register_table core check with the identical first error (row ST-137: record_entry expected CL-307, got OI-210; row ST-138: expected CL-309, got OI-206; row ST-139: expected CL-308, got OI-207) across all three providers (GLM, Anthropic, OpenAI) and all three harnesses (opencode, claude-code, codex), confirmed in each trial verifier/score.json and test-stdout.txt. register_table is the suspect criterion: it enforces gold values that contradict the disclosed review_protocol.md RP-407 for 40+ rows (40 tone/concern/behavioural_plan cross-subject CL citations where literal RP-407 requires OI but gold requires CL-own-subject, plus 13 interim_contact/without_prejudice cases). This is the all-models-fail-same-suspect-criterion pattern. One defective check (register_table) drives the 0.0 rewards for all five trials via the core gate (any core failure yields reward 0.0) without a supported task-performance difference: glm-gce/2 made zero genuine errors (its totals 100/168/57/149 exactly match literal RP-407; verified_count=100 matches gold) yet scored 0.0 identical to trials with genuine verdict errors (104/177/44/162). No weaker-pass/stronger-fail inversion exists (all fail), but the single defective check driving the entire reward profile without a supported task-performance difference satisfies the FAIL condition.
+HARBOR-CHECK-3
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration__criterion_level_anomalies · harbor-check
+error
+All six cells have valid terminal status (finished_at present in each result.json), non-trivial action counts (4/12/24/19/19/19), trajectory_valid=true, operating environments (Docker stability_environment for GLM trials, modal for claude, e2b for codex), and the verifier executed without crash for each (verifier/score.json present, test-stdout.txt shows 3 failed/14 passed for deliverable-producing trials, 9 failed/8 skipped for r1). However, verifier reasonableness is not supported: register_table (a core-gated check) enforces gold expected values (e.g. ST-137 expected CL-307) that contradict the disclosed review_protocol.md RP-407 (which textually requires OI-210). glm-gce/2 is a defective-grading cell: the model faithfully applied RP-407 and produced zero genuine errors (verified_count=100 matches gold), yet scored 0.0 purely because the gold is wrong. This defective-grading 0.0 is counted as model performance in the 0/6 strict-pass distribution (eligible_strict_passes=0, configured_strict_passes=0). Per the rubric, treating a defective-grading cell as model performance fails score_eligibility.
+HARBOR-CHECK-4
+EVIDENCE
+Harbor Check did not approve this task for finalization.
+WHAT TO CHANGE
+Correct the task-quality finding and submit a new version.
+SOURCE
+cross_trial/layer5_cross_trial_calibration__score_eligibility · harbor-check
+error
+Finding (ambiguous_rule_contested_gold): see the assessment below. Assessment: The golden solution does not satisfy the instruction as written because it violates the disclosed review protocol RP-407 for 40 of 325 rows. The instruction (instruction.md:3) says "input/review_protocol.md explains how the two messages combine," making the protocol the governing rule. RP-407 (environment/input/review_protocol.md:31-35) states: "Notwithstanding RP-401, when a line's cited_entry is a clarification entry (CL-…) that speaks to a subject different from the line's own subject, the original instruction entry for the line's subject governs — not the clarification entry for the line's subject. The record_entry column reports the origina

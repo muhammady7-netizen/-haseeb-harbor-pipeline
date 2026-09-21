@@ -1,0 +1,84 @@
+HEAD
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+code-c227-table-bloat-maintenance-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+✓
+Evaluation
+✓
+Submit
+accepted
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: QC incomplete
+QC incomplete · 10 trainer finding(s) · Sep 13, 03:37 PM
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+✓
+Final QC accepted this version
+Sep 13, 05:48 PM · batch auto-pipeline-evaluation-e1d160f96e124642
+
+No findings were returned.
+
+See what the pipeline did
+9 steps
+You are the judge. what good QC takes — read once
+
+
+KEY
+Shannon QC Control
+code-c227-table-bloat-maintenance-audit
+Upload new version
+accepted
+in the bundle · review.csv
+Final QC accepted this version
+Sep 13, 05:48 PM · batch auto-pipeline-evaluation-e1d160f96e124642
+See what the pipeline did
+Blocking issues come from the Pipeline evaluation and must be decided before Submit: confirm each as real or dismiss it with a note.
+Harbor Check runs the packaged task in Pipeline's Docker environment, validates the task and verifier evidence, and false-positive screens its findings. It is required after the five trials, but it is not another GLM difficulty score.
+FAIL · 0 finding(s) screened out · gs://obi-harbor-pipeline/results/trainer-evaluation-e1d160f96e124642-a1/_harbor_check/runs/evaluation-e1d160f96e124642-a1/status.json
+Pipeline batch trainer-evaluation-e1d160f96e124642-a1 · Cloud execution projects/delivery-g-obi/locations/us-central1/jobs/harbor-pipeline/executions/harbor-pipeline-22q6r
+harbor check · layer1_realism_leakage Fails because the mandatory golden_isolation subcheck fails: tests/test.sh line 25 runs 'python3 -m pytest' with cwd=/tmp, and Python prepends the cwd to sys.path for -m, so an agent-planted /tmp/pytest.py shadows the real module; the script only scrubs /app/pytest.py. The recorded trajectories show the agent running as root and writing /tmp (evaluations/difficulty/r4 writes /tmp/process.py, r3 writes /tmp/opencode/compute.py) in the same container the verifier later reuses (verifier_environment_mode 'shared', keep_containers true, stability repeats re-run in container d6b03467f71b). Domain correctness, reference validity and workflow realism pass.
+harbor check · layer1_realism_leakage__golden_isolation Golden/answer data itself is isolated - environment/Dockerfile copies only input/ (read-only), and the agent-visible listings recorded in evaluations/difficulty/r2 and r3 show /app containing nothing but input/ - but grading state is directly manipulable. tests/test.sh defends only against /app: it rm -f's /app/pytest.py and then does 'cd /tmp || exit 1; python3 -m pytest ...'. Because -m prepends the cwd to sys.path, a planted /tmp/pytest.py is imported instead of pytest; I verified empirically that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward parser in tests/test.sh lines 35-49 matches that string and computes reward 1.0. /tmp is agent-writable in the same shared container (difficulty/r4 wrote /tmp/process.py; stability repeats re-graded in retained container d6b03467f71b), and the core gate only requires the three files to exist, so they may be empty. Additionally, pytest_status is captured but never used and the script always exits 0, so a pre-planted /logs/verifier/reward.txt survives if the parser step raises.
+harbor check · layer5_reward_hacking_static Fails because three of the four mandatory exploitability subchecks fail. Two independent shortcuts reach full reward: (1) a fabricated memo - one identical keyword-stuffed bullet repeated for every table, asserting all three findings at once - passes all 239 checks; (2) tests/test.sh runs 'python3 -m pytest' with cwd=/tmp, so an agent-planted /tmp/pytest.py shadows the real module and can print a fabricated '239 passed in 0.4s' summary that the reward parser converts to 1.0 with empty deliverables. Only golden_or_internal_access passes.
+Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth and l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can get reward 1.0 with empty deliverables by exploiting either the memo token-bag shortcut or the pytest module shadow.
+Fix both root causes: harden tests/test.sh against the /tmp/pytest.py shadow, and replace the memo [REDACTED] checks with semantic grading that rejects fabricated memos.
+harbor check · layer5_reward_hacking_static__rollout_legitimacy The verifier inspects only the final file surface, so a rollout containing fabricated claims can still pass. Confirmed by execution: pairing the correct bloat_audit.csv and results.json with a memo whose 61 bullets are byte-identical fabricated token bags - each simultaneously asserting BLOAT_THRESHOLD_EXCEEDED, AUTOVACUUM_DISABLED and STALE_STATISTICS for that table, plus a shared list of 13 ratios and 6 day counts - yields 239/239 and strict reward 1.0. The memo deliverable's entire explanatory purpose can therefore be faked. instruction.md promises the opposite ('A memo that ... keyword-stuffs the same token bag beside every table without table-bound prose evidence, will not pass'), and review.csv asserts this was tested and blocked; neither holds.
+harbor check · layer5_reward_hacking_static__state_spoofing Grading state is spoofable. (a) Module shadow: tests/test.sh scrubs /app/pytest.py, /app/pytest.pyc and /app/pytest, then cds to /tmp and runs 'python3 -m pytest', which prepends /tmp to sys.path - so the shadow attack is relocated, not removed. /tmp is agent-writable in the same shared container (evaluations/difficulty/r4 wrote /tmp/process.py, r3 wrote /tmp/opencode/compute.py; verifier_environment_mode is 'shared' with keep_containers true, and the stability repeats re-ran in retained container d6b03467f71b). I verified empirically that a planted /tmp/pytest.py is imported and that its fabricated summary line is parsed to reward 1.0. (b) Unchecked exit status: pytest_status is captured at line 26 but never used, and the script always 'exit 0', so if the reward-writing heredoc raises (for example when /logs/verifier/reward.txt is pre-planted read-only or replaced by a directory) a pre-seeded reward file survives. (c) Reward is derived from agent-influenceable stdout rather than from the ctrf results file. There is no before/after verification of workspace or grading state.
+harbor check · layer5_verifier_fairness_static__counterfactual_strength The verifier cannot distinguish a genuine solution from a plausible defective one on its memo deliverable. Positive case: golden scores 239/239. Negative cases behave sensibly on the CSV/JSON side (empty 6/239; lazy 85/239; naive trap-ignoring 182/239). But the adversarial case defeats it: correct CSV + correct results.json + a memo that is one fabricated 426-char token bag repeated identically for all 61 tables scores 239/239 - indistinguishable from the golden. Intermediate adversarial variants degrade only gently (a longer-line version of the same bag scored 228/239 = 0.954, failing only where a required token fell outside the 400-char window). Incomplete case: a Markdown-table-only memo still scores 199/239. So the acceptance boundary is set by token placement rather than by whether the memo actually explains anything.
+harbor check · layer5_verifier_fairness_static__coverage_depth The CSV/JSON side is genuinely field-level, but the memo side - one of three required deliverables and 42 of 239 checks - is satisfied by content with no semantic value. I confirmed by execution that a memo whose every table bullet is the same fabricated token bag (claiming all three findings at once for all 61 tables, with a shared list of 13 ratios and 6 day counts) passes every memo check, including test_memo_explains_t44, test_memo_size_trap_t06/t14/t27, test_memo_explains_t26/t30/t42 and test_memo_has_prose. _memo_mentions only requires the finding token plus two disclosed concept regexes to co-occur within ~400 chars of the table id, with heuristic prose framing (_looks_like_natural_prose accepts 'which'/'because' or three function words), so a materially wrong and internally contradictory memo satisfies the checks.

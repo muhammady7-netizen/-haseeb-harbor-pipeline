@@ -1,0 +1,5 @@
+[92m18:10:08 - LiteLLM:WARNING[0m: utils.py:2782 - register_model: model=openai/glm-5.2 not in built-in cost map and no prefix/region variant matched; cache cost fields will default to 0. To track cache cost, add cache_creation_input_token_cost and cache_read_input_token_cost to model_info
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.
+max_turns (f.k.a. max_episodes) artificially limited to 80. Consider removing this limit for better task completion.

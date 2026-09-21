@@ -1,0 +1,11 @@
+def test_memo_explains_t45():
+    """Memo must explain T-45: stale-tightened large cap (densify trap).
+
+    Export size_class small is ignored; total_pages 1000 → large; 155/1000 → 0.16;
+    33-day stale tightens cap to 0.15 → BLOAT_THRESHOLD_EXCEEDED.
+    """
+    assert _memo_mentions(
+        "T-45", "BLOAT_THRESHOLD_EXCEEDED", "0.16", "0.15", "tighten", "large", "1000"
+    ) or _memo_mentions(
+        "T-45", "BLOAT_THRESHOLD_EXCEEDED", "0.16", "0.15", "tightened", "stale", "33"
+    ), "Memo must explain T-45 stale-tighten densify trap"

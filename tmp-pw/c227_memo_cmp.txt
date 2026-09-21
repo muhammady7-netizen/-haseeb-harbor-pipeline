@@ -1,0 +1,5 @@
+gold_len 9135
+r1 len=8955 same=False
+r2 len=8352 same=False
+r3 len=8219 same=False
+r4 len=8445 same=False

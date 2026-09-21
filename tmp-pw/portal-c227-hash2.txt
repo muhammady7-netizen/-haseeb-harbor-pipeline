@@ -1,0 +1,79 @@
+Shannon QC Control
+QC
+Resources
+GLM access
+✓
+muhammad.y7@turing.com
+←
+All tasks
+code-c227-table-bloat-maintenance-audit
+v1 · latest
+Harbor package
+↑
+Upload new version
+✓
+Upload
+2
+Client PreQC
+not run yet
+3
+Review findings
+✓
+Review record
+✓
+Evaluation
+✓
+Submit
+accepted
+Client preQC (Internal Gate · advisory)
+Not run yet
+has not run on this task yet
+Run client preQC
+View report
+
+REVIEW.CSV · REQUIRED TO SUBMIT
+
+review.csv
+in the bundle · review.csv
+
+Required to submit. The written record of your review travels with the package: one row per review area, each one resolved as PASS, FIXED_AND_VERIFIED, or N/A with a reason. The QC reviewer also reads it and says whether it looks like a real review — that reading is advisory; the missing or unfinished file is what blocks. Every check is filed in Run history, with its reading, the areas still open, and the record itself.
+
+Complete
+Check with QC reviewer
+View details
+The QC reviewer has not read it yet. That reading is advisory — it never blocks — but it is what catches a record that ticks every box and says nothing.
+QC-Oracle-GLM check (3-task limit)
+Last run: QC incomplete
+QC incomplete · 10 trainer finding(s) · Sep 13, 03:37 PM
+Re-run QC-Oracle-GLM
+View report
+what each gate checks
+✓
+Final QC accepted this version
+Sep 13, 05:48 PM · batch auto-pipeline-evaluation-e1d160f96e124642
+
+No findings were returned.
+
+See what the pipeline did
+9 steps
+You are the judge. what good QC takes — read once
+Run history
+1 run · latest Incomplete
+QC-ORACLE-GLM CHECK
+QC-Oracle-GLM check
+QC incomplete
+Oracle Passed
+GLM-5.2 ×4 difficulty Completed · 2/4 passed
+10 trainer finding(s)
+Sep 13, 03:37 PM · took 2885s
+report
+zip
+RESULT
+
+ loading the report…
+
+Use this guide to do your own read of the task
+0/20 answered
+Saved
+Not scored — it feeds the report card and the tracker.
+Task readiness

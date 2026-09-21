@@ -1,0 +1,3 @@
+clips=['gs://obi-harbor-pipeline/tasks/finalisation_client_qc_accepted_iteration_2/code-c227-table-bloat-maintenance-audit/9bb150064defada5e0afe23a95c36d0470d0854e4fb1f8c512b2b36d7e2a8a62.zip']
+reqs=[]
+resps=[]

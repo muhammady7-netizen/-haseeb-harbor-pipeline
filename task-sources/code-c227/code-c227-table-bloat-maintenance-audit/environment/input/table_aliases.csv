@@ -1,0 +1,6 @@
+alias,table_name
+orders_fact,T-02
+billing_agg,T-08
+session_dim,T-126
+payments_raw,T-14
+legacy_t122,T-122

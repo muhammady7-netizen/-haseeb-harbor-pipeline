@@ -1,0 +1,21 @@
+{
+  "job_name": "oracle-c227-v12b-x4",
+  "jobs_dir": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/qc-out/harbor-jobs-c227",
+  "n_attempts": 4,
+  "timeout_multiplier": 3.0,
+  "n_concurrent_trials": 2,
+  "environment": {
+    "type": "docker",
+    "force_build": false
+  },
+  "agents": [
+    {
+      "name": "oracle"
+    }
+  ],
+  "tasks": [
+    {
+      "path": "C:/Users/Haseeb Mirza/Documents/Codex/haseeb-pipeline/tmp-pw/c227-fix-accepted/code-c227-table-bloat-maintenance-audit"
+    }
+  ]
+}

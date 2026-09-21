@@ -1,0 +1,529 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 55,
+            "passed": 54,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1789998880.162747,
+            "stop": 1789998882.845136
+        },
+        "tests": [
+            {
+                "name": "::test_audit_exists",
+                "status": "passed",
+                "duration": 0.0038199470000108704,
+                "start": 1789998880.4489121,
+                "stop": 1789998880.4534767,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_exists",
+                "status": "passed",
+                "duration": 0.001191408000067895,
+                "start": 1789998880.4539714,
+                "stop": 1789998880.4554272,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_results_exists",
+                "status": "passed",
+                "duration": 0.0012703139999530322,
+                "start": 1789998880.455873,
+                "stop": 1789998880.4574893,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_audit_header",
+                "status": "passed",
+                "duration": 0.0014603319997377184,
+                "start": 1789998880.4580245,
+                "stop": 1789998880.459777,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_audit_exact_row_count",
+                "status": "passed",
+                "duration": 0.0016293470000618981,
+                "start": 1789998880.4601479,
+                "stop": 1789998880.4621742,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_audit_no_duplicates",
+                "status": "passed",
+                "duration": 0.0034085089999962292,
+                "start": 1789998880.462622,
+                "stop": 1789998880.4669824,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_audit_all_tables_present",
+                "status": "passed",
+                "duration": 0.0017007530000228144,
+                "start": 1789998880.4679785,
+                "stop": 1789998880.4701235,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_audit_valid_findings",
+                "status": "passed",
+                "duration": 0.0017332569999553016,
+                "start": 1789998880.4705112,
+                "stop": 1789998880.4725976,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_table_finding",
+                "status": "passed",
+                "duration": 0.0013892250000253625,
+                "start": 1789998880.4731762,
+                "stop": 1789998880.4748495,
+                "retries": 125,
+                "file_path": "../tests/test_outputs.py",
+                "tags": [
+                    "parametrize::table_id::['T-01', 'T-02', 'T-03', 'T-04', 'T-05', 'T-06', 'T-07', 'T-08', 'T-09', 'T-10', 'T-100', 'T-101', 'T-102', 'T-103', 'T-104', 'T-105', 'T-106', 'T-107', 'T-108', 'T-109', 'T-11', 'T-110', 'T-111', 'T-112', 'T-113', 'T-114', 'T-115', 'T-116', 'T-117', 'T-118', 'T-119', 'T-12', 'T-120', 'T-121', 'T-122', 'T-123', 'T-124', 'T-125', 'T-126', 'T-127', 'T-128', 'T-129', 'T-13', 'T-130', 'T-14', 'T-15', 'T-16', 'T-17', 'T-18', 'T-19', 'T-20', 'T-21', 'T-26', 'T-27', 'T-28', 'T-29', 'T-30', 'T-31', 'T-32', 'T-33', 'T-34', 'T-35', 'T-36', 'T-37', 'T-38', 'T-39', 'T-40', 'T-41', 'T-42', 'T-43', 'T-44', 'T-45', 'T-46', 'T-47', 'T-48', 'T-49', 'T-50', 'T-51', 'T-52', 'T-53', 'T-54', 'T-55', 'T-56', 'T-57', 'T-58', 'T-59', 'T-60', 'T-61', 'T-62', 'T-63', 'T-64', 'T-65', 'T-66', 'T-67', 'T-68', 'T-69', 'T-70', 'T-71', 'T-72', 'T-73', 'T-74', 'T-75', 'T-76', 'T-77', 'T-78', 'T-79', 'T-80', 'T-81', 'T-82', 'T-83', 'T-84', 'T-85', 'T-86', 'T-87', 'T-88', 'T-89', 'T-90', 'T-91', 'T-92', 'T-93', 'T-94', 'T-95', 'T-96', 'T-97', 'T-98', 'T-99']"
+                ]
+            },
+            {
+                "name": "::test_table_size_class",
+                "status": "passed",
+                "duration": 0.001462032999938856,
+                "start": 1789998880.95411,
+                "stop": 1789998880.95587,
+                "retries": 125,
+                "file_path": "../tests/test_outputs.py",
+                "tags": [
+                    "parametrize::table_id::['T-01', 'T-02', 'T-03', 'T-04', 'T-05', 'T-06', 'T-07', 'T-08', 'T-09', 'T-10', 'T-100', 'T-101', 'T-102', 'T-103', 'T-104', 'T-105', 'T-106', 'T-107', 'T-108', 'T-109', 'T-11', 'T-110', 'T-111', 'T-112', 'T-113', 'T-114', 'T-115', 'T-116', 'T-117', 'T-118', 'T-119', 'T-12', 'T-120', 'T-121', 'T-122', 'T-123', 'T-124', 'T-125', 'T-126', 'T-127', 'T-128', 'T-129', 'T-13', 'T-130', 'T-14', 'T-15', 'T-16', 'T-17', 'T-18', 'T-19', 'T-20', 'T-21', 'T-26', 'T-27', 'T-28', 'T-29', 'T-30', 'T-31', 'T-32', 'T-33', 'T-34', 'T-35', 'T-36', 'T-37', 'T-38', 'T-39', 'T-40', 'T-41', 'T-42', 'T-43', 'T-44', 'T-45', 'T-46', 'T-47', 'T-48', 'T-49', 'T-50', 'T-51', 'T-52', 'T-53', 'T-54', 'T-55', 'T-56', 'T-57', 'T-58', 'T-59', 'T-60', 'T-61', 'T-62', 'T-63', 'T-64', 'T-65', 'T-66', 'T-67', 'T-68', 'T-69', 'T-70', 'T-71', 'T-72', 'T-73', 'T-74', 'T-75', 'T-76', 'T-77', 'T-78', 'T-79', 'T-80', 'T-81', 'T-82', 'T-83', 'T-84', 'T-85', 'T-86', 'T-87', 'T-88', 'T-89', 'T-90', 'T-91', 'T-92', 'T-93', 'T-94', 'T-95', 'T-96', 'T-97', 'T-98', 'T-99']"
+                ]
+            },
+            {
+                "name": "::test_table_bloat_ratio",
+                "status": "passed",
+                "duration": 0.0016121459999567378,
+                "start": 1789998881.3203347,
+                "stop": 1789998881.3223271,
+                "retries": 125,
+                "file_path": "../tests/test_outputs.py",
+                "tags": [
+                    "parametrize::table_id::['T-01', 'T-02', 'T-03', 'T-04', 'T-05', 'T-06', 'T-07', 'T-08', 'T-09', 'T-10', 'T-100', 'T-101', 'T-102', 'T-103', 'T-104', 'T-105', 'T-106', 'T-107', 'T-108', 'T-109', 'T-11', 'T-110', 'T-111', 'T-112', 'T-113', 'T-114', 'T-115', 'T-116', 'T-117', 'T-118', 'T-119', 'T-12', 'T-120', 'T-121', 'T-122', 'T-123', 'T-124', 'T-125', 'T-126', 'T-127', 'T-128', 'T-129', 'T-13', 'T-130', 'T-14', 'T-15', 'T-16', 'T-17', 'T-18', 'T-19', 'T-20', 'T-21', 'T-26', 'T-27', 'T-28', 'T-29', 'T-30', 'T-31', 'T-32', 'T-33', 'T-34', 'T-35', 'T-36', 'T-37', 'T-38', 'T-39', 'T-40', 'T-41', 'T-42', 'T-43', 'T-44', 'T-45', 'T-46', 'T-47', 'T-48', 'T-49', 'T-50', 'T-51', 'T-52', 'T-53', 'T-54', 'T-55', 'T-56', 'T-57', 'T-58', 'T-59', 'T-60', 'T-61', 'T-62', 'T-63', 'T-64', 'T-65', 'T-66', 'T-67', 'T-68', 'T-69', 'T-70', 'T-71', 'T-72', 'T-73', 'T-74', 'T-75', 'T-76', 'T-77', 'T-78', 'T-79', 'T-80', 'T-81', 'T-82', 'T-83', 'T-84', 'T-85', 'T-86', 'T-87', 'T-88', 'T-89', 'T-90', 'T-91', 'T-92', 'T-93', 'T-94', 'T-95', 'T-96', 'T-97', 'T-98', 'T-99']"
+                ]
+            },
+            {
+                "name": "::test_results_flagged_count",
+                "status": "passed",
+                "duration": 0.003622528999926544,
+                "start": 1789998881.7475128,
+                "stop": 1789998881.751697,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_results_autovacuum_disabled_count",
+                "status": "passed",
+                "duration": 0.0030824789999996938,
+                "start": 1789998881.7523754,
+                "stop": 1789998881.755953,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_results_bloat_exceeded_count",
+                "status": "passed",
+                "duration": 0.002934867000021768,
+                "start": 1789998881.7565517,
+                "stop": 1789998881.760097,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_results_stale_statistics_count",
+                "status": "passed",
+                "duration": 0.002739648999977362,
+                "start": 1789998881.7607183,
+                "stop": 1789998881.7639954,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_results_compliant_count",
+                "status": "passed",
+                "duration": 0.003392507999933514,
+                "start": 1789998881.7647827,
+                "stop": 1789998881.768832,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_results_partition_invariant",
+                "status": "passed",
+                "duration": 0.0030083729999432762,
+                "start": 1789998881.7696238,
+                "stop": 1789998881.773082,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t02",
+                "status": "passed",
+                "duration": 0.013864557000033528,
+                "start": 1789998881.7737374,
+                "stop": 1789998881.7883573,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t03",
+                "status": "passed",
+                "duration": 0.0073386640000308034,
+                "start": 1789998881.789121,
+                "stop": 1789998881.7969713,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t04",
+                "status": "passed",
+                "duration": 0.00731516299993018,
+                "start": 1789998881.797555,
+                "stop": 1789998881.8055956,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t08",
+                "status": "passed",
+                "duration": 0.002630437999869173,
+                "start": 1789998881.8063662,
+                "stop": 1789998881.809433,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t10",
+                "status": "passed",
+                "duration": 0.005889733000117303,
+                "start": 1789998881.8100643,
+                "stop": 1789998881.8164942,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t11",
+                "status": "passed",
+                "duration": 0.0063663769999493525,
+                "start": 1789998881.817223,
+                "stop": 1789998881.8241236,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t13",
+                "status": "passed",
+                "duration": 0.004609217000052013,
+                "start": 1789998881.8248286,
+                "stop": 1789998881.829892,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t18",
+                "status": "passed",
+                "duration": 0.007359967000070355,
+                "start": 1789998881.830508,
+                "stop": 1789998881.838619,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t19",
+                "status": "passed",
+                "duration": 0.005693616999906226,
+                "start": 1789998881.8394024,
+                "stop": 1789998881.8456416,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t20",
+                "status": "passed",
+                "duration": 0.006606597999962105,
+                "start": 1789998881.8462849,
+                "stop": 1789998881.8533924,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t21",
+                "status": "passed",
+                "duration": 0.0036413299998230286,
+                "start": 1789998881.8538475,
+                "stop": 1789998881.8577852,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t26",
+                "status": "passed",
+                "duration": 0.005715416999919398,
+                "start": 1789998881.85817,
+                "stop": 1789998881.864191,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t27",
+                "status": "passed",
+                "duration": 0.005306482000037249,
+                "start": 1789998881.8645766,
+                "stop": 1789998881.8703735,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t29",
+                "status": "passed",
+                "duration": 0.00509636199990382,
+                "start": 1789998881.8707957,
+                "stop": 1789998881.8762581,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t30",
+                "status": "passed",
+                "duration": 0.004250585000022511,
+                "start": 1789998881.876585,
+                "stop": 1789998881.881172,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_audit_date_sorted_order",
+                "status": "passed",
+                "duration": 0.002818755000021156,
+                "start": 1789998881.8815446,
+                "stop": 1789998881.8848057,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_discusses_maintenance",
+                "status": "passed",
+                "duration": 0.0011015000000043074,
+                "start": 1789998881.8852127,
+                "stop": 1789998881.8865466,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t17",
+                "status": "passed",
+                "duration": 0.0026105359999064603,
+                "start": 1789998881.886861,
+                "stop": 1789998881.8898823,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_size_trap_t06",
+                "status": "passed",
+                "duration": 0.0029981720000478163,
+                "start": 1789998881.8902395,
+                "stop": 1789998881.8935392,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_size_trap_t14",
+                "status": "passed",
+                "duration": 0.003009273000088797,
+                "start": 1789998881.8938925,
+                "stop": 1789998881.897189,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_size_trap_t27",
+                "status": "passed",
+                "duration": 0.002944766999917192,
+                "start": 1789998881.897635,
+                "stop": 1789998881.9009585,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_reindex_expiry_t16",
+                "status": "passed",
+                "duration": 0.005236274000026242,
+                "start": 1789998881.901465,
+                "stop": 1789998881.9070077,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_unapproved_t05",
+                "status": "passed",
+                "duration": 0.0037955439998995644,
+                "start": 1789998881.9076083,
+                "stop": 1789998881.9117258,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_discusses_size_class",
+                "status": "passed",
+                "duration": 0.0010592950000045676,
+                "start": 1789998881.9120681,
+                "stop": 1789998881.913361,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t35",
+                "status": "passed",
+                "duration": 0.005462596000029407,
+                "start": 1789998881.9137254,
+                "stop": 1789998881.9197693,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t36",
+                "status": "passed",
+                "duration": 0.004810236000025725,
+                "start": 1789998881.9202268,
+                "stop": 1789998881.9255085,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t37",
+                "status": "passed",
+                "duration": 0.0060246469998901375,
+                "start": 1789998881.9260116,
+                "stop": 1789998881.9325023,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t39",
+                "status": "passed",
+                "duration": 0.0038155459998279184,
+                "start": 1789998881.933195,
+                "stop": 1789998881.9374049,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t40",
+                "status": "passed",
+                "duration": 0.003385007000247242,
+                "start": 1789998881.9378242,
+                "stop": 1789998881.9415333,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t42",
+                "status": "passed",
+                "duration": 0.0045029090000525684,
+                "start": 1789998881.9418588,
+                "stop": 1789998881.9466538,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t44",
+                "status": "passed",
+                "duration": 0.0033798069998738356,
+                "start": 1789998881.9469786,
+                "stop": 1789998881.9507167,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_has_prose",
+                "status": "passed",
+                "duration": 0.1731986950001101,
+                "start": 1789998881.9511209,
+                "stop": 1789998882.1246955,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_explains_t45",
+                "status": "passed",
+                "duration": 0.004604217999940374,
+                "start": 1789998882.1251323,
+                "stop": 1789998882.1300824,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_memo_v12_strict_local_evidence",
+                "status": "failed",
+                "duration": 0.004530809000016234,
+                "start": 1789998882.1305313,
+                "stop": 1789998882.1354725,
+                "retries": 67,
+                "file_path": "../tests/test_outputs.py",
+                "tags": [
+                    "parametrize::table_id::['T-02', 'T-09', 'T-47', 'T-48', 'T-49', 'T-50', 'T-51', 'T-52', 'T-53', 'T-54', 'T-55', 'T-56', 'T-57', 'T-58', 'T-62', 'T-63', 'T-64', 'T-65', 'T-66', 'T-67', 'T-68', 'T-70', 'T-71', 'T-72', 'T-73', 'T-74', 'T-75', 'T-76', 'T-78', 'T-79', 'T-81', 'T-82', 'T-84', 'T-85', 'T-87', 'T-88', 'T-89', 'T-90', 'T-91', 'T-92', 'T-96', 'T-97', 'T-98', 'T-99', 'T-100', 'T-101', 'T-102', 'T-103', 'T-105', 'T-107', 'T-108', 'T-110', 'T-112', 'T-113', 'T-114', 'T-115', 'T-116', 'T-117', 'T-118', 'T-119', 'T-122', 'T-123', 'T-124', 'T-125', 'T-127', 'T-128', 'T-129', 'T-130']"
+                ],
+                "trace": "table_id = 'T-127'\n\n    @pytest.mark.parametrize(\"table_id\", sorted(MEMO_V12_STRICT.keys(), key=lambda t: (len(t), t)))\n    def test_memo_v12_strict_local_evidence(table_id):\n        concepts = MEMO_V12_STRICT[table_id]\n>       assert _memo_requires_all(table_id, *concepts), (\n            f\"Memo must explain {table_id} with ALL local evidence {concepts}\"\n        )\nE       AssertionError: Memo must explain T-127 with ALL local evidence ['AUTOVACUUM_DISABLED', '50', '1000', 'manual', 'vacuum', 'override', 'CH-2207', 'hold']\nE       assert False\nE        +  where False = _memo_requires_all('T-127', *['AUTOVACUUM_DISABLED', '50', '1000', 'manual', 'vacuum', 'override', ...])\n\n/tests/test_outputs.py:1898: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "::test_ignores_dashboard_suggested_findings",
+                "status": "passed",
+                "duration": 0.0048237379999136465,
+                "start": 1789998882.833609,
+                "stop": 1789998882.838885,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_change_control_hold_multihop",
+                "status": "passed",
+                "duration": 0.001233011999943301,
+                "start": 1789998882.8394542,
+                "stop": 1789998882.840978,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_vacuum_type_case_sensitive_manual",
+                "status": "passed",
+                "duration": 0.001191307000112829,
+                "start": 1789998882.8413546,
+                "stop": 1789998882.8428268,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            },
+            {
+                "name": "::test_ignores_export_audit_date_column",
+                "status": "passed",
+                "duration": 0.001258913999890865,
+                "start": 1789998882.8432539,
+                "stop": 1789998882.8447855,
+                "retries": 0,
+                "file_path": "../tests/test_outputs.py"
+            }
+        ]
+    }
+}

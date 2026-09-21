@@ -1,0 +1,49 @@
+{
+  "decided_by": "muhammad.y7@turing.com",
+  "dispositions": {
+    "l1.realism_leakage::layer1_realism_leakage": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l1.realism_leakage::layer1_realism_leakage__golden_isolation": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static__rollout_legitimacy": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static__sanctioned_interface_use": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static__state_spoofing": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static__counterfactual_strength": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static__surface_form_brittleness": {
+      "disposition": "false_positive",
+      "note": "Verifier check is fair and correctly implemented. Difficulty met with GLM 2/4. Oracle 1.0 verified."
+    }
+  },
+  "recorded_at": "2026-09-13T11:37:51+00:00",
+  "run_id": "evaluation-e1d160f96e124642",
+  "saved_at": "2026-09-13T11:37:49+00:00",
+  "schema_version": "trainer/human-review/v1"
+}

@@ -1,0 +1,1 @@
+{'ok': True, 'clip': '', 'btnText': 'copy'}

@@ -1,0 +1,10 @@
+---- ba7af46bdf163db34cb968babe4f0d871a534d73d7da97ca6cbae9b03a500eab 76180 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227-fixed-p0.zip
+---- 08f2fa95d98c277dc074e57eb45c933c0e3da6f3cec1f408be4dde24d693eed3 122552 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227-judge.zip
+---- 31e6b1156ae94a9d864358bf77cc44053d038e37c6d35ef2cdb8a1e8629d34e9 565115 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintena-97d912-v33-delivery-d1711306.zip
+---- 9dc18e4230ce0175a97c14aa4427ec69e06639d34ce39fd643f782f6452222d7 185671 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintenance-audit (1).zip
+---- dd7a44a4f3ffa1cc69c7d71b79a1e85c8b860d73b329ff51781e76c88f62091c 286178 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227-table-bloat-maintenance-audit.zip
+---- fb3b86a30fbb540737c6d694147cf5a7973fc202b1bc89df699a22434279eec6 592784 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227-v2.zip
+---- 8b7ae92d87bb875e1e8d456c3598489b364bbfc0854973ea3be5905eecbf1285 601778 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227-v3.zip
+---- 08f2fa95d98c277dc074e57eb45c933c0e3da6f3cec1f408be4dde24d693eed3 122552 C:\Users\Haseeb Mirza\Downloads\UPLOAD-THIS-TO-QC-code-c227.zip
+---- 231eb787f92a47c28408000aa2fd00e63fa1ac0f35edca2bb230e9593e3231ac 829783 C:\Users\Haseeb Mirza\Documents\Codex\haseeb-pipeline\canonical-zips\code-c227-table-bloat-maintenance-audit.zip
+---- bc468471a10ef1c5403c42f4cdbcf1f5a353691c4ed09eab80d8fbc6caa4fd0a 70374 C:\Users\Haseeb Mirza\Documents\Codex\2026-08-17\this-is-the-very-beginning-of\tasks\code-c227-work\UPLOAD-THIS-TO-QC-code-c227.zip

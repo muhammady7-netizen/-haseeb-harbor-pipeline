@@ -1,0 +1,27 @@
+  1/1 Mean: 1.000 ---------------------------------------- 0:01:16 0:00:00
+
+
+adhoc ΓÇó oracle
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé Trials Γöé Exceptions Γöé  Mean Γöé
+Γö£ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö╝ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö╝ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöñ
+Γöé      1 Γöé          0 Γöé 1.000 Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö┤ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö┤ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé Reward Γöé Count Γöé
+Γö£ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö╝ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöñ
+Γöé 1.0    Γöé     1 Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö┤ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+
+Job Info
+Total runtime: 1m 16s
+Results written to C:\Users\Haseeb 
+Mirza\Documents\-haseeb-harbor-pipeline\task-sources\harbor-jobs-c227\oracle-c22
+7-rerun2\result.json
+Inspect results by running `harbor view C:\Users\Haseeb 
+Mirza\Documents\-haseeb-harbor-pipeline\task-sources\harbor-jobs-c227`
+Share results by running `harbor upload C:\Users\Haseeb 
+Mirza\Documents\-haseeb-harbor-pipeline\task-sources\harbor-jobs-c227\oracle-c22
+7-rerun2`
+

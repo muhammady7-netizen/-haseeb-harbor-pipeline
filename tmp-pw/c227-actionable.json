@@ -1,0 +1,704 @@
+{
+  "model": "zai-org/GLM-5.2",
+  "stats": {
+    "applied": 10,
+    "requested": 10,
+    "model": "zai-org/GLM-5.2",
+    "trainer_findings": 10,
+    "seconds": 10.6,
+    "attempts": 1,
+    "rejected": [],
+    "kinds": {
+      "task_defect": 10,
+      "evidence_gap": 0,
+      "tool_issue": 0
+    }
+  },
+  "request": {
+    "task": {
+      "task_id": "code-c227-table-bloat-maintenance-audit",
+      "files": [
+        "PACKAGING-PROVENANCE.json",
+        "README.md",
+        "environment/Dockerfile",
+        "environment/input/maintenance_policy.md",
+        "environment/input/reindex_log.csv",
+        "environment/input/table_health.csv",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/log/opencode.log",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/opencode.db",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/opencode.db-shm",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/opencode.db-wal",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/HEAD",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/config",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/description",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/applypatch-msg.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/commit-msg.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/fsmonitor-watchman.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/post-update.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-applypatch.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-commit.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-merge-commit.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-push.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-rebase.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-receive.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/prepare-commit-msg.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/push-to-checkout.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/update.sample",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/index",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/exclude",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/refs",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/46/aeb6b6e2f7aa3ce9763637b4baf04c662e451d",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/6e/58c148ee48bca0b8540bdc99819321803c8a4c",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/76/d0d1a55084e1b9996cfb044b9f60d4b34830eb",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/95/b63740c93bbe8621f17723eaedeb4d17677961",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/aa/5f9391049f0a429ca35736f8cf5de7aee3f064",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/f8/bf86cffcf6c1eb0a846da337f20de9cedbebdb",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/fb/5ff643346bc6c1056213d3aaf0ac93daadc7c1",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/info/packs",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-4681fbd9cb8268974bad6d7c3d6274b9f7cec931.idx",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-4681fbd9cb8268974bad6d7c3d6274b9f7cec931.pack",
+        "evaluations/difficulty/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/packed-refs",
+        "evaluations/difficulty/r1/agent/opencode.txt",
+        "evaluations/difficulty/r1/agent/trajectory.json",
+        "evaluations/difficulty/r1/artifacts/manifest.json",
+        "evaluations/difficulty/r1/config.json",
+        "evaluations/difficulty/r1/lock.json",
+        "evaluations/difficulty/r1/provenance.json",
+        "evaluations/difficulty/r1/result.json",
+        "evaluations/difficulty/r1/trial.log",
+        "evaluations/difficulty/r1/verifier/ctrf.json",
+        "evaluations/difficulty/r1/verifier/reward.json",
+        "evaluations/difficulty/r1/verifier/reward.txt",
+        "evaluations/difficulty/r1/verifier/reward_meta.txt",
+        "evaluations/difficulty/r1/verifier/test-stdout.txt",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/log/opencode.log",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/opencode.db",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/opencode.db-shm",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/opencode.db-wal",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/HEAD",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/config",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/description",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/applypatch-msg.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/commit-msg.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/fsmonitor-watchman.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/post-update.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-applypatch.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-commit.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-merge-commit.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-push.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-rebase.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-receive.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/prepare-commit-msg.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/push-to-checkout.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/update.sample",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/index",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/exclude",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/refs",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/02/eae1e2aaf609f65f0292e31be13f41a83fe602",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/4c/ceb5dd1cfb52feec3f6f37d2fede4141c83a39",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/66/470134fa8d5f01630125a839e64dc6d352b4a8",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/95/b63740c93bbe8621f17723eaedeb4d17677961",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/de/db4226f80aba8a5014ab73ebf30635d03c074b",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/e1/c887a2c716b489f3ed8aaf469da1e719dbd455",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/f8/bf86cffcf6c1eb0a846da337f20de9cedbebdb",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/info/packs",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-9c5e3fc10b205be62741ca7d543d7cd44f554949.idx",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-9c5e3fc10b205be62741ca7d543d7cd44f554949.pack",
+        "evaluations/difficulty/r2/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/packed-refs",
+        "evaluations/difficulty/r2/agent/opencode.txt",
+        "evaluations/difficulty/r2/agent/trajectory.json",
+        "evaluations/difficulty/r2/artifacts/manifest.json",
+        "evaluations/difficulty/r2/config.json",
+        "evaluations/difficulty/r2/lock.json",
+        "evaluations/difficulty/r2/provenance.json",
+        "evaluations/difficulty/r2/result.json",
+        "evaluations/difficulty/r2/trial.log",
+        "evaluations/difficulty/r2/verifier/ctrf.json",
+        "evaluations/difficulty/r2/verifier/reward.json",
+        "evaluations/difficulty/r2/verifier/reward.txt",
+        "evaluations/difficulty/r2/verifier/reward_meta.txt",
+        "evaluations/difficulty/r2/verifier/test-stdout.txt",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/log/opencode.log",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/opencode.db",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/opencode.db-shm",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/opencode.db-wal",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/HEAD",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/config",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/description",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/applypatch-msg.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/commit-msg.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/fsmonitor-watchman.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/post-update.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-applypatch.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-commit.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-merge-commit.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-push.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-rebase.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-receive.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/prepare-commit-msg.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/push-to-checkout.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/update.sample",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/index",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/exclude",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/refs",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/04/8155cd86f166e9be483d0f51d80465cb73ca90",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/17/0e4275fa5a687d1be9e58a812045c7fe830f47",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/5f/7f36f9d888c2b0f5924aae860163160f0250be",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/94/d6b452de9373e45087d4e3f5f197cd70067d99",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/99/db0ffd6f8f64a116b5dc8fe874bb7e46e2e5f0",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/a4/9f808cdb53018c6818da4955a2d48e572a22cc",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/bf/4187f8993d03662a5b2006d34d0299cd523bdd",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/info/packs",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-551060a171443c9daf0dfe8136b51a08039d068d.idx",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-551060a171443c9daf0dfe8136b51a08039d068d.pack",
+        "evaluations/difficulty/r3/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/packed-refs",
+        "evaluations/difficulty/r3/agent/opencode.txt",
+        "evaluations/difficulty/r3/agent/trajectory.json",
+        "evaluations/difficulty/r3/artifacts/manifest.json",
+        "evaluations/difficulty/r3/config.json",
+        "evaluations/difficulty/r3/lock.json",
+        "evaluations/difficulty/r3/provenance.json",
+        "evaluations/difficulty/r3/result.json",
+        "evaluations/difficulty/r3/trial.log",
+        "evaluations/difficulty/r3/verifier/ctrf.json",
+        "evaluations/difficulty/r3/verifier/reward.json",
+        "evaluations/difficulty/r3/verifier/reward.txt",
+        "evaluations/difficulty/r3/verifier/reward_meta.txt",
+        "evaluations/difficulty/r3/verifier/test-stdout.txt",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/log/opencode.log",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/opencode.db",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/opencode.db-shm",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/opencode.db-wal",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/HEAD",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/config",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/description",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/applypatch-msg.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/commit-msg.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/fsmonitor-watchman.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/post-update.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-applypatch.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-commit.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-merge-commit.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-push.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-rebase.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-receive.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/prepare-commit-msg.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/push-to-checkout.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/update.sample",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/index",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/exclude",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/refs",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/3e/e917d7f0be76ce724b2182ae5fcc59d7f7ded4",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/70/b706ee8c8bdbe29196e67bc5a68eb78d97fd45",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/95/b63740c93bbe8621f17723eaedeb4d17677961",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/b4/579d05ec731866f86412b78ed2ae73499041a6",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/f8/bf86cffcf6c1eb0a846da337f20de9cedbebdb",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/info/packs",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-e2fe0ded0c3c1fe19b8c3b8ed5532d1f92de3da3.idx",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-e2fe0ded0c3c1fe19b8c3b8ed5532d1f92de3da3.pack",
+        "evaluations/difficulty/r4/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/packed-refs",
+        "evaluations/difficulty/r4/agent/opencode.txt",
+        "evaluations/difficulty/r4/agent/trajectory.json",
+        "evaluations/difficulty/r4/artifacts/manifest.json",
+        "evaluations/difficulty/r4/config.json",
+        "evaluations/difficulty/r4/lock.json",
+        "evaluations/difficulty/r4/provenance.json",
+        "evaluations/difficulty/r4/result.json",
+        "evaluations/difficulty/r4/trial.log",
+        "evaluations/difficulty/r4/verifier/ctrf.json",
+        "evaluations/difficulty/r4/verifier/reward.json",
+        "evaluations/difficulty/r4/verifier/reward.txt",
+        "evaluations/difficulty/r4/verifier/reward_meta.txt",
+        "evaluations/difficulty/r4/verifier/test-stdout.txt",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/log/opencode.log",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/opencode.db",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/opencode.db-shm",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/opencode.db-wal",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/HEAD",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/config",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/description",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/applypatch-msg.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/commit-msg.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/fsmonitor-watchman.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/post-update.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-applypatch.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-commit.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-merge-commit.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-push.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-rebase.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/pre-receive.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/prepare-commit-msg.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/push-to-checkout.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/hooks/update.sample",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/index",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/exclude",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/info/refs",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/3e/e917d7f0be76ce724b2182ae5fcc59d7f7ded4",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/70/b706ee8c8bdbe29196e67bc5a68eb78d97fd45",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/95/b63740c93bbe8621f17723eaedeb4d17677961",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/b4/579d05ec731866f86412b78ed2ae73499041a6",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/f8/bf86cffcf6c1eb0a846da337f20de9cedbebdb",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/info/packs",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-e2fe0ded0c3c1fe19b8c3b8ed5532d1f92de3da3.idx",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/objects/pack/pack-e2fe0ded0c3c1fe19b8c3b8ed5532d1f92de3da3.pack",
+        "evaluations/solvability/r1/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8/packed-refs",
+        "evaluations/solvability/r1/agent/opencode.txt",
+        "evaluations/solvability/r1/agent/trajectory.json",
+        "evaluations/solvability/r1/artifacts/manifest.json",
+        "evaluations/solvability/r1/config.json",
+        "evaluations/solvability/r1/lock.json",
+        "evaluations/solvability/r1/provenance.json",
+        "evaluations/solvability/r1/result.json",
+        "evaluations/solvability/r1/trial.log",
+        "evaluations/solvability/r1/verifier/ctrf.json",
+        "evaluations/solvability/r1/verifier/reward.json",
+        "evaluations/solvability/r1/verifier/reward.txt",
+        "evaluations/solvability/r1/verifier/reward_meta.txt",
+        "evaluations/solvability/r1/verifier/test-stdout.txt",
+        "evaluations/stability/repeat-01/agent/frozen_trajectory.json",
+        "evaluations/stability/repeat-01/config.json",
+        "evaluations/stability/repeat-01/lock.json",
+        "evaluations/stability/repeat-01/result.json",
+        "evaluations/stability/repeat-01/trial.log",
+        "evaluations/stability/repeat-01/verifier/ctrf.json",
+        "evaluations/stability/repeat-01/verifier/docker-exec.json",
+        "evaluations/stability/repeat-01/verifier/reward.json",
+        "evaluations/stability/repeat-01/verifier/reward.txt",
+        "evaluations/stability/repeat-01/verifier/reward_meta.txt",
+        "evaluations/stability/repeat-01/verifier/test-stdout.txt",
+        "evaluations/stability/repeat-02/agent/frozen_trajectory.json",
+        "evaluations/stability/repeat-02/config.json",
+        "evaluations/stability/repeat-02/lock.json",
+        "evaluations/stability/repeat-02/result.json",
+        "evaluations/stability/repeat-02/trial.log",
+        "evaluations/stability/repeat-02/verifier/ctrf.json",
+        "evaluations/stability/repeat-02/verifier/docker-exec.json",
+        "evaluations/stability/repeat-02/verifier/reward.json",
+        "evaluations/stability/repeat-02/verifier/reward.txt",
+        "evaluations/stability/repeat-02/verifier/reward_meta.txt",
+        "evaluations/stability/repeat-02/verifier/test-stdout.txt",
+        "evaluations/stability/repeat-03/agent/frozen_trajectory.json",
+        "evaluations/stability/repeat-03/config.json",
+        "evaluations/stability/repeat-03/lock.json",
+        "evaluations/stability/repeat-03/result.json",
+        "evaluations/stability/repeat-03/trial.log",
+        "evaluations/stability/repeat-03/verifier/ctrf.json",
+        "evaluations/stability/repeat-03/verifier/docker-exec.json",
+        "evaluations/stability/repeat-03/verifier/reward.json",
+        "evaluations/stability/repeat-03/verifier/reward.txt",
+        "evaluations/stability/repeat-03/verifier/reward_meta.txt",
+        "evaluations/stability/repeat-03/verifier/test-stdout.txt",
+        "evaluations/stability/repeat-04/agent/frozen_trajectory.json",
+        "evaluations/stability/repeat-04/config.json",
+        "evaluations/stability/repeat-04/lock.json",
+        "evaluations/stability/repeat-04/result.json",
+        "evaluations/stability/repeat-04/trial.log",
+        "evaluations/stability/repeat-04/verifier/ctrf.json",
+        "evaluations/stability/repeat-04/verifier/docker-exec.json",
+        "evaluations/stability/repeat-04/verifier/reward.json",
+        "evaluations/stability/repeat-04/verifier/reward.txt",
+        "evaluations/stability/repeat-04/verifier/reward_meta.txt",
+        "evaluations/stability/repeat-04/verifier/test-stdout.txt",
+        "evaluations/stability/repeat-05/agent/frozen_trajectory.json",
+        "evaluations/stability/repeat-05/config.json",
+        "evaluations/stability/repeat-05/lock.json",
+        "evaluations/stability/repeat-05/result.json",
+        "evaluations/stability/repeat-05/trial.log",
+        "evaluations/stability/repeat-05/verifier/ctrf.json",
+        "evaluations/stability/repeat-05/verifier/docker-exec.json",
+        "evaluations/stability/repeat-05/verifier/reward.json",
+        "evaluations/stability/repeat-05/verifier/reward.txt",
+        "evaluations/stability/repeat-05/verifier/reward_meta.txt",
+        "evaluations/stability/repeat-05/verifier/test-stdout.txt",
+        "instruction.md",
+        "review.csv",
+        "solution/files/bloat_audit.csv",
+        "solution/files/bloat_memo.md",
+        "solution/files/results.json",
+        "solution/golden_results.json",
+        "solution/golden_trajectory.json",
+        "solution/solve.sh",
+        "task.toml",
+        "tests/rl_world_verifiers/__init__.py",
+        "tests/rl_world_verifiers/compare.py",
+        "tests/rl_world_verifiers/judge.py",
+        "tests/rl_world_verifiers/models.py",
+        "tests/rl_world_verifiers/py.typed",
+        "tests/rl_world_verifiers/runner.py",
+        "tests/rl_world_verifiers/source_types.py",
+        "tests/rl_world_verifiers/sources/__init__.py",
+        "tests/rl_world_verifiers/sources/artifacts.py",
+        "tests/rl_world_verifiers/sources/csv.py",
+        "tests/rl_world_verifiers/sources/docx.py",
+        "tests/rl_world_verifiers/sources/filesystem.py",
+        "tests/rl_world_verifiers/sources/json.py",
+        "tests/rl_world_verifiers/sources/md.py",
+        "tests/rl_world_verifiers/sources/pdf.py",
+        "tests/rl_world_verifiers/sources/pptx.py",
+        "tests/rl_world_verifiers/sources/registry.py",
+        "tests/rl_world_verifiers/sources/response.py",
+        "tests/rl_world_verifiers/sources/text.py",
+        "tests/rl_world_verifiers/sources/xlsx.py",
+        "tests/rl_world_verifiers/verifiers.py",
+        "tests/test.sh",
+        "tests/test_outputs.py"
+      ]
+    },
+    "findings": [
+      {
+        "finding_id": "l1.realism_leakage::layer1_realism_leakage",
+        "category": "l1.realism_leakage",
+        "criterion": "layer1_realism_leakage",
+        "criterion_description": "Is the task realistic and free of golden-answer or scoring leakage?",
+        "criterion_guidance": "Aggregate the four mandatory realism and leakage subchecks. FAIL when any applicable subcheck fails.",
+        "auditor_text": "Fails because the mandatory golden_isolation subcheck fails: tests/test.sh line 25 runs 'python3 -m pytest' with cwd=/tmp, and Python prepends the cwd to sys.path for -m, so an agent-planted /tmp/pytest.py shadows the real module; the script only scrubs /app/pytest.py. The recorded trajectories show the agent running as root and writing /tmp (evaluations/difficulty/r4 writes /tmp/process.py, r3 writes /tmp/opencode/compute.py) in the same container the verifier later reuses (verifier_environment_mode 'shared', keep_containers true, stability repeats re-run in container d6b03467f71b). Domain correctness, reference validity and workflow realism pass.\nharbor check \u00b7 layer1_realism_leakage Fails because the mandatory golden_isolation subcheck fails: tests/test.sh line 25 runs 'python3 -m pytest' with cwd=/tmp, and Python prepends the cwd to sys.path for -m, so an agent-planted /tmp/pytest.py shadows the real module; the script only scrubs /app/pytest.py. The recorded trajectories show the agent running as root and writing /tmp (evaluations/difficulty/r4 writes /tmp/process.py, r3 writes /tmp/opencode/compute.py) in the same container the verifier later reuses (verifier_environment_mode 'shared', keep_containers true, stability repeats re-run in container d6b03467f71b). Domain correctness, reference validity and workflow realism pass."
+      },
+      {
+        "finding_id": "l1.realism_leakage::layer1_realism_leakage__golden_isolation",
+        "category": "l1.realism_leakage",
+        "criterion": "layer1_realism_leakage__golden_isolation",
+        "criterion_description": "Are golden answers and scoring internals isolated from the agent?",
+        "criterion_guidance": "Inspect mounts, permissions, filenames, solution visibility, test fixtures, and writable state. FAIL when an agent can read or infer answers or manipulate grading state directly.",
+        "auditor_text": "Golden/answer data itself is isolated - environment/Dockerfile copies only input/ (read-only), and the agent-visible listings recorded in evaluations/difficulty/r2 and r3 show /app containing nothing but input/ - but grading state is directly manipulable. tests/test.sh defends only against /app: it rm -f's /app/pytest.py and then does 'cd /tmp || exit 1; python3 -m pytest ...'. Because -m prepends the cwd to sys.path, a planted /tmp/pytest.py is imported instead of pytest; I verified empirically that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward parser in tests/test.sh lines 35-49 matches that string and computes reward 1.0. /tmp is agent-writable in the same shared container (difficulty/r4 wrote /tmp/process.py; stability repeats re-graded in retained container d6b03467f71b), and the core gate only requires the three files to exist, so they may be empty. Additionally, pytest_status is captured but never used and the script always exits 0, so a pre-planted /logs/verifier/reward.txt survives if the parser step raises.\nharbor check \u00b7 layer1_realism_leakage__golden_isolation Golden/answer data itself is isolated - environment/Dockerfile copies only input/ (read-only), and the agent-visible listings recorded in evaluations/difficulty/r2 and r3 show /app containing nothing but input/ - but grading state is directly manipulable. tests/test.sh defends only against /app: it rm -f's /app/pytest.py and then does 'cd /tmp || exit 1; python3 -m pytest ...'. Because -m prepends the cwd to sys.path, a planted /tmp/pytest.py is imported instead of pytest; I verified empirically that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward parser in tests/test.sh lines 35-49 matches that string and computes reward 1.0. /tmp is agent-writable in the same shared container (difficulty/r4 wrote /tmp/process.py; stability repeats re-graded in retained container d6b03467f71b), and the core gate only requires the three files to exist, so they may be empty. Additionally, pytest_status is captured but never used and the script always exits 0, so a pre-planted /logs/verifier/reward.txt survives if the parser step raises."
+      },
+      {
+        "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static",
+        "category": "l5.verifier_fairness",
+        "criterion": "layer5_verifier_fairness_static",
+        "criterion_description": "Is the verifier statically complete, fair, proportionate, and grounded in disclosed requirements?",
+        "criterion_guidance": "Aggregate all mandatory verifier subchecks. FAIL when any applicable subcheck fails; a broad verifier score must not hide a specific defect.",
+        "auditor_text": "Fails because three mandatory subchecks fail: coverage_depth, surface_form_brittleness and counterfactual_strength. Decisive demonstration: I built a memo consisting of one identical 426-character keyword-stuffed bullet repeated verbatim for all 61 tables - asserting BLOAT_THRESHOLD_EXCEEDED, AUTOVACUUM_DISABLED and STALE_STATISTICS simultaneously for every table and listing 13 unrelated ratios - and paired it with the correct CSV and results.json. It passes all 239 checks (reward 1.0), identical to the golden. Separately, a memo that explicitly asserts the opposite conclusion ('T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none') passes test_memo_explains_t30. The remaining nine subchecks pass; the broad 239-check surface must not mask these specific defects.\nharbor check \u00b7 layer5_verifier_fairness_static Fails because three mandatory subchecks fail: coverage_depth, surface_form_brittleness and counterfactual_strength. Decisive demonstration: I built a memo consisting of one identical 426-character keyword-stuffed bullet repeated verbatim for all 61 tables - asserting BLOAT_THRESHOLD_EXCEEDED, AUTOVACUUM_DISABLED and STALE_STATISTICS simultaneously for every table and listing 13 unrelated ratios - and paired it with the correct CSV and results.json. It passes all 239 checks (reward 1.0), identical to the golden. Separately, a memo that explicitly asserts the opposite conclusion ('T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none') passes test_memo_explains_t30. The remaining nine subchecks pass; the broad 239-check surface must not mask these specific defects."
+      },
+      {
+        "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth",
+        "category": "l5.verifier_fairness",
+        "criterion": "layer5_verifier_fairness_static__coverage_depth",
+        "criterion_description": "Do checks validate substantive correctness rather than mere existence or superficial shape?",
+        "criterion_guidance": "Inspect field-level assertions, semantic content, executable behavior, rich artifacts, and required side effects. FAIL when a materially wrong or empty output can satisfy shallow checks.",
+        "auditor_text": "The CSV/JSON side is genuinely field-level, but the memo side - one of three required deliverables and 42 of 239 checks - is satisfied by content with no semantic value. I confirmed by execution that a memo whose every table bullet is the same fabricated token bag (claiming all three findings at once for all 61 tables, with a shared list of 13 ratios and 6 day counts) passes every memo check, including test_memo_explains_t44, test_memo_size_trap_t06/t14/t27, test_memo_explains_t26/t30/t42 and test_memo_has_prose. _memo_mentions only requires the finding token plus two disclosed concept regexes to co-occur within ~400 chars of the table id, with heuristic prose framing (_looks_like_natural_prose accepts 'which'/'because' or three function words), so a materially wrong and internally contradictory memo satisfies the checks.\nharbor check \u00b7 layer5_verifier_fairness_static__coverage_depth The CSV/JSON side is genuinely field-level, but the memo side - one of three required deliverables and 42 of 239 checks - is satisfied by content with no semantic value. I confirmed by execution that a memo whose every table bullet is the same fabricated token bag (claiming all three findings at once for all 61 tables, with a shared list of 13 ratios and 6 day counts) passes every memo check, including test_memo_explains_t44, test_memo_size_trap_t06/t14/t27, test_memo_explains_t26/t30/t42 and test_memo_has_prose. _memo_mentions only requires the finding token plus two disclosed concept regexes to co-occur within ~400 chars of the table id, with heuristic prose framing (_looks_like_natural_prose accepts 'which'/'because' or three function words), so a materially wrong and internally contradictory memo satisfies the checks."
+      },
+      {
+        "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static__surface_form_brittleness",
+        "category": "l5.verifier_fairness",
+        "criterion": "layer5_verifier_fairness_static__surface_form_brittleness",
+        "criterion_description": "Are regex, exact-string, SQL LIKE/REPLACE, and other surface-form matchers appropriate, normalized, and scoped safely?",
+        "criterion_guidance": "Inspect every regex and lexical matcher. Test Markdown, whitespace, punctuation, ordering, aliases, singular/plural, date and numeric formatting, abbreviations, and negation. FAIL when a semantically correct answer can be rejected for incidental wording or formatting, when a wrong answer can pass by mimicking tokens, or when the matcher checks less than its criterion claims. Prefer structured assertions or semantic grading for genuinely semantic requirements.",
+        "auditor_text": "The lexical matchers check materially less than the check names and docstrings claim ('Memo must explain T-XX ...'), and wrong answers pass by mimicking tokens. _finding_pattern and _concept_pattern are pure token/regex presence tests with no polarity or attachment analysis, so I confirmed by execution that all of the following pass: 'T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none' passes test_memo_explains_t30 (negation inverted); 'T-26 is BLOAT_THRESHOLD_EXCEEDED because its 0.18 ratio exceeds the tightened 0.15 cap that applies to every small table on Tuesdays' passes (false rationale); 'T-44 is computed medium, not large ... ratio of 0.11' passes (wrong class and wrong number); 'T-20 is fine and is NOT AUTOVACUUM_DISABLED; the manual vacuum overrides nothing' passes. At scale, a single fabricated 426-char token bag repeated for all 61 tables passes all 42 memo checks, directly contradicting instruction.md ('Stuffing one undifferentiated token list next to every table id will fail') and review.csv ('Adversarial undifferentiated token-bag memo still fails memo tests'). Genuinely semantic requirements like 'explain the finding' need structured or semantic grading, not co-occurrence windows.\nharbor check \u00b7 layer5_verifier_fairness_static__surface_form_brittleness The lexical matchers check materially less than the check names and docstrings claim ('Memo must explain T-XX ...'), and wrong answers pass by mimicking tokens. _finding_pattern and _concept_pattern are pure token/regex presence tests with no polarity or attachment analysis, so I confirmed by execution that all of the following pass: 'T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none' passes test_memo_explains_t30 (negation inverted); 'T-26 is BLOAT_THRESHOLD_EXCEEDED because its 0.18 ratio exceeds the tightened 0.15 cap that applies to every small table on Tuesdays' passes (false rationale); 'T-44 is computed medium, not large ... ratio of 0.11' passes (wrong class and wrong number); 'T-20 is fine and is NOT AUTOVACUUM_DISABLED; the manual vacuum overrides nothing' passes. At scale, a single fabricated 426-char token bag repeated for all 61 tables passes all 42 memo checks, directly contradicting instruction.md ('Stuffing one undifferentiated token list next to every table id will fail') and review.csv ('Adversarial undifferentiated token-bag memo still fails memo tests'). Genuinely semantic requirements like 'explain the finding' need structured or semantic grading, not co-occurrence windows."
+      },
+      {
+        "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static__counterfactual_strength",
+        "category": "l5.verifier_fairness",
+        "criterion": "layer5_verifier_fairness_static__counterfactual_strength",
+        "criterion_description": "Would representative wrong, incomplete, contradictory, and extra-output cases receive appropriate scores?",
+        "criterion_guidance": "Require concrete positive, negative, incomplete, and adversarial acceptance cases. FAIL when the verifier cannot distinguish a genuine solution from a plausible defective one.",
+        "auditor_text": "The verifier cannot distinguish a genuine solution from a plausible defective one on its memo deliverable. Positive case: golden scores 239/239. Negative cases behave sensibly on the CSV/JSON side (empty 6/239; lazy 85/239; naive trap-ignoring 182/239). But the adversarial case defeats it: correct CSV + correct results.json + a memo that is one fabricated 426-char token bag repeated identically for all 61 tables scores 239/239 - indistinguishable from the golden. Intermediate adversarial variants degrade only gently (a longer-line version of the same bag scored 228/239 = 0.954, failing only where a required token fell outside the 400-char window). Incomplete case: a Markdown-table-only memo still scores 199/239. So the acceptance boundary is set by token placement rather than by whether the memo actually explains anything.\nharbor check \u00b7 layer5_verifier_fairness_static__counterfactual_strength The verifier cannot distinguish a genuine solution from a plausible defective one on its memo deliverable. Positive case: golden scores 239/239. Negative cases behave sensibly on the CSV/JSON side (empty 6/239; lazy 85/239; naive trap-ignoring 182/239). But the adversarial case defeats it: correct CSV + correct results.json + a memo that is one fabricated 426-char token bag repeated identically for all 61 tables scores 239/239 - indistinguishable from the golden. Intermediate adversarial variants degrade only gently (a longer-line version of the same bag scored 228/239 = 0.954, failing only where a required token fell outside the 400-char window). Incomplete case: a Markdown-table-only memo still scores 199/239. So the acceptance boundary is set by token placement rather than by whether the memo actually explains anything."
+      },
+      {
+        "finding_id": "l5.reward_hacking::layer5_reward_hacking_static",
+        "category": "l5.reward_hacking",
+        "criterion": "layer5_reward_hacking_static",
+        "criterion_description": "Does static inspection reveal a path to high reward without genuine completion?",
+        "criterion_guidance": "Aggregate the four mandatory exploitability subchecks. FAIL when any plausible shortcut can pass.",
+        "auditor_text": "Fails because three of the four mandatory exploitability subchecks fail. Two independent shortcuts reach full reward: (1) a fabricated memo - one identical keyword-stuffed bullet repeated for every table, asserting all three findings at once - passes all 239 checks; (2) tests/test.sh runs 'python3 -m pytest' with cwd=/tmp, so an agent-planted /tmp/pytest.py shadows the real module and can print a fabricated '239 passed in 0.4s' summary that the reward parser converts to 1.0 with empty deliverables. Only golden_or_internal_access passes.\nharbor check \u00b7 layer5_reward_hacking_static Fails because three of the four mandatory exploitability subchecks fail. Two independent shortcuts reach full reward: (1) a fabricated memo - one identical keyword-stuffed bullet repeated for every table, asserting all three findings at once - passes all 239 checks; (2) tests/test.sh runs 'python3 -m pytest' with cwd=/tmp, so an agent-planted /tmp/pytest.py shadows the real module and can print a fabricated '239 passed in 0.4s' summary that the reward parser converts to 1.0 with empty deliverables. Only golden_or_internal_access passes."
+      },
+      {
+        "finding_id": "l5.reward_hacking::layer5_reward_hacking_static__rollout_legitimacy",
+        "category": "l5.reward_hacking",
+        "criterion": "layer5_reward_hacking_static__rollout_legitimacy",
+        "criterion_description": "Would a high-scoring trajectory reflect coherent, grounded task work?",
+        "criterion_guidance": "Inspect whether fabricated claims, loops, destructive actions, or nonsensical steps could still pass because the verifier checks only the final surface.",
+        "auditor_text": "The verifier inspects only the final file surface, so a rollout containing fabricated claims can still pass. Confirmed by execution: pairing the correct bloat_audit.csv and results.json with a memo whose 61 bullets are byte-identical fabricated token bags - each simultaneously asserting BLOAT_THRESHOLD_EXCEEDED, AUTOVACUUM_DISABLED and STALE_STATISTICS for that table, plus a shared list of 13 ratios and 6 day counts - yields 239/239 and strict reward 1.0. The memo deliverable's entire explanatory purpose can therefore be faked. instruction.md promises the opposite ('A memo that ... keyword-stuffs the same token bag beside every table without table-bound prose evidence, will not pass'), and review.csv asserts this was tested and blocked; neither holds.\nharbor check \u00b7 layer5_reward_hacking_static__rollout_legitimacy The verifier inspects only the final file surface, so a rollout containing fabricated claims can still pass. Confirmed by execution: pairing the correct bloat_audit.csv and results.json with a memo whose 61 bullets are byte-identical fabricated token bags - each simultaneously asserting BLOAT_THRESHOLD_EXCEEDED, AUTOVACUUM_DISABLED and STALE_STATISTICS for that table, plus a shared list of 13 ratios and 6 day counts - yields 239/239 and strict reward 1.0. The memo deliverable's entire explanatory purpose can therefore be faked. instruction.md promises the opposite ('A memo that ... keyword-stuffs the same token bag beside every table without table-bound prose evidence, will not pass'), and review.csv asserts this was tested and blocked; neither holds."
+      },
+      {
+        "finding_id": "l5.reward_hacking::layer5_reward_hacking_static__sanctioned_interface_use",
+        "category": "l5.reward_hacking",
+        "criterion": "layer5_reward_hacking_static__sanctioned_interface_use",
+        "criterion_description": "Can the task be passed only through interfaces allowed by the instruction and environment contract?",
+        "criterion_guidance": "FAIL when direct backend, database, verifier, or hidden-file access can bypass the intended MCP, CLI, or user workflow.",
+        "auditor_text": "The task has no MCP/connector/database to bypass, but the verifier itself is directly reachable and can be used to bypass the intended user workflow. tests/test.sh line 25 executes 'python3 -m pytest --rootdir=/app --ctrf ... /tests/test_outputs.py' after 'cd /tmp'; because -m prepends the cwd to sys.path and PYTHONSAFEPATH/-I/-P are not set, an agent-planted /tmp/pytest.py is imported instead of the real package. I verified that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward regex in tests/test.sh lines 35-49 parses it to reward 1.0. That lets an agent obtain full reward through the verifier path instead of performing the audit, with only the three (possibly empty) files needed to clear the core gate.\nharbor check \u00b7 layer5_reward_hacking_static__sanctioned_interface_use The task has no MCP/connector/database to bypass, but the verifier itself is directly reachable and can be used to bypass the intended user workflow. tests/test.sh line 25 executes 'python3 -m pytest --rootdir=/app --ctrf ... /tests/test_outputs.py' after 'cd /tmp'; because -m prepends the cwd to sys.path and PYTHONSAFEPATH/-I/-P are not set, an agent-planted /tmp/pytest.py is imported instead of the real package. I verified that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward regex in tests/test.sh lines 35-49 parses it to reward 1.0. That lets an agent obtain full reward through the verifier path instead of performing the audit, with only the three (possibly empty) files needed to clear the core gate."
+      },
+      {
+        "finding_id": "l5.reward_hacking::layer5_reward_hacking_static__state_spoofing",
+        "category": "l5.reward_hacking",
+        "criterion": "layer5_reward_hacking_static__state_spoofing",
+        "criterion_description": "Can stale, fabricated, or writable state satisfy checks without the required work?",
+        "criterion_guidance": "FAIL for spoofable files, writable grading state, unchecked identifiers, stale seeded side effects, or missing before/after verification.",
+        "auditor_text": "Grading state is spoofable. (a) Module shadow: tests/test.sh scrubs /app/pytest.py, /app/pytest.pyc and /app/pytest, then cds to /tmp and runs 'python3 -m pytest', which prepends /tmp to sys.path - so the shadow attack is relocated, not removed. /tmp is agent-writable in the same shared container (evaluations/difficulty/r4 wrote /tmp/process.py, r3 wrote /tmp/opencode/compute.py; verifier_environment_mode is 'shared' with keep_containers true, and the stability repeats re-ran in retained container d6b03467f71b). I verified empirically that a planted /tmp/pytest.py is imported and that its fabricated summary line is parsed to reward 1.0. (b) Unchecked exit status: pytest_status is captured at line 26 but never used, and the script always 'exit 0', so if the reward-writing heredoc raises (for example when /logs/verifier/reward.txt is pre-planted read-only or replaced by a directory) a pre-seeded reward file survives. (c) Reward is derived from agent-influenceable stdout rather than from the ctrf results file. There is no before/after verification of workspace or grading state.\nharbor check \u00b7 layer5_reward_hacking_static__state_spoofing Grading state is spoofable. (a) Module shadow: tests/test.sh scrubs /app/pytest.py, /app/pytest.pyc and /app/pytest, then cds to /tmp and runs 'python3 -m pytest', which prepends /tmp to sys.path - so the shadow attack is relocated, not removed. /tmp is agent-writable in the same shared container (evaluations/difficulty/r4 wrote /tmp/process.py, r3 wrote /tmp/opencode/compute.py; verifier_environment_mode is 'shared' with keep_containers true, and the stability repeats re-ran in retained container d6b03467f71b). I verified empirically that a planted /tmp/pytest.py is imported and that its fabricated summary line is parsed to reward 1.0. (b) Unchecked exit status: pytest_status is captured at line 26 but never used, and the script always 'exit 0', so if the reward-writing heredoc raises (for example when /logs/verifier/reward.txt is pre-planted read-only or replaced by a directory) a pre-seeded reward file survives. (c) Reward is derived from agent-influenceable stdout rather than from the ctrf results file. There is no before/after verification of workspace or grading state."
+      }
+    ]
+  },
+  "reply": [
+    {
+      "finding_id": "l1.realism_leakage::layer1_realism_leakage",
+      "kind": "task_defect",
+      "summary": "The test script runs pytest from /tmp, allowing a planted /tmp/pytest.py to shadow the real module.",
+      "impact": "Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can plant a fake pytest module in /tmp that prints a passing summary, and the reward parser will accept it as a perfect score.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "runs 'python3 -m pytest' with cwd=/tmp, and Python prepends the cwd to sys.path for -m, so an agent-planted /tmp/pytest.py shadows the real module; the script only scrubs /app/pytest.py"
+        }
+      ],
+      "remediation": "In tests/test.sh, run pytest with an absolute module path or set PYTHONSAFEPATH=1 (or use python3 -P -m pytest) so /tmp is not prepended to sys.path, and scrub /tmp/pytest.py the same way /app/pytest.py is scrubbed.",
+      "verification": "Plant a /tmp/pytest.py that prints a passing summary, run tests/test.sh, and confirm the reward is no longer 1.0."
+    },
+    {
+      "finding_id": "l1.realism_leakage::layer1_realism_leakage__golden_isolation",
+      "kind": "task_defect",
+      "summary": "tests/test.sh only scrubs /app/pytest.py but runs pytest from /tmp, leaving grading state manipulable.",
+      "impact": "An agent can plant /tmp/pytest.py to fake the test summary, and the script's unused exit status and always-exit-0 behavior let a pre-seeded reward file survive if the parser step raises.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "it rm -f's /app/pytest.py and then does 'cd /tmp || exit 1; python3 -m pytest ...'. Because -m prepends the cwd to sys.path, a planted /tmp/pytest.py is imported instead of pytest"
+        }
+      ],
+      "remediation": "Scrub /tmp/pytest.py (and .pyc) before running pytest, set PYTHONSAFEPATH=1 or use python3 -P -m pytest, use the captured pytest_status to exit non-zero on failure instead of always exiting 0, and derive reward from the ctrf results file rather than stdout.",
+      "verification": "Plant /tmp/pytest.py with a fake passing summary and a pre-seeded /logs/verifier/reward.txt, then run tests/test.sh and confirm reward is not 1.0."
+    },
+    {
+      "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static",
+      "kind": "task_defect",
+      "summary": "The memo verifier accepts a fabricated keyword-stuffed token bag repeated for all 61 tables as a perfect memo.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. A memo with no semantic value passes all 42 memo checks, making the verifier unable to distinguish a genuine memo from a fabricated one.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "a memo consisting of one identical 426-character keyword-stuffed bullet repeated verbatim for all 61 tables ... passes all 239 checks (reward 1.0), identical to the golden"
+        }
+      ],
+      "remediation": "Replace the [REDACTED] memo checks with structured or semantic grading that verifies each table's finding is correct and internally consistent, not just that the right keywords appear near the table id.",
+      "verification": "Run the verifier with the fabricated token-bag memo paired with correct CSV and results.json, and confirm the memo checks now fail."
+    },
+    {
+      "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth",
+      "kind": "task_defect",
+      "summary": "Memo checks validate keyword co-occurrence, not semantic correctness, so a contradictory memo passes.",
+      "impact": "A memo claiming all three findings for every table simultaneously passes every memo check, including checks named for specific tables, because the matcher only requires finding tokens and concept regexes to co-occur within ~400 characters of a table id.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "_memo_mentions only requires the finding token plus two disclosed concept regexes to co-occur within ~400 chars of the table id, with heuristic prose framing ... so a materially wrong and internally contradictory memo satisfies the checks"
+        }
+      ],
+      "remediation": "Rewrite the memo checks in tests/test_outputs.py to validate that each table's stated finding matches the CSV/JSON result for that table and that the rationale references the correct ratio and threshold, rather than checking for keyword presence within a character window.",
+      "verification": "Submit a memo that asserts the opposite finding for T-30 and confirm test_memo_explains_t30 now fails."
+    },
+    {
+      "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static__surface_form_brittleness",
+      "kind": "task_defect",
+      "summary": "Memo matchers have no polarity or attachment analysis, so negated and false-rationale answers pass.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. Answers like 'T-30 is not BLOAT_THRESHOLD_EXCEEDED' pass the check for explaining T-30, and a single token bag repeated for all tables passes all 42 memo checks, contradicting promises in instruction.md and review.csv.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "_finding_pattern and _concept_pattern are pure token/regex presence tests with no polarity or attachment analysis, so I confirmed by execution that all of the following pass: 'T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none' passes test_memo_explains_t30 (negation inverted)"
+        }
+      ],
+      "remediation": "Add polarity detection to the memo matchers so negated findings are rejected, and require per-table rationale that is checked against the actual data rather than token presence. Update instruction.md and review.csv to match the new behavior.",
+      "verification": "Submit memos with negated findings and false rationales for T-26, T-44, and T-20, and confirm the corresponding memo checks fail."
+    },
+    {
+      "finding_id": "l5.verifier_fairness::layer5_verifier_fairness_static__counterfactual_strength",
+      "kind": "task_defect",
+      "summary": "The verifier scores a fabricated token-bag memo 239/239, indistinguishable from the golden solution.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. The acceptance boundary is set by token placement rather than whether the memo actually explains anything, so a plausible defective memo receives a perfect score.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "correct CSV + correct results.json + a memo that is one fabricated 426-char token bag repeated identically for all 61 tables scores 239/239 - indistinguishable from the golden"
+        }
+      ],
+      "remediation": "Add adversarial test cases to the verifier's own test suite that include the token-bag memo and the negated-finding memo, and fix the memo checks until those cases fail.",
+      "verification": "Run the verifier's test suite with the adversarial memo cases and confirm they fail."
+    },
+    {
+      "finding_id": "l5.reward_hacking::layer5_reward_hacking_static",
+      "kind": "task_defect",
+      "summary": "Two independent shortcuts reach full reward: a fabricated memo and a planted /tmp/pytest.py.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth and l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can get reward 1.0 with empty deliverables by exploiting either the memo token-bag shortcut or the pytest module shadow.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "tests/test.sh runs 'python3 -m pytest' with cwd=/tmp, so an agent-planted /tmp/pytest.py shadows the real module and can print a fabricated '239 passed in 0.4s' summary that the reward parser converts to 1.0 with empty deliverables"
+        }
+      ],
+      "remediation": "Fix both root causes: harden tests/test.sh against the /tmp/pytest.py shadow, and replace the memo [REDACTED] checks with semantic grading that rejects fabricated memos.",
+      "verification": "Attempt both shortcuts (plant /tmp/pytest.py and submit a token-bag memo) and confirm neither reaches reward 1.0."
+    },
+    {
+      "finding_id": "l5.reward_hacking::layer5_reward_hacking_static__rollout_legitimacy",
+      "kind": "task_defect",
+      "summary": "A memo of 61 byte-identical fabricated token bags paired with correct CSV and JSON yields reward 1.0.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. The verifier checks only the final file surface, so a rollout containing fabricated claims passes, contradicting promises in instruction.md and review.csv.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "pairing the correct bloat_audit.csv and results.json with a memo whose 61 bullets are byte-identical fabricated token bags ... yields 239/239 and strict reward 1.0"
+        }
+      ],
+      "remediation": "Replace the memo co-occurrence checks with semantic grading that verifies each table's explanation matches the data, and update instruction.md and review.csv to reflect what the verifier actually enforces.",
+      "verification": "Submit the fabricated token-bag memo with correct CSV and JSON and confirm the reward is below 1.0."
+    },
+    {
+      "finding_id": "l5.reward_hacking::layer5_reward_hacking_static__sanctioned_interface_use",
+      "kind": "task_defect",
+      "summary": "The verifier is directly reachable via a planted /tmp/pytest.py that fakes the test summary.",
+      "impact": "Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can bypass the intended audit workflow by planting a module that prints a passing summary, obtaining full reward with only empty files.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "an agent-planted /tmp/pytest.py is imported instead of the real package. I verified that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward regex in tests/test.sh lines 35-49 parses it to reward 1.0"
+        }
+      ],
+      "remediation": "Set PYTHONSAFEPATH=1 or use python3 -P -m pytest in tests/test.sh, scrub /tmp/pytest.py before running, and derive reward from the ctrf results file instead of stdout.",
+      "verification": "Plant /tmp/pytest.py with a fake passing summary and confirm tests/test.sh no longer produces reward 1.0."
+    },
+    {
+      "finding_id": "l5.reward_hacking::layer5_reward_hacking_static__state_spoofing",
+      "kind": "task_defect",
+      "summary": "Grading state is spoofable via /tmp/pytest.py, unused exit status, and stdout-derived reward.",
+      "impact": "Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. The script scrubs only /app/pytest.py, ignores pytest_status, always exits 0, and derives reward from agent-influenceable stdout, so a pre-seeded reward file can survive.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "pytest_status is captured at line 26 but never used, and the script always 'exit 0', so if the reward-writing heredoc raises ... a pre-seeded reward file survives. (c) Reward is derived from agent-influenceable stdout rather than from the ctrf results file."
+        }
+      ],
+      "remediation": "Scrub /tmp/pytest.py before running pytest, set PYTHONSAFEPATH=1, use pytest_status to exit non-zero on failure, derive reward from the ctrf results file, and add before/after verification of grading state.",
+      "verification": "Pre-seed /logs/verifier/reward.txt as read-only, plant /tmp/pytest.py, run tests/test.sh, and confirm the reward is not 1.0."
+    }
+  ],
+  "applied": {
+    "l1.realism_leakage::layer1_realism_leakage": {
+      "kind": "task_defect",
+      "summary": "The test script runs pytest from /tmp, allowing a planted /tmp/pytest.py to shadow the real module.",
+      "impact": "Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can plant a fake pytest module in /tmp that prints a passing summary, and the reward parser will accept it as a perfect score.",
+      "remediation": "In tests/test.sh, run pytest with an absolute module path or set PYTHONSAFEPATH=1 (or use python3 -P -m pytest) so /tmp is not prepended to sys.path, and scrub /tmp/pytest.py the same way /app/pytest.py is scrubbed.",
+      "verification": "Plant a /tmp/pytest.py that prints a passing summary, run tests/test.sh, and confirm the reward is no longer 1.0.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "runs 'python3 -m pytest' with cwd=/tmp, and Python prepends the cwd to sys.path for -m, so an agent-planted /tmp/pytest.py shadows the real module; the script only scrubs /app/pytest.py"
+        }
+      ]
+    },
+    "l1.realism_leakage::layer1_realism_leakage__golden_isolation": {
+      "kind": "task_defect",
+      "summary": "tests/test.sh only scrubs /app/pytest.py but runs pytest from /tmp, leaving grading state manipulable.",
+      "impact": "An agent can plant /tmp/pytest.py to fake the test summary, and the script's unused exit status and always-exit-0 behavior let a pre-seeded reward file survive if the parser step raises.",
+      "remediation": "Scrub /tmp/pytest.py (and .pyc) before running pytest, set PYTHONSAFEPATH=1 or use python3 -P -m pytest, use the captured pytest_status to exit non-zero on failure instead of always exiting 0, and derive reward from the ctrf results file rather than stdout.",
+      "verification": "Plant /tmp/pytest.py with a fake passing summary and a pre-seeded /logs/verifier/reward.txt, then run tests/test.sh and confirm reward is not 1.0.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "it rm -f's /app/pytest.py and then does 'cd /tmp || exit 1; python3 -m pytest ...'. Because -m prepends the cwd to sys.path, a planted /tmp/pytest.py is imported instead of pytest"
+        }
+      ]
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static": {
+      "kind": "task_defect",
+      "summary": "The memo verifier accepts a fabricated keyword-stuffed token bag repeated for all 61 tables as a perfect memo.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. A memo with no semantic value passes all 42 memo checks, making the verifier unable to distinguish a genuine memo from a fabricated one.",
+      "remediation": "Replace the [REDACTED] memo checks with structured or semantic grading that verifies each table's finding is correct and internally consistent, not just that the right keywords appear near the table id.",
+      "verification": "Run the verifier with the fabricated token-bag memo paired with correct CSV and results.json, and confirm the memo checks now fail.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "a memo consisting of one identical 426-character keyword-stuffed bullet repeated verbatim for all 61 tables ... passes all 239 checks (reward 1.0), identical to the golden"
+        }
+      ]
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth": {
+      "kind": "task_defect",
+      "summary": "Memo checks validate keyword co-occurrence, not semantic correctness, so a contradictory memo passes.",
+      "impact": "A memo claiming all three findings for every table simultaneously passes every memo check, including checks named for specific tables, because the matcher only requires finding tokens and concept regexes to co-occur within ~400 characters of a table id.",
+      "remediation": "Rewrite the memo checks in tests/test_outputs.py to validate that each table's stated finding matches the CSV/JSON result for that table and that the rationale references the correct ratio and threshold, rather than checking for keyword presence within a character window.",
+      "verification": "Submit a memo that asserts the opposite finding for T-30 and confirm test_memo_explains_t30 now fails.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "_memo_mentions only requires the finding token plus two disclosed concept regexes to co-occur within ~400 chars of the table id, with heuristic prose framing ... so a materially wrong and internally contradictory memo satisfies the checks"
+        }
+      ]
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static__surface_form_brittleness": {
+      "kind": "task_defect",
+      "summary": "Memo matchers have no polarity or attachment analysis, so negated and false-rationale answers pass.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. Answers like 'T-30 is not BLOAT_THRESHOLD_EXCEEDED' pass the check for explaining T-30, and a single token bag repeated for all tables passes all 42 memo checks, contradicting promises in instruction.md and review.csv.",
+      "remediation": "Add polarity detection to the memo matchers so negated findings are rejected, and require per-table rationale that is checked against the actual data rather than token presence. Update instruction.md and review.csv to match the new behavior.",
+      "verification": "Submit memos with negated findings and false rationales for T-26, T-44, and T-20, and confirm the corresponding memo checks fail.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "_finding_pattern and _concept_pattern are pure token/regex presence tests with no polarity or attachment analysis, so I confirmed by execution that all of the following pass: 'T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none' passes test_memo_explains_t30 (negation inverted)"
+        }
+      ]
+    },
+    "l5.verifier_fairness::layer5_verifier_fairness_static__counterfactual_strength": {
+      "kind": "task_defect",
+      "summary": "The verifier scores a fabricated token-bag memo 239/239, indistinguishable from the golden solution.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. The acceptance boundary is set by token placement rather than whether the memo actually explains anything, so a plausible defective memo receives a perfect score.",
+      "remediation": "Add adversarial test cases to the verifier's own test suite that include the token-bag memo and the negated-finding memo, and fix the memo checks until those cases fail.",
+      "verification": "Run the verifier's test suite with the adversarial memo cases and confirm they fail.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "correct CSV + correct results.json + a memo that is one fabricated 426-char token bag repeated identically for all 61 tables scores 239/239 - indistinguishable from the golden"
+        }
+      ]
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static": {
+      "kind": "task_defect",
+      "summary": "Two independent shortcuts reach full reward: a fabricated memo and a planted /tmp/pytest.py.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth and l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can get reward 1.0 with empty deliverables by exploiting either the memo token-bag shortcut or the pytest module shadow.",
+      "remediation": "Fix both root causes: harden tests/test.sh against the /tmp/pytest.py shadow, and replace the memo [REDACTED] checks with semantic grading that rejects fabricated memos.",
+      "verification": "Attempt both shortcuts (plant /tmp/pytest.py and submit a token-bag memo) and confirm neither reaches reward 1.0.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "tests/test.sh runs 'python3 -m pytest' with cwd=/tmp, so an agent-planted /tmp/pytest.py shadows the real module and can print a fabricated '239 passed in 0.4s' summary that the reward parser converts to 1.0 with empty deliverables"
+        }
+      ]
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static__rollout_legitimacy": {
+      "kind": "task_defect",
+      "summary": "A memo of 61 byte-identical fabricated token bags paired with correct CSV and JSON yields reward 1.0.",
+      "impact": "Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. The verifier checks only the final file surface, so a rollout containing fabricated claims passes, contradicting promises in instruction.md and review.csv.",
+      "remediation": "Replace the memo co-occurrence checks with semantic grading that verifies each table's explanation matches the data, and update instruction.md and review.csv to reflect what the verifier actually enforces.",
+      "verification": "Submit the fabricated token-bag memo with correct CSV and JSON and confirm the reward is below 1.0.",
+      "evidence": [
+        {
+          "path": "tests/test_outputs.py",
+          "excerpt": "pairing the correct bloat_audit.csv and results.json with a memo whose 61 bullets are byte-identical fabricated token bags ... yields 239/239 and strict reward 1.0"
+        }
+      ]
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static__sanctioned_interface_use": {
+      "kind": "task_defect",
+      "summary": "The verifier is directly reachable via a planted /tmp/pytest.py that fakes the test summary.",
+      "impact": "Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can bypass the intended audit workflow by planting a module that prints a passing summary, obtaining full reward with only empty files.",
+      "remediation": "Set PYTHONSAFEPATH=1 or use python3 -P -m pytest in tests/test.sh, scrub /tmp/pytest.py before running, and derive reward from the ctrf results file instead of stdout.",
+      "verification": "Plant /tmp/pytest.py with a fake passing summary and confirm tests/test.sh no longer produces reward 1.0.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "an agent-planted /tmp/pytest.py is imported instead of the real package. I verified that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward regex in tests/test.sh lines 35-49 parses it to reward 1.0"
+        }
+      ]
+    },
+    "l5.reward_hacking::layer5_reward_hacking_static__state_spoofing": {
+      "kind": "task_defect",
+      "summary": "Grading state is spoofable via /tmp/pytest.py, unused exit status, and stdout-derived reward.",
+      "impact": "Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. The script scrubs only /app/pytest.py, ignores pytest_status, always exits 0, and derives reward from agent-influenceable stdout, so a pre-seeded reward file can survive.",
+      "remediation": "Scrub /tmp/pytest.py before running pytest, set PYTHONSAFEPATH=1, use pytest_status to exit non-zero on failure, derive reward from the ctrf results file, and add before/after verification of grading state.",
+      "verification": "Pre-seed /logs/verifier/reward.txt as read-only, plant /tmp/pytest.py, run tests/test.sh, and confirm the reward is not 1.0.",
+      "evidence": [
+        {
+          "path": "tests/test.sh",
+          "excerpt": "pytest_status is captured at line 26 but never used, and the script always 'exit 0', so if the reward-writing heredoc raises ... a pre-seeded reward file survives. (c) Reward is derived from agent-influenceable stdout rather than from the ctrf results file."
+        }
+      ]
+    }
+  }
+}

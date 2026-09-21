@@ -1,0 +1,174 @@
+{
+  "contract_version": "shannon-fp-screen/29bd542",
+  "prompt_sha256": "dca2ca1945f2d6e84e5dcc0e58305230d2c020e22d760778741d4b0ed20fb04d",
+  "model": "zai-org/GLM-5.2",
+  "stats": {
+    "screened": 10,
+    "hidden": 0,
+    "model": "zai-org/GLM-5.2",
+    "contract_version": "shannon-fp-screen/29bd542",
+    "requested": 10,
+    "request_chars": 572193,
+    "reply_chars": 9221,
+    "seconds": 24.5,
+    "hidden_ids": []
+  },
+  "request": {
+    "findings": [
+      {
+        "claim_id": "l1.realism_leakage::layer1_realism_leakage",
+        "area": "l1.realism_leakage",
+        "text": "The test script runs pytest from /tmp, allowing a planted /tmp/pytest.py to shadow the real module.\nharbor check · layer1_realism_leakage Fails because the mandatory golden_isolation subcheck fails: tests/test.sh line 25 runs 'python3 -m pytest' with cwd=/tmp, and Python prepends the cwd to sys.path for -m, so an agent-planted /tmp/pytest.py shadows the real module; the script only scrubs /app/pytest.py. The recorded trajectories show the agent running as root and writing /tmp (evaluations/difficulty/r4 writes /tmp/process.py, r3 writes /tmp/opencode/compute.py) in the same container the verifier later reuses (verifier_environment_mode 'shared', keep_containers true, stability repeats re-run in container d6b03467f71b). Domain correctness, reference validity and workflow realism pass.\nimpact: Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can plant a fake pytest module in /tmp that prints a passing summary, and the reward parser will accept it as a perfect score."
+      },
+      {
+        "claim_id": "l1.realism_leakage::layer1_realism_leakage__golden_isolation",
+        "area": "l1.realism_leakage",
+        "text": "tests/test.sh only scrubs /app/pytest.py but runs pytest from /tmp, leaving grading state manipulable.\nharbor check · layer1_realism_leakage__golden_isolation Golden/answer data itself is isolated - environment/Dockerfile copies only input/ (read-only), and the agent-visible listings recorded in evaluations/difficulty/r2 and r3 show /app containing nothing but input/ - but grading state is directly manipulable. tests/test.sh defends only against /app: it rm -f's /app/pytest.py and then does 'cd /tmp || exit 1; python3 -m pytest ...'. Because -m prepends the cwd to sys.path, a planted /tmp/pytest.py is imported instead of pytest; I verified empirically that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward parser in tests/test.sh lines 35-49 matches that string and computes reward 1.0. /tmp is agent-writable in the same shared container (difficulty/r4 wrote /tmp/process.py; stability repeats re-graded in retained container d6b03467f71b), and the core gate only requires the three files to exist, so they may be empty. Additionally, pytest_status is captured but never used and the script always exits 0, so a pre-planted /logs/verifier/reward.txt survives if the parser step raises.\nimpact: An agent can plant /tmp/pytest.py to fake the test summary, and the script's unused exit status and always-exit-0 behavior let a pre-seeded reward file survive if the parser step raises."
+      },
+      {
+        "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static",
+        "area": "l5.verifier_fairness",
+        "text": "The memo verifier accepts a fabricated keyword-stuffed token bag repeated for all 61 tables as a perfect memo.\nharbor check · layer5_verifier_fairness_static Fails because three mandatory subchecks fail: coverage_depth, surface_form_brittleness and counterfactual_strength. Decisive demonstration: I built a memo consisting of one identical 426-character keyword-stuffed bullet repeated verbatim for all 61 tables - asserting BLOAT_THRESHOLD_EXCEEDED, AUTOVACUUM_DISABLED and STALE_STATISTICS simultaneously for every table and listing 13 unrelated ratios - and paired it with the correct CSV and results.json. It passes all 239 checks (reward 1.0), identical to the golden. Separately, a memo that explicitly asserts the opposite conclusion ('T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none') passes test_memo_explains_t30. The remaining nine subchecks pass; the broad 239-check surface must not mask these specific defects.\nimpact: Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. A memo with no semantic value passes all 42 memo checks, making the verifier unable to distinguish a genuine memo from a fabricated one."
+      },
+      {
+        "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth",
+        "area": "l5.verifier_fairness",
+        "text": "Memo checks validate keyword co-occurrence, not semantic correctness, so a contradictory memo passes.\nharbor check · layer5_verifier_fairness_static__coverage_depth The CSV/JSON side is genuinely field-level, but the memo side - one of three required deliverables and 42 of 239 checks - is satisfied by content with no semantic value. I confirmed by execution that a memo whose every table bullet is the same fabricated token bag (claiming all three findings at once for all 61 tables, with a shared list of 13 ratios and 6 day counts) passes every memo check, including test_memo_explains_t44, test_memo_size_trap_t06/t14/t27, test_memo_explains_t26/t30/t42 and test_memo_has_prose. _memo_mentions only requires the finding token plus two disclosed concept regexes to co-occur within ~400 chars of the table id, with heuristic prose framing (_looks_like_natural_prose accepts 'which'/'because' or three function words), so a materially wrong and internally contradictory memo satisfies the checks.\nimpact: A memo claiming all three findings for every table simultaneously passes every memo check, including checks named for specific tables, because the matcher only requires finding tokens and concept regexes to co-occur within ~400 characters of a table id."
+      },
+      {
+        "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static__surface_form_brittleness",
+        "area": "l5.verifier_fairness",
+        "text": "Memo matchers have no polarity or attachment analysis, so negated and false-rationale answers pass.\nharbor check · layer5_verifier_fairness_static__surface_form_brittleness The lexical matchers check materially less than the check names and docstrings claim ('Memo must explain T-XX ...'), and wrong answers pass by mimicking tokens. _finding_pattern and _concept_pattern are pure token/regex presence tests with no polarity or attachment analysis, so I confirmed by execution that all of the following pass: 'T-30 is not BLOAT_THRESHOLD_EXCEEDED ... the finding is none' passes test_memo_explains_t30 (negation inverted); 'T-26 is BLOAT_THRESHOLD_EXCEEDED because its 0.18 ratio exceeds the tightened 0.15 cap that applies to every small table on Tuesdays' passes (false rationale); 'T-44 is computed medium, not large ... ratio of 0.11' passes (wrong class and wrong number); 'T-20 is fine and is NOT AUTOVACUUM_DISABLED; the manual vacuum overrides nothing' passes. At scale, a single fabricated 426-char token bag repeated for all 61 tables passes all 42 memo checks, directly contradicting instruction.md ('Stuffing one undifferentiated token list next to every table id will fail') and review.csv ('Adversarial undifferentiated token-bag memo still fails memo tests'). Genuinely semantic requirements like 'explain the finding' need structured or semantic grading, not co-occurrence windows.\nimpact: Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. Answers like 'T-30 is not BLOAT_THRESHOLD_EXCEEDED' pass the check for explaining T-30, and a single token bag repeated for all tables passes all 42 memo checks, contradicting promises in instruction.md and review.csv."
+      },
+      {
+        "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static__counterfactual_strength",
+        "area": "l5.verifier_fairness",
+        "text": "The verifier scores a fabricated token-bag memo 239/239, indistinguishable from the golden solution.\nharbor check · layer5_verifier_fairness_static__counterfactual_strength The verifier cannot distinguish a genuine solution from a plausible defective one on its memo deliverable. Positive case: golden scores 239/239. Negative cases behave sensibly on the CSV/JSON side (empty 6/239; lazy 85/239; naive trap-ignoring 182/239). But the adversarial case defeats it: correct CSV + correct results.json + a memo that is one fabricated 426-char token bag repeated identically for all 61 tables scores 239/239 - indistinguishable from the golden. Intermediate adversarial variants degrade only gently (a longer-line version of the same bag scored 228/239 = 0.954, failing only where a required token fell outside the 400-char window). Incomplete case: a Markdown-table-only memo still scores 199/239. So the acceptance boundary is set by token placement rather than by whether the memo actually explains anything.\nimpact: Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. The acceptance boundary is set by token placement rather than whether the memo actually explains anything, so a plausible defective memo receives a perfect score."
+      },
+      {
+        "claim_id": "l5.reward_hacking::layer5_reward_hacking_static",
+        "area": "l5.reward_hacking",
+        "text": "Two independent shortcuts reach full reward: a fabricated memo and a planted /tmp/pytest.py.\nharbor check · layer5_reward_hacking_static Fails because three of the four mandatory exploitability subchecks fail. Two independent shortcuts reach full reward: (1) a fabricated memo - one identical keyword-stuffed bullet repeated for every table, asserting all three findings at once - passes all 239 checks; (2) tests/test.sh runs 'python3 -m pytest' with cwd=/tmp, so an agent-planted /tmp/pytest.py shadows the real module and can print a fabricated '239 passed in 0.4s' summary that the reward parser converts to 1.0 with empty deliverables. Only golden_or_internal_access passes.\nimpact: Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth and l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can get reward 1.0 with empty deliverables by exploiting either the memo token-bag shortcut or the pytest module shadow."
+      },
+      {
+        "claim_id": "l5.reward_hacking::layer5_reward_hacking_static__rollout_legitimacy",
+        "area": "l5.reward_hacking",
+        "text": "A memo of 61 byte-identical fabricated token bags paired with correct CSV and JSON yields reward 1.0.\nharbor check · layer5_reward_hacking_static__rollout_legitimacy The verifier inspects only the final file surface, so a rollout containing fabricated claims can still pass. Confirmed by execution: pairing the correct bloat_audit.csv and results.json with a memo whose 61 bullets are byte-identical fabricated token bags - each simultaneously asserting BLOAT_THRESHOLD_EXCEEDED, AUTOVACUUM_DISABLED and STALE_STATISTICS for that table, plus a shared list of 13 ratios and 6 day counts - yields 239/239 and strict reward 1.0. The memo deliverable's entire explanatory purpose can therefore be faked. instruction.md promises the opposite ('A memo that ... keyword-stuffs the same token bag beside every table without table-bound prose evidence, will not pass'), and review.csv asserts this was tested and blocked; neither holds.\nimpact: Same root cause as l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth. The verifier checks only the final file surface, so a rollout containing fabricated claims passes, contradicting promises in instruction.md and review.csv."
+      },
+      {
+        "claim_id": "l5.reward_hacking::layer5_reward_hacking_static__sanctioned_interface_use",
+        "area": "l5.reward_hacking",
+        "text": "The verifier is directly reachable via a planted /tmp/pytest.py that fakes the test summary.\nharbor check · layer5_reward_hacking_static__sanctioned_interface_use The task has no MCP/connector/database to bypass, but the verifier itself is directly reachable and can be used to bypass the intended user workflow. tests/test.sh line 25 executes 'python3 -m pytest --rootdir=/app --ctrf ... /tests/test_outputs.py' after 'cd /tmp'; because -m prepends the cwd to sys.path and PYTHONSAFEPATH/-I/-P are not set, an agent-planted /tmp/pytest.py is imported instead of the real package. I verified that such a module printing '===== 239 passed in 0.42s =====' exits 0, and that the reward regex in tests/test.sh lines 35-49 parses it to reward 1.0. That lets an agent obtain full reward through the verifier path instead of performing the audit, with only the three (possibly empty) files needed to clear the core gate.\nimpact: Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. An agent can bypass the intended audit workflow by planting a module that prints a passing summary, obtaining full reward with only empty files."
+      },
+      {
+        "claim_id": "l5.reward_hacking::layer5_reward_hacking_static__state_spoofing",
+        "area": "l5.reward_hacking",
+        "text": "Grading state is spoofable via /tmp/pytest.py, unused exit status, and stdout-derived reward.\nharbor check · layer5_reward_hacking_static__state_spoofing Grading state is spoofable. (a) Module shadow: tests/test.sh scrubs /app/pytest.py, /app/pytest.pyc and /app/pytest, then cds to /tmp and runs 'python3 -m pytest', which prepends /tmp to sys.path - so the shadow attack is relocated, not removed. /tmp is agent-writable in the same shared container (evaluations/difficulty/r4 wrote /tmp/process.py, r3 wrote /tmp/opencode/compute.py; verifier_environment_mode is 'shared' with keep_containers true, and the stability repeats re-ran in retained container d6b03467f71b). I verified empirically that a planted /tmp/pytest.py is imported and that its fabricated summary line is parsed to reward 1.0. (b) Unchecked exit status: pytest_status is captured at line 26 but never used, and the script always 'exit 0', so if the reward-writing heredoc raises (for example when /logs/verifier/reward.txt is pre-planted read-only or replaced by a directory) a pre-seeded reward file survives. (c) Reward is derived from agent-influenceable stdout rather than from the ctrf results file. There is no before/after verification of workspace or grading state.\nimpact: Same root cause as l1.realism_leakage::layer1_realism_leakage__golden_isolation. The script scrubs only /app/pytest.py, ignores pytest_status, always exits 0, and derives reward from agent-influenceable stdout, so a pre-seeded reward file can survive."
+      }
+    ],
+    "task_id": "code-c227-table-bloat-maintenance-audit"
+  },
+  "verdicts": [
+    {
+      "claim_id": "l1.realism_leakage::layer1_realism_leakage",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "high",
+      "evidence": "tests/test.sh lines 20-25: 'rm -f /app/pytest.py /app/pytest.pyc; rm -rf /app/pytest; export HARBOR_TASK_WORKSPACE=/app; export WORKSPACE=/app; cd /tmp || exit 1; python3 -m pytest --rootdir=/app --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA 2>&1 | tee /logs/verifier/test-stdout.txt'. No PYTHONSAFEPATH/-I/-P set. result.json records 'verifier_environment_mode': 'shared'.",
+      "reasoning": "The script scrubs /app/pytest.py but then cds to /tmp and runs python3 -m pytest, which prepends cwd to sys.path for -m. A planted /tmp/pytest.py would shadow the real module. The shared verifier environment and agent-writable /tmp (trajectories show agents writing /tmp/process.py) make this exploitable. The finding holds against the evidence.",
+      "surviving_defect": "",
+      "cascade_of": ""
+    },
+    {
+      "claim_id": "l1.realism_leakage::layer1_realism_leakage__golden_isolation",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "high",
+      "evidence": "tests/test.sh lines 20-25 (scrub /app only, cd /tmp, python3 -m pytest); lines 26-49 (pytest_status captured but unused, always exit 0, reward parsed from stdout regex). environment/Dockerfile: 'COPY input/ /app/input/' only. result.json: 'verifier_environment_mode': 'shared'.",
+      "reasoning": "Golden data is isolated (Dockerfile copies only input/ read-only), but grading state is manipulable: the script only scrubs /app/pytest.py, runs pytest from /tmp where a planted module shadows it, ignores pytest_status, always exits 0, and derives reward from stdout. The shared container with agent-writable /tmp confirms exploitability. The finding is accurate.",
+      "surviving_defect": "",
+      "cascade_of": "l1.realism_leakage::layer1_realism_leakage"
+    },
+    {
+      "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "medium",
+      "evidence": "instruction.md: 'Stuffing one undifferentiated token list next to every table id will fail (anti-keyword-stuff / anti bag-dump)'. review.csv: 'Adversarial undifferentiated token-bag memo still fails memo tests'. tests/test_outputs.py not in readable files; tests/test.sh runs pytest from /tmp. The snapshot does not contain test_outputs.py body to verify the matcher implementation.",
+      "reasoning": "The finding claims a fabricated token-bag memo passes all 239 checks, contradicting instruction.md and review.csv promises. I cannot inspect tests/test_outputs.py to verify the matcher behavior directly since it is not in the readable files snapshot. However, the instruction.md explicitly promises anti-keyword-stuffing will fail, and the finding provides detailed execution evidence. Without the test file body to refute the claim, the finding stands.",
+      "surviving_defect": "",
+      "cascade_of": ""
+    },
+    {
+      "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static__coverage_depth",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "medium",
+      "evidence": "instruction.md: 'A memo that only lists table names and findings, or that keyword-stuffs the same token bag beside every table without table-bound prose evidence, will not pass.' review.csv: 'Adversarial undifferentiated token-bag memo still fails memo tests.' tests/test_outputs.py body not available in readable files.",
+      "reasoning": "The finding claims memo checks validate keyword co-occurrence rather than semantic correctness, allowing a contradictory memo to pass. The instruction explicitly promises this will fail, and review.csv claims it was tested and blocked. I cannot inspect the actual matcher implementation since test_outputs.py is not in the readable snapshot. The finding's detailed execution evidence is not refuted by available package contents.",
+      "surviving_defect": "",
+      "cascade_of": "l5.verifier_fairness::layer5_verifier_fairness_static"
+    },
+    {
+      "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static__surface_form_brittleness",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "medium",
+      "evidence": "instruction.md: 'Stuffing one undifferentiated token list next to every table id will fail'. review.csv: 'Adversarial undifferentiated token-bag memo still fails memo tests'. tests/test_outputs.py not in readable files to verify matcher polarity/attachment logic.",
+      "reasoning": "The finding claims memo matchers have no polarity or attachment analysis, allowing negated and false-rationale answers to pass. The instruction promises anti-keyword-stuffing will fail, and review.csv claims it was tested. Without the test_outputs.py body in the readable snapshot, I cannot verify the matcher implementation to refute this. The finding's execution evidence stands unrefuted.",
+      "surviving_defect": "",
+      "cascade_of": "l5.verifier_fairness::layer5_verifier_fairness_static"
+    },
+    {
+      "claim_id": "l5.verifier_fairness::layer5_verifier_fairness_static__counterfactual_strength",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "medium",
+      "evidence": "instruction.md: 'A memo that only lists table names and findings, or that keyword-stuffs the same token bag beside every table without table-bound prose evidence, will not pass.' review.csv: 'Adversarial undifferentiated token-bag memo still fails memo tests.' tests/test_outputs.py body not in readable files.",
+      "reasoning": "The finding claims the verifier scores a fabricated token-bag memo 239/239, indistinguishable from golden. The instruction and review.csv both promise this is blocked. I cannot inspect the actual test implementation to verify or refute the matcher behavior since test_outputs.py is not in the readable snapshot. The finding's detailed execution evidence is not contradicted by available package contents.",
+      "surviving_defect": "",
+      "cascade_of": "l5.verifier_fairness::layer5_verifier_fairness_static"
+    },
+    {
+      "claim_id": "l5.reward_hacking::layer5_reward_hacking_static",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "high",
+      "evidence": "tests/test.sh lines 20-25 (cd /tmp, python3 -m pytest, no PYTHONSAFEPATH); instruction.md anti-keyword-stuffing promise; review.csv 'Adversarial undifferentiated token-bag memo still fails memo tests'. result.json: 'verifier_environment_mode': 'shared'.",
+      "reasoning": "Two independent shortcuts to full reward are identified: (1) the /tmp/pytest.py shadow exploit, confirmed by the test.sh code showing cd /tmp and python3 -m pytest without path isolation; and (2) the fabricated memo token-bag, which the instruction and review.csv promise is blocked but the finding provides execution evidence it is not. Both root causes are supported by the package evidence.",
+      "surviving_defect": "",
+      "cascade_of": ""
+    },
+    {
+      "claim_id": "l5.reward_hacking::layer5_reward_hacking_static__rollout_legitimacy",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "medium",
+      "evidence": "instruction.md: 'A memo that only lists table names and findings, or that keyword-stuffs the same token bag beside every table without table-bound prose evidence, will not pass.' review.csv: 'Adversarial undifferentiated token-bag memo still fails memo tests.' tests/test_outputs.py not in readable files.",
+      "reasoning": "The finding claims a memo of 61 byte-identical fabricated token bags paired with correct CSV and JSON yields reward 1.0, contradicting instruction.md and review.csv. I cannot inspect the test matcher implementation to verify since test_outputs.py is not in the readable snapshot. The finding's execution evidence is not refuted by available package contents.",
+      "surviving_defect": "",
+      "cascade_of": "l5.verifier_fairness::layer5_verifier_fairness_static"
+    },
+    {
+      "claim_id": "l5.reward_hacking::layer5_reward_hacking_static__sanctioned_interface_use",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "high",
+      "evidence": "tests/test.sh lines 24-25: 'cd /tmp || exit 1; python3 -m pytest --rootdir=/app --ctrf /logs/verifier/ctrf.json /tests/test_outputs.py -rA 2>&1 | tee /logs/verifier/test-stdout.txt'. No PYTHONSAFEPATH/-I/-P. result.json: 'verifier_environment_mode': 'shared'.",
+      "reasoning": "The verifier is directly reachable via a planted /tmp/pytest.py because the script runs python3 -m pytest from /tmp without path isolation. The shared environment and agent-writable /tmp confirm exploitability. The finding holds against the evidence.",
+      "surviving_defect": "",
+      "cascade_of": "l1.realism_leakage::layer1_realism_leakage__golden_isolation"
+    },
+    {
+      "claim_id": "l5.reward_hacking::layer5_reward_hacking_static__state_spoofing",
+      "verdict": "TRUE_POSITIVE",
+      "fp_class": "none",
+      "confidence": "high",
+      "evidence": "tests/test.sh lines 20-26 (scrub /app only, cd /tmp, python3 -m pytest, pytest_status captured but unused); lines 48-49 (always exit 0). result.json: 'verifier_environment_mode': 'shared'. Trajectories show agents writing /tmp/process.py.",
+      "reasoning": "Grading state is spoofable via three vectors: (a) /tmp/pytest.py shadow since only /app is scrubbed; (b) pytest_status captured but never used and script always exits 0; (c) reward derived from stdout not ctrcf file. The shared container with agent-writable /tmp confirms exploitability. The finding is accurate.",
+      "surviving_defect": "",
+      "cascade_of": "l1.realism_leakage::layer1_realism_leakage__golden_isolation"
+    }
+  ],
+  "hidden": {}
+}
