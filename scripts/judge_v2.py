@@ -766,6 +766,16 @@ def run_d1_d5_linter(task_dir, findings):
                      observed_fact=f"regex: {exp[:120]}",
                      evidence=[rel(spec_path, task_dir)],
                      recommended_fix="Replace with an LLM rubric on meaning.")
+        # D6: unescaped dots in numeric alternatives (e.g. 197.0 matches 19700)
+        num_alts = re.findall(r"\((\d+)\.(\d+)\)", exp)
+        for full_int, frac in num_alts:
+            if not re.search(r"\\\.", exp):
+                add_lint("D6", "sev2",
+                         f"prose check {c['name']} has unescaped dot in {full_int}.{frac} — matches {full_int}{frac[0]} or {full_int} {frac}",
+                         observed_fact=f"regex contains {full_int}.{frac} (unescaped dot matches any char)",
+                         evidence=[rel(spec_path, task_dir)],
+                         recommended_fix=f"Escape the dot: use {full_int}\\.{frac} instead of {full_int}.{frac}")
+                break
 
     by_file = defaultdict(list)
     for c in regex_checks:
