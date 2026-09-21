@@ -1,6 +1,6 @@
 {
-  "active_proportion_pct": 63.1,
-  "strata_outside_tolerance": 2,
+  "active_proportion_pct": 63.9,
+  "strata_outside_tolerance": 3,
   "blocks_assessed": 2,
   "blocks_outside_tolerance": 1,
   "out_of_sequence_allocations": 8

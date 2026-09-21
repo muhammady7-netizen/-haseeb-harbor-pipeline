@@ -1,10 +1,10 @@
 stratum,block_id,subjects,active,control,block_status
 S1,B1,7,5,2,not_assessed
 S1,B2,7,6,1,not_assessed
-S1,B3,7,5,2,not_assessed
+S1,B3,10,7,3,not_assessed
 S2,B4,7,2,5,not_assessed
-S2,B5,9,7,2,not_assessed
+S2,B5,11,9,2,not_assessed
 S2,B6,6,4,2,within_tolerance
 S3,B7,9,5,4,not_assessed
 S3,B8,6,2,4,outside_tolerance
-S3,B9,7,5,2,not_assessed
+S3,B9,9,6,3,not_assessed

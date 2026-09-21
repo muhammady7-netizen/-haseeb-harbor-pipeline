@@ -194,7 +194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?overall\\x22?\\s*,\\s*\\x22?all\\x22?\\s*,\\s*65\\s*,\\s*41\\s*,\\s*24\\s*,\\s*63.1\\s*,",
+        "expected": "(?mi)^\\x22?overall\\x22?\\s*,\\s*\\x22?all\\x22?\\s*,\\s*72\\s*,\\s*46\\s*,\\s*26\\s*,\\s*63.9\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -294,7 +294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,\\s*21\\s*,\\s*16\\s*,",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,\\s*24\\s*,\\s*18\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -319,7 +319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S2\\x22?\\s*,\\s*22\\s*,\\s*13\\s*,",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S2\\x22?\\s*,\\s*24\\s*,\\s*15\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -344,7 +344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S3\\x22?\\s*,\\s*22\\s*,\\s*12\\s*,",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S3\\x22?\\s*,\\s*24\\s*,\\s*13\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -369,7 +369,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?severe\\x22?\\s*,[^\\\\n]*(within|inside|ok|pass|compliant|no[_ ]?finding)",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?severe\\x22?\\s*,[^\\\\n]*(outside|breach|exceed|fail)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -394,7 +394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?severe\\x22?\\s*,\\s*30\\s*,\\s*18\\s*,",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?severe\\x22?\\s*,\\s*33\\s*,\\s*19\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -444,7 +444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?mild\\x22?\\s*,\\s*35\\s*,\\s*23\\s*,",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?mild\\x22?\\s*,\\s*39\\s*,\\s*27\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -644,7 +644,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^[^\\\\n,]*,\\s*B5\\s*,\\s*9\\s*,[^\\\\n]*(not[_ ]?assessed|incomplete|partial|still filling|over[_ -]?fill|excluded|n/?a)",
+        "expected": "(?mi)^[^\\\\n,]*,\\s*B5\\s*,\\s*11\\s*,[^\\\\n]*(not[_ ]?assessed|incomplete|partial|still filling|over[_ -]?fill|excluded|n/?a)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -969,7 +969,57 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)sequence|out of order|ascending|toleran|percentage point|drift|range|over-?fill|incomplete|not assessed|still filling",
+        "expected": "(?i)sequence|out of order|ascending",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "findings_address_tolerances",
+      "metadata": {
+        "how_justification": "Opens randomisation_findings.md with text.extract_text and applies regex_match.",
+        "why_justification": "Findings explain which departures are inside tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)toleran|percentage point|drift|range",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "findings_address_overfill_or_incomplete",
+      "metadata": {
+        "how_justification": "Opens randomisation_findings.md with text.extract_text and applies regex_match.",
+        "why_justification": "Findings note blocks that are not assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)over-?fill|incomplete|not assessed|still filling",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -994,7 +1044,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(3 or 5|within tolerance|equality at 5\\.0|5 pp)",
+        "expected": "(?i)(3 or 5|within tolerance|equality at 5\\.0|5 pp)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1019,7 +1069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?ims)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*[\\s\\S]{0,60}ledger|ledger[\\s\\S]{0,60}amend\\w*|reconcil\\w*[\\s\\S]{0,60}(ledger|amend)|applied[\\s\\S]{0,60}(ledger|amend)|ledger[\\s\\S]{0,60}(reconcil\\w*|applied))",
+        "expected": "(?is)(amendment[\\s-]*ledger|correction[\\s-]*ledger|ledger[\\s-]*of[\\s-]*amendments|allocation[\\s_-]*amend\\w*|amend\\w*.{0,60}ledger|ledger.{0,60}amend\\w*|reconcil\\w*.{0,60}(ledger|amend)|applied.{0,60}(ledger|amend)|ledger.{0,60}(reconcil\\w*|applied))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1069,7 +1119,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 63.1,
+        "expected": 63.9,
         "deterministic": {
           "path": "$.active_proportion_pct",
           "comparison": "approx_equals"
@@ -1094,7 +1144,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 2,
+        "expected": 3,
         "deterministic": {
           "path": "$.strata_outside_tolerance",
           "comparison": "equals"
