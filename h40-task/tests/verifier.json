@@ -454,8 +454,8 @@
     {
       "name": "memo_names_the_unapproved_acknowledgement",
       "metadata": {
-        "how_justification": "Requires R-06 near unapproved-role explanation in results_memo.md.",
-        "why_justification": "Memo names the result acknowledged by an unapproved role."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_names_the_unapproved_acknowledgement'? The original reg",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -468,11 +468,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-06\\b.{0,500}(?:unapproved|ward[_\\s-]?clerk|not on the approved|cannot act|not recognised|not recognized)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_names_the_unapproved_acknowledgement'? The original regex was: (?is)\\bR-06\\b.{0,500}(?:unapproved|ward[_\\s-]?clerk|not on the approved|cannot act|not recognised|not recognized). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_names_the_unapproved_acknowledgement'? The original regex was: (?is)\\bR-06\\b.{0,500}(?:unapproved|ward[_\\s-]?clerk|not on the approved|cannot act|not recognised|not recognized). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -480,7 +480,7 @@
       "name": "memo_addresses_the_clock_start",
       "metadata": {
         "how_justification": "Memo addresses core-hours / clock-start / amendment timing language in plain language (result IDs optional).",
-        "why_justification": "Clock-start / amendment non-breach explanation \u2014 no closed result-ID set."
+        "why_justification": "Clock-start / amendment non-breach explanation — no closed result-ID set."
       },
       "source": {
         "type": "file",
@@ -504,8 +504,8 @@
     {
       "name": "memo_addresses_escalation",
       "metadata": {
-        "how_justification": "Requires escalation discussion anchored to R-04 or R-13.",
-        "why_justification": "Memo separates the delay from the failure to escalate it."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_addresses_escalation'? The original regex was: (?is)(?=",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -518,11 +518,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?=.*\\b(?:R-04|R-13|R-16|R-35)\\b).{0,600}?(?:escalat|escalation register|missing)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_addresses_escalation'? The original regex was: (?is)(?=.*\\b(?:R-04|R-13|R-16|R-35)\\b).{0,600}?(?:escalat|escalation register|missing). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_addresses_escalation'? The original regex was: (?is)(?=.*\\b(?:R-04|R-13|R-16|R-35)\\b).{0,600}?(?:escalat|escalation register|missing). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -679,8 +679,8 @@
     {
       "name": "memo_lists_late_notifications",
       "metadata": {
-        "how_justification": "Requires R-02 and notification-late language.",
-        "why_justification": "Memo must cover late notifications with IDs."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_late_notifications'? The original regex was: (?is",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -693,19 +693,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-02\\b.{0,300}(?:limit|window|notif|telephon|30[\\s-]?min|late)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_late_notifications'? The original regex was: (?is)\\bR-02\\b.{0,300}(?:limit|window|notif|telephon|30[\\s-]?min|late). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_late_notifications'? The original regex was: (?is)\\bR-02\\b.{0,300}(?:limit|window|notif|telephon|30[\\s-]?min|late). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_late_notification_r09",
       "metadata": {
-        "how_justification": "Requires R-09 near tier-2 notification-late language.",
-        "why_justification": "Memo must also cover the tier-2 late notification (R-09), not only R-02."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_late_notification_r09'? The original regex was: (",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -718,19 +718,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-09\\b.{0,300}(?:notif|telephon|240|late)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_late_notification_r09'? The original regex was: (?is)\\bR-09\\b.{0,300}(?:notif|telephon|240|late). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_late_notification_r09'? The original regex was: (?is)\\bR-09\\b.{0,300}(?:notif|telephon|240|late). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_ack_breaches",
       "metadata": {
-        "how_justification": "Requires R-03 near acknowledgement-late language.",
-        "why_justification": "Memo must cover acknowledgement breaches with IDs."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_ack_breaches'? The original regex was: (?is)\\bR-0",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -743,19 +743,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-03\\b.{0,300}(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_ack_breaches'? The original regex was: (?is)\\bR-03\\b.{0,300}(?:limit|window|80\\s*min|60[\\s-]?min|acknowled). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_ack_breaches'? The original regex was: (?is)\\bR-03\\b.{0,300}(?:limit|window|80\\s*min|60[\\s-]?min|acknowled). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_absent_ack_r10",
       "metadata": {
-        "how_justification": "Requires R-10 near absent/invalid acknowledgement language.",
-        "why_justification": "Memo must cover the absent acknowledgement on R-10, not only R-03/R-06."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_absent_ack_r10'? The original regex was: (?is)\\bR",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -768,19 +768,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-10\\b.{0,300}(?:acknowledg|no valid|absent|none|unacknowledged)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_absent_ack_r10'? The original regex was: (?is)\\bR-10\\b.{0,300}(?:acknowledg|no valid|absent|none|unacknowledged). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_absent_ack_r10'? The original regex was: (?is)\\bR-10\\b.{0,300}(?:acknowledg|no valid|absent|none|unacknowledged). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_after_hours_ack_r15",
       "metadata": {
-        "how_justification": "Requires R-15 near late acknowledgement / after-hours language.",
-        "why_justification": "Memo must cover the tier-2 after-hours acknowledgement breach on R-15, where the clock runs continuously past 18:00."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_after_hours_ack_r15'? The original regex was: (?i",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -793,19 +793,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-15\\b.{0,300}(?:acknowledg|late|510|480|after.hours|midnight|continu)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_after_hours_ack_r15'? The original regex was: (?is)\\bR-15\\b.{0,300}(?:acknowledg|late|510|480|after.hours|midnight|continu). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_after_hours_ack_r15'? The original regex was: (?is)\\bR-15\\b.{0,300}(?:acknowledg|late|510|480|after.hours|midnight|continu). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_before_closing_breach_r16",
       "metadata": {
-        "how_justification": "Requires R-16 near late notification / boundary language.",
-        "why_justification": "Memo must cover the tier-2 result released at 17:59 (one minute before the 18:00 cutoff) whose clock starts at release time, not at 08:00 the next morning."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_before_closing_breach_r16'? The original regex wa",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -818,19 +818,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-16\\b.{0,300}(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_before_closing_breach_r16'? The original regex was: (?is)\\bR-16\\b.{0,300}(?:notification|late|17:59|931|escalat|missing|boundary|core.hours). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_before_closing_breach_r16'? The original regex was: (?is)\\bR-16\\b.{0,300}(?:notification|late|17:59|931|escalat|missing|boundary|core.hours). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_has_explanatory_body",
       "metadata": {
-        "how_justification": "Requires results_memo.md length >= 900 chars.",
-        "why_justification": "Memo must be substantive prose."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_has_explanatory_body'? The original regex was: (?is)(?=",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -843,11 +843,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?=[\\s\\S]{900,})(?=.*\\b(?:window|clock start|escalat|unapproved|not on the approved|recognised|recognized|notified|inclusive|core.?hours)\\b)(?=.*\\b(?:because|so CR-7|treats it|missed|within)\\b)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_has_explanatory_body'? The original regex was: (?is)(?=[\\s\\S]{900,})(?=.*\\b(?:window|clock start|escalat|unapproved|not on the approved|recognised|recognized|notified|inclusive|core.?hours)\\b)(?=.*\\b(?:because|so CR-7|treats it|missed|within)\\b). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_has_explanatory_body'? The original regex was: (?is)(?=[\\s\\S]{900,})(?=.*\\b(?:window|clock start|escalat|unapproved|not on the approved|recognised|recognized|notified|inclusive|core.?hours)\\b)(?=.*\\b(?:because|so CR-7|treats it|missed|within)\\b). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -979,8 +979,8 @@
     {
       "name": "memo_names_phlebotomist_unapproved",
       "metadata": {
-        "how_justification": "Memo must explain R-35 unapproved phlebotomist near the ID.",
-        "why_justification": "R-35 unapproved role named in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_names_phlebotomist_unapproved'? The original regex was:",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -993,19 +993,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-35\\b.{0,500}(?:unapproved|phlebotomist|not on the approved|not recognised|not recognized)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_names_phlebotomist_unapproved'? The original regex was: (?is)\\bR-35\\b.{0,500}(?:unapproved|phlebotomist|not on the approved|not recognised|not recognized). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_names_phlebotomist_unapproved'? The original regex was: (?is)\\bR-35\\b.{0,500}(?:unapproved|phlebotomist|not on the approved|not recognised|not recognized). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_keeps_r34_as_not_a_breach",
       "metadata": {
-        "how_justification": "Memo must explain that an inclusive/core-hours long-elapsed case is not a breach (R-34 style), without requiring a specific ID token.",
-        "why_justification": "R-34 long-looking Sunday case explained as compliant."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_keeps_r34_as_not_a_breach'? The original regex was: (?i",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -1018,11 +1018,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:inclusive|exactly|within (?:its|the) (?:window|limit)|not a (?:finding|breach)|core.?hours|weekend|Sunday).{0,200}(?:compliant|within|not a (?:finding|breach)|met)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_keeps_r34_as_not_a_breach'? The original regex was: (?is)(?:inclusive|exactly|within (?:its|the) (?:window|limit)|not a (?:finding|breach)|core.?hours|weekend|Sunday).{0,200}(?:compliant|within|not a (?:finding|breach)|met). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_keeps_r34_as_not_a_breach'? The original regex was: (?is)(?:inclusive|exactly|within (?:its|the) (?:window|limit)|not a (?:finding|breach)|core.?hours|weekend|Sunday).{0,200}(?:compliant|within|not a (?:finding|breach)|met). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -1604,7 +1604,7 @@
     {
       "name": "friday_closing_inclusive_compliant",
       "metadata": {
-        "how_justification": "R-38 Friday 18:00 \u2192 Saturday clock with inclusive 240/480 must be compliant.",
+        "how_justification": "R-38 Friday 18:00 → Saturday clock with inclusive 240/480 must be compliant.",
         "why_justification": "R-38 inclusive Friday-close case."
       },
       "source": {
@@ -1654,8 +1654,8 @@
     {
       "name": "memo_explains_midnight_or_weekend_non_breach",
       "metadata": {
-        "how_justification": "Memo must explain a midnight/weekend inclusive non-breach case.",
-        "why_justification": "Densify non-breach explanation present."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_explains_midnight_or_weekend_non_breach'? The original ",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -1668,11 +1668,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:midnight|Saturday|Sunday|weekend|inclusive|19:00|18:00|advanced_nurse).{0,300}(?:compliant|within|not a (?:finding|breach)|exactly)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_explains_midnight_or_weekend_non_breach'? The original regex was: (?is)(?:midnight|Saturday|Sunday|weekend|inclusive|19:00|18:00|advanced_nurse).{0,300}(?:compliant|within|not a (?:finding|breach)|exactly). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_explains_midnight_or_weekend_non_breach'? The original regex was: (?is)(?:midnight|Saturday|Sunday|weekend|inclusive|19:00|18:00|advanced_nurse).{0,300}(?:compliant|within|not a (?:finding|breach)|exactly). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -1779,8 +1779,8 @@
     {
       "name": "memo_lists_r40_late_notification",
       "metadata": {
-        "how_justification": "Memo must explain R-40 late notification.",
-        "why_justification": "R-40 late notification covered in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r40_late_notification'? The original regex was: (",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -1793,11 +1793,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-40\\b.{0,300}(?:notif|31|30[\\s-]?min|late|limit|window)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r40_late_notification'? The original regex was: (?is)\\bR-40\\b.{0,300}(?:notif|31|30[\\s-]?min|late|limit|window). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r40_late_notification'? The original regex was: (?is)\\bR-40\\b.{0,300}(?:notif|31|30[\\s-]?min|late|limit|window). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -2054,8 +2054,8 @@
     {
       "name": "memo_lists_r60_late_notification",
       "metadata": {
-        "how_justification": "Memo must explain R-60 late notification.",
-        "why_justification": "R-60 late notification covered in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r60_late_notification'? The original regex was: (",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -2068,19 +2068,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-60\\b.{0,400}(?:notif|241|240|late|window)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r60_late_notification'? The original regex was: (?is)\\bR-60\\b.{0,400}(?:notif|241|240|late|window). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r60_late_notification'? The original regex was: (?is)\\bR-60\\b.{0,400}(?:notif|241|240|late|window). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_r65_unapproved",
       "metadata": {
-        "how_justification": "Memo must explain R-65 unapproved physician_associate.",
-        "why_justification": "R-65 unapproved role named in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r65_unapproved'? The original regex was: (?is)\\bR",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -2093,19 +2093,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-65\\b.{0,500}(?:unapproved|physician[_\\s-]?associate|not on the approved|not recognised|not recognized)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r65_unapproved'? The original regex was: (?is)\\bR-65\\b.{0,500}(?:unapproved|physician[_\\s-]?associate|not on the approved|not recognised|not recognized). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r65_unapproved'? The original regex was: (?is)\\bR-65\\b.{0,500}(?:unapproved|physician[_\\s-]?associate|not on the approved|not recognised|not recognized). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_explains_pre_clock_or_1759",
       "metadata": {
-        "how_justification": "Memo explains pre-clock notify and/or evening/before-open clock concepts in plain language (any example IDs).",
-        "why_justification": "Pre-clock / evening non-breach concepts \u2014 no closed result-ID set."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_explains_pre_clock_or_1759'? The original regex was: (?",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -2118,11 +2118,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:pre[- ]?clock|before\\s+(?:the\\s+)?clock(?:\\s+start)?|notif(?:y|ication|ied).{0,100}(?:clock\\s+start|as\\s+0)|0\\s*min(?:ute)?s?.{0,80}(?:notif|clock)|17:59|evening.{0,60}(?:close|clock|release)|before\\s+(?:site\\s+)?(?:open|core[- ]?hours))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_explains_pre_clock_or_1759'? The original regex was: (?is)(?:pre[- ]?clock|before\\s+(?:the\\s+)?clock(?:\\s+start)?|notif(?:y|ication|ied).{0,100}(?:clock\\s+start|as\\s+0)|0\\s*min(?:ute)?s?.{0,80}(?:notif|clock)|17:59|evening.{0,60}(?:close|clock|release)|. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_explains_pre_clock_or_1759'? The original regex was: (?is)(?:pre[- ]?clock|before\\s+(?:the\\s+)?clock(?:\\s+start)?|notif(?:y|ication|ied).{0,100}(?:clock\\s+start|as\\s+0)|0\\s*min(?:ute)?s?.{0,80}(?:notif|clock)|17:59|evening.{0,60}(?:close|clock|release)|. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -2479,8 +2479,8 @@
     {
       "name": "memo_lists_r72_or_r77_late",
       "metadata": {
-        "how_justification": "Memo must explain at least one new late-notification trap (R-72 or R-77).",
-        "why_justification": "New late-notification traps covered in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r72_or_r77_late'? The original regex was: (?is)(?",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -2493,19 +2493,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bR-72\\b.{0,400}(?:notif|31|late|window)|\\bR-77\\b.{0,400}(?:notif|241|late|window))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r72_or_r77_late'? The original regex was: (?is)(?:\\bR-72\\b.{0,400}(?:notif|31|late|window)|\\bR-77\\b.{0,400}(?:notif|241|late|window)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r72_or_r77_late'? The original regex was: (?is)(?:\\bR-72\\b.{0,400}(?:notif|31|late|window)|\\bR-77\\b.{0,400}(?:notif|241|late|window)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_r73_or_r80_unapproved",
       "metadata": {
-        "how_justification": "Memo must explain a near-miss unapproved role (R-73 or R-80).",
-        "why_justification": "Near-miss unapproved roles named in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r73_or_r80_unapproved'? The original regex was: (",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -2518,19 +2518,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bR-73\\b.{0,500}(?:unapproved|nurse[_\\s-]?practitioner|not on the approved)|\\bR-80\\b.{0,500}(?:unapproved|locum[_\\s-]?consultant|not on the approved))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r73_or_r80_unapproved'? The original regex was: (?is)(?:\\bR-73\\b.{0,500}(?:unapproved|nurse[_\\s-]?practitioner|not on the approved)|\\bR-80\\b.{0,500}(?:unapproved|locum[_\\s-]?consultant|not on the approved)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r73_or_r80_unapproved'? The original regex was: (?is)(?:\\bR-73\\b.{0,500}(?:unapproved|nurse[_\\s-]?practitioner|not on the approved)|\\bR-80\\b.{0,500}(?:unapproved|locum[_\\s-]?consultant|not on the approved)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_explains_tier_or_preclock_non_breach",
       "metadata": {
-        "how_justification": "Memo explains inclusive window limits and/or pre-clock non-breach concepts (any example IDs).",
-        "why_justification": "Inclusive / pre-clock non-breach concepts \u2014 no closed result-ID set."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_explains_tier_or_preclock_non_breach'? The original reg",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -2543,11 +2543,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:inclusive|exact(?:ly)?\\s+(?:60|240|480)|within\\s+(?:the\\s+)?(?:window|limit)|not\\s+a\\s+(?:breach|finding)|pre[- ]?clock|before\\s+(?:the\\s+)?clock|tier[- ]?2.{0,80}(?:240|480|window|limit))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_explains_tier_or_preclock_non_breach'? The original regex was: (?is)(?:inclusive|exact(?:ly)?\\s+(?:60|240|480)|within\\s+(?:the\\s+)?(?:window|limit)|not\\s+a\\s+(?:breach|finding)|pre[- ]?clock|before\\s+(?:the\\s+)?clock|tier[- ]?2.{0,80}(?:240|480|window|limit)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_explains_tier_or_preclock_non_breach'? The original regex was: (?is)(?:inclusive|exact(?:ly)?\\s+(?:60|240|480)|within\\s+(?:the\\s+)?(?:window|limit)|not\\s+a\\s+(?:breach|finding)|pre[- ]?clock|before\\s+(?:the\\s+)?clock|tier[- ]?2.{0,80}(?:240|480|window|limit)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -2804,7 +2804,7 @@
     {
       "name": "sunday_evening_notify_ok_ack_late",
       "metadata": {
-        "how_justification": "R-91 Sunday 18:00 \u2192 Monday 08:00; notify 240 OK; ack 481 late+missing.",
+        "how_justification": "R-91 Sunday 18:00 → Monday 08:00; notify 240 OK; ack 481 late+missing.",
         "why_justification": "R-91 split notify-ok ack-late weekend chain."
       },
       "source": {
@@ -3004,7 +3004,7 @@
     {
       "name": "wed_evening_both_late_missing",
       "metadata": {
-        "how_justification": "R-100 Wednesday 18:00 \u2192 Thursday 08:00 both late 241/481 + missing.",
+        "how_justification": "R-100 Wednesday 18:00 → Thursday 08:00 both late 241/481 + missing.",
         "why_justification": "R-100 weekday evening both-late chain."
       },
       "source": {
@@ -3154,8 +3154,8 @@
     {
       "name": "memo_lists_r82_or_r93_or_r105_recorded",
       "metadata": {
-        "how_justification": "Memo must explain at least one unapproved/late row with recorded escalation (R-82/R-93/R-105).",
-        "why_justification": "Recorded-escalation traps covered in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r82_or_r93_or_r105_recorded'? The original regex ",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -3168,19 +3168,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bR-82\\b.{0,500}(?:recorded|escalat|consultant_on_call|unapproved)|\\bR-93\\b.{0,500}(?:recorded|escalat|locum_registrar|unapproved)|\\bR-105\\b.{0,500}(?:recorded|escalat|foundation_doctor|unapproved))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r82_or_r93_or_r105_recorded'? The original regex was: (?is)(?:\\bR-82\\b.{0,500}(?:recorded|escalat|consultant_on_call|unapproved)|\\bR-93\\b.{0,500}(?:recorded|escalat|locum_registrar|unapproved)|\\bR-105\\b.{0,500}(?:recorded|escalat|foundation_doctor|unappr. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r82_or_r93_or_r105_recorded'? The original regex was: (?is)(?:\\bR-82\\b.{0,500}(?:recorded|escalat|consultant_on_call|unapproved)|\\bR-93\\b.{0,500}(?:recorded|escalat|locum_registrar|unapproved)|\\bR-105\\b.{0,500}(?:recorded|escalat|foundation_doctor|unappr. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_r86_or_r99_tier_swap",
       "metadata": {
-        "how_justification": "Memo must explain a reverse/buried tier-limit breach (R-86 or R-99).",
-        "why_justification": "Tier-swap breach traps in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r86_or_r99_tier_swap'? The original regex was: (?",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -3193,19 +3193,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bR-86\\b.{0,400}(?:notif|120|late|window|tier)|\\bR-99\\b.{0,400}(?:notif|31|late|window))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r86_or_r99_tier_swap'? The original regex was: (?is)(?:\\bR-86\\b.{0,400}(?:notif|120|late|window|tier)|\\bR-99\\b.{0,400}(?:notif|31|late|window)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r86_or_r99_tier_swap'? The original regex was: (?is)(?:\\bR-86\\b.{0,400}(?:notif|120|late|window|tier)|\\bR-99\\b.{0,400}(?:notif|31|late|window)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_explains_r89_or_r103_non_breach",
       "metadata": {
-        "how_justification": "Memo explains evening / next-morning / out-of-hours clock-start non-breaches (any example IDs).",
-        "why_justification": "Evening clock / next-morning non-breach concepts \u2014 no closed result-ID set."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_explains_r89_or_r103_non_breach'? The original regex wa",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -3218,19 +3218,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:next\\s+(?:open\\s+)?morning|following\\s+(?:open\\s+)?morning|after\\s+(?:hours|close|site\\s+close)|(?:18:00|17:00).{0,80}clock|core[- ]?hours?\\s+clock|clock\\s+starts?\\s+(?:at|the\\s+next|next)|out[- ]?of[- ]?hours|evening\\s+release|deferred?\\s+(?:to|until)\\s+(?:the\\s+)?next)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_explains_r89_or_r103_non_breach'? The original regex was: (?is)(?:next\\s+(?:open\\s+)?morning|following\\s+(?:open\\s+)?morning|after\\s+(?:hours|close|site\\s+close)|(?:18:00|17:00).{0,80}clock|core[- ]?hours?\\s+clock|clock\\s+starts?\\s+(?:at|the\\s+next|next)|out. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_explains_r89_or_r103_non_breach'? The original regex was: (?is)(?:next\\s+(?:open\\s+)?morning|following\\s+(?:open\\s+)?morning|after\\s+(?:hours|close|site\\s+close)|(?:18:00|17:00).{0,80}clock|core[- ]?hours?\\s+clock|clock\\s+starts?\\s+(?:at|the\\s+next|next)|out. PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_r81_or_r83_near_miss_role",
       "metadata": {
-        "how_justification": "Memo must explain a near-miss role trap (R-81 or R-83).",
-        "why_justification": "Near-miss exact-token roles in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r81_or_r83_near_miss_role'? The original regex wa",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -3243,11 +3243,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bR-81\\b.{0,500}(?:unapproved|specialty_doctor|not on the approved)|\\bR-83\\b.{0,500}(?:unapproved|\\banp\\b|not on the approved))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r81_or_r83_near_miss_role'? The original regex was: (?is)(?:\\bR-81\\b.{0,500}(?:unapproved|specialty_doctor|not on the approved)|\\bR-83\\b.{0,500}(?:unapproved|\\banp\\b|not on the approved)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r81_or_r83_near_miss_role'? The original regex was: (?is)(?:\\bR-81\\b.{0,500}(?:unapproved|specialty_doctor|not on the approved)|\\bR-83\\b.{0,500}(?:unapproved|\\banp\\b|not on the approved)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -3580,7 +3580,7 @@
       "name": "memo_lists_r106_or_r110_holiday",
       "metadata": {
         "how_justification": "Memo explains trust closed-day / holiday / amendment clock deferral in plain language (any example IDs).",
-        "why_justification": "Closed-day / amendment non-breach concepts \u2014 no closed result-ID set."
+        "why_justification": "Closed-day / amendment non-breach concepts — no closed result-ID set."
       },
       "source": {
         "type": "file",
@@ -3604,8 +3604,8 @@
     {
       "name": "memo_lists_r107_or_r111_breach",
       "metadata": {
-        "how_justification": "Memo must explain a site/holiday breach (R-107 or R-111) with minutes or window.",
-        "why_justification": "Structural breach detail in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r107_or_r111_breach'? The original regex was: (?i",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -3618,19 +3618,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bR-107\\b.{0,500}(?:notif|ack|late|window|\\\\d+\\\\s*min)|\\bR-111\\b.{0,500}(?:481|ack|late|window|\\\\d+\\\\s*min))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r107_or_r111_breach'? The original regex was: (?is)(?:\\bR-107\\b.{0,500}(?:notif|ack|late|window|\\\\d+\\\\s*min)|\\bR-111\\b.{0,500}(?:481|ack|late|window|\\\\d+\\\\s*min)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r107_or_r111_breach'? The original regex was: (?is)(?:\\bR-107\\b.{0,500}(?:notif|ack|late|window|\\\\d+\\\\s*min)|\\bR-111\\b.{0,500}(?:481|ack|late|window|\\\\d+\\\\s*min)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_r108_or_r109_alias",
       "metadata": {
-        "how_justification": "Memo must cover an alias roster case (R-108 approved or R-109 wrong-case unapproved).",
-        "why_justification": "Roster alias traps in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r108_or_r109_alias'? The original regex was: (?is",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -3643,19 +3643,19 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bR-108\\b.{0,400}(?:SpR|alias|approved|compliant)|\\bR-109\\b.{0,500}(?:spr|unapproved|alias|not on the approved))",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r108_or_r109_alias'? The original regex was: (?is)(?:\\bR-108\\b.{0,400}(?:SpR|alias|approved|compliant)|\\bR-109\\b.{0,500}(?:spr|unapproved|alias|not on the approved)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r108_or_r109_alias'? The original regex was: (?is)(?:\\bR-108\\b.{0,400}(?:SpR|alias|approved|compliant)|\\bR-109\\b.{0,500}(?:spr|unapproved|alias|not on the approved)). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
     {
       "name": "memo_lists_r117_recorded_unapproved",
       "metadata": {
-        "how_justification": "Memo must explain R-117 unapproved with recorded escalation.",
-        "why_justification": "R-117 multi-doc recorded case in memo."
+        "how_justification": "LLM rubric: Does the deliverable satisfy the check 'memo_lists_r117_recorded_unapproved'? The original regex was",
+        "why_justification": "Converted from regex to LLM rubric to grade content, not keyword presence."
       },
       "source": {
         "type": "file",
@@ -3668,11 +3668,11 @@
         }
       },
       "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)\\bR-117\\b.{0,500}(?:nurse_practitioner|unapproved|recorded|escalat)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+        "type": "rubric",
+        "expected": "Does the deliverable satisfy the check 'memo_lists_r117_recorded_unapproved'? The original regex was: (?is)\\bR-117\\b.{0,500}(?:nurse_practitioner|unapproved|recorded|escalat). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+        "rubric": {
+          "prompt": "Does the deliverable satisfy the check 'memo_lists_r117_recorded_unapproved'? The original regex was: (?is)\\bR-117\\b.{0,500}(?:nurse_practitioner|unapproved|recorded|escalat). PASS only if the content genuinely satisfies this requirement. FAIL if the content is missing, wrong, or merely lists keywords without explanation.",
+          "model": "${JUDGE_MODEL}"
         }
       }
     },
@@ -4076,5 +4076,10 @@
         }
       }
     }
-  ]
+  ],
+  "config": {
+    "models": [
+      "${JUDGE_MODEL}"
+    ]
+  }
 }

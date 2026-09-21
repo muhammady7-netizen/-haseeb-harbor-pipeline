@@ -1,4 +1,4 @@
-# Harbor CLI task image â€” offline, file-deliverable.
+# Harbor CLI task image Ã¢â‚¬â€ offline, file-deliverable.
 #
 # Carries three things: a shell for the agent, the read-only fixtures, and the
 # python deps the vendored verifier engine needs. Installing the grader's deps
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # The engine's third-party imports are exactly pydantic, jsonpath_ng and
 # tenacity; the pins match infra/task-harness/requirements.txt so a verdict in
 # here means what it means in the harness. tenacity arrives via the judge module,
-# which is imported at package init even though these tasks never call a judge â€”
+# which is imported at package init even though these tasks never call a judge Ã¢â‚¬â€
 # omitting it fails the whole test collection, not just the rubric path.
 RUN pip install --no-cache-dir \
         "pytest==8.4.1" \
@@ -33,7 +33,3 @@ WORKDIR /app
 # Read-only task inputs. The prompt refers to these as `input/`.
 COPY input/ /app/input/
 RUN chmod -R a-w,a+rX /app/input
-
-# Drop to non-root for the agent runtime.
-RUN useradd -m appuser
-USER appuser
