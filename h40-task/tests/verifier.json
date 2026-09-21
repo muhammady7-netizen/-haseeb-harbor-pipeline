@@ -694,7 +694,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-02\\b[\\s\\S]*(?:limit|window|notif|telephon|30[\\s-]?min|late)",
+        "expected": "(?is)(?:\\bR-02\\b[\\s\\S]*(?:limit|window|notif|telephon|30[\\s-]?min|late)|(?:limit|window|notif|telephon|30[\\s-]?min|late)[\\s\\S]*\\bR-02\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -719,7 +719,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-09\\b[\\s\\S]*(?:notif|telephon|240|late)",
+        "expected": "(?is)(?:\\bR-09\\b[\\s\\S]*(?:notif|telephon|240|late)|(?:notif|telephon|240|late)[\\s\\S]*\\bR-09\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -744,7 +744,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-03\\b[\\s\\S]*(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)",
+        "expected": "(?is)(?:\\bR-03\\b[\\s\\S]*(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)|(?:limit|window|80\\s*min|60[\\s-]?min|acknowled)[\\s\\S]*\\bR-03\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -769,7 +769,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-10\\b[\\s\\S]*(?:acknowledg|no valid|absent|none|unacknowledged)",
+        "expected": "(?is)(?:\\bR-10\\b[\\s\\S]*(?:acknowledg|no valid|absent|none|unacknowledged)|(?:acknowledg|no valid|absent|none|unacknowledged)[\\s\\S]*\\bR-10\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -794,7 +794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-15\\b[\\s\\S]*(?:acknowledg|late|510|480|after.hours|midnight|continu)",
+        "expected": "(?is)(?:\\bR-15\\b[\\s\\S]*(?:acknowledg|late|510|480|after.hours|midnight|continu)|(?:acknowledg|late|510|480|after.hours|midnight|continu)[\\s\\S]*\\bR-15\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -819,7 +819,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-16\\b[\\s\\S]*(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)",
+        "expected": "(?is)(?:\\bR-16\\b[\\s\\S]*(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)|(?:notification|late|17:59|931|escalat|missing|boundary|core.hours)[\\s\\S]*\\bR-16\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1794,7 +1794,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bR-40\\b[\\s\\S]*(?:notif|31|30[\\s-]?min|late|limit|window)",
+        "expected": "(?is)(?:\\bR-40\\b[\\s\\S]*(?:notif|31|30[\\s-]?min|late|limit|window)|(?:notif|31|30[\\s-]?min|late|limit|window)[\\s\\S]*\\bR-40\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
