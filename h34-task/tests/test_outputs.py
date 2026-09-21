@@ -17,6 +17,11 @@ from pathlib import Path
 
 import pytest
 
+# Resolve JUDGE_MODEL for rubric checks (D3 fix)
+import os as _os
+JUDGE_MODEL = _os.environ.get('JUDGE_MODEL', 'openai/glm-5.2')
+
+
 TESTS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(TESTS_DIR))
 
