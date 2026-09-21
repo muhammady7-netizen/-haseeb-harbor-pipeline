@@ -89,3 +89,9 @@ SUBJ-104,1,current,,,,,active,
 SUBJ-104,2,current,,,,,   ,
 SUBJ-105,1,current,,,,,,2026/01/28
 SUBJ-106,1,current,,,,,active,
+SUBJ-200,1,current,S1,mild,B4,7,active,2026-01-31
+SUBJ-201,1,current,S2,severe,B5,8,active,2026-02-01
+SUBJ-201,2,void,,,,,,
+SUBJ-202,1,current,S3,mild,B9,9,,2026-02-02
+SUBJ-204,1,current,,,,,active,
+SUBJ-204,2,current,,,,,,
