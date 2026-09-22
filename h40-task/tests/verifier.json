@@ -72,7 +72,7 @@
         "expected": "result_id.*tier.*clock_start.*notification_minutes.*acknowledgement_minutes.*acknowledged_by_role.*escalation_status.*findings",
         "deterministic": {
           "path": "$.text",
-          "comparison": "regex_match"
+          "comparison": "contains"
         }
       }
     },
