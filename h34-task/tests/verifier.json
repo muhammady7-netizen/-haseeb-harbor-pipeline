@@ -219,7 +219,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,[^\\\\n]*(outside|breach|exceed|fail)",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,[^\\\\n]*(within|inside|ok|pass|compliant|no[_ ]?finding)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
