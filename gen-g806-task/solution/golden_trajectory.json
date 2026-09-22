@@ -1,0 +1,9 @@
+[
+  {
+    "name": "bash",
+    "server": "local",
+    "arguments": {
+      "command": "python3 /tests/test_outputs.py"
+    }
+  }
+]

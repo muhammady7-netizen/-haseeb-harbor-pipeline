@@ -1,0 +1,8 @@
+script_id,is_verbatim_testimony,uses_negation_pivot,has_scripture_ref,scripture_cited,runtime_minutes
+SC-01,False,False,True,True,6
+SC-02,False,True,False,False,7
+SC-03,False,False,True,False,5
+SC-04,False,False,False,False,10
+SC-05,True,True,True,True,6
+SC-06,False,True,True,False,3
+SC-07,False,False,True,True,8

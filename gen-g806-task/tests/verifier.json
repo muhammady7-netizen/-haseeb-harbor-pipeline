@@ -1,0 +1,355 @@
+{
+  "task_id": "gen-G806-leadership-brief-rhetorical-style-audit",
+  "verifiers": [
+    {
+      "name": "audit_exists",
+      "metadata": {
+        "how_justification": "Checks script_style_audit.csv is present as a file in the workspace.",
+        "why_justification": "Audit delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "script_style_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_exists",
+      "metadata": {
+        "how_justification": "Checks style_audit_memo.md is present as a file in the workspace.",
+        "why_justification": "Memo delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "style_audit_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "pivot_flagged",
+      "metadata": {
+        "how_justification": "Opens script_style_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Negation-pivot pattern flagged."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "script_style_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?SC\\-02\\x22?\\s*,.*NEGATION_PIVOT_USED",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "scripture_flagged",
+      "metadata": {
+        "how_justification": "Opens script_style_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Uncited scripture reference flagged."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "script_style_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?SC\\-03\\x22?\\s*,.*UNCITED_SCRIPTURE_REF",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "runtime_flagged",
+      "metadata": {
+        "how_justification": "Opens script_style_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Runtime out of band flagged."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "script_style_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?SC\\-04\\x22?\\s*,.*RUNTIME_OUT_OF_BAND",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "trap_clean",
+      "metadata": {
+        "how_justification": "Opens script_style_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Verbatim-testimony script exempt from the negation-pivot ban must not be flagged."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "script_style_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?SC\\-05\\x22?\\s*,.*none",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_lists_categories",
+      "metadata": {
+        "how_justification": "Opens style_audit_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo covers finding categories."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "style_audit_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?i)\\bscripture|\\bnegation",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_explains_exemption",
+      "metadata": {
+        "how_justification": "Opens style_audit_memo.md with md.extract_text and applies regex_match.",
+        "why_justification": "Memo explains the verbatim-testimony exemption."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "style_audit_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?:\\btestimony\\w*\\b.+\\bexempt|\\bexempt.+\\btestimony\\w*)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Checks results.json is present as a file in the workspace.",
+        "why_justification": "Derived figures delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_script_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.script_count.",
+        "why_justification": "Derived figure `script_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 7,
+        "deterministic": {
+          "path": "$.script_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_flagged_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.flagged_count.",
+        "why_justification": "Derived figure `flagged_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 4,
+        "deterministic": {
+          "path": "$.flagged_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_negation_pivot_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.negation_pivot_count.",
+        "why_justification": "Derived figure `negation_pivot_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 2,
+        "deterministic": {
+          "path": "$.negation_pivot_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_uncited_scripture_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.uncited_scripture_count.",
+        "why_justification": "Derived figure `uncited_scripture_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 2,
+        "deterministic": {
+          "path": "$.uncited_scripture_count",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_runtime_breach_count",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.runtime_breach_count.",
+        "why_justification": "Derived figure `runtime_breach_count`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 2,
+        "deterministic": {
+          "path": "$.runtime_breach_count",
+          "comparison": "equals"
+        }
+      }
+    }
+  ]
+}
