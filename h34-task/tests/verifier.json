@@ -194,7 +194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?overall\\x22?\\s*,\\s*\\x22?all\\x22?\\s*,\\s*89\\s*,\\s*56\\s*,\\s*33\\s*,\\s*89.9\\s*,",
+        "expected": "(?mi)^\\x22?overall\\x22?\\s*,\\s*\\x22?all\\x22?\\s*,\\s*89\\s*,\\s*56\\s*,\\s*33\\s*,\\s*62.9\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
