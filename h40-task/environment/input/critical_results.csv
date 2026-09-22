@@ -1,4 +1,4 @@
-# Critical results register export — ignore lines whose result_id starts with #
+# Critical results register export ??? ignore lines whose result_id starts with #
 result_id,tier,test,site,released_at,notified_at,acknowledged_at,acknowledged_by_role,lab_batch,notes
 R-01,1,potassium,MAIN,2026-06-15T09:00,2026-06-15T09:20,2026-06-15T09:45,consultant,MB-01,
 R-02,1,troponin,MAIN,2026-06-15T22:10,2026-06-15T22:55,2026-06-15T23:05,specialty_registrar,MB-02,
@@ -136,8 +136,9 @@ R-131,2,troponin,RIVERSIDE,2026-07-15T17:20,2026-07-15T17:30,2026-07-15T18:00,co
 R-132,2,potassium,RIVERSIDE,2026-07-15T17:50,2026-07-15T18:00,2026-07-15T18:20,anp,RB-527,
 R-133,2,magnesium,RIVERSIDE,2026-07-16T17:30,2026-07-16T18:00,2026-07-16T18:30,anp,RB-528,
 R-134,2,magnesium,RIVERSIDE,2026-07-16 17:45,2026-07-18 09:30,2026-07-18 10:00,nurse_practitioner,RB-529,holiday+site unapproved with recorded escalation
-R-135,2,calcium,RIVERSIDE,2026-07-20T18:00,2026-07-21T09:25,2026-07-21T09:50,consultant,MB-135,exactly at amended close
-R-136,2,glucose,MAIN,2026-07-10T18:00,2026-07-11T08:15,2026-07-11T08:30,specialty_registrar,MB-136,exactly at baseline close
-R-137,2,lactate,RIVERSIDE,2026-07-10T17:00,2026-07-11T08:20,2026-07-11T08:45,consultant,MB-137,exactly at baseline RIVERSIDE close
-R-138,1,potassium,MAIN,2026-07-22T10:00,2026-07-22T10:20,2026-07-22T10:50,specialist_registrar,MB-138,near-miss role specialist_registrar
-R-139,1,magnesium,MAIN,2026-07-22T11:00,2026-07-22T11:15,2026-07-22T11:45,advanced_practitioner,MB-139,near-miss role advanced_practitioner
+R-135,1,potassium,MAIN,2026-07-22T09:00,2026-07-22T09:15,2026-07-22T10:00,consultant,MB-135,ack exactly 60 min
+R-136,2,glucose,MAIN,2026-07-22T09:00,2026-07-22T09:10,2026-07-22T17:00,specialty_registrar,MB-136,ack exactly 480 min
+R-137,2,lactate,MAIN,2026-07-22T07:00,2026-07-22T07:30,2026-07-22T08:45,consultant,MB-137,pre-clock notification
+R-138,1,troponin,MAIN,2026-07-22T10:00,2026-07-22T10:10,2026-07-22T10:30,nurse_hca,MB-138,unapproved within window
+R-139,2,magnesium,RIVERSIDE,2026-07-15T17:30,2026-07-15T17:40,2026-07-15T18:10,consultant,MB-139,amendment boundary 07-15
+R-140,1,calcium,MAIN,2026-07-22T11:00,2026-07-22T11:30,2026-07-22T11:50,advanced_nurse_practitioner,MB-140,notification exactly 30 min

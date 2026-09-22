@@ -183,17 +183,17 @@
 - **R-123** - pre-amendment RIVERSIDE release after 17:00 close: clock 2026-07-15T08:00; 120/360 minutes are within 240/480.
 - **R-126** - pre-amendment RIVERSIDE exact 17:00 close starts next morning 08:00; pre-clock notify 0 and exact 480 are inclusive-compliant.
 - **R-127** - post-amendment RIVERSIDE 17:00 is still inside 18:00 close so the clock starts at release; +30/+480 are within window.
-- **R-128** - post-amendment RIVERSIDE exact 18:00 close into closed Jul 16–17: clock 2026-07-18T09:00 (amended open); pre-clock notify 0 and 479 acknowledgement minutes are within window.
+- **R-128** - post-amendment RIVERSIDE exact 18:00 close into closed Jul 16???17: clock 2026-07-18T09:00 (amended open); pre-clock notify 0 and 479 acknowledgement minutes are within window.
 - **R-129** - MAIN exact 18:00 into the same closed days: clock 2026-07-18T08:00 (MAIN open unchanged); 0/479 compliant.
 - **R-130** - RIVERSIDE released on a trust closed day under the amendment: clock 2026-07-18T09:00; exact 240/480 are inclusive-compliant.
 - **R-119** - RIVERSIDE closed-day daytime under amendment: clock 2026-07-18T09:00; 180/420 minutes are within 240/480.
-- **R-122** - MAIN release at exact site close 18:00 into closed Jul 16–17: clock 2026-07-18T08:00; pre-clock notify 0 and 479 acknowledgement minutes are within window.
-- Site core hours differ by site and date: baseline RIVERSIDE closes 17:00; procedure amendment CR-7-A sets RIVERSIDE to 09:00–18:00 for releases on/after 2026-07-15; MAIN stays 08:00–18:00.
+- **R-122** - MAIN release at exact site close 18:00 into closed Jul 16???17: clock 2026-07-18T08:00; pre-clock notify 0 and 479 acknowledgement minutes are within window.
+- Site core hours differ by site and date: baseline RIVERSIDE closes 17:00; procedure amendment CR-7-A sets RIVERSIDE to 09:00???18:00 for releases on/after 2026-07-15; MAIN stays 08:00???18:00.
 - Trust closed days in bank_holidays.csv defer the tier-2 clock to the next open morning.
 - Roster aliases SpR / ANP / Cons count; other capitalisation does not.
 - Inclusive boundaries: exactly at the window limit is within it.
 - Pre-clock telephone calls on tier-2 count as notification_minutes 0 from clock start.
-- Where escalation appears on the register after a missed window, escalation_status is recorded — not missing.
+- Where escalation appears on the register after a missed window, escalation_status is recorded ??? not missing.
 - **R-57** - pre-clock telephone on tier-2 counts as 0 min from clock start; compliant.
 - **R-58** - release at 17:59 starts immediately; acknowledgement at exact 480 is inclusive.
 - **R-64** - pre-core 07:59 release clocks at 08:00; windows measured from that start.
@@ -206,7 +206,7 @@
 - **R-113** - RIVERSIDE 16:59 is still inside core hours so the clock starts at release; acknowledgement at 480 minutes is inclusive-compliant.
 - **R-114** - ANP is an approved roster alias for advanced_nurse_practitioner.
 - **R-115** - Cons is an approved roster alias for consultant.
-- **R-118** - MAIN evening release into closed Jul 16–17: clock 2026-07-18T08:00; space-separated timestamps parse the same; 0/479 compliant.
+- **R-118** - MAIN evening release into closed Jul 16???17: clock 2026-07-18T08:00; space-separated timestamps parse the same; 0/479 compliant.
 - **R-89** - long wall-clock or boundary case resolved by inclusive windows / core-hours clock start; findings compliant.
 - **R-103** - long wall-clock or boundary case resolved by inclusive windows / core-hours clock start; findings compliant.
 - **R-98** - long wall-clock or boundary case resolved by inclusive windows / core-hours clock start; findings compliant.
