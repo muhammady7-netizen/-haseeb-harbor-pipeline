@@ -1175,6 +1175,58 @@
           "comparison": "equals"
         }
       }
+    },
+    {
+      "name": "row_count_block_balance",
+      "metadata": {
+        "how_justification": "Verifies block_balance.csv has exactly 13 data rows (rejects duplicated rows)",
+        "why_justification": "Row count must match gold",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?ims)\\A(?:[^\\n]*\\n){13}[^\\n]*\\Z",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_count_stratum_balance",
+      "metadata": {
+        "how_justification": "Verifies stratum_balance.csv has exactly 6 data rows (rejects duplicated rows)",
+        "why_justification": "Row count must match gold",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?ims)\\A(?:[^\\n]*\\n){6}[^\\n]*\\Z",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
     }
   ]
 }

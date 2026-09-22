@@ -4075,6 +4075,32 @@
           "comparison": "regex_match"
         }
       }
+    },
+    {
+      "name": "row_count_results_audit",
+      "metadata": {
+        "how_justification": "Verifies results_audit.csv has exactly 139 data rows (rejects duplicated rows)",
+        "why_justification": "Row count must match gold",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?ims)\\A(?:[^\\n]*\\n){139}[^\\n]*\\Z",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
     }
   ]
 }
