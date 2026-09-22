@@ -1,0 +1,71 @@
+# h34 + h40 TASK STATE — Sep 22, 2026
+
+## h34 (health-h34-randomisation-balance)
+
+**Portal:** https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-3704a7caf7d416aa669912587ef3aadf
+**Latest version:** v8 (Changes required)
+**Oracle:** FAIL — best 0.9215686275 over 3 attempts (needs 1.0)
+**GLM:** not run (Oracle failed first)
+**Harbor Check:** not run (Oracle failed first)
+
+### Root cause
+The verifier.json has 14 declared checks but test_outputs.py has 6 standalone pytest tests (recompute + content assertions). The portal Oracle runs all 20 tests (14 parametrized + 6 standalone). One of the 6 standalone tests FAILS on the portal, causing 1/20 = 0.05 loss → 19/20 = 0.95 per attempt, best of 3 = 0.9215686275.
+
+The failing test is likely `test_findings_content_correct_blocks_and_tolerances` — it checks that B3 appears near "within" or "not assessed" and B8 appears near "outside". The gold memo may not have this exact proximity, or the test is too strict.
+
+### Fixes needed
+1. Check which of the 6 standalone tests fails on the portal (download the Oracle trajectory)
+2. Fix the failing test to match the gold deliverable
+3. Re-upload and re-run Oracle+GLM
+
+### Working files
+- Source: `C:\Users\HASEEB~1\AppData\Local\Temp\opencode\h34-work\health-h34-randomisation-balance`
+- Zip: `C:\Users\Haseeb Mirza\Documents\Default Project\UPLOAD-THIS-TO-QC-health-h34.zip`
+
+### Version history
+- v1: Original (Oracle 0.9215686275, BOM/CRLF/regex issues)
+- v2: Fixed BOM/CRLF, D2 USER, stale evals (PreQC 5 blockers)
+- v3: Fixed D2 USER removed, artifacts reverted (PreQC 3 blockers)
+- v4: Fixed D1 regex migration, import re missing (PreQC 0, Oracle 0.9777)
+- v5: Fixed import re, CRLF (PreQC 0, Oracle PASS 1.0, GLM 2/4, Harbor Check 7 blockers)
+- v6: Fixed Harbor Check issues but still had .md regex (PreQC 6 blockers)
+- v7: All .md regex removed, content assertions added (PreQC 0, Oracle unfinished - superseded)
+- v8: Same as v7 re-uploaded (PreQC 0, Oracle 0.9215686275 — 1 standalone test fails)
+
+---
+
+## h40 (health-h40-critical-result-acknowledgement)
+
+**Portal:** https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer#task=content-89bb1667e0cb2eb32dc09b965996156a
+**Latest version:** v11 (Oracle+GLM running)
+**PreQC:** PASS (0 blocking)
+**Oracle+GLM:** running (evaluation-a0108fd4b58b461d)
+
+### What was done
+- v10: Oracle PASS (1.0), GLM 4/4 (too easy — blocked)
+- v11: Added 230 trap results (286 total) testing every boundary, role, combination
+  - 9 clock-start boundary traps
+  - 4 notification boundary traps (30/31, 240/241)
+  - 4 ack boundary traps (60/61, 480/481)
+  - 7 unapproved role traps
+  - 3 combined finding traps
+  - 2 no-ack traps
+  - 40 boundary pair variations
+  - 21 unapproved role + timing variations
+  - 7 tier-2 clock-start edge cases
+  - 10 no-ack with various escalation
+  - 20 compliant results
+  - 10 tier-2 late notification variations
+  - 10 tier-1 late ack variations
+  - 10 mixed tier+unapproved+escalation combinations
+  - 30 random boundary variations
+
+### Working files
+- Source: `C:\Users\HASEEB~1\AppData\Local\Temp\opencode\h40-work\health-h40-critical-result-acknowledgement`
+- Zip: `C:\Users\Haseeb Mirza\Documents\Default Project\UPLOAD-THIS-TO-QC-health-h40.zip`
+
+### Version history
+- v1-v8: Various fixes (CRLF, D2, D1 regex migration)
+- v9: Oracle 0.9836 (R-34 assertion too strict)
+- v10: Fixed R-34 assertion, Oracle PASS 1.0, GLM 4/4 too easy
+- v11: Added 230 trap results (286 total), Oracle+GLM running
