@@ -133,9 +133,8 @@ R-131,2,2026-07-15T17:20,10,,cons,missing,acknowledgement_late;acknowledger_unap
 R-132,2,2026-07-15T17:50,10,,anp,recorded,acknowledgement_late;acknowledger_unapproved
 R-133,2,2026-07-18T09:00,0,,anp,missing,acknowledgement_late;acknowledger_unapproved;escalation_missing
 R-134,2,2026-07-18T09:00,30,,nurse_practitioner,recorded,acknowledgement_late;acknowledger_unapproved
-R-135,1,2026-07-22T09:00,15,60,consultant,not_required,compliant
-R-136,2,2026-07-22T09:00,10,480,specialty_registrar,not_required,compliant
-R-137,2,2026-07-22T08:00,0,45,consultant,not_required,compliant
-R-138,1,2026-07-22T10:00,10,,nurse_hca,not_required,acknowledger_unapproved
-R-139,2,2026-07-15T17:30,10,50,consultant,not_required,compliant
-R-140,1,2026-07-22T11:00,30,50,advanced_nurse_practitioner,not_required,compliant
+R-135,2,2026-07-18T08:00,10,50,consultant,not_required,compliant
+R-136,1,2026-07-22T09:00,10,40,SpR,not_required,compliant
+R-137,1,2026-07-22T10:00,5,,spr,not_required,acknowledger_unapproved
+R-138,1,2026-07-22T11:00,5,,,missing,acknowledgement_late;escalation_missing
+R-139,2,2026-07-22T09:00,240,270,consultant,not_required,compliant
