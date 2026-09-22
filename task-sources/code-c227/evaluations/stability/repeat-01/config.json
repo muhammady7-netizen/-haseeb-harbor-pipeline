@@ -1,4 +1,8 @@
 {
-  "repeat": 1,
-  "agent": "oracle"
+  "task": {
+    "path": "."
+  },
+  "trial_name": "code-c227__LGcchZd",
+  "trials_dir": "C:\\Users\\USER\\AppData\\Local\\Temp\\harbor-jobs\\code-c227-table-bloat-maintenance-audit",
+  "job_id": "7c94ca78-2570-4816-a4e0-260f494e4e27"
 }

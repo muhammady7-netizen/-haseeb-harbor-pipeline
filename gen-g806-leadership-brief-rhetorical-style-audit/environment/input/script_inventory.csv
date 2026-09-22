@@ -1,0 +1,2031 @@
+script_id,is_verbatim_testimony,uses_negation_pivot,has_scripture_ref,scripture_cited,runtime_minutes,opening_line,body_excerpt
+SC-01,False,False,True,True,10,We gather tonight to celebrate what God has already begun among us.,The board packet is light; gratitude is the point of this cold open.
+SC-02,False,True,False,False,7,That's not a delay. It's a divine appointment.,We move from calendar anxiety into trust without changing the run of show.
+SC-03,False,False,True,False,5,The word reminds us that love is patient and kind when the room gets loud.,No chapter-verse was locked in the teleprompter notes for that allusion.
+SC-04,False,False,False,False,6,Tonight we walk through three decisions our board will face this quarter.,Keep the tone procedural; no personal testimony block in this segment.
+SC-05,True,True,True,True,6,It's not the end of my story. It's the chapter where mercy showed up.,I am reading my own words into the brief exactly as I spoke them last spring.
+SC-06,False,True,True,False,9,That's not failure. It's formation — and the text we opened still stands.,Producer flagged scripture but left the citation blank in the rundown.
+SC-07,False,False,True,True,8,We hold to the promise written in Romans 8:28 as we plan the next season.,Standard closer; citation already on the lower-third package.
+SC-08,True,True,True,False,5,It's not luck that carried me. It's the grace I keep naming out loud.,Testimony block still missing book-chapter-verse in the cite field.
+SC-09,False,True,True,True,4,"Friends, we are here to thank the teams who carried this year with quiet faithfulness.",Housekeeping thank-yous for the teams who carried quiet faithfulness this year.
+SC-10,False,False,False,False,7,Keep your eyes on the next hire and the next campus conversation.,It's not a setback. It's a setup for the work ahead of us.
+SC-11,True,False,False,False,11,We open with a guest voice from last month's baptism night.,That's not hype. It's what she actually said when the mic came down.
+SC-12,False,False,True,True,11,Extended format walkthrough of the capital plan milestones.,Romans 12:1 anchors the stewardship frame; citation locked.
+SC-13,False,True,False,False,5,Welcome to a quiet housekeeping brief.,A short list of facility notes and volunteer swaps for the week.
+SC-14,False,False,True,False,13,Capital Sunday preview for the extended teaching block.,Uncited allusion sits in the second act; timed long on purpose.
+SC-15,True,True,True,True,3,It's not the platform that changed me. It's the people who stayed.,Short testimony with citation present before clearance review.
+ SC-16 ,False,False,False,False,6,A calm thank-you to the volunteers who stayed late.,A calm thank-you to the volunteers who stayed late after the service.
+SC-17,False,False,False,False,6,That's not noise. It's the sound of a room learning to listen.,The room settles as people learn to listen before the next agenda item.
+SC-18,False,False,False,False,12,Extended capital walkthrough continues without a pivot.,Milestone walkthrough continues with budget slides and campus maps.
+SC-19,False,False,True,False,6,We lean on a familiar promise without locking the cite.,A familiar promise is named without a locked chapter-verse on the lower third.
+SC-20,False,False,yes,false,6,A soft close with no banned turn and no real scripture flag.,A soft close that leaves the room without a banned turn of phrase.
+SC-21,False,False,False,False,9,Board update with a measured closer.,Board update closes with next steps and a measured pastoral note.
+SC-22,False,True,False,False,5,That's not optional. It's required prep for the vote.,"Prep notes for the vote: materials, timing, and who speaks when."
+SC-23,False,True,False,False,6,That's not the headline. It's a draft we already killed.,Procedural update covering routine agenda items.
+SC-23,False,True,False,False,6,Final volunteer thank-you with no banned construction.,Final volunteer thank-you before the benediction and dismissal.
+SC-24,True,True,True,False,6,It's not courage I invented. It's what the guest kept repeating.,Guest wording repeats a courage line the producer wants preserved carefully.
+SC-25,False,False,False,False,4,Extended band cold open that runs short on purpose.,Cold open for the extended band that keeps the energy brief on purpose.
+SC-26,True,True,False,False,6,That's not branding. It's the sentence we keep mistaking for testimony.,A branding-sounding line the team keeps quoting in the rundown notes.
+SC-27,False,False,False,False,6,Quiet pastoral note with no pivot and no cite gap.,A quiet pastoral note before the offering with no sharp pivot.
+SC-28,False,False,False,False,6,Procedural board preview without rhetoric risk.,Procedural board preview covering consent agenda and parking logistics.
+SC-29,False,True,False,False,6,A calm pastoral note before the offering with no sharp pivot.,That's not a close. It's a commission for the week ahead.
+SC-30,False,False,False,False,9,Board update with a measured closer and no rhetoric risk.,Procedural closer covering consent agenda and parking logistics.
+SC-31,False,True,False,False,7,That's not a cycle. It's a call to the next season.,A pivot line the producer kept in the final rundown notes.
+SC-32,False,False,True,False,6,We lean on a familiar promise without locking the cite.,An uncited allusion that would normally flag scripture review.
+SC-33,False,True,False,False,6,That's not a forecast. It's a framework for the quarter.,Budget framework slides with a banned turn in the open.
+SC-34,False,False,False,False,8.5,Extended pastoral reflection with a calm measured tone.,Reflection closes with gratitude and no banned construction.
+SC-35,False,True,False,False,6,That's not a finale. It's a setup for what comes next.,A pivot line kept in the rundown that the producer flagged late.
+SC-36,False,True,False,False,7,That's not a problem. It's a prompt for the team.,A pivot line kept in the rundown for the weekend preview.
+SC-37,True,True,True,False,6,That's not failure. It's formation and the text we opened still stands.,Guest speaker block with scripture reference but no citation; testimony source.
+SC-38,True,False,False,False,6,Welcome to this week's leadership brief.,Producer flagged this as a pivot but the copy reads clean with no negation turn.
+SC-39,False,False,False,False,7,A quiet housekeeping brief for the weekend.,Housekeeping brief with standard content.
+SC-40,False,False,yes,false,6,A brief wrap with a scripture allusion.,Standard content with no unusual markers.
+SC-41,False,False,False,False,6,Board vote recap with no rhetoric.,Standard content with no unusual markers.
+SC-42,False,False,False,False,6,Quiet pastoral reflection.,Standard content with no unusual markers.
+SC-43,False,False,False,False,6,Procedural update with no pivot.,Standard content with no unusual markers.
+SC-44,False,False,False,False,7,Standard closer with a timing adjustment.,Standard content with no unusual markers.
+SC-45,True,True,False,False,6,It's not my story. It's what the guest kept saying.,Standard content with no unusual markers.
+SC-46,False,True,False,False,6,That's not the plan. It's a draft we already cut.,Standard content with no unusual markers.
+SC-46,False,False,False,False,6,Final volunteer thank-you with no banned construction.,Standard content with no unusual markers.
+SC-47,False,False,1,false,6,Soft scripture allusion with a numeric token.,Standard content with no unusual markers.
+SC-48,False,False,False,False,6,Procedural closer with no air-window issue.,Standard content with no unusual markers.
+SC-49,False,False,False,False,6,Quiet note before the offering.,Standard content with no unusual markers.
+SC-50,False,False,False,False,5,Extended band cold open that runs exactly at the floor.,Standard content with no unusual markers.
+SC-51,False,False,False,False,6,Housekeeping brief with no rhetoric.,Standard content with no unusual markers.
+SC-52,False,False,False,False,6,Pastoral note with multiple status issues.,Standard content with no unusual markers.
+SC-53,False,False,False,False,6,Script with both hold and retired flags.,Standard content with no unusual markers.
+SC-54,False,False,True,TRUE!,6,Scripture reference with a noisy true token.,Standard content with no unusual markers.
+SC-55,False,False,False,False,7,A calm pastoral opening with no rhetoric in the first line.,That's not the final word. It's the beginning of what God will do next.
+SC-56,True,True,False,False,6,It's not my story. It's what the guest kept saying.,Standard content with no unusual markers.
+SC-57,False,False,False,False,9,Extended format walkthrough with timing revisions.,Standard content with no unusual markers.
+SC-58,False,False,True, True ,6,Scripture reference with a spaced but valid citation token.,Standard content with no unusual markers.
+SC-59,False,False,False,False,6,"Script with hold, retirement, and window issues all at once.",Standard content with no unusual markers.
+SC-60,False,False,False,False,6,A measured reflection on the season.,That is not the end. It is the start of something new.
+SC-61,False,False,False,False,11,Extended teaching block at the upper boundary.,Standard content with no unusual markers.
+SC-62,False,False,Y,False,6,Brief mention with a producer flag.,Standard content with no unusual markers.
+SC-63,False,False,False,False,6,Volunteer coordination script.,Standard content with no unusual markers.
+SC-64,True,True,False,False,6,It's not a program. It's a family that showed up.,Standard content with no unusual markers.
+SC-81,False,False,False,False,6,A measured reflection on the season ahead.,That is not the end. It is the beginning of what comes next.
+SC-82,False,False,False,False,7,A calm pastoral opening with no rhetoric.,That's not a program. It's a family that showed up.
+SC-83,True,True,False,False,6,It's not my story. It's what the community kept saying.,Standard content with no unusual markers.
+SC-84,True,True,False,False,6,It's not luck. It's the grace we keep naming.,Standard content with no unusual markers.
+SC-85,True,True,False,False,6,It's not the end. It's the chapter where mercy showed up.,Standard content with no unusual markers.
+SC-86,False,False,False,False,6,Board vote recap with multiple clearance revisions.,Standard content with no unusual markers.
+SC-87,False,False,False,False,6,Volunteer coordination with clearance changes.,Standard content with no unusual markers.
+SC-88,False,False,False,False,9,Standard format that runs long before adjustment.,Standard content with no unusual markers.
+SC-89,False,False,False,False,5,Standard closer with timing revisions.,Standard content with no unusual markers.
+SC-90,False,False,False,False,12,Extended teaching block at the upper boundary.,Standard content with no unusual markers.
+SC-91,False,False,TRUE,True,6,Scripture reference with uppercase tokens.,Standard content with no unusual markers.
+SC-92,False,False,yes,False,6,Brief mention with a producer flag.,Standard content with no unusual markers.
+SC-93,False,False,False,False,6,Quiet note with a retirement-like status.,Standard content with no unusual markers.
+SC-94,False,False,False,False,6,Procedural closer with air window notation.,Standard content with no unusual markers.
+SC-95,True,True,False,False,6,It's not a setback. It's a setup for the work ahead.,Standard content with no unusual markers.
+SC-96,False,False,False,False,8,Standard format that runs at 8 minutes.,Standard content with no unusual markers.
+SC-97,False,False,False,False,5,Extended format that runs at 5 minutes.,Standard content with no unusual markers.
+SC-98,False,False,False,False,10,Standard format with a timing adjustment.,Standard content with no unusual markers.
+SC-99,False,False,False,False,5,Extended format that runs very short.,Standard content with no unusual markers.
+SC-100,False,False,False,False,7,Standard format at the boundary.,Standard content with no unusual markers.
+SC-101,False,True,False,False,6,That's not a delay. It's a divine appointment.,Standard content.
+SC-102,False,False,True,False,6,Scripture allusion.,Standard content.
+SC-103,False,False,False,False,6,Standard content.,Standard content.
+SC-104,False,False,False,False,6,Standard content.,Standard content.
+SC-105,False,False,False,False,6,Standard content.,Standard content.
+SC-106,False,False,False,False,6,Standard content.,Standard content.
+SC-107,False,False,False,False,6,Standard content.,Standard content.
+SC-108,False,False,False,False,6,Standard content.,Standard content.
+SC-109,False,False,False,False,9,Standard content.,Standard content.
+SC-110,False,False,False,False,6,Standard content.,Standard content.
+SC-111,False,False,False,False,6,Standard content.,Standard content.
+SC-112,False,False,False,False,6,Standard content.,Standard content.
+SC-113,False,False,False,False,5,Standard content.,Standard content.
+SC-114,False,False,False,False,5,Standard content.,Standard content.
+SC-115,True,True,False,False,6,It's not my story. It's what the guest said.,Standard content.
+SC-116,True,True,False,False,6,It's not my story. It's what the guest said.,Standard content.
+SC-117,False,False,False,False,6,That was not the plan. It was a draft.,Standard content.
+SC-118,False,False,False,False,6,Standard content.,Standard content.
+SC-119,False,False,False,False,6,Standard content.,Standard content.
+SC-120,False,False,False,False,6,Standard content.,Standard content.
+SC-121,False,False,False,False,6,Standard content.,Standard content.
+SC-122,False,False,False,False,6,Standard content.,Standard content.
+SC-123,False,False,False,False,6,Standard content.,Standard content.
+SC-124,False,False,False,False,6,Standard content.,Standard content.
+SC-125,False,False,False,False,6,Standard content.,Standard content.
+SC-126,False,False,False,False,6,Standard content.,Standard content.
+SC-127,False,False,False,False,6,Standard content.,Standard content.
+SC-128,False,False,False,False,6,Standard content.,Standard content.
+SC-129,False,False,False,False,6,Standard content.,Standard content.
+SC-130,False,False,False,False,6,Standard content.,Standard content.
+SC-131,False,False,False,False,6,Standard content.,Standard content.
+SC-132,False,False,False,False,6,Standard content.,Standard content.
+SC-133,False,False,False,False,6,Standard content.,Standard content.
+SC-134,False,False,False,False,6,Standard content.,Standard content.
+SC-135,False,False,False,False,6,Standard content.,Standard content.
+SC-136,False,False,true,False,6,Scripture allusion.,Standard content.
+SC-137,False,False,True,True,6,Scripture allusion.,Standard content.
+SC-138,False,False,yes,False,6,Scripture allusion.,Standard content.
+SC-139,False,False,1,False,6,Scripture allusion.,Standard content.
+SC-140,False,False,Y,False,6,Scripture allusion.,Standard content.
+SC-141,False,False,TRUE!,False,6,Scripture allusion.,Standard content.
+SC-142,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-143,False,False, True , False ,6,Scripture allusion.,Standard content.
+SC-144,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-145,False,False,True, True ,6,Scripture allusion.,Standard content.
+SC-146,False,False,TRUE,false,6,Scripture allusion.,Standard content.
+SC-147,False,False,tRuE,false,6,Scripture allusion.,Standard content.
+SC-148,False,False,true,TRUE!,6,Scripture allusion.,Standard content.
+SC-149,False,False,Truee,False,6,Scripture allusion.,Standard content.
+SC-150,False,False,,False,6,Standard content.,Standard content.
+SC-151,False,False,False,False,6,Standard content.,Standard content.
+SC-152,False,False,False,False,6,Standard content.,Standard content.
+SC-153,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-154,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-155,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-156,False,False,True,False,6,Scripture.,Standard content.
+SC-157,False,False,True,False,6,Scripture.,Standard content.
+SC-158,False,False,True,False,6,Scripture.,Standard content.
+SC-159,False,False,True,False,6,Scripture.,Standard content.
+SC-160,False,False,False,False,6,Standard content.,Standard content.
+SC-161,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-162,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-163,False,False,True,False,6,Scripture.,Standard content.
+SC-164,False,False,True,False,6,Scripture.,Standard content.
+SC-165,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+ sc-166 ,False,False,False,False,6,Standard content.,Standard content.
+sC-167,False,False,False,False,6,Standard content.,Standard content.
+Sc-168,False,False,False,False,6,Standard content.,Standard content.
+ SC-169 ,False,False,False,False,6,Standard content.,Standard content.
+SC-170,False,False,False,False,6,Standard content.,Standard content.
+sc-171,False,False,False,False,6,Standard content.,Standard content.
+SC-172,False,False,False,False,6,Standard content.,Standard content.
+SC-173,False,False,False,False,6,Standard content.,Standard content.
+SC-174,False,False,False,False,6,Standard content.,Standard content.
+SC-175,False,False,False,False,6,Standard content.,Standard content.
+SC-176,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-177,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-178,False,False,False,False,6,That is not X. It is Y.,Standard content.
+SC-179,False,False,False,False,6,It is not X. It is Y.,Standard content.
+SC-180,False,False,False,False,6,Standard content.,That's not X. It's Y.
+SC-181,False,False,False,False,6,Standard content.,It's not X. It's Y.
+SC-182,False,False,False,False,6,That's not X.,Standard content.
+SC-183,False,False,False,False,6,It's not X or Y.,Standard content.
+SC-184,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-185,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-186,False,True,False,False,6,Standard content.,Standard content.
+SC-187,True,False,False,False,6,Standard content.,Standard content.
+SC-188,False,False,False,False,6,That's not just X. It's Y.,Standard content.
+SC-189,False,False,False,False,6,That was not X. It was Y.,Standard content.
+SC-190,False,False,False,False,6,"That's not X, it's Y.",Standard content.
+SC-191,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-192,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-193,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-194,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-195,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-196,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-197,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-198,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-199,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-200,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-201,False,False,False,False,8,Standard content.,Standard content.
+SC-202,False,False,False,False,7,Standard content.,Standard content.
+SC-203,False,False,False,False,4,Standard content.,Standard content.
+SC-204,False,False,False,False,3,Standard content.,Standard content.
+SC-205,False,False,False,False,5,Standard content.,Standard content.
+SC-206,False,False,False,False,6,Standard content.,Standard content.
+SC-207,False,False,False,False,10,Standard content.,Standard content.
+SC-208,False,False,False,False,11,Standard content.,Standard content.
+SC-209,False,False,False,False,8,Standard content.,Standard content.
+SC-210,False,False,False,False,8,Standard content.,Standard content.
+SC-211,False,False,False,False,10,Standard content.,Standard content.
+SC-212,False,False,False,False,5,Standard content.,Standard content.
+SC-213,False,False,False,False,5,Standard content.,Standard content.
+SC-214,False,False,False,False,6,Standard content.,Standard content.
+SC-215,False,False,False,False,9,Standard content.,Standard content.
+SC-216,False,False,False,False,9,Standard content.,Standard content.
+SC-217,False,False,False,False,08,Standard content.,Standard content.
+SC-218,False,False,False,False,+7,Standard content.,Standard content.
+SC-219,False,False,False,False,8.0,Standard content.,Standard content.
+SC-220,False,False,False,False,7.0,Standard content.,Standard content.
+SC-221,False,False,False,False,6,Standard content.,Standard content.
+SC-222,False,False,False,False,6,Standard content.,Standard content.
+SC-223,False,False,False,False,6,Standard content.,Standard content.
+SC-224,False,False,False,False,6,Standard content.,Standard content.
+SC-225,False,False,False,False,6,Standard content.,Standard content.
+SC-226,False,False,False,False,6,Standard content.,Standard content.
+SC-227,False,False,False,False,6,Standard content.,Standard content.
+SC-228,False,False,False,False,6,Standard content.,Standard content.
+SC-229,False,False,False,False,6,Standard content.,Standard content.
+SC-230,False,False,False,False,6,Standard content.,Standard content.
+SC-231,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+SC-232,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+SC-233,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+SC-234,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+SC-235,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+SC-236,False,False,True,False,6,Scripture.,Standard content.
+SC-237,False,False,True,False,6,Scripture.,Standard content.
+SC-238,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-239,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-240,True,True,True,False,5,It's not X. It's Y. Scripture.,Standard content.
+SC-241,True,True,False,False,5,It's not X. It's Y.,Standard content.
+SC-242,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+SC-243,False,False,yes,False,6,Scripture.,Standard content.
+SC-244,False,False,True,False,6,Scripture.,Standard content.
+SC-245,False,False,True,False,6,Scripture.,Standard content.
+SC-246,False,False,True,False,6,Scripture.,Standard content.
+SC-247,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-248,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-249,True,True,True,False,8,It's not X. It's Y.,Standard content.
+SC-250,True,True,True,False,8,It's not X. It's Y.,Standard content.
+SC-251,False,False,False,False,6,Standard content.,Standard content.
+SC-252,False,False,False,False,6,Standard content.,Standard content.
+SC-253,False,False,False,False,6,Standard content.,Standard content.
+SC-254,False,False,False,False,6,Standard content.,Standard content.
+SC-255,False,False,False,False,6,Standard content.,Standard content.
+SC-256,False,False,False,False,6,Standard content.,Standard content.
+SC-257,False,False,False,False,6,Standard content.,Standard content.
+SC-258,False,False,False,False,6,Standard content.,Standard content.
+SC-259,False,False,False,False,6,Standard content.,Standard content.
+SC-260,False,False,False,False,6,Standard content.,Standard content.
+SC-261,False,False,False,False,6,Standard content.,Standard content.
+SC-262,False,False,False,False,6,Standard content.,Standard content.
+SC-263,False,False,False,False,6,Standard content.,Standard content.
+SC-264,False,False,False,False,6,Standard content.,Standard content.
+SC-265,False,False,False,False,6,Standard content.,Standard content.
+SC-266,False,False,False,False,6,Standard content.,Standard content.
+SC-267,False,False,False,False,6,Standard content.,Standard content.
+SC-268,False,False,False,False,6,Standard content.,Standard content.
+SC-269,False,False,False,False,6,Standard content.,Standard content.
+SC-270,False,False,False,False,6,Standard content.,Standard content.
+SC-271,False,False,False,False,6,Standard content.,Standard content.
+SC-272,False,False,False,False,6,Standard content.,Standard content.
+SC-273,False,False,False,False,6,Standard content.,Standard content.
+SC-274,False,False,False,False,6,Standard content.,Standard content.
+SC-275,False,False,False,False,6,Standard content.,Standard content.
+SC-276,False,False,False,False,6,Standard content.,Standard content.
+SC-277,False,False,False,False,6,Standard content.,Standard content.
+SC-278,False,False,False,False,6,Standard content.,Standard content.
+SC-279,False,False,False,False,6,Standard content.,Standard content.
+SC-280,False,False,False,False,6,Standard content.,Standard content.
+SC-281,False,False,False,False,6,Standard content.,Standard content.
+SC-282,False,False,False,False,6,Standard content.,Standard content.
+SC-283,False,False,False,False,6,Standard content.,Standard content.
+SC-284,False,False,False,False,6,Standard content.,Standard content.
+SC-285,False,False,False,False,6,Standard content.,Standard content.
+SC-286,False,False,False,False,6,Standard content.,Standard content.
+SC-287,False,False,False,False,6,Standard content.,Standard content.
+SC-288,False,False,False,False,6,Standard content.,Standard content.
+SC-289,False,False,False,False,6,Standard content.,Standard content.
+SC-290,False,False,False,False,6,Standard content.,Standard content.
+SC-291,False,False,true,false,6,Scripture allusion.,Standard content.
+SC-292,False,False,True,False,6,Scripture allusion.,Standard content.
+SC-293,False,False,TRUE,FALSE,6,Scripture allusion.,Standard content.
+SC-294,False,False, true , false ,6,Scripture allusion.,Standard content.
+SC-295,False,False,tRuE,fAlSe,6,Scripture allusion.,Standard content.
+SC-296,False,False,yes,false,6,Scripture allusion.,Standard content.
+SC-297,False,False,1,false,6,Scripture allusion.,Standard content.
+SC-298,False,False,Y,false,6,Scripture allusion.,Standard content.
+SC-299,False,False,TRUE!,false,6,Scripture allusion.,Standard content.
+SC-300,False,False,Truee,false,6,Scripture allusion.,Standard content.
+SC-301,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-302,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-303,False,False,true,Y,6,Scripture allusion.,Standard content.
+SC-304,False,False,true,TRUE!,6,Scripture allusion.,Standard content.
+SC-305,False,False,true,Truee,6,Scripture allusion.,Standard content.
+SC-306,False,False,true,true,6,Scripture allusion.,Standard content.
+SC-307,False,False,True,True,6,Scripture allusion.,Standard content.
+SC-308,False,False,TRUE,TRUE,6,Scripture allusion.,Standard content.
+SC-309,False,False,true, maybe,6,Scripture allusion.,Standard content.
+SC-310,False,False,true,partial,6,Scripture allusion.,Standard content.
+SC-311,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-312,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-313,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-314,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-315,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-316,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-317,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-318,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-319,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-320,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-321,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-322,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-323,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-324,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-325,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-326,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-327,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-328,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-329,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-330,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-331,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-331,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-332,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-333,False,False,False,False,6,That is not X. It is Y.,Standard content.
+SC-334,False,False,False,False,6,It is not X. It is Y.,Standard content.
+SC-335,False,False,False,False,6,That was not X. It was Y.,Standard content.
+SC-336,False,False,False,False,6,It was not X. It was Y.,Standard content.
+SC-337,False,False,False,False,6,That's not just X. It's Y.,Standard content.
+SC-338,False,False,False,False,6,It's not just X. It's Y.,Standard content.
+SC-339,False,False,False,False,6,That is not merely X. It is Y.,Standard content.
+SC-340,False,False,False,False,6,It is not simply X. It is Y.,Standard content.
+SC-341,False,False,False,False,6,"That's not X, it's Y.",Standard content.
+SC-342,False,False,False,False,6,"It's not X, it's Y.",Standard content.
+SC-343,False,False,False,False,6,"That is not X, it is Y.",Standard content.
+SC-344,False,False,False,False,6,"It is not X, it is Y.",Standard content.
+SC-345,False,False,False,False,6,That's not X — it's Y.,Standard content.
+SC-346,False,False,False,False,6,It's not X; it's Y.,Standard content.
+SC-347,False,False,False,False,6,That is not X... it is Y.,Standard content.
+SC-348,False,False,False,False,6,It is not X — it is Y.,Standard content.
+SC-349,False,False,False,False,6,THAT'S NOT X. IT'S Y.,Standard content.
+SC-350,False,False,False,False,6,That's Not X. It's Y.,Standard content.
+SC-351,False,False,False,False,6,That's X. It's Y.,Standard content.
+SC-352,False,False,False,False,6,That's not X.,Standard content.
+SC-353,False,False,False,False,6,It's not X or Y.,Standard content.
+SC-354,False,False,False,False,6,"X, not Y.",Standard content.
+SC-355,False,False,False,False,6,"That is X, that is not Y.",Standard content.
+SC-356,False,False,False,False,6,Not X but Y.,Standard content.
+SC-357,False,False,False,False,6,"Instead of X, Y.",Standard content.
+SC-358,False,False,False,False,6,"Rather than X, Y.",Standard content.
+SC-359,False,False,False,False,6,That's not X and not Y.,Standard content.
+SC-360,False,False,False,False,6,This is not X. This is Y.,Standard content.
+SC-361,False,False,False,False,6,That not X. Its Y.,Standard content.
+SC-362,False,False,False,False,6,Thats not X. Its Y.,Standard content.
+SC-363,False,False,False,False,6,That's not X. That's Y.,Standard content.
+SC-364,False,False,False,False,6,"Is it X? No, it's Y.",Standard content.
+SC-365,False,False,False,False,6,"X, but not Y.",Standard content.
+SC-366,False,False,False,False,6,That's aren't X. It's Y.,Standard content.
+SC-367,False,False,False,False,6,That's not X. It's Y!,Standard content.
+SC-368,False,False,False,False,6,That's not X. It's Y?,Standard content.
+SC-369,False,False,False,False,6,THAT IS NOT X. IT IS Y.,Standard content.
+SC-371,False,False,False,False,8,Standard content.,Standard content.
+SC-372,False,False,False,False,7,Standard content.,Standard content.
+SC-373,False,False,False,False,4,Standard content.,Standard content.
+SC-374,False,False,False,False,3,Standard content.,Standard content.
+SC-375,False,False,False,False,5,Standard content.,Standard content.
+SC-376,False,False,False,False,6,Standard content.,Standard content.
+SC-377,False,False,False,False,10,Standard content.,Standard content.
+SC-378,False,False,False,False,11,Standard content.,Standard content.
+SC-379,False,False,False,False,8,Standard content.,Standard content.
+SC-380,False,False,False,False,8,Standard content.,Standard content.
+SC-381,False,False,False,False,10,Standard content.,Standard content.
+SC-382,False,False,False,False,5,Standard content.,Standard content.
+SC-383,False,False,False,False,5,Standard content.,Standard content.
+SC-384,False,False,False,False,6,Standard content.,Standard content.
+SC-385,False,False,False,False,9,Standard content.,Standard content.
+SC-386,False,False,False,False,9,Standard content.,Standard content.
+SC-387,False,False,False,False,7.5,Standard content.,Standard content.
+SC-388,False,False,False,False,6.5,Standard content.,Standard content.
+SC-389,False,False,False,False,10.5,Standard content.,Standard content.
+SC-390,False,False,False,False,8.5,Standard content.,Standard content.
+SC-391,False,False,False,False,6,Standard content.,Standard content.
+SC-392,False,False,False,False,6,Standard content.,Standard content.
+SC-393,False,False,False,False,6,Standard content.,Standard content.
+SC-394,False,False,False,False,6,Standard content.,Standard content.
+SC-395,False,False,False,False,6,Standard content.,Standard content.
+SC-396,False,False,False,False,6,Standard content.,Standard content.
+SC-397,False,False,False,False,6,Standard content.,Standard content.
+SC-398,False,False,False,False,6,Standard content.,Standard content.
+SC-399,False,False,False,False,6,Standard content.,Standard content.
+SC-400,False,False,False,False,6,Standard content.,Standard content.
+SC-401,True,True,True,False,9,It's not X. It's Y. Scripture.,Standard content.
+SC-402,True,True,True,False,9,It's not X. It's Y. Scripture.,Standard content.
+SC-403,True,True,True,False,9,It's not X. It's Y. Scripture.,Standard content.
+SC-404,True,True,True,False,6,It's not X. It's Y. Scripture.,Standard content.
+SC-405,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-406,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-407,False,False,True,False,9,Scripture.,Standard content.
+SC-408,False,False,True,False,9,Scripture.,Standard content.
+SC-409,True,True,True,False,9,It's not X. It's Y. Scripture.,Standard content.
+SC-410,True,True,True,False,5,It's not X. It's Y. Scripture.,Standard content.
+SC-411,True,True,False,False,5,It's not X. It's Y.,Standard content.
+SC-412,True,True,False,False,5,It's not X. It's Y.,Standard content.
+SC-413,False,False,True,False,5,Scripture.,Standard content.
+SC-414,False,False,True,False,5,Scripture.,Standard content.
+SC-415,False,False,True,False,5,Scripture.,Standard content.
+SC-416,True,True,True,False,8,It's not X. It's Y. Scripture.,Standard content.
+SC-417,True,True,True,False,8,It's not X. It's Y. Scripture.,Standard content.
+SC-418,True,True,False,False,8,It's not X. It's Y.,Standard content.
+SC-419,True,True,False,False,8,It's not X. It's Y.,Standard content.
+SC-420,True,True,True,False,9,It's not X. It's Y. Scripture.,Standard content.
+SC-421,False,False,False,False,6,Standard content.,Standard content.
+SC-422,False,False,False,False,6,Standard content.,Standard content.
+SC-423,False,False,False,False,6,Standard content.,Standard content.
+SC-424,False,False,False,False,6,Standard content.,Standard content.
+SC-425,False,False,False,False,6,Standard content.,Standard content.
+SC-426,False,False,False,False,6,Standard content.,Standard content.
+SC-427,False,False,False,False,6,Standard content.,Standard content.
+SC-428,False,False,False,False,6,Standard content.,Standard content.
+SC-429,False,False,False,False,6,Standard content.,Standard content.
+SC-430,False,False,False,False,6,Standard content.,Standard content.
+SC-431,False,False,False,False,6,Standard content.,Standard content.
+SC-432,False,False,False,False,6,Standard content.,Standard content.
+SC-433,False,False,False,False,6,Standard content.,Standard content.
+SC-434,False,False,False,False,6,Standard content.,Standard content.
+SC-435,False,False,False,False,6,Standard content.,Standard content.
+SC-436,False,False,False,False,6,Standard content.,Standard content.
+SC-437,False,False,False,False,6,Standard content.,Standard content.
+SC-438,False,False,False,False,6,Standard content.,Standard content.
+SC-439,False,False,False,False,6,Standard content.,Standard content.
+SC-440,False,False,False,False,6,Standard content.,Standard content.
+SC-441,False,False,False,False,6,Standard content.,Standard content.
+SC-442,False,False,False,False,6,Standard content.,Standard content.
+SC-443,False,False,False,False,6,Standard content.,Standard content.
+SC-444,False,False,False,False,6,Standard content.,Standard content.
+SC-445,False,False,False,False,6,Standard content.,Standard content.
+SC-446,False,False,False,False,6,Standard content.,Standard content.
+SC-447,False,False,False,False,6,Standard content.,Standard content.
+SC-448,False,False,False,False,6,Standard content.,Standard content.
+SC-449,False,False,False,False,6,Standard content.,Standard content.
+SC-450,False,False,False,False,6,Standard content.,Standard content.
+SC-451,False,False,False,False,6,Standard content.,Standard content.
+SC-452,False,False,False,False,6,Standard content.,Standard content.
+SC-453,False,False,False,False,6,Standard content.,Standard content.
+SC-454,False,False,False,False,6,Standard content.,Standard content.
+SC-455,False,False,False,False,6,Standard content.,Standard content.
+SC-456,False,False,False,False,6,Standard content.,Standard content.
+SC-457,False,False,False,False,6,Standard content.,Standard content.
+SC-458,False,False,False,False,6,Standard content.,Standard content.
+SC-459,False,False,False,False,6,Standard content.,Standard content.
+SC-460,False,False,False,False,6,Standard content.,Standard content.
+SC-461,False,False,False,False,6,Standard content.,Standard content.
+SC-462,False,False,False,False,6,Standard content.,Standard content.
+SC-463,False,False,False,False,6,Standard content.,Standard content.
+SC-464,False,False,False,False,6,Standard content.,Standard content.
+SC-465,False,False,False,False,6,Standard content.,Standard content.
+SC-466,False,False,False,False,6,Standard content.,Standard content.
+SC-467,False,False,False,False,6,Standard content.,Standard content.
+SC-468,False,False,False,False,6,Standard content.,Standard content.
+SC-469,False,False,False,False,6,Standard content.,Standard content.
+SC-470,False,False,False,False,6,Standard content.,Standard content.
+SC-471,False,False,False,False,6,Standard content.,Standard content.
+SC-472,False,False,False,False,6,Standard content.,Standard content.
+SC-473,False,False,False,False,6,Standard content.,Standard content.
+SC-474,False,False,False,False,6,Standard content.,Standard content.
+SC-475,False,False,False,False,6,Standard content.,Standard content.
+SC-476,False,False,False,False,6,Standard content.,Standard content.
+SC-477,False,False,False,False,6,Standard content.,Standard content.
+SC-478,False,False,False,False,6,Standard content.,Standard content.
+SC-479,False,False,False,False,6,Standard content.,Standard content.
+SC-480,False,False,False,False,6,Standard content.,Standard content.
+SC-481,False,False,False,False,6,Standard content.,Standard content.
+SC-482,False,False,False,False,6,Standard content.,Standard content.
+SC-483,False,False,False,False,6,Standard content.,Standard content.
+SC-484,False,False,False,False,6,Standard content.,Standard content.
+SC-485,False,False,False,False,6,Standard content.,Standard content.
+SC-486,False,False,False,False,6,Standard content.,Standard content.
+SC-487,False,False,False,False,6,Standard content.,Standard content.
+SC-488,False,False,False,False,6,Standard content.,Standard content.
+SC-489,False,False,False,False,6,Standard content.,Standard content.
+SC-490,False,False,False,False,6,Standard content.,Standard content.
+SC-491,False,False,False,False,6,Standard content.,Standard content.
+SC-492,False,False,False,False,6,Standard content.,Standard content.
+SC-493,False,False,False,False,6,Standard content.,Standard content.
+SC-494,False,False,False,False,6,Standard content.,Standard content.
+SC-495,False,False,False,False,6,Standard content.,Standard content.
+SC-496,False,False,False,False,6,Standard content.,Standard content.
+SC-497,False,False,False,False,6,Standard content.,Standard content.
+SC-498,False,False,False,False,6,Standard content.,Standard content.
+SC-499,False,False,False,False,6,Standard content.,Standard content.
+SC-500,False,False,False,False,6,Standard content.,Standard content.
+SC-501,False,False,False,False,6,Standard content.,Standard content.
+SC-502,False,False,False,False,6,Standard content.,Standard content.
+SC-503,False,False,False,False,6,Standard content.,Standard content.
+SC-504,False,False,False,False,6,Standard content.,Standard content.
+SC-505,False,False,False,False,6,Standard content.,Standard content.
+SC-506,False,False,False,False,6,Standard content.,Standard content.
+SC-507,False,False,False,False,6,Standard content.,Standard content.
+SC-508,False,False,False,False,6,Standard content.,Standard content.
+SC-509,False,False,False,False,6,Standard content.,Standard content.
+SC-510,False,False,False,False,6,Standard content.,Standard content.
+SC-511,False,False,False,False,6,Standard content.,Standard content.
+SC-512,False,False,False,False,6,Standard content.,Standard content.
+SC-513,False,False,False,False,6,Standard content.,Standard content.
+SC-514,False,False,False,False,6,Standard content.,Standard content.
+SC-515,False,False,False,False,6,Standard content.,Standard content.
+SC-516,False,False,False,False,6,Standard content.,Standard content.
+SC-517,False,False,False,False,6,Standard content.,Standard content.
+SC-518,False,False,False,False,6,Standard content.,Standard content.
+SC-519,False,False,False,False,6,Standard content.,Standard content.
+SC-520,False,False,False,False,6,Standard content.,Standard content.
+SC-521,False,False,False,False,6,Standard content.,Standard content.
+SC-522,False,False,False,False,6,Standard content.,Standard content.
+SC-523,False,False,False,False,6,Standard content.,Standard content.
+SC-524,False,False,False,False,6,Standard content.,Standard content.
+SC-525,False,False,False,False,6,Standard content.,Standard content.
+SC-526,False,False,False,False,6,Standard content.,Standard content.
+SC-527,False,False,False,False,6,Standard content.,Standard content.
+SC-528,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-529,False,False,true,Yes,6,Scripture allusion.,Standard content.
+SC-530,False,False,true,YES,6,Scripture allusion.,Standard content.
+SC-531,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-532,False,False,true,Y,6,Scripture allusion.,Standard content.
+SC-533,False,False,True,yes,6,Scripture allusion.,Standard content.
+SC-534,False,False,True,Yes,6,Scripture allusion.,Standard content.
+SC-535,False,False,True,YES,6,Scripture allusion.,Standard content.
+SC-536,False,False,True,1,6,Scripture allusion.,Standard content.
+SC-537,False,False,True,Y,6,Scripture allusion.,Standard content.
+SC-538,False,False,TRUE,yes,6,Scripture allusion.,Standard content.
+SC-539,False,False,TRUE,Yes,6,Scripture allusion.,Standard content.
+SC-540,False,False,TRUE,YES,6,Scripture allusion.,Standard content.
+SC-541,False,False,TRUE,1,6,Scripture allusion.,Standard content.
+SC-542,False,False,TRUE,Y,6,Scripture allusion.,Standard content.
+SC-543,False,False, true ,yes,6,Scripture allusion.,Standard content.
+SC-544,False,False, true ,Yes,6,Scripture allusion.,Standard content.
+SC-545,False,False, true ,YES,6,Scripture allusion.,Standard content.
+SC-546,False,False, true ,1,6,Scripture allusion.,Standard content.
+SC-547,False,False, true ,Y,6,Scripture allusion.,Standard content.
+SC-548,False,False,True ,yes,6,Scripture allusion.,Standard content.
+SC-549,False,False,True ,Yes,6,Scripture allusion.,Standard content.
+SC-550,False,False,True ,YES,6,Scripture allusion.,Standard content.
+SC-551,False,False,True ,1,6,Scripture allusion.,Standard content.
+SC-552,False,False,True ,Y,6,Scripture allusion.,Standard content.
+SC-553,False,False, TRUE ,yes,6,Scripture allusion.,Standard content.
+SC-554,False,False, TRUE ,Yes,6,Scripture allusion.,Standard content.
+SC-555,False,False, TRUE ,YES,6,Scripture allusion.,Standard content.
+SC-556,False,False, TRUE ,1,6,Scripture allusion.,Standard content.
+SC-557,False,False, TRUE ,Y,6,Scripture allusion.,Standard content.
+SC-558,False,False,tRuE,yes,6,Scripture allusion.,Standard content.
+SC-559,False,False,tRuE,Yes,6,Scripture allusion.,Standard content.
+SC-560,False,False,tRuE,YES,6,Scripture allusion.,Standard content.
+SC-561,False,False,tRuE,1,6,Scripture allusion.,Standard content.
+SC-562,False,False,tRuE,Y,6,Scripture allusion.,Standard content.
+SC-563,False,False,"true",yes,6,Scripture allusion.,Standard content.
+SC-564,False,False,"true",Yes,6,Scripture allusion.,Standard content.
+SC-565,False,False,"true",YES,6,Scripture allusion.,Standard content.
+SC-566,False,False,"true",1,6,Scripture allusion.,Standard content.
+SC-567,False,False,"true",Y,6,Scripture allusion.,Standard content.
+SC-568,False,False,"true
+",yes,6,Scripture allusion.,Standard content.
+SC-569,False,False,"true
+",Yes,6,Scripture allusion.,Standard content.
+SC-570,False,False,"true
+",YES,6,Scripture allusion.,Standard content.
+SC-571,False,False,"true
+",1,6,Scripture allusion.,Standard content.
+SC-572,False,False,"true
+",Y,6,Scripture allusion.,Standard content.
+SC-573,False,False,true	,yes,6,Scripture allusion.,Standard content.
+SC-574,False,False,true	,Yes,6,Scripture allusion.,Standard content.
+SC-575,False,False,true	,YES,6,Scripture allusion.,Standard content.
+SC-576,False,False,true	,1,6,Scripture allusion.,Standard content.
+SC-577,False,False,true	,Y,6,Scripture allusion.,Standard content.
+SC-578,False,False,yes,false,6,Scripture allusion.,Standard content.
+SC-579,False,False,Yes,false,6,Scripture allusion.,Standard content.
+SC-580,False,False,YES,false,6,Scripture allusion.,Standard content.
+SC-581,False,False,1,false,6,Scripture allusion.,Standard content.
+SC-582,False,False,Y,false,6,Scripture allusion.,Standard content.
+SC-583,False,False,y,false,6,Scripture allusion.,Standard content.
+SC-584,False,False,T,false,6,Scripture allusion.,Standard content.
+SC-585,False,False,t,false,6,Scripture allusion.,Standard content.
+SC-586,False,False,TRUE!,false,6,Scripture allusion.,Standard content.
+SC-587,False,False,True!,false,6,Scripture allusion.,Standard content.
+SC-588,False,False,true,true,6,Scripture allusion.,Standard content.
+SC-589,False,False,true,True,6,Scripture allusion.,Standard content.
+SC-590,False,False,true,TRUE,6,Scripture allusion.,Standard content.
+SC-591,False,False,True,true,6,Scripture allusion.,Standard content.
+SC-592,False,False,True,True,6,Scripture allusion.,Standard content.
+SC-593,False,False,True,TRUE,6,Scripture allusion.,Standard content.
+SC-594,False,False,TRUE,true,6,Scripture allusion.,Standard content.
+SC-595,False,False,TRUE,True,6,Scripture allusion.,Standard content.
+SC-596,False,False,TRUE,TRUE,6,Scripture allusion.,Standard content.
+SC-597,False,False, true ,true,6,Scripture allusion.,Standard content.
+SC-598,False,False, true ,True,6,Scripture allusion.,Standard content.
+SC-599,False,False, true ,TRUE,6,Scripture allusion.,Standard content.
+SC-600,False,False,True ,true,6,Scripture allusion.,Standard content.
+SC-601,False,False,True ,True,6,Scripture allusion.,Standard content.
+SC-602,False,False,True ,TRUE,6,Scripture allusion.,Standard content.
+SC-603,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-604,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-605,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-606,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-607,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-608,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-609,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-610,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-611,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-612,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-613,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-614,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-615,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-616,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-617,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-618,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-619,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-620,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-621,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-622,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-623,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-624,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-625,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-626,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-627,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-628,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-629,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-630,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-631,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-632,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-633,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-634,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-635,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-636,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-637,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-638,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-639,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-640,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-641,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-642,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-643,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-644,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-645,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-646,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-647,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-648,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-649,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-650,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-651,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-652,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-653,False,False,False,False,6,Standard content.,Standard content.
+SC-654,False,False,False,False,6,Standard content.,Standard content.
+SC-655,False,False,False,False,6,Standard content.,Standard content.
+SC-656,False,False,False,False,6,Standard content.,Standard content.
+SC-657,False,False,False,False,6,Standard content.,Standard content.
+SC-658,False,False,False,False,6,Standard content.,Standard content.
+SC-659,False,False,False,False,6,Standard content.,Standard content.
+SC-660,False,False,False,False,6,Standard content.,Standard content.
+SC-661,False,False,False,False,6,Standard content.,Standard content.
+SC-662,False,False,False,False,6,Standard content.,Standard content.
+SC-663,False,False,False,False,6,Standard content.,Standard content.
+SC-664,False,False,False,False,6,Standard content.,Standard content.
+SC-665,False,False,False,False,6,Standard content.,Standard content.
+SC-666,False,False,False,False,6,Standard content.,Standard content.
+SC-667,False,False,False,False,6,Standard content.,Standard content.
+SC-668,False,False,False,False,6,Standard content.,Standard content.
+SC-669,False,False,False,False,6,Standard content.,Standard content.
+SC-670,False,False,False,False,6,Standard content.,Standard content.
+SC-671,False,False,False,False,6,Standard content.,Standard content.
+SC-672,False,False,False,False,6,Standard content.,Standard content.
+SC-673,False,False,False,False,6,Standard content.,Standard content.
+SC-674,False,False,False,False,6,Standard content.,Standard content.
+SC-675,False,False,False,False,6,Standard content.,Standard content.
+SC-676,False,False,False,False,6,Standard content.,Standard content.
+SC-677,False,False,False,False,6,Standard content.,Standard content.
+SC-678,False,False,False,False,6,Standard content.,Standard content.
+SC-679,False,False,False,False,6,Standard content.,Standard content.
+SC-680,False,False,False,False,6,Standard content.,Standard content.
+SC-681,False,False,False,False,6,Standard content.,Standard content.
+SC-682,False,False,False,False,6,Standard content.,Standard content.
+SC-683,False,False,False,False,6,Standard content.,Standard content.
+SC-684,False,False,False,False,6,Standard content.,Standard content.
+SC-685,False,False,False,False,6,Standard content.,Standard content.
+SC-686,False,False,False,False,6,Standard content.,Standard content.
+SC-687,False,False,False,False,6,Standard content.,Standard content.
+SC-688,False,False,False,False,6,Standard content.,Standard content.
+SC-689,False,False,False,False,6,Standard content.,Standard content.
+SC-690,False,False,False,False,6,Standard content.,Standard content.
+SC-691,False,False,False,False,6,Standard content.,Standard content.
+SC-692,False,False,False,False,6,Standard content.,Standard content.
+SC-693,False,False,False,False,6,Standard content.,Standard content.
+SC-694,False,False,False,False,6,Standard content.,Standard content.
+SC-695,False,False,False,False,6,Standard content.,Standard content.
+SC-696,False,False,False,False,6,Standard content.,Standard content.
+SC-697,False,False,False,False,6,Standard content.,Standard content.
+SC-698,False,False,False,False,6,Standard content.,Standard content.
+SC-699,False,False,False,False,6,Standard content.,Standard content.
+SC-700,False,False,False,False,6,Standard content.,Standard content.
+SC-701,False,False,False,False,6,Standard content.,Standard content.
+SC-702,False,False,False,False,6,Standard content.,Standard content.
+SC-703,False,False,False,False,6,Standard content.,Standard content.
+SC-704,False,False,False,False,6,Standard content.,Standard content.
+SC-705,False,False,False,False,6,Standard content.,Standard content.
+SC-706,False,False,False,False,6,Standard content.,Standard content.
+SC-707,False,False,False,False,08,Standard content.,Standard content.
+SC-708,False,False,False,False,8,Standard content.,Standard content.
+SC-709,False,False,False,False,08.0,Standard content.,Standard content.
+SC-710,False,False,False,False,8.0,Standard content.,Standard content.
+SC-711,False,False,False,False,+8,Standard content.,Standard content.
+SC-712,False,False,False,False, 8 ,Standard content.,Standard content.
+SC-713,False,False,False,False,08 ,Standard content.,Standard content.
+SC-714,False,False,False,False, 08,Standard content.,Standard content.
+SC-715,False,False,False,False,+1,Standard content.,Standard content.
+SC-716,False,False,False,False,1,Standard content.,Standard content.
+SC-717,False,False,False,False,+1 ,Standard content.,Standard content.
+SC-718,False,False,False,False, +1,Standard content.,Standard content.
+SC-719,False,False,False,False,+1.0,Standard content.,Standard content.
+SC-720,False,False,False,False,1.0,Standard content.,Standard content.
+SC-721,False,False,False,False,-1,Standard content.,Standard content.
+SC-722,False,False,False,False,-1.0,Standard content.,Standard content.
+SC-723,False,False,False,False, -1 ,Standard content.,Standard content.
+SC-724,False,False,False,False,0,Standard content.,Standard content.
+SC-725,False,False,False,False,+0,Standard content.,Standard content.
+SC-726,False,False,False,False,-0,Standard content.,Standard content.
+SC-727,False,False,False,False,6,Standard content.,Standard content.
+SC-728,False,False,False,False,6,Standard content.,Standard content.
+SC-729,False,False,False,False,6,Standard content.,Standard content.
+SC-730,False,False,False,False,6,Standard content.,Standard content.
+SC-731,False,False,False,False,6,Standard content.,Standard content.
+SC-732,False,False,False,False,6,Standard content.,Standard content.
+SC-733,False,False,False,False,6,Standard content.,Standard content.
+SC-734,False,False,False,False,6,Standard content.,Standard content.
+SC-735,False,False,False,False,3,Standard content.,Standard content.
+SC-736,False,False,False,False,3.5,Standard content.,Standard content.
+SC-737,False,False,False,False,3.9,Standard content.,Standard content.
+SC-738,False,False,False,False,4,Standard content.,Standard content.
+SC-739,False,False,False,False,4.0,Standard content.,Standard content.
+SC-740,False,False,False,False,5,Standard content.,Standard content.
+SC-741,False,False,False,False,5.5,Standard content.,Standard content.
+SC-742,False,False,False,False,5.9,Standard content.,Standard content.
+SC-743,False,False,False,False,6,Standard content.,Standard content.
+SC-744,False,False,False,False,6.5,Standard content.,Standard content.
+SC-745,False,False,False,False,7,Standard content.,Standard content.
+SC-746,False,False,False,False,7.0,Standard content.,Standard content.
+SC-747,False,False,False,False,7.1,Standard content.,Standard content.
+SC-748,False,False,False,False,7.5,Standard content.,Standard content.
+SC-749,False,False,False,False,8,Standard content.,Standard content.
+SC-750,False,False,False,False,8.0,Standard content.,Standard content.
+SC-751,False,False,False,False,8.5,Standard content.,Standard content.
+SC-752,False,False,False,False,9,Standard content.,Standard content.
+SC-753,False,False,False,False,9.5,Standard content.,Standard content.
+SC-754,False,False,False,False,10,Standard content.,Standard content.
+SC-755,False,False,False,False,10.0,Standard content.,Standard content.
+SC-756,False,False,False,False,10.1,Standard content.,Standard content.
+SC-757,False,False,False,False,10.5,Standard content.,Standard content.
+SC-758,False,False,False,False,11,Standard content.,Standard content.
+SC-759,False,False,False,False,11.5,Standard content.,Standard content.
+SC-760,False,False,False,False,12,Standard content.,Standard content.
+SC-761,False,False,False,False,0,Standard content.,Standard content.
+SC-762,False,False,False,False,-1,Standard content.,Standard content.
+SC-763,False,False,False,False,100,Standard content.,Standard content.
+SC-764,False,False,False,False,3,Standard content.,Standard content.
+SC-765,False,False,False,False,3.5,Standard content.,Standard content.
+SC-766,False,False,False,False,4,Standard content.,Standard content.
+SC-767,False,False,False,False,5,Standard content.,Standard content.
+SC-768,False,False,False,False,5.5,Standard content.,Standard content.
+SC-769,False,False,False,False,5.9,Standard content.,Standard content.
+SC-770,False,False,False,False,6,Standard content.,Standard content.
+SC-771,False,False,False,False,6.0,Standard content.,Standard content.
+SC-772,False,False,False,False,6.5,Standard content.,Standard content.
+SC-773,False,False,False,False,8,Standard content.,Standard content.
+SC-774,False,False,False,False,8.5,Standard content.,Standard content.
+SC-775,False,False,False,False,9,Standard content.,Standard content.
+SC-776,False,False,False,False,9.5,Standard content.,Standard content.
+SC-777,False,False,False,False,10,Standard content.,Standard content.
+SC-778,False,False,False,False,10.0,Standard content.,Standard content.
+SC-779,False,False,False,False,10.1,Standard content.,Standard content.
+SC-780,False,False,False,False,10.5,Standard content.,Standard content.
+SC-781,False,False,False,False,11,Standard content.,Standard content.
+SC-782,False,False,False,False,11.5,Standard content.,Standard content.
+SC-783,False,False,False,False,12,Standard content.,Standard content.
+SC-784,False,False,False,False,0,Standard content.,Standard content.
+SC-785,False,False,False,False,-1,Standard content.,Standard content.
+SC-786,False,False,False,False,100,Standard content.,Standard content.
+SC-787,False,False,False,False,8,Standard content.,Standard content.
+SC-788,False,False,False,False,8,Standard content.,Standard content.
+SC-789,False,False,False,False,8,Standard content.,Standard content.
+SC-790,False,False,False,False,8,Standard content.,Standard content.
+SC-791,False,False,False,False,8,Standard content.,Standard content.
+SC-792,False,False,False,False,6,Standard content.,Standard content.
+SC-793,False,False,False,False,6,Standard content.,Standard content.
+SC-794,False,False,False,False,5,Standard content.,Standard content.
+SC-795,False,False,False,False,5,Standard content.,Standard content.
+SC-796,False,False,False,False,5,Standard content.,Standard content.
+SC-797,False,False,False,False,10,Standard content.,Standard content.
+SC-798,False,False,False,False,10,Standard content.,Standard content.
+SC-799,False,False,False,False,10,Standard content.,Standard content.
+SC-800,False,False,False,False,10,Standard content.,Standard content.
+SC-801,False,False,False,False,7,Standard content.,Standard content.
+SC-802,False,False,False,False,7,Standard content.,Standard content.
+SC-803,False,False,False,False,7,Standard content.,Standard content.
+SC-804,False,False,False,False,5,Standard content.,Standard content.
+SC-805,False,False,False,False,5,Standard content.,Standard content.
+SC-806,False,False,False,False,4,Standard content.,Standard content.
+SC-807,False,False,False,False,4,Standard content.,Standard content.
+SC-808,False,False,False,False,9,Standard content.,Standard content.
+SC-809,False,False,False,False,9,Standard content.,Standard content.
+SC-810,False,False,False,False,9,Standard content.,Standard content.
+SC-811,False,False,False,False,9,Standard content.,Standard content.
+SC-812,False,False,False,False,9,Standard content.,Standard content.
+SC-813,False,False,False,False,11,Standard content.,Standard content.
+SC-814,False,False,False,False,11,Standard content.,Standard content.
+SC-815,False,False,False,False,11,Standard content.,Standard content.
+SC-816,False,False,False,False,11,Standard content.,Standard content.
+SC-817,False,False,False,False,7,Standard content.,Standard content.
+SC-818,False,False,False,False,10,Standard content.,Standard content.
+SC-819,False,False,False,False,10,Standard content.,Standard content.
+SC-820,False,False,False,False,10,Standard content.,Standard content.
+SC-821,False,False,False,False,10,Standard content.,Standard content.
+SC-822,False,False,False,False,7,Standard content.,Standard content.
+SC-823,False,False,False,False,7,Standard content.,Standard content.
+SC-824,False,False,False,False,7,Standard content.,Standard content.
+SC-825,False,False,False,False,5,Standard content.,Standard content.
+SC-826,False,False,False,False,5,Standard content.,Standard content.
+SC-827,False,False,False,False,4,Standard content.,Standard content.
+SC-828,False,False,False,False,4,Standard content.,Standard content.
+SC-829,False,False,False,False,9,Standard content.,Standard content.
+SC-830,False,False,False,False,9,Standard content.,Standard content.
+SC-831,False,False,False,False,9,Standard content.,Standard content.
+SC-832,False,False,False,False,9,Standard content.,Standard content.
+SC-833,False,False,False,False,9,Standard content.,Standard content.
+SC-834,False,False,False,False,11,Standard content.,Standard content.
+SC-835,False,False,False,False,11,Standard content.,Standard content.
+SC-836,False,False,False,False,11,Standard content.,Standard content.
+SC-837,False,False,False,False,11,Standard content.,Standard content.
+SC-838,False,False,False,False,5,Standard content.,Standard content.
+SC-839,False,False,False,False,6,Standard content.,Standard content.
+SC-840,False,False,False,False,6,Standard content.,Standard content.
+SC-841,False,False,False,False,6,Standard content.,Standard content.
+SC-842,False,False,False,False,6,Standard content.,Standard content.
+SC-843,False,False,False,False,6,Standard content.,Standard content.
+SC-844,False,False,False,False,6,Standard content.,Standard content.
+SC-845,False,False,False,False,6,Standard content.,Standard content.
+SC-846,False,False,False,False,6,Standard content.,Standard content.
+SC-847,False,False,False,False,6,Standard content.,Standard content.
+SC-848,False,False,False,False,6,Standard content.,Standard content.
+SC-849,False,False,False,False,6,Standard content.,Standard content.
+SC-850,False,False,False,False,6,Standard content.,Standard content.
+SC-851,False,False,False,False,6,Standard content.,Standard content.
+SC-852,False,False,False,False,6,Standard content.,Standard content.
+SC-853,False,False,False,False,6,Standard content.,Standard content.
+SC-854,False,False,False,False,6,Standard content.,Standard content.
+SC-855,False,False,False,False,6,Standard content.,Standard content.
+SC-856,False,False,False,False,6,Standard content.,Standard content.
+SC-857,False,False,False,False,6,Standard content.,Standard content.
+SC-858,False,False,False,False,6,Standard content.,Standard content.
+SC-859,False,False,False,False,6,Standard content.,Standard content.
+SC-860,False,False,False,False,6,Standard content.,Standard content.
+SC-861,False,False,False,False,6,Standard content.,Standard content.
+SC-862,False,False,False,False,6,Standard content.,Standard content.
+SC-863,False,False,False,False,6,Standard content.,Standard content.
+SC-864,False,False,False,False,6,Standard content.,Standard content.
+SC-865,False,False,False,False,6,Standard content.,Standard content.
+SC-866,False,False,False,False,6,Standard content.,Standard content.
+SC-867,False,False,False,False,6,Standard content.,Standard content.
+SC-868,False,False,False,False,6,Standard content.,Standard content.
+SC-869,False,False,False,False,6,Standard content.,Standard content.
+SC-870,False,False,False,False,6,Standard content.,Standard content.
+SC-871,False,False,False,False,6,Standard content.,Standard content.
+SC-872,False,False,False,False,6,Standard content.,Standard content.
+SC-873,False,False,False,False,6,Standard content.,Standard content.
+SC-874,False,False,False,False,6,Standard content.,Standard content.
+SC-875,False,False,False,False,6,Standard content.,Standard content.
+SC-876,False,False,False,False,6,Standard content.,Standard content.
+SC-877,False,False,False,False,6,Standard content.,Standard content.
+SC-878,False,False,False,False,6,Standard content.,Standard content.
+SC-879,False,False,False,False,6,Standard content.,Standard content.
+SC-880,False,False,False,False,6,Standard content.,Standard content.
+SC-881,False,False,False,False,6,Standard content.,Standard content.
+SC-882,False,False,False,False,6,Standard content.,Standard content.
+SC-883,False,False,False,False,6,Standard content.,Standard content.
+SC-884,False,False,False,False,6,Standard content.,Standard content.
+SC-885,False,False,False,False,6,Standard content.,Standard content.
+SC-886,False,False,False,False,6,Standard content.,Standard content.
+SC-887,False,False,False,False,6,Standard content.,Standard content.
+SC-888,False,False,False,False,6,Standard content.,Standard content.
+SC-889,False,False,False,False,6,Standard content.,Standard content.
+SC-890,False,False,False,False,6,Standard content.,Standard content.
+SC-891,False,False,False,False,6,Standard content.,Standard content.
+SC-892,False,False,False,False,6,Standard content.,Standard content.
+SC-893,False,False,False,False,6,Standard content.,Standard content.
+SC-894,False,False,False,False,6,Standard content.,Standard content.
+SC-895,False,False,False,False,6,Standard content.,Standard content.
+SC-896,False,False,False,False,6,Standard content.,Standard content.
+SC-897,False,False,False,False,6,Standard content.,Standard content.
+SC-898,False,False,False,False,6,Standard content.,Standard content.
+SC-899,False,False,False,False,6,Standard content.,Standard content.
+SC-900,False,False,False,False,6,Standard content.,Standard content.
+SC-901,False,False,False,False,6,Standard content.,Standard content.
+SC-902,False,False,False,False,6,Standard content.,Standard content.
+SC-903,False,False,False,False,6,Standard content.,Standard content.
+SC-904,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-905,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-906,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-907,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-908,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-909,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-910,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-911,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-912,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-913,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-914,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-915,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-916,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-917,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-918,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-919,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-920,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-921,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-922,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-923,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-924,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-925,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-926,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-927,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-928,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-929,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-930,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-931,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-932,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-933,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-934,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-935,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-936,False,False,true,true,6,Scripture allusion.,Standard content.
+SC-937,False,False,true,true,6,Scripture allusion.,Standard content.
+SC-938,False,False,true,true,6,Scripture allusion.,Standard content.
+SC-939,False,False,true,true,6,Scripture allusion.,Standard content.
+SC-940,False,False,true,true,6,Scripture allusion.,Standard content.
+SC-941,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-942,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-943,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-944,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-945,False,False,true,yes,6,Scripture allusion.,Standard content.
+SC-946,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-947,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-948,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-949,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-950,False,False,true,1,6,Scripture allusion.,Standard content.
+SC-951,False,False,true,Y,6,Scripture allusion.,Standard content.
+SC-952,False,False,true,Y,6,Scripture allusion.,Standard content.
+SC-953,False,False,true,Y,6,Scripture allusion.,Standard content.
+SC-954,False,False,true,Y,6,Scripture allusion.,Standard content.
+SC-955,False,False,true,Y,6,Scripture allusion.,Standard content.
+SC-956,False,False,true,TRUE!,6,Scripture allusion.,Standard content.
+SC-957,False,False,true,TRUE!,6,Scripture allusion.,Standard content.
+SC-958,False,False,true,TRUE!,6,Scripture allusion.,Standard content.
+SC-959,False,False,true,TRUE!,6,Scripture allusion.,Standard content.
+SC-960,False,False,true,TRUE!,6,Scripture allusion.,Standard content.
+SC-961,False,False,true,false,6,Scripture allusion.,Standard content.
+SC-962,False,False,true,false,6,Scripture allusion.,Standard content.
+SC-963,False,False,true,false,6,Scripture allusion.,Standard content.
+SC-964,False,False,true,false,6,Scripture allusion.,Standard content.
+SC-965,False,False,true,false,6,Scripture allusion.,Standard content.
+SC-966,False,False,true,,6,Scripture allusion.,Standard content.
+SC-967,False,False,true,,6,Scripture allusion.,Standard content.
+SC-968,False,False,true,,6,Scripture allusion.,Standard content.
+SC-969,False,False,true,,6,Scripture allusion.,Standard content.
+SC-970,False,False,true,,6,Scripture allusion.,Standard content.
+SC-971,False,False,yes,true,6,Scripture allusion.,Standard content.
+SC-972,False,False,yes,true,6,Scripture allusion.,Standard content.
+SC-973,False,False,yes,true,6,Scripture allusion.,Standard content.
+SC-974,False,False,yes,true,6,Scripture allusion.,Standard content.
+SC-975,False,False,yes,true,6,Scripture allusion.,Standard content.
+SC-976,False,False,yes,yes,6,Scripture allusion.,Standard content.
+SC-977,False,False,yes,yes,6,Scripture allusion.,Standard content.
+SC-978,False,False,yes,yes,6,Scripture allusion.,Standard content.
+SC-979,False,False,yes,yes,6,Scripture allusion.,Standard content.
+SC-980,False,False,yes,yes,6,Scripture allusion.,Standard content.
+SC-981,False,False,yes,1,6,Scripture allusion.,Standard content.
+SC-982,False,False,yes,1,6,Scripture allusion.,Standard content.
+SC-983,False,False,yes,1,6,Scripture allusion.,Standard content.
+SC-984,False,False,yes,1,6,Scripture allusion.,Standard content.
+SC-985,False,False,yes,1,6,Scripture allusion.,Standard content.
+SC-986,False,False,yes,Y,6,Scripture allusion.,Standard content.
+SC-987,False,False,yes,Y,6,Scripture allusion.,Standard content.
+SC-988,False,False,yes,Y,6,Scripture allusion.,Standard content.
+SC-989,False,False,yes,Y,6,Scripture allusion.,Standard content.
+SC-990,False,False,yes,Y,6,Scripture allusion.,Standard content.
+SC-991,False,False,yes,TRUE!,6,Scripture allusion.,Standard content.
+SC-992,False,False,yes,TRUE!,6,Scripture allusion.,Standard content.
+SC-993,False,False,yes,TRUE!,6,Scripture allusion.,Standard content.
+SC-994,False,False,yes,TRUE!,6,Scripture allusion.,Standard content.
+SC-995,False,False,yes,TRUE!,6,Scripture allusion.,Standard content.
+SC-996,False,False,yes,false,6,Scripture allusion.,Standard content.
+SC-997,False,False,yes,false,6,Scripture allusion.,Standard content.
+SC-998,False,False,yes,false,6,Scripture allusion.,Standard content.
+SC-999,False,False,yes,false,6,Scripture allusion.,Standard content.
+SC-1000,False,False,yes,false,6,Scripture allusion.,Standard content.
+SC-1001,False,False,yes,,6,Scripture allusion.,Standard content.
+SC-1002,False,False,yes,,6,Scripture allusion.,Standard content.
+SC-1003,False,False,yes,,6,Scripture allusion.,Standard content.
+SC-1004,False,False,yes,,6,Scripture allusion.,Standard content.
+SC-1005,False,False,yes,,6,Scripture allusion.,Standard content.
+SC-1006,False,False,1,true,6,Scripture allusion.,Standard content.
+SC-1007,False,False,1,true,6,Scripture allusion.,Standard content.
+SC-1008,False,False,1,true,6,Scripture allusion.,Standard content.
+SC-1009,False,False,1,true,6,Scripture allusion.,Standard content.
+SC-1010,False,False,1,true,6,Scripture allusion.,Standard content.
+SC-1011,False,False,1,yes,6,Scripture allusion.,Standard content.
+SC-1012,False,False,1,yes,6,Scripture allusion.,Standard content.
+SC-1013,False,False,1,yes,6,Scripture allusion.,Standard content.
+SC-1014,False,False,1,yes,6,Scripture allusion.,Standard content.
+SC-1015,False,False,1,yes,6,Scripture allusion.,Standard content.
+SC-1016,False,False,1,1,6,Scripture allusion.,Standard content.
+SC-1017,False,False,1,1,6,Scripture allusion.,Standard content.
+SC-1018,False,False,1,1,6,Scripture allusion.,Standard content.
+SC-1019,False,False,1,1,6,Scripture allusion.,Standard content.
+SC-1020,False,False,1,1,6,Scripture allusion.,Standard content.
+SC-1021,False,False,1,Y,6,Scripture allusion.,Standard content.
+SC-1022,False,False,1,Y,6,Scripture allusion.,Standard content.
+SC-1023,False,False,1,Y,6,Scripture allusion.,Standard content.
+SC-1024,False,False,1,Y,6,Scripture allusion.,Standard content.
+SC-1025,False,False,1,Y,6,Scripture allusion.,Standard content.
+SC-1026,False,False,1,TRUE!,6,Scripture allusion.,Standard content.
+SC-1027,False,False,1,TRUE!,6,Scripture allusion.,Standard content.
+SC-1028,False,False,1,TRUE!,6,Scripture allusion.,Standard content.
+SC-1029,False,False,1,TRUE!,6,Scripture allusion.,Standard content.
+SC-1030,False,False,1,TRUE!,6,Scripture allusion.,Standard content.
+SC-1031,False,False,1,false,6,Scripture allusion.,Standard content.
+SC-1032,False,False,1,false,6,Scripture allusion.,Standard content.
+SC-1033,False,False,1,false,6,Scripture allusion.,Standard content.
+SC-1034,False,False,1,false,6,Scripture allusion.,Standard content.
+SC-1035,False,False,1,false,6,Scripture allusion.,Standard content.
+SC-1036,False,False,1,,6,Scripture allusion.,Standard content.
+SC-1037,False,False,1,,6,Scripture allusion.,Standard content.
+SC-1038,False,False,1,,6,Scripture allusion.,Standard content.
+SC-1039,False,False,1,,6,Scripture allusion.,Standard content.
+SC-1040,False,False,1,,6,Scripture allusion.,Standard content.
+SC-1041,False,False,Y,true,6,Scripture allusion.,Standard content.
+SC-1042,False,False,Y,true,6,Scripture allusion.,Standard content.
+SC-1043,False,False,Y,true,6,Scripture allusion.,Standard content.
+SC-1044,False,False,Y,true,6,Scripture allusion.,Standard content.
+SC-1045,False,False,Y,true,6,Scripture allusion.,Standard content.
+SC-1046,False,False,Y,yes,6,Scripture allusion.,Standard content.
+SC-1047,False,False,Y,yes,6,Scripture allusion.,Standard content.
+SC-1048,False,False,Y,yes,6,Scripture allusion.,Standard content.
+SC-1049,False,False,Y,yes,6,Scripture allusion.,Standard content.
+SC-1050,False,False,Y,yes,6,Scripture allusion.,Standard content.
+SC-1051,False,False,Y,1,6,Scripture allusion.,Standard content.
+SC-1052,False,False,Y,1,6,Scripture allusion.,Standard content.
+SC-1053,False,False,Y,1,6,Scripture allusion.,Standard content.
+SC-1054,False,False,Y,1,6,Scripture allusion.,Standard content.
+SC-1055,False,False,Y,1,6,Scripture allusion.,Standard content.
+SC-1056,False,False,Y,Y,6,Scripture allusion.,Standard content.
+SC-1057,False,False,Y,Y,6,Scripture allusion.,Standard content.
+SC-1058,False,False,Y,Y,6,Scripture allusion.,Standard content.
+SC-1059,False,False,Y,Y,6,Scripture allusion.,Standard content.
+SC-1060,False,False,Y,Y,6,Scripture allusion.,Standard content.
+SC-1061,False,False,Y,TRUE!,6,Scripture allusion.,Standard content.
+SC-1062,False,False,Y,TRUE!,6,Scripture allusion.,Standard content.
+SC-1063,False,False,Y,TRUE!,6,Scripture allusion.,Standard content.
+SC-1064,False,False,Y,TRUE!,6,Scripture allusion.,Standard content.
+SC-1065,False,False,Y,TRUE!,6,Scripture allusion.,Standard content.
+SC-1066,False,False,Y,false,6,Scripture allusion.,Standard content.
+SC-1067,False,False,Y,false,6,Scripture allusion.,Standard content.
+SC-1068,False,False,Y,false,6,Scripture allusion.,Standard content.
+SC-1069,False,False,Y,false,6,Scripture allusion.,Standard content.
+SC-1070,False,False,Y,false,6,Scripture allusion.,Standard content.
+SC-1071,False,False,Y,,6,Scripture allusion.,Standard content.
+SC-1072,False,False,Y,,6,Scripture allusion.,Standard content.
+SC-1073,False,False,Y,,6,Scripture allusion.,Standard content.
+SC-1074,False,False,Y,,6,Scripture allusion.,Standard content.
+SC-1075,False,False,Y,,6,Scripture allusion.,Standard content.
+SC-1076,False,False,TRUE!,true,6,Scripture allusion.,Standard content.
+SC-1077,False,False,TRUE!,true,6,Scripture allusion.,Standard content.
+SC-1078,False,False,TRUE!,true,6,Scripture allusion.,Standard content.
+SC-1079,False,False,TRUE!,true,6,Scripture allusion.,Standard content.
+SC-1080,False,False,TRUE!,true,6,Scripture allusion.,Standard content.
+SC-1081,False,False,TRUE!,yes,6,Scripture allusion.,Standard content.
+SC-1082,False,False,TRUE!,yes,6,Scripture allusion.,Standard content.
+SC-1083,False,False,TRUE!,yes,6,Scripture allusion.,Standard content.
+SC-1084,False,False,TRUE!,yes,6,Scripture allusion.,Standard content.
+SC-1085,False,False,TRUE!,yes,6,Scripture allusion.,Standard content.
+SC-1086,False,False,TRUE!,1,6,Scripture allusion.,Standard content.
+SC-1087,False,False,TRUE!,1,6,Scripture allusion.,Standard content.
+SC-1088,False,False,TRUE!,1,6,Scripture allusion.,Standard content.
+SC-1089,False,False,TRUE!,1,6,Scripture allusion.,Standard content.
+SC-1090,False,False,TRUE!,1,6,Scripture allusion.,Standard content.
+SC-1091,False,False,TRUE!,Y,6,Scripture allusion.,Standard content.
+SC-1092,False,False,TRUE!,Y,6,Scripture allusion.,Standard content.
+SC-1093,False,False,TRUE!,Y,6,Scripture allusion.,Standard content.
+SC-1094,False,False,TRUE!,Y,6,Scripture allusion.,Standard content.
+SC-1095,False,False,TRUE!,Y,6,Scripture allusion.,Standard content.
+SC-1096,False,False,TRUE!,TRUE!,6,Scripture allusion.,Standard content.
+SC-1097,False,False,TRUE!,TRUE!,6,Scripture allusion.,Standard content.
+SC-1098,False,False,TRUE!,TRUE!,6,Scripture allusion.,Standard content.
+SC-1099,False,False,TRUE!,TRUE!,6,Scripture allusion.,Standard content.
+SC-1100,False,False,TRUE!,TRUE!,6,Scripture allusion.,Standard content.
+SC-1101,False,False,TRUE!,false,6,Scripture allusion.,Standard content.
+SC-1102,False,False,TRUE!,false,6,Scripture allusion.,Standard content.
+SC-1103,False,False,TRUE!,false,6,Scripture allusion.,Standard content.
+SC-1104,False,False,TRUE!,false,6,Scripture allusion.,Standard content.
+SC-1105,False,False,TRUE!,false,6,Scripture allusion.,Standard content.
+SC-1106,False,False,TRUE!,,6,Scripture allusion.,Standard content.
+SC-1107,False,False,TRUE!,,6,Scripture allusion.,Standard content.
+SC-1108,False,False,TRUE!,,6,Scripture allusion.,Standard content.
+SC-1109,False,False,TRUE!,,6,Scripture allusion.,Standard content.
+SC-1110,False,False,TRUE!,,6,Scripture allusion.,Standard content.
+SC-1111,False,False,false,true,6,Scripture allusion.,Standard content.
+SC-1112,False,False,false,true,6,Scripture allusion.,Standard content.
+SC-1113,False,False,false,true,6,Scripture allusion.,Standard content.
+SC-1114,False,False,false,true,6,Scripture allusion.,Standard content.
+SC-1115,False,False,false,true,6,Scripture allusion.,Standard content.
+SC-1116,False,False,false,yes,6,Scripture allusion.,Standard content.
+SC-1117,False,False,false,yes,6,Scripture allusion.,Standard content.
+SC-1118,False,False,false,yes,6,Scripture allusion.,Standard content.
+SC-1119,False,False,false,yes,6,Scripture allusion.,Standard content.
+SC-1120,False,False,false,yes,6,Scripture allusion.,Standard content.
+SC-1121,False,False,false,1,6,Scripture allusion.,Standard content.
+SC-1122,False,False,false,1,6,Scripture allusion.,Standard content.
+SC-1123,False,False,false,1,6,Scripture allusion.,Standard content.
+SC-1124,False,False,false,1,6,Scripture allusion.,Standard content.
+SC-1125,False,False,false,1,6,Scripture allusion.,Standard content.
+SC-1126,False,False,false,Y,6,Scripture allusion.,Standard content.
+SC-1127,False,False,false,Y,6,Scripture allusion.,Standard content.
+SC-1128,False,False,false,Y,6,Scripture allusion.,Standard content.
+SC-1129,False,False,false,Y,6,Scripture allusion.,Standard content.
+SC-1130,False,False,false,Y,6,Scripture allusion.,Standard content.
+SC-1131,False,False,false,TRUE!,6,Scripture allusion.,Standard content.
+SC-1132,False,False,false,TRUE!,6,Scripture allusion.,Standard content.
+SC-1133,False,False,false,TRUE!,6,Scripture allusion.,Standard content.
+SC-1134,False,False,false,TRUE!,6,Scripture allusion.,Standard content.
+SC-1135,False,False,false,TRUE!,6,Scripture allusion.,Standard content.
+SC-1136,False,False,false,false,6,Scripture allusion.,Standard content.
+SC-1137,False,False,false,false,6,Scripture allusion.,Standard content.
+SC-1138,False,False,false,false,6,Scripture allusion.,Standard content.
+SC-1139,False,False,false,false,6,Scripture allusion.,Standard content.
+SC-1140,False,False,false,false,6,Scripture allusion.,Standard content.
+SC-1141,False,False,false,,6,Scripture allusion.,Standard content.
+SC-1142,False,False,false,,6,Scripture allusion.,Standard content.
+SC-1143,False,False,false,,6,Scripture allusion.,Standard content.
+SC-1144,False,False,false,,6,Scripture allusion.,Standard content.
+SC-1145,False,False,false,,6,Scripture allusion.,Standard content.
+SC-1146,False,False,,true,6,Scripture allusion.,Standard content.
+SC-1147,False,False,,true,6,Scripture allusion.,Standard content.
+SC-1148,False,False,,true,6,Scripture allusion.,Standard content.
+SC-1149,False,False,,true,6,Scripture allusion.,Standard content.
+SC-1150,False,False,,true,6,Scripture allusion.,Standard content.
+SC-1151,False,False,,yes,6,Scripture allusion.,Standard content.
+SC-1152,False,False,,yes,6,Scripture allusion.,Standard content.
+SC-1153,False,False,,yes,6,Scripture allusion.,Standard content.
+SC-1154,False,False,,yes,6,Scripture allusion.,Standard content.
+SC-1155,False,False,,yes,6,Scripture allusion.,Standard content.
+SC-1156,False,False,,1,6,Scripture allusion.,Standard content.
+SC-1157,False,False,,1,6,Scripture allusion.,Standard content.
+SC-1158,False,False,,1,6,Scripture allusion.,Standard content.
+SC-1159,False,False,,1,6,Scripture allusion.,Standard content.
+SC-1160,False,False,,1,6,Scripture allusion.,Standard content.
+SC-1161,False,False,,Y,6,Scripture allusion.,Standard content.
+SC-1162,False,False,,Y,6,Scripture allusion.,Standard content.
+SC-1163,False,False,,Y,6,Scripture allusion.,Standard content.
+SC-1164,False,False,,Y,6,Scripture allusion.,Standard content.
+SC-1165,False,False,,Y,6,Scripture allusion.,Standard content.
+SC-1166,False,False,,TRUE!,6,Scripture allusion.,Standard content.
+SC-1167,False,False,,TRUE!,6,Scripture allusion.,Standard content.
+SC-1168,False,False,,TRUE!,6,Scripture allusion.,Standard content.
+SC-1169,False,False,,TRUE!,6,Scripture allusion.,Standard content.
+SC-1170,False,False,,TRUE!,6,Scripture allusion.,Standard content.
+SC-1171,False,False,,false,6,Scripture allusion.,Standard content.
+SC-1172,False,False,,false,6,Scripture allusion.,Standard content.
+SC-1173,False,False,,false,6,Scripture allusion.,Standard content.
+SC-1174,False,False,,false,6,Scripture allusion.,Standard content.
+SC-1175,False,False,,false,6,Scripture allusion.,Standard content.
+SC-1176,False,False,,,6,Scripture allusion.,Standard content.
+SC-1177,False,False,,,6,Scripture allusion.,Standard content.
+SC-1178,False,False,,,6,Scripture allusion.,Standard content.
+SC-1179,False,False,,,6,Scripture allusion.,Standard content.
+SC-1180,False,False,,,6,Scripture allusion.,Standard content.
+SC-1181,False,False,False,False,6,Standard content.,Standard content.
+SC-1182,False,False,False,False,6,Standard content.,Standard content.
+SC-1183,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1184,False,False,False,False,6,Standard content.,Standard content.
+SC-1185,False,False,True,False,6,Standard content.,Standard content.
+SC-1186,False,False,False,False,6,Standard content.,Standard content.
+SC-1187,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1188,False,False,False,False,6,Standard content.,Standard content.
+SC-1189,False,False,True,False,6,Standard content.,Standard content.
+SC-1190,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1191,False,False,False,False,6,Standard content.,Standard content.
+SC-1192,False,False,True,False,6,Standard content.,Standard content.
+SC-1193,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1194,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1195,False,False,True,False,9,Standard content.,Standard content.
+SC-1196,False,False,False,False,6,Standard content.,Standard content.
+SC-1197,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1198,False,False,False,False,9,Standard content.,Standard content.
+SC-1199,False,False,True,False,6,Standard content.,Standard content.
+SC-1200,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1201,False,False,False,False,9,Standard content.,Standard content.
+SC-1202,False,False,True,False,6,Standard content.,Standard content.
+SC-1203,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1204,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1205,False,False,True,False,9,Standard content.,Standard content.
+SC-1206,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1207,False,False,False,False,9,Standard content.,Standard content.
+SC-1208,False,False,True,False,6,Standard content.,Standard content.
+SC-1209,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1210,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1211,False,False,True,False,9,Standard content.,Standard content.
+SC-1212,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1213,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1214,False,False,True,False,9,Standard content.,Standard content.
+SC-1215,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-1216,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1217,False,False,False,False,6,Standard content.,That's not X. It's Y.
+SC-1218,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1219,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1220,False,False,False,False,6,That's not X. It is Y.,Standard content.
+SC-1221,False,False,False,False,6,Standard content.,That's not X. It is Y.
+SC-1222,True,True,False,False,6,That's not X. It is Y.,Standard content.
+SC-1223,True,True,False,False,6,That's not X. It is Y.,Standard content.
+SC-1224,False,False,False,False,6,That is not X. It is Y.,Standard content.
+SC-1225,False,False,False,False,6,Standard content.,That is not X. It is Y.
+SC-1226,True,True,False,False,6,That is not X. It is Y.,Standard content.
+SC-1227,True,True,False,False,6,That is not X. It is Y.,Standard content.
+SC-1228,False,False,False,False,6,That is not X. It's Y.,Standard content.
+SC-1229,False,False,False,False,6,Standard content.,That is not X. It's Y.
+SC-1230,True,True,False,False,6,That is not X. It's Y.,Standard content.
+SC-1231,True,True,False,False,6,That is not X. It's Y.,Standard content.
+SC-1232,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1233,False,False,False,False,6,Standard content.,It's not X. It's Y.
+SC-1234,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1235,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1236,False,False,False,False,6,It's not X. It is Y.,Standard content.
+SC-1237,False,False,False,False,6,Standard content.,It's not X. It is Y.
+SC-1238,True,True,False,False,6,It's not X. It is Y.,Standard content.
+SC-1239,True,True,False,False,6,It's not X. It is Y.,Standard content.
+SC-1240,False,False,False,False,6,It is not X. It is Y.,Standard content.
+SC-1241,False,False,False,False,6,Standard content.,It is not X. It is Y.
+SC-1242,True,True,False,False,6,It is not X. It is Y.,Standard content.
+SC-1243,True,True,False,False,6,It is not X. It is Y.,Standard content.
+SC-1244,False,False,False,False,6,It is not X. It's Y.,Standard content.
+SC-1245,False,False,False,False,6,Standard content.,It is not X. It's Y.
+SC-1246,True,True,False,False,6,It is not X. It's Y.,Standard content.
+SC-1247,True,True,False,False,6,It is not X. It's Y.,Standard content.
+SC-1248,False,False,False,False,6,That's not X. It's a Y.,Standard content.
+SC-1249,False,False,False,False,6,Standard content.,That's not X. It's a Y.
+SC-1250,True,True,False,False,6,That's not X. It's a Y.,Standard content.
+SC-1251,True,True,False,False,6,That's not X. It's a Y.,Standard content.
+SC-1252,False,False,False,False,6,That's not X. It's the Y.,Standard content.
+SC-1253,False,False,False,False,6,Standard content.,That's not X. It's the Y.
+SC-1254,True,True,False,False,6,That's not X. It's the Y.,Standard content.
+SC-1255,True,True,False,False,6,That's not X. It's the Y.,Standard content.
+SC-1256,False,False,False,False,6,It's not X. It's a Y.,Standard content.
+SC-1257,False,False,False,False,6,Standard content.,It's not X. It's a Y.
+SC-1258,True,True,False,False,6,It's not X. It's a Y.,Standard content.
+SC-1259,True,True,False,False,6,It's not X. It's a Y.,Standard content.
+SC-1260,False,False,False,False,6,It's not X. It's the Y.,Standard content.
+SC-1261,False,False,False,False,6,Standard content.,It's not X. It's the Y.
+SC-1262,True,True,False,False,6,It's not X. It's the Y.,Standard content.
+SC-1263,True,True,False,False,6,It's not X. It's the Y.,Standard content.
+SC-1264,False,False,False,False,6,That is not X. It is a Y.,Standard content.
+SC-1265,False,False,False,False,6,Standard content.,That is not X. It is a Y.
+SC-1266,True,True,False,False,6,That is not X. It is a Y.,Standard content.
+SC-1267,True,True,False,False,6,That is not X. It is a Y.,Standard content.
+SC-1268,False,False,False,False,6,That is not X. It is the Y.,Standard content.
+SC-1269,False,False,False,False,6,Standard content.,That is not X. It is the Y.
+SC-1270,True,True,False,False,6,That is not X. It is the Y.,Standard content.
+SC-1271,True,True,False,False,6,That is not X. It is the Y.,Standard content.
+SC-1272,False,False,False,False,6,It is not X. It is a Y.,Standard content.
+SC-1273,False,False,False,False,6,Standard content.,It is not X. It is a Y.
+SC-1274,True,True,False,False,6,It is not X. It is a Y.,Standard content.
+SC-1275,True,True,False,False,6,It is not X. It is a Y.,Standard content.
+SC-1276,False,False,False,False,6,It is not X. It is the Y.,Standard content.
+SC-1277,False,False,False,False,6,Standard content.,It is not X. It is the Y.
+SC-1278,True,True,False,False,6,It is not X. It is the Y.,Standard content.
+SC-1279,True,True,False,False,6,It is not X. It is the Y.,Standard content.
+SC-1280,False,False,False,False,6,That's not just X. It's Y.,Standard content.
+SC-1281,False,False,False,False,6,Standard content.,That's not just X. It's Y.
+SC-1282,True,True,False,False,6,That's not just X. It's Y.,Standard content.
+SC-1283,True,True,False,False,6,That's not just X. It's Y.,Standard content.
+SC-1284,False,False,False,False,6,That's not simply X. It's Y.,Standard content.
+SC-1285,False,False,False,False,6,Standard content.,That's not simply X. It's Y.
+SC-1286,True,True,False,False,6,That's not simply X. It's Y.,Standard content.
+SC-1287,True,True,False,False,6,That's not simply X. It's Y.,Standard content.
+SC-1288,False,False,False,False,6,That's not merely X. It's Y.,Standard content.
+SC-1289,False,False,False,False,6,Standard content.,That's not merely X. It's Y.
+SC-1290,True,True,False,False,6,That's not merely X. It's Y.,Standard content.
+SC-1291,True,True,False,False,6,That's not merely X. It's Y.,Standard content.
+SC-1292,False,False,False,False,6,It's not just X. It's Y.,Standard content.
+SC-1293,False,False,False,False,6,Standard content.,It's not just X. It's Y.
+SC-1294,True,True,False,False,6,It's not just X. It's Y.,Standard content.
+SC-1295,True,True,False,False,6,It's not just X. It's Y.,Standard content.
+SC-1296,False,False,False,False,6,It's not simply X. It's Y.,Standard content.
+SC-1297,False,False,False,False,6,Standard content.,It's not simply X. It's Y.
+SC-1298,True,True,False,False,6,It's not simply X. It's Y.,Standard content.
+SC-1299,True,True,False,False,6,It's not simply X. It's Y.,Standard content.
+SC-1300,False,False,False,False,6,It's not merely X. It's Y.,Standard content.
+SC-1301,False,False,False,False,6,Standard content.,It's not merely X. It's Y.
+SC-1302,True,True,False,False,6,It's not merely X. It's Y.,Standard content.
+SC-1303,True,True,False,False,6,It's not merely X. It's Y.,Standard content.
+SC-1304,False,False,False,False,6,That is not just X. It is Y.,Standard content.
+SC-1305,False,False,False,False,6,Standard content.,That is not just X. It is Y.
+SC-1306,True,True,False,False,6,That is not just X. It is Y.,Standard content.
+SC-1307,True,True,False,False,6,That is not just X. It is Y.,Standard content.
+SC-1308,False,False,False,False,6,That is not simply X. It is Y.,Standard content.
+SC-1309,False,False,False,False,6,Standard content.,That is not simply X. It is Y.
+SC-1310,True,True,False,False,6,That is not simply X. It is Y.,Standard content.
+SC-1311,True,True,False,False,6,That is not simply X. It is Y.,Standard content.
+SC-1312,False,False,False,False,6,It is not just X. It is Y.,Standard content.
+SC-1313,False,False,False,False,6,Standard content.,It is not just X. It is Y.
+SC-1314,True,True,False,False,6,It is not just X. It is Y.,Standard content.
+SC-1315,True,True,False,False,6,It is not just X. It is Y.,Standard content.
+SC-1316,False,False,False,False,6,It is not simply X. It is Y.,Standard content.
+SC-1317,False,False,False,False,6,Standard content.,It is not simply X. It is Y.
+SC-1318,True,True,False,False,6,It is not simply X. It is Y.,Standard content.
+SC-1319,True,True,False,False,6,It is not simply X. It is Y.,Standard content.
+SC-1320,False,False,False,False,6,That's not X — it's Y.,Standard content.
+SC-1321,False,False,False,False,6,Standard content.,That's not X — it's Y.
+SC-1322,True,True,False,False,6,That's not X — it's Y.,Standard content.
+SC-1323,True,True,False,False,6,That's not X — it's Y.,Standard content.
+SC-1324,False,False,False,False,6,That's not X; it's Y.,Standard content.
+SC-1325,False,False,False,False,6,Standard content.,That's not X; it's Y.
+SC-1326,True,True,False,False,6,That's not X; it's Y.,Standard content.
+SC-1327,True,True,False,False,6,That's not X; it's Y.,Standard content.
+SC-1328,False,False,False,False,6,That's not X... it's Y.,Standard content.
+SC-1329,False,False,False,False,6,Standard content.,That's not X... it's Y.
+SC-1330,True,True,False,False,6,That's not X... it's Y.,Standard content.
+SC-1331,True,True,False,False,6,That's not X... it's Y.,Standard content.
+SC-1332,False,False,False,False,6,"That's not X, it's Y.",Standard content.
+SC-1333,False,False,False,False,6,Standard content.,"That's not X, it's Y."
+SC-1334,True,True,False,False,6,"That's not X, it's Y.",Standard content.
+SC-1335,True,True,False,False,6,"That's not X, it's Y.",Standard content.
+SC-1336,False,False,False,False,6,It's not X — it's Y.,Standard content.
+SC-1337,False,False,False,False,6,Standard content.,It's not X — it's Y.
+SC-1338,True,True,False,False,6,It's not X — it's Y.,Standard content.
+SC-1339,True,True,False,False,6,It's not X — it's Y.,Standard content.
+SC-1340,False,False,False,False,6,It's not X; it's Y.,Standard content.
+SC-1341,False,False,False,False,6,Standard content.,It's not X; it's Y.
+SC-1342,True,True,False,False,6,It's not X; it's Y.,Standard content.
+SC-1343,True,True,False,False,6,It's not X; it's Y.,Standard content.
+SC-1344,False,False,False,False,6,It's not X... it's Y.,Standard content.
+SC-1345,False,False,False,False,6,Standard content.,It's not X... it's Y.
+SC-1346,True,True,False,False,6,It's not X... it's Y.,Standard content.
+SC-1347,True,True,False,False,6,It's not X... it's Y.,Standard content.
+SC-1348,False,False,False,False,6,"It's not X, it's Y.",Standard content.
+SC-1349,False,False,False,False,6,Standard content.,"It's not X, it's Y."
+SC-1350,True,True,False,False,6,"It's not X, it's Y.",Standard content.
+SC-1351,True,True,False,False,6,"It's not X, it's Y.",Standard content.
+SC-1352,False,False,False,False,6,That is not X — it is Y.,Standard content.
+SC-1353,False,False,False,False,6,Standard content.,That is not X — it is Y.
+SC-1354,True,True,False,False,6,That is not X — it is Y.,Standard content.
+SC-1355,True,True,False,False,6,That is not X — it is Y.,Standard content.
+SC-1356,False,False,False,False,6,That is not X; it is Y.,Standard content.
+SC-1357,False,False,False,False,6,Standard content.,That is not X; it is Y.
+SC-1358,True,True,False,False,6,That is not X; it is Y.,Standard content.
+SC-1359,True,True,False,False,6,That is not X; it is Y.,Standard content.
+SC-1360,False,False,False,False,6,That is not X... it is Y.,Standard content.
+SC-1361,False,False,False,False,6,Standard content.,That is not X... it is Y.
+SC-1362,True,True,False,False,6,That is not X... it is Y.,Standard content.
+SC-1363,True,True,False,False,6,That is not X... it is Y.,Standard content.
+SC-1364,False,False,False,False,6,"That is not X, it is Y.",Standard content.
+SC-1365,False,False,False,False,6,Standard content.,"That is not X, it is Y."
+SC-1366,True,True,False,False,6,"That is not X, it is Y.",Standard content.
+SC-1367,True,True,False,False,6,"That is not X, it is Y.",Standard content.
+SC-1368,False,False,False,False,6,It is not X — it is Y.,Standard content.
+SC-1369,False,False,False,False,6,Standard content.,It is not X — it is Y.
+SC-1370,True,True,False,False,6,It is not X — it is Y.,Standard content.
+SC-1371,True,True,False,False,6,It is not X — it is Y.,Standard content.
+SC-1372,False,False,False,False,6,It is not X; it is Y.,Standard content.
+SC-1373,False,False,False,False,6,Standard content.,It is not X; it is Y.
+SC-1374,True,True,False,False,6,It is not X; it is Y.,Standard content.
+SC-1375,True,True,False,False,6,It is not X; it is Y.,Standard content.
+SC-1376,False,False,False,False,6,It is not X... it is Y.,Standard content.
+SC-1377,False,False,False,False,6,Standard content.,It is not X... it is Y.
+SC-1378,True,True,False,False,6,It is not X... it is Y.,Standard content.
+SC-1379,True,True,False,False,6,It is not X... it is Y.,Standard content.
+SC-1380,False,False,False,False,6,"It is not X, it is Y.",Standard content.
+SC-1381,False,False,False,False,6,Standard content.,"It is not X, it is Y."
+SC-1382,True,True,False,False,6,"It is not X, it is Y.",Standard content.
+SC-1383,True,True,False,False,6,"It is not X, it is Y.",Standard content.
+SC-1384,False,False,False,False,6,That was not X. It was Y.,Standard content.
+SC-1385,False,False,False,False,6,Standard content.,That was not X. It was Y.
+SC-1386,True,True,False,False,6,That was not X. It was Y.,Standard content.
+SC-1387,True,True,False,False,6,That was not X. It was Y.,Standard content.
+SC-1388,False,False,False,False,6,It was not X. It was Y.,Standard content.
+SC-1389,False,False,False,False,6,Standard content.,It was not X. It was Y.
+SC-1390,True,True,False,False,6,It was not X. It was Y.,Standard content.
+SC-1391,True,True,False,False,6,It was not X. It was Y.,Standard content.
+SC-1392,False,False,False,False,6,That wasn't X. It was Y.,Standard content.
+SC-1393,False,False,False,False,6,Standard content.,That wasn't X. It was Y.
+SC-1394,True,True,False,False,6,That wasn't X. It was Y.,Standard content.
+SC-1395,True,True,False,False,6,That wasn't X. It was Y.,Standard content.
+SC-1396,False,False,False,False,6,It wasn't X. It was Y.,Standard content.
+SC-1397,False,False,False,False,6,Standard content.,It wasn't X. It was Y.
+SC-1398,True,True,False,False,6,It wasn't X. It was Y.,Standard content.
+SC-1399,True,True,False,False,6,It wasn't X. It was Y.,Standard content.
+SC-1400,False,False,False,False,6,That's not X. It's Y!,Standard content.
+SC-1401,False,False,False,False,6,Standard content.,That's not X. It's Y!
+SC-1402,True,True,False,False,6,That's not X. It's Y!,Standard content.
+SC-1403,True,True,False,False,6,That's not X. It's Y!,Standard content.
+SC-1404,False,False,False,False,6,That's not X. It's Y?,Standard content.
+SC-1405,False,False,False,False,6,Standard content.,That's not X. It's Y?
+SC-1406,True,True,False,False,6,That's not X. It's Y?,Standard content.
+SC-1407,True,True,False,False,6,That's not X. It's Y?,Standard content.
+SC-1408,False,False,False,False,6,That's not X. It's Y...,Standard content.
+SC-1409,False,False,False,False,6,Standard content.,That's not X. It's Y...
+SC-1410,True,True,False,False,6,That's not X. It's Y...,Standard content.
+SC-1411,True,True,False,False,6,That's not X. It's Y...,Standard content.
+SC-1412,False,False,False,False,6,That's NOT X. It's Y.,Standard content.
+SC-1413,False,False,False,False,6,Standard content.,That's NOT X. It's Y.
+SC-1414,True,True,False,False,6,That's NOT X. It's Y.,Standard content.
+SC-1415,True,True,False,False,6,That's NOT X. It's Y.,Standard content.
+SC-1416,False,False,False,False,6,THAT'S NOT X. IT'S Y.,Standard content.
+SC-1417,False,False,False,False,6,Standard content.,THAT'S NOT X. IT'S Y.
+SC-1418,True,True,False,False,6,THAT'S NOT X. IT'S Y.,Standard content.
+SC-1419,True,True,False,False,6,THAT'S NOT X. IT'S Y.,Standard content.
+SC-1420,False,False,False,False,6,That's Not X. It's Y.,Standard content.
+SC-1421,False,False,False,False,6,Standard content.,That's Not X. It's Y.
+SC-1422,True,True,False,False,6,That's Not X. It's Y.,Standard content.
+SC-1423,True,True,False,False,6,That's Not X. It's Y.,Standard content.
+SC-1424,False,False,False,False,6,That's not the end. It's the beginning.,Standard content.
+SC-1425,False,False,False,False,6,Standard content.,That's not the end. It's the beginning.
+SC-1426,True,True,False,False,6,That's not the end. It's the beginning.,Standard content.
+SC-1427,True,True,False,False,6,That's not the end. It's the beginning.,Standard content.
+SC-1428,False,False,False,False,6,That's not a setback. It's a setup.,Standard content.
+SC-1429,False,False,False,False,6,Standard content.,That's not a setback. It's a setup.
+SC-1430,True,True,False,False,6,That's not a setback. It's a setup.,Standard content.
+SC-1431,True,True,False,False,6,That's not a setback. It's a setup.,Standard content.
+SC-1432,False,False,False,False,6,It's not a program. It's a family.,Standard content.
+SC-1433,False,False,False,False,6,Standard content.,It's not a program. It's a family.
+SC-1434,True,True,False,False,6,It's not a program. It's a family.,Standard content.
+SC-1435,True,True,False,False,6,It's not a program. It's a family.,Standard content.
+SC-1436,False,False,False,False,6,That's not noise. It's the sound.,Standard content.
+SC-1437,False,False,False,False,6,Standard content.,That's not noise. It's the sound.
+SC-1438,True,True,False,False,6,That's not noise. It's the sound.,Standard content.
+SC-1439,True,True,False,False,6,That's not noise. It's the sound.,Standard content.
+SC-1440,False,False,False,False,6,That is not the end. It is the start.,Standard content.
+SC-1441,False,False,False,False,6,Standard content.,That is not the end. It is the start.
+SC-1442,True,True,False,False,6,That is not the end. It is the start.,Standard content.
+SC-1443,True,True,False,False,6,That is not the end. It is the start.,Standard content.
+SC-1444,False,False,False,False,6,It is not luck. It is the grace.,Standard content.
+SC-1445,False,False,False,False,6,Standard content.,It is not luck. It is the grace.
+SC-1446,True,True,False,False,6,It is not luck. It is the grace.,Standard content.
+SC-1447,True,True,False,False,6,It is not luck. It is the grace.,Standard content.
+SC-1448,False,False,False,False,6,That's not my story. It's what the guest said.,Standard content.
+SC-1449,False,False,False,False,6,Standard content.,That's not my story. It's what the guest said.
+SC-1450,True,True,False,False,6,That's not my story. It's what the guest said.,Standard content.
+SC-1451,True,True,False,False,6,That's not my story. It's what the guest said.,Standard content.
+SC-1452,False,False,False,False,6,It's not my story. It's what the guest kept saying.,Standard content.
+SC-1453,False,False,False,False,6,Standard content.,It's not my story. It's what the guest kept saying.
+SC-1454,True,True,False,False,6,It's not my story. It's what the guest kept saying.,Standard content.
+SC-1455,True,True,False,False,6,It's not my story. It's what the guest kept saying.,Standard content.
+SC-1456,False,False,False,False,6,That's not the plan. It's a draft.,Standard content.
+SC-1457,False,False,False,False,6,Standard content.,That's not the plan. It's a draft.
+SC-1458,True,True,False,False,6,That's not the plan. It's a draft.,Standard content.
+SC-1459,True,True,False,False,6,That's not the plan. It's a draft.,Standard content.
+SC-1460,False,False,False,False,6,That's not branding. It's the sentence.,Standard content.
+SC-1461,False,False,False,False,6,Standard content.,That's not branding. It's the sentence.
+SC-1462,True,True,False,False,6,That's not branding. It's the sentence.,Standard content.
+SC-1463,True,True,False,False,6,That's not branding. It's the sentence.,Standard content.
+SC-1464,False,False,False,False,6,That's not the headline. It's a draft.,Standard content.
+SC-1465,False,False,False,False,6,Standard content.,That's not the headline. It's a draft.
+SC-1466,True,True,False,False,6,That's not the headline. It's a draft.,Standard content.
+SC-1467,True,True,False,False,6,That's not the headline. It's a draft.,Standard content.
+SC-1468,False,False,False,False,6,It's not courage. It's what the guest kept repeating.,Standard content.
+SC-1469,False,False,False,False,6,Standard content.,It's not courage. It's what the guest kept repeating.
+SC-1470,True,True,False,False,6,It's not courage. It's what the guest kept repeating.,Standard content.
+SC-1471,True,True,False,False,6,It's not courage. It's what the guest kept repeating.,Standard content.
+SC-1472,False,False,False,False,6,That's not the final word. It's the beginning.,Standard content.
+SC-1473,False,False,False,False,6,Standard content.,That's not the final word. It's the beginning.
+SC-1474,True,True,False,False,6,That's not the final word. It's the beginning.,Standard content.
+SC-1475,True,True,False,False,6,That's not the final word. It's the beginning.,Standard content.
+SC-1476,False,False,False,False,6,That is not the end. It is the beginning of what comes next.,Standard content.
+SC-1477,False,False,False,False,6,Standard content.,That is not the end. It is the beginning of what comes next.
+SC-1478,True,True,False,False,6,That is not the end. It is the beginning of what comes next.,Standard content.
+SC-1479,True,True,False,False,6,That is not the end. It is the beginning of what comes next.,Standard content.
+SC-1480,False,False,False,False,6,That's not a program. It's a family that showed up.,Standard content.
+SC-1481,False,False,False,False,6,Standard content.,That's not a program. It's a family that showed up.
+SC-1482,True,True,False,False,6,That's not a program. It's a family that showed up.,Standard content.
+SC-1483,True,True,False,False,6,That's not a program. It's a family that showed up.,Standard content.
+SC-1484,False,False,False,False,6,It's not a setback. It's a setup for the work ahead.,Standard content.
+SC-1485,False,False,False,False,6,Standard content.,It's not a setback. It's a setup for the work ahead.
+SC-1486,True,True,False,False,6,It's not a setback. It's a setup for the work ahead.,Standard content.
+SC-1487,True,True,False,False,6,It's not a setback. It's a setup for the work ahead.,Standard content.
+SC-1488,False,False,False,False,6,That is not the end. It is the start of something new.,Standard content.
+SC-1489,False,False,False,False,6,Standard content.,That is not the end. It is the start of something new.
+SC-1490,True,True,False,False,6,That is not the end. It is the start of something new.,Standard content.
+SC-1491,True,True,False,False,6,That is not the end. It is the start of something new.,Standard content.
+SC-1492,False,False,False,False,6,It's not luck. It's the grace we keep naming.,Standard content.
+SC-1493,False,False,False,False,6,Standard content.,It's not luck. It's the grace we keep naming.
+SC-1494,True,True,False,False,6,It's not luck. It's the grace we keep naming.,Standard content.
+SC-1495,True,True,False,False,6,It's not luck. It's the grace we keep naming.,Standard content.
+SC-1496,False,False,False,False,6,That's not optional. It's required prep.,Standard content.
+SC-1497,False,False,False,False,6,Standard content.,That's not optional. It's required prep.
+SC-1498,True,True,False,False,6,That's not optional. It's required prep.,Standard content.
+SC-1499,True,True,False,False,6,That's not optional. It's required prep.,Standard content.
+SC-1500,False,False,False,False,6,That's not the plan. It's a draft we already cut.,Standard content.
+SC-1501,False,False,False,False,6,Standard content.,That's not the plan. It's a draft we already cut.
+SC-1502,True,True,False,False,6,That's not the plan. It's a draft we already cut.,Standard content.
+SC-1503,True,True,False,False,6,That's not the plan. It's a draft we already cut.,Standard content.
+SC-1504,False,False,False,False,6,That's X. It's Y.,Standard content.
+SC-1505,False,False,False,False,6,That's not X.,Standard content.
+SC-1506,False,False,False,False,6,It's not X or Y.,Standard content.
+SC-1507,False,False,False,False,6,"X, not Y.",Standard content.
+SC-1508,False,False,False,False,6,"That is X, that is not Y.",Standard content.
+SC-1509,False,False,False,False,6,Not X but Y.,Standard content.
+SC-1510,False,False,False,False,6,"Instead of X, Y.",Standard content.
+SC-1511,False,False,False,False,6,"Rather than X, Y.",Standard content.
+SC-1512,False,False,False,False,6,That's not X and not Y.,Standard content.
+SC-1513,False,False,False,False,6,This is not X. This is Y.,Standard content.
+SC-1514,False,False,False,False,6,That not X. Its Y.,Standard content.
+SC-1515,False,False,False,False,6,Thats not X. Its Y.,Standard content.
+SC-1516,False,False,False,False,6,That's not X. That's Y.,Standard content.
+SC-1517,False,False,False,False,6,"Is it X? No, it's Y.",Standard content.
+SC-1518,False,False,False,False,6,"X, but not Y.",Standard content.
+SC-1519,False,False,False,False,6,That's aren't X. It's Y.,Standard content.
+SC-1520,False,False,False,False,6,That's not X — and that's fine.,Standard content.
+SC-1521,False,False,False,False,6,It's not X.,Standard content.
+SC-1522,False,False,False,False,6,That is not X.,Standard content.
+SC-1523,False,False,False,False,6,That's not X.,Standard content.
+SC-1524,False,False,False,False,6,Standard content with no rhetoric.,Standard content.
+SC-1525,False,False,False,False,6,Keep the tone procedural.,Standard content.
+SC-1526,False,False,False,False,6,A calm pastoral opening.,Standard content.
+SC-1527,False,False,False,False,6,Board vote recap.,Standard content.
+SC-1528,False,False,False,False,6,Housekeeping brief.,Standard content.
+SC-1529,False,False,False,False,6,Standard content.,Standard content.
+SC-1530,False,False,False,False,6,Extended format walkthrough.,Standard content.
+SC-1531,False,False,False,False,6,Procedural closer.,Standard content.
+SC-1532,False,False,False,False,6,Quiet pastoral note.,Standard content.
+SC-1533,False,False,False,False,6,Standard closer.,Standard content.
+SC-1534,False,False,False,False,6,A brief wrap.,Standard content.
+SC-1535,False,False,False,False,6,Extended teaching block.,Standard content.
+SC-1536,False,False,False,False,6,Guest voice segment.,Standard content.
+SC-1537,False,False,False,False,6,Volunteer coordination.,Standard content.
+SC-1538,False,False,False,False,6,Standard content.,Standard content.
+SC-1539,False,False,False,False,6,Standard content.,Standard content.
+SC-1540,False,False,False,False,6,Standard content.,Standard content.
+SC-1541,False,False,False,False,6,Standard content.,Standard content.
+SC-1542,False,False,False,False,6,Standard content.,Standard content.
+SC-1543,False,False,False,False,6,Standard content.,Standard content.
+SC-1544,False,False,False,False,6,Standard content.,Standard content.
+SC-1545,False,False,False,False,6,Standard content.,Standard content.
+SC-1546,False,False,False,False,6,Standard content.,Standard content.
+SC-1547,False,False,False,False,6,Standard content.,Standard content.
+SC-1548,False,False,False,False,6,Standard content.,Standard content.
+SC-1549,False,False,False,False,6,Standard content.,Standard content.
+SC-1550,False,False,False,False,6,Standard content.,Standard content.
+SC-1551,False,False,False,False,6,Standard content.,Standard content.
+SC-1552,False,False,False,False,6,Standard content.,Standard content.
+SC-1553,False,False,False,False,6,Standard content.,Standard content.
+SC-1554,False,False,False,False,6,Standard content.,Standard content.
+SC-1555,False,False,False,False,6,Standard content.,Standard content.
+SC-1556,False,False,False,False,6,Standard content.,Standard content.
+SC-1557,False,False,False,False,6,Standard content.,Standard content.
+SC-1558,False,False,False,False,6,Standard content.,Standard content.
+SC-1559,False,False,False,False,6,Standard content.,Standard content.
+SC-1560,False,False,False,False,6,Standard content.,Standard content.
+SC-1561,False,False,False,False,6,Standard content.,Standard content.
+SC-1562,False,False,False,False,6,Standard content.,Standard content.
+SC-1563,False,False,False,False,6,Standard content.,Standard content.
+SC-1564,False,False,False,False,6,Standard content.,Standard content.
+SC-1565,False,False,False,False,6,Standard content.,Standard content.
+SC-1566,False,False,False,False,6,Standard content.,Standard content.
+SC-1567,False,False,False,False,6,Standard content.,Standard content.
+SC-1568,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1569,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1570,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1571,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1572,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1573,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1574,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1575,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1576,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1577,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1578,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1579,False,False,True,False,6,That's not X. It's Y.,Standard content.
+SC-1580,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1581,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1582,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1583,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1584,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1585,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1586,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1587,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1588,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1589,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1590,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1591,False,False,True,True,6,That's not X. It's Y.,Standard content.
+SC-1592,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1593,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1594,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1595,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1596,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1597,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1598,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1599,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1600,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1601,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1602,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1603,False,False,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1604,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1605,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1606,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1607,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1608,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1609,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1610,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1611,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1612,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1613,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1614,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1615,False,False,False,False,6,That's not X. It's Y.,Standard content.
+SC-1616,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1617,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1618,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1619,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1620,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1621,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1622,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1623,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1624,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1625,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1626,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1627,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1628,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1629,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1630,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1631,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1632,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1633,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1634,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1635,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1636,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1637,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1638,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1639,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1640,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1641,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1642,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1643,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1644,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1645,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1646,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1647,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1648,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1649,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1650,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1651,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1652,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1653,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1654,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1655,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1656,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1657,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1658,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1659,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1660,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1661,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1662,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1663,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1664,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1665,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1666,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1667,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1668,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1669,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1670,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1671,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1672,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1673,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1674,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1675,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1676,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1677,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1678,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1679,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1680,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1681,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1682,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1683,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1684,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1685,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1686,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1687,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1688,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1689,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1690,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1691,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1692,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1693,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1694,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1695,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1696,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1697,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1698,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1699,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1700,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1701,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1702,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1703,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1704,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1705,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1706,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1707,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1708,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1709,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1710,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1711,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1712,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1713,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1714,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1715,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1716,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1717,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1718,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1719,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1720,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1721,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1722,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1723,False,False,True,False,6,It's not X. It's Y.,Standard content.
+SC-1724,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1725,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1726,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1727,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1728,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1729,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1730,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1731,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1732,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1733,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1734,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1735,False,False,True,True,6,It's not X. It's Y.,Standard content.
+SC-1736,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1737,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1738,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1739,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1740,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1741,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1742,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1743,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1744,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1745,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1746,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1747,False,False,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1748,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1749,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1750,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1751,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1752,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1753,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1754,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1755,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1756,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1757,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1758,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1759,False,False,False,False,6,It's not X. It's Y.,Standard content.
+SC-1760,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1761,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1762,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1763,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1764,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1765,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1766,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1767,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1768,True,True,True,False,8,That's not X. It's Y.,Standard content.
+SC-1769,True,True,True,False,8,That's not X. It's Y.,Standard content.
+SC-1770,True,True,True,False,8,It's not X. It's Y.,Standard content.
+SC-1771,True,True,True,False,8,It's not X. It's Y.,Standard content.
+SC-1772,True,True,True,True,8,That's not X. It's Y.,Standard content.
+SC-1773,True,True,True,True,8,That's not X. It's Y.,Standard content.
+SC-1774,True,True,True,True,8,It's not X. It's Y.,Standard content.
+SC-1775,True,True,True,True,8,It's not X. It's Y.,Standard content.
+SC-1776,True,True,yes,False,8,That's not X. It's Y.,Standard content.
+SC-1777,True,True,yes,False,8,That's not X. It's Y.,Standard content.
+SC-1778,True,True,yes,False,8,It's not X. It's Y.,Standard content.
+SC-1779,True,True,yes,False,8,It's not X. It's Y.,Standard content.
+SC-1780,True,True,False,False,8,That's not X. It's Y.,Standard content.
+SC-1781,True,True,False,False,8,That's not X. It's Y.,Standard content.
+SC-1782,True,True,False,False,8,It's not X. It's Y.,Standard content.
+SC-1783,True,True,False,False,8,It's not X. It's Y.,Standard content.
+SC-1784,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1785,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1786,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1787,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1788,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1789,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1790,True,True,True,True,6,It's not X. It's Y.,Standard content.
+SC-1791,True,True,True,True,6,It's not X. It's Y.,Standard content.
+SC-1792,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1793,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1794,True,True,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1795,True,True,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1796,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1797,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1798,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1799,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1800,True,True,True,False,5,That's not X. It's Y.,Standard content.
+SC-1801,True,True,True,False,5,That's not X. It's Y.,Standard content.
+SC-1802,True,True,True,False,5,It's not X. It's Y.,Standard content.
+SC-1803,True,True,True,False,5,It's not X. It's Y.,Standard content.
+SC-1804,True,True,True,True,5,That's not X. It's Y.,Standard content.
+SC-1805,True,True,True,True,5,That's not X. It's Y.,Standard content.
+SC-1806,True,True,True,True,5,It's not X. It's Y.,Standard content.
+SC-1807,True,True,True,True,5,It's not X. It's Y.,Standard content.
+SC-1808,True,True,yes,False,5,That's not X. It's Y.,Standard content.
+SC-1809,True,True,yes,False,5,That's not X. It's Y.,Standard content.
+SC-1810,True,True,yes,False,5,It's not X. It's Y.,Standard content.
+SC-1811,True,True,yes,False,5,It's not X. It's Y.,Standard content.
+SC-1812,True,True,False,False,5,That's not X. It's Y.,Standard content.
+SC-1813,True,True,False,False,5,That's not X. It's Y.,Standard content.
+SC-1814,True,True,False,False,5,It's not X. It's Y.,Standard content.
+SC-1815,True,True,False,False,5,It's not X. It's Y.,Standard content.
+SC-1816,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1817,True,True,True,False,6,That's not X. It's Y.,Standard content.
+SC-1818,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1819,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1820,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1821,True,True,True,True,6,That's not X. It's Y.,Standard content.
+SC-1822,True,True,True,True,6,It's not X. It's Y.,Standard content.
+SC-1823,True,True,True,True,6,It's not X. It's Y.,Standard content.
+SC-1824,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1825,True,True,yes,False,6,That's not X. It's Y.,Standard content.
+SC-1826,True,True,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1827,True,True,yes,False,6,It's not X. It's Y.,Standard content.
+SC-1828,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1829,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1830,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1831,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1832,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1833,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1834,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1835,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1836,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1837,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1838,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1839,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1840,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1841,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1842,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1843,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1844,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1845,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1846,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1847,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1848,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1849,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1850,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1851,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1852,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1853,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1854,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1855,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1856,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1857,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1858,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1859,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1860,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1861,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1862,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1863,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1864,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1865,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1866,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1867,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1868,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1869,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1870,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1871,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1872,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1873,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1874,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1875,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1876,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1877,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1878,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1879,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1880,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1881,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1882,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1883,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1884,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1885,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1886,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1887,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1888,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1889,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1890,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1891,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1892,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1893,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1894,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1895,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1896,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1897,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1898,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1899,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1900,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1901,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1902,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1903,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1904,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1905,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1906,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1907,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1908,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1909,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1910,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1911,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1912,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1913,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1914,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1915,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1916,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1917,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1918,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1919,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1920,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1921,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1922,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1923,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1924,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1925,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1926,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1927,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1928,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1929,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1930,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1931,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1932,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1933,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1934,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1935,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1936,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1937,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1938,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1939,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1940,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1941,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1942,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1943,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1944,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1945,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1946,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1947,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1948,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1949,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1950,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1951,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1952,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1953,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1954,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1955,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1956,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1957,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1958,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1959,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1960,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1961,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1962,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1963,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1964,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1965,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1966,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1967,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1968,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1969,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1970,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1971,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1972,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1973,True,True,False,False,6,That's not X. It's Y.,Standard content.
+SC-1974,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1975,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1976,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-1977,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-1978,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1979,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1980,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1981,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1982,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1983,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1984,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-1985,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-1986,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1987,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1988,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1989,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1990,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1991,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1992,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-1993,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-1994,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1995,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-1996,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1997,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-1998,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-1999,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2000,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2001,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2002,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2003,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2004,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2005,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2006,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2007,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2008,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2009,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2010,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2011,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2012,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2013,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2014,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2015,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2016,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2017,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2018,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2019,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2020,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2021,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2022,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2023,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2024,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2025,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2026,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2027,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2028,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2029,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2030,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2031,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2032,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2033,True,True,True,False,9,It's not X. It's Y.,Standard content.
+SC-2034,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2035,True,True,True,False,6,It's not X. It's Y.,Standard content.
+SC-2036,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2037,True,True,False,False,9,It's not X. It's Y.,Standard content.
+SC-2038,True,True,False,False,6,It's not X. It's Y.,Standard content.
+SC-2039,True,True,False,False,6,It's not X. It's Y.,Standard content.

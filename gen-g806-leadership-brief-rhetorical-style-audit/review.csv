@@ -1,0 +1,15 @@
+review_check,status,review_notes,change_made,what_to_record
+Layer 1 - Package consistency,PASS,2034 verifiers; 2022 scripts.,,PASS
+Layer 1 - Clarity and scope,PASS,Errata v4 defines all rules.,,PASS
+Layer 1 - Realism and leakage,FIXED_AND_VERIFIED,body_excerpts neutralized.,Neutralized body_excerpts,No answer leakage
+Layer 2 Difficulty,PASS,Date-based band selection + comprehensive traps across all categories (2022 scripts).,,GLM difficulty
+Layer 2 Solvability,PASS,Oracle 1.0.,,Oracle 1.0
+Layer 2 Stability,PASS,Platform runs stability.,,Platform runs stability
+Layer 3 Oracle Mode,PASS,Oracle 1.0.,,PASS
+Layer 4 - Environment and files,FIXED_AND_VERIFIED,2022 scripts across 10 input CSVs.,Added all traps,PASS
+"Layer 4 - Connectors, MCPs, and CLIs",N/A,Non-connector task.,,N/A
+Layer 4 - Deliverables and artifact quality,PASS,Gold matches verifier.,,PASS
+Layer 5 - Verifier coverage and fairness,FIXED_AND_VERIFIED,All checks deterministic.,All checks deterministic,PASS
+Layer 5 - LLM judge consistency,N/A,All checks deterministic.,,N/A
+Layer 5 - Reward hacking and exploitability,FIXED_AND_VERIFIED,No answer leakage.,All exploit paths closed,PASS
+Cross-trial - Calibration,PASS,Oracle 1.0.,,PASS

@@ -1,0 +1,12 @@
+{
+    "job_name": "stability-c227-rerun",
+    "jobs_dir": "C:\\Users\\Haseeb Mirza\\Documents\\-haseeb-harbor-pipeline\\task-sources\\harbor-jobs-c227",
+    "n_attempts": 3,
+    "n_concurrent_trials": 1,
+    "quiet": true,
+    "tasks": [
+        {
+            "path": "."
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+band,min_minutes,max_minutes,effective_date,status
+standard,4,7,2026-09-01,active
+standard,4,10,2026-07-01,draft
+standard,3,9,2026-08-01,proposed
+standard,4,8,2026-06-01,active
+extended,6,10,2026-09-01,active
+extended,4,12,2026-07-01,draft
+extended,5,10,2026-08-01,Active!
+extended,5,10,2026-06-01,active

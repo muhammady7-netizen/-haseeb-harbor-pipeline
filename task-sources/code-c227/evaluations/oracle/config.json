@@ -1,0 +1,11 @@
+{
+  "job_name": "oracle-c227-rerun2",
+  "jobs_dir": "C:\\Users\\USER\\AppData\\Local\\Temp\\harbor-jobs\\code-c227-table-bloat-maintenance-audit",
+  "n_concurrent_trials": 1,
+  "quiet": true,
+  "tasks": [
+    {
+      "path": "."
+    }
+  ]
+}

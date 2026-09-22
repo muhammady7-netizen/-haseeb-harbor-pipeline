@@ -1,0 +1,37 @@
+{
+  "oracle": {
+    "status": "PASS",
+    "reward": 1.0,
+    "path": "evaluations/oracle",
+    "source_job": "harbor-jobs-c227/oracle-c227-rerun2",
+    "trial_name": "code-c227__CEZFt2M",
+    "verifier_digest": "0fa2689568822f3952ee5e2ce9e0fc2c10d4b4bde5c0cdd6bf8ae4da00341e53",
+    "packed_at": "2026-09-18T14:52:21Z"
+  },
+  "difficulty_glm_5_2": {
+    "status": "PENDING_RERUN",
+    "reason": "prior GLM\u00d74 stale (prompt drift / check-grid mismatch); not bundled"
+  },
+  "solvability": {
+    "status": "PENDING_RERUN",
+    "reason": "prior solvability stale; not bundled"
+  },
+  "stability": {
+    "status": "PASS",
+    "path": "evaluations/stability/repeat-01..03",
+    "rewards": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "source_job": "harbor-jobs-c227/stability-c227-rerun",
+    "packed_at": "2026-09-18T14:54:27Z"
+  },
+  "packaging": {
+    "lf": true,
+    "verifier_json": true,
+    "verifier_count": 34,
+    "pytest_gold_local": "170/170"
+  },
+  "near_pass_note": "Historical ~0.994 GLM near-passes: obsolete T-52 era and/or densify T-45 memo gate (0.16 over stale-tightened 0.15). Confirm on fresh GLM\u00d74."
+}
