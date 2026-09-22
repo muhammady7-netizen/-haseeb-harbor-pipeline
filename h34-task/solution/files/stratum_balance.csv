@@ -1,7 +1,7 @@
 factor,level,subjects,active,control,active_pct,out_of_sequence,status
-overall,all,75,48,27,64.0,,within_tolerance
-site,S1,25,19,6,76.0,4,outside_tolerance
-site,S2,25,16,9,64.0,2,within_tolerance
-site,S3,25,13,12,52.0,3,outside_tolerance
-severity,mild,41,28,13,68.3,,within_tolerance
-severity,severe,34,20,14,58.8,,within_tolerance
+overall,all,89,56,33,62.9,,within_tolerance
+site,S1,33,22,11,66.7,5,within_tolerance
+site,S2,30,20,10,66.7,3,within_tolerance
+site,S3,26,14,12,53.8,4,outside_tolerance
+severity,mild,48,34,14,70.8,,within_tolerance
+severity,severe,41,22,19,53.7,,outside_tolerance
