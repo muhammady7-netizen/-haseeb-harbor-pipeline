@@ -1,0 +1,13 @@
+# Task
+
+Audit the critical results register against the trust's critical results procedure. Save `results_audit.csv` with the columns `result_id,tier,clock_start,notification_minutes,acknowledgement_minutes,acknowledged_by_role,escalation_status,findings` covering every result on the register, where the two minute figures are measured from the clock start you derive, `acknowledgement_minutes` is left empty where there is no acknowledgement the procedure recognises, and `findings` lists every finding against that result or records it as compliant. Then write `results_memo.md` covering the late notifications, the late or absent acknowledgements, which results should have been escalated and were not, and which long elapsed times are not breaches at all.
+
+---
+Delivery conventions for this run (added by the eval harness; the request above is unchanged):
+- The attachments are provided read-only at: `input/critical_results_procedure.md`; `input/critical_results.csv`; `input/escalations.csv`. Read them there.
+- Save your deliverables into your current working directory using exactly these filenames:
+    - `results_audit.csv` — Result-level critical results audit
+    - `results_memo.md` — Markdown critical results memo
+    - `results.json` — a JSON object with the keys `notification_breaches`, `acknowledgement_breaches`, `unapproved_acknowledgement_results`, `missing_escalation_results`, `results_compliant`
+- Writing those files is the required deliverable and must be your final action; confirm each one exists before you answer.
+- Leave every deliverable in the starting working directory (the same folder you begin in). Do not nest them under `output/` or any other subdirectory.

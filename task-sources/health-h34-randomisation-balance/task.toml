@@ -1,0 +1,30 @@
+schema_version = "1.4"
+artifacts = []
+
+[task]
+name = "obi/health-h34-randomisation-balance"
+description = "Audit trial randomisation for drift, imbalance and sequence integrity"
+authors = []
+keywords = ["harbor", "shannon-200", "health", "non-connector", "offline"]
+
+[metadata]
+source_config = "infra/task-harness/configs/shannon-200/task_health_H34_randomisation_balance"
+
+[verifier]
+timeout_sec = 600.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

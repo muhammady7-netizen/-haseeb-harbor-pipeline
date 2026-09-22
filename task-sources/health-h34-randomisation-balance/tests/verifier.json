@@ -1,0 +1,355 @@
+{
+  "task_id": "NONC-B1-1000145",
+  "verifiers": [
+    {
+      "name": "balance_exists",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with filesystem.check_path_exists and applies equals.",
+        "why_justification": "Balance table delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "blocks_exist",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with filesystem.check_path_exists and applies equals.",
+        "why_justification": "Block table delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "findings_exist",
+      "metadata": {
+        "how_justification": "Opens randomisation_findings.md with filesystem.check_path_exists and applies equals.",
+        "why_justification": "Findings delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "balance_has_expected_columns",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Balance table carries the requested schema."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "factor.*level.*subjects.*active.*control.*active_pct.*out_of_sequence.*status",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "blocks_have_expected_columns",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Block table carries the requested schema."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "stratum.*block_id.*subjects.*active.*control.*block_status",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "balance_covers_both_factors",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Verifies both site and severity factors appear in the balance table."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mis)(?:^severity\\s*,.*\\nsite\\s*,|^site\\s*,.*\\nseverity\\s*,)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "site_levels_use_canonical_S_codes",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Verifies site levels use canonical S1/S2/S3 labels (not just S1)."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^site\\s*,\\s*[\"\\x22]?S[123]\\x22?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Opens results.json with filesystem.check_path_exists and applies equals.",
+        "why_justification": "Derived figures delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_active_proportion_pct",
+      "metadata": {
+        "how_justification": "Opens results.json with json.read_file and applies approx_equals.",
+        "why_justification": "Derived figure active_proportion_pct after ledger reconcile."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 64.4,
+        "deterministic": {
+          "path": "$.active_proportion_pct",
+          "comparison": "approx_equals"
+        }
+      }
+    },
+    {
+      "name": "result_strata_outside_tolerance",
+      "metadata": {
+        "how_justification": "Opens results.json with json.read_file and applies equals.",
+        "why_justification": "Derived figure strata_outside_tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 2,
+        "deterministic": {
+          "path": "$.strata_outside_tolerance",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_blocks_assessed",
+      "metadata": {
+        "how_justification": "Opens results.json with json.read_file and applies equals.",
+        "why_justification": "Derived figure blocks_assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 19,
+        "deterministic": {
+          "path": "$.blocks_assessed",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_blocks_outside_tolerance",
+      "metadata": {
+        "how_justification": "Opens results.json with json.read_file and applies equals.",
+        "why_justification": "Derived figure blocks_outside_tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 4,
+        "deterministic": {
+          "path": "$.blocks_outside_tolerance",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_out_of_sequence_allocations",
+      "metadata": {
+        "how_justification": "Opens results.json with json.read_file and applies equals.",
+        "why_justification": "Derived figure out_of_sequence_allocations."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 44,
+        "deterministic": {
+          "path": "$.out_of_sequence_allocations",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "out_of_sequence_blank_on_non_site_rows",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv and applies regex_match.",
+        "why_justification": "Charter requires out_of_sequence blank on overall and severity rows."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?(?:overall|severity)\\x22?\\s*,[^\\n]*,,[^\\n]*(?:within_tolerance|outside_tolerance)\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    }
+  ]
+}

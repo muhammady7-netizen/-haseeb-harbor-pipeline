@@ -1,0 +1,1455 @@
+{
+  "task_id": "health-H40-critical-result-acknowledgement",
+  "verifiers": [
+    {
+      "name": "audit_exists",
+      "metadata": {
+        "how_justification": "Checks results_audit.csv is present as a file in the workspace.",
+        "why_justification": "Results audit delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_exists",
+      "metadata": {
+        "how_justification": "Checks results_memo.md is present as a file in the workspace.",
+        "why_justification": "Results memo delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results_memo.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "audit_has_expected_columns",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Audit carries the requested schema."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "result_id.*tier.*clock_start.*notification_minutes.*acknowledgement_minutes.*acknowledged_by_role.*escalation_status.*findings",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "audit_covers_every_result",
+      "metadata": {
+        "how_justification": "Requires every register ID R-01 through R-41.",
+        "why_justification": "All 56 results appear."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?s)(?=.*\\bR-01\\b)(?=.*\\bR-02\\b)(?=.*\\bR-03\\b)(?=.*\\bR-04\\b)(?=.*\\bR-05\\b)(?=.*\\bR-06\\b)(?=.*\\bR-07\\b)(?=.*\\bR-08\\b)(?=.*\\bR-09\\b)(?=.*\\bR-10\\b)(?=.*\\bR-11\\b)(?=.*\\bR-12\\b)(?=.*\\bR-13\\b)(?=.*\\bR-14\\b)(?=.*\\bR-15\\b)(?=.*\\bR-16\\b)(?=.*\\bR-17\\b)(?=.*\\bR-18\\b)(?=.*\\bR-19\\b)(?=.*\\bR-20\\b)(?=.*\\bR-21\\b)(?=.*\\bR-22\\b)(?=.*\\bR-23\\b)(?=.*\\bR-24\\b)(?=.*\\bR-25\\b)(?=.*\\bR-26\\b)(?=.*\\bR-27\\b)(?=.*\\bR-28\\b)(?=.*\\bR-29\\b)(?=.*\\bR-30\\b)(?=.*\\bR-31\\b)(?=.*\\bR-32\\b)(?=.*\\bR-33\\b)(?=.*\\bR-34\\b)(?=.*\\bR-35\\b)(?=.*\\bR-36\\b)(?=.*\\bR-37\\b)(?=.*\\bR-38\\b)(?=.*\\bR-39\\b)(?=.*\\bR-40\\b)(?=.*\\bR-41\\b)(?=.*\\bR-42\\b)(?=.*\\bR-43\\b)(?=.*\\bR-44\\b)(?=.*\\bR-45\\b)(?=.*\\bR-46\\b)(?=.*\\bR-47\\b)(?=.*\\bR-48\\b)(?=.*\\bR-49\\b)(?=.*\\bR-50\\b)(?=.*\\bR-51\\b)(?=.*\\bR-52\\b)(?=.*\\bR-53\\b)(?=.*\\bR-54\\b)(?=.*\\bR-55\\b)(?=.*\\bR-56\\b)(?=.*\\bR-57\\b)(?=.*\\bR-58\\b)(?=.*\\bR-59\\b)(?=.*\\bR-60\\b)(?=.*\\bR-61\\b)(?=.*\\bR-62\\b)(?=.*\\bR-63\\b)(?=.*\\bR-64\\b)(?=.*\\bR-65\\b)(?=.*\\bR-66\\b)(?=.*\\bR-67\\b)(?=.*\\bR-68\\b)(?=.*\\bR-69\\b)(?=.*\\bR-70\\b)(?=.*\\bR-71\\b)(?=.*\\bR-72\\b)(?=.*\\bR-73\\b)(?=.*\\bR-74\\b)(?=.*\\bR-75\\b)(?=.*\\bR-76\\b)(?=.*\\bR-77\\b)(?=.*\\bR-78\\b)(?=.*\\bR-79\\b)(?=.*\\bR-80\\b)(?=.*\\bR-81\\b)(?=.*\\bR-82\\b)(?=.*\\bR-83\\b)(?=.*\\bR-84\\b)(?=.*\\bR-85\\b)(?=.*\\bR-86\\b)(?=.*\\bR-87\\b)(?=.*\\bR-88\\b)(?=.*\\bR-89\\b)(?=.*\\bR-90\\b)(?=.*\\bR-91\\b)(?=.*\\bR-92\\b)(?=.*\\bR-93\\b)(?=.*\\bR-94\\b)(?=.*\\bR-95\\b)(?=.*\\bR-96\\b)(?=.*\\bR-97\\b)(?=.*\\bR-98\\b)(?=.*\\bR-99\\b)(?=.*\\bR-100\\b)(?=.*\\bR-101\\b)(?=.*\\bR-102\\b)(?=.*\\bR-103\\b)(?=.*\\bR-104\\b)(?=.*\\bR-105\\b)(?=.*\\bR-106\\b)(?=.*\\bR-107\\b)(?=.*\\bR-108\\b)(?=.*\\bR-109\\b)(?=.*\\bR-110\\b)(?=.*\\bR-111\\b)(?=.*\\bR-112\\b)(?=.*\\bR-113\\b)(?=.*\\bR-114\\b)(?=.*\\bR-115\\b)(?=.*\\bR-116\\b)(?=.*\\bR-117\\b)(?=.*\\bR-118\\b)(?=.*\\bR-119\\b)(?=.*\\bR-120\\b)(?=.*\\bR-121\\b)(?=.*\\bR-122\\b)(?=.*\\bR-123\\b)(?=.*\\bR-124\\b)(?=.*\\bR-125\\b)(?=.*\\bR-126\\b)(?=.*\\bR-127\\b)(?=.*\\bR-128\\b)(?=.*\\bR-129\\b)(?=.*\\bR-130\\b)(?=.*\\bR-131\\b)(?=.*\\bR-132\\b)(?=.*\\bR-133\\b)(?=.*\\bR-134\\b)(?=.*\\bR-135\\b)(?=.*\\bR-136\\b)(?=.*\\bR-137\\b)(?=.*\\bR-138\\b)(?=.*\\bR-139\\b)(?=.*\\bR-140\\b)(?=.*\\bR-141\\b)(?=.*\\bR-142\\b)(?=.*\\bR-143\\b)(?=.*\\bR-144\\b)(?=.*\\bR-145\\b)(?=.*\\bR-146\\b)(?=.*\\bR-147\\b)(?=.*\\bR-148\\b)(?=.*\\bR-149\\b)(?=.*\\bR-150\\b)(?=.*\\bR-151\\b)(?=.*\\bR-152\\b)(?=.*\\bR-153\\b)(?=.*\\bR-154\\b)(?=.*\\bR-155\\b)(?=.*\\bR-156\\b)(?=.*\\bR-157\\b)(?=.*\\bR-158\\b)(?=.*\\bR-159\\b)(?=.*\\bR-160\\b)(?=.*\\bR-161\\b)(?=.*\\bR-162\\b)(?=.*\\bR-163\\b)(?=.*\\bR-164\\b)(?=.*\\bR-165\\b)(?=.*\\bR-166\\b)(?=.*\\bR-167\\b)(?=.*\\bR-168\\b)(?=.*\\bR-169\\b)(?=.*\\bR-170\\b)(?=.*\\bR-171\\b)(?=.*\\bR-172\\b)(?=.*\\bR-173\\b)(?=.*\\bR-174\\b)(?=.*\\bR-175\\b)(?=.*\\bR-176\\b)(?=.*\\bR-177\\b)(?=.*\\bR-178\\b)(?=.*\\bR-179\\b)(?=.*\\bR-180\\b)(?=.*\\bR-181\\b)(?=.*\\bR-182\\b)(?=.*\\bR-183\\b)(?=.*\\bR-184\\b)(?=.*\\bR-185\\b)(?=.*\\bR-186\\b)(?=.*\\bR-187\\b)(?=.*\\bR-188\\b)(?=.*\\bR-189\\b)(?=.*\\bR-190\\b)(?=.*\\bR-191\\b)(?=.*\\bR-192\\b)(?=.*\\bR-193\\b)(?=.*\\bR-194\\b)(?=.*\\bR-195\\b)(?=.*\\bR-196\\b)(?=.*\\bR-197\\b)(?=.*\\bR-198\\b)(?=.*\\bR-199\\b)(?=.*\\bR-200\\b)(?=.*\\bR-201\\b)(?=.*\\bR-202\\b)(?=.*\\bR-203\\b)(?=.*\\bR-204\\b)(?=.*\\bR-205\\b)(?=.*\\bR-206\\b)(?=.*\\bR-207\\b)(?=.*\\bR-208\\b)(?=.*\\bR-209\\b)(?=.*\\bR-210\\b)(?=.*\\bR-211\\b)(?=.*\\bR-212\\b)(?=.*\\bR-213\\b)(?=.*\\bR-214\\b)(?=.*\\bR-215\\b)(?=.*\\bR-216\\b)(?=.*\\bR-217\\b)(?=.*\\bR-218\\b)(?=.*\\bR-219\\b)(?=.*\\bR-220\\b)(?=.*\\bR-221\\b)(?=.*\\bR-222\\b)(?=.*\\bR-223\\b)(?=.*\\bR-224\\b)(?=.*\\bR-225\\b)(?=.*\\bR-226\\b)(?=.*\\bR-227\\b)(?=.*\\bR-228\\b)(?=.*\\bR-229\\b)(?=.*\\bR-230\\b)(?=.*\\bR-231\\b)(?=.*\\bR-232\\b)(?=.*\\bR-233\\b)(?=.*\\bR-234\\b)(?=.*\\bR-235\\b)(?=.*\\bR-236\\b)(?=.*\\bR-237\\b)(?=.*\\bR-238\\b)(?=.*\\bR-239\\b)(?=.*\\bR-240\\b)(?=.*\\bR-241\\b)(?=.*\\bR-242\\b)(?=.*\\bR-243\\b)(?=.*\\bR-244\\b)(?=.*\\bR-245\\b)(?=.*\\bR-246\\b)(?=.*\\bR-247\\b)(?=.*\\bR-248\\b)(?=.*\\bR-249\\b)(?=.*\\bR-250\\b)(?=.*\\bR-251\\b)(?=.*\\bR-252\\b)(?=.*\\bR-253\\b)(?=.*\\bR-254\\b)(?=.*\\bR-255\\b)(?=.*\\bR-256\\b)(?=.*\\bR-257\\b)(?=.*\\bR-258\\b)(?=.*\\bR-259\\b)(?=.*\\bR-260\\b)(?=.*\\bR-261\\b)(?=.*\\bR-262\\b)(?=.*\\bR-263\\b)(?=.*\\bR-264\\b)(?=.*\\bR-265\\b)(?=.*\\bR-266\\b)(?=.*\\bR-267\\b)(?=.*\\bR-268\\b)(?=.*\\bR-269\\b)(?=.*\\bR-270\\b)(?=.*\\bR-271\\b)(?=.*\\bR-272\\b)(?=.*\\bR-273\\b)(?=.*\\bR-274\\b)(?=.*\\bR-275\\b)(?=.*\\bR-276\\b)(?=.*\\bR-277\\b)(?=.*\\bR-278\\b)(?=.*\\bR-279\\b)(?=.*\\bR-280\\b)(?=.*\\bR-281\\b)(?=.*\\bR-282\\b)(?=.*\\bR-283\\b)(?=.*\\bR-284\\b)(?=.*\\bR-285\\b)(?=.*\\bR-286\\b)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "acknowledgement_boundary_is_inclusive",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "An acknowledgement at exactly the window is within it."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-05\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "evening_tier_two_clock_starts_next_morning",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A tier 2 result released in the evening starts its clock in core hours."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-08\\x22?\\s*,[^\\n]*2026-06-16[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "early_tier_two_clock_starts_at_core_open",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A tier 2 result released before core hours waits for the core-hours opening."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-11\\x22?\\s*,[^\\n]*2026-06-16[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "tier_one_clock_runs_continuously",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A tier 1 result out of hours is measured from release."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-12\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "night_tier_one_breaches_both_windows",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A tier 1 result released at night gets no core-hours grace."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-13\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*(late|breach|overdue|fail)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "unapproved_acknowledger_flagged",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "An acknowledgement by an unapproved role does not close the result."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-06\\x22?\\s*,[^\\n]*(unapprov|not[_ ]?approved|invalid|unauthoris|ward_clerk)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "missing_escalation_flagged",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A missed window with no escalation on the register is its own finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-04\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*escalation_missing",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "escalated_breach_not_double_counted",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A missed window that was escalated is not a missing escalation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-03\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "boundary_tier_two_at_closing_starts_next_morning",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A tier 2 result released at exactly 18:00 is at or after 18:00, so its clock starts at 08:00 the next morning, not at the release time."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-14\\x22?\\s*,[^\\n]*2026-06-17[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "tier_two_after_hours_ack_breach",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A tier 2 result released during core hours has its clock run continuously from release; an acknowledgement 510 minutes later is past the 480-minute window."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-15\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*510(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*(late|breach|overdue|fail)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "tier_two_after_hours_escalated_not_missing",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A late acknowledgement that was escalated on the register is recorded, not a missing escalation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-15\\x22?\\s*,[^\\n]*(recorded|escalated|present|yes|complete)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "tier_two_before_closing_clock_starts_at_release",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A tier 2 result released at 17:59 is before 18:00, so its clock starts at the release time (17:59), not at 08:00 the next morning. One minute before the cutoff is still within core hours."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-16\\x22?\\s*,[^\\n]*2026-06-15[T ]17:59[^\\n]*(late|breach|overdue|fail)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "tier_two_before_closing_missing_escalation",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A late acknowledgement with no escalation on the register is a missing escalation finding, even when the release was near the 18:00 boundary."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-16\\x22?\\s*,[^\\n]*(missing|absent|none|not[_ ]?escalat|no[_ ]?escalat)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "compliant_with_unnecessary_escalation",
+      "metadata": {
+        "how_justification": "Opens results_audit.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "A result acknowledged within its window is compliant even when an escalation appears on the register. The escalation was not required, so it is not a finding."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-17\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*20(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*50(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Checks results.json is present as a file in the workspace.",
+        "why_justification": "Derived figures delivered."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_notification_breaches",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.notification_breaches.",
+        "why_justification": "Derived figure `notification_breaches`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 10,
+        "deterministic": {
+          "path": "$.notification_breaches",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_acknowledgement_breaches",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.acknowledgement_breaches.",
+        "why_justification": "Derived figure `acknowledgement_breaches`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 21,
+        "deterministic": {
+          "path": "$.acknowledgement_breaches",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_unapproved_acknowledgement_results",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.unapproved_acknowledgement_results.",
+        "why_justification": "Derived figure `unapproved_acknowledgement_results`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 5,
+        "deterministic": {
+          "path": "$.unapproved_acknowledgement_results",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_missing_escalation_results",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.missing_escalation_results.",
+        "why_justification": "Derived figure `missing_escalation_results`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 11,
+        "deterministic": {
+          "path": "$.missing_escalation_results",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_results_compliant",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and compares $.results_compliant.",
+        "why_justification": "Derived figure `results_compliant`, recomputed from the delivered artifacts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 29,
+        "deterministic": {
+          "path": "$.results_compliant",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "audit_role_r06_is_ward_clerk",
+      "metadata": {
+        "how_justification": "Requires results_audit.csv R-06 acknowledged_by_role to carry ward_clerk.",
+        "why_justification": "R-06 role token is ward_clerk."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-06\\x22?\\s*,[^\\n]*\\bward_clerk\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "audit_role_r22_is_nurse_hca",
+      "metadata": {
+        "how_justification": "Requires results_audit.csv R-22 acknowledged_by_role to carry nurse_hca.",
+        "why_justification": "R-22 role token is nurse_hca."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-22\\x22?\\s*,[^\\n]*\\bnurse_hca\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "audit_role_r35_is_phlebotomist",
+      "metadata": {
+        "how_justification": "Requires results_audit.csv R-35 acknowledged_by_role to carry phlebotomist.",
+        "why_justification": "R-35 role token is phlebotomist."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-35\\x22?\\s*,[^\\n]*\\bphlebotomist\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "sunday_inclusive_windows_are_compliant",
+      "metadata": {
+        "how_justification": "R-34 must keep inclusive tier-2 limits (240/480) as compliant on a Sunday.",
+        "why_justification": "Sunday inclusive boundary case is compliant."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-34\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "unapproved_past_window_missing_escalation",
+      "metadata": {
+        "how_justification": "R-35 must flag unapproved role plus missing escalation after a void acknowledgement.",
+        "why_justification": "R-35 carries unapproved + missing escalation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-35\\x22?\\s*,[^\\n]*(?=.*unapprov)(?=.*(?:missing|absent))(?=.*(?:acknowledgement_late|late|unapprov))",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "unapproved_r06_also_ack_late",
+      "metadata": {
+        "how_justification": "R-06 must flag both acknowledger_unapproved and acknowledgement_late.",
+        "why_justification": "R-06 unapproved void ack also misses the window."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-06\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "unapproved_r22_also_ack_late",
+      "metadata": {
+        "how_justification": "R-22 must flag both acknowledger_unapproved and acknowledgement_late.",
+        "why_justification": "R-22 unapproved void ack also misses the window."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-22\\x22?\\s*,[^\\n]*(?=.*acknowledger_unapproved)(?=.*acknowledgement_late)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_01_findings",
+      "metadata": {
+        "how_justification": "Asserts R-01 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-01 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-01\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_02_findings",
+      "metadata": {
+        "how_justification": "Asserts R-02 escalation_status=not_required and findings contain notification_late.",
+        "why_justification": "R-02 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-02\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_07_findings",
+      "metadata": {
+        "how_justification": "Asserts R-07 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-07 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-07\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_09_findings",
+      "metadata": {
+        "how_justification": "Asserts R-09 escalation_status=not_required and findings contain notification_late.",
+        "why_justification": "R-09 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-09\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_10_findings",
+      "metadata": {
+        "how_justification": "Asserts R-10 escalation_status=recorded and findings contain acknowledgement_late.",
+        "why_justification": "R-10 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-10\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_18_findings",
+      "metadata": {
+        "how_justification": "Asserts R-18 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-18 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-18\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_19_findings",
+      "metadata": {
+        "how_justification": "Asserts R-19 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-19 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-19\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_20_findings",
+      "metadata": {
+        "how_justification": "Asserts R-20 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-20 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-20\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_21_findings",
+      "metadata": {
+        "how_justification": "Asserts R-21 escalation_status=missing and findings contain notification_late.",
+        "why_justification": "R-21 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-21\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*notification_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_23_findings",
+      "metadata": {
+        "how_justification": "Asserts R-23 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-23 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-23\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_24_findings",
+      "metadata": {
+        "how_justification": "Asserts R-24 escalation_status=recorded and findings contain acknowledgement_late.",
+        "why_justification": "R-24 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-24\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_25_findings",
+      "metadata": {
+        "how_justification": "Asserts R-25 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-25 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-25\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_26_findings",
+      "metadata": {
+        "how_justification": "Asserts R-26 escalation_status=not_required and findings contain notification_late.",
+        "why_justification": "R-26 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-26\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_28_findings",
+      "metadata": {
+        "how_justification": "Asserts R-28 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-28 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-28\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_29_findings",
+      "metadata": {
+        "how_justification": "Asserts R-29 escalation_status=not_required and findings contain compliant.",
+        "why_justification": "R-29 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-29\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*compliant",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_30_findings",
+      "metadata": {
+        "how_justification": "Asserts R-30 escalation_status=missing and findings contain acknowledgement_late.",
+        "why_justification": "R-30 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-30\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_31_findings",
+      "metadata": {
+        "how_justification": "Asserts R-31 escalation_status=not_required and findings contain notification_late.",
+        "why_justification": "R-31 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-31\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_32_findings",
+      "metadata": {
+        "how_justification": "Asserts R-32 escalation_status=recorded and findings contain acknowledgement_late.",
+        "why_justification": "R-32 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-32\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?recorded\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r_33_findings",
+      "metadata": {
+        "how_justification": "Asserts R-33 escalation_status=missing and findings contain acknowledgement_late.",
+        "why_justification": "R-33 graded at row level."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-33\\x22?\\s*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,[^\\n]*,\\s*\\x22?missing\\x22?\\s*,[^\\n]*acknowledgement_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "midnight_inclusive_windows_compliant",
+      "metadata": {
+        "how_justification": "R-36 midnight-crossing inclusive 30/60 must stay compliant.",
+        "why_justification": "R-36 is compliant at inclusive midnight boundaries."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-36\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*30(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "saturday_evening_tier_two_clock_sunday",
+      "metadata": {
+        "how_justification": "R-37 Saturday evening release must start clock Sunday 08:00 and stay compliant.",
+        "why_justification": "R-37 weekend evening clock start."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-37\\x22?\\s*,[^\\n]*2026-06-21[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "friday_closing_inclusive_compliant",
+      "metadata": {
+        "how_justification": "R-38 Friday 18:00 → Saturday clock with inclusive 240/480 must be compliant.",
+        "why_justification": "R-38 inclusive Friday-close case."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-38\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*240(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "audit_role_r36_is_anp",
+      "metadata": {
+        "how_justification": "R-36 acknowledged_by_role must be advanced_nurse_practitioner.",
+        "why_justification": "ANP is an approved role on R-36."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-36\\x22?\\s*,[^\\n]*\\badvanced_nurse_practitioner\\b",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "row_r31_notification_minutes",
+      "metadata": {
+        "how_justification": "R-31 must show notification_minutes 35 with notification_late.",
+        "why_justification": "R-31 night notification timing."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-31\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*35(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*notification_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "sunday_pre_core_clock_at_0800",
+      "metadata": {
+        "how_justification": "R-39 Sunday 07:00 release must use clock_start 08:00 and stay compliant.",
+        "why_justification": "R-39 pre-core Sunday clock."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-39\\x22?\\s*,[^\\n]*2026-06-21[T ]0?8:00[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "notify_late_ack_ok_no_escalation",
+      "metadata": {
+        "how_justification": "R-40: notification_late at 31, ack exactly 60, escalation not_required.",
+        "why_justification": "R-40 late notify without ack/escalation breach."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-40\\x22?\\s*,[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*60(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*,\\s*\\x22?not_required\\x22?\\s*,[^\\n]*notification_late",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "before_close_ack_exactly_480_compliant",
+      "metadata": {
+        "how_justification": "R-41 17:59 release with ack at exactly 480 must be compliant.",
+        "why_justification": "R-41 inclusive ack at closing-day clock."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "results_audit.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?R-41\\x22?\\s*,[^\\n]*2026-06-22[T ]17:59[^\\n]*,\\s*\\x22?\\s*31(?:\\.0+)?\\s*\\x22?\\s*,\\s*\\x22?\\s*480(?:\\.0+)?\\s*\\x22?\\s*,[^\\n]*\\x22?(compliant|ok|pass|none|no[_ ]?finding)\\x22?\\s*$",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    }
+  ]
+}

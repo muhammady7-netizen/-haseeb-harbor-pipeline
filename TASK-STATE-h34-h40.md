@@ -68,4 +68,24 @@ The failing test is likely `test_findings_content_correct_blocks_and_tolerances`
 - v1-v8: Various fixes (CRLF, D2, D1 regex migration)
 - v9: Oracle 0.9836 (R-34 assertion too strict)
 - v10: Fixed R-34 assertion, Oracle PASS 1.0, GLM 4/4 too easy
-- v11: Added 230 trap results (286 total), Oracle+GLM running
+- v11: Added 230 trap results (286 total), Oracle FAIL 0.8852459016 — gold audit has errors in the 230 new results. The trap generation script computed findings incorrectly for some edge cases (unapproved role timing, escalation logic, no-ack handling). Need to fix the gold audit and re-upload.
+
+### h40 Oracle failure root cause
+The `add_h40_traps.py` script has bugs in the gold computation:
+1. Unapproved role within window: script does NOT add `acknowledgement_late` (correct), but the `compute_gold` function may compute it differently
+2. Escalation logic: script adds `escalation_missing` only when `acknowledgement_late` is in findings, but for unapproved roles the ack_late determination is wrong
+3. No-ack results: script always adds `acknowledgement_late` but doesn't check if the window was actually missed (some no-ack results may be within window if the test time is short)
+4. The `test_memo_addresses_key_content` assertion checks for specific content that the auto-generated memo may not satisfy
+
+### Fixes needed for h40
+1. Fix the gold computation in the script to match the procedure exactly
+2. Regenerate results_audit.csv with correct findings
+3. Regenerate results.json with correct counts
+4. Regenerate results_memo.md with correct content
+5. Re-run local judge to verify zero P0/P1
+6. Rebuild zip, upload, re-run Oracle+GLM
+
+### Working files
+- Source: `C:\Users\HASEEB~1\AppData\Local\Temp\opencode\h40-work\health-h40-critical-result-acknowledgement`
+- Zip: `C:\Users\Haseeb Mirza\Documents\Default Project\UPLOAD-THIS-TO-QC-health-h40.zip`
+- Trap generation script: `C:\Users\HASEEB~1\AppData\Local\Temp\opencode\add_h40_traps.py`
