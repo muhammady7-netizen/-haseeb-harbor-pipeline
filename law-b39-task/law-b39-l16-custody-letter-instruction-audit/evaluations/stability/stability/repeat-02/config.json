@@ -1,0 +1,19 @@
+{
+    "task": {
+        "path": "/workspace"
+    },
+    "trial_name": "law-b39-l16-custody-letter-instr__YptUyjD",
+    "trials_dir": "/workspace",
+    "environment": {
+        "type": "docker",
+        "force_build": true
+    },
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "****",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        }
+    },
+    "job_id": "22be6b8f-1c6d-4a97-a81b-ae43f83d5110"
+}

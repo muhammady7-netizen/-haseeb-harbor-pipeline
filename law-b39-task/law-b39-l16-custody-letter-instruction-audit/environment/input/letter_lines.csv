@@ -129,7 +129,7 @@ ST-227,overnight_stays,Noor only several times,OI-204,On several occasions Noor 
 ST-228,children_named,Imogen only with age,CL-303,"This concerns Imogen, aged twelve."
 ST-229,tone,soft formal but detailed,OI-210,"I keep the tone soft and formal, and I set the facts out in full detail."
 ST-230,behavioural_plan,confidence only no setback,OI-207,Imogen's behavioural plan focuses on confidence.
-ST-231,addressee,mother's attorney,OI-299,This letter goes to counsel for Ms Corwin — the mother's attorney.
+ST-231,addressee,mother's attorney,OI-299,This letter goes to counsel for Ms Corwin â€” the mother's attorney.
 ST-232,copies,copy nobody,OI-299,Do not copy anyone on this letter.
 ST-233,salutation,Dear Counsel,OI-299,"Dear Counsel,"
 ST-234,reply_deadline,twenty-one days,OI-210,Please reply within twenty-one days.
@@ -140,7 +140,7 @@ ST-238,court_listing,list for directions,OI-204,Please list the matter for direc
 ST-301,request,CL wording exact,OI-208,Neither child overnight in her care unless the father is present.
 ST-302,request,CL wording paraphrase,OI-211,I ask that neither child remain overnight in Ms Corwin's care unless Mr Adler is present.
 ST-303,request,CL wording paraphrase,OI-299,Neither child should stay overnight with her unless the father is there.
-ST-304,addressee,mother's attorney,OI-201,Address this letter to counsel for Ms Corwin — the mother's attorney.
+ST-304,addressee,mother's attorney,OI-201,Address this letter to counsel for Ms Corwin â€” the mother's attorney.
 ST-305,addressee,mother's attorney,OI-299,The letter goes to Catherine's attorney.
 ST-306,addressee,mother's attorney,OI-210,To counsel for the mother.
 ST-307,enclosure,certified copy,OI-209,A certified copy of the custodial plan is enclosed.
@@ -243,7 +243,7 @@ ST-511,concern,position only,OI-206,I am concerned about the position Ms Corwin 
 ST-512,concern,position only,CL-305,My only concern is the position she has been put in.
 ST-513,concern,both limbs old,OI-206,"I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order, or the position she has been placed in."
 ST-514,concern,violation only,CL-309,I am concerned that Ms Corwin may not appreciate that these stays violate the custodial order.
-ST-515,addressee,mother,OI-201,This letter goes to counsel for Ms Corwin — the mother's attorney.
+ST-515,addressee,mother,OI-201,This letter goes to counsel for Ms Corwin â€” the mother's attorney.
 ST-516,addressee,father,CL-301,Address the letter to the father's attorney.
 ST-517,addressee,father,OI-299,To counsel for Mr Adler.
 ST-518,request,CL match,OI-208,Neither child overnight in her care unless the father is present.
@@ -275,7 +275,7 @@ ST-543,request,wording delivery,OI-208,Send it by post to counsel's office.
 ST-544,tone,wording copies,OI-210,Do not copy anyone on this letter.
 ST-545,concern,wording enclosure,CL-309,A certified copy of the custodial plan is enclosed.
 ST-546,delivery,wording salutation,CL-306,"Dear Counsel,"
-ST-547,behavioural_plan,wording addressee mother,OI-207,This letter goes to counsel for Ms Corwin — the mother's attorney.
+ST-547,behavioural_plan,wording addressee mother,OI-207,This letter goes to counsel for Ms Corwin â€” the mother's attorney.
 ST-548,reply_deadline,7 days,OI-210,Please reply within seven days.
 ST-549,reply_deadline,14 days,CL-307,A reply within fourteen days is requested.
 ST-550,school_reference,principal,OI-205,The school principal can confirm the account.
@@ -290,7 +290,7 @@ ST-558,tone,firm formal brief,OI-201,"Adopt a firm, formal and brief style."
 ST-559,concern,position only,OI-299,I raise only the position she has been put in.
 ST-560,behavioural_plan,full CL match,OI-299,"The behavioural plan covers confidence, stability and peer relations; the stays have set back confidence only."
 ST-561,interim_contact,all three aspects together,CL-308,"Pending the final order, interim contact with Ms Corwin should be framed to support Imogen's confidence, her stability and her peer relations together."
-ST-562,interim_contact,confidence stability peer relations jointly,CL-310,"Any interim contact arrangement must work across all three pillars of the plan — confidence, stability and peer relations — rather than picking one alone."
+ST-562,interim_contact,confidence stability peer relations jointly,CL-310,"Any interim contact arrangement must work across all three pillars of the plan â€” confidence, stability and peer relations â€” rather than picking one alone."
 ST-563,interim_contact,all three aspects jointly,OI-207,"Interim contact pending resolution ought to hold confidence, stability and peer relations in view at the same time, because interim contact touches each of them."
 ST-564,interim_contact,all three addressed together,CL-310,"Until the matter is resolved, contact with Ms Corwin must be arranged so that confidence, stability and peer relations are all addressed, not one in isolation."
 ST-565,interim_contact,confidence stability peer relations all three,CL-308,"The interim contact schedule should be built around confidence, stability and peer relations jointly, since interim contact bears on all three."
@@ -324,3 +324,30 @@ ST-592,enclosure,uncertified summary,CL-307,Enclosed is an uncertified draft sum
 ST-593,tone,warm and conversational,CL-305,The tone should be warm and conversational throughout.
 ST-594,concern,both limbs,CL-303,"I have a concern that she may not appreciate the stays contravene the order, as well as about the position she has been put in."
 ST-595,behavioural_plan,no effect on plan,CL-302,The stays have had no effect on Imogen's behavioural plan.
+ST-601,tone,firm formal clear,CL-307,"The tone should be firm, formal and clear."
+ST-602,tone,firm formal professional,OI-210,"Keep it firm, formal and professional."
+ST-603,tone,firm formal direct,CL-307,"The letter is firm, formal and direct."
+ST-604,tone,firm courteous brief,OI-210,"Keep it firm, courteous and brief."
+ST-605,concern,chiefly position,CL-309,I am concerned chiefly about the position she has been put in.
+ST-606,concern,position above all,OI-206,My concern is the position she has been put in above all.
+ST-607,concern,position among other things,CL-309,"I am concerned about the position she has been put in, among other things."
+ST-608,behavioural_plan,confidence stability friendships,CL-308,"The plan addresses confidence, stability and friendships; the stays have set back confidence only."
+ST-609,behavioural_plan,confidence stability peer impacted,OI-207,"The plan covers confidence, stability and peer relations; the stays have improved confidence only."
+ST-610,behavioural_plan,confidence stability peer affected,CL-308,"The plan is about confidence, stability and peer relations; only confidence has been unchanged."
+ST-611,overnight_stays,many occasions,OI-204,On many occasions both children stayed overnight at her home or with a sitter while the father was away.
+ST-612,overnight_stays,the children not both,OI-204,On several occasions the children stayed overnight at her home or with a sitter while the father was away.
+ST-613,overnight_stays,father unavailable,OI-204,On several occasions both children stayed overnight at her home or with a sitter while the father was present.
+ST-614,inconsistent_accounts,spouse not wife,OI-205,"Mr Adler has described Ms Corwin as his spouse to the school, as the person Imogen lives with to her clinicians, as a babysitter to me, and as his partner to the neighbours."
+ST-615,inconsistent_accounts,caregiver not person,OI-205,"Mr Adler has described Ms Corwin as his wife to the school, as the caregiver to her clinicians, as a babysitter to me, and as his partner to the neighbours."
+ST-616,right_of_first_refusal,a parent not him,OI-202,"Mr Adler agreed to a right of first refusal, and the children are not to be left overnight without a parent present."
+ST-617,right_of_first_refusal,mother not him,OI-202,"Mr Adler agreed to a right of first refusal, and the children are not to be left overnight without their mother present."
+ST-618,addressee,for Ms Corwin not counsel,CL-301,This letter is for Ms Corwin.
+ST-619,delivery,post to court not counsel,CL-306,Send it by post to the court.
+ST-620,sender_signature,abbreviated name,OI-211,"Yours sincerely, D. Marr."
+ST-621,tone,firm formal brief rephrased,CL-307,"Adopt a firm, formal and brief tone throughout."
+ST-622,concern,sole concern position,CL-309,The only thing I am concerned about is the position she has been put in.
+ST-623,behavioural_plan,CL match alone,CL-308,"The behavioural plan is about confidence, stability and peer relations; the stays have set back confidence alone."
+ST-624,overnight_stays,exact match have stayed,OI-204,On several occasions both children have stayed overnight at her home or with a sitter while the father was away.
+ST-625,right_of_first_refusal,father agreed rephrased,OI-202,"The father agreed to a right of first refusal, so the children are not to be left overnight without him present."
+ST-626,medical_report,medical report enclosed,OI-299,A medical report on Imogen is enclosed.
+ST-627,financial_disclosure,financial disclosure,CL-305,Financial disclosure is attached.

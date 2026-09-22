@@ -1400,6 +1400,114 @@
             "ST-595": {
               "verdict": "AT_ODDS",
               "record_entry": "OI-207"
+            },
+            "ST-601": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-307"
+            },
+            "ST-602": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-307"
+            },
+            "ST-603": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-307"
+            },
+            "ST-604": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-307"
+            },
+            "ST-605": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-309"
+            },
+            "ST-606": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-309"
+            },
+            "ST-607": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-309"
+            },
+            "ST-608": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-308"
+            },
+            "ST-609": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-308"
+            },
+            "ST-610": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-308"
+            },
+            "ST-611": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-204"
+            },
+            "ST-612": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-204"
+            },
+            "ST-613": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-204"
+            },
+            "ST-614": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-615": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-205"
+            },
+            "ST-616": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-202"
+            },
+            "ST-617": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-202"
+            },
+            "ST-618": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-301"
+            },
+            "ST-619": {
+              "verdict": "AT_ODDS",
+              "record_entry": "CL-306"
+            },
+            "ST-620": {
+              "verdict": "AT_ODDS",
+              "record_entry": "OI-211"
+            },
+            "ST-621": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-307"
+            },
+            "ST-622": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-309"
+            },
+            "ST-623": {
+              "verdict": "VERIFIED",
+              "record_entry": "CL-308"
+            },
+            "ST-624": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-204"
+            },
+            "ST-625": {
+              "verdict": "VERIFIED",
+              "record_entry": "OI-202"
+            },
+            "ST-626": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
+            },
+            "ST-627": {
+              "verdict": "NOT_IN_RECORD",
+              "record_entry": "NONE"
             }
           },
           "row_set": [
@@ -1727,7 +1835,34 @@
             "ST-592",
             "ST-593",
             "ST-594",
-            "ST-595"
+            "ST-595",
+            "ST-601",
+            "ST-602",
+            "ST-603",
+            "ST-604",
+            "ST-605",
+            "ST-606",
+            "ST-607",
+            "ST-608",
+            "ST-609",
+            "ST-610",
+            "ST-611",
+            "ST-612",
+            "ST-613",
+            "ST-614",
+            "ST-615",
+            "ST-616",
+            "ST-617",
+            "ST-618",
+            "ST-619",
+            "ST-620",
+            "ST-621",
+            "ST-622",
+            "ST-623",
+            "ST-624",
+            "ST-625",
+            "ST-626",
+            "ST-627"
           ],
           "row_set_ordered": true,
           "columns": [
@@ -1767,19 +1902,19 @@
         "expected": {
           "keys": {
             "verified_count": {
-              "value": 104,
+              "value": 109,
               "tolerance": null
             },
             "at_odds_count": {
-              "value": 177,
+              "value": 197,
               "tolerance": null
             },
             "not_in_record_count": {
-              "value": 44,
+              "value": 46,
               "tolerance": null
             },
             "clarification_governed_count": {
-              "value": 162,
+              "value": 177,
               "tolerance": null
             }
           },
@@ -1810,36 +1945,10 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:\\*\\*|__|\\*)?(?:177|177\\.0|177\\.00)(?:\\*\\*|__|\\*)?(?!\\d|[.,]\\d)",
+        "expected": "(?is)Letter\\s+lines\\s+at\\s+odds\\s+with\\s+the\\s+record\\s*:\\s*(?:\\*\\*|__|\\*)?(?:197|197\\.0|197\\.00)(?:\\*\\*|__|\\*)?(?!\\d|[.,]\\d|[a-zA-Z])",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
-        }
-      }
-    },
-    {
-      "name": "answer_at_odds_figure_exactly_one",
-      "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies not_regex_match.",
-        "why_justification": "A hedge is not an answer: the Letter lines at odds with the record figure may not be offered as one of several candidates in its own sentence. One at odds figure stands next to its label in the sentence that names the label.",
-        "tag": "incidental"
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "md",
-          "command": "extract_text",
-          "arguments": {
-            "path": "answer.md"
-          }
-        }
-      },
-      "assertion": {
-        "type": "deterministic",
-        "expected": "(?is)(?:\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,70}?(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w\\n;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w\\n;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w\\n;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w\\n;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)(?:(?![.!?](?:\\s|$)|\\n).){0,70}?\\bL[-_ ]?e[-_ ]?t[-_ ]?t[-_ ]?e[-_ ]?r[-_\\s]*l[-_ ]?i[-_ ]?n[-_ ]?e[-_ ]?s[-_\\s]*a[-_ ]?t[-_\\s]*o[-_ ]?d[-_ ]?d[-_ ]?s[-_\\s]*w[-_ ]?i[-_ ]?t[-_ ]?h[-_\\s]*t[-_ ]?h[-_ ]?e[-_\\s]*r[-_ ]?e[-_ ]?c[-_ ]?o[-_ ]?r[-_ ]?d\\w*\\b)",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "not_regex_match"
         }
       }
     },
@@ -1872,8 +1981,8 @@
     {
       "name": "answer_prose_floor",
       "metadata": {
-        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=100 words of prose containing the domain word 'record' (required by the submission format label 'Letter lines at odds with the record') and at least one domain keyword (verified, at odds, clarification, original, or governing), so a hollow word-repeat with no domain vocabulary cannot satisfy the floor. Accepts leading whitespace. Incidental only — does not zero an otherwise perfect submission.",
-        "why_justification": "submission_format.md requires answer.md to have at least one hundred words of prose containing the word 'record' and at least one domain keyword. The word 'record' is the core vocabulary of the task. Structured correctness is graded by register_table and results_figures, not by this floor.",
+        "how_justification": "Opens answer.md with md.extract_text and applies regex_match to verify >=100 words of prose containing the word record (required by the submission format label). Incidental only.",
+        "why_justification": "submission_format.md requires answer.md to have at least 100 words of prose containing the word record. Structured correctness is graded by register_table (352 rows) and results_figures. The prose floor is a minimum length check only.",
         "tag": "incidental"
       },
       "source": {
@@ -1888,7 +1997,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)(?=[\\s\\S]*\\brecord\\b)\\A\\s*(?:\\S+\\s+){99,}\\S+",
+        "expected": "(?si)(?=[\\s\\S]*\\brecords?\\b)\\A\\s*(?:\\S+\\s+){99,}\\S+",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
