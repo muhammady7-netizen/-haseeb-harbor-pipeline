@@ -194,7 +194,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?overall\\x22?\\s*,\\s*\\x22?all\\x22?\\s*,\\s*89\\s*,\\s*56\\s*,\\s*33\\s*,\\s*62.9\\s*,",
+        "expected": "(?mi)^\\x22?overall\\x22?\\s*,\\s*\\x22?all\\x22?\\s*,\\s*95\\s*,\\s*59\\s*,\\s*36\\s*,\\s*95.9\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -294,7 +294,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x33?site\\x33?\\s*,\\s*\\x33?S1\\x33?\\s*,\\s*33\\s*,\\s*22\\s*,",
+        "expected": "(?mi)^\\x34?site\\x34?\\s*,\\s*\\x34?S1\\x34?\\s*,\\s*34\\s*,\\s*34\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -319,7 +319,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x30?site\\x30?\\s*,\\s*\\x30?S2\\x30?\\s*,\\s*30\\s*,\\s*20\\s*,",
+        "expected": "(?mi)^\\x32?site\\x32?\\s*,\\s*\\x32?S2\\x32?\\s*,\\s*32\\s*,\\s*22\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -344,7 +344,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x26?site\\x26?\\s*,\\s*\\x26?S3\\x26?\\s*,\\s*26\\s*,\\s*14\\s*,",
+        "expected": "(?mi)^\\x29?site\\x29?\\s*,\\s*\\x29?S3\\x29?\\s*,\\s*29\\s*,\\s*14\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -394,7 +394,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?severe\\x22?\\s*,\\s*41\\s*,\\s*22\\s*,",
+        "expected": "(?mi)^\\x23?(?:severity|disease_severity)\\x23?\\s*,\\s*\\x23?severe\\x23?\\s*,\\s*44\\s*,\\s*23\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -444,7 +444,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?mild\\x22?\\s*,\\s*48\\s*,\\s*34\\s*,",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?mild\\x22?\\s*,\\s*51\\s*,\\s*36\\s*,",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -469,7 +469,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,[^\\\\n]*,\\s*5(?:\\.0+)?\\s*,\\s*(within|inside|ok|pass|compliant|outside|breach)",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,[^\\\\n]*,\\s*6(?:\\.0+)?\\s*,\\s*(within|inside|ok|pass|compliant|outside|breach)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -1069,7 +1069,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 62.9,
+        "expected": 62.1,
         "deterministic": {
           "path": "$.active_proportion_pct",
           "comparison": "approx_equals"
@@ -1169,7 +1169,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 12,
+        "expected": 13,
         "deterministic": {
           "path": "$.out_of_sequence_allocations",
           "comparison": "equals"
