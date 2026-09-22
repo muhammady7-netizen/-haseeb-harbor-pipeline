@@ -1,0 +1,82 @@
+{
+ "task": "task_bus_b50_b10_streaming_target_variance_attribution",
+ "n": 3,
+ "input_surface": [
+  "prompt",
+  "input/attribution_note.md",
+  "input/submission_format.md",
+  "solution values (neutral serialization)"
+ ],
+ "renderings": [
+  {
+   "api_failure": false,
+   "checks_pass": true,
+   "failed_checks": [],
+   "values_match_gold": true,
+   "files": [
+    "campaign_review.md",
+    "results.json",
+    "shortfall_attribution.csv"
+   ],
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+   "stamped_at": "2026-09-20T20:38:18+05:30"
+  },
+  {
+   "api_failure": false,
+   "checks_pass": true,
+   "failed_checks": [],
+   "values_match_gold": true,
+   "files": [
+    "campaign_review.md",
+    "results.json",
+    "shortfall_attribution.csv"
+   ],
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+   "stamped_at": "2026-09-20T20:38:18+05:30"
+  },
+  {
+   "api_failure": false,
+   "checks_pass": true,
+   "failed_checks": [],
+   "values_match_gold": true,
+   "files": [
+    "campaign_review.md",
+    "results.json",
+    "shortfall_attribution.csv"
+   ],
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+   "stamped_at": "2026-09-20T20:38:18+05:30"
+  }
+ ],
+ "findings": [],
+ "verdict": "pass",
+ "schema": 2,
+ "model": "glm-5.2",
+ "pool": [
+  {
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "slots": 3
+  }
+ ],
+ "pool_families": [
+  "glm"
+ ],
+ "pool_mode": "single-family",
+ "author_family": "claude",
+ "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+ "stamped_at": "2026-09-20T20:38:18+05:30"
+}

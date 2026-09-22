@@ -1,0 +1,139 @@
+{
+  "task": "task_bus_b50_b10_streaming_target_variance_attribution",
+  "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+  "backend": "glm",
+  "min_divergence": 0.3,
+  "documents": [
+    {
+      "file": "campaign_review.md",
+      "gold_chars": 1820,
+      "protected_tokens": 3,
+      "instructed_anchors": [
+        {
+          "words": [
+            "Conversion effect"
+          ],
+          "figure": "25470"
+        },
+        {
+          "words": [
+            "Counted placements"
+          ],
+          "figure": "29"
+        }
+      ],
+      "attempts": 1,
+      "api_error": null,
+      "divergence": 0.8202,
+      "missing_facts": [],
+      "missing_fact_count": 0,
+      "missing_anchors": [],
+      "status": "ok"
+    }
+  ],
+  "scoring": {
+    "reward": 1.0,
+    "core_failures": [],
+    "checks": [
+      {
+        "name": "register_exists",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "register_header",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "register_table_trap_ch04",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "register_table",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "memo_exists",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "memo_prose_floor",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "memo_single_part_channel",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "memo_conversion_effect",
+        "tag": "incidental",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "memo_conversion_effect_exactly_one",
+        "tag": "incidental",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "memo_counted_placements",
+        "tag": "incidental",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "memo_counted_placements_exactly_one",
+        "tag": "incidental",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "results_figures",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230769,
+        "detail": ""
+      },
+      {
+        "name": "results_exists",
+        "tag": "core",
+        "passed": true,
+        "weight": 0.0769230772,
+        "detail": ""
+      }
+    ],
+    "passed": 13,
+    "total": 13
+  },
+  "failed_checks": [],
+  "verdict": "pass",
+  "model": "glm-5.2",
+  "family": "glm",
+  "author_family": "claude",
+  "stamped_at": "2026-09-21T08:18:49+05:30"
+}

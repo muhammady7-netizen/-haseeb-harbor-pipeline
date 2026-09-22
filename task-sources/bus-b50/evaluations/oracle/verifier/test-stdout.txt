@@ -1,0 +1,132 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 22 items
+
+../tests/test_outputs.py ......................                          [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_deliverable[register_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[register_header]
+PASSED ../tests/test_outputs.py::test_deliverable[register_table_trap_ch04]
+PASSED ../tests/test_outputs.py::test_deliverable[register_table]
+PASSED ../tests/test_outputs.py::test_deliverable[memo_exists]
+PASSED ../tests/test_outputs.py::test_deliverable[memo_prose_floor]
+PASSED ../tests/test_outputs.py::test_deliverable[memo_single_part_channel]
+PASSED ../tests/test_outputs.py::test_deliverable[memo_conversion_effect]
+PASSED ../tests/test_outputs.py::test_deliverable[memo_conversion_effect_exactly_one]
+PASSED ../tests/test_outputs.py::test_deliverable[memo_counted_placements]
+PASSED ../tests/test_outputs.py::test_deliverable[memo_counted_placements_exactly_one]
+PASSED ../tests/test_outputs.py::test_deliverable[results_figures]
+PASSED ../tests/test_outputs.py::test_deliverable[results_exists]
+PASSED ../tests/test_outputs.py::test_incomplete_output[campaign_review.md]
+PASSED ../tests/test_outputs.py::test_incomplete_output[results.json]
+PASSED ../tests/test_outputs.py::test_incomplete_output[shortfall_attribution.csv]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[conversion_effect_streams]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[counted_placement_count]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[placements_effect_streams]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[residual_reach_effect_streams]
+PASSED ../tests/test_outputs.py::test_negative_corrupted_value[shortfall_to_target_streams]
+PASSED ../tests/test_outputs.py::test_adversarial_extra_key
+============================== 22 passed in 0.95s ==============================
+{
+  "reward": 1.0,
+  "core_failures": [],
+  "passed": 13,
+  "total": 13,
+  "checks": [
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "register_table_trap_ch04",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_prose_floor",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_single_part_channel",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_conversion_effect",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_conversion_effect_exactly_one",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_counted_placements",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_counted_placements_exactly_one",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230772,
+      "detail": ""
+    }
+  ]
+}

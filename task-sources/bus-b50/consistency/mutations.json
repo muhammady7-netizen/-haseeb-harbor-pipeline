@@ -1,0 +1,573 @@
+{
+ "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+ "contract": {
+  "cosmetic": "a correct answer re-rendered must still score 1.0",
+  "rewording": "a value-correct re-layout of a surface's graded figures (comma line, bullets, table, reconciling sentence), written INTO the gold artifact in place of its figure statements with every other passage kept, must fire NO check and must still score the task's full reward (recorded per entry) \u2014 layout is not method; a failure is brittleness exactly like a cosmetic failure. An entry whose statement could not be located replaces the whole artifact, scopes its verdict to the figure checks and records no reward (scope: figure_checks)",
+  "semantic": "a corrupted graded value must fail its bound checks",
+  "granularity": "ONLY the bound checks flip (bleed 0) \u2014 diagnosability, not reward slope",
+  "incomplete": "a deleted deliverable must drive the reward to 0 (the battery's incomplete-output case)",
+  "hollow": "an artifact stripped to its structural skeleton \u2014 headings/titles/counts kept, body content gone \u2014 must drive the reward to 0 (adversarial acceptance: gold is accepted for the right reasons). A variant that strips nothing the ENGINE can read is not a mutant and is listed under hollow_no_op instead of scored",
+  "no_op": "a variant that changes nothing is never scored and never dropped in silence: hollow_no_op lists the hollow builders that stripped nothing engine-visible, cosmetic_no_op the producer forks that declined an artifact \u2014 so a lane's count can never fall quietly to zero and read as a pass",
+  "reward_slope": "two-tier since the taxonomy pass: a core failure zeroes the task; incidental failures cost their weight share",
+  "caught": "a variant is CAUGHT only when the reward reaches 0 \u2014 i.e. at least one broken check is tagged core in tests/score.py's aggregation (untagged counts as core). Breaking incidental checks only leaves the task scoring, e.g. 0.833333, and is reported UNCAUGHT with that reward"
+ },
+ "task": "task_bus_b50_b10_streaming_target_variance_attribution",
+ "caught_rule": "a variant is CAUGHT only when the reward reaches 0 \u2014 i.e. at least one broken check is tagged core in tests/score.py's aggregation (untagged counts as core). Breaking incidental checks only leaves the task scoring, e.g. 0.833333, and is reported UNCAUGHT with that reward",
+ "cosmetic_total": 10,
+ "cosmetic_failed": 0,
+ "cosmetic_detail": [
+  {
+   "mutant": "json_keys_reordered",
+   "file": "results.json",
+   "ok": true
+  },
+  {
+   "mutant": "csv_all_quoted",
+   "file": "shortfall_attribution.csv",
+   "ok": true
+  },
+  {
+   "mutant": "csv_crlf",
+   "file": "shortfall_attribution.csv",
+   "ok": true
+  },
+  {
+   "mutant": "csv_bom",
+   "file": "shortfall_attribution.csv",
+   "ok": true
+  },
+  {
+   "mutant": "csv_trailing_newline",
+   "file": "shortfall_attribution.csv",
+   "ok": true
+  },
+  {
+   "mutant": "csv_int_as_float",
+   "file": "shortfall_attribution.csv",
+   "ok": true
+  },
+  {
+   "mutant": "json_integer_as_float",
+   "file": "results.json",
+   "ok": true
+  },
+  {
+   "mutant": "md_emphasis",
+   "file": "campaign_review.md",
+   "ok": true
+  },
+  {
+   "mutant": "md_hyphen_toggle",
+   "file": "campaign_review.md",
+   "ok": true
+  },
+  {
+   "mutant": "md_whitespace",
+   "file": "campaign_review.md",
+   "ok": true
+  }
+ ],
+ "rewording_total": 4,
+ "rewording_failed": 0,
+ "rewording_detail": [
+  {
+   "file": "campaign_review.md",
+   "layout": "comma_line",
+   "ok": true,
+   "checks_wrongly_failed": [],
+   "scope": "whole_task",
+   "reward": 1.0,
+   "text": "Conversion effect: 25470, Counted placements: 29"
+  },
+  {
+   "file": "campaign_review.md",
+   "layout": "bullet_list",
+   "ok": true,
+   "checks_wrongly_failed": [],
+   "scope": "whole_task",
+   "reward": 1.0,
+   "text": "- Conversion effect: 25470\n- Counted placements: 29"
+  },
+  {
+   "file": "campaign_review.md",
+   "layout": "table",
+   "ok": true,
+   "checks_wrongly_failed": [],
+   "scope": "whole_task",
+   "reward": 1.0,
+   "text": "| Metric | Value |\n| --- | --- |\n| Conversion effect | 25470 |\n| Counted placements | 29 |"
+  },
+  {
+   "file": "campaign_review.md",
+   "layout": "reconciling_sentence",
+   "ok": true,
+   "checks_wrongly_failed": [],
+   "scope": "whole_task",
+   "reward": 1.0,
+   "text": "Of 25499 in scope, 25470 were Conversion effect and 29 were Counted placements (25470 + 29 = 25499)."
+  }
+ ],
+ "rewording_no_op": [],
+ "semantic_lanes": [
+  "format_figure",
+  "docx_table",
+  "docx_heading",
+  "pptx_deck",
+  "workbook_cell",
+  "csv_table",
+  "json_key"
+ ],
+ "semantic_total": 39,
+ "semantic_caught": 39,
+ "semantic_detail": [
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<csv_columns_reordered: instruction-pinned surface>",
+   "caught": true,
+   "expected_to_fail": [
+    "(any check \u2014 surface closed by instruction)"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<csv_extra_column: instruction-pinned surface>",
+   "caught": true,
+   "expected_to_fail": [
+    "(any check \u2014 surface closed by instruction)"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "results.json",
+   "key": "<json_extra_key: instruction-pinned surface>",
+   "caught": true,
+   "expected_to_fail": [
+    "(any check \u2014 surface closed by instruction)"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<csv_rows_reversed: instruction-pinned surface>",
+   "caught": true,
+   "expected_to_fail": [
+    "(any check \u2014 surface closed by instruction)"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-04.counted_placements>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table_trap_ch04"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-04.placements_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table_trap_ch04"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-04.conversion_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table_trap_ch04"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-04.residual_reach_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table_trap_ch04"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-04.shortfall_to_target_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table_trap_ch04"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-01.counted_placements>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-01.placements_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-01.conversion_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-01.residual_reach_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-01.shortfall_to_target_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-02.counted_placements>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-02.placements_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-02.conversion_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-02.residual_reach_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-02.shortfall_to_target_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-03.counted_placements>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-03.placements_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-03.conversion_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-03.residual_reach_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-03.shortfall_to_target_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-05.counted_placements>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-05.placements_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-05.conversion_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-05.residual_reach_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-05.shortfall_to_target_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-06.counted_placements>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-06.placements_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-06.conversion_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-06.residual_reach_effect_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "key": "<cell CH-06.shortfall_to_target_streams>",
+   "caught": true,
+   "expected_to_fail": [
+    "register_table"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "results.json",
+   "key": "conversion_effect_streams",
+   "caught": true,
+   "expected_to_fail": [
+    "results_figures"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "results.json",
+   "key": "counted_placement_count",
+   "caught": true,
+   "expected_to_fail": [
+    "results_figures"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "results.json",
+   "key": "placements_effect_streams",
+   "caught": true,
+   "expected_to_fail": [
+    "results_figures"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "results.json",
+   "key": "residual_reach_effect_streams",
+   "caught": true,
+   "expected_to_fail": [
+    "results_figures"
+   ],
+   "also_failed": []
+  },
+  {
+   "file": "results.json",
+   "key": "shortfall_to_target_streams",
+   "caught": true,
+   "expected_to_fail": [
+    "results_figures"
+   ],
+   "also_failed": []
+  }
+ ],
+ "semantic_checks": [
+  "register_table",
+  "register_table_trap_ch04",
+  "results_figures"
+ ],
+ "checks_total": 13,
+ "granularity_bleed": 0,
+ "incomplete_total": 3,
+ "incomplete_caught": 3,
+ "incomplete_detail": [
+  {
+   "file": "campaign_review.md",
+   "caught": true,
+   "reward": 0.0,
+   "core_failed": [
+    "memo_exists",
+    "memo_prose_floor",
+    "memo_single_part_channel"
+   ],
+   "failed": [
+    "memo_conversion_effect",
+    "memo_conversion_effect_exactly_one",
+    "memo_counted_placements",
+    "memo_counted_placements_exactly_one",
+    "memo_exists",
+    "memo_prose_floor",
+    "memo_single_part_channel"
+   ]
+  },
+  {
+   "file": "results.json",
+   "caught": true,
+   "reward": 0.0,
+   "core_failed": [
+    "results_exists",
+    "results_figures"
+   ],
+   "failed": [
+    "results_exists",
+    "results_figures"
+   ]
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "caught": true,
+   "reward": 0.0,
+   "core_failed": [
+    "register_exists",
+    "register_header",
+    "register_table",
+    "register_table_trap_ch04"
+   ],
+   "failed": [
+    "register_exists",
+    "register_header",
+    "register_table",
+    "register_table_trap_ch04"
+   ]
+  }
+ ],
+ "hollow_total": 2,
+ "hollow_caught": 2,
+ "hollow_detail": [
+  {
+   "file": "campaign_review.md",
+   "variant": "hollow_prose",
+   "caught": true,
+   "reward": 0.0,
+   "core_failed": [
+    "memo_prose_floor",
+    "memo_single_part_channel"
+   ],
+   "failed": [
+    "memo_conversion_effect",
+    "memo_counted_placements",
+    "memo_prose_floor",
+    "memo_single_part_channel"
+   ]
+  },
+  {
+   "file": "shortfall_attribution.csv",
+   "variant": "hollow_rows",
+   "caught": true,
+   "reward": 0.0,
+   "core_failed": [
+    "register_table",
+    "register_table_trap_ch04"
+   ],
+   "failed": [
+    "register_table",
+    "register_table_trap_ch04"
+   ]
+  }
+ ],
+ "hollow_no_op": [],
+ "cosmetic_no_op": [],
+ "rewording_lane": "gold-preserving: each rewording is the gold artifact with only its graded figure statements re-worded, so `reward` is the task's real reward for a correct answer in that layout and any check that newly fails is a wording veto",
+ "rewording_min_reward": 1.0
+}

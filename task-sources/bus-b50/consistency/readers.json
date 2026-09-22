@@ -1,0 +1,511 @@
+{
+ "task": "task_bus_b50_b10_streaming_target_variance_attribution",
+ "n": 4,
+ "api_failures": 0,
+ "parsed_families": [
+  "glm"
+ ],
+ "input_surface": [
+  "prompt",
+  "input/attribution_note.md",
+  "input/submission_format.md"
+ ],
+ "readers": [
+  {
+   "goal": {
+    "deliverables": [
+     {
+      "file": "shortfall_attribution.csv",
+      "figures": [
+       {
+        "name": "channel_id",
+        "meaning": "The identifier of a campaign channel as listed in the channel plan."
+       },
+       {
+        "name": "counted_placements",
+        "meaning": "The number of placements for the channel that counted as delivered within the campaign window."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The part of the channel's stream shortfall assigned to placements that were not delivered."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The part of the channel's stream shortfall assigned to conversion performance on the reach actually delivered."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The part of the channel's stream shortfall assigned to reach delivered above or below what the plan expected."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The channel's total stream shortfall against its planned target."
+       }
+      ]
+     },
+     {
+      "file": "campaign_review.md",
+      "figures": [
+       {
+        "name": "Conversion effect",
+        "meaning": "The campaign total of the conversion part of the shortfall split."
+       },
+       {
+        "name": "Counted placements",
+        "meaning": "The number of placements counted as delivered across every channel."
+       }
+      ]
+     },
+     {
+      "file": "results.json",
+      "figures": [
+       {
+        "name": "counted_placement_count",
+        "meaning": "The total number of placements counted as delivered across all channels."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The campaign total shortfall assigned to placements not delivered."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The campaign total shortfall assigned to conversion performance."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The campaign total shortfall assigned to residual reach differences."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The campaign total shortfall against planned stream targets."
+       }
+      ]
+     }
+    ]
+   },
+   "method": "## Method I'd use\n\n**Campaign window.** Read `campaign_calendar.csv` and collect every week whose `in_campaign_window` is `yes`. I'd match week identifiers by exact string across the calendar, the placement log's `ran_week`, and the ledger's week column.\n\n**Counted placements per channel (Section 2).** From `placement_log.csv`, count a placement for its channel if all three hold: its `ran_week` is inside the window (a slip within the window still counts, per 2.1), its `placement_status` is not `cancelled`, and its `offer_type` is not `guaranteed_streams`. I'd require a non-blank `ran_week`; a blank means it never ran.\n\n**Delivered reach and delivered streams per channel (Section 3).** Sum the ledger rows whose week is in the window. For each row I'd resolve its named placement back to `placement_log.csv` to read `offer_type`: any row tied to a `guaranteed_streams` placement is dropped from both totals (3.2). A row with a blank placement is organic and counted in full (3.3). Negative streams are kept with their sign (3.4). Rule I'd have to decide: I'd use a `channel_id` column on the ledger if one exists; otherwise I'd join ledger rows to channels via the placement they name.\n\n**Target and shortfall (Section 4).** Target = `planned_placements × planned_reach_per_placement × planned_streams_per_1000_reach / 1000`. Since every figure must be a whole stream, I'd round the target half away from zero. Shortfall = rounded target − delivered streams (negative if the channel beat plan).\n\n**Split, taken in this order (Section 5).**\n- *Placements effect* = `(planned_placements − counted_placements) × planned_reach_per_placement × planned_streams_per_1000_reach / 1000`, rounded half away from zero.\n- *Conversion effect* = `delivered_reach × planned_streams_per_1000_reach / 1000 − delivered_streams`, rounded half away from zero.\n- *Residual reach effect* = `shortfall − placements_effect − conversion_effect`, taken as the balance so the three add back to the shortfall exactly. I would not round the residual — it absorbs the rounding differences by construction, as 5.4 instructs.\n\n**Campaign totals (results.json).** Sum each column of the register across all channels: counted placements, and the three effect columns and the shortfall column. The first three stream totals will add to the fourth because each row already does.\n\n**campaign_review.md.** I'd scan the register for the channel whose `placements_effect_streams` and `residual_reach_effect_streams` are both `0` so that its shortfall sits entirely in the conversion part, name that `channel_id` alongside \"conversion\" in one paragraph, and state two findings taken straight from the register: the campaign-total conversion effect and the campaign-total counted placements.\n\n**Rules I'd decide for myself, beyond the note:**\n1. Round the per-channel target to a whole stream (half away from zero) before computing the shortfall, since Section 1 says every figure is a whole number.\n2. Implement round-half-away-from-zero explicitly — Python's default banker's rounding would be wrong here.\n3. Treat a blank placement name on a ledger row as organic (3.3); treat a non-blank name I cannot resolve in the placement log as a data issue to flag, not silently as organic.\n4. Require a non-blank `ran_week` for a placement to count, even if its status isn't `cancelled`.\n5. For the review's \"single part\" channel, require both other parts to be exactly `0`, so the shortfall equals the conversion effect rather than merely being closest to it.",
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+   "stamped_at": "2026-09-20T20:37:59+05:30"
+  },
+  {
+   "goal": {
+    "deliverables": [
+     {
+      "file": "shortfall_attribution.csv",
+      "figures": [
+       {
+        "name": "channel_id",
+        "meaning": "The identifier of the channel as it appears in the channel plan."
+       },
+       {
+        "name": "counted_placements",
+        "meaning": "The number of a channel's placements that count as delivered within the campaign window."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The share of a channel's shortfall due to placements the campaign did not run."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The share of a channel's shortfall due to delivered reach converting below the plan's assumed rate."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The remaining share of a channel's shortfall due to reach above or below what the plan expected."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The channel's total gap between its planned target streams and its delivered streams."
+       }
+      ]
+     },
+     {
+      "file": "campaign_review.md",
+      "figures": [
+       {
+        "name": "Conversion effect",
+        "meaning": "The campaign-wide total of the conversion part of the shortfall split."
+       },
+       {
+        "name": "Counted placements",
+        "meaning": "The total number of placements counted as delivered across every channel."
+       }
+      ]
+     },
+     {
+      "file": "results.json",
+      "figures": [
+       {
+        "name": "counted_placement_count",
+        "meaning": "The total number of placements counted as delivered across every channel."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The campaign-wide total shortfall attributable to placements not run."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The campaign-wide total shortfall attributable to conversion below the planned rate."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The campaign-wide total shortfall attributable to reach above or below the plan."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The campaign-wide total gap between planned target streams and delivered streams."
+       }
+      ]
+     }
+    ]
+   },
+   "method": "**Method in plain prose**\n\nI'd read the four CSVs plus the note, fix the campaign window as the weeks `campaign_calendar.csv` marks `yes`, then work each channel in `channel_plan.csv` order.\n\n**Counted placements.** From `placement_log.csv`, count the channel's rows whose `ran_week` is inside the window, whose `placement_status` is not `cancelled`, and whose `offer_type` is not `guaranteed_streams`. A placement that slipped to a different in-window week still counts; cancelled, out-of-window, and bought-stream packages never do.\n\n**Delivered reach and delivered streams.** From `streaming_ledger.csv`, sum the channel's rows for in-window weeks. Drop any row whose named placement is a `guaranteed_streams` package (joined to `placement_log.csv` by placement id). Keep organic rows (no placement named) in full, and keep negative-stream correction rows with their sign on both reach and streams.\n\n**Target.** `planned_placements × planned_reach_per_placement × planned_streams_per_1000_reach / 1000`, unprorated.\n\n**Shortfall.** target − delivered streams (negative if the channel beat target).\n\n**Placements effect.** `(planned_placements − counted_placements) × planned_reach_per_placement × planned_streams_per_1000_reach / 1000`, rounded to the nearest whole stream, halves away from zero.\n\n**Conversion effect.** `delivered_reach × planned_streams_per_1000_reach / 1000 − delivered_streams`, rounded the same way.\n\n**Residual reach effect.** shortfall − placements_effect − conversion_effect, taken as the balance so the three parts sum back to the shortfall exactly per channel and in total.\n\n**results.json totals.** Column sums of the register: `counted_placement_count` sums `counted_placements`; the four stream keys sum their respective columns; the first three stream totals add to the shortfall total because each row already does.\n\n**campaign_review.md.** I'd compute all three parts for every channel and identify the channel whose shortfall collapses to a single non-zero part (per the note's hint, most likely the channel whose guaranteed-streams ledger rows get stripped, so it reads one way off the ledger and another once the method is applied). I'd name that channel id and the part (conversion) in the same paragraph, and state the campaign-total conversion effect and total counted placements as the two findings.\n\n**Rules I'd have to decide myself**\n\n1. **How ledger rows attach to a channel.** If `streaming_ledger.csv` carries `channel_id` directly I use it. If it only names placements, I'd join via `placement_log.csv`; organic rows then need a channel tag on the ledger row itself, and I'd assume one is present since the note says each channel's figures come from its ledger rows.\n2. **Reach on organic rows.** The note folds organic rows into both delivered reach and delivered streams. If an organic row has a blank reach I'd treat it as 0, which would push the conversion effect up — a judgement call I'd flag.\n3. **Missing placement lookups.** When checking a ledger row's placement against `offer_type`, if the named placement isn't in `placement_log.csv` I'd treat the row as a normal promotional placement and count it, since the exclusion is specifically for rows whose placement *is* a guaranteed_streams package.\n4. **Rounding direction.** Halves away from zero: 2.5 → 3, −2.5 → −3, applied to placements effect and conversion effect independently; residual is whatever integer closes the gap, so no separate rounding of it.\n5. **Identifying the \"single part\" channel for the review.** I'd decide it from the computed register, not the headline — picking the channel where exactly two parts are zero and one is non-zero.\n6. **Formatting.** Rows in `channel_plan.csv` order; plain integers, no separators; leading minus for negatives; `0` for zero; JSON with exactly the five specified keys.",
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+   "stamped_at": "2026-09-20T20:37:59+05:30"
+  },
+  {
+   "goal": {
+    "deliverables": [
+     {
+      "file": "shortfall_attribution.csv",
+      "figures": [
+       {
+        "name": "channel_id",
+        "meaning": "The identifier of the campaign channel that the row measures."
+       },
+       {
+        "name": "counted_placements",
+        "meaning": "The number of promotional placements the channel actually delivered within the campaign window."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The stream shortfall owed to placements the channel did not run, valued at the plan's assumed conversion."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The stream shortfall owed to the channel converting delivered reach into fewer streams than the plan assumed."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The remaining stream shortfall (or surplus) owed to the channel's delivered reach differing from what the plan expected of its placements."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The channel's total streams short of its planned target for the campaign."
+       }
+      ]
+     },
+     {
+      "file": "campaign_review.md",
+      "figures": [
+       {
+        "name": "Conversion effect",
+        "meaning": "The campaign-wide total stream shortfall attributed to the conversion part across every channel."
+       },
+       {
+        "name": "Counted placements",
+        "meaning": "The total number of promotional placements counted as delivered across every channel."
+       }
+      ]
+     },
+     {
+      "file": "results.json",
+      "figures": [
+       {
+        "name": "counted_placement_count",
+        "meaning": "The total number of promotional placements counted as delivered across every channel."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The campaign-wide total stream shortfall owed to placements not run across all channels."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The campaign-wide total stream shortfall owed to conversion on delivered reach across all channels."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The campaign-wide total residual stream shortfall (or surplus) owed to delivered reach differing from the plan across all channels."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The campaign-wide total stream shortfall to target across every channel."
+       }
+      ]
+     }
+    ]
+   },
+   "method": "I'll start by reading all the input files to understand the data structure and the attribution method.I need to read all the input files first to understand the data and apply the attribution method correctly.",
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+   "stamped_at": "2026-09-20T20:37:59+05:30"
+  },
+  {
+   "goal": {
+    "deliverables": [
+     {
+      "file": "shortfall_attribution.csv",
+      "figures": [
+       {
+        "name": "channel_id",
+        "meaning": "The identifier of the campaign channel as printed in the channel plan."
+       },
+       {
+        "name": "counted_placements",
+        "meaning": "The number of promotional placements counted as delivered for that channel within the campaign window."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The portion of that channel's stream shortfall attributable to planned placements that did not run, valued at the plan's assumed conversion."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The portion of that channel's stream shortfall attributable to the channel's actual conversion of its delivered reach differing from the plan's assumed conversion."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The remaining portion of that channel's stream shortfall attributable to delivered reach differing from the reach the plan expected the placements to bring."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The channel's total shortfall of delivered streams against its fixed target, negative if the channel exceeded its target."
+       }
+      ]
+     },
+     {
+      "file": "campaign_review.md",
+      "figures": [
+       {
+        "name": "Conversion effect",
+        "meaning": "The campaign-wide total stream shortfall attributable to conversion differences across all channels."
+       },
+       {
+        "name": "Counted placements",
+        "meaning": "The campaign-wide total number of promotional placements counted as delivered across all channels."
+       }
+      ]
+     },
+     {
+      "file": "results.json",
+      "figures": [
+       {
+        "name": "counted_placement_count",
+        "meaning": "The campaign-wide total number of promotional placements counted as delivered."
+       },
+       {
+        "name": "placements_effect_streams",
+        "meaning": "The campaign-wide total stream shortfall attributable to placements that did not run."
+       },
+       {
+        "name": "conversion_effect_streams",
+        "meaning": "The campaign-wide total stream shortfall attributable to conversion rate differences on delivered reach."
+       },
+       {
+        "name": "residual_reach_effect_streams",
+        "meaning": "The campaign-wide total stream shortfall attributable to delivered reach differing from planned reach."
+       },
+       {
+        "name": "shortfall_to_target_streams",
+        "meaning": "The campaign-wide total shortfall of delivered streams against the target."
+       }
+      ]
+     }
+    ]
+   },
+   "method": "I wouldn't jump to the files; I'd work the method the note fixes, channel by channel, and let the totals fall out of the register. Here is how I'd compute each figure and the few places I'd have to settle a rule for myself.\n\n**Counted placements (per channel).** From `placement_log.csv`, take that channel's placements whose `ran_week` is a week the calendar marks `yes`, whose `placement_status` is not `cancelled`, and whose `offer_type` is not `guaranteed_streams`. A placement that slipped to a different in-window week still counts (§2.1); one that ran outside the window, or was cancelled, or was a bought-stream package, does not.\n\n**Delivered reach and delivered streams (per channel).** From `streaming_ledger.csv`, sum that channel's rows for in-window weeks, dropping any row that names a placement whose `offer_type` is `guaranteed_streams` (§3.2). Organic rows with no placement named count in full (§3.3), and negative rows count with their sign (§3.4). The rule I'd have to settle myself is which channel an organic row belongs to: the note says organic counts in full but doesn't say where it sits. I'd decide it by the `channel_id` column on the ledger row if there is one; if the ledger has no channel on organic rows, I'd have to pick a convention (attribute to the channel the row names, or hold it outside every channel) and flag it.\n\n**Target and shortfall.** Target = `planned_placements` × `planned_reach_per_placement` × `planned_streams_per_1000_reach` / 1000, unprorated (§4.1). Shortfall = target − delivered streams; negative if the channel beat plan (§4.2).\n\n**Placements effect.** (`planned_placements` − counted_placements) × `planned_reach_per_placement` × `planned_streams_per_1000_reach` / 1000, rounded to the nearest whole stream, halves away from zero (§5.1, §5.4). Valued at the planned conversion, never the achieved one — this is the part I'd watch, because a channel that delivered fewer placements but converted well still takes the gap at the plan's rate.\n\n**Conversion effect.** Delivered reach × `planned_streams_per_1000_reach` / 1000 − delivered streams, rounded the same way (§5.2). Measured on actual delivered reach, not planned reach. A channel the ledger makes look bad in raw streams can flip to a positive conversion effect once this is applied to its actual reach — that is the \"reads one way off the ledger\" case the brief warns about, and I'd work it through rather than headline it.\n\n**Residual reach effect.** Shortfall − placements effect − conversion effect, taken as the integer balance so the three parts add back exactly per channel and across the campaign (§5.3, §5.4). I would not round this independently; it inherits the rounding slack from the first two.\n\n**Campaign totals.** Sum each column of the register across all channels: `counted_placement_count` from `counted_placements`, and the four stream keys from their columns. Because residual is the balance, the three effect columns add to `shortfall_to_target_streams` exactly at channel level and therefore at campaign level.\n\n**Rules I'd have to decide for myself, beyond the note.** (1) Channel attribution of organic ledger rows, as above. (2) If a placement's `channel_id` and its ledger rows' `channel_id` ever disagree, I'd follow the ledger's own `channel_id` for reach/streams and the placement log's for the count, since the note reads each file on its own terms. (3) For channels that beat target, the residual is still the balance and may be negative; I'd write it with a leading minus sign per §6 rather than clamp it. (4) \"Halves away from zero\" I'd implement literally (e.g., 2.5 → 3, −2.5 → −3), not banker's rounding.",
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "author_family": "claude",
+   "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+   "stamped_at": "2026-09-20T20:37:59+05:30"
+  }
+ ],
+ "agreement": {
+  "deliverable_set": {
+   "consensus": [
+    "campaign_review.md",
+    "results.json",
+    "shortfall_attribution.csv"
+   ],
+   "agree": 4,
+   "of": 4
+  },
+  "figures": [
+   {
+    "surface": "campaign_review.md",
+    "figure": "conversion effect",
+    "listed_by": 4,
+    "meanings": [
+     "The campaign total of the conversion part of the shortfall split.",
+     "The campaign-wide total of the conversion part of the shortfall split.",
+     "The campaign-wide total stream shortfall attributed to the conversion part across every channel.",
+     "The campaign-wide total stream shortfall attributable to conversion differences across all channels."
+    ]
+   },
+   {
+    "surface": "campaign_review.md",
+    "figure": "counted placements",
+    "listed_by": 4,
+    "meanings": [
+     "The number of placements counted as delivered across every channel.",
+     "The total number of placements counted as delivered across every channel.",
+     "The total number of promotional placements counted as delivered across every channel.",
+     "The campaign-wide total number of promotional placements counted as delivered across all channels."
+    ]
+   },
+   {
+    "surface": "results.json",
+    "figure": "conversion_effect_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The campaign total shortfall assigned to conversion performance.",
+     "The campaign-wide total shortfall attributable to conversion below the planned rate.",
+     "The campaign-wide total stream shortfall owed to conversion on delivered reach across all channels.",
+     "The campaign-wide total stream shortfall attributable to conversion rate differences on delivered reach."
+    ]
+   },
+   {
+    "surface": "results.json",
+    "figure": "counted_placement_count",
+    "listed_by": 4,
+    "meanings": [
+     "The total number of placements counted as delivered across all channels.",
+     "The total number of placements counted as delivered across every channel.",
+     "The total number of promotional placements counted as delivered across every channel.",
+     "The campaign-wide total number of promotional placements counted as delivered."
+    ]
+   },
+   {
+    "surface": "results.json",
+    "figure": "placements_effect_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The campaign total shortfall assigned to placements not delivered.",
+     "The campaign-wide total shortfall attributable to placements not run.",
+     "The campaign-wide total stream shortfall owed to placements not run across all channels.",
+     "The campaign-wide total stream shortfall attributable to placements that did not run."
+    ]
+   },
+   {
+    "surface": "results.json",
+    "figure": "residual_reach_effect_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The campaign total shortfall assigned to residual reach differences.",
+     "The campaign-wide total shortfall attributable to reach above or below the plan.",
+     "The campaign-wide total residual stream shortfall (or surplus) owed to delivered reach differing from the plan across all channels.",
+     "The campaign-wide total stream shortfall attributable to delivered reach differing from planned reach."
+    ]
+   },
+   {
+    "surface": "results.json",
+    "figure": "shortfall_to_target_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The campaign total shortfall against planned stream targets.",
+     "The campaign-wide total gap between planned target streams and delivered streams.",
+     "The campaign-wide total stream shortfall to target across every channel.",
+     "The campaign-wide total shortfall of delivered streams against the target."
+    ]
+   },
+   {
+    "surface": "shortfall_attribution.csv",
+    "figure": "channel_id",
+    "listed_by": 4,
+    "meanings": [
+     "The identifier of a campaign channel as listed in the channel plan.",
+     "The identifier of the channel as it appears in the channel plan.",
+     "The identifier of the campaign channel that the row measures.",
+     "The identifier of the campaign channel as printed in the channel plan."
+    ]
+   },
+   {
+    "surface": "shortfall_attribution.csv",
+    "figure": "conversion_effect_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The part of the channel's stream shortfall assigned to conversion performance on the reach actually delivered.",
+     "The share of a channel's shortfall due to delivered reach converting below the plan's assumed rate.",
+     "The stream shortfall owed to the channel converting delivered reach into fewer streams than the plan assumed.",
+     "The portion of that channel's stream shortfall attributable to the channel's actual conversion of its delivered reach differing from the plan's assumed conversion."
+    ]
+   },
+   {
+    "surface": "shortfall_attribution.csv",
+    "figure": "counted_placements",
+    "listed_by": 4,
+    "meanings": [
+     "The number of placements for the channel that counted as delivered within the campaign window.",
+     "The number of a channel's placements that count as delivered within the campaign window.",
+     "The number of promotional placements the channel actually delivered within the campaign window.",
+     "The number of promotional placements counted as delivered for that channel within the campaign window."
+    ]
+   },
+   {
+    "surface": "shortfall_attribution.csv",
+    "figure": "placements_effect_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The part of the channel's stream shortfall assigned to placements that were not delivered.",
+     "The share of a channel's shortfall due to placements the campaign did not run.",
+     "The stream shortfall owed to placements the channel did not run, valued at the plan's assumed conversion.",
+     "The portion of that channel's stream shortfall attributable to planned placements that did not run, valued at the plan's assumed conversion."
+    ]
+   },
+   {
+    "surface": "shortfall_attribution.csv",
+    "figure": "residual_reach_effect_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The part of the channel's stream shortfall assigned to reach delivered above or below what the plan expected.",
+     "The remaining share of a channel's shortfall due to reach above or below what the plan expected.",
+     "The remaining stream shortfall (or surplus) owed to the channel's delivered reach differing from what the plan expected of its placements.",
+     "The remaining portion of that channel's stream shortfall attributable to delivered reach differing from the reach the plan expected the placements to bring."
+    ]
+   },
+   {
+    "surface": "shortfall_attribution.csv",
+    "figure": "shortfall_to_target_streams",
+    "listed_by": 4,
+    "meanings": [
+     "The channel's total stream shortfall against its planned target.",
+     "The channel's total gap between its planned target streams and its delivered streams.",
+     "The channel's total streams short of its planned target for the campaign.",
+     "The channel's total shortfall of delivered streams against its fixed target, negative if the channel exceeded its target."
+    ]
+   }
+  ]
+ },
+ "verdict": "pass",
+ "surface_key": "258e6218ff7352a7e37c1cf993ea558a4e0d9f94af7fd35f15d7718c5dd805f2",
+ "note": "METHOD divergence is difficulty, never a finding. Fix ladder for ambiguity, cheapest first: accept both readings; move the data so both agree; add motivation; state the rule (last — costs difficulty).",
+ "schema": 2,
+ "model": "glm-5.2",
+ "pool": [
+  {
+   "model": "glm-5.2",
+   "family": "glm",
+   "backend": "glm",
+   "slots": 4
+  }
+ ],
+ "pool_families": [
+  "glm"
+ ],
+ "pool_mode": "single-family",
+ "author_family": "claude",
+ "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+ "stamped_at": "2026-09-20T20:37:59+05:30"
+}

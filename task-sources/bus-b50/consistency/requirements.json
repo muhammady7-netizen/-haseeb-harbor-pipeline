@@ -1,0 +1,203 @@
+{
+ "task": "task_bus_b50_b10_streaming_target_variance_attribution",
+ "generated_by": "to_harbor_cli.build_requirements_json",
+ "verifier_total": 13,
+ "census": {
+  "shortfall_attribution.csv": {
+   "records": 6,
+   "columns": [
+    "conversion_effect_streams",
+    "counted_placements",
+    "placements_effect_streams",
+    "residual_reach_effect_streams",
+    "shortfall_to_target_streams"
+   ],
+   "cell_pins": 30,
+   "row_set": 6
+  }
+ },
+ "scoring": {
+  "policy": "two-tier: any core failure zeroes the reward; incidental failures cost their weight share (tests/score.py)",
+  "core": 9,
+  "incidental": [
+   "memo_conversion_effect",
+   "memo_conversion_effect_exactly_one",
+   "memo_counted_placements",
+   "memo_counted_placements_exactly_one"
+  ],
+  "sidecar_note": "derived figures are paid once, in results.json; artifact cell pins grade PRIMARY data carried into the deliverable, and cardinality closures pay the count — neither re-pays a derived figure"
+ },
+ "duplicate_payments": [
+  {
+   "value": "25470",
+   "checks": [
+    "memo_conversion_effect",
+    "results_figures"
+   ],
+   "core_payers": [
+    "results_figures"
+   ],
+   "kind": "cross_surface_guard",
+   "contract_span": "the campaign total of the conversion part"
+  },
+  {
+   "value": "29",
+   "checks": [
+    "memo_counted_placements",
+    "results_figures"
+   ],
+   "core_payers": [
+    "results_figures"
+   ],
+   "kind": "cross_surface_guard",
+   "contract_span": "the number of placements counted across every channel"
+  }
+ ],
+ "requirements": [
+  {
+   "requirement_id": "R1",
+   "ask": "Deliver the attribution register under the stated contract (filename, verbatim header).",
+   "prompt_span": "Header, exactly: `channel_id,counted_placements,placements_effect_streams,conversion_effect_streams,residual_reach_effect_streams,shortfall_to_target_streams`",
+   "surface": "shortfall_attribution.csv",
+   "criticality": "major",
+   "graded_by": [
+    "register_exists",
+    "register_header"
+   ],
+   "graded_by_count": 2,
+   "tolerance": {
+    "value": "pinned",
+    "numeric_rendering": "tolerant (numeric abs<=0.001 inside table_equals, grouping-normalised; leading-zero ids exact)",
+    "column_order": "free (structural addressing)",
+    "row_order": "pinned (instruction-backed)",
+    "extra_columns": "forbidden (header pinned, instruction-backed)",
+    "extra_keys": "allowed"
+   },
+   "discrimination": null
+  },
+  {
+   "requirement_id": "R2",
+   "ask": "The one placement that ran later than the week it was planned for, and still inside the campaign window, is counted as delivered, so its channel's placements part and residual reach part are both nil and the whole of that channel's gap sits in conversion.",
+   "prompt_span": "provided the week it ran falls inside the campaign window",
+   "surface": "shortfall_attribution.csv",
+   "criticality": "critical",
+   "graded_by": [
+    "register_table_trap_ch04"
+   ],
+   "graded_by_count": 1,
+   "tolerance": {
+    "value": "pinned",
+    "numeric_rendering": "tolerant (numeric abs<=0.001 inside table_equals, grouping-normalised; leading-zero ids exact)",
+    "column_order": "free (structural addressing)",
+    "row_order": "pinned (instruction-backed)",
+    "extra_columns": "forbidden (header pinned, instruction-backed)",
+    "extra_keys": "allowed"
+   },
+   "discrimination": null
+  },
+  {
+   "requirement_id": "R3",
+   "ask": "Every other channel is split under the attribution note — counted placements read off the log under the window, cancellation and package rules, delivered reach and streams totalled off the ledger under the window, package, organic and correction rules, and the three parts taken in the note's order with the residual as the balance — one row per channel, in the plan file's order, and nothing else.",
+   "prompt_span": "What is left of the shortfall once the first two parts have been taken off",
+   "surface": "shortfall_attribution.csv",
+   "criticality": "critical",
+   "graded_by": [
+    "register_table",
+    "register_table_trap_ch04"
+   ],
+   "graded_by_count": 2,
+   "tolerance": {
+    "value": "pinned",
+    "numeric_rendering": "tolerant (numeric abs<=0.001 inside table_equals, grouping-normalised; leading-zero ids exact)",
+    "column_order": "free (structural addressing)",
+    "row_order": "pinned (instruction-backed)",
+    "extra_columns": "forbidden (header pinned, instruction-backed)",
+    "extra_keys": "allowed"
+   },
+   "discrimination": null
+  },
+  {
+   "requirement_id": "R4",
+   "ask": "Write the label head's note in prose, naming the channel whose whole gap the method leaves in one part of the split beside that part, and stating the two headline figures as findings rather than as candidates.",
+   "prompt_span": "write `campaign_review.md` for me",
+   "surface": "campaign_review.md",
+   "criticality": "major",
+   "graded_by": [
+    "memo_conversion_effect",
+    "memo_conversion_effect_exactly_one",
+    "memo_counted_placements",
+    "memo_counted_placements_exactly_one",
+    "memo_exists",
+    "memo_prose_floor",
+    "memo_single_part_channel"
+   ],
+   "graded_by_count": 7,
+   "tolerance": {
+    "value": "pinned",
+    "numeric_rendering": "tolerant (in_array over value-identical renderings)",
+    "column_order": "free (structural addressing)",
+    "row_order": "free",
+    "extra_columns": "allowed",
+    "extra_keys": "allowed"
+   },
+   "discrimination": null
+  },
+  {
+   "requirement_id": "R5",
+   "ask": "Report the counted placement population and the three part totals beside the shortfall in results.json, with a closed key set, the three stream totals adding to the shortfall.",
+   "prompt_span": "A JSON object with exactly these keys and nothing else",
+   "surface": "results.json",
+   "criticality": "critical",
+   "graded_by": [
+    "results_exists",
+    "results_figures"
+   ],
+   "graded_by_count": 2,
+   "tolerance": {
+    "value": "pinned",
+    "numeric_rendering": "tolerant (numeric abs<=0.001 per key inside object_equals)",
+    "column_order": "free (structural addressing)",
+    "row_order": "free",
+    "extra_columns": "allowed",
+    "extra_keys": "forbidden (key set closed, instruction-backed)"
+   },
+   "discrimination": "Reading the log against the booking schedule, so a placement that slipped inside the window counts as missed, yields a placements total of 2755 and a residual reach total of -6115 over 28 placements, not 855, -4215 and 29; counting the placement that ran after the window yields 30 placements, counting the cancelled booking as delivered yields 30 and counting the bought-stream package as a placement yields 30 placements against a shortfall of 15910, not 22110; counting the ledger rows that fall after the window yields a shortfall of 20110, dropping the platform correction yields 20870 and leaving organic listening out altogether yields 23860; measuring the conversion part on the reach the plan assumed rather than the reach delivered yields a conversion total of 21255 against 25470; valuing the placements part at the conversion each channel achieved yields 584; computing the residual directly instead of taking it as the balance yields -4214, which does not re-add to the shortfall; and truncating the first two parts rather than rounding them yields 25469 and -4214."
+  }
+ ],
+ "derivation": {
+  "depends_on": {
+   "counted_placement_count": [
+    "placement_log.csv",
+    "campaign_calendar.csv",
+    "attribution_note.md"
+   ],
+   "placements_effect_streams": [
+    "channel_plan.csv",
+    "placement_log.csv",
+    "campaign_calendar.csv",
+    "attribution_note.md"
+   ],
+   "conversion_effect_streams": [
+    "channel_plan.csv",
+    "placement_log.csv",
+    "streaming_ledger.csv",
+    "campaign_calendar.csv",
+    "attribution_note.md"
+   ],
+   "residual_reach_effect_streams": [
+    "channel_plan.csv",
+    "placement_log.csv",
+    "streaming_ledger.csv",
+    "campaign_calendar.csv",
+    "attribution_note.md"
+   ],
+   "shortfall_to_target_streams": [
+    "channel_plan.csv",
+    "streaming_ledger.csv",
+    "campaign_calendar.csv",
+    "attribution_note.md"
+   ]
+  },
+  "input_sha256": "ba73adf5e840e67a49635c1566c1dd0ca3dc0c4e63c26760494c2bc9107eb59e"
+ }
+}

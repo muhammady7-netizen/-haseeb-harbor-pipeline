@@ -1,0 +1,11 @@
+{
+    "task": {
+        "path": "D:\\turing-computer-bench\\nonconnector-tasks\\bundles\\shannon-200\\bus-b50-b10-streaming-target-variance-attribution"
+    },
+    "trial_name": "bus-b50-b10-streaming-target-var__Rkdo8KE",
+    "trials_dir": "D:\\turing-computer-bench\\nonconnector-tasks\\nop-runs\\fixb50b10\\bus-b50-b10-streaming-target-variance-attribution\\run",
+    "agent": {
+        "name": "nop"
+    },
+    "job_id": "90fb389b-6df9-46dc-8c82-382ebd6039fc"
+}

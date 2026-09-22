@@ -1,0 +1,109 @@
+{
+  "reward": 0.0,
+  "core_failures": [
+    "register_exists",
+    "register_header",
+    "register_table_trap_ch04",
+    "register_table",
+    "memo_exists",
+    "memo_prose_floor",
+    "memo_single_part_channel",
+    "results_figures",
+    "results_exists"
+  ],
+  "passed": 0,
+  "total": 13,
+  "checks": [
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: shortfall_attribution.csv"
+    },
+    {
+      "name": "register_table_trap_ch04",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: shortfall_attribution.csv"
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: shortfall_attribution.csv"
+    },
+    {
+      "name": "memo_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "memo_prose_floor",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_single_part_channel",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_conversion_effect",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_conversion_effect_exactly_one",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_counted_placements",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_counted_placements_exactly_one",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: results.json"
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230772,
+      "detail": "assertion failed"
+    }
+  ]
+}

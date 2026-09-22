@@ -1,0 +1,437 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 22 items
+
+../tests/test_outputs.py FFFFFFFFFFFFFsssssssss                          [100%]
+
+=================================== FAILURES ===================================
+______________________ test_deliverable[register_exists] _______________________
+
+definition = VerifierDefinition(name='register_exists', metadata=VerifierMetadata(how_justification='Checks shortfall_attribution.c... expected=True, deterministic=DeterministicConfig(path='$.is_file', comparison='equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: register_exists: assertion failed
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+______________________ test_deliverable[register_header] _______________________
+
+definition = VerifierDefinition(name='register_header', metadata=VerifierMetadata(how_justification='Opens shortfall_attribution.cs...\t]*\\r?\\n', deterministic=DeterministicConfig(path='$.text', comparison='regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: register_header: required file missing: shortfall_attribution.csv
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+__________________ test_deliverable[register_table_trap_ch04] __________________
+
+definition = VerifierDefinition(name='register_table_trap_ch04', metadata=VerifierMetadata(how_justification="Parses shortfall_attr...ams': 'number'}}, deterministic=DeterministicConfig(path='$', comparison='table_equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: register_table_trap_ch04: required file missing: shortfall_attribution.csv
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+_______________________ test_deliverable[register_table] _______________________
+
+definition = VerifierDefinition(name='register_table', metadata=VerifierMetadata(how_justification="Parses shortfall_attribution.cs...ams': 'number'}}, deterministic=DeterministicConfig(path='$', comparison='table_equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: register_table: required file missing: shortfall_attribution.csv
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+________________________ test_deliverable[memo_exists] _________________________
+
+definition = VerifierDefinition(name='memo_exists', metadata=VerifierMetadata(how_justification='Checks campaign_review.md is prese... expected=True, deterministic=DeterministicConfig(path='$.is_file', comparison='equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: memo_exists: assertion failed
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+______________________ test_deliverable[memo_prose_floor] ______________________
+
+definition = VerifierDefinition(name='memo_prose_floor', metadata=VerifierMetadata(how_justification='Opens campaign_review.md with...a-z]+){60,}', deterministic=DeterministicConfig(path='$.text', comparison='regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: memo_prose_floor: required file missing: campaign_review.md
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+__________________ test_deliverable[memo_single_part_channel] __________________
+
+definition = VerifierDefinition(name='memo_single_part_channel', metadata=VerifierMetadata(how_justification='Opens campaign_review...}?\\bCH-04)', deterministic=DeterministicConfig(path='$.text', comparison='regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: memo_single_part_channel: required file missing: campaign_review.md
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+___________________ test_deliverable[memo_conversion_effect] ___________________
+
+definition = VerifierDefinition(name='memo_conversion_effect', metadata=VerifierMetadata(how_justification='Opens campaign_review.m...]?t\\w*\\b)', deterministic=DeterministicConfig(path='$.text', comparison='regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: memo_conversion_effect: required file missing: campaign_review.md
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+_____________ test_deliverable[memo_conversion_effect_exactly_one] _____________
+
+definition = VerifierDefinition(name='memo_conversion_effect_exactly_one', metadata=VerifierMetadata(how_justification='Opens campa...\w*\\b)', deterministic=DeterministicConfig(path='$.text', comparison='not_regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: memo_conversion_effect_exactly_one: required file missing: campaign_review.md
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+__________________ test_deliverable[memo_counted_placements] ___________________
+
+definition = VerifierDefinition(name='memo_counted_placements', metadata=VerifierMetadata(how_justification='Opens campaign_review....]?s\\w*\\b)', deterministic=DeterministicConfig(path='$.text', comparison='regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: memo_counted_placements: required file missing: campaign_review.md
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+____________ test_deliverable[memo_counted_placements_exactly_one] _____________
+
+definition = VerifierDefinition(name='memo_counted_placements_exactly_one', metadata=VerifierMetadata(how_justification='Opens camp...\w*\\b)', deterministic=DeterministicConfig(path='$.text', comparison='not_regex_match', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: memo_counted_placements_exactly_one: required file missing: campaign_review.md
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+______________________ test_deliverable[results_figures] _______________________
+
+definition = VerifierDefinition(name='results_figures', metadata=VerifierMetadata(how_justification='Reads results.json with json.r...'closed': True}, deterministic=DeterministicConfig(path='$', comparison='object_equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: results_figures: required file missing: results.json
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+_______________________ test_deliverable[results_exists] _______________________
+
+definition = VerifierDefinition(name='results_exists', metadata=VerifierMetadata(how_justification='Checks results.json is present ... expected=True, deterministic=DeterministicConfig(path='$.is_file', comparison='equals', tolerance=None), rubric=None))
+
+    @pytest.mark.parametrize(
+        "definition",
+        SPEC.verifiers,
+        ids=[definition.name for definition in SPEC.verifiers],
+    )
+    def test_deliverable(definition):
+        outcome = verify_definition(
+            definition,
+            REGISTRY,
+            WEIGHTS[definition.name],
+            config=SPEC.config,
+            completion_fn=None,
+        )["result"]
+        detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+>       assert outcome["success"], f"{definition.name}: {detail}"
+E       AssertionError: results_exists: assertion failed
+E       assert False
+
+/tests/test_outputs.py:144: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] ../tests/test_outputs.py:153: campaign_review.md not present in this workspace
+SKIPPED [1] ../tests/test_outputs.py:153: results.json not present in this workspace
+SKIPPED [1] ../tests/test_outputs.py:153: shortfall_attribution.csv not present in this workspace
+SKIPPED [5] ../tests/test_outputs.py:168: no results.json in this workspace
+SKIPPED [1] ../tests/test_outputs.py:197: no results.json in this workspace
+FAILED ../tests/test_outputs.py::test_deliverable[register_exists] - Assertio...
+FAILED ../tests/test_outputs.py::test_deliverable[register_header] - Assertio...
+FAILED ../tests/test_outputs.py::test_deliverable[register_table_trap_ch04]
+FAILED ../tests/test_outputs.py::test_deliverable[register_table] - Assertion...
+FAILED ../tests/test_outputs.py::test_deliverable[memo_exists] - AssertionErr...
+FAILED ../tests/test_outputs.py::test_deliverable[memo_prose_floor] - Asserti...
+FAILED ../tests/test_outputs.py::test_deliverable[memo_single_part_channel]
+FAILED ../tests/test_outputs.py::test_deliverable[memo_conversion_effect] - A...
+FAILED ../tests/test_outputs.py::test_deliverable[memo_conversion_effect_exactly_one]
+FAILED ../tests/test_outputs.py::test_deliverable[memo_counted_placements] - ...
+FAILED ../tests/test_outputs.py::test_deliverable[memo_counted_placements_exactly_one]
+FAILED ../tests/test_outputs.py::test_deliverable[results_figures] - Assertio...
+FAILED ../tests/test_outputs.py::test_deliverable[results_exists] - Assertion...
+======================== 13 failed, 9 skipped in 1.02s =========================
+{
+  "reward": 0.0,
+  "core_failures": [
+    "register_exists",
+    "register_header",
+    "register_table_trap_ch04",
+    "register_table",
+    "memo_exists",
+    "memo_prose_floor",
+    "memo_single_part_channel",
+    "results_figures",
+    "results_exists"
+  ],
+  "passed": 0,
+  "total": 13,
+  "checks": [
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: shortfall_attribution.csv"
+    },
+    {
+      "name": "register_table_trap_ch04",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: shortfall_attribution.csv"
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: shortfall_attribution.csv"
+    },
+    {
+      "name": "memo_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "assertion failed"
+    },
+    {
+      "name": "memo_prose_floor",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_single_part_channel",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_conversion_effect",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_conversion_effect_exactly_one",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_counted_placements",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "memo_counted_placements_exactly_one",
+      "tag": "incidental",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: campaign_review.md"
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230769,
+      "detail": "required file missing: results.json"
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": false,
+      "weight": 0.0769230772,
+      "detail": "assertion failed"
+    }
+  ]
+}

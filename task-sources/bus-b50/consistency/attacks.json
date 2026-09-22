@@ -1,0 +1,36 @@
+{
+ "revision_key": "0a8fdf1be5f7a8d9aa0ec955e8e61ad35b18590342f8c5b1e4591050a9646691",
+ "contract": "each recorded reward-hack shape, built from this task's own gold, must be CAUGHT by the real engine",
+ "task": "task_bus_b50_b10_streaming_target_variance_attribution",
+ "attacks": {
+  "label_soup": {
+   "caught": true,
+   "failed_checks": [
+    "register_table",
+    "register_table_trap_ch04"
+   ]
+  },
+  "hedging": {
+   "caught": true,
+   "failed_checks": [
+    "register_table"
+   ]
+  },
+  "duplicate_rows": {
+   "caught": true,
+   "failed_checks": [
+    "register_table",
+    "register_table_trap_ch04"
+   ]
+  },
+  "cross_product": {
+   "caught": true,
+   "failed_checks": [
+    "register_table",
+    "register_table_trap_ch04"
+   ]
+  }
+ },
+ "survived": [],
+ "not_applicable_attacks": {}
+}
