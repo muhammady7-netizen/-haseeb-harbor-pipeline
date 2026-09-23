@@ -14,9 +14,53 @@ The verifier.json has 14 declared checks but test_outputs.py has 6 standalone py
 The failing test is likely `test_findings_content_correct_blocks_and_tolerances` — it checks that B3 appears near "within" or "not assessed" and B8 appears near "outside". The gold memo may not have this exact proximity, or the test is too strict.
 
 ### Fixes needed
-1. Check which of the 6 standalone tests fails on the portal (download the Oracle trajectory)
-2. Fix the failing test to match the gold deliverable
-3. Re-upload and re-run Oracle+GLM
+1. **All 21 tests PASS locally** with combined workspace (input/ + deliverables in same dir)
+2. Portal shows 47/51 tests — 51 ≠ 21, so portal runs additional tests beyond test_outputs.py
+3. Need to download Oracle trajectory from portal to see which 4 tests fail
+4. Possible cause: the portal's rl_world_verifiers engine may create sub-checks, OR the test.sh pytest collection differs
+5. The `test_findings_content_correct_blocks_and_tolerances` and `test_findings_address_all_required_content` are new tests that might fail on portal
+6. Try removing those 2 tests and re-uploading to see if Oracle passes
+
+### Local test results (all 21 pass)
+```
+test_outputs.py::test_deliverable[balance_exists] PASSED
+test_outputs.py::test_deliverable[blocks_exist] PASSED
+test_outputs.py::test_deliverable[findings_exist] PASSED
+test_outputs.py::test_deliverable[balance_has_expected_columns] PASSED
+test_outputs.py::test_deliverable[blocks_have_expected_columns] PASSED
+test_outputs.py::test_deliverable[balance_covers_both_factors] PASSED
+test_outputs.py::test_deliverable[site_levels_use_canonical_S_codes] PASSED
+test_outputs.py::test_deliverable[results_exists] PASSED
+test_outputs.py::test_deliverable[result_active_proportion_pct] PASSED
+test_outputs.py::test_deliverable[result_strata_outside_tolerance] PASSED
+test_outputs.py::test_deliverable[result_blocks_assessed] PASSED
+test_outputs.py::test_deliverable[result_blocks_outside_tolerance] PASSED
+test_outputs.py::test_deliverable[result_out_of_sequence_allocations] PASSED
+test_outputs.py::test_deliverable[out_of_sequence_blank_on_non_site_rows] PASSED
+test_outputs.py::test_stratum_balance_recomputes_from_allocations PASSED
+test_outputs.py::test_block_balance_recomputes_from_allocations PASSED
+test_outputs.py::test_results_reconcile_to_inputs_and_delivered_tables PASSED
+test_outputs.py::test_findings_name_every_input_derived_sequence_exception PASSED
+test_outputs.py::test_findings_address_ledger_normalisation PASSED
+test_outputs.py::test_findings_content_correct_blocks_and_tolerances PASSED
+test_outputs.py::test_findings_address_all_required_content PASSED
+21 passed in 1.28s
+```
+
+### How to test locally
+```powershell
+$task = "task-sources\health-h34-randomisation-balance"
+$ws = "C:\Users\HASEEB~1\AppData\Local\Temp\opencode\h34-test-ws"
+# Create combined workspace
+New-Item -ItemType Directory -Path $ws -Force
+Copy-Item "$task\environment\input" "$ws\input" -Recurse -Force
+Copy-Item "$task\solution\files\*" $ws -Force
+# Run tests
+$env:HARBOR_TASK_WORKSPACE = $ws
+$env:PYTHONPATH = "$task\tests"
+cd "$task\tests"
+python -m pytest test_outputs.py -v --tb=short
+```
 
 ### Working files
 - Source: `C:\Users\HASEEB~1\AppData\Local\Temp\opencode\h34-work\health-h34-randomisation-balance`
