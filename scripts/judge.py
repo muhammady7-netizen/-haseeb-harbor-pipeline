@@ -761,6 +761,129 @@ def run_d1_d5_linter(task_dir, findings):
 
 
 # --------------------------------------------------------------------------
+# extra check 8: review.csv structural validation (bus-b50 findings 45-47)
+# --------------------------------------------------------------------------
+
+def check_review_csv_structure(task_dir, findings):
+    rc = task_dir / "review.csv"
+    if not rc.is_file():
+        return
+    try:
+        text = rc.read_text(encoding="utf-8-sig")
+    except OSError:
+        return
+    try:
+        reader = csv.reader(io.StringIO(text))
+        rows = list(reader)
+    except csv.Error:
+        return
+    if not rows:
+        return
+    header = rows[0]
+    expected_cols = 5
+    if len(header) != expected_cols:
+        findings.add("P1", "judge", "review.csv header has wrong number of columns",
+                     label="packaging", observed_fact=f"header has {len(header)} columns, expected {expected_cols}",
+                     evidence=["review.csv"],
+                     recommended_fix="Use exactly 5 columns: review_check,status,review_notes,change_made,what_to_record",
+                     gate="review_csv", fix_path="review.csv")
+    for i, row in enumerate(rows[1:], 1):
+        if len(row) != expected_cols:
+            findings.add("P1", "judge", f"review.csv row {i} has {len(row)} columns, not {expected_cols}",
+                         label="packaging", observed_fact=f"row {i}: {len(row)} columns",
+                         evidence=["review.csv"],
+                         recommended_fix=f"Fix row {i} to have exactly {expected_cols} columns",
+                         gate="review_csv", fix_path="review.csv")
+            continue
+        status = row[1].strip() if len(row) > 1 else ""
+        change_made = row[3].strip() if len(row) > 3 else ""
+        what_to_record = row[4].strip() if len(row) > 4 else ""
+        if status == "FIXED_AND_VERIFIED" and not change_made:
+            findings.add("P1", "judge", f"review.csv row {i}: FIXED_AND_VERIFIED but change_made is empty",
+                         label="packaging", observed_fact=f"row {i}: status={status}, change_made empty",
+                         evidence=["review.csv"],
+                         recommended_fix="Fill the change_made field for every FIXED_AND_VERIFIED row",
+                         gate="review_csv", fix_path="review.csv")
+        if not what_to_record:
+            findings.add("P2", "judge", f"review.csv row {i}: what_to_record is empty",
+                         label="packaging", observed_fact=f"row {i}: what_to_record empty",
+                         evidence=["review.csv"],
+                         recommended_fix="Fill the what_to_record field for every row",
+                         gate="review_csv", fix_path="review.csv")
+
+
+# --------------------------------------------------------------------------
+# extra check 9: fractional target rule contradiction (bus-b50 finding 48)
+# --------------------------------------------------------------------------
+
+def check_fractional_target_contradiction(task_dir, findings):
+    note = task_dir / "environment" / "input" / "attribution_note.md"
+    plan = task_dir / "environment" / "input" / "channel_plan.csv"
+    if not note.is_file() or not plan.is_file():
+        return
+    note_text = read_text(note)
+    if "whole number" not in note_text.lower():
+        return
+    if "not rounded" not in note_text.lower() and "not prorated" not in note_text.lower():
+        return
+    try:
+        rows = list(csv.reader(plan.open(encoding="utf-8-sig")))
+    except (OSError, csv.Error):
+        return
+    if len(rows) < 2:
+        return
+    for i, row in enumerate(rows[1:], 1):
+        if len(row) < 5:
+            continue
+        try:
+            pp, pr, ps = int(row[2]), int(row[3]), int(row[4])
+        except (ValueError, IndexError):
+            continue
+        target = pp * pr * ps / 1000
+        if target != int(target):
+            findings.add("P1", "judge", f"channel {row[0]} has fractional target ({target}) but note says all figures are whole AND target is not rounded — self-contradictory",
+                         label="grading_gap", observed_fact=f"target={target} (not whole) for {row[0]}",
+                         evidence=["environment/input/attribution_note.md", "environment/input/channel_plan.csv"],
+                         recommended_fix="Add explicit rounding rule for shortfall/target, or remove channels with fractional targets",
+                         gate="deterministic", fix_path="environment/input/attribution_note.md")
+
+
+# --------------------------------------------------------------------------
+# extra check 10: empty offer_type rule gap (bus-b50 finding 49)
+# --------------------------------------------------------------------------
+
+def check_empty_offer_type_gap(task_dir, findings):
+    plog = task_dir / "environment" / "input" / "placement_log.csv"
+    note = task_dir / "environment" / "input" / "attribution_note.md"
+    if not plog.is_file() or not note.is_file():
+        return
+    try:
+        rows = list(csv.reader(plog.open(encoding="utf-8-sig")))
+    except (OSError, csv.Error):
+        return
+    if len(rows) < 2:
+        return
+    has_empty_offer = False
+    for row in rows[1:]:
+        if len(row) >= 6:
+            offer = row[5].strip()
+            status = row[4].strip().lower() if len(row) > 4 else ""
+            if offer == "" and status in ("ran", "completed"):
+                has_empty_offer = True
+                break
+    if not has_empty_offer:
+        return
+    note_text = read_text(note)
+    if "empty" in note_text.lower() and "offer_type" in note_text.lower():
+        return
+    findings.add("P2", "judge", "placement_log has ran placements with empty offer_type but attribution_note does not mention how to handle empty offer_type",
+                 label="grading_gap", observed_fact="at least one ran placement has empty offer_type",
+                 evidence=["environment/input/placement_log.csv", "environment/input/attribution_note.md"],
+                 recommended_fix="Add a rule stating whether empty offer_type placements are counted or excluded",
+                 gate="deterministic", fix_path="environment/input/attribution_note.md")
+
+
+# --------------------------------------------------------------------------
 # run the Harbor-Shannon QC engine
 # --------------------------------------------------------------------------
 
@@ -1067,6 +1190,9 @@ def main(argv=None):
         check_tests_lock_dockerfile(task_dir, extra)
         check_host_paths(task_dir, extra)
         run_d1_d5_linter(task_dir, extra)
+        check_review_csv_structure(task_dir, extra)
+        check_fractional_target_contradiction(task_dir, extra)
+        check_empty_offer_type_gap(task_dir, extra)
         log(f"extra checks: {len(extra.items)} findings")
 
         dedup_extra(extra.items, engine_findings)
