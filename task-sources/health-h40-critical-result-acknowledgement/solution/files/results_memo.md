@@ -1,6 +1,6 @@
-# CR-7 critical results audit - 286 results
+# CR-7 critical results audit - 409 results
 
-109 results are clean.
+145 results are clean.
 
 ## Late notifications
 
@@ -72,6 +72,33 @@
 - **R-280** (tier 1) - notified 40 min after clock start 2026-06-29T22:30 (limit 30 min).
 - **R-281** (tier 1) - notified 31 min after clock start 2026-06-30T07:00 (limit 30 min).
 - **R-284** (tier 2) - notified 250 min after clock start 2026-06-28T08:00 (limit 240 min).
+- **R-331** (tier 1) - notified 40 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-332** (tier 1) - notified 40 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-335** (tier 1) - notified 35 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-336** (tier 1) - notified 35 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-340** (tier 2) - notified 250 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-341** (tier 2) - notified 250 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-344** (tier 2) - notified 245 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-345** (tier 2) - notified 245 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-349** (tier 1) - notified 31 min after clock start 2026-06-26T23:59 (limit 30 min).
+- **R-350** (tier 1) - notified 45 min after clock start 2026-06-26T23:59 (limit 30 min).
+- **R-352** (tier 1) - notified 31 min after clock start 2026-06-26T23:59 (limit 30 min).
+- **R-355** (tier 2) - notified 241 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-357** (tier 2) - notified 241 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-358** (tier 2) - notified 300 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-361** (tier 2) - notified 241 min after clock start 2026-06-27T08:00 (limit 240 min).
+- **R-364** (tier 2) - notified 241 min after clock start 2026-06-27T08:00 (limit 240 min).
+- **R-367** (tier 2) - notified 241 min after clock start 2026-06-27T08:00 (limit 240 min).
+- **R-370** (tier 2) - notified 241 min after clock start 2026-06-28T08:00 (limit 240 min).
+- **R-373** (tier 2) - notified 241 min after clock start 2026-06-29T08:00 (limit 240 min).
+- **R-376** (tier 2) - notified 241 min after clock start 2026-06-26T17:59 (limit 240 min).
+- **R-391** (tier 1) - notified 35 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-392** (tier 1) - notified 35 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-395** (tier 2) - notified 245 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-396** (tier 2) - notified 245 min after clock start 2026-06-26T08:00 (limit 240 min).
+- **R-397** (tier 1) - notified 45 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-398** (tier 1) - notified 45 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-399** (tier 1) - notified 45 min after clock start 2026-06-26T10:00 (limit 30 min).
 
 ## Late or absent acknowledgements
 
@@ -222,6 +249,91 @@
 - **R-283** - acknowledged at never min after clock start 2026-06-27T08:00.
 - **R-284** - acknowledged at never min after clock start 2026-06-28T08:00.
 - **R-286** - acknowledged at never min after clock start 2026-06-30T08:00.
+- **R-287** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-288** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-289** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-290** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-291** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-292** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-293** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-294** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-295** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-296** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-297** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-298** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-299** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-300** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-301** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-302** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-303** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-304** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-305** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-306** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-307** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-308** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-309** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-310** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-311** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-312** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-313** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-314** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-315** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-316** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-317** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-318** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-319** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-320** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-321** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-322** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-323** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-324** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-325** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-326** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-327** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-328** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-329** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-330** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-331** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-332** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-333** - acknowledged at 90 min after clock start 2026-06-26T10:00.
+- **R-334** - acknowledged at 90 min after clock start 2026-06-26T10:00.
+- **R-335** - acknowledged at 90 min after clock start 2026-06-26T10:00.
+- **R-336** - acknowledged at 90 min after clock start 2026-06-26T10:00.
+- **R-338** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-339** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-340** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-341** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-342** - acknowledged at 510 min after clock start 2026-06-26T08:00.
+- **R-343** - acknowledged at 510 min after clock start 2026-06-26T08:00.
+- **R-344** - acknowledged at 510 min after clock start 2026-06-26T08:00.
+- **R-345** - acknowledged at 510 min after clock start 2026-06-26T08:00.
+- **R-349** - acknowledged at 61 min after clock start 2026-06-26T23:59.
+- **R-350** - acknowledged at 90 min after clock start 2026-06-26T23:59.
+- **R-351** - acknowledged at 61 min after clock start 2026-06-26T23:59.
+- **R-355** - acknowledged at 481 min after clock start 2026-06-26T08:00.
+- **R-356** - acknowledged at 481 min after clock start 2026-06-26T08:00.
+- **R-358** - acknowledged at 500 min after clock start 2026-06-26T08:00.
+- **R-361** - acknowledged at 481 min after clock start 2026-06-27T08:00.
+- **R-364** - acknowledged at 481 min after clock start 2026-06-27T08:00.
+- **R-367** - acknowledged at 481 min after clock start 2026-06-27T08:00.
+- **R-370** - acknowledged at 481 min after clock start 2026-06-28T08:00.
+- **R-373** - acknowledged at 481 min after clock start 2026-06-29T08:00.
+- **R-376** - acknowledged at 481 min after clock start 2026-06-26T17:59.
+- **R-378** - acknowledged at 61 min after clock start 2026-06-26T10:00.
+- **R-381** - acknowledged at 61 min after clock start 2026-06-26T10:00.
+- **R-384** - acknowledged at 61 min after clock start 2026-06-26T10:00.
+- **R-387** - acknowledged at 61 min after clock start 2026-06-26T10:00.
+- **R-389** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-390** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-391** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-392** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-393** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-394** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-395** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-396** - acknowledged at never min after clock start 2026-06-26T08:00.
+- **R-397** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-398** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-399** - acknowledged at never min after clock start 2026-06-26T10:00.
 
 ## Unapproved acknowledger
 
@@ -293,6 +405,51 @@
 - **R-281** - acknowledged by ward_clerk, not on the approved list.
 - **R-283** - acknowledged by phlebotomist, not on the approved list.
 - **R-286** - acknowledged by ward_clerk, not on the approved list.
+- **R-287** - acknowledged by ward_clerk, not on the approved list.
+- **R-288** - acknowledged by ward_clerk, not on the approved list.
+- **R-289** - acknowledged by ward_clerk, not on the approved list.
+- **R-290** - acknowledged by ward_clerk, not on the approved list.
+- **R-291** - acknowledged by ward_clerk, not on the approved list.
+- **R-292** - acknowledged by ward_clerk, not on the approved list.
+- **R-293** - acknowledged by nurse_hca, not on the approved list.
+- **R-294** - acknowledged by nurse_hca, not on the approved list.
+- **R-295** - acknowledged by nurse_hca, not on the approved list.
+- **R-296** - acknowledged by nurse_hca, not on the approved list.
+- **R-297** - acknowledged by nurse_hca, not on the approved list.
+- **R-298** - acknowledged by nurse_hca, not on the approved list.
+- **R-299** - acknowledged by phlebotomist, not on the approved list.
+- **R-300** - acknowledged by phlebotomist, not on the approved list.
+- **R-301** - acknowledged by phlebotomist, not on the approved list.
+- **R-302** - acknowledged by phlebotomist, not on the approved list.
+- **R-303** - acknowledged by phlebotomist, not on the approved list.
+- **R-304** - acknowledged by phlebotomist, not on the approved list.
+- **R-305** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-306** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-307** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-308** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-309** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-310** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-311** - acknowledged by pharmacist, not on the approved list.
+- **R-312** - acknowledged by pharmacist, not on the approved list.
+- **R-313** - acknowledged by pharmacist, not on the approved list.
+- **R-314** - acknowledged by pharmacist, not on the approved list.
+- **R-315** - acknowledged by pharmacist, not on the approved list.
+- **R-316** - acknowledged by pharmacist, not on the approved list.
+- **R-317** - acknowledged by student_nurse, not on the approved list.
+- **R-318** - acknowledged by student_nurse, not on the approved list.
+- **R-319** - acknowledged by student_nurse, not on the approved list.
+- **R-320** - acknowledged by student_nurse, not on the approved list.
+- **R-321** - acknowledged by student_nurse, not on the approved list.
+- **R-322** - acknowledged by student_nurse, not on the approved list.
+- **R-323** - acknowledged by lab_technician, not on the approved list.
+- **R-324** - acknowledged by lab_technician, not on the approved list.
+- **R-325** - acknowledged by lab_technician, not on the approved list.
+- **R-326** - acknowledged by lab_technician, not on the approved list.
+- **R-327** - acknowledged by lab_technician, not on the approved list.
+- **R-328** - acknowledged by lab_technician, not on the approved list.
+- **R-397** - acknowledged by ward_clerk, not on the approved list.
+- **R-398** - acknowledged by nurse_hca, not on the approved list.
+- **R-399** - acknowledged by phlebotomist, not on the approved list.
 
 ## Missing escalation
 
@@ -369,6 +526,51 @@
 - **R-279** - missed acknowledgement window, no escalation.
 - **R-281** - missed acknowledgement window, no escalation.
 - **R-286** - missed acknowledgement window, no escalation.
+- **R-287** - missed acknowledgement window, no escalation.
+- **R-288** - missed acknowledgement window, no escalation.
+- **R-290** - missed acknowledgement window, no escalation.
+- **R-291** - missed acknowledgement window, no escalation.
+- **R-293** - missed acknowledgement window, no escalation.
+- **R-294** - missed acknowledgement window, no escalation.
+- **R-296** - missed acknowledgement window, no escalation.
+- **R-297** - missed acknowledgement window, no escalation.
+- **R-299** - missed acknowledgement window, no escalation.
+- **R-300** - missed acknowledgement window, no escalation.
+- **R-302** - missed acknowledgement window, no escalation.
+- **R-303** - missed acknowledgement window, no escalation.
+- **R-305** - missed acknowledgement window, no escalation.
+- **R-306** - missed acknowledgement window, no escalation.
+- **R-308** - missed acknowledgement window, no escalation.
+- **R-309** - missed acknowledgement window, no escalation.
+- **R-311** - missed acknowledgement window, no escalation.
+- **R-312** - missed acknowledgement window, no escalation.
+- **R-314** - missed acknowledgement window, no escalation.
+- **R-315** - missed acknowledgement window, no escalation.
+- **R-317** - missed acknowledgement window, no escalation.
+- **R-318** - missed acknowledgement window, no escalation.
+- **R-320** - missed acknowledgement window, no escalation.
+- **R-321** - missed acknowledgement window, no escalation.
+- **R-323** - missed acknowledgement window, no escalation.
+- **R-324** - missed acknowledgement window, no escalation.
+- **R-326** - missed acknowledgement window, no escalation.
+- **R-327** - missed acknowledgement window, no escalation.
+- **R-330** - missed acknowledgement window, no escalation.
+- **R-332** - missed acknowledgement window, no escalation.
+- **R-334** - missed acknowledgement window, no escalation.
+- **R-336** - missed acknowledgement window, no escalation.
+- **R-339** - missed acknowledgement window, no escalation.
+- **R-341** - missed acknowledgement window, no escalation.
+- **R-343** - missed acknowledgement window, no escalation.
+- **R-345** - missed acknowledgement window, no escalation.
+- **R-350** - missed acknowledgement window, no escalation.
+- **R-356** - missed acknowledgement window, no escalation.
+- **R-389** - missed acknowledgement window, no escalation.
+- **R-391** - missed acknowledgement window, no escalation.
+- **R-393** - missed acknowledgement window, no escalation.
+- **R-395** - missed acknowledgement window, no escalation.
+- **R-397** - missed acknowledgement window, no escalation.
+- **R-398** - missed acknowledgement window, no escalation.
+- **R-399** - missed acknowledgement window, no escalation.
 
 ## What is not a finding
 
