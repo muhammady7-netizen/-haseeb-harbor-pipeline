@@ -494,7 +494,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 10,
+        "expected": 68,
         "deterministic": {
           "path": "$.notification_breaches",
           "comparison": "equals"
@@ -519,7 +519,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 21,
+        "expected": 147,
         "deterministic": {
           "path": "$.acknowledgement_breaches",
           "comparison": "equals"
@@ -544,7 +544,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 5,
+        "expected": 68,
         "deterministic": {
           "path": "$.unapproved_acknowledgement_results",
           "comparison": "equals"
@@ -569,7 +569,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 11,
+        "expected": 73,
         "deterministic": {
           "path": "$.missing_escalation_results",
           "comparison": "equals"
@@ -594,7 +594,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 29,
+        "expected": 109,
         "deterministic": {
           "path": "$.results_compliant",
           "comparison": "equals"

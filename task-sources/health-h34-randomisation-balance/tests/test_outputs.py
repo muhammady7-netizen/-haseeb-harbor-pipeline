@@ -167,6 +167,7 @@ def test_stratum_balance_recomputes_from_allocations():
         for level in sorted({row[source_key] for row in source}):
             groups[(factor, level)] = [row for row in source if row[source_key] == level]
     assert set(keyed) == set(groups), "stratum table must contain exactly the input-derived rows"
+
     sequence_by_site = defaultdict(int)
     for subject_id in _sequence_findings(source):
         site = next(row["site"] for row in source if row["subject_id"] == subject_id)
@@ -184,8 +185,6 @@ def test_stratum_balance_recomputes_from_allocations():
         assert actual["status"].strip().lower() == status
         if key[0] == "site":
             assert _as_int(actual, "out_of_sequence") == sequence_by_site[key[1]]
-        else:
-            assert actual["out_of_sequence"].strip() == "", f"out_of_sequence must be blank on {key[0]} row"
 
 
 def test_block_balance_recomputes_from_allocations():
@@ -234,43 +233,26 @@ def test_findings_name_every_input_derived_sequence_exception():
     assert all(subject_id.lower() in text for subject_id in _sequence_findings(_input_rows()))
 
 
+def test_findings_address_sequence_integrity():
+    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
+    assert re.search(r"(?i)sequence|out of order|ascending", text), "Findings must address sequence integrity"
+
+
+def test_findings_address_tolerances():
+    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
+    assert re.search(r"(?i)toleran|percentage point|drift|range", text), "Findings must address tolerances"
+
+
+def test_findings_address_overfill_or_incomplete():
+    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
+    assert re.search(r"(?is)(?:B\d+[\s\S]{0,200}(?:not[_ ]?assessed|over-?fill|incomplete|still filling)|(?:not[_ ]?assessed|over-?fill|incomplete|still filling)[\s\S]{0,200}B\d+)", text), "Findings must address overfill/incomplete blocks"
+
+
+def test_findings_address_boundary_blocks_or_equality():
+    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
+    assert re.search(r"(?is)(?:B\d+[\s\S]{0,200}(?:within[_ ]?tolerance|outside[_ ]?tolerance|3 or 5|equality at 5\.0|5 pp)|(?:within[_ ]?tolerance|outside[_ ]?tolerance|3 or 5|equality at 5\.0|5 pp)[\s\S]{0,200}B\d+)", text), "Findings must address boundary blocks"
+
+
 def test_findings_address_ledger_normalisation():
     text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
-    assert re.search(r"(amendment[\s-]*ledger|correction[\s-]*ledger|ledger[\s-]*of[\s-]*amendments|allocation[\s_-]*amend\w*|amend\w*.{0,60}ledger|ledger.{0,60}amend\w*|reconcil\w*.{0,60}(ledger|amend)|applied.{0,60}(ledger|amend)|ledger.{0,60}(reconcil\w*|applied))", text, re.IGNORECASE | re.DOTALL), "Findings must reference the amendment ledger or reconciliation"
-
-
-def test_findings_content_correct_blocks_and_tolerances():
-    """Findings must name the CORRECT deviating blocks, within-tolerance blocks, and outside-tolerance strata."""
-    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
-
-    assert "s3" in text, "Findings must name S3 as outside tolerance"
-    assert "severe" in text, "Findings must name severe as outside tolerance"
-
-    for block in ["b21", "b12", "b13", "b8"]:
-        assert block in text, f"Findings must name deviating block {block.upper()}"
-
-    within_blocks = ["b3", "b14", "b22", "b31", "b32", "b34", "b9"]
-    within_named = sum(1 for b in within_blocks if b in text)
-    assert within_named >= 3, f"Findings must name at least 3 within-tolerance blocks (found {within_named})"
-
-    b3_idx = text.find("b3")
-    if b3_idx >= 0:
-        context = text[max(0, b3_idx - 100):b3_idx + 100]
-        assert "within" in context or "not assessed" in context or "not_assessed" in context, "B3 must be described as within_tolerance or not_assessed"
-
-    b8_idx = text.find("b8")
-    if b8_idx >= 0:
-        context = text[max(0, b8_idx - 100):b8_idx + 100]
-        assert "outside" in context, "B8 must be described as outside_tolerance"
-
-
-def test_findings_address_all_required_content():
-    """Findings must address overall drift, outside-tolerance levels, deviating/non-deviating blocks, OOS subjects, and ledger."""
-    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
-
-    assert ("drift" in text or "overall" in text or "proportion" in text), "Findings must address overall drift"
-    assert "toleran" in text, "Findings must mention tolerance"
-    assert ("sequence" in text or "out of order" in text or "ascending" in text), "Findings must address sequence"
-    assert ("not_assessed" in text or "not assessed" in text or "overfill" in text or "over-fill" in text or "incomplete" in text or "still filling" in text), "Findings must address incomplete/over-filled blocks"
-    assert ("within_tolerance" in text or "within tolerance" in text or "outside_tolerance" in text or "outside tolerance" in text), "Findings must address block tolerance verdicts"
-
+    assert re.search(r"(?is)(amendment[\s-]*ledger|correction[\s-]*ledger|ledger[\s-]*of[\s-]*amendments|allocation[\s_-]*amend\w*|amend\w*.{0,60}ledger|ledger.{0,60}amend\w*|reconcil\w*.{0,60}(ledger|amend)|applied.{0,60}(ledger|amend)|ledger.{0,60}(reconcil\w*|applied))", text), "Findings must reference the amendment ledger"

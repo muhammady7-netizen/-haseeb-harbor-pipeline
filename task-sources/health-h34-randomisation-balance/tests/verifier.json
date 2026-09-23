@@ -152,6 +152,106 @@
       }
     },
     {
+      "name": "overall_within_tolerance",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "The overall allocation proportion is within its tolerance after ledger reconcile."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?overall\\x22?\\s*,[^\\n]*\\x22?(within|inside|ok|pass|compliant|no[_ ]?finding)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "overall_active_pct_exact",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Overall row carries the half-up active proportion and reconciled subject counts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?overall\\x22?\\s*,\\s*\\x22?all\\x22?\\s*,\\s*\\x22?202\\x22?\\s*,\\s*\\x22?130\\x22?\\s*,\\s*\\x22?72\\x22?\\s*,\\s*64\\.4(?:0+|%)?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "balanced_site_s1_within",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S1 is within the stratum tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,[^\\n]*\\x22?(within|inside|ok|pass|compliant|no[_ ]?finding)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "balanced_site_s2_not_flagged",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S2 is inside the wider stratum tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S2\\x22?\\s*,[^\\n]*\\x22?(within|inside|ok|pass|compliant|no[_ ]?finding)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
       "name": "site_levels_use_canonical_S_codes",
       "metadata": {
         "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
@@ -170,6 +270,481 @@
       "assertion": {
         "type": "deterministic",
         "expected": "(?mi)^site\\s*,\\s*[\"\\x22]?S[123]\\x22?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "site_s1_subject_count",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S1 reconciled subject/active counts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,\\s*\\x22?69\\x22?\\s*,\\s*\\x22?44\\x22?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "site_s2_subject_count",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S2 reconciled subject/active counts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S2\\x22?\\s*,\\s*\\x22?73\\x22?\\s*,\\s*\\x22?52\\x22?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "site_s3_subject_count",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S3 reconciled subject/active counts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S3\\x22?\\s*,\\s*\\x22?60\\x22?\\s*,\\s*\\x22?34\\x22?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "imbalanced_severe_flagged",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Severe stratum is outside the tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?severe\\x22?\\s*,[^\\n]*\\x22?(outside|breach|exceed|fail)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "severity_severe_counts",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Severity level severe carries reconciled counts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?severe\\x22?\\s*,\\s*\\x22?103\\x22?\\s*,\\s*\\x22?58\\x22?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "severity_mild_within_tolerance",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Severity level mild is inside tolerance after reclassification."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?mild\\x22?\\s*,[^\\n]*\\x22?(within|inside|ok|pass|compliant|no[_ ]?finding)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "severity_mild_counts",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Severity level mild carries reconciled counts."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?(?:severity|disease_severity)\\x22?\\s*,\\s*\\x22?mild\\x22?\\s*,\\s*\\x22?99\\x22?\\s*,\\s*\\x22?72\\x22?\\s*,",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "sequence_finding_recorded_at_site_s1",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S1 has 16 out-of-sequence allocations."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S1\\x22?\\s*,[^\\n]*,\\s*16(?:\\.0+)?\\s*,\\s*\\x22?(within|inside|ok|pass|compliant|outside|breach)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "sequence_finding_recorded_at_site_s2",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S2 has 15 out-of-sequence allocations."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S2\\x22?\\s*,[^\\n]*,\\s*15(?:\\.0+)?\\s*,\\s*\\x22?(within|inside|ok|pass|compliant|outside|breach)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "sequence_finding_recorded_at_site_s3",
+      "metadata": {
+        "how_justification": "Opens stratum_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Site S3 has 13 out-of-sequence allocations."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^\\x22?site\\x22?\\s*,\\s*\\x22?S3\\x22?\\s*,[^\\n]*,\\s*13(?:\\.0+)?\\s*,\\s*\\x22?(within|inside|ok|pass|compliant|outside|breach)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b1_not_assessed",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Block B1 with 7 subjects is not assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B1\\s*,\\s*\\x22?7\\x22?\\s*,[^\\n]*(not[_ ]?assessed|incomplete|partial|still filling|over[_ -]?fill|excluded|n/?a)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b2_not_assessed",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Block B2 with 7 subjects is not assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B2\\s*,\\s*\\x22?7\\x22?\\s*,[^\\n]*(not[_ ]?assessed|incomplete|partial|still filling|over[_ -]?fill|excluded|n/?a)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b3_within_tolerance",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Complete block B3 within tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B3\\s*,[^\\n]*\\x22?(within|inside|ok|pass|compliant|no[_ ]?finding)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b4_not_assessed",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Block B4 with 7 subjects is not assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B4\\s*,\\s*\\x22?7\\x22?\\s*,[^\\n]*(not[_ ]?assessed|incomplete|partial|still filling|over[_ -]?fill|excluded|n/?a)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b5_not_assessed",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Block B5 with 8 subjects is not assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B5\\s*,\\s*\\x22?8\\x22?\\s*,[^\\n]*(not[_ ]?assessed|incomplete|partial|still filling|over[_ -]?fill|excluded|n/?a)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b6_within_tolerance",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Complete block B6 within tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B6\\s*,[^\\n]*\\x22?(within|inside|ok|pass|compliant|no[_ ]?finding)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b7_not_assessed",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Block B7 with 9 subjects is not assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B7\\s*,\\s*\\x22?9\\x22?\\s*,[^\\n]*(not[_ ]?assessed|incomplete|partial|still filling|over[_ -]?fill|excluded|n/?a)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "deviating_block_b8_flagged",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Complete block B8 outside the permitted range is a deviation."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B8\\s*,[^\\n]*\\x22?(outside|breach|exceed|fail|deviat)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "block_b9_within_tolerance",
+      "metadata": {
+        "how_justification": "Opens block_balance.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "Complete block B9 within tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?mi)^[^\\n,]*,\\s*B9\\s*,[^\\n]*\\x22?(within|inside|ok|pass|compliant|no[_ ]?finding)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -323,31 +898,6 @@
         "deterministic": {
           "path": "$.out_of_sequence_allocations",
           "comparison": "equals"
-        }
-      }
-    },
-    {
-      "name": "out_of_sequence_blank_on_non_site_rows",
-      "metadata": {
-        "how_justification": "Opens stratum_balance.csv and applies regex_match.",
-        "why_justification": "Charter requires out_of_sequence blank on overall and severity rows."
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "csv",
-          "command": "extract_text",
-          "arguments": {
-            "path": "stratum_balance.csv"
-          }
-        }
-      },
-      "assertion": {
-        "type": "deterministic",
-        "expected": "(?mi)^\\x22?(?:overall|severity)\\x22?\\s*,[^\\n]*,,[^\\n]*(?:within_tolerance|outside_tolerance)\\s*$",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
         }
       }
     }
