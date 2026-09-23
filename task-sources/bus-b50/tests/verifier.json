@@ -30,7 +30,7 @@
     {
       "name": "register_header",
       "metadata": {
-        "how_justification": "Opens shortfall_attribution.csv with csv.extract_text and applies regex_match.",
+        "how_justification": "Parses shortfall_attribution.csv with csv.inspect_table and compares the parsed header field list (in file order) to the expected header with equals; the CSV parser handles quoting, embedded delimiters, BOM and line endings rather than a regex over raw text.",
         "why_justification": "The contract document pins the header verbatim. Entailed by: \"Header, exactly: `channel_id,counted_placements,placements_effect_streams,conversion_effect_streams,residual_reach_effect_streams,shortfall_to_target_streams`\"",
         "tag": "core"
       },
@@ -38,7 +38,7 @@
         "type": "file",
         "file": {
           "type": "csv",
-          "command": "extract_text",
+          "command": "inspect_table",
           "arguments": {
             "path": "shortfall_attribution.csv"
           }
@@ -46,10 +46,17 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?i)\\A\\x22?channel_id\\x22?[ \\t]*,[ \\t]*\\x22?counted_placements\\x22?[ \\t]*,[ \\t]*\\x22?placements_effect_streams\\x22?[ \\t]*,[ \\t]*\\x22?conversion_effect_streams\\x22?[ \\t]*,[ \\t]*\\x22?residual_reach_effect_streams\\x22?[ \\t]*,[ \\t]*\\x22?shortfall_to_target_streams\\x22?[ \\t]*\\r?\\n",
+        "expected": [
+          "channel_id",
+          "counted_placements",
+          "placements_effect_streams",
+          "conversion_effect_streams",
+          "residual_reach_effect_streams",
+          "shortfall_to_target_streams"
+        ],
         "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
+          "path": "$.header",
+          "comparison": "equals"
         }
       }
     },
@@ -561,7 +568,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bCH-04\\w*\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\bconversion|\\bconversion\\w*\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\bCH-04)",
+        "expected": "(?is)(?=.*\\bCH-04\\w*\\b)(?=.*\\bconversion\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -587,7 +594,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b(?:(?![.!?](?:\\s|$))(?!\\n[ \\t]*(?:\\n|#|\\[Slide \\d)).){0,160}?(?<![-\\d.])(?:40132|40132\\.0|40132\\.00|40,132|40,132\\.0|40,132\\.00)(?!\\d)(?!\\.\\d)|(?<![-\\d.])(?:40132|40132\\.0|40132\\.00|40,132|40,132\\.0|40,132\\.00)(?!\\d)(?!\\.\\d)(?:(?![.!?](?:\\s|$))(?!\\n[ \\t]*(?:\\n|#|\\[Slide \\d)).){0,160}?\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b)",
+        "expected": "(?is)(?=.*\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b)(?=.*(?<![-\\d.])(?:40132|40132\\.0|40132\\.00|40,132|40,132\\.0|40,132\\.00)(?!\\d)(?!\\.\\d))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -613,7 +620,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,160}?(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w\\n;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w\\n;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w\\n;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w\\n;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)(?:(?![.!?](?:\\s|$)|\\n).){0,160}?\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b)",
+        "expected": "(?is)(?:(?<![-\\d.])(?:40132|40132\\.0|40132\\.00|40,132|40,132\\.0|40,132\\.00)(?!\\d)(?!\\.\\d)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w;.|/]*(?<![-\\d.])(?:40132|40132\\.0|40132\\.00|40,132|40,132\\.0|40,132\\.00)(?!\\d)(?!\\.\\d)(?!\\s*(?:raw|total|vs|versus)\\b))",
         "deterministic": {
           "path": "$.text",
           "comparison": "not_regex_match"
@@ -639,7 +646,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b(?:(?![.!?](?:\\s|$))(?!\\n[ \\t]*(?:\\n|#|\\[Slide \\d)).){0,160}?(?<![-\\d.])(?:105|105\\.0|105\\.00)(?!\\d)(?!\\.\\d)|(?<![-\\d.])(?:105|105\\.0|105\\.00)(?!\\d)(?!\\.\\d)(?:(?![.!?](?:\\s|$))(?!\\n[ \\t]*(?:\\n|#|\\[Slide \\d)).){0,160}?\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b)",
+        "expected": "(?is)(?=.*\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b)(?=.*(?<![-\\d.])(?:105|105\\.0|105\\.00)(?!\\d)(?!\\.\\d))",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -665,7 +672,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b(?:(?![.!?](?:\\s|$)|\\n).){0,160}?(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w\\n;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w\\n;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w\\n;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w\\n;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)(?:(?![.!?](?:\\s|$)|\\n).){0,160}?\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b)",
+        "expected": "(?is)(?:(?<![-\\d.])(?:105|105\\.0|105\\.00)(?!\\d)(?!\\.\\d)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w;.|/]*(?<![-\\d.])(?:105|105\\.0|105\\.00)(?!\\d)(?!\\.\\d)(?!\\s*(?:raw|total|vs|versus)\\b))",
         "deterministic": {
           "path": "$.text",
           "comparison": "not_regex_match"

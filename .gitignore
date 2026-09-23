@@ -39,3 +39,7 @@ Thumbs.db
 
 # Pre-QC scratch work area
 tmp-preqc-work/
+
+# Harbor repair working state (session artifacts, never ships)
+.harbor-repair/
+**/.harbor-repair/
