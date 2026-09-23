@@ -6,6 +6,16 @@
 
 ---
 
+## STRICT WORKFLOW — Read before any task
+
+**`STRICT-WORKFLOW.md` is the authoritative process. Every session follows it. Do not stop working until the task is ACCEPTED in V2.**
+
+The loop: build zip → judge locally (CLI + localhost:3001 web app) → fix blocking findings → push new patterns to GitHub (train local-qc) → re-judge until zero findings → upload to portal (Playwright MCP, already set up) → PreQC → verify review.csv → Oracle+GLM×4 → fix if any blocker → submit → accepted.
+
+Browser automation is already set up with opencode (Playwright MCP). Use it. Do not manually click.
+
+---
+
 ## What's here
 
 ```
