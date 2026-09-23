@@ -1,0 +1,51 @@
+{
+  "job_name": "law-b39-glm-difficulty",
+  "jobs_dir": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/harbor-jobs",
+  "n_concurrent_trials": 1,
+  "n_attempts": 5,
+  "timeout_multiplier": 3,
+  "agent_timeout_multiplier": 3,
+  "agent_setup_timeout_multiplier": 3,
+  "verifier": {
+    "env": {
+      "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+      "OPENAI_BASE_URL": "${OPENAI_BASE_URL}",
+      "JUDGE_MODEL": "openai/glm-5.2"
+    }
+  },
+  "agents": [
+    {
+      "name": "opencode",
+      "model_name": "glmproxy/glm-5.2",
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "OPENAI_BASE_URL": "${OPENAI_BASE_URL}"
+      },
+      "kwargs": {
+        "max_turns": 80,
+        "opencode_config": {
+          "provider": {
+            "glmproxy": {
+              "npm": "@ai-sdk/openai-compatible",
+              "name": "GLM via LiteLLM",
+              "options": {
+                "baseURL": "{env:OPENAI_BASE_URL}",
+                "apiKey": "{env:OPENAI_API_KEY}"
+              },
+              "models": {
+                "glm-5.2": {
+                  "name": "GLM 5.2"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "path": "C:/Users/Haseeb Mirza/OneDrive/Documents/-haseeb-harbor-pipeline/task-sources/law-b39/law-b39-l16-custody-letter-instruction-audit"
+    }
+  ]
+}
