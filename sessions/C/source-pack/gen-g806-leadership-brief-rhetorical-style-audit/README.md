@@ -14,4 +14,4 @@ Evaluate whether leadership briefs answer executive questions in a usable decisi
 - results.json: brief_count, passing_briefs, failing_briefs, avg_score (2 decimal half-up), total_unanswered, total_breaches
 
 ## Verifier
-83 deterministic checks (existence, headers, lexicographic order, one full coherence row per brief, full traces, results.json, disclosed memo heading/analysis for failing briefs only).
+83 verifier.json deterministic checks (existence, headers, lexicographic order, one full coherence row per brief, full traces, results.json, disclosed memo heading/analysis for failing briefs only) plus 2 pytest row-count guards (brief_coherence.csv = 8 rows, question_trace.csv = 48 rows) that reject duplicated-row submissions.
