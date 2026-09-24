@@ -1,8 +1,8 @@
 {
-  "brief_count": 8,
-  "passing_briefs": 3,
-  "failing_briefs": 5,
-  "avg_score": 66.88,
+  "brief_count": 11,
+  "passing_briefs": 5,
+  "failing_briefs": 6,
+  "avg_score": 69.09,
   "total_unanswered": 2,
-  "total_breaches": 31
+  "total_breaches": 39
 }

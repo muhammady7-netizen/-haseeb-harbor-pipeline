@@ -56,9 +56,9 @@ def _count_csv_data_rows(name):
 
 def test_brief_coherence_row_count():
     n = _count_csv_data_rows("brief_coherence.csv")
-    assert n == 8, f"brief_coherence.csv expected 8 data rows, got {n}"
+    assert n == 11, f"brief_coherence.csv expected 11 data rows, got {n}"
 
 
 def test_question_trace_row_count():
     n = _count_csv_data_rows("question_trace.csv")
-    assert n == 48, f"question_trace.csv expected 48 data rows, got {n}"
+    assert n == 66, f"question_trace.csv expected 66 data rows, got {n}"

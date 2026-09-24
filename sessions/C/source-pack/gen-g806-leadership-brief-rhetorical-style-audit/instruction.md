@@ -2,7 +2,7 @@
 
 Read `/app/input/brief_sentences.csv`, `/app/input/executive_questions.csv`, and `/app/input/message_rules.md`. Sentences contain `sentence_id,brief_id,position,purpose,word_count,question_ids`; questions contain `question_id,executive_role,priority`; rules define required opening purpose, permitted purpose transitions, answer-distance limits, and brief word budgets.
 
-Evaluate whether each leadership brief answers executive questions in a usable decision sequence. For every brief, map each question to its earliest answering sentence, calculate answer distance from the opening, and detect unanswered questions. Validate the purpose-transition chain and determine whether the opening states a decision, evidence, or context as defined in the rules. Compute a coherence score by subtracting the specified penalties from 100 (round half-up to the nearest integer). Recommend exactly one sentence relocation that produces the largest score improvement without changing question coverage (same answering `sentence_id` per question); ties use smallest movement distance, then smallest sentence ID. Format the move as `sentence_id:from_position->to_position`. The move must not lower the score; if no relocation improves the score, choose the smallest-distance coverage-preserving relocation that keeps the score unchanged. This is a structural sequencing analysis, not a review of rhetorical phrases.
+Evaluate whether each leadership brief answers executive questions in a usable decision sequence. For every brief, map each question to its earliest answering sentence, calculate answer distance from the opening, and detect unanswered questions. Validate the purpose-transition chain and determine whether the opening states a decision, evidence, or context as defined in the rules. Compute a coherence score by subtracting the specified penalties from 100 (round half-up to the nearest integer). Recommend exactly one sentence relocation that produces the largest score improvement without changing question coverage (same answering sentence_id per question); ties use smallest movement distance, then smallest sentence ID. Format the move as `sentence_id:from_position->to_position`. The move must not lower the score; if no relocation improves the score, choose the smallest-distance coverage-preserving relocation that keeps the score unchanged. This is a structural sequencing analysis, not a review of rhetorical phrases.
 
 ## Scoring contract (must match message_rules.md)
 
@@ -12,18 +12,18 @@ Evaluate whether each leadership brief answers executive questions in a usable d
 - Unanswered question: −20. Answer distance `position-1` greater than 5: −5.
 - Word count greater than 220: −10.
 - **Passing score threshold is 80.** Briefs with `coherence_score >= 80` pass; below 80 fail.
-- `results.json` `avg_score` is the mean of the eight coherence scores, rounded half-up to **two decimal places**.
+- `results.json` `avg_score` is the mean of the eleven coherence scores, rounded half-up to **two decimal places**.
 
 ## Trace status vocabulary
 
-In `question_trace.csv`, `status` must be exactly one of:
-- `answered` — question answered at distance `<= 5`
-- `answered_far` — question answered at distance `> 5`
-- `unanswered` — no answering sentence; set `answer_sentence_id` empty and `answer_distance` to `-1`
+In `question_trace.csv`, status must be exactly one of:
+- answered — question answered at distance `<= 5`
+- answered_far — question answered at distance `> 5`
+- unanswered — no answering sentence; set answer_sentence_id empty and answer_distance to `-1`
 
 ## Deliverables
 
-`question_count` in `brief_coherence.csv` is the number of rows in `executive_questions.csv` (always **6** for this pack). `unanswered_questions` is a sorted pipe-delimited list of unanswered `question_id` values, or empty when none.
+question_count in `brief_coherence.csv` is the number of rows in `executive_questions.csv` (always **6** for this pack). unanswered_questions is a sorted pipe-delimited list of unanswered question_id values, or empty when none.
 
 ## Memo format (graded)
 

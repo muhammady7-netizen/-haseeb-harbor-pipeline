@@ -9,7 +9,7 @@ mkdir -p /logs/verifier
 
 cd /app || exit 1
 
-python3 -m pytest \
+python3 -I -m pytest \
     --ctrf /logs/verifier/ctrf.json \
     /tests/test_outputs.py \
     -rA \
@@ -56,15 +56,6 @@ Path("/logs/verifier/reward_meta.txt").write_text(
 )
 print(f"fractional_reward passed={passed} failed={failed} total={total} reward={reward}")
 PY
-
-# Persist graded /app deliverables into Harbor's /logs/artifacts export root so
-# review snapshots match the in-container graded state (not pane reconstructions).
-mkdir -p /logs/artifacts/app
-for f in brief_coherence.csv question_trace.csv executive_sequence_memo.md results.json; do
-  if [ -f "/app/$f" ]; then
-    cp -f "/app/$f" "/logs/artifacts/app/$f"
-  fi
-done
 
 # Always exit 0 so Harbor reads reward.txt (including fractional < 1.0).
 exit 0
