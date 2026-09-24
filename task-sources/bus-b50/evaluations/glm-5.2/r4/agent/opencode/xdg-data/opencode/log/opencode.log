@@ -1,0 +1,43 @@
+timestamp=2026-09-24T01:16:13.144Z level=INFO run=49f80747 message="creating instance" directory=/app
+timestamp=2026-09-24T01:16:13.147Z level=INFO run=49f80747 message=fromDirectory directory=/app
+timestamp=2026-09-24T01:16:13.224Z level=INFO run=49f80747 message=bootstrapping directory=/app
+timestamp=2026-09-24T01:16:13.248Z level=INFO run=49f80747 message=loading path=/home/appuser/.config/opencode/config.json
+timestamp=2026-09-24T01:16:13.256Z level=INFO run=49f80747 message=loading path=/home/appuser/.config/opencode/opencode.json
+timestamp=2026-09-24T01:16:13.279Z level=INFO run=49f80747 message=loading path=/home/appuser/.config/opencode/opencode.jsonc
+timestamp=2026-09-24T01:16:13.578Z level=INFO run=49f80747 message="all LSPs are disabled"
+timestamp=2026-09-24T01:16:13.580Z level=INFO run=49f80747 message="all formatters are disabled"
+timestamp=2026-09-24T01:16:13.580Z level=INFO run=49f80747 message=init
+timestamp=2026-09-24T01:16:14.953Z level=INFO run=49f80747 message=created id=ses_f2f03f116ffeGlp6Zwy3MIcjYY slug=misty-star version=1.18.32 projectID=global directory=/app path=app workspaceID=undefined parentID=undefined title="New session - 2026-09-24T01:16:14.953Z" agent=undefined model=undefined metadata=undefined permission="[{\"permission\":\"question\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_enter\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_exit\",\"pattern\":\"*\",\"action\":\"deny\"}]" cost=0 tokens.input=0 tokens.output=0 tokens.reasoning=0 tokens.cache.read=0 tokens.cache.write=0 time.created=1790212574953 time.updated=1790212574953
+timestamp=2026-09-24T01:16:15.251Z level=INFO run=49f80747 message="event connected"
+timestamp=2026-09-24T01:16:17.324Z level=INFO run=49f80747 message=loop session.id=ses_f2f03f116ffeGlp6Zwy3MIcjYY step=0
+timestamp=2026-09-24T01:16:17.375Z level=INFO run=49f80747 message=stream providerID=glmproxy modelID=glm-5.2 session.id=ses_f2f03f116ffeGlp6Zwy3MIcjYY small=true agent=title mode=primary
+timestamp=2026-09-24T01:16:17.392Z level=INFO run=49f80747 message="llm runtime selected" llm.runtime=ai-sdk llm.provider=glmproxy llm.model=glm-5.2
+timestamp=2026-09-24T01:16:19.108Z level=INFO run=49f80747 message=initialized
+timestamp=2026-09-24T01:16:19.909Z level=INFO run=49f80747 message=tracking hash=ac55c31d6c142b5b6b0a6ec8a52ca51838c9fb0d cwd=/app git=/logs/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8
+timestamp=2026-09-24T01:16:19.926Z level=INFO run=49f80747 message="shell tool using shell" shell=/usr/bin/bash
+timestamp=2026-09-24T01:16:19.946Z level=INFO run=49f80747 message=init count=1
+timestamp=2026-09-24T01:16:20.214Z level=INFO run=49f80747 message="watcher backend" directory=/app platform=linux backend=inotify
+timestamp=2026-09-24T01:16:20.260Z level=INFO run=49f80747 message="booting location services" directory=/app workspaceID=undefined
+timestamp=2026-09-24T01:16:20.266Z level=INFO run=49f80747 message="project copy refresh started" projectID=global
+timestamp=2026-09-24T01:16:20.272Z level=INFO run=49f80747 message="project copy refresh done" projectID=global updated=[] removed=[]
+timestamp=2026-09-24T01:16:22.429Z level=INFO run=49f80747 message=process session.id=ses_f2f03f116ffeGlp6Zwy3MIcjYY messageID=msg_0d0fc1837001C70rIiWsE9Bpll
+timestamp=2026-09-24T01:16:22.439Z level=INFO run=49f80747 message=stream providerID=glmproxy modelID=glm-5.2 session.id=ses_f2f03f116ffeGlp6Zwy3MIcjYY small=false agent=build mode=primary
+timestamp=2026-09-24T01:16:22.445Z level=INFO run=49f80747 message="llm runtime selected" llm.runtime=ai-sdk llm.provider=glmproxy llm.model=glm-5.2
+timestamp=2026-09-24T01:16:30.145Z level=INFO run=49f80747 message=evaluated permission=read pattern=app/input/attribution_note.md action.permission=read action.pattern=* action.action=allow
+timestamp=2026-09-24T01:16:30.149Z level=INFO run=49f80747 message=evaluated permission=read pattern=app/input/submission_format.md action.permission=read action.pattern=* action.action=allow
+timestamp=2026-09-24T01:16:30.205Z level=INFO run=49f80747 message=evaluated permission=read pattern=app/input/channel_plan.csv action.permission=read action.pattern=* action.action=allow
+timestamp=2026-09-24T01:16:30.206Z level=INFO run=49f80747 message=evaluated permission=read pattern=app/input/placement_log.csv action.permission=read action.pattern=* action.action=allow
+timestamp=2026-09-24T01:16:30.325Z level=INFO run=49f80747 message="touching file" file=/app/input/attribution_note.md
+timestamp=2026-09-24T01:16:30.327Z level=INFO run=49f80747 message="touching file" file=/app/input/submission_format.md
+timestamp=2026-09-24T01:16:30.428Z level=INFO run=49f80747 message="touching file" file=/app/input/channel_plan.csv
+timestamp=2026-09-24T01:16:30.428Z level=INFO run=49f80747 message="touching file" file=/app/input/placement_log.csv
+timestamp=2026-09-24T01:16:31.969Z level=INFO run=49f80747 message=evaluated permission=read pattern=app/input/streaming_ledger.csv action.permission=read action.pattern=* action.action=allow
+timestamp=2026-09-24T01:16:31.970Z level=INFO run=49f80747 message=evaluated permission=read pattern=app/input/campaign_calendar.csv action.permission=read action.pattern=* action.action=allow
+timestamp=2026-09-24T01:16:32.092Z level=INFO run=49f80747 message="touching file" file=/app/input/streaming_ledger.csv
+timestamp=2026-09-24T01:16:32.093Z level=INFO run=49f80747 message="touching file" file=/app/input/campaign_calendar.csv
+timestamp=2026-09-24T01:16:32.359Z level=INFO run=49f80747 message=tracking hash=ac55c31d6c142b5b6b0a6ec8a52ca51838c9fb0d cwd=/app git=/logs/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8
+timestamp=2026-09-24T01:16:32.746Z level=INFO run=49f80747 message=loop session.id=ses_f2f03f116ffeGlp6Zwy3MIcjYY step=1
+timestamp=2026-09-24T01:16:33.086Z level=INFO run=49f80747 message=tracking hash=ac55c31d6c142b5b6b0a6ec8a52ca51838c9fb0d cwd=/app git=/logs/agent/opencode/xdg-data/opencode/snapshot/global/42099b4af021e53fd8fd4e056c2568d7c2e3ffa8
+timestamp=2026-09-24T01:16:33.152Z level=INFO run=49f80747 message=process session.id=ses_f2f03f116ffeGlp6Zwy3MIcjYY messageID=msg_0d0fc5474001susiHK44jRYcdO
+timestamp=2026-09-24T01:16:33.157Z level=INFO run=49f80747 message=stream providerID=glmproxy modelID=glm-5.2 session.id=ses_f2f03f116ffeGlp6Zwy3MIcjYY small=false agent=build mode=primary
+timestamp=2026-09-24T01:16:33.161Z level=INFO run=49f80747 message="llm runtime selected" llm.runtime=ai-sdk llm.provider=glmproxy llm.model=glm-5.2

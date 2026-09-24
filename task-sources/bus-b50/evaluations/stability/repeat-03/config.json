@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\task-sources\\bus-b50"
+    },
+    "trial_name": "bus-b50__F8ihKrF",
+    "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\harbor-jobs-bus\\bus-ora-stab-3",
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        }
+    },
+    "job_id": "2c597c80-408a-46e3-84f2-d96311745ead"
+}

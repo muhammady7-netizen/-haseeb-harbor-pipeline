@@ -1,8 +1,15 @@
 {
     "task": {
-        "path": "D:\\turing-computer-bench\\nonconnector-tasks\\bundles\\shannon-200\\bus-b50-b10-streaming-target-variance-attribution"
+        "path": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\task-sources\\bus-b50"
     },
-    "trial_name": "bus-b50-b10-streaming-target-var__inFTWms",
-    "trials_dir": "D:\\turing-computer-bench\\nonconnector-tasks\\oracle-runs\\fixb50b10\\bus-b50-b10-streaming-target-variance-attribution\\run",
-    "job_id": "eb42e3f2-6f3c-4030-8f70-1be3e78a9e21"
+    "trial_name": "bus-b50__6B2QSvq",
+    "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\harbor-jobs-bus\\bus-ora-2",
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        }
+    },
+    "job_id": "38246b9b-654f-43fa-84a4-7160ba7b99b5"
 }

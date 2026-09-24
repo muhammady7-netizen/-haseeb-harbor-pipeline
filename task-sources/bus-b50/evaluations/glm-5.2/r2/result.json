@@ -1,0 +1,131 @@
+{
+    "id": "8cb59807-bde0-4923-afc3-2b197e68f0e6",
+    "task_name": "obi/bus-b50-b10-streaming-target-variance-attribution",
+    "trial_name": "bus-b50__EVmi2iH",
+    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/AppData/Local/Temp/opencode/harbor-jobs-bus/bus-b50-difficulty/bus-b50__EVmi2iH",
+    "task_id": {
+        "path": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\task-sources\\bus-b50"
+    },
+    "source": null,
+    "task_checksum": "1c7c8a86fe2ee3ce4ccd4d3ec958c36ab6a28c00a2f3d85c18b0182a1a5cfcdc",
+    "config": {
+        "task": {
+            "path": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\task-sources\\bus-b50",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "bus-b50__EVmi2iH",
+        "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\harbor-jobs-bus\\bus-b50-difficulty",
+        "install_only": false,
+        "timeout_multiplier": 3.0,
+        "agent_timeout_multiplier": 3.0,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": 5.0,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "opencode",
+            "import_path": null,
+            "model_name": "glmproxy/glm-5.2",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "max_turns": 80,
+                "opencode_config": {
+                    "provider": {
+                        "glmproxy": {
+                            "npm": "@ai-sdk/openai-compatible",
+                            "name": "GLM via LiteLLM",
+                            "options": {
+                                "baseURL": "{env:OPENAI_BASE_URL}",
+                                "apiKey": "{env:OPENAI_API_KEY}"
+                            },
+                            "models": {
+                                "glm-5.2": {
+                                    "name": "GLM 5.2"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "env": {
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+                "OPENAI_BASE_URL": "${OPENAI_BASE_URL}"
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "env": {
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+                "OPENAI_BASE_URL": "${OPENAI_BASE_URL}",
+                "JUDGE_MODEL": "openai/glm-5.2"
+            },
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "b5096e72-a63c-412a-a53d-7c11ccffde8a",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "opencode",
+        "version": "unknown",
+        "model_info": {
+            "name": "glm-5.2",
+            "provider": "glmproxy"
+        }
+    },
+    "agent_result": null,
+    "verifier_result": null,
+    "verifier_environment_mode": "shared",
+    "exception_info": {
+        "exception_type": "NetworkConnectionError",
+        "exception_message": "Command failed (exit 127): set -euo pipefail; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | env -u NODE_VERSION bash && export NVM_DIR=\"$HOME/.nvm\" && \\. \"$NVM_DIR/nvm.sh\" || true && command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } && nvm install 22 && nvm alias default 22 && npm -v && npm i -g opencode-ai@latest && opencode --version\nstdout:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    ... [4000 chars truncated] ...                                4.2%\r###                                                                        4.2%\r###                                                                        4.2%\r###                                                                        4.3%\r###                                                                        4.5%curl: (18) HTTP/2 stream 1 was not closed cleanly before end of the underlying stream\n\ndownload from https://nodejs.org/dist/v22.23.3/node-v22.23.3-linux-x64.tar.gz failed\ngrep: /home/appuser/.nvm/.cache/bin/node-v22.23.3-linux-x64/node-v22.23.3-linux-x64.tar.gz: No such file or directory\nProvided file to checksum does not exist.\n/home/appuser/.nvm/nvm.sh: line 2308: TMPDIR: unbound variable\n\nstderr: None",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Haseeb Mirza\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 375, in run\n    await self._prepare()\n  File \"C:\\Users\\Haseeb Mirza\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 413, in _prepare\n    await self._setup_agent()\n  File \"C:\\Users\\Haseeb Mirza\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 1242, in _setup_agent\n    await asyncio.wait_for(\n  File \"C:\\Program Files\\Python312\\Lib\\asyncio\\tasks.py\", line 510, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"C:\\Users\\Haseeb Mirza\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\agents\\installed\\base.py\", line 939, in setup\n    await self.install(environment)\n  File \"C:\\Users\\Haseeb Mirza\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\agents\\installed\\opencode.py\", line 106, in install\n    await self.exec_as_agent(\n  File \"C:\\Users\\Haseeb Mirza\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\agents\\installed\\base.py\", line 884, in exec_as_agent\n    return await self._exec(\n           ^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Haseeb Mirza\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\agents\\installed\\base.py\", line 851, in _exec\n    raise self._classify_exec_error(command, result)\nharbor.agents.installed.base.NetworkConnectionError: Command failed (exit 127): set -euo pipefail; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | env -u NODE_VERSION bash && export NVM_DIR=\"$HOME/.nvm\" && \\. \"$NVM_DIR/nvm.sh\" || true && command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } && nvm install 22 && nvm alias default 22 && npm -v && npm i -g opencode-ai@latest && opencode --version\nstdout:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    ... [4000 chars truncated] ...                                4.2%\r###                                                                        4.2%\r###                                                                        4.2%\r###                                                                        4.3%\r###                                                                        4.5%curl: (18) HTTP/2 stream 1 was not closed cleanly before end of the underlying stream\n\ndownload from https://nodejs.org/dist/v22.23.3/node-v22.23.3-linux-x64.tar.gz failed\ngrep: /home/appuser/.nvm/.cache/bin/node-v22.23.3-linux-x64/node-v22.23.3-linux-x64.tar.gz: No such file or directory\nProvided file to checksum does not exist.\n/home/appuser/.nvm/nvm.sh: line 2308: TMPDIR: unbound variable\n\nstderr: None\n",
+        "occurred_at": "2026-09-24T01:57:35.114646Z"
+    },
+    "started_at": "2026-09-24T01:56:32.031264Z",
+    "finished_at": "2026-09-24T01:57:52.334583Z",
+    "environment_setup": {
+        "started_at": "2026-09-24T01:56:32.175679Z",
+        "finished_at": "2026-09-24T01:56:53.364284Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-24T01:56:53.364284Z",
+        "finished_at": "2026-09-24T01:57:35.103650Z"
+    },
+    "agent_execution": null,
+    "verifier": null,
+    "step_results": null
+}

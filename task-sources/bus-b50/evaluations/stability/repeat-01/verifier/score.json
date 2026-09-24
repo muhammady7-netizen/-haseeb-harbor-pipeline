@@ -1,0 +1,99 @@
+{
+  "reward": 1.0,
+  "core_failures": [],
+  "passed": 13,
+  "total": 13,
+  "checks": [
+    {
+      "name": "register_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "register_header",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "register_table_trap_ch04",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "register_table",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_prose_floor",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_single_part_channel",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_conversion_effect",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_conversion_effect_exactly_one",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_counted_placements",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "memo_counted_placements_exactly_one",
+      "tag": "incidental",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "results_figures",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230769,
+      "detail": ""
+    },
+    {
+      "name": "results_exists",
+      "tag": "core",
+      "passed": true,
+      "weight": 0.0769230772,
+      "detail": ""
+    }
+  ]
+}

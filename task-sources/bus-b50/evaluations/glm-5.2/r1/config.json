@@ -1,0 +1,46 @@
+{
+    "task": {
+        "path": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\task-sources\\bus-b50"
+    },
+    "trial_name": "bus-b50__cfTECgD",
+    "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\harbor-jobs-bus\\bus-b50-difficulty",
+    "timeout_multiplier": 3.0,
+    "agent_timeout_multiplier": 3.0,
+    "agent_setup_timeout_multiplier": 5.0,
+    "agent": {
+        "name": "opencode",
+        "model_name": "glmproxy/glm-5.2",
+        "kwargs": {
+            "max_turns": 80,
+            "opencode_config": {
+                "provider": {
+                    "glmproxy": {
+                        "npm": "@ai-sdk/openai-compatible",
+                        "name": "GLM via LiteLLM",
+                        "options": {
+                            "baseURL": "{env:OPENAI_BASE_URL}",
+                            "apiKey": "{env:OPENAI_API_KEY}"
+                        },
+                        "models": {
+                            "glm-5.2": {
+                                "name": "GLM 5.2"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "env": {
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_BASE_URL": "${OPENAI_BASE_URL}"
+        }
+    },
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_BASE_URL": "${OPENAI_BASE_URL}",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        }
+    },
+    "job_id": "b5096e72-a63c-412a-a53d-7c11ccffde8a"
+}

@@ -1,0 +1,9 @@
+timestamp=2026-09-24T01:51:04.222Z level=INFO run=c0dbc4b8 message="creating instance" directory=/app
+timestamp=2026-09-24T01:51:04.225Z level=INFO run=c0dbc4b8 message=fromDirectory directory=/app
+timestamp=2026-09-24T01:51:04.312Z level=INFO run=c0dbc4b8 message=bootstrapping directory=/app
+timestamp=2026-09-24T01:51:04.343Z level=INFO run=c0dbc4b8 message=loading path=/home/appuser/.config/opencode/config.json
+timestamp=2026-09-24T01:51:04.346Z level=INFO run=c0dbc4b8 message=loading path=/home/appuser/.config/opencode/opencode.json
+timestamp=2026-09-24T01:51:04.395Z level=INFO run=c0dbc4b8 message=loading path=/home/appuser/.config/opencode/opencode.jsonc
+timestamp=2026-09-24T01:51:04.929Z level=INFO run=c0dbc4b8 message="all LSPs are disabled"
+timestamp=2026-09-24T01:51:04.931Z level=INFO run=c0dbc4b8 message="all formatters are disabled"
+timestamp=2026-09-24T01:51:04.931Z level=INFO run=c0dbc4b8 message=init

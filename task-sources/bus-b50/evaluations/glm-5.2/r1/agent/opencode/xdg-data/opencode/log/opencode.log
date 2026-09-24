@@ -1,0 +1,11 @@
+timestamp=2026-09-24T01:35:11.354Z level=INFO run=d7c48f7e message="creating instance" directory=/app
+timestamp=2026-09-24T01:35:11.356Z level=INFO run=d7c48f7e message=fromDirectory directory=/app
+timestamp=2026-09-24T01:35:11.450Z level=INFO run=d7c48f7e message=bootstrapping directory=/app
+timestamp=2026-09-24T01:35:11.473Z level=INFO run=d7c48f7e message=loading path=/home/appuser/.config/opencode/config.json
+timestamp=2026-09-24T01:35:11.482Z level=INFO run=d7c48f7e message=loading path=/home/appuser/.config/opencode/opencode.json
+timestamp=2026-09-24T01:35:11.520Z level=INFO run=d7c48f7e message=loading path=/home/appuser/.config/opencode/opencode.jsonc
+timestamp=2026-09-24T01:35:11.739Z level=INFO run=d7c48f7e message="all LSPs are disabled"
+timestamp=2026-09-24T01:35:11.741Z level=INFO run=d7c48f7e message="all formatters are disabled"
+timestamp=2026-09-24T01:35:11.741Z level=INFO run=d7c48f7e message=init
+timestamp=2026-09-24T01:35:12.236Z level=INFO run=d7c48f7e message=created id=ses_f2ef29694ffeMBHIUREZahWfk8 slug=jolly-harbor version=1.18.32 projectID=global directory=/app path=app workspaceID=undefined parentID=undefined title="New session - 2026-09-24T01:35:12.236Z" agent=undefined model=undefined metadata=undefined permission="[{\"permission\":\"question\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_enter\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_exit\",\"pattern\":\"*\",\"action\":\"deny\"}]" cost=0 tokens.input=0 tokens.output=0 tokens.reasoning=0 tokens.cache.read=0 tokens.cache.write=0 time.created=1790213712236 time.updated=1790213712236
+timestamp=2026-09-24T01:35:12.306Z level=INFO run=d7c48f7e message="event connected"
