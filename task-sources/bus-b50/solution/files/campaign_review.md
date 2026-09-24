@@ -7,11 +7,11 @@ the placements we did not deliver, the rate at which the reach we did deliver tu
 into streams, and the reach left over once those two have been taken off.
 
 Bookings are barely any of it. We ran close to the schedule everywhere and several
-channels ran ahead of it or exactly to plan. Counted placements: 105. That is
+channels ran ahead of it or exactly to plan. Counted placements: 125. That is
 every placement the note lets us count, each one counted in the week it actually went
 out, and it is what the per-channel numbers should be read against.
 
-The damage is conversion, and it is not close. Conversion effect: 40132.
+The damage is conversion, and it is not close. Conversion effect: 31246.
 Reach came in broadly where the plan expected it to; what did not arrive was the streams
 per thousand of reach the plan assumed, which is a creative and call-to-action problem
 rather than a booking one.

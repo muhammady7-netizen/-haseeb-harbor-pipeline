@@ -18,8 +18,11 @@ revisions.
 
 No `|` joins. Priority (first match wins):
 
-`ON_HOLD` > `RETIRED` > `OUT_OF_WINDOW` > `NEGATION_PIVOT_USED` > `RUNTIME_OUT_OF_BAND` >
-`UNCITED_SCRIPTURE_REF` > `none`
+`ON_HOLD` > `RETIRED` > `OUT_OF_WINDOW` > `NEGATION_PIVOT_USED` > `UNCITED_SCRIPTURE_REF` >
+`RUNTIME_OUT_OF_BAND` > `none`
+
+When a single script is both uncited-scripture and runtime-breaching, `UNCITED_SCRIPTURE_REF`
+wins over `RUNTIME_OUT_OF_BAND`.
 
 ## Clearance -> ON_HOLD
 
@@ -44,7 +47,10 @@ Values such as `0`, `no`, `N`, `off`, or blank are **not** out-of-window.
 
 Scan both `opening_line` and `body_excerpt` from the winning inventory row. Inventory
 `uses_negation_pivot` is ignored. Pattern: "That's not X. It's Y." / "It's not X. It's Y."
-(and close variants like "That is not X. It is Y.").
+(and close variants like "That is not X. It is Y."). The two clauses may be separated by a
+period, em dash, semicolon, ellipsis, or comma. Both present-tense forms ("'s not"/"is not")
+and past-tense forms ("was not") match, with "not" appearing as a separate word; contractions
+such as "wasn't" or "isn't" (no separate "not") do not match.
 
 **Exemption:** only when winning `speaker_attribution.csv` `speech_source` equals
 `third_party_testimony` after trim (case-insensitive). Inventory `is_verbatim_testimony`

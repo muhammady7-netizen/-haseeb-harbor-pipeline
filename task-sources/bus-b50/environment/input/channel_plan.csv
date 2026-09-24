@@ -43,3 +43,13 @@ CH-45,All guaranteed plus organic,2,50000,40
 CH-46,Week mismatch test,2,50000,40
 CH-47,Duplicate test,2,40000,45
 CH-48,Phantom test,2,45000,40
+CH-49,Late-cycle syndication,2,60000,50
+CH-50,Promo blitz,3,40000,45
+CH-51,Discovery feed,2,50000,40
+CH-52,Platform reconciliation,2,50000,40
+CH-53,Precision buys,2,50000,40
+CH-54,Slipped booking,2,50000,40
+CH-55,Repeat log,2,40000,45
+CH-56,Streams-only feed,2,40000,45
+CH-57,On-target push,2,50000,40
+CH-58,Overdelivery,2,50000,40

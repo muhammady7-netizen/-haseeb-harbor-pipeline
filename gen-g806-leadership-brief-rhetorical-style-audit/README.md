@@ -13,7 +13,7 @@ Non-connector Harbor task. Audit leadership-brief scripts against the communicat
 - input/leadership_brief_style_guide.md — the style guide (overridden by errata v4)
 - input/policy_errata_v4.md — the authoritative errata (trim, last-wins, token rules, band bounds)
 - input/band_definition.csv — band bounds (active rows only, last-wins)
-- input/script_inventory.csv — 84 scripts with opening_line and body_excerpt
+- input/script_inventory.csv — 2022 scripts with opening_line and body_excerpt
 - input/recording_clearance.csv — clearance status per script
 - input/retirement_register.csv — retirement status per script
 - input/air_window.csv — air window status per script
@@ -24,4 +24,4 @@ Non-connector Harbor task. Audit leadership-brief scripts against the communicat
 
 ## Verifier
 
-99 deterministic checks: 3 file-existence, 84 per-script finding checks, 1 no_duplicate_script_ids, 1 audit_exactly_n_rows, 1 no_pipe_joins, 1 audit_header_exact, 3 memo checks, 5 results.json equals checks. Fractional reward.
+2036 deterministic checks: 3 file-existence, 2022 per-script finding checks, 1 no_duplicate_script_ids, 1 audit_exactly_n_rows, 1 no_pipe_joins, 1 audit_header_exact, 2 memo content checks (minimum 800 characters; third-party-testimony discussion), 5 results.json equals checks. Fractional reward.

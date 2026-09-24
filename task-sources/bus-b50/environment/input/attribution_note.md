@@ -122,7 +122,7 @@ taken off. It is the reach the counted placements brought above or below what th
 expected of them, and no amount of better creative reaches it.
 
 **5.4 Rounding and additivity.** The placements effect is taken to the nearest whole
-stream, halves away from zero. The conversion effect is taken to the nearest whole
+stream, its tie-break fixed by 5.7. The conversion effect is taken to the nearest whole
 stream, halves toward zero. The residual is then the balance of the shortfall, so the
 three parts add back to the shortfall exactly, per channel and across the campaign.
 
@@ -132,6 +132,21 @@ whole number of streams, halves toward zero, before the three parts are taken.
 This makes every figure in the analysis a whole number of streams as section 1
 requires, and it is taken before the placements effect and conversion effect
 are computed, so the three parts add back to the rounded shortfall exactly.
+
+**5.6 Time-dependent conversion rate.** The conversion effect is measured using
+the `planned_streams_per_1000_reach` at its full rate for campaign weeks W1
+through W3, and at ninety per cent of that rate for campaign weeks W4 through
+W7. Each ledger row's contribution to the conversion effect is
+`delivered_reach x rate x planned_streams_per_1000_reach / 1000` where `rate`
+is one for weeks W1-W3 and nine-tenths for weeks W4-W7, and the row's
+`campaign_week` determines which rate applies. The conversion effect is the
+sum of these per-row contributions less the channel's delivered streams, taken
+in place of the total-reach form in 5.2, and rounded per 5.4.
+
+**5.7 Conditional placements-effect rounding.** The placements effect is
+rounded to the nearest whole stream, halves away from zero when the channel's
+shortfall to target is positive, and halves toward zero when the shortfall is
+negative. The conversion effect is always rounded halves toward zero as before.
 
 ## 6. Recording it
 
