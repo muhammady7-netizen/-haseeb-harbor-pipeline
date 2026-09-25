@@ -9,7 +9,7 @@ mkdir -p /logs/verifier
 
 cd /app || exit 1
 
-python3 -m pytest \
+python3 -I -m pytest \
     --ctrf /logs/verifier/ctrf.json \
     /tests/test_outputs.py \
     -rA \
