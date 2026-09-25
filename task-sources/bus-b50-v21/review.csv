@@ -1,0 +1,15 @@
+review_check,status,review_notes,change_made,what_to_record
+Layer 1 - Package consistency,PASS,103-channel streaming target variance attribution. Gold verified: 103 counted placements. Oracle 1.0. All files LF.,,All checks declared; gold consistent with disclosed rules
+Layer 1 - Clarity and scope,FIXED_AND_VERIFIED,Instruction binds attribution_note.md. Rules 3.5-3.9 and 5.6-5.7 added.,Added rules for edge cases,All rules disclosed; one canonical reading
+Layer 1 - Realism and leakage,PASS,Realistic release campaign shortfall attribution. Gold only under solution/.,,Domain correctness derivable from disclosed rules
+Layer 2 Difficulty,FIXED_AND_VERIFIED,103 channels with 420 traps + time-dependent conversion rate + conditional PE rounding.,Added rules 5.6 and 5.7,Pending portal GLM x4
+Layer 2 Solvability,FIXED_AND_VERIFIED,Oracle reward 1.0 proves gold passes all thirteen checks.,Oracle 1.0 verified locally,Oracle 1.0; solvability evidenced by portal
+Layer 2 Stability,N/A,Stability evidence provided by portal QC-Oracle-GLM.,,N/A: platform runs GLM
+Layer 3 Oracle Mode,FIXED_AND_VERIFIED,Harbor oracle mode reward 1.0 with register_table 43-row lock.,Gold verified locally,Oracle 1.0; verifier matches current gold
+Layer 4 - Environment and files,PASS,6 input files. Dockerfile pinned @sha256. All files LF.,,No environment issues
+Layer 4 - Connectors MCPs and CLIs,N/A,Non-connector task.,,N/A: NonConnector task
+Layer 4 - Deliverables and artifact quality,PASS,3 deliverables present and verified by thirteen verifier checks.,,Deliverables complete; thirteen checks pass
+Layer 5 - Verifier coverage and fairness,FIXED_AND_VERIFIED,thirteen checks. Core: register_table results_figures. Memo: prose_floor single_part_channel conversion_effect counted_placements.,Updated memo regex figures,All checks fair and declared
+Layer 5 - LLM judge consistency,N/A,No LLM judge; all thirteen checks are deterministic.,,N/A: no LLM judge
+Layer 5 - Reward hacking and exploitability,FIXED_AND_VERIFIED,Dockerfile copies input/ only. No reward hacking.,Confirmed Dockerfile COPY input/ only,No reward hacking; 44-id row_set lock
+Cross-trial - Calibration,FIXED_AND_VERIFIED,420 traps + time-dependent rate + conditional rounding across 103 channels.,Documented cross-trial calibration,Difficulty from semantic interactions in the data

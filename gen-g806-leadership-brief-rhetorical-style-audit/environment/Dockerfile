@@ -33,3 +33,9 @@ WORKDIR /app
 # Read-only task inputs. The prompt refers to these as `input/`.
 COPY input/ /app/input/
 RUN chmod -R a-w,a+rX /app/input
+
+# Golden isolation: lock the verifier directory so the expected answers in
+# /tests/verifier.json cannot be read back by a non-root agent. Platform PreQC
+# requires this image to keep running as root (no non-root USER directive), so
+# /tests is restricted to mode 700 instead; the root verifier still reads it.
+RUN mkdir -p /tests && chmod 700 /tests

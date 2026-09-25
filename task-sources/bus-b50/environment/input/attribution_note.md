@@ -70,6 +70,13 @@ as zero.
 **3.10** Whitespace in `placement_id`, `channel_id`, `campaign_week`,
 `placement_status`, and `offer_type` fields is stripped before matching.
 
+
+**3.11** A ledger row carrying `delivered_reach` of 0 is counted
+for its `delivered_streams` (which contributes to the channel's
+total delivered streams) but contributes 0 to the conversion effect
+expected streams for that row. The row is not excluded from the
+ledger; its streams count, its reach does not.
+
 **1.1** The `in_campaign_window` column is matched case-insensitively after
 stripping whitespace. A week is in the campaign window if and only if its
 `in_campaign_window` value, after stripping and case-folding, is `yes`.
@@ -85,6 +92,10 @@ after stripping whitespace in both `placement_log.csv` and
 **2.7** A placement whose `offer_type` is empty is a promotional placement
 that is neither guaranteed nor organic, and is counted under 2.1 exactly as
 any other `ran` placement is counted.
+
+
+**2.8** A placement whose `offer_type` is `partnership` is counted
+under 2.1 exactly as any other `ran` placement is counted.
 
 **4.3** The target is not prorated, does not move during the push, and is
 not rounded: it is the exact value of `planned_placements` multiplied by
@@ -148,8 +159,49 @@ rounded to the nearest whole stream, halves away from zero when the channel's
 shortfall to target is positive, and halves toward zero when the shortfall is
 negative. The conversion effect is always rounded halves toward zero as before.
 
+
+**6.1** Where a channel's shortfall to target is zero, all three parts
+are zero, regardless of the intermediate computation. A channel that
+met its target has no gap to attribute, and the three parts are
+recorded as `0` even where the placements effect and conversion effect
+computed before rounding would produce non-zero values that cancel out.
+
 ## 6. Recording it
 
 Against every channel record how many placements were counted, the three parts and the
 shortfall itself. A part that is zero is written `0`, and a part that ran the other way
 is written with a leading minus sign.
+
+## 7. Mid-campaign plan amendments
+
+**7.1** A channel's `planned_streams_per_1000_reach` may be amended mid-campaign
+by a note in this section. An amendment applies only to the channel it names,
+and only to ledger rows in weeks on or after the amendment's effective week.
+Where an amendment is in force, the conversion effect for affected rows uses
+the amended `planned_streams_per_1000_reach` in place of the plan's value, and
+the placements effect uses the plan's original value throughout.
+
+**7.2** Amendment A1: For CH-59, the `planned_streams_per_1000_reach` is amended
+to 35 (from 40) for campaign weeks W4 through W7. The original value of 40
+applies for W1 through W3.
+
+## 7. Mid-campaign plan amendments
+
+**7.1** A channel's `planned_streams_per_1000_reach` may be amended mid-campaign
+by a note in this section. An amendment applies only to the channel it names,
+and only to ledger rows in weeks on or after the amendment's effective week.
+Where an amendment is in force, the conversion effect for affected rows uses
+the amended `planned_streams_per_1000_reach` in place of the plan's value, and
+the placements effect uses the plan's original value throughout.
+
+**7.2** Amendment A1: For CH-59, the `planned_streams_per_1000_reach` is amended
+to 35 (from 40) for campaign weeks W4 through W7. The original value of 40
+applies for W1 through W3.
+**7.3** Amendment A3: For CH-61, the `planned_streams_per_1000_reach` is amended
+to 35 (from 40) for campaign weeks W4 and W5. The original value of 40 applies
+for all other weeks.
+
+**7.4** Amendment A4: For CH-61, the `planned_streams_per_1000_reach` is further
+amended to 25 (from 35) for campaign week W7. Where both A3 and A4 could apply,
+the amendment naming the later week takes precedence. The original value of 40
+applies for W1 through W3.

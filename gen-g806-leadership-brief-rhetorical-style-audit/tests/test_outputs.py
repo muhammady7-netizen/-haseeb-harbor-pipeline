@@ -40,3 +40,17 @@ def test_deliverable(definition):
     )["result"]
     detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
     assert outcome["success"], f"{definition.name}: {detail}"
+
+
+def test_memo_min_length():
+    """The style_audit_memo.md must be at least 800 characters.
+
+    Enforced as a pytest assertion (not a regex_match on a .md file, which the
+    platform PreQC blocks) on top of the verifier.json contains-checks.
+    """
+    memo_path = WORKSPACE / "style_audit_memo.md"
+    assert memo_path.is_file(), f"style_audit_memo.md missing at {memo_path}"
+    text = memo_path.read_text(encoding="utf-8")
+    assert len(text) >= 800, (
+        f"style_audit_memo.md is {len(text)} characters; minimum is 800"
+    )

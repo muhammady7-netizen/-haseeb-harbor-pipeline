@@ -185,8 +185,8 @@
             "CH-09": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-686",
-              "residual_reach_effect_streams": "686",
+              "conversion_effect_streams": "0",
+              "residual_reach_effect_streams": "0",
               "shortfall_to_target_streams": "0"
             },
             "CH-10": {
@@ -241,8 +241,8 @@
             "CH-17": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "120",
-              "residual_reach_effect_streams": "-120",
+              "conversion_effect_streams": "0",
+              "residual_reach_effect_streams": "0",
               "shortfall_to_target_streams": "0"
             },
             "CH-18": {
@@ -496,6 +496,125 @@
               "conversion_effect_streams": "-700",
               "residual_reach_effect_streams": "-800",
               "shortfall_to_target_streams": "-1500"
+            },
+            "CH-59": {
+              "counted_placements": "3",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-222",
+              "residual_reach_effect_streams": "1322",
+              "shortfall_to_target_streams": "1100"
+            },
+            "CH-60": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "100",
+              "residual_reach_effect_streams": "400",
+              "shortfall_to_target_streams": "500"
+            },
+            "CH-61": {
+              "counted_placements": "4",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "147",
+              "residual_reach_effect_streams": "2153",
+              "shortfall_to_target_streams": "2300"
+            },
+            "CH-62": {
+              "counted_placements": "2",
+              "placements_effect_streams": "2000",
+              "conversion_effect_streams": "600",
+              "residual_reach_effect_streams": "-1400",
+              "shortfall_to_target_streams": "1200"
+            },
+            "CH-63": {
+              "counted_placements": "1",
+              "placements_effect_streams": "123",
+              "conversion_effect_streams": "1",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "124"
+            },
+            "CH-64": {
+              "counted_placements": "1",
+              "placements_effect_streams": "133",
+              "conversion_effect_streams": "1",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "134"
+            },
+            "CH-65": {
+              "counted_placements": "1",
+              "placements_effect_streams": "143",
+              "conversion_effect_streams": "1",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "144"
+            },
+            "CH-66": {
+              "counted_placements": "1",
+              "placements_effect_streams": "153",
+              "conversion_effect_streams": "1",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "154"
+            },
+            "CH-67": {
+              "counted_placements": "1",
+              "placements_effect_streams": "127",
+              "conversion_effect_streams": "-173",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "-46"
+            },
+            "CH-68": {
+              "counted_placements": "1",
+              "placements_effect_streams": "137",
+              "conversion_effect_streams": "-163",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "-26"
+            },
+            "CH-69": {
+              "counted_placements": "1",
+              "placements_effect_streams": "147",
+              "conversion_effect_streams": "-153",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "-6"
+            },
+            "CH-70": {
+              "counted_placements": "1",
+              "placements_effect_streams": "157",
+              "conversion_effect_streams": "-163",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "-6"
+            },
+            "CH-71": {
+              "counted_placements": "1",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "1",
+              "residual_reach_effect_streams": "13",
+              "shortfall_to_target_streams": "14"
+            },
+            "CH-72": {
+              "counted_placements": "1",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "3",
+              "residual_reach_effect_streams": "13",
+              "shortfall_to_target_streams": "16"
+            },
+            "CH-73": {
+              "counted_placements": "1",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "5",
+              "residual_reach_effect_streams": "13",
+              "shortfall_to_target_streams": "18"
+            },
+            "CH-74": {
+              "counted_placements": "1",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "7",
+              "residual_reach_effect_streams": "13",
+              "shortfall_to_target_streams": "20"
+            },
+            "CH-75": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "200",
+              "residual_reach_effect_streams": "200",
+              "shortfall_to_target_streams": "400"
             }
           },
           "row_set": [
@@ -552,7 +671,24 @@
             "CH-55",
             "CH-56",
             "CH-57",
-            "CH-58"
+            "CH-58",
+            "CH-59",
+            "CH-60",
+            "CH-61",
+            "CH-62",
+            "CH-63",
+            "CH-64",
+            "CH-65",
+            "CH-66",
+            "CH-67",
+            "CH-68",
+            "CH-69",
+            "CH-70",
+            "CH-71",
+            "CH-72",
+            "CH-73",
+            "CH-74",
+            "CH-75"
           ],
           "row_set_ordered": true,
           "columns": [
@@ -648,7 +784,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bCH-04\\w*\\b(?:(?!\\n\\n).)*\\bconversion\\b|\\bconversion\\b(?:(?!\\n\\n).)*\\bCH-04\\w*\\b)",
+        "expected": "(?is)(?:\\bCH-04\\w{0,}\\b(?:(?!\\n\\n).)*\\bconversion\\b|\\bconversion\\b(?:(?!\\n\\n).)*\\bCH-04\\w{0,}\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -674,7 +810,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b(?:(?!\\n\\n).)*(?<![-\\d.])(?:31246|31246\\.0|31246\\.00|31,246|31,246\\.0|31,246\\.00)(?!\\d)(?!\\.\\d)|(?<![-\\d.])(?:31246|31246\\.0|31246\\.00|31,246|31,246\\.0|31,246\\.00)(?!\\d)(?!\\.\\d)(?:(?!\\n\\n).)*\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b)",
+        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b(?:(?!\\n\\n).)*(?<![-\\d.])(?:32005|32005\\.0|32005\\.00|32,005|32,005\\.0|32,005\\.00)(?!\\d)(?!\\.\\d)|(?<![-\\d.])(?:32005|32005\\.0|32005\\.00|32,005|32,005\\.0|32,005\\.00)(?!\\d)(?!\\.\\d)(?:(?!\\n\\n).)*\\bC[-_ ]?o[-_ ]?n[-_ ]?v[-_ ]?e[-_ ]?r[-_ ]?s[-_ ]?i[-_ ]?o[-_ ]?n[-_\\s]*e[-_ ]?f[-_ ]?f[-_ ]?e[-_ ]?c[-_ ]?t\\w*\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -700,7 +836,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:(?<![-\\d.])(?:31246|31246\\.0|31246\\.00|31,246|31,246\\.0|31,246\\.00)(?!\\d)(?!\\.\\d)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w;.|/]*(?<![-\\d.])(?:31246|31246\\.0|31246\\.00|31,246|31,246\\.0|31,246\\.00)(?!\\d)(?!\\.\\d)(?!\\s*(?:raw|total|vs|versus)\\b))",
+        "expected": "(?is)(?:(?<![-\\d.])(?:32005|32005\\.0|32005\\.00|32,005|32,005\\.0|32,005\\.00)(?!\\d)(?!\\.\\d)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps|not\\s+\\w+\\s+but|rather\\s+than|instead\\s+of|but\\s+not|except)\\b|\\s/\\s)[^\\w;.|/]*(?<![-\\d.])(?:32005|32005\\.0|32005\\.00|32,005|32,005\\.0|32,005\\.00)(?!\\d)(?!\\.\\d)(?!\\s*(?:raw|total|vs|versus)\\b))",
         "deterministic": {
           "path": "$.text",
           "comparison": "not_regex_match"
@@ -726,7 +862,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b(?:(?!\\n\\n).)*(?<![-\\d.])(?:125|125\\.0|125\\.00)(?!\\d)(?!\\.\\d)|(?<![-\\d.])(?:125|125\\.0|125\\.00)(?!\\d)(?!\\.\\d)(?:(?!\\n\\n).)*\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b)",
+        "expected": "(?is)(?:\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b(?:(?!\\n\\n).)*(?<![-\\d.])(?:150|150\\.0|150\\.00)(?!\\d)(?!\\.\\d)|(?<![-\\d.])(?:150|150\\.0|150\\.00)(?!\\d)(?!\\.\\d)(?:(?!\\n\\n).)*\\bC[-_ ]?o[-_ ]?u[-_ ]?n[-_ ]?t[-_ ]?e[-_ ]?d[-_\\s]*p[-_ ]?l[-_ ]?a[-_ ]?c[-_ ]?e[-_ ]?m[-_ ]?e[-_ ]?n[-_ ]?t[-_ ]?s\\w*\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -752,7 +888,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:(?<![-\\d.])(?:125|125\\.0|125\\.00)(?!\\d)(?!\\.\\d)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w;.|/]*(?<![-\\d.])(?:125|125\\.0|125\\.00)(?!\\d)(?!\\.\\d)(?!\\s*(?:raw|total|vs|versus)\\b))",
+        "expected": "(?is)(?:(?<![-\\d.])(?:150|150\\.0|150\\.00)(?!\\d)(?!\\.\\d)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w;.|/]*(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)(?!\\s*(?:raw|total|vs|versus)\\b)|(?:(?<![\\d.])\\d[\\d,]*(?:\\.\\d+)?(?!\\d)(?!\\.\\d)|\\b(?:zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\\b)[^\\w;.|/]*(?:\\b(?:or|alternatively|possibly|either|maybe|perhaps)\\b|\\s/\\s)[^\\w;.|/]*(?<![-\\d.])(?:150|150\\.0|150\\.00)(?!\\d)(?!\\.\\d)(?!\\s*(?:raw|total|vs|versus)\\b))",
         "deterministic": {
           "path": "$.text",
           "comparison": "not_regex_match"
@@ -781,23 +917,23 @@
         "expected": {
           "keys": {
             "counted_placement_count": {
-              "value": 125,
+              "value": 150,
               "tolerance": null
             },
             "placements_effect_streams": {
-              "value": 31699,
+              "value": 34819,
               "tolerance": null
             },
             "conversion_effect_streams": {
-              "value": 31246,
+              "value": 32005,
               "tolerance": null
             },
             "residual_reach_effect_streams": {
-              "value": 49619,
+              "value": 51780,
               "tolerance": null
             },
             "shortfall_to_target_streams": {
-              "value": 112564,
+              "value": 118604,
               "tolerance": null
             }
           },

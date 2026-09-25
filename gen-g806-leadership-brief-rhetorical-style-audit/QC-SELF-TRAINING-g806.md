@@ -1,4 +1,4 @@
-﻿# QC Self-Training — 9 Findings (gen-g806, Sep 22, 2026)
+# QC Self-Training — 9 Findings (gen-g806, Sep 22, 2026)
 
 **Lesson date:** 2026-09-22
 **Task:** gen-g806-leadership-brief-rhetorical-style-audit

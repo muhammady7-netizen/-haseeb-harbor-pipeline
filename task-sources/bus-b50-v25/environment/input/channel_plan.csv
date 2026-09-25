@@ -1,0 +1,45 @@
+channel_id,channel_name,planned_placements,planned_reach_per_placement,planned_streams_per_1000_reach
+CH-30,Repeating decimal test,2,100000,1
+CH-01,Editorial playlist pitching,3,160000,62
+CH-02,Music blog outreach,5,40000,45
+CH-03,Community radio,4,30000,30
+CH-04,Curator marketplace submissions,6,50000,38
+CH-05,Short-video socials,8,75000,55
+CH-06,Newsletter swaps,4,45000,41
+CH-07,Podcast insertions,3,60000,48
+CH-08,Influencer stories,4,90000,50
+CH-09,Festival playlist seeding,2,120000,70
+CH-10,Street team flyers,3,50000,40
+CH-11,Playlist seeding,2,76900,65
+CH-12,Sync licensing outreach,3,80000,60
+CH-13,Sync licensing outreach,3,70000,50
+CH-14,Playlist seeding,2,30100,45
+CH-15,Street team flyers,3,50000,40
+CH-16,Brand partnership ads,3,80000,50
+CH-17,Cross-channel test,2,50000,40
+CH-18,Week mismatch test,2,60000,50
+CH-19,Duplicate ID test,2,40000,45
+CH-20,Large negative test,2,50000,40
+CH-21,Zero contribution test,2,40000,45
+CH-22,W6 ledger test,2,45000,40
+CH-23,Sign flip test,2,50000,40
+CH-24,Overdeliver test,2,30000,40
+CH-25,Guaranteed phantom test,2,50000,40
+CH-26,Blank ran test,2,40000,45
+CH-27,Float precision test,2,60000,50
+CH-28,Zero reach plan test,2,40000,40
+CH-29,All organic test,2,50000,40
+CH-31,Fractional streams test,2,50000,40
+CH-32,Fractional reach test,2,40000,50
+CH-33,Completed status test,2,45000,40
+CH-34,W7 ledger test,2,55000,45
+CH-35,W3 excluded test,2,40000,45
+CH-36,Target half test,1,2000,1
+CH-37,Neg fractional test,2,50000,40
+CH-38,Tiny fraction test,2,50000,40
+CH-39,Large reach tiny streams,2,999,1000
+CH-41,Both half test,1,1000,1
+CH-42,Reach no streams test,2,40000,45
+CH-43,Empty status test,2,40000,45
+CH-44,Duplicate ledger ref,2,40000,45
+CH-45,All guaranteed plus organic,2,50000,40

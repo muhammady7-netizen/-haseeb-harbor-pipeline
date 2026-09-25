@@ -53,3 +53,21 @@ CH-55,Repeat log,2,40000,45
 CH-56,Streams-only feed,2,40000,45
 CH-57,On-target push,2,50000,40
 CH-58,Overdelivery,2,50000,40
+CH-59,Amended conversion rate,3,50000,40
+CH-59,Amended conversion rate,3,50000,40
+CH-60,Cross-channel guaranteed ref,2,50000,40
+CH-61,Multiple amendment rates,4,50000,40
+CH-62,Uncounted placement in-window ledger,3,50000,40
+CH-63,Rounding trap CH-63,2,2500,49
+CH-64,Rounding trap CH-64,2,2500,53
+CH-65,Rounding trap CH-65,2,2500,57
+CH-66,Rounding trap CH-66,2,2500,61
+CH-67,Rounding trap CH-67,2,2500,51
+CH-68,Rounding trap CH-68,2,2500,55
+CH-69,Rounding trap CH-69,2,2500,59
+CH-70,Rounding trap CH-70,2,2500,63
+CH-71,Rounding trap CH-71,1,2500,50
+CH-72,Rounding trap CH-72,1,2500,50
+CH-73,Rounding trap CH-73,1,2500,50
+CH-74,Rounding trap CH-74,1,2500,50
+CH-75,Partnership placement,2,50000,40
