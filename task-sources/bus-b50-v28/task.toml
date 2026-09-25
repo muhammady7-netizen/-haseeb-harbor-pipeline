@@ -1,0 +1,30 @@
+schema_version = "1.3"
+artifacts = []
+
+[task]
+name = "obi/bus-b50-b10-streaming-target-variance-attribution"
+description = "Split a single's streaming shortfall across its campaign channels"
+authors = []
+keywords = ["harbor", "fixb50b10", "bus", "non-connector", "offline", "variance_attribution"]
+
+[metadata]
+source_config = "infra/task-harness/configs/shannon-200/task_bus_b50_b10_streaming_target_variance_attribution"
+
+[verifier]
+timeout_sec = 600.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 1800.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1200.0
+os = "linux"
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]
