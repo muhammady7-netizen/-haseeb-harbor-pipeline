@@ -13,7 +13,7 @@ Non-connector Harbor task. Audit leadership-brief scripts against the communicat
 - input/leadership_brief_style_guide.md — the style guide (overridden by errata v4)
 - input/policy_errata_v4.md — the authoritative errata (trim, last-wins, token rules, band bounds)
 - input/band_definition.csv — band bounds (active rows only, last-wins)
-- input/script_inventory.csv — 2475 scripts with opening_line, body_excerpt and scripture_text
+- input/script_inventory.csv — 2472 scripts with opening_line, body_excerpt and scripture_text
 - input/recording_clearance.csv — clearance status per script
 - input/retirement_register.csv — retirement status per script
 - input/air_window.csv — air window status per script
