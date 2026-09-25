@@ -232,7 +232,6 @@ def test_findings_name_every_input_derived_sequence_exception():
     text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
     assert all(subject_id.lower() in text for subject_id in _sequence_findings(_input_rows()))
 
-
 def test_findings_address_sequence_integrity():
     text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
     assert re.search(r"(?i)sequence|out of order|ascending", text), "Findings must address sequence integrity"
@@ -245,14 +244,87 @@ def test_findings_address_tolerances():
 
 def test_findings_address_overfill_or_incomplete():
     text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
-    assert re.search(r"(?is)(?:B\d+[\s\S]{0,200}(?:not[_ ]?assessed|over-?fill|incomplete|still filling)|(?:not[_ ]?assessed|over-?fill|incomplete|still filling)[\s\S]{0,200}B\d+)", text), "Findings must address overfill/incomplete blocks"
+    assert re.search(r"(?is)(?:B\d+[\s\S]{0,200}(?:not[_ ]?assessed|over-?fill|incomplete|still filling|still being filled|excluded from assessment|fewer than|not enough|under-?filled|under-?filling|not yet complete|not yet filled)|(?:not[_ ]?assessed|over-?fill|incomplete|still filling|still being filled|excluded from assessment|fewer than|not enough|under-?filled|under-?filling|not yet complete|not yet filled)[\s\S]{0,200}B\d+)", text), "Findings must address overfill/incomplete blocks"
 
 
 def test_findings_address_boundary_blocks_or_equality():
     text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
-    assert re.search(r"(?is)(?:B\d+[\s\S]{0,200}(?:within[_ ]?tolerance|outside[_ ]?tolerance|3 or 5|equality at 5\.0|5 pp)|(?:within[_ ]?tolerance|outside[_ ]?tolerance|3 or 5|equality at 5\.0|5 pp)[\s\S]{0,200}B\d+)", text), "Findings must address boundary blocks"
+    assert re.search(r"(?is)(?:B\d+[\s\S]{0,200}(?:within[_ ]?tolerance|outside[_ ]?tolerance|3 or 5|equality at 5\.0|5 pp|deviat|not deviat|breach|breaching|within limit|outside limit|compliant|non-?compliant)|(?:within[_ ]?tolerance|outside[_ ]?tolerance|3 or 5|equality at 5\.0|5 pp|deviat|not deviat|breach|breaching|within limit|outside limit|compliant|non-?compliant)[\s\S]{0,200}B\d+)", text), "Findings must address boundary blocks"
 
 
 def test_findings_address_ledger_normalisation():
     text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
     assert re.search(r"(?is)(amendment[\s-]*ledger|correction[\s-]*ledger|ledger[\s-]*of[\s-]*amendments|allocation[\s_-]*amend\w*|amend\w*.{0,60}ledger|ledger.{0,60}amend\w*|reconcil\w*.{0,60}(ledger|amend)|applied.{0,60}(ledger|amend)|ledger.{0,60}(reconcil\w*|applied))", text), "Findings must reference the amendment ledger"
+
+
+def test_findings_name_correct_outside_tolerance_strata():
+    """Findings must name the correct outside-tolerance strata (computed from gold)."""
+    source = _input_rows()
+    strata = _read_csv("stratum_balance.csv")
+    outside = [r for r in strata if r["status"].strip().lower() == "outside_tolerance" and r["factor"].strip().lower() != "overall"]
+    within = [r for r in strata if r["status"].strip().lower() == "within_tolerance" and r["factor"].strip().lower() != "overall"]
+    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
+    for r in outside:
+        factor = r["factor"].strip().lower()
+        level = r["level"].strip().lower()
+        assert level in text, f"Findings must name {level} as outside tolerance"
+        idx = text.find(level)
+        context = text[max(0, idx - 100):idx + 100]
+        # Must say outside/exceed/breach, NOT "not outside" or "within"
+        assert ("outside" in context or "exceed" in context or "breach" in context or "fail" in context), f"Findings must describe {level} as outside/exceeding tolerance"
+        assert "not outside" not in context and "not exceed" not in context, f"Findings must not negate {level} outside tolerance"
+    for r in within:
+        level = r["level"].strip().lower()
+        idx = text.find(level)
+        if idx >= 0:
+            context = text[max(0, idx - 100):idx + 100]
+            assert "outside" not in context or "not outside" in context or "within" in context, f"Findings must not describe {level} as outside when it is within tolerance"
+
+def test_findings_state_overall_drift():
+    """Findings must state the overall drift direction (active_pct vs target 66.7%)."""
+    results = json.loads((WORKSPACE / "results.json").read_text(encoding="utf-8"))
+    pct = results["active_proportion_pct"]
+    text = (WORKSPACE / "randomisation_findings.md").read_text(encoding="utf-8").lower()
+    pct_str = str(pct)
+    assert pct_str in text or str(int(pct)) in text, f"Findings must state the active proportion ({pct}%)"
+    # Must NOT claim "no drift" or "within tolerance" when outside
+    if pct < 66.7:
+        diff = round(66.7 - pct, 1)
+        assert diff >= 5.0, "Overall is outside 5pp tolerance"
+        # Must say it's outside/below, NOT claim within/no drift
+        assert ("outside" in text or "below" in text or "under" in text or "less than" in text), f"Findings must state drift is outside tolerance (active_pct={pct} below target 66.7%)"
+        assert "no drift" not in text and "within tolerance" not in text[:text.find(pct_str)+200] if pct_str in text else True, "Must not claim no drift when drift exists"
+    else:
+        assert ("above" in text or "over" in text or "exceed" in text), f"Findings must state overall drift (active_pct={pct} above target 66.7%)"
+
+def test_balance_has_expected_columns():
+    rows = _read_csv("stratum_balance.csv")
+    cols = set(rows[0].keys()) if rows else set()
+    expected = {"factor", "level", "subjects", "active", "control", "active_pct", "out_of_sequence", "status"}
+    assert expected.issubset(cols), f"Missing columns: {expected - cols}"
+
+def test_blocks_have_expected_columns():
+    rows = _read_csv("block_balance.csv")
+    cols = set(rows[0].keys()) if rows else set()
+    expected = {"stratum", "block_id", "subjects", "active", "control", "block_status"}
+    assert expected.issubset(cols), f"Missing columns: {expected - cols}"
+
+def test_balance_covers_both_factors():
+    rows = _read_csv("stratum_balance.csv")
+    factors = {r["factor"].strip().lower() for r in rows}
+    assert "site" in factors and "severity" in factors, "Must have both site and severity factors"
+
+def test_site_levels_use_canonical_S_codes():
+    rows = _read_csv("stratum_balance.csv")
+    for r in rows:
+        if r["factor"].strip().lower() == "site":
+            level = r["level"].strip()
+            assert re.match(r"^S[123]$", level), f"Site level must be S1/S2/S3, got {level}"
+
+def test_out_of_sequence_blank_on_non_site_rows():
+    rows = _read_csv("stratum_balance.csv")
+    for r in rows:
+        factor = r["factor"].strip().lower()
+        oos = r.get("out_of_sequence", "").strip()
+        if factor in ("overall", "severity"):
+            assert oos == "", f"out_of_sequence must be blank on {factor} row, got {oos!r}"

@@ -1,0 +1,49 @@
+﻿{
+  "job_name": "glm-b50-v2-test",
+  "jobs_dir": "C:/Users/Haseeb Mirza/Documents/Default Project/haseeb-harbor-pipeline/task-sources/bus-b50/harbor-jobs",
+  "n_concurrent_trials": 1,
+  "n_attempts": 1,
+  "tasks": [
+    {
+      "path": "C:/Users/Haseeb Mirza/Documents/Default Project/haseeb-harbor-pipeline/task-sources/bus-b50",
+      "name": "obi/bus-b50-b10-streaming-target-variance-attribution"
+    }
+  ],
+  "verifier": {
+    "env": {
+      "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+      "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+      "JUDGE_MODEL": "openai/glm-5.2"
+    }
+  },
+  "agents": [
+    {
+      "name": "opencode",
+      "model_name": "glm/glm-5.2",
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1"
+      },
+      "kwargs": {
+        "opencode_config": {
+          "provider": {
+            "glm": {
+              "npm": "@ai-sdk/openai-compatible",
+              "name": "GLM Gateway",
+              "options": {
+                "baseURL": "http://34.41.10.8:4000/v1",
+                "apiKey": "{env:OPENAI_API_KEY}"
+              },
+              "models": {
+                "glm-5.2": {
+                  "name": "GLM 5.2"
+                }
+              }
+            }
+          },
+          "model": "glm/glm-5.2"
+        }
+      }
+    }
+  ]
+}

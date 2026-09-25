@@ -1,8 +1,7 @@
 {
-  "brief_count": 11,
-  "passing_briefs": 5,
-  "failing_briefs": 6,
-  "avg_score": 69.09,
-  "total_unanswered": 2,
-  "total_breaches": 39
+  "script_count": 2073,
+  "flagged_count": 1566,
+  "negation_pivot_count": 565,
+  "uncited_scripture_count": 210,
+  "runtime_breach_count": 316
 }

@@ -1,4 +1,4 @@
-﻿# Harbor CLI task image â€” offline, file-deliverable.
+# Harbor CLI task image — offline, file-deliverable.
 #
 # Carries three things: a shell for the agent, the read-only fixtures, and the
 # python deps the vendored verifier engine needs. Installing the grader's deps
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # The engine's third-party imports are exactly pydantic, jsonpath_ng and
 # tenacity; the pins match infra/task-harness/requirements.txt so a verdict in
 # here means what it means in the harness. tenacity arrives via the judge module,
-# which is imported at package init even though these tasks never call a judge â€”
+# which is imported at package init even though these tasks never call a judge —
 # omitting it fails the whole test collection, not just the rubric path.
 RUN pip install --no-cache-dir \
         "pytest==8.4.1" \
@@ -33,3 +33,9 @@ WORKDIR /app
 # Read-only task inputs. The prompt refers to these as `input/`.
 COPY input/ /app/input/
 RUN chmod -R a-w,a+rX /app/input
+
+# Golden isolation: lock the verifier directory so the expected answers in
+# /tests/verifier.json cannot be read back by a non-root agent. Platform PreQC
+# requires this image to keep running as root (no non-root USER directive), so
+# /tests is restricted to mode 700 instead; the root verifier still reads it.
+RUN mkdir -p /tests && chmod 700 /tests
