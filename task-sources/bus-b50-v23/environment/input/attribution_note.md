@@ -54,6 +54,13 @@ halves away from zero, before it is summed into the channel's totals.
 The channel's delivered reach and delivered streams are the sums of
 these per-row rounded values.
 
+
+**3.5** Where a ledger row carries a fractional `delivered_streams` or
+`delivered_reach`, the value is rounded to the nearest whole number,
+halves away from zero, before it is summed into the channel's totals.
+The channel's delivered reach and delivered streams are the sums of
+these per-row rounded values.
+
 **3.4** A ledger row carrying negative streams is a platform correction and is counted as
 it stands, sign included. It is neither dropped nor reversed.
 
