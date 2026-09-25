@@ -102,9 +102,10 @@ def test_results_recomputed_from_audit():
 
 
 def test_memo_addresses_key_content():
-    """Memo must address escalation, clock start, late notifications, unapproved acknowledgements, and non-breach cases."""
+    """Memo must address all required content themes."""
     import re
     memo = (WORKSPACE / "results_memo.md").read_text(encoding="utf-8").lower()
+    memo_text = (WORKSPACE / "results_memo.md").read_text(encoding="utf-8")
     
     # Memo must address escalation
     assert "escalat" in memo, "Memo must address escalation"
@@ -112,34 +113,67 @@ def test_memo_addresses_key_content():
     # Memo must address clock start
     assert "clock" in memo, "Memo must address clock start"
     
-    # Memo must explain non-breach cases (instruction says: "state the reason in plain language (for example inclusive window limits or core-hours clock start)")
-    assert ("midnight" in memo or "weekend" in memo or "out of hours" in memo or "non-breach" in memo or "not a breach" in memo or "not as breaches" in memo or "saturday" in memo or "sunday" in memo or "inclusive" in memo or "core hours" in memo or "core-hours" in memo or "boundary" in memo or "not a finding" in memo), "Memo must explain non-breach cases"
+    # Memo must explain non-breach cases
+    assert ("midnight" in memo or "weekend" in memo or "out of hours" in memo or 
+            "non-breach" in memo or "not a breach" in memo or "not as breaches" in memo or
+            "saturday" in memo or "sunday" in memo or "inclusive" in memo or 
+            "core hours" in memo or "core-hours" in memo or "boundary" in memo or
+            "not a finding" in memo or "window limit" in memo), "Memo must explain non-breach cases"
     
-    # Memo must have explanatory body (not just a table)
+    # Memo must have explanatory body
     assert len(memo) > 200, "Memo must have explanatory body (>200 chars)"
     
-    # Memo must list late notifications (R-09 or late notification)
-    assert ("r-09" in memo or "r09" in memo or "late notification" in memo), "Memo must list late notifications"
+    # Memo must mention notification window
+    assert ("30" in memo and "notification" in memo) or ("240" in memo and "notification" in memo) or ("notification window" in memo), "Memo must mention notification window"
     
-    # Memo must list ack breaches
-    assert ("acknowledgement" in memo and ("breach" in memo or "late" in memo)), "Memo must list ack breaches"
+    # Memo must mention acknowledgement window
+    assert ("60" in memo and "acknowledgement" in memo) or ("480" in memo and "acknowledgement" in memo) or ("acknowledgement window" in memo), "Memo must mention acknowledgement window"
     
-    # Memo must list R-10 absent ack
-    assert ("r-10" in memo or "r10" in memo or "absent" in memo), "Memo must list absent ack R-10"
+    # Memo must address unapproved acknowledgers (accept register token or prose form)
+    assert ("ward_clerk" in memo or "ward clerk" in memo or "phlebotomist" in memo or 
+            "nurse_hca" in memo or "nurse hca" in memo or "healthcare_assistant" in memo or
+            "healthcare assistant" in memo or "pharmacist" in memo or "unapproved" in memo or
+            "not on the approved list" in memo), "Memo must name unapproved role"
     
-    # Memo must list R-15 after hours ack
-    assert ("r-15" in memo or "r15" in memo or "after hours" in memo), "Memo must list after hours ack R-15"
+    # Memo must address missing escalations
+    assert ("escalation" in memo and ("missing" in memo or "absence" in memo or "no escalation" in memo)), "Memo must address missing escalations"
     
-    # Memo must list R-16 before closing breach
-    assert ("r-16" in memo or "r16" in memo or "before closing" in memo or "closing breach" in memo), "Memo must list before closing breach R-16"
+    # Memo must name at least 2 specific late notification result IDs
+    late_ids = sum(1 for rid in ["r-02", "r-09", "r-13", "r-16", "r-21", "r-26", "r-31", "r-40", "r-47", "r-53"] if rid in memo)
+    assert late_ids >= 2, f"Memo must name at least 2 late notification result IDs (found {late_ids})"
     
-    # Memo must list R-40 late notification
-    assert ("r-40" in memo or "r40" in memo), "Memo must list R-40 late notification"
-    
-    # Memo must name phlebotomist unapproved
-    assert ("phlebotomist" in memo or "unapproved" in memo), "Memo must name phlebotomist/unapproved"
-    
-    # Memo must name the unapproved acknowledgement
-    assert "unapproved" in memo, "Memo must name the unapproved acknowledgement"
+    # Memo must name at least 2 specific late/absent acknowledgement result IDs
+    ack_ids = sum(1 for rid in ["r-03", "r-04", "r-06", "r-10", "r-13", "r-15", "r-16", "r-22", "r-24", "r-27", "r-30", "r-32", "r-33", "r-35", "r-45", "r-49", "r-52", "r-53", "r-54", "r-55"] if rid in memo)
+    assert ack_ids >= 2, f"Memo must name at least 2 late/absent ack result IDs (found {ack_ids})"
 
 
+def test_audit_per_row_correctness():
+    """Every audit row must have correct escalation_status and acknowledgement_minutes."""
+    import csv
+    audit_path = WORKSPACE / "results_audit.csv"
+    assert audit_path.is_file(), "results_audit.csv missing"
+    with audit_path.open(encoding="utf-8-sig", newline="") as f:
+        audit = list(csv.DictReader(f))
+    
+    valid_esc_status = {"not_required", "recorded", "missing"}
+    
+    for row in audit:
+        rid = row["result_id"].strip()
+        findings = row.get("findings", "").strip().lower()
+        ack_mins = row.get("acknowledgement_minutes", "").strip()
+        esc_status = row.get("escalation_status", "").strip().lower()
+        
+        # Check acknowledgement_minutes is empty for unapproved acknowledgers
+        if "acknowledger_unapproved" in findings:
+            assert ack_mins == "", f"{rid}: acknowledgement_minutes must be empty for unapproved acknowledger, got {ack_mins}"
+        
+        # Check escalation_status is one of the three valid values
+        assert esc_status in valid_esc_status, f"{rid}: escalation_status must be not_required/recorded/missing, got {esc_status}"
+        
+        # Check escalation_status is consistent with findings
+        if "acknowledgement_late" in findings and "escalation_missing" in findings:
+            assert esc_status == "missing", f"{rid}: escalation_status must be 'missing' when escalation_missing in findings"
+        elif "acknowledgement_late" in findings and "escalation_missing" not in findings:
+            assert esc_status == "recorded", f"{rid}: escalation_status must be 'recorded' when ack late but no escalation_missing"
+        elif "acknowledgement_late" not in findings:
+            assert esc_status == "not_required", f"{rid}: escalation_status must be 'not_required' when no ack late"

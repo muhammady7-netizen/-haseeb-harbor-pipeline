@@ -1,6 +1,6 @@
-# CR-7 critical results audit - 409 results
+# CR-7 critical results audit - 609 results
 
-145 results are clean.
+165 results are clean.
 
 ## Late notifications
 
@@ -99,6 +99,105 @@
 - **R-397** (tier 1) - notified 45 min after clock start 2026-06-26T10:00 (limit 30 min).
 - **R-398** (tier 1) - notified 45 min after clock start 2026-06-26T10:00 (limit 30 min).
 - **R-399** (tier 1) - notified 45 min after clock start 2026-06-26T10:00 (limit 30 min).
+- **R-410** (tier 1) - notified 31 min after clock start 2026-07-01T14:45 (limit 30 min).
+- **R-412** (tier 1) - notified 31 min after clock start 2026-07-01T20:30 (limit 30 min).
+- **R-414** (tier 2) - notified 262 min after clock start 2026-07-02T08:00 (limit 240 min).
+- **R-415** (tier 2) - notified 270 min after clock start 2026-07-01T08:00 (limit 240 min).
+- **R-417** (tier 1) - notified 50 min after clock start 2026-07-01T22:00 (limit 30 min).
+- **R-419** (tier 2) - notified 266 min after clock start 2026-07-01T08:00 (limit 240 min).
+- **R-420** (tier 2) - notified 241 min after clock start 2026-07-01T08:00 (limit 240 min).
+- **R-422** (tier 1) - notified 56 min after clock start 2026-07-01T19:30 (limit 30 min).
+- **R-423** (tier 1) - notified 31 min after clock start 2026-07-01T05:45 (limit 30 min).
+- **R-425** (tier 1) - notified 31 min after clock start 2026-07-01T21:45 (limit 30 min).
+- **R-429** (tier 2) - notified 262 min after clock start 2026-07-01T15:45 (limit 240 min).
+- **R-430** (tier 2) - notified 241 min after clock start 2026-07-01T09:45 (limit 240 min).
+- **R-431** (tier 2) - notified 258 min after clock start 2026-07-01T11:15 (limit 240 min).
+- **R-432** (tier 1) - notified 45 min after clock start 2026-07-01T19:45 (limit 30 min).
+- **R-433** (tier 2) - notified 268 min after clock start 2026-07-01T08:00 (limit 240 min).
+- **R-435** (tier 1) - notified 49 min after clock start 2026-07-01T12:00 (limit 30 min).
+- **R-436** (tier 1) - notified 50 min after clock start 2026-07-01T03:15 (limit 30 min).
+- **R-438** (tier 1) - notified 47 min after clock start 2026-07-01T18:15 (limit 30 min).
+- **R-440** (tier 1) - notified 31 min after clock start 2026-07-02T02:15 (limit 30 min).
+- **R-441** (tier 1) - notified 36 min after clock start 2026-07-02T03:00 (limit 30 min).
+- **R-443** (tier 1) - notified 55 min after clock start 2026-07-02T22:30 (limit 30 min).
+- **R-444** (tier 2) - notified 241 min after clock start 2026-07-03T08:00 (limit 240 min).
+- **R-447** (tier 1) - notified 31 min after clock start 2026-07-02T14:15 (limit 30 min).
+- **R-451** (tier 2) - notified 241 min after clock start 2026-07-02T15:00 (limit 240 min).
+- **R-452** (tier 1) - notified 31 min after clock start 2026-07-02T03:45 (limit 30 min).
+- **R-455** (tier 2) - notified 256 min after clock start 2026-07-02T14:45 (limit 240 min).
+- **R-458** (tier 2) - notified 266 min after clock start 2026-07-02T10:30 (limit 240 min).
+- **R-461** (tier 2) - notified 241 min after clock start 2026-07-02T12:15 (limit 240 min).
+- **R-463** (tier 2) - notified 241 min after clock start 2026-07-02T14:30 (limit 240 min).
+- **R-467** (tier 2) - notified 262 min after clock start 2026-07-02T08:00 (limit 240 min).
+- **R-469** (tier 1) - notified 47 min after clock start 2026-07-02T10:45 (limit 30 min).
+- **R-471** (tier 1) - notified 37 min after clock start 2026-07-03T05:30 (limit 30 min).
+- **R-472** (tier 1) - notified 31 min after clock start 2026-07-03T06:15 (limit 30 min).
+- **R-473** (tier 1) - notified 59 min after clock start 2026-07-03T13:30 (limit 30 min).
+- **R-474** (tier 1) - notified 37 min after clock start 2026-07-03T10:30 (limit 30 min).
+- **R-476** (tier 1) - notified 31 min after clock start 2026-07-03T09:00 (limit 30 min).
+- **R-478** (tier 2) - notified 252 min after clock start 2026-07-04T08:00 (limit 240 min).
+- **R-482** (tier 2) - notified 253 min after clock start 2026-07-03T08:00 (limit 240 min).
+- **R-484** (tier 1) - notified 31 min after clock start 2026-07-03T16:45 (limit 30 min).
+- **R-487** (tier 1) - notified 31 min after clock start 2026-07-03T04:15 (limit 30 min).
+- **R-490** (tier 2) - notified 241 min after clock start 2026-07-03T08:00 (limit 240 min).
+- **R-491** (tier 2) - notified 269 min after clock start 2026-07-03T17:30 (limit 240 min).
+- **R-492** (tier 1) - notified 31 min after clock start 2026-07-03T01:15 (limit 30 min).
+- **R-493** (tier 2) - notified 249 min after clock start 2026-07-03T16:45 (limit 240 min).
+- **R-494** (tier 1) - notified 31 min after clock start 2026-07-03T12:15 (limit 30 min).
+- **R-495** (tier 2) - notified 241 min after clock start 2026-07-03T08:00 (limit 240 min).
+- **R-496** (tier 2) - notified 249 min after clock start 2026-07-03T11:15 (limit 240 min).
+- **R-497** (tier 2) - notified 241 min after clock start 2026-07-04T08:00 (limit 240 min).
+- **R-500** (tier 2) - notified 263 min after clock start 2026-07-05T08:00 (limit 240 min).
+- **R-502** (tier 2) - notified 245 min after clock start 2026-07-04T08:00 (limit 240 min).
+- **R-504** (tier 1) - notified 39 min after clock start 2026-07-04T11:15 (limit 30 min).
+- **R-505** (tier 1) - notified 54 min after clock start 2026-07-04T10:00 (limit 30 min).
+- **R-506** (tier 1) - notified 31 min after clock start 2026-07-04T23:15 (limit 30 min).
+- **R-507** (tier 2) - notified 241 min after clock start 2026-07-04T13:00 (limit 240 min).
+- **R-509** (tier 2) - notified 241 min after clock start 2026-07-04T08:00 (limit 240 min).
+- **R-510** (tier 2) - notified 260 min after clock start 2026-07-05T08:00 (limit 240 min).
+- **R-513** (tier 1) - notified 47 min after clock start 2026-07-04T01:30 (limit 30 min).
+- **R-515** (tier 2) - notified 241 min after clock start 2026-07-04T08:00 (limit 240 min).
+- **R-517** (tier 1) - notified 31 min after clock start 2026-07-04T01:00 (limit 30 min).
+- **R-522** (tier 1) - notified 31 min after clock start 2026-07-04T01:15 (limit 30 min).
+- **R-526** (tier 2) - notified 241 min after clock start 2026-07-04T16:15 (limit 240 min).
+- **R-527** (tier 1) - notified 47 min after clock start 2026-07-04T09:45 (limit 30 min).
+- **R-528** (tier 2) - notified 241 min after clock start 2026-07-04T08:00 (limit 240 min).
+- **R-532** (tier 1) - notified 50 min after clock start 2026-07-05T15:15 (limit 30 min).
+- **R-534** (tier 2) - notified 270 min after clock start 2026-07-05T10:30 (limit 240 min).
+- **R-537** (tier 1) - notified 31 min after clock start 2026-07-05T13:15 (limit 30 min).
+- **R-542** (tier 2) - notified 241 min after clock start 2026-07-05T08:00 (limit 240 min).
+- **R-546** (tier 2) - notified 267 min after clock start 2026-07-05T09:45 (limit 240 min).
+- **R-547** (tier 1) - notified 31 min after clock start 2026-07-05T21:00 (limit 30 min).
+- **R-548** (tier 2) - notified 241 min after clock start 2026-07-06T08:00 (limit 240 min).
+- **R-549** (tier 2) - notified 270 min after clock start 2026-07-05T08:00 (limit 240 min).
+- **R-552** (tier 2) - notified 241 min after clock start 2026-07-05T08:15 (limit 240 min).
+- **R-553** (tier 1) - notified 31 min after clock start 2026-07-05T07:30 (limit 30 min).
+- **R-555** (tier 1) - notified 36 min after clock start 2026-07-05T05:45 (limit 30 min).
+- **R-556** (tier 2) - notified 251 min after clock start 2026-07-05T08:00 (limit 240 min).
+- **R-559** (tier 2) - notified 241 min after clock start 2026-07-06T08:00 (limit 240 min).
+- **R-565** (tier 2) - notified 256 min after clock start 2026-07-07T08:00 (limit 240 min).
+- **R-568** (tier 2) - notified 241 min after clock start 2026-07-06T10:15 (limit 240 min).
+- **R-569** (tier 1) - notified 42 min after clock start 2026-07-06T02:30 (limit 30 min).
+- **R-570** (tier 1) - notified 42 min after clock start 2026-07-06T23:45 (limit 30 min).
+- **R-571** (tier 2) - notified 241 min after clock start 2026-07-06T16:15 (limit 240 min).
+- **R-572** (tier 2) - notified 262 min after clock start 2026-07-07T08:00 (limit 240 min).
+- **R-573** (tier 2) - notified 241 min after clock start 2026-07-06T17:45 (limit 240 min).
+- **R-577** (tier 2) - notified 248 min after clock start 2026-07-07T08:00 (limit 240 min).
+- **R-579** (tier 2) - notified 241 min after clock start 2026-07-06T11:00 (limit 240 min).
+- **R-580** (tier 1) - notified 31 min after clock start 2026-07-06T14:00 (limit 30 min).
+- **R-581** (tier 2) - notified 252 min after clock start 2026-07-06T08:00 (limit 240 min).
+- **R-583** (tier 2) - notified 241 min after clock start 2026-07-06T13:00 (limit 240 min).
+- **R-584** (tier 2) - notified 267 min after clock start 2026-07-06T08:00 (limit 240 min).
+- **R-587** (tier 1) - notified 50 min after clock start 2026-07-06T09:15 (limit 30 min).
+- **R-588** (tier 1) - notified 31 min after clock start 2026-07-06T16:15 (limit 30 min).
+- **R-589** (tier 1) - notified 38 min after clock start 2026-07-06T00:15 (limit 30 min).
+- **R-591** (tier 2) - notified 241 min after clock start 2026-07-07T08:00 (limit 240 min).
+- **R-599** (tier 2) - notified 241 min after clock start 2026-07-08T08:00 (limit 240 min).
+- **R-600** (tier 2) - notified 259 min after clock start 2026-07-07T11:15 (limit 240 min).
+- **R-603** (tier 1) - notified 31 min after clock start 2026-07-07T11:30 (limit 30 min).
+- **R-605** (tier 1) - notified 43 min after clock start 2026-07-07T22:45 (limit 30 min).
+- **R-607** (tier 1) - notified 31 min after clock start 2026-07-07T07:15 (limit 30 min).
+- **R-608** (tier 2) - notified 241 min after clock start 2026-07-07T08:00 (limit 240 min).
 
 ## Late or absent acknowledgements
 
@@ -334,6 +433,167 @@
 - **R-397** - acknowledged at never min after clock start 2026-06-26T10:00.
 - **R-398** - acknowledged at never min after clock start 2026-06-26T10:00.
 - **R-399** - acknowledged at never min after clock start 2026-06-26T10:00.
+- **R-410** - acknowledged at never min after clock start 2026-07-01T14:45.
+- **R-411** - acknowledged at 481 min after clock start 2026-07-02T08:00.
+- **R-412** - acknowledged at never min after clock start 2026-07-01T20:30.
+- **R-413** - acknowledged at never min after clock start 2026-07-02T08:00.
+- **R-414** - acknowledged at never min after clock start 2026-07-02T08:00.
+- **R-415** - acknowledged at never min after clock start 2026-07-01T08:00.
+- **R-416** - acknowledged at never min after clock start 2026-07-01T08:00.
+- **R-417** - acknowledged at never min after clock start 2026-07-01T22:00.
+- **R-418** - acknowledged at never min after clock start 2026-07-01T10:30.
+- **R-419** - acknowledged at 538 min after clock start 2026-07-01T08:00.
+- **R-420** - acknowledged at 504 min after clock start 2026-07-01T08:00.
+- **R-422** - acknowledged at never min after clock start 2026-07-01T19:30.
+- **R-423** - acknowledged at never min after clock start 2026-07-01T05:45.
+- **R-425** - acknowledged at 61 min after clock start 2026-07-01T21:45.
+- **R-426** - acknowledged at never min after clock start 2026-07-01T08:00.
+- **R-428** - acknowledged at 61 min after clock start 2026-07-01T15:45.
+- **R-429** - acknowledged at never min after clock start 2026-07-01T15:45.
+- **R-430** - acknowledged at never min after clock start 2026-07-01T09:45.
+- **R-431** - acknowledged at 481 min after clock start 2026-07-01T11:15.
+- **R-432** - acknowledged at never min after clock start 2026-07-01T19:45.
+- **R-434** - acknowledged at never min after clock start 2026-07-01T15:30.
+- **R-435** - acknowledged at never min after clock start 2026-07-01T12:00.
+- **R-436** - acknowledged at never min after clock start 2026-07-01T03:15.
+- **R-437** - acknowledged at never min after clock start 2026-07-01T08:00.
+- **R-438** - acknowledged at 61 min after clock start 2026-07-01T18:15.
+- **R-439** - acknowledged at never min after clock start 2026-07-01T08:00.
+- **R-440** - acknowledged at never min after clock start 2026-07-02T02:15.
+- **R-441** - acknowledged at never min after clock start 2026-07-02T03:00.
+- **R-442** - acknowledged at never min after clock start 2026-07-02T04:00.
+- **R-443** - acknowledged at never min after clock start 2026-07-02T22:30.
+- **R-444** - acknowledged at 520 min after clock start 2026-07-03T08:00.
+- **R-446** - acknowledged at never min after clock start 2026-07-02T13:30.
+- **R-447** - acknowledged at never min after clock start 2026-07-02T14:15.
+- **R-448** - acknowledged at 481 min after clock start 2026-07-03T08:00.
+- **R-449** - acknowledged at never min after clock start 2026-07-02T04:45.
+- **R-450** - acknowledged at never min after clock start 2026-07-02T08:00.
+- **R-451** - acknowledged at 511 min after clock start 2026-07-02T15:00.
+- **R-452** - acknowledged at never min after clock start 2026-07-02T03:45.
+- **R-453** - acknowledged at never min after clock start 2026-07-02T11:00.
+- **R-454** - acknowledged at never min after clock start 2026-07-02T12:45.
+- **R-456** - acknowledged at never min after clock start 2026-07-02T17:30.
+- **R-457** - acknowledged at 481 min after clock start 2026-07-02T08:00.
+- **R-458** - acknowledged at never min after clock start 2026-07-02T10:30.
+- **R-461** - acknowledged at 481 min after clock start 2026-07-02T12:15.
+- **R-462** - acknowledged at never min after clock start 2026-07-02T16:30.
+- **R-463** - acknowledged at never min after clock start 2026-07-02T14:30.
+- **R-464** - acknowledged at 118 min after clock start 2026-07-02T08:45.
+- **R-465** - acknowledged at never min after clock start 2026-07-02T06:45.
+- **R-466** - acknowledged at never min after clock start 2026-07-02T08:00.
+- **R-467** - acknowledged at never min after clock start 2026-07-02T08:00.
+- **R-468** - acknowledged at never min after clock start 2026-07-02T08:00.
+- **R-470** - acknowledged at 112 min after clock start 2026-07-03T13:30.
+- **R-472** - acknowledged at 110 min after clock start 2026-07-03T06:15.
+- **R-473** - acknowledged at never min after clock start 2026-07-03T13:30.
+- **R-474** - acknowledged at never min after clock start 2026-07-03T10:30.
+- **R-475** - acknowledged at never min after clock start 2026-07-03T01:45.
+- **R-477** - acknowledged at 531 min after clock start 2026-07-03T11:15.
+- **R-478** - acknowledged at never min after clock start 2026-07-04T08:00.
+- **R-479** - acknowledged at never min after clock start 2026-07-03T04:00.
+- **R-480** - acknowledged at never min after clock start 2026-07-03T15:15.
+- **R-481** - acknowledged at never min after clock start 2026-07-03T17:30.
+- **R-482** - acknowledged at never min after clock start 2026-07-03T08:00.
+- **R-483** - acknowledged at never min after clock start 2026-07-03T08:00.
+- **R-484** - acknowledged at never min after clock start 2026-07-03T16:45.
+- **R-485** - acknowledged at never min after clock start 2026-07-03T17:15.
+- **R-487** - acknowledged at never min after clock start 2026-07-03T04:15.
+- **R-488** - acknowledged at 506 min after clock start 2026-07-03T08:00.
+- **R-489** - acknowledged at never min after clock start 2026-07-03T13:30.
+- **R-490** - acknowledged at never min after clock start 2026-07-03T08:00.
+- **R-491** - acknowledged at never min after clock start 2026-07-03T17:30.
+- **R-492** - acknowledged at 116 min after clock start 2026-07-03T01:15.
+- **R-493** - acknowledged at never min after clock start 2026-07-03T16:45.
+- **R-494** - acknowledged at never min after clock start 2026-07-03T12:15.
+- **R-495** - acknowledged at never min after clock start 2026-07-03T08:00.
+- **R-497** - acknowledged at never min after clock start 2026-07-04T08:00.
+- **R-499** - acknowledged at 481 min after clock start 2026-07-03T10:30.
+- **R-501** - acknowledged at never min after clock start 2026-07-04T06:00.
+- **R-503** - acknowledged at never min after clock start 2026-07-04T14:30.
+- **R-504** - acknowledged at never min after clock start 2026-07-04T11:15.
+- **R-506** - acknowledged at never min after clock start 2026-07-04T23:15.
+- **R-508** - acknowledged at 481 min after clock start 2026-07-04T13:15.
+- **R-509** - acknowledged at never min after clock start 2026-07-04T08:00.
+- **R-510** - acknowledged at 481 min after clock start 2026-07-05T08:00.
+- **R-511** - acknowledged at never min after clock start 2026-07-05T08:00.
+- **R-512** - acknowledged at never min after clock start 2026-07-04T15:00.
+- **R-514** - acknowledged at never min after clock start 2026-07-04T09:45.
+- **R-515** - acknowledged at never min after clock start 2026-07-04T08:00.
+- **R-516** - acknowledged at 109 min after clock start 2026-07-04T12:30.
+- **R-517** - acknowledged at 65 min after clock start 2026-07-04T01:00.
+- **R-518** - acknowledged at never min after clock start 2026-07-04T16:45.
+- **R-519** - acknowledged at never min after clock start 2026-07-04T03:00.
+- **R-520** - acknowledged at never min after clock start 2026-07-04T08:00.
+- **R-521** - acknowledged at never min after clock start 2026-07-04T19:30.
+- **R-523** - acknowledged at never min after clock start 2026-07-04T04:15.
+- **R-524** - acknowledged at never min after clock start 2026-07-04T18:15.
+- **R-527** - acknowledged at 101 min after clock start 2026-07-04T09:45.
+- **R-528** - acknowledged at 481 min after clock start 2026-07-04T08:00.
+- **R-529** - acknowledged at never min after clock start 2026-07-04T15:30.
+- **R-531** - acknowledged at never min after clock start 2026-07-05T12:00.
+- **R-532** - acknowledged at never min after clock start 2026-07-05T15:15.
+- **R-533** - acknowledged at never min after clock start 2026-07-05T04:15.
+- **R-534** - acknowledged at 481 min after clock start 2026-07-05T10:30.
+- **R-535** - acknowledged at 85 min after clock start 2026-07-05T08:15.
+- **R-536** - acknowledged at never min after clock start 2026-07-05T02:30.
+- **R-537** - acknowledged at 102 min after clock start 2026-07-05T13:15.
+- **R-539** - acknowledged at never min after clock start 2026-07-05T08:00.
+- **R-540** - acknowledged at 66 min after clock start 2026-07-05T04:30.
+- **R-541** - acknowledged at 102 min after clock start 2026-07-05T04:30.
+- **R-542** - acknowledged at never min after clock start 2026-07-05T08:00.
+- **R-544** - acknowledged at never min after clock start 2026-07-05T09:45.
+- **R-545** - acknowledged at never min after clock start 2026-07-05T09:15.
+- **R-547** - acknowledged at never min after clock start 2026-07-05T21:00.
+- **R-548** - acknowledged at never min after clock start 2026-07-06T08:00.
+- **R-549** - acknowledged at never min after clock start 2026-07-05T08:00.
+- **R-552** - acknowledged at never min after clock start 2026-07-05T08:15.
+- **R-553** - acknowledged at never min after clock start 2026-07-05T07:30.
+- **R-554** - acknowledged at never min after clock start 2026-07-06T08:00.
+- **R-556** - acknowledged at never min after clock start 2026-07-05T08:00.
+- **R-557** - acknowledged at never min after clock start 2026-07-06T08:00.
+- **R-558** - acknowledged at never min after clock start 2026-07-05T08:15.
+- **R-559** - acknowledged at never min after clock start 2026-07-06T08:00.
+- **R-560** - acknowledged at never min after clock start 2026-07-06T01:15.
+- **R-561** - acknowledged at never min after clock start 2026-07-06T08:00.
+- **R-563** - acknowledged at never min after clock start 2026-07-07T08:00.
+- **R-564** - acknowledged at never min after clock start 2026-07-06T08:15.
+- **R-565** - acknowledged at never min after clock start 2026-07-07T08:00.
+- **R-566** - acknowledged at never min after clock start 2026-07-06T09:00.
+- **R-567** - acknowledged at 61 min after clock start 2026-07-06T14:00.
+- **R-569** - acknowledged at never min after clock start 2026-07-06T02:30.
+- **R-570** - acknowledged at 61 min after clock start 2026-07-06T23:45.
+- **R-571** - acknowledged at 481 min after clock start 2026-07-06T16:15.
+- **R-573** - acknowledged at never min after clock start 2026-07-06T17:45.
+- **R-574** - acknowledged at 61 min after clock start 2026-07-06T19:00.
+- **R-576** - acknowledged at never min after clock start 2026-07-06T08:00.
+- **R-578** - acknowledged at never min after clock start 2026-07-06T12:00.
+- **R-579** - acknowledged at 506 min after clock start 2026-07-06T11:00.
+- **R-580** - acknowledged at never min after clock start 2026-07-06T14:00.
+- **R-581** - acknowledged at never min after clock start 2026-07-06T08:00.
+- **R-582** - acknowledged at never min after clock start 2026-07-06T17:00.
+- **R-584** - acknowledged at 481 min after clock start 2026-07-06T08:00.
+- **R-585** - acknowledged at never min after clock start 2026-07-06T11:00.
+- **R-586** - acknowledged at 61 min after clock start 2026-07-06T09:30.
+- **R-587** - acknowledged at never min after clock start 2026-07-06T09:15.
+- **R-588** - acknowledged at never min after clock start 2026-07-06T16:15.
+- **R-589** - acknowledged at never min after clock start 2026-07-06T00:15.
+- **R-590** - acknowledged at 118 min after clock start 2026-07-07T23:00.
+- **R-591** - acknowledged at never min after clock start 2026-07-07T08:00.
+- **R-592** - acknowledged at never min after clock start 2026-07-08T08:00.
+- **R-595** - acknowledged at never min after clock start 2026-07-07T07:30.
+- **R-597** - acknowledged at never min after clock start 2026-07-07T12:00.
+- **R-599** - acknowledged at never min after clock start 2026-07-08T08:00.
+- **R-600** - acknowledged at never min after clock start 2026-07-07T11:15.
+- **R-601** - acknowledged at never min after clock start 2026-07-07T08:00.
+- **R-602** - acknowledged at never min after clock start 2026-07-07T21:45.
+- **R-603** - acknowledged at never min after clock start 2026-07-07T11:30.
+- **R-604** - acknowledged at 523 min after clock start 2026-07-08T08:00.
+- **R-605** - acknowledged at never min after clock start 2026-07-07T22:45.
+- **R-606** - acknowledged at never min after clock start 2026-07-08T08:00.
+- **R-607** - acknowledged at never min after clock start 2026-07-07T07:15.
+- **R-608** - acknowledged at never min after clock start 2026-07-07T08:00.
+- **R-609** - acknowledged at never min after clock start 2026-07-07T08:00.
 
 ## Unapproved acknowledger
 
@@ -450,6 +710,108 @@
 - **R-397** - acknowledged by ward_clerk, not on the approved list.
 - **R-398** - acknowledged by nurse_hca, not on the approved list.
 - **R-399** - acknowledged by phlebotomist, not on the approved list.
+- **R-410** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-412** - acknowledged by ward_clerk, not on the approved list.
+- **R-413** - acknowledged by pharmacist, not on the approved list.
+- **R-414** - acknowledged by ward_clerk, not on the approved list.
+- **R-415** - acknowledged by pharmacist, not on the approved list.
+- **R-416** - acknowledged by ward_clerk, not on the approved list.
+- **R-417** - acknowledged by nurse_hca, not on the approved list.
+- **R-418** - acknowledged by phlebotomist, not on the approved list.
+- **R-423** - acknowledged by nurse_hca, not on the approved list.
+- **R-426** - acknowledged by nurse_hca, not on the approved list.
+- **R-429** - acknowledged by pharmacist, not on the approved list.
+- **R-430** - acknowledged by phlebotomist, not on the approved list.
+- **R-432** - acknowledged by phlebotomist, not on the approved list.
+- **R-434** - acknowledged by ward_clerk, not on the approved list.
+- **R-435** - acknowledged by ward_clerk, not on the approved list.
+- **R-436** - acknowledged by nurse_hca, not on the approved list.
+- **R-437** - acknowledged by nurse_hca, not on the approved list.
+- **R-439** - acknowledged by nurse_hca, not on the approved list.
+- **R-440** - acknowledged by pharmacist, not on the approved list.
+- **R-441** - acknowledged by pharmacist, not on the approved list.
+- **R-443** - acknowledged by phlebotomist, not on the approved list.
+- **R-446** - acknowledged by ward_clerk, not on the approved list.
+- **R-447** - acknowledged by ward_clerk, not on the approved list.
+- **R-449** - acknowledged by pharmacist, not on the approved list.
+- **R-450** - acknowledged by nurse_hca, not on the approved list.
+- **R-452** - acknowledged by phlebotomist, not on the approved list.
+- **R-453** - acknowledged by pharmacist, not on the approved list.
+- **R-456** - acknowledged by pharmacist, not on the approved list.
+- **R-458** - acknowledged by nurse_hca, not on the approved list.
+- **R-462** - acknowledged by nurse_hca, not on the approved list.
+- **R-463** - acknowledged by nurse_hca, not on the approved list.
+- **R-465** - acknowledged by pharmacist, not on the approved list.
+- **R-467** - acknowledged by phlebotomist, not on the approved list.
+- **R-468** - acknowledged by ward_clerk, not on the approved list.
+- **R-473** - acknowledged by ward_clerk, not on the approved list.
+- **R-474** - acknowledged by phlebotomist, not on the approved list.
+- **R-475** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-478** - acknowledged by nurse_hca, not on the approved list.
+- **R-479** - acknowledged by phlebotomist, not on the approved list.
+- **R-480** - acknowledged by pharmacist, not on the approved list.
+- **R-483** - acknowledged by ward_clerk, not on the approved list.
+- **R-484** - acknowledged by ward_clerk, not on the approved list.
+- **R-487** - acknowledged by nurse_hca, not on the approved list.
+- **R-489** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-490** - acknowledged by phlebotomist, not on the approved list.
+- **R-491** - acknowledged by phlebotomist, not on the approved list.
+- **R-493** - acknowledged by ward_clerk, not on the approved list.
+- **R-494** - acknowledged by nurse_hca, not on the approved list.
+- **R-497** - acknowledged by pharmacist, not on the approved list.
+- **R-503** - acknowledged by phlebotomist, not on the approved list.
+- **R-504** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-506** - acknowledged by nurse_hca, not on the approved list.
+- **R-509** - acknowledged by nurse_hca, not on the approved list.
+- **R-511** - acknowledged by phlebotomist, not on the approved list.
+- **R-512** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-514** - acknowledged by phlebotomist, not on the approved list.
+- **R-515** - acknowledged by phlebotomist, not on the approved list.
+- **R-518** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-519** - acknowledged by ward_clerk, not on the approved list.
+- **R-520** - acknowledged by nurse_hca, not on the approved list.
+- **R-521** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-523** - acknowledged by pharmacist, not on the approved list.
+- **R-524** - acknowledged by pharmacist, not on the approved list.
+- **R-531** - acknowledged by pharmacist, not on the approved list.
+- **R-532** - acknowledged by phlebotomist, not on the approved list.
+- **R-533** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-536** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-539** - acknowledged by phlebotomist, not on the approved list.
+- **R-542** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-545** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-549** - acknowledged by pharmacist, not on the approved list.
+- **R-552** - acknowledged by phlebotomist, not on the approved list.
+- **R-553** - acknowledged by nurse_hca, not on the approved list.
+- **R-554** - acknowledged by pharmacist, not on the approved list.
+- **R-556** - acknowledged by phlebotomist, not on the approved list.
+- **R-557** - acknowledged by nurse_hca, not on the approved list.
+- **R-558** - acknowledged by nurse_hca, not on the approved list.
+- **R-559** - acknowledged by phlebotomist, not on the approved list.
+- **R-560** - acknowledged by nurse_hca, not on the approved list.
+- **R-561** - acknowledged by nurse_hca, not on the approved list.
+- **R-563** - acknowledged by ward_clerk, not on the approved list.
+- **R-564** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-566** - acknowledged by nurse_hca, not on the approved list.
+- **R-569** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-573** - acknowledged by phlebotomist, not on the approved list.
+- **R-576** - acknowledged by pharmacist, not on the approved list.
+- **R-578** - acknowledged by ward_clerk, not on the approved list.
+- **R-580** - acknowledged by ward_clerk, not on the approved list.
+- **R-581** - acknowledged by phlebotomist, not on the approved list.
+- **R-587** - acknowledged by phlebotomist, not on the approved list.
+- **R-591** - acknowledged by pharmacist, not on the approved list.
+- **R-592** - acknowledged by ward_clerk, not on the approved list.
+- **R-597** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-599** - acknowledged by healthcare_assistant, not on the approved list.
+- **R-600** - acknowledged by phlebotomist, not on the approved list.
+- **R-601** - acknowledged by phlebotomist, not on the approved list.
+- **R-602** - acknowledged by ward_clerk, not on the approved list.
+- **R-605** - acknowledged by phlebotomist, not on the approved list.
+- **R-606** - acknowledged by nurse_hca, not on the approved list.
+- **R-607** - acknowledged by nurse_hca, not on the approved list.
+- **R-608** - acknowledged by pharmacist, not on the approved list.
+- **R-609** - acknowledged by pharmacist, not on the approved list.
 
 ## Missing escalation
 
@@ -571,6 +933,137 @@
 - **R-397** - missed acknowledgement window, no escalation.
 - **R-398** - missed acknowledgement window, no escalation.
 - **R-399** - missed acknowledgement window, no escalation.
+- **R-410** - missed acknowledgement window, no escalation.
+- **R-411** - missed acknowledgement window, no escalation.
+- **R-412** - missed acknowledgement window, no escalation.
+- **R-413** - missed acknowledgement window, no escalation.
+- **R-414** - missed acknowledgement window, no escalation.
+- **R-415** - missed acknowledgement window, no escalation.
+- **R-416** - missed acknowledgement window, no escalation.
+- **R-417** - missed acknowledgement window, no escalation.
+- **R-418** - missed acknowledgement window, no escalation.
+- **R-422** - missed acknowledgement window, no escalation.
+- **R-423** - missed acknowledgement window, no escalation.
+- **R-425** - missed acknowledgement window, no escalation.
+- **R-426** - missed acknowledgement window, no escalation.
+- **R-429** - missed acknowledgement window, no escalation.
+- **R-430** - missed acknowledgement window, no escalation.
+- **R-431** - missed acknowledgement window, no escalation.
+- **R-432** - missed acknowledgement window, no escalation.
+- **R-434** - missed acknowledgement window, no escalation.
+- **R-435** - missed acknowledgement window, no escalation.
+- **R-436** - missed acknowledgement window, no escalation.
+- **R-437** - missed acknowledgement window, no escalation.
+- **R-438** - missed acknowledgement window, no escalation.
+- **R-439** - missed acknowledgement window, no escalation.
+- **R-440** - missed acknowledgement window, no escalation.
+- **R-441** - missed acknowledgement window, no escalation.
+- **R-442** - missed acknowledgement window, no escalation.
+- **R-443** - missed acknowledgement window, no escalation.
+- **R-446** - missed acknowledgement window, no escalation.
+- **R-447** - missed acknowledgement window, no escalation.
+- **R-449** - missed acknowledgement window, no escalation.
+- **R-450** - missed acknowledgement window, no escalation.
+- **R-451** - missed acknowledgement window, no escalation.
+- **R-452** - missed acknowledgement window, no escalation.
+- **R-453** - missed acknowledgement window, no escalation.
+- **R-456** - missed acknowledgement window, no escalation.
+- **R-457** - missed acknowledgement window, no escalation.
+- **R-458** - missed acknowledgement window, no escalation.
+- **R-461** - missed acknowledgement window, no escalation.
+- **R-462** - missed acknowledgement window, no escalation.
+- **R-463** - missed acknowledgement window, no escalation.
+- **R-464** - missed acknowledgement window, no escalation.
+- **R-465** - missed acknowledgement window, no escalation.
+- **R-466** - missed acknowledgement window, no escalation.
+- **R-467** - missed acknowledgement window, no escalation.
+- **R-468** - missed acknowledgement window, no escalation.
+- **R-472** - missed acknowledgement window, no escalation.
+- **R-473** - missed acknowledgement window, no escalation.
+- **R-474** - missed acknowledgement window, no escalation.
+- **R-475** - missed acknowledgement window, no escalation.
+- **R-478** - missed acknowledgement window, no escalation.
+- **R-479** - missed acknowledgement window, no escalation.
+- **R-480** - missed acknowledgement window, no escalation.
+- **R-481** - missed acknowledgement window, no escalation.
+- **R-483** - missed acknowledgement window, no escalation.
+- **R-484** - missed acknowledgement window, no escalation.
+- **R-487** - missed acknowledgement window, no escalation.
+- **R-489** - missed acknowledgement window, no escalation.
+- **R-490** - missed acknowledgement window, no escalation.
+- **R-491** - missed acknowledgement window, no escalation.
+- **R-493** - missed acknowledgement window, no escalation.
+- **R-494** - missed acknowledgement window, no escalation.
+- **R-495** - missed acknowledgement window, no escalation.
+- **R-497** - missed acknowledgement window, no escalation.
+- **R-499** - missed acknowledgement window, no escalation.
+- **R-503** - missed acknowledgement window, no escalation.
+- **R-504** - missed acknowledgement window, no escalation.
+- **R-506** - missed acknowledgement window, no escalation.
+- **R-509** - missed acknowledgement window, no escalation.
+- **R-510** - missed acknowledgement window, no escalation.
+- **R-511** - missed acknowledgement window, no escalation.
+- **R-512** - missed acknowledgement window, no escalation.
+- **R-514** - missed acknowledgement window, no escalation.
+- **R-515** - missed acknowledgement window, no escalation.
+- **R-517** - missed acknowledgement window, no escalation.
+- **R-518** - missed acknowledgement window, no escalation.
+- **R-519** - missed acknowledgement window, no escalation.
+- **R-520** - missed acknowledgement window, no escalation.
+- **R-521** - missed acknowledgement window, no escalation.
+- **R-523** - missed acknowledgement window, no escalation.
+- **R-524** - missed acknowledgement window, no escalation.
+- **R-527** - missed acknowledgement window, no escalation.
+- **R-531** - missed acknowledgement window, no escalation.
+- **R-532** - missed acknowledgement window, no escalation.
+- **R-533** - missed acknowledgement window, no escalation.
+- **R-534** - missed acknowledgement window, no escalation.
+- **R-536** - missed acknowledgement window, no escalation.
+- **R-537** - missed acknowledgement window, no escalation.
+- **R-539** - missed acknowledgement window, no escalation.
+- **R-540** - missed acknowledgement window, no escalation.
+- **R-541** - missed acknowledgement window, no escalation.
+- **R-542** - missed acknowledgement window, no escalation.
+- **R-545** - missed acknowledgement window, no escalation.
+- **R-548** - missed acknowledgement window, no escalation.
+- **R-549** - missed acknowledgement window, no escalation.
+- **R-552** - missed acknowledgement window, no escalation.
+- **R-553** - missed acknowledgement window, no escalation.
+- **R-554** - missed acknowledgement window, no escalation.
+- **R-556** - missed acknowledgement window, no escalation.
+- **R-557** - missed acknowledgement window, no escalation.
+- **R-558** - missed acknowledgement window, no escalation.
+- **R-559** - missed acknowledgement window, no escalation.
+- **R-560** - missed acknowledgement window, no escalation.
+- **R-561** - missed acknowledgement window, no escalation.
+- **R-563** - missed acknowledgement window, no escalation.
+- **R-564** - missed acknowledgement window, no escalation.
+- **R-566** - missed acknowledgement window, no escalation.
+- **R-569** - missed acknowledgement window, no escalation.
+- **R-571** - missed acknowledgement window, no escalation.
+- **R-573** - missed acknowledgement window, no escalation.
+- **R-574** - missed acknowledgement window, no escalation.
+- **R-576** - missed acknowledgement window, no escalation.
+- **R-578** - missed acknowledgement window, no escalation.
+- **R-580** - missed acknowledgement window, no escalation.
+- **R-581** - missed acknowledgement window, no escalation.
+- **R-582** - missed acknowledgement window, no escalation.
+- **R-585** - missed acknowledgement window, no escalation.
+- **R-587** - missed acknowledgement window, no escalation.
+- **R-591** - missed acknowledgement window, no escalation.
+- **R-592** - missed acknowledgement window, no escalation.
+- **R-595** - missed acknowledgement window, no escalation.
+- **R-597** - missed acknowledgement window, no escalation.
+- **R-599** - missed acknowledgement window, no escalation.
+- **R-600** - missed acknowledgement window, no escalation.
+- **R-601** - missed acknowledgement window, no escalation.
+- **R-602** - missed acknowledgement window, no escalation.
+- **R-603** - missed acknowledgement window, no escalation.
+- **R-605** - missed acknowledgement window, no escalation.
+- **R-606** - missed acknowledgement window, no escalation.
+- **R-607** - missed acknowledgement window, no escalation.
+- **R-608** - missed acknowledgement window, no escalation.
+- **R-609** - missed acknowledgement window, no escalation.
 
 ## What is not a finding
 

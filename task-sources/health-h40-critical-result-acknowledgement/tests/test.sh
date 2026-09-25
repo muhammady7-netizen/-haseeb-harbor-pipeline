@@ -23,19 +23,20 @@ from pathlib import Path
 stdout = Path("/logs/verifier/test-stdout.txt")
 text = stdout.read_text(encoding="utf-8", errors="replace") if stdout.exists() else ""
 
-passed = failed = 0
+passed = failed = errors = 0
 m = re.search(
-    r"=+\s*(?:(\d+)\s+failed,\s*)?(\d+)\s+passed(?:,\s*\d+\s+skipped)?\s+in\s+",
+    r"=+\s*(?:(\d+)\s+failed,\s*)?(\d+)\s+passed(?:,\s*\d+\s+skipped)?(?:,\s*\d+\s+errors?)?\s+in\s+",
     text,
 )
 if m:
     failed = int(m.group(1) or 0)
     passed = int(m.group(2) or 0)
+    errors = len(re.findall(r"^ERROR\s+", text, flags=re.M))
 else:
     failed = len(re.findall(r"^FAILED\s+", text, flags=re.M))
     passed = len(re.findall(r"^PASSED\s+", text, flags=re.M))
 
-total = passed + failed
+total = passed + failed + errors
 if total <= 0:
     try:
         import json
