@@ -6,7 +6,7 @@ machine.json
 
 # QC / Harbor outputs
 qc-out/
-**/__pycache__/
+__pycache__/
 *.pyc
 .pytest_cache/
 

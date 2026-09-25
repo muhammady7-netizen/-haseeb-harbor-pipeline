@@ -66,6 +66,8 @@ TEXT_EXTS = {
     ".ts", ".js", ".cfg", ".ini", ".ps1",
 }
 PROSE_EXTS = {".md", ".txt", ".rst", ".markdown"}
+# Extensionless files that are still text and must be CRLF/BOM-scanned.
+TEXT_NAMES = {"Dockerfile", "Makefile", "makefile", ".dockerignore", ".gitignore", ".env"}
 
 DOCKER_COPY = re.compile(r"^\s*(?:COPY|ADD)\s+(?:--[\w=-]+\s+)*(.+?)\s*$", re.I)
 DOCKER_USER = re.compile(r"^\s*USER\s+(\S+)", re.I)
@@ -248,7 +250,7 @@ def find_task_dir(root):
 def scan_crlf_bom(task_dir, findings):
     bom_files, crlf_files = [], []
     for path in sorted(task_dir.rglob("*")):
-        if not path.is_file() or path.suffix.lower() not in TEXT_EXTS:
+        if not path.is_file() or (path.suffix.lower() not in TEXT_EXTS and path.name not in TEXT_NAMES):
             continue
         raw = read_bytes(path)
         if not raw:
@@ -503,10 +505,11 @@ def check_review_csv_vs_gold(task_dir, findings):
         label = str(row.get("review_check") or row.get("check") or "?")
         for m in re.finditer(r"\b(\d{2,5})\s+(?:deterministic\s+)?(?:checks|verifiers|lines|rows|items|findings|entries)\b", blob, re.I):
             claimed = int(m.group(1))
-            for tname, actual in gold_targets:
-                if claimed != actual:
-                    mismatches.append(f"{label}: claims {claimed} vs gold {tname}={actual}")
-                    break
+            # Only flag when the claimed count matches NO gold target (not just
+            # the first). Otherwise valid gold values like a CSV row count are
+            # falsely mismatched against an unrelated gold key.
+            if not any(claimed == actual for _, actual in gold_targets):
+                mismatches.append(f"{label}: claims {claimed} (matches no gold value)")
     if mismatches:
         findings.add("P2", "judge", "review.csv count claims do not match the actual gold",
                      label="packaging", observed_fact="; ".join(dict.fromkeys(mismatches))[:600],
@@ -636,21 +639,42 @@ def run_d1_d5_linter(task_dir, findings):
                     if c["comparison"] in ("regex_match", "not_regex_match")
                     and isinstance(c["expected"], str) and _is_prose(c)]
 
+    # D1 broad: ANY regex_match (not not_regex_match) on a .md/prose file
+    # with < 2 substantive content tokens is a "reward-hackable regex" per
+    # portal PreQC QC1. The portal flags heading-only, length-only, and
+    # format-only patterns even when they contain entity IDs (B-02 etc.)
+    # — IDs are not content words. not_regex_match (absence checks) are NOT
+    # flagged by the portal — only positive regex_match is.
+    _d1_seen_names = set()
+    for c in regex_checks:
+        if c["name"] in _d1_seen_names:
+            continue
+        if c["comparison"] != "regex_match":
+            continue
+        ntok = len(tokens_of(c["expected"]))
+        if ntok < 2:
+            _d1_seen_names.add(c["name"])
+            add_lint("D1", "sev1",
+                     f"prose check {c['name']} grades a prose target ({c['path']}) with regex_match but no required content words ({ntok} token(s))",
+                     observed_fact=f"pattern={c['expected'][:120]}",
+                     evidence=[rel(spec_path, task_dir)],
+                     recommended_fix="Replace with an LLM rubric on content, a key-fact set-membership check, or move to a filesystem check_path_exists.")
+
     for c in regex_checks:
         exp = c["expected"]
-        if re.search(r"\{\d{2,}\}", exp) and len(tokens_of(exp)) < 2:
+        if re.search(r"\{\d{2,}\}", exp) and len(tokens_of(exp)) < 2 and c["name"] not in _d1_seen_names:
             add_lint("D1", "sev2",
                      f"prose check {c['name']} uses a length-only quantifier with no required content words",
                      observed_fact=f"regex: {exp[:120]}",
                      evidence=[rel(spec_path, task_dir)],
                      recommended_fix="Replace with an LLM rubric on content, or require substantive tokens.")
-        if exp.count("(?=") >= 2:
+        if exp.count("(?=") >= 2 and c["name"] not in _d1_seen_names:
             add_lint("D1", "sev2",
                      f"prose check {c['name']} uses >= 2 independent lookaheads (keyword-set membership, order/coherence ungraded)",
                      observed_fact=f"regex: {exp[:120]}",
                      evidence=[rel(spec_path, task_dir)],
                      recommended_fix="Replace with an LLM rubric or bind tokens to assertions.")
-        if ".*" in exp or re.search(r"\.\{0,\d*\}", exp):
+        if (".*" in exp or re.search(r"\.\{0,\d*\}", exp) or re.search(r"\.\{\d+,\}", exp)) and c["name"] not in _d1_seen_names:
             add_lint("D1", "sev2",
                      f"prose check {c['name']} uses .* / .{{0,N}} slack letting arbitrary filler satisfy it",
                      observed_fact=f"regex: {exp[:120]}",
@@ -659,7 +683,7 @@ def run_d1_d5_linter(task_dir, findings):
 
     by_file = defaultdict(list)
     for c in regex_checks:
-        if ".*" in c["expected"] or "(?=" in c["expected"] or re.search(r"\{", c["expected"]):
+        if ".*" in c["expected"] or "(?=" in c["expected"] or re.search(r"\{", c["expected"]) or c["name"] in _d1_seen_names:
             continue
         if len(tokens_of(c["expected"])) >= 1:
             by_file[Path(c["path"]).name].append(c["name"])
@@ -681,11 +705,14 @@ def run_d1_d5_linter(task_dir, findings):
                 user_match = m.group(1)
                 break
         if not user_match or user_match.lower() in ("root", "0"):
-            add_lint("D2", "sev1", "Dockerfile runs the agent as root (no non-root USER directive)",
+            # D2 is advisory (sev3): platform PreQC often REQUIRES root (QC1-3).
+            # Per QC-SELF-TRAINING Finding 7, platform PreQC is the authority;
+            # local QC must not force a non-root USER that the platform rejects.
+            add_lint("D2", "sev3", "Dockerfile runs the agent as root (no non-root USER directive)",
                      label="environment", gate="d1d5:D2", fix_path="environment/Dockerfile",
                      observed_fact=f"USER={user_match or 'root'}",
                      evidence=["environment/Dockerfile"],
-                     recommended_fix="Add a non-root USER directive (e.g. USER app).")
+                     recommended_fix="Follow platform PreQC guidance: keep root if it requires root, else add a non-root USER (e.g. USER app).")
 
     spec_text = read_text(spec_path) if spec_path.is_file() else ""
     harness_files = []
@@ -758,6 +785,23 @@ def run_d1_d5_linter(task_dir, findings):
                  observed_fact=f"state weight={weight_map.get('state')}, no snapshot mode, empty diff",
                  evidence=[rel(spec_path, task_dir)],
                  recommended_fix="Populate the state axis or set its weight to 0.")
+
+    # PF9: task.toml artifacts must be absolute container paths (e.g. /app/...)
+    toml_path = task_dir / "task.toml"
+    if toml_path.is_file():
+        toml_text = read_text(toml_path)
+        m = re.search(r'^\s*artifacts\s*=\s*\[([^\]]*)\]', toml_text, re.M)
+        if m:
+            raw = m.group(1)
+            arts = [a.strip().strip('"').strip("'") for a in raw.split(",") if a.strip().strip('"').strip("'")]
+            rel_arts = [a for a in arts if not a.startswith("/")]
+            if rel_arts:
+                add_lint("PF9", "sev1",
+                         "task.toml lists artifacts as relative paths",
+                         label="packaging", gate="d1d5:PF9", fix_path="task.toml",
+                         observed_fact=f"relative: {', '.join(rel_arts[:6])}",
+                         evidence=["task.toml"],
+                         recommended_fix='Write each artifact as the absolute container path the deliverable is created at, e.g. "/app/brief_coherence.csv".')
 
 
 # --------------------------------------------------------------------------
@@ -881,6 +925,247 @@ def check_empty_offer_type_gap(task_dir, findings):
                  evidence=["environment/input/placement_log.csv", "environment/input/attribution_note.md"],
                  recommended_fix="Add a rule stating whether empty offer_type placements are counted or excluded",
                  gate="deterministic", fix_path="environment/input/attribution_note.md")
+
+
+# --------------------------------------------------------------------------
+# extra check 11: Harbor Check heuristics (catch what the portal Harbor Check finds)
+# --------------------------------------------------------------------------
+
+def check_harbor_check_heuristics(task_dir, findings):
+    """Heuristic checks that approximate the portal's Harbor Check findings."""
+    import json as _json
+
+    instruction = task_dir / "instruction.md"
+    verifier_path = task_dir / "tests" / "verifier.json"
+    if not instruction.is_file() or not verifier_path.is_file():
+        return
+
+    instr_text = read_text(instruction).lower()
+    spec = load_json(verifier_path)
+    if not isinstance(spec, dict):
+        return
+
+    checks, _ = _parse_spec_checks(spec)
+    check_names = {c["name"] for c in checks}
+
+    # 1. Instruction↔verifier consistency: deliverables with only existence checks
+    deliverables = set(re.findall(r'`([a-z_]+\.[a-z]{2,4})`', instr_text))
+    for deliverable in deliverables:
+        relevant = [c for c in checks if deliverable in str(c.get("path", ""))]
+        if relevant and all(c["comparison"] == "equals" and c["expected"] is True for c in relevant):
+            findings.add("P2", "harbor", f"Deliverable {deliverable} only has existence checks (Harbor Check: instruction_verifier_consistency)",
+                         label="harbor_check",
+                         observed_fact=f"Instruction mentions {deliverable} but verifier only checks existence",
+                         evidence=[str(verifier_path.relative_to(task_dir))],
+                         impact="Portal Harbor Check will flag: instruction requires content but verifier only checks file exists.",
+                         recommended_fix="Add content checks for the deliverable.",
+                         gate="harbor_check", fix_path=str(verifier_path.relative_to(task_dir)))
+
+    # 2. Shallow prose grading: short unanchored regex on prose
+    for c in checks:
+        if c.get("file_type") in ("md", "text") and c["comparison"] == "regex_match":
+            expected = str(c.get("expected", ""))
+            if len(expected) < 100 and not expected.startswith("(?m"):
+                findings.add("P2", "harbor", f"Shallow prose grading on {c['path']} (Harbor Check: coverage_depth)",
+                             label="harbor_check",
+                             observed_fact=f"Check {c['name']} uses short unanchored regex on prose",
+                             evidence=[str(verifier_path.relative_to(task_dir))],
+                             impact="Keyword-stuffed stub passes without real content.",
+                             recommended_fix="Add pytest assertion verifying specific content.",
+                             gate="harbor_check", fix_path=str(verifier_path.relative_to(task_dir)))
+
+    # 3. Undisclosed tokens in pytest assertions (requirement_traceability)
+    test_outputs = task_dir / "tests" / "test_outputs.py"
+    if test_outputs.is_file():
+        to_text = read_text(test_outputs)
+        token_checks = re.findall(r'assert\s+["\']([^"\']+)["\']\s+in\s+memo', to_text)
+        for token in token_checks:
+            if token.lower() not in instr_text:
+                findings.add("P2", "harbor", f"Undisclosed token '{token}' in pytest (Harbor Check: requirement_traceability)",
+                             label="harbor_check",
+                             observed_fact=f"test_outputs.py requires '{token}' but instruction doesn't mention it",
+                             evidence=[str(test_outputs.relative_to(task_dir))],
+                             impact="Portal will flag: verifier requires a token the instruction never discloses.",
+                             recommended_fix="Remove token or add to instruction.",
+                             gate="harbor_check", fix_path=str(test_outputs.relative_to(task_dir)))
+
+    # 4. State spoofing: test.sh without -I flag
+    test_sh = task_dir / "tests" / "test.sh"
+    if test_sh.is_file():
+        sh_text = read_text(test_sh)
+        if "python3 -m pytest" in sh_text and "-I" not in sh_text:
+            findings.add("P1", "harbor", "test.sh runs pytest without -I (Harbor Check: state_spoofing)",
+                        label="harbor_check",
+                        observed_fact="python3 -m pytest without -I allows workspace import hijack",
+                        evidence=[str(test_sh.relative_to(task_dir))],
+                        impact="Agent can write pytest.py and earn 1.0 without grading.",
+                        recommended_fix="Change to: python3 -I -m pytest",
+                        gate="harbor_check", fix_path=str(test_sh.relative_to(task_dir)), blocks="rework")
+
+    # 5. Declared vs executed verifier count
+    if test_outputs.is_file():
+        to_text = read_text(test_outputs)
+        test_count = len(re.findall(r'^def test_', to_text, re.MULTILINE))
+        verifier_count = len(checks)
+        # Check if standalone tests are declared as pytest_* entries
+        pytest_declared = sum(1 for c in checks if c['name'].startswith('pytest_'))
+        undeclared = (test_count - 1) - pytest_declared  # minus test_deliverable and declared entries
+        if undeclared > 0:
+            findings.add("P2", "harbor", f"Undeclared pytest tests: {undeclared} standalone (Harbor Check: declared_executed_consistency)",
+                         label="harbor_check",
+                         observed_fact=f"verifier.json has {verifier_count} but pytest runs {verifier_count + undeclared} ({undeclared} undeclared)",
+                         evidence=[str(verifier_path.relative_to(task_dir)), str(test_outputs.relative_to(task_dir))],
+                         impact="Portal will flag: declared count doesn't match executed count.",
+                         recommended_fix=f"Add {undeclared} declared entries in verifier.json.",
+                         gate="harbor_check", fix_path=str(verifier_path.relative_to(task_dir)))
+
+    # 6. Giant regex with >100 lookaheads (portal regex limit)
+    for c in checks:
+        if c["comparison"] == "regex_match":
+            expected = str(c.get("expected", ""))
+            lookahead_count = expected.count("(?=")
+            if lookahead_count > 100:
+                findings.add("P1", "harbor", f"Giant regex {lookahead_count} lookaheads in {c['name']} (portal regex limit)",
+                             label="harbor_check",
+                             observed_fact=f"{c['name']} has {lookahead_count} lookahead groups — portal regex engine fails",
+                             evidence=[str(verifier_path.relative_to(task_dir))],
+                             impact="Portal Oracle will fail (0.98xx score).",
+                             recommended_fix="Remove giant regex, use Python assertion instead.",
+                             gate="harbor_check", fix_path=str(verifier_path.relative_to(task_dir)), blocks="rework")
+
+    # 7. golden_results.json vs results.json mismatch
+    golden_results = task_dir / "solution" / "golden_results.json"
+    results_json = task_dir / "solution" / "files" / "results.json"
+    if not results_json.is_file():
+        for p in task_dir.rglob("results.json"):
+            if "solution" in str(p):
+                results_json = p
+                break
+    if golden_results.is_file() and results_json.is_file():
+        gr = load_json(golden_results)
+        rj = load_json(results_json)
+        if isinstance(gr, dict) and isinstance(rj, dict):
+            for key in set(gr.keys()) | set(rj.keys()):
+                if gr.get(key) != rj.get(key):
+                    findings.add("P2", "harbor", f"golden_results.json mismatch: {key}={gr.get(key)} vs results.json={rj.get(key)}",
+                                 label="harbor_check",
+                                 observed_fact=f"golden_results.json {key}={gr.get(key)} != results.json {key}={rj.get(key)}",
+                                 evidence=[str(golden_results.relative_to(task_dir)), str(results_json.relative_to(task_dir))],
+                                 impact="Portal will flag: stale golden results.",
+                                 recommended_fix="Update golden_results.json to match results.json.",
+                                 gate="harbor_check", fix_path=str(golden_results.relative_to(task_dir)))
+
+    # 8. README count mismatch
+    readme = task_dir / "README.md"
+    if readme.is_file():
+        readme_text = read_text(readme)
+        # Find "N checks" or "N verifiers" claims
+        count_claims = re.findall(r'(\d+)\s+(?:deterministic\s+)?(?:checks|verifiers|pytest)', readme_text, re.I)
+        for claimed in count_claims:
+            claimed_int = int(claimed)
+            if claimed_int != verifier_count and abs(claimed_int - verifier_count) > 2:
+                findings.add("P2", "harbor", f"README claims {claimed_int} checks but verifier.json has {verifier_count}",
+                             label="harbor_check",
+                             observed_fact=f"README says {claimed_int} but verifier.json has {verifier_count}",
+                             evidence=[str(readme.relative_to(task_dir)), str(verifier_path.relative_to(task_dir))],
+                             impact="Portal will flag: README count doesn't match shipped verifier.",
+                              recommended_fix=f"Update README to say {verifier_count} checks.",
+                              gate="harbor_check", fix_path=str(readme.relative_to(task_dir)))
+
+    # 9. Sanctioned interface use: Dockerfile runs as root (agent can read /tests/)
+    df = task_dir / "environment" / "Dockerfile"
+    if df.is_file():
+        dft = read_text(df)
+        has_user = bool(re.search(r"^\s*USER\s+\S", dft, re.MULTILINE))
+        if not has_user:
+            findings.add("P2", "harbor", "Dockerfile runs as root — agent can read /tests/verifier.json (Harbor Check: sanctioned_interface_use)",
+                         label="harbor_check",
+                         observed_fact="No non-root USER directive — agent has root access to /tests/",
+                         evidence=[str(df.relative_to(task_dir))],
+                         impact="Portal Harbor Check will flag: agent can reverse-engineer deliverables from verifier answer key.",
+                         recommended_fix="Note: PreQC blocks non-root USER. Mark as false positive if PreQC requires root.",
+                         gate="harbor_check", fix_path=str(df.relative_to(task_dir)))
+
+    # 10. Aggregation normalization: duplicate entries in verifier.json
+    seen_sources = {}
+    for c in checks:
+        src_key = str(c.get("path", "")) + str(c.get("comparison", "")) + str(c.get("expected", ""))
+        if src_key in seen_sources:
+            findings.add("P2", "harbor", f"Duplicate verifier entry: {c['name']} duplicates {seen_sources[src_key]} (Harbor Check: aggregation_normalization)",
+                         label="harbor_check",
+                         observed_fact=f"{c['name']} and {seen_sources[src_key]} check the same source with the same assertion",
+                         evidence=[str(verifier_path.relative_to(task_dir))],
+                         impact="Portal Harbor Check will flag: duplicate existence checks inflate partial-submission reward.",
+                         recommended_fix=f"Remove one of the duplicate entries or make them check different things.",
+                         gate="harbor_check", fix_path=str(verifier_path.relative_to(task_dir)))
+        else:
+            seen_sources[src_key] = c["name"]
+
+    # 11. Coverage depth: instruction mentions time values but memo check doesn't require them
+    if instr_text:
+        # Check if instruction mentions specific time values (30, 60, 240, 480 minutes)
+        time_values = re.findall(r'\b(30|60|240|480)\s*(?:min|minute)', instr_text)
+        if time_values and test_outputs.is_file():
+            to_text = read_text(test_outputs)
+            # Check if any memo test requires these time values
+            for tv in set(time_values):
+                if tv not in to_text.lower():
+                    findings.add("P2", "harbor", f"Instruction mentions {tv} minutes but memo check doesn't require it (Harbor Check: coverage_depth)",
+                                 label="harbor_check",
+                                 observed_fact=f"Instruction mentions {tv} minutes but test_outputs.py doesn't check for it in memo",
+                                 evidence=[str(instruction.relative_to(task_dir)), str(test_outputs.relative_to(task_dir))],
+                                 impact="Portal Harbor Check will flag: memo can pass without mentioning required time windows.",
+                                 recommended_fix=f"Add a memo check that requires '{tv}' to appear in the memo.",
+                                 gate="harbor_check", fix_path=str(test_outputs.relative_to(task_dir)))
+
+    # 12. Surface form: instruction mentions prose forms but matcher doesn't accept them
+    if instr_text and test_outputs.is_file():
+        to_text = read_text(test_outputs).lower()
+        # Check for "prose forms such as" in instruction
+        prose_match = re.search(r'prose forms such as\s+["\']([^"\']+)["\']', instr_text)
+        if prose_match:
+            prose_form = prose_match.group(1).lower()
+            # Check if the prose form (with space instead of underscore) is accepted
+            prose_space = prose_form.replace("_", " ")
+            if prose_form not in to_text and prose_space not in to_text:
+                findings.add("P2", "harbor", f"Instruction accepts prose form '{prose_space}' but matcher doesn't (Harbor Check: surface_form_brittleness)",
+                             label="harbor_check",
+                             observed_fact=f"Instruction says prose form '{prose_space}' is acceptable but test_outputs.py doesn't accept it",
+                             evidence=[str(instruction.relative_to(task_dir)), str(test_outputs.relative_to(task_dir))],
+                             impact="Portal Harbor Check will flag: correct memo using instruction's accepted prose form is rejected.",
+                             recommended_fix=f"Add '{prose_space}' to the accepted forms in the memo check.",
+                             gate="harbor_check", fix_path=str(test_outputs.relative_to(task_dir)))
+
+    # 13. Per-row correctness: audit CSV has many rows but only spot-checked
+    if test_outputs.is_file():
+        to_text = read_text(test_outputs)
+        # Check if test_audit_covers_full_register exists but no per-row correctness check
+        has_full_register = "test_audit_covers_full_register" in to_text or "test_audit_covers_full_register" in to_text
+        has_per_row = "per_row" in to_text.lower() or "per-row" in to_text.lower()
+        if has_full_register and not has_per_row:
+            # Count spot-checked rows in verifier.json
+            spot_checked = sum(1 for c in checks if "row_r" in c["name"].lower() or "_findings" in c["name"].lower())
+            if spot_checked > 0 and spot_checked < 50:
+                findings.add("P2", "harbor", f"Only {spot_checked} rows spot-checked out of 609+ (Harbor Check: coverage_depth + requirement_traceability)",
+                             label="harbor_check",
+                             observed_fact=f"verifier.json spot-checks {spot_checked} rows; remaining rows validated only via aggregate counts",
+                             evidence=[str(verifier_path.relative_to(task_dir)), str(test_outputs.relative_to(task_dir))],
+                             impact="Portal Harbor Check will flag: swapped findings in unchecked rows pass undetected.",
+                             recommended_fix="Add per-row correctness checks that validate clock_start, minutes, and role for every row.",
+                             gate="harbor_check", fix_path=str(test_outputs.relative_to(task_dir)))
+
+    # 14. Acknowledgement_minutes empty for unapproved (instruction requirement)
+    if test_outputs.is_file() and instr_text:
+        to_text = read_text(test_outputs)
+        if "acknowledger_unapproved" in instr_text or "unapproved" in instr_text:
+            if "acknowledgement_minutes" not in to_text or "unapproved" not in to_text:
+                findings.add("P2", "harbor", "No check that acknowledgement_minutes is empty for unapproved acknowledgers (Harbor Check: requirement_traceability)",
+                             label="harbor_check",
+                             observed_fact="Instruction requires acknowledgement_minutes empty for unapproved, but no test checks this",
+                             evidence=[str(instruction.relative_to(task_dir)), str(test_outputs.relative_to(task_dir))],
+                             impact="Portal Harbor Check will flag: rows with non-empty acknowledgement_minutes for unapproved pass undetected.",
+                             recommended_fix="Add a check that acknowledgement_minutes is empty when findings include acknowledger_unapproved.",
+                             gate="harbor_check", fix_path=str(test_outputs.relative_to(task_dir)))
 
 
 # --------------------------------------------------------------------------
@@ -1020,7 +1305,7 @@ def render_report(task_name, zip_path, det, model, extra_findings, all_findings,
     lines.append(f"Deterministic stage : {det_state}  qc_verdict={det_verdict}  counts={det_counts}")
     if model is not None:
         if model.get("ok"):
-            mc = model["report"]
+            mc = model.get("report", {})
             lines.append(f"Model stage         : ran  qc_verdict={mc.get('qc_verdict','n/a')}  "
                          f"review={mc.get('review_verdict','n/a')}  counts={mc.get('counts',{})}")
         else:
@@ -1046,7 +1331,7 @@ def render_report(task_name, zip_path, det, model, extra_findings, all_findings,
     if det and det.get("ok"):
         lines.append(f"  Engine review_verdict: {det.get('review_verdict','n/a')}")
     if model and model.get("ok"):
-        lines.append(f"  Model  review_verdict: {model['report'].get('review_verdict','n/a')}")
+        lines.append(f"  Model  review_verdict: {model.get('report', {}).get('review_verdict','n/a')}")
     lines.append("")
     live = [f for f in all_findings if not f.get("duplicate_of")]
     order = {"P0": 0, "P1": 1, "P2": 2, "INFO": 3}
@@ -1193,6 +1478,7 @@ def main(argv=None):
         check_review_csv_structure(task_dir, extra)
         check_fractional_target_contradiction(task_dir, extra)
         check_empty_offer_type_gap(task_dir, extra)
+        check_harbor_check_heuristics(task_dir, extra)
         log(f"extra checks: {len(extra.items)} findings")
 
         dedup_extra(extra.items, engine_findings)

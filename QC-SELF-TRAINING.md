@@ -720,3 +720,21 @@ The 409 error on mode='qc_oracle_glm' was wrong — the correct mode is 'deliver
 **What:** Previous approaches changed DATA (more channels, more traps) — GLM handles each channel with one script. Approach H+I changes the COMPUTATION: (1) different conversion rates per week (100% W1-W3, 90% W4-W7), (2) PE rounding direction depends on shortfall sign.
 **Why it should work:** GLM must group ledger rows by week and apply different rates (not just sum × rate), and check shortfall sign before choosing rounding direction. These are multi-step reasoning requirements.
 **Detection pattern:** If GLM writes `sum(reach) × streams / 1000` without grouping by week and applying different rates, it gets CE wrong for any channel with rows in both W1-W3 and W4-W7.
+
+### FINDING 56 — Giant regex with hundreds of lookaheads fails on portal (audit_covers_every_result)
+**Task:** h40
+**What:** The `audit_covers_every_result` check in verifier.json used a regex with 409 lookahead groups: `(?s)(?=.*\bR-001\b)(?=.*\bR-002\b)...` for all 409 result IDs. This regex passed locally but FAILED on the portal's Python regex engine, causing Oracle to score 0.9835 (60/61 tests pass — this one fails).
+**Fix:** Remove the giant regex from verifier.json. The `test_audit_covers_full_register` pytest assertion already checks that the audit ID set equals the register ID set. Never use regex with more than ~50 lookahead groups — the portal's regex engine has a recursion limit.
+**Detection pattern:** Any regex with >100 lookahead groups `(?=...)` will likely fail on the portal. Move to a Python assertion instead.
+
+### FINDING 57 — Declared vs executed verifier count must match (execution_completeness)
+**Task:** h40
+**What:** Harbor Check blocker `layer1_package_consistency__declared_executed_verifier_consistency`: verifier.json declared 57 checks but test.sh ran 60 (57 parametrized + 3 standalone pytest tests). The 3 standalone tests were undeclared reward-bearing checks.
+**Fix:** Add declared entries in verifier.json for every standalone pytest test so the declared count matches the pytest collection count. Each standalone test needs a corresponding verifier.json entry (even if it's just a file existence check — the real assertion runs in pytest).
+**Detection pattern:** Count the `def test_` functions in test_outputs.py. If the count > len(verifier.json verifiers), add entries for the difference.
+
+### FINDING 58 — Memo coverage depth: keyword-stuffed stub passes (shallow_prose_grading)
+**Task:** h40
+**What:** Harbor Check blocker `layer5_verifier_fairness_static__coverage_depth`: the memo check only verifies file existence + a few substring tokens. A keyword-stuffed string >200 chars with the right keywords passes while stating nothing.
+**Fix:** This is a known limitation of deterministic checks on prose. The instruction requires "explain the breach" but no deterministic check can verify semantic explanation quality. Options: (a) accept the finding as advisory, (b) add more specific content checks (e.g. verify specific result IDs + their finding codes appear together), (c) add an LLM rubric judge for the memo.
+**Detection pattern:** Write a memo that's just keywords concatenated >200 chars. If it passes all checks, the coverage is too shallow.
