@@ -8,6 +8,7 @@ result here means the same thing it means there.
 
 import os
 import sys
+import csv
 from pathlib import Path
 
 import pytest
@@ -42,3 +43,22 @@ def test_deliverable(definition):
     )["result"]
     detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
     assert outcome["success"], f"{definition.name}: {detail}"
+
+
+def _count_csv_data_rows(name):
+    p = WORKSPACE / name
+    if not p.is_file():
+        return None
+    with p.open(encoding="utf-8-sig", newline="") as fh:
+        rows = list(csv.reader(fh))
+    return max(len(rows) - 1, 0)
+
+
+def test_brief_coherence_row_count():
+    n = _count_csv_data_rows("brief_coherence.csv")
+    assert n == 11, f"brief_coherence.csv expected 11 data rows, got {n}"
+
+
+def test_question_trace_row_count():
+    n = _count_csv_data_rows("question_trace.csv")
+    assert n == 66, f"question_trace.csv expected 66 data rows, got {n}"

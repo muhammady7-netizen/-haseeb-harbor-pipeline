@@ -63,3 +63,9 @@ WORKDIR /app
 # Read-only task inputs. The prompt refers to these as `input/`.
 COPY input/ /app/input/
 RUN chmod -R a-w,a+rX /app/input
+
+# Create writable dirs for the agent.
+RUN mkdir -p /logs/agent && chmod 777 /logs/agent
+
+# Ensure /app is writable.
+RUN chmod 777 /app

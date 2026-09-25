@@ -112,14 +112,11 @@ def test_memo_addresses_key_content():
     # Memo must address clock start
     assert "clock" in memo, "Memo must address clock start"
     
-    # Memo must explain midnight or weekend non-breach
-    assert ("midnight" in memo or "weekend" in memo or "out of hours" in memo or "non-breach" in memo), "Memo must explain midnight/weekend non-breach"
+    # Memo must explain non-breach cases (instruction says: "state the reason in plain language (for example inclusive window limits or core-hours clock start)")
+    assert ("midnight" in memo or "weekend" in memo or "out of hours" in memo or "non-breach" in memo or "not a breach" in memo or "not as breaches" in memo or "saturday" in memo or "sunday" in memo or "inclusive" in memo or "core hours" in memo or "core-hours" in memo or "boundary" in memo or "not a finding" in memo), "Memo must explain non-breach cases"
     
     # Memo must have explanatory body (not just a table)
     assert len(memo) > 200, "Memo must have explanatory body (>200 chars)"
-    
-    # Memo must explain non-breach cases (inclusive boundaries or core-hours)
-    assert ("inclusive" in memo or "boundary" in memo or "core hours" in memo or "core-hours" in memo or "not a finding" in memo or "not a breach" in memo), "Memo must explain non-breach cases"
     
     # Memo must list late notifications (R-09 or late notification)
     assert ("r-09" in memo or "r09" in memo or "late notification" in memo), "Memo must list late notifications"

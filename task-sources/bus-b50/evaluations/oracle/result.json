@@ -1,16 +1,16 @@
 {
-    "id": "7cb27257-a8f6-4511-bf34-001d3e516610",
+    "id": "5610d473-ea9a-416a-9c84-5b999368e6e7",
     "task_name": "obi/bus-b50-b10-streaming-target-variance-attribution",
-    "trial_name": "bus-b50-b10-streaming-target-var__inFTWms",
-    "trial_uri": "file:///D:/turing-computer-bench/nonconnector-tasks/oracle-runs/fixb50b10/bus-b50-b10-streaming-target-variance-attribution/run/bus-b50-b10-streaming-target-var__inFTWms",
+    "trial_name": "bus-b50__6B2QSvq",
+    "trial_uri": "file:///C:/Users/Haseeb%20Mirza/AppData/Local/Temp/opencode/harbor-jobs-bus/bus-ora-2/bus-b50__6B2QSvq",
     "task_id": {
-        "path": "D:\\turing-computer-bench\\nonconnector-tasks\\bundles\\shannon-200\\bus-b50-b10-streaming-target-variance-attribution"
+        "path": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\task-sources\\bus-b50"
     },
     "source": null,
-    "task_checksum": "c14ac628788bd2c7429bded6999394b518da1ba51924acf37bcefef9078b72b4",
+    "task_checksum": "1c7c8a86fe2ee3ce4ccd4d3ec958c36ab6a28c00a2f3d85c18b0182a1a5cfcdc",
     "config": {
         "task": {
-            "path": "D:\\turing-computer-bench\\nonconnector-tasks\\bundles\\shannon-200\\bus-b50-b10-streaming-target-variance-attribution",
+            "path": "C:\\Users\\Haseeb Mirza\\OneDrive\\Documents\\-haseeb-harbor-pipeline\\task-sources\\bus-b50",
             "git_url": null,
             "git_commit_id": null,
             "name": null,
@@ -19,8 +19,8 @@
             "download_dir": null,
             "source": null
         },
-        "trial_name": "bus-b50-b10-streaming-target-var__inFTWms",
-        "trials_dir": "D:\\turing-computer-bench\\nonconnector-tasks\\oracle-runs\\fixb50b10\\bus-b50-b10-streaming-target-variance-attribution\\run",
+        "trial_name": "bus-b50__6B2QSvq",
+        "trials_dir": "C:\\Users\\HASEEB~1\\AppData\\Local\\Temp\\opencode\\harbor-jobs-bus\\bus-ora-2",
         "install_only": false,
         "timeout_multiplier": 1.0,
         "agent_timeout_multiplier": null,
@@ -63,11 +63,16 @@
         "verifier": {
             "override_timeout_sec": null,
             "max_timeout_sec": null,
+            "env": {
+                "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+                "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+                "JUDGE_MODEL": "openai/glm-5.2"
+            },
             "disable": false
         },
         "artifacts": [],
         "extra_instruction_paths": [],
-        "job_id": "eb42e3f2-6f3c-4030-8f70-1be3e78a9e21",
+        "job_id": "38246b9b-654f-43fa-84a4-7160ba7b99b5",
         "source_trial": null
     },
     "agent_info": {
@@ -90,23 +95,23 @@
     },
     "verifier_environment_mode": "shared",
     "exception_info": null,
-    "started_at": "2026-09-21T02:48:56.445621Z",
-    "finished_at": "2026-09-21T02:49:30.672456Z",
+    "started_at": "2026-09-24T01:03:20.748178Z",
+    "finished_at": "2026-09-24T01:03:48.526073Z",
     "environment_setup": {
-        "started_at": "2026-09-21T02:48:56.587186Z",
-        "finished_at": "2026-09-21T02:49:14.466068Z"
+        "started_at": "2026-09-24T01:03:20.981677Z",
+        "finished_at": "2026-09-24T01:03:34.762697Z"
     },
     "agent_setup": {
-        "started_at": "2026-09-21T02:49:14.466068Z",
-        "finished_at": "2026-09-21T02:49:14.466068Z"
+        "started_at": "2026-09-24T01:03:34.762697Z",
+        "finished_at": "2026-09-24T01:03:34.762697Z"
     },
     "agent_execution": {
-        "started_at": "2026-09-21T02:49:14.466068Z",
-        "finished_at": "2026-09-21T02:49:15.582414Z"
+        "started_at": "2026-09-24T01:03:34.762697Z",
+        "finished_at": "2026-09-24T01:03:36.711496Z"
     },
     "verifier": {
-        "started_at": "2026-09-21T02:49:15.583991Z",
-        "finished_at": "2026-09-21T02:49:19.265796Z"
+        "started_at": "2026-09-24T01:03:38.383994Z",
+        "finished_at": "2026-09-24T01:03:43.871312Z"
     },
     "step_results": null
 }
