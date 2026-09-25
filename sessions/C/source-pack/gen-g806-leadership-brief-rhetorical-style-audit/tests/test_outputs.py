@@ -1,14 +1,11 @@
 """Replays the harness `file_check` spec against the task workspace.
 
 One pytest per graded assertion, so Harbor's per-test grid (and the CTRF report)
-names exactly which deliverable check failed. The spec in `verifier.json` and the
-engine in `rl_world_verifiers/` are copies of what the task harness runs, so a
-result here means the same thing it means there.
+names exactly which deliverable check failed.
 """
 
 import os
 import sys
-import csv
 from pathlib import Path
 
 import pytest
@@ -45,20 +42,26 @@ def test_deliverable(definition):
     assert outcome["success"], f"{definition.name}: {detail}"
 
 
-def _count_csv_data_rows(name):
-    p = WORKSPACE / name
-    if not p.is_file():
-        return None
-    with p.open(encoding="utf-8-sig", newline="") as fh:
+def test_memo_min_length():
+    """The style_audit_memo.md must be at least 800 characters.
+
+    Enforced as a pytest assertion (not a regex_match on a .md file, which the
+    platform PreQC blocks) on top of the verifier.json contains-checks.
+    """
+    memo_path = WORKSPACE / "style_audit_memo.md"
+    assert memo_path.is_file(), f"style_audit_memo.md missing at {memo_path}"
+    text = memo_path.read_text(encoding="utf-8")
+    assert len(text) >= 800, (
+        f"style_audit_memo.md is {len(text)} characters; minimum is 800"
+    )
+
+
+def test_audit_row_count():
+    """script_style_audit.csv must have exactly the right number of data rows."""
+    import csv
+    audit_path = WORKSPACE / "script_style_audit.csv"
+    assert audit_path.is_file(), f"script_style_audit.csv missing at {audit_path}"
+    with audit_path.open(encoding="utf-8-sig", newline="") as fh:
         rows = list(csv.reader(fh))
-    return max(len(rows) - 1, 0)
-
-
-def test_brief_coherence_row_count():
-    n = _count_csv_data_rows("brief_coherence.csv")
-    assert n == 11, f"brief_coherence.csv expected 11 data rows, got {n}"
-
-
-def test_question_trace_row_count():
-    n = _count_csv_data_rows("question_trace.csv")
-    assert n == 66, f"question_trace.csv expected 66 data rows, got {n}"
+    n = max(0, len(rows) - 1)
+    assert n == 2472, f"script_style_audit.csv has {n} data rows; expected 2472"

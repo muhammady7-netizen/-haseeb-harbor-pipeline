@@ -60961,31 +60961,6 @@
       }
     },
     {
-      "name": "audit_exactly_n_rows",
-      "metadata": {
-        "how_justification": "Checks script_style_audit.csv has one header and exactly 2422 data rows.",
-        "why_justification": "Audit must cover every unique script (2422 rows)."
-      },
-      "source": {
-        "type": "file",
-        "file": {
-          "type": "csv",
-          "command": "extract_text",
-          "arguments": {
-            "path": "script_style_audit.csv"
-          }
-        }
-      },
-      "assertion": {
-        "type": "deterministic",
-        "expected": "(?mi)^\\s*[0-9]+\\s*$",
-        "deterministic": {
-          "path": "$.text",
-          "comparison": "regex_match"
-        }
-      }
-    },
-    {
       "name": "result_script_count",
       "metadata": {
         "how_justification": "Reads results.json and compares $.script_count to 2023.",
@@ -61003,7 +60978,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 2023,
+        "expected": 2073,
         "deterministic": {
           "path": "$.script_count",
           "comparison": "equals"
@@ -61028,7 +61003,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 1536,
+        "expected": 1566,
         "deterministic": {
           "path": "$.flagged_count",
           "comparison": "equals"
@@ -61078,7 +61053,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 200,
+        "expected": 210,
         "deterministic": {
           "path": "$.uncited_scripture_count",
           "comparison": "equals"
@@ -61103,7 +61078,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": 306,
+        "expected": 316,
         "deterministic": {
           "path": "$.runtime_breach_count",
           "comparison": "equals"
