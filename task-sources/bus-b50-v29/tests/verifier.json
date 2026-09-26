@@ -634,7 +634,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bconversion\\b.+\\b(?:33551|33,551)\\b|\\b(?:33551|33,551)\\b.+\\bconversion\\b)",
+        "expected": "(?is)\\bconversion\\s+effect\\s*[:\\-]\\s*(?:is\\s+|was\\s+|of\\s+|stands\\s+at\\s+)?(?:33551|33,551)\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -660,7 +660,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bcounted\\b.+\\b(?:114|114)\\b|\\b(?:114|114)\\b.+\\bcounted\\b)",
+        "expected": "(?is)\\bcounted\\s+placements\\s*[:\\-]\\s*(?:is\\s+|are\\s+|of\\s+|stands\\s+at\\s+)?(?:114)\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
