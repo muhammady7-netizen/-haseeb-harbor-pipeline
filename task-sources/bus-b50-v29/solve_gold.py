@@ -162,7 +162,7 @@ def compute_channel_values(channel_id, plan_rows, ledger_rows, placement_rows, c
     conversion_effect = int(Decimal(str(conversion_effect_raw)).quantize(Decimal("1"), rounding=ROUND_HALF_DOWN))
     
     # Residual is the balance
-    residual = shortfall - placements_effect - conversion_effect
+    residual = int(shortfall - placements_effect - conversion_effect)
     
     return {
         "channel_id": channel_id,
