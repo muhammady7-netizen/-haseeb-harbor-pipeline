@@ -67,6 +67,7 @@ FAMILIES = {
     "D8": "narrow_proximity",
     "D9": "decimal_escape",
     "D10": "all_core_aggregation",
+    "D11": "dotall_co_occurrence",
 }
 
 # A source path grades *prose* (a memo / note / explanation) rather than a
@@ -784,6 +785,45 @@ def check_all_core_aggregation(tf: TaskFiles, vpath: str, spec: dict, res: TaskR
         ))
 
 
+# ── D11: shallow DOTALL co-occurrence ─────────────────────────────────────────
+
+def check_dotall_co_occurrence(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D11 — prose regex uses .+ under DOTALL to match two concepts anywhere in the document.
+
+    A pattern like (?is)(?:\\bword1\\b.+\\bword2\\b|\\bword2\\b.+\\bword1\\b) passes
+    when both words appear anywhere in the document, even in separate paragraphs
+    with the wrong relationship. This is shallow_prose_grading.
+    """
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        path, stype = _source_path_and_type(v)
+        if not _is_prose_target(name, path, stype):
+            continue
+        # Check: has (?i) or (?is) flag AND uses .+ between two \b anchors
+        if "(?is)" not in pattern and "(?i)" not in pattern:
+            continue
+        # Look for .+ between \b markers (document-wide co-occurrence)
+        if re.search(r"\\b\w+\\b\s*\.\+\\b\w+\\b|\\b\w+\\b\s*\.\+\s*\\b", pattern):
+            res.findings.append(Finding(
+                check_id="D11.dotall_co_occurrence",
+                family=FAMILIES["D11"],
+                severity=2,
+                title="Prose regex uses document-wide DOTALL .+ co-occurrence",
+                detail=(
+                    f"Verifier '{name}' uses .+ under DOTALL to match two concepts "
+                    f"anywhere in the document. A memo saying 'NOT 38831 but 50000' "
+                    f"passes because both words co-occur. Scope to sentence/paragraph "
+                    f"using [^.\n]{{0,N}} instead of .+"
+                ),
+                evidence=f"pattern={pattern[:160]}",
+                verifier=name,
+                fixability="fixable",
+            ))
+
+
 # ── per-task orchestration ──────────────────────────────────────────────────
 
 def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
@@ -802,6 +842,7 @@ def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
             check_narrow_proximity(tf, vpath or "", spec, res)
             check_decimal_escape(tf, vpath or "", spec, res)
             check_all_core_aggregation(tf, vpath or "", spec, res)
+            check_dotall_co_occurrence(tf, vpath or "", spec, res)
         elif vpath:
             res.error = f"verifier.json present but unparseable: {vpath}"
         else:
