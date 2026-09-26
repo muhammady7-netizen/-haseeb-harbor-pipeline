@@ -86,7 +86,7 @@
               "counted_placements": "6",
               "placements_effect_streams": "0",
               "conversion_effect_streams": "3245",
-              "residual_reach_effect_streams": "695.0",
+              "residual_reach_effect_streams": "695",
               "shortfall_to_target_streams": "3940"
             }
           },
@@ -136,8 +136,8 @@
             "CH-01": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "2209",
-              "residual_reach_effect_streams": "7411",
+              "conversion_effect_streams": "10652",
+              "residual_reach_effect_streams": "-1032",
               "shortfall_to_target_streams": "9620"
             },
             "CH-02": {
@@ -164,8 +164,8 @@
             "CH-06": {
               "counted_placements": "5",
               "placements_effect_streams": "-1845",
-              "conversion_effect_streams": "2141",
-              "residual_reach_effect_streams": "-1866",
+              "conversion_effect_streams": "-682",
+              "residual_reach_effect_streams": "957",
               "shortfall_to_target_streams": "-1570"
             },
             "CH-07": {
@@ -213,8 +213,8 @@
             "CH-13": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-1259",
-              "residual_reach_effect_streams": "6759",
+              "conversion_effect_streams": "-1599",
+              "residual_reach_effect_streams": "7099",
               "shortfall_to_target_streams": "5500"
             },
             "CH-14": {
@@ -634,7 +634,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)\\bconversion\\s+effect\\s*[:\\-]\\s*(?:is\\s+|was\\s+|of\\s+|stands\\s+at\\s+)?(?:33551|33,551)\\b",
+        "expected": "(?is)\\bconversion\\s+effect\\s*[:\\-]\\s*(?:is\\s+|was\\s+|of\\s+|stands\\s+at\\s+)?(?:38831|38,831)\\b",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -697,11 +697,11 @@
               "tolerance": null
             },
             "conversion_effect_streams": {
-              "value": 33551,
+              "value": 38831,
               "tolerance": null
             },
             "residual_reach_effect_streams": {
-              "value": 38596,
+              "value": 33316,
               "tolerance": null
             },
             "shortfall_to_target_streams": {
