@@ -152,6 +152,18 @@ takes precedence for ALL weeks.
 (from 40) effective from W4. The amended rate of 50 applies to ALL weeks.
 This amendment INCREASES the rate, which increases the conversion effect.
 
+**A6** For CH-01, the `planned_streams_per_1000_reach` is amended to 45
+(from 50) effective from W3. The amended rate of 45 applies to ALL weeks
+(W1 through W7), not just W3 onwards.
+
+**A7** For CH-06, the `planned_streams_per_1000_reach` is amended to 55
+(from 50) effective from W2. The amended rate of 55 applies to ALL weeks.
+This amendment INCREASES the rate.
+
+**A8** For CH-13, TWO amendments apply: rate amended to 45 effective from
+W3, then to 55 effective from W5. Per rule 7.3, the later amendment (55)
+takes precedence for ALL weeks.
+
 **5.8** Each ledger row's conversion effect contribution is computed as
 the row's (per-row rounded) delivered_reach multiplied by the applicable
 rate and planned_streams_per_1000_reach, divided by one thousand. The
