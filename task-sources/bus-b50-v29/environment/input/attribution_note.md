@@ -151,3 +151,11 @@ takes precedence for ALL weeks.
 **A5** For CH-80, the `planned_streams_per_1000_reach` is amended to 50
 (from 40) effective from W4. The amended rate of 50 applies to ALL weeks.
 This amendment INCREASES the rate, which increases the conversion effect.
+
+**5.8** Each ledger row's conversion effect contribution is computed as
+the row's (per-row rounded) delivered_reach multiplied by the applicable
+rate and planned_streams_per_1000_reach, divided by one thousand. The
+conversion effect is the sum of these per-row contributions less the
+channel's delivered streams, rounded once to the nearest whole stream
+per 5.4. Per-row contributions are NOT individually rounded; only the
+final total is rounded.

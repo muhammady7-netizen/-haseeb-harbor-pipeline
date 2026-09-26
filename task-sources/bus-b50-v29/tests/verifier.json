@@ -616,6 +616,58 @@
       }
     },
     {
+      "name": "memo_conversion_effect",
+      "metadata": {
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match to verify the conversion effect figure appears beside its label. Accepts both bare digits and comma-grouped numbers.",
+        "why_justification": "The campaign total of the conversion part is a material disclosed requirement the memo must state.",
+        "tag": "incidental"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?:\\bconversion\\b.+\\b(?:38831|38,831)\\b|\\b(?:38831|38,831)\\b.+\\bconversion\\b)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_counted_placements",
+      "metadata": {
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match to verify the counted placements figure appears beside its label. Accepts both bare digits and comma-grouped numbers.",
+        "why_justification": "The number of placements counted across every channel is a material disclosed requirement the memo must state.",
+        "tag": "incidental"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?:\\bcounted\\b.+\\b(?:114|114)\\b|\\b(?:114|114)\\b.+\\bcounted\\b)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
       "name": "results_figures",
       "metadata": {
         "how_justification": "Reads results.json with json.read_file and applies object_equals over the 5 graded keys with the key set closed; numeric keys compare within an absolute tolerance and a failure names the exact key.",
