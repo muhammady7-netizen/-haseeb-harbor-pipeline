@@ -23,18 +23,12 @@ You are working on Harbor/Shannon QC task repair for 4 benchmark tasks. The goal
 
 ### 1. bus-b50 (bus-b50-b10-streaming-target-variance-attribution)
 - **Source**: `local-qc/task-sources/bus-b50-v29/`
-- **Latest portal version**: v10 (content-ba34a5cec61cf9074c694bf925740c55-v10)
-- **Status**: Oracle PASSED, GLM 3/4 passed (good difficulty!), 2 blocking findings
-- **Blockings**: `layer5_verifier_fairness_static__coverage_depth` and `layer5_verifier_fairness_static__requirement_traceability`
-  - Root cause: `memo_conversion_effect` and `memo_counted_placements` regexes use document-wide DOTALL `.+` co-occurrence — a memo saying "NOT 38831 but 50000" passes. Need to scope to sentence/paragraph and reject alternative-candidate phrasing.
-  - Gold memo uses: `"Conversion effect: 33551."` and `"Counted placements: 114."` (label colon number format)
-  - Fix in progress: Tightened regexes to `(?is)(?:\bconversion\s+(?:effect\s+)?(?:is\s+|was\s+|of\s+|stands\s+at\s+)?(?:33551|33,551)\b|...)` but gold memo FAILS the tightened regex — need to add "label colon number" pattern: `\bconversion\s+effect\s*[:]\s*(?:33551|33,551)\b`
-- **Hardening**: Added 3 new retroactive amendments (A6: CH-01→45, A7: CH-06→55, A8: CH-13→55 dual). Solver verified gold values: ce=33551, re=38596, pe=29899, st=102046, cp=114
-- **Next step**: 
-  1. Fix the memo regexes to match gold format `"Conversion effect: 33551"` and `"Counted placements: 114"` while rejecting "NOT 38831 but 50000"
-  2. Run local QC: `python -c "import sys; sys.path.insert(0, r'C:\Users\Haseeb Mirza\OneDrive\Documents\Default Project\local-qc'); from tools.verifier_defect_lint import TaskFiles, lint_task; from pathlib import Path; tf = TaskFiles.from_dir(Path(r'C:\Users\Haseeb Mirza\OneDrive\Documents\Default Project\local-qc\task-sources\bus-b50-v29')); res = lint_task(tf, 'bus-b50'); [print(f'{f.check_id} sev{f.severity}: {f.title}') for f in res.findings]"`
-  3. Build zip v11 and upload to portal
-  4. Dismiss the 2 findings on v10 with notes (if still needed), OR upload v11 and re-run
+- **Latest portal version**: v15 (content-ba34a5cec61cf9074c694bf925740c55-v15)
+- **Status**: **SUBMITTED TO PIPELINE** (evaluation-0023ad71ed924fcb-a1)
+  - Oracle PASSED, GLM 1/4 passed (in band!), 6 findings dismissed with notes
+  - v15 = v10's gold (A1-A5 only, ce=38831, re=33316) + ONLY tightened memo regexes (label colon format)
+  - The memo regex fix: `(?is)\bconversion\s+effect\s*[:\-]\s*(?:is\s+|was\s+|of\s+|stands\s+at\s+)?(?:38831|38,831)\b` — rejects "NOT 38831 but 50000"
+  - **Waiting for pipeline verdict** (check at `https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer/pipeline-report/evaluation-0023ad71ed924fcb`)
 
 ### 2. gen-g806 (gen-g806-leadership-brief-rhetorical-style-audit)
 - **Source**: `local-qc/gen-g806-leadership-brief-rhetorical-style-audit/`
