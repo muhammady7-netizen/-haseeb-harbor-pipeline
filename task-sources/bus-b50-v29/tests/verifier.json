@@ -582,7 +582,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?s)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){60,}",
+        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){60,}",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

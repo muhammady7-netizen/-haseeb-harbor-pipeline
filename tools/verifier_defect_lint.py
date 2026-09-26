@@ -62,6 +62,11 @@ FAMILIES = {
     "D3": "judge_model_wiring",
     "D4": "fixture_overwritable",
     "D5": "inert_scoring_axis",
+    "D6": "case_sensitivity",
+    "D7": "requirement_traceability",
+    "D8": "narrow_proximity",
+    "D9": "decimal_escape",
+    "D10": "all_core_aggregation",
 }
 
 # A source path grades *prose* (a memo / note / explanation) rather than a
@@ -611,6 +616,174 @@ def check_inert_scoring_axis(tf: TaskFiles, spec: dict, res: TaskResult) -> None
     ))
 
 
+# ── D6: case-sensitive word boundary without (?i) ────────────────────────────
+
+BACKSLASH_B = chr(92) + chr(98)  # literal \b in a regex pattern string
+
+def check_case_sensitivity(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D6 — prose regex with \\bword\\b but no (?i) flag rejects capitalized words."""
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        path, stype = _source_path_and_type(v)
+        if not _is_prose_target(name, path, stype):
+            continue
+        if BACKSLASH_B not in pattern:
+            continue
+        if "(?i)" in pattern or "(?is)" in pattern:
+            continue
+        all_words = re.findall(r"[a-z]{4,}", pattern)
+        english_words = [w for w in all_words if w not in {
+            "none", "true", "false", "null", "slide", "line",
+            "text", "char", "word", "path", "file", "json",
+            "type", "name", "size", "that", "with", "from",
+            "zaaz", "aazz",
+        }]
+        if english_words:
+            res.findings.append(Finding(
+                check_id="D6.case_sensitivity",
+                family=FAMILIES["D6"],
+                severity=2,
+                title="Prose regex case-sensitive word boundary without (?i)",
+                detail=(
+                    f"Verifier '{name}' grades a prose target with \\bword\\b but no "
+                    f"(?i) flag. A correct answer with capitalized "
+                    f"'{english_words[0]}' is rejected. Words: "
+                    f"{sorted(set(english_words))[:5]}."
+                ),
+                evidence=f"pattern={pattern[:160]}",
+                verifier=name,
+                fixability="fixable",
+            ))
+
+
+# ── D7: requirement traceability ────────────────────────────────────────────
+
+def _load_instruction(tf: TaskFiles) -> str:
+    parts = []
+    for name in ("instruction.md", "environment/input/submission_format.md"):
+        p = tf.find(name)
+        if p:
+            parts.append(tf.read_text(p))
+    return "\n".join(parts)
+
+
+def check_requirement_traceability(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D7 — instruction requires X but no verifier checks X (and vice versa)."""
+    instruction = _load_instruction(tf)
+    if not instruction:
+        return
+    items = _verifier_items(spec)
+    ver_names = [str(v.get("name", "")) for v in items]
+
+    # Check: "State N figures" requirement
+    if re.search(r"[Ss]tate (?:two|\d+) figures", instruction):
+        has_figure_checks = any(
+            "figure" in n.lower() or "conversion" in n.lower() or "counted" in n.lower()
+            for n in ver_names
+        )
+        if not has_figure_checks:
+            res.findings.append(Finding(
+                check_id="D7.requirement_traceability",
+                family=FAMILIES["D7"],
+                severity=3,
+                title="Instruction requires figures but no verifier checks them",
+                detail=(
+                    "Instruction says 'State two figures as findings' but no verifier "
+                    "checks for the presence of those figures. This is a hidden_requirement "
+                    "the pipeline will reject."
+                ),
+                evidence="instruction says 'State two figures'; verifiers=" + ", ".join(ver_names[:6]),
+                verifier="(coverage_gap)",
+                fixability="fixable",
+            ))
+
+
+# ── D8: narrow proximity window ─────────────────────────────────────────────
+
+def check_narrow_proximity(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D8 — regex with [\\s\\S]{0,N} or .{0,N} where N < 300 rejects spread-out content."""
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        for m in re.finditer(r"\.\{0,(\d+)\}|\\\[\\s\\S\\\]\{0,(\d+)\}", pattern):
+            n_val = int(m.group(1) or m.group(2))
+            if n_val < 300:
+                res.findings.append(Finding(
+                    check_id="D8.narrow_proximity",
+                    family=FAMILIES["D8"],
+                    severity=2,
+                    title=f"Narrow proximity window of {n_val} chars",
+                    detail=(
+                        f"Verifier '{name}' uses a {n_val}-char proximity window. "
+                        f"A correct answer where the two concepts are {n_val+1} chars "
+                        f"apart is rejected."
+                    ),
+                    evidence=f"pattern={pattern[:160]}",
+                    verifier=name,
+                    fixability="fixable",
+                ))
+                break
+
+
+# ── D9: decimal escape gap ───────────────────────────────────────────────────
+
+def check_decimal_escape(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D9 — (?!\\d) without (?!\\d|[.,]\\d) lets wrong figures like '181.5' pass."""
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        if r"(?!\d)" in pattern and r"(?!\d|[.,]\d)" not in pattern:
+            res.findings.append(Finding(
+                check_id="D9.decimal_escape",
+                family=FAMILIES["D9"],
+                severity=2,
+                title="(?!\\d) does not block decimal continuations",
+                detail=(
+                    f"Verifier '{name}' uses (?!\\d) but not (?!\\d|[.,]\\d). "
+                    f"A wrong figure like '181.5' or '181,5' passes."
+                ),
+                evidence=f"pattern={pattern[:160]}",
+                verifier=name,
+                fixability="fixable",
+            ))
+
+
+# ── D10: all-or-nothing aggregation ──────────────────────────────────────────
+
+def check_all_core_aggregation(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D10 — all checks tagged 'core' means one defective check zeroes a correct run."""
+    items = _verifier_items(spec)
+    if not items:
+        return
+    total = len(items)
+    core_count = sum(
+        1 for v in items
+        if str((v.get("metadata") or {}).get("tag", "")).lower() == "core"
+    )
+    if total > 4 and core_count == total:
+        res.findings.append(Finding(
+            check_id="D10.all_core_aggregation",
+            family=FAMILIES["D10"],
+            severity=1,
+            title=f"All {total} checks are 'core' (all-or-nothing aggregation)",
+            detail=(
+                f"Every one of {total} checks is tagged 'core'. One defective check "
+                f"zeroes a materially correct run. Consider making non-critical checks "
+                f"(existence, prose floors) 'incidental'."
+            ),
+            evidence=f"core={core_count}/{total}",
+            verifier="(aggregation)",
+            fixability="fixable",
+        ))
+
+
 # ── per-task orchestration ──────────────────────────────────────────────────
 
 def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
@@ -624,6 +797,11 @@ def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
             check_judge_wiring(tf, vpath or "", spec, res)
             check_fixture_overwritable(tf, vpath or "", spec, res)
             check_inert_scoring_axis(tf, spec, res)
+            check_case_sensitivity(tf, vpath or "", spec, res)
+            check_requirement_traceability(tf, vpath or "", spec, res)
+            check_narrow_proximity(tf, vpath or "", spec, res)
+            check_decimal_escape(tf, vpath or "", spec, res)
+            check_all_core_aggregation(tf, vpath or "", spec, res)
         elif vpath:
             res.error = f"verifier.json present but unparseable: {vpath}"
         else:
