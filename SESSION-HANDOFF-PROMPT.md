@@ -23,12 +23,33 @@ You are working on Harbor/Shannon QC task repair for 4 benchmark tasks. The goal
 
 ### 1. bus-b50 (bus-b50-b10-streaming-target-variance-attribution)
 - **Source**: `local-qc/task-sources/bus-b50-v29/`
-- **Latest portal version**: v15 (content-ba34a5cec61cf9074c694bf925740c55-v15)
-- **Status**: **SUBMITTED TO PIPELINE** (evaluation-0023ad71ed924fcb-a1)
-  - Oracle PASSED, GLM 1/4 passed (in band!), 6 findings dismissed with notes
-  - v15 = v10's gold (A1-A5 only, ce=38831, re=33316) + ONLY tightened memo regexes (label colon format)
-  - The memo regex fix: `(?is)\bconversion\s+effect\s*[:\-]\s*(?:is\s+|was\s+|of\s+|stands\s+at\s+)?(?:38831|38,831)\b` — rejects "NOT 38831 but 50000"
-  - **Waiting for pipeline verdict** (check at `https://harbor-trainer-s2eobzrxbq-uc.a.run.app/trainer/pipeline-report/evaluation-0023ad71ed924fcb`)
+- **Latest portal version**: v25 (content-ba34a5cec61cf9074c694bf925740c55-v25)
+- **Status**: Oracle PASSED, GLM 4/4 TOO_EASY (still too easy with fair rules)
+- **What we tried**:
+  - v10: A1-A5 + loose `.+` regex → 3/4 (unfair regex, pipeline rejected)
+  - v15: A1-A5 + mandatory colon → 1/4 (unfair regex, pipeline rejected)
+  - v16: A1-A5 + `[^.\n]{0,100}?` → 3/4 (slightly unfair, pipeline rejected)
+  - v17-v22: Various fair regexes → 4/4 (too easy)
+  - v23-v25: A1-A8 + rule 5.9 + rule 5.10 + data traps → 4/4 (too easy)
+- **Root cause**: GLM-5.3 writes a Python script that handles all computation rules correctly. Fair memo regexes let GLM pass 4/4. Unfair regexes get 1-3/4 but pipeline rejects them.
+- **Current traps accumulated**:
+  - A1-A8: 8 retroactive amendments (3 new: CH-01→45, CH-06→55, CH-13→55 dual)
+  - Rule 5.9: Amendment-dependent time rate (95% for amended, 90% for non-amended)
+  - Rule 5.10: Amendment direction time rate (97% increase, 93% decrease, 95% equal)
+  - Rounding clarification with worked example
+  - 5 new ledger rows (.5 halves, negative streams, organic)
+  - 2 new placement rows (slipped W3→W4, guaranteed_streams exclusion)
+  - Bidirectional `[^.]{0,200}?` memo regexes (fair)
+  - CH-04 in register_table
+  - test_outputs.py ce_value=38792
+  - Gold values: ce=38792, re=36901, pe=24901, st=100594, cp=115
+- **Key learning**: Difficulty must come from DATA/COMPUTATION, not memo format. But GLM handles all fair computation correctly. Need fundamentally different approach — maybe non-scriptable reasoning, cross-file interpretation, or semantic judgment.
+- **Next ideas to try**:
+  1. Make instruction less prescriptive (don't spell out the method, let model figure it out)
+  2. Add cross-file rule (computation rule in submission_format.md, not attribution_note.md)
+  3. Add non-linear computation (square root, logarithm)
+  4. Add semantic judgment check (identify channel with largest shortfall in memo)
+  5. Try different memo format requirements that are fair but unusual
 
 ### 2. gen-g806 (gen-g806-leadership-brief-rhetorical-style-audit)
 - **Source**: `local-qc/gen-g806-leadership-brief-rhetorical-style-audit/`
