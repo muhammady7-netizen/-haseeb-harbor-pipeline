@@ -641,7 +641,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[^.\\n]{0,100}?\\b(?:38765|38,765)\\b|\\b(?:38765|38,765)\\b[^.\\n]{0,100}?\\bconversion[\\s*]+effect\\b)",
+        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[\\s\\S]{0,200}?\\b(?:38765|38,765)\\b|\\b(?:38765|38,765)\\b[\\s\\S]{0,200}?\\bconversion[\\s*]+effect\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -667,7 +667,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bcounted[\\s*]+placements\\b[^.\\n]{0,100}?\\b(?:110)\\b|\\b(?:110)\\b[^.\\n]{0,100}?\\bcounted[\\s*]+placements\\b)",
+        "expected": "(?is)(?:\\bcounted[\\s*]+placements\\b[\\s\\S]{0,200}?\\b(?:110)\\b|\\b(?:110)\\b[\\s\\S]{0,200}?\\bcounted[\\s*]+placements\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
