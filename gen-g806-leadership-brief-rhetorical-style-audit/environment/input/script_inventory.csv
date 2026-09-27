@@ -1,8 +1,8 @@
-script_id,is_verbatim_testimony,uses_negation_pivot,has_scripture_ref,scripture_cited,runtime_minutes,opening_line,body_excerpt,scripture_text
+﻿script_id,is_verbatim_testimony,uses_negation_pivot,has_scripture_ref,scripture_cited,runtime_minutes,opening_line,body_excerpt,scripture_text
 SC-01,False,False,True,True,10,We gather tonight to celebrate what God has already begun among us.,The board packet is light; gratitude is the point of this cold open.,Genesis 1:1
 SC-02,False,True,False,False,7,That's not a delay. It's a divine appointment.,We move from calendar anxiety into trust without changing the run of show.,
 SC-03,False,False,True,False,5,The word reminds us that love is patient and kind when the room gets loud.,No chapter-verse was locked in the teleprompter notes for that allusion.,
-SC-04,False,False,False,False,6,Tonight we walk through three decisions our board will face this quarter.,Keep the tone procedural; no personal testimony block in this segment.,
+SC-04,False,False,False,False,6,Tonight we walk through three decisions our board will face this quarter.,That is not the right approach. That is the wrong way. Keep the tone procedural; no personal testimony.,
 SC-05,True,True,True,True,6,It's not the end of my story. It's the chapter where mercy showed up.,I am reading my own words into the brief exactly as I spoke them last spring.,Genesis 3:15
 SC-06,False,True,True,False,9,That's not failure. It's formation — and the text we opened still stands.,Producer flagged scripture but left the citation blank in the rundown.,
 SC-07,False,False,True,True,8,We hold to the promise written in Romans 8:28 as we plan the next season.,Standard closer; citation already on the lower-third package.,Exodus 20:3
@@ -14,19 +14,19 @@ SC-12,False,False,True,True,11,Extended format walkthrough of the capital plan m
 SC-13,False,True,False,False,5,Welcome to a quiet housekeeping brief.,A short list of facility notes and volunteer swaps for the week.,
 SC-14,False,False,True,False,13,Capital Sunday preview for the extended teaching block.,Uncited allusion sits in the second act; timed long on purpose.,
 SC-15,True,True,True,True,3,It's not the platform that changed me. It's the people who stayed.,Short testimony with citation present before clearance review.,Psalms 51:10
- SC-16 ,False,False,False,False,6,A calm thank-you to the volunteers who stayed late.,A calm thank-you to the volunteers who stayed late after the service.,
+ SC-16 ,False,False,False,False,6,A calm thank-you to the volunteers who stayed late.,It isn't a problem. It's an opportunity. A calm thank-you to the volunteers.,
 SC-17,False,False,False,False,6,That's not noise. It's the sound of a room learning to listen.,The room settles as people learn to listen before the next agenda item.,
 SC-18,False,False,False,False,12,Extended capital walkthrough continues without a pivot.,Milestone walkthrough continues with budget slides and campus maps.,
 SC-19,False,False,True,False,6,We lean on a familiar promise without locking the cite.,A familiar promise is named without a locked chapter-verse on the lower third.,
-SC-20,False,False,yes,false,6,A soft close with no banned turn and no real scripture flag.,A soft close that leaves the room without a banned turn of phrase.,
+SC-20,False,False,yes,false,6,A soft close with no banned turn and no real scripture flag.,This is not the end. This is the beginning. A soft close that leaves the room.,
 SC-21,False,False,False,False,9,Board update with a measured closer.,Board update closes with next steps and a measured pastoral note.,
 SC-22,False,True,False,False,5,That's not optional. It's required prep for the vote.,"Prep notes for the vote: materials, timing, and who speaks when.",
 SC-23,False,True,False,False,6,That's not the headline. It's a draft we already killed.,Procedural update covering routine agenda items.,
 SC-24,True,True,True,False,6,It's not courage I invented. It's what the guest kept repeating.,Guest wording repeats a courage line the producer wants preserved carefully.,
 SC-25,False,False,False,False,4,Extended band cold open that runs short on purpose.,Cold open for the extended band that keeps the energy brief on purpose.,
 SC-26,True,True,False,False,6,That's not branding. It's the sentence we keep mistaking for testimony.,A branding-sounding line the team keeps quoting in the rundown notes.,
-SC-27,False,False,False,False,6,Quiet pastoral note with no pivot and no cite gap.,A quiet pastoral note before the offering with no sharp pivot.,
-SC-28,False,False,False,False,6,Procedural board preview without rhetoric risk.,Procedural board preview covering consent agenda and parking logistics.,
+SC-27,False,False,False,False,6,Quiet pastoral note with no pivot and no cite gap.,That was not the plan. That was the backup. A quiet pastoral note before the offering.,
+SC-28,False,False,False,False,6,Procedural board preview without rhetoric risk.,It wasn't the right moment. It was too early. Procedural board preview covering consent.,
 SC-29,False,True,False,False,6,A calm pastoral note before the offering with no sharp pivot.,That's not a close. It's a commission for the week ahead.,
 SC-30,False,False,False,False,9,Board update with a measured closer and no rhetoric risk.,Procedural closer covering consent agenda and parking logistics.,
 SC-31,False,True,False,False,7,That's not a cycle. It's a call to the next season.,A pivot line the producer kept in the final rundown notes.,
