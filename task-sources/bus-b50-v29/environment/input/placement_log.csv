@@ -1,4 +1,4 @@
-placement_id,channel_id,planned_week,ran_week,placement_status,offer_type
+﻿placement_id,channel_id,planned_week,ran_week,placement_status,offer_type
 PL-30001,CH-30,W1,W1,ran,rep_test
 PL-30002,CH-30,W2,W2,ran,rep_test
 PL-1001,CH-01,W1,W1,ran,editorial_pitch
@@ -126,3 +126,5 @@ PL-80008,CH-79,W4,W4,ran,promotional
 PL-80009,CH-79,W5,W5,ran,promotional
 PL-80010,CH-80,W1,W1,ran,promotional
 PL-80011,CH-80,W4,W4,ran,promotional
+PL-11008,CH-11,W3,W4,ran,promotional
+PL-14009,CH-14,W5,W5,ran,guaranteed_streams
