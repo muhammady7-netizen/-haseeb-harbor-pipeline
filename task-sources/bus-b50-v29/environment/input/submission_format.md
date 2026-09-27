@@ -1,4 +1,4 @@
-# Submission format
+﻿# Submission format
 
 Deliver exactly these files, in your working directory:
 
