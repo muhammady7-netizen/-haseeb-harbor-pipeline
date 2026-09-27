@@ -68,6 +68,12 @@ FAMILIES = {
     "D9": "decimal_escape",
     "D10": "all_core_aggregation",
     "D11": "dotall_co_occurrence",
+    "D12": "undisclosed_sentence_scope",
+    "D13": "no_rubric_for_prose",
+    "D14": "shared_tests_readable",
+    "D15": "hardcoded_value_mismatch",
+    "D16": "missing_row_in_table",
+    "D17": "float_value_in_verifier",
 }
 
 # A source path grades *prose* (a memo / note / explanation) rather than a
@@ -824,6 +830,247 @@ def check_dotall_co_occurrence(tf: TaskFiles, vpath: str, spec: dict, res: TaskR
             ))
 
 
+# ── D12: undisclosed sentence scope ──────────────────────────────────────────
+
+def check_undisclosed_sentence_scope(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D12 — prose regex uses [^.] or [^.\n] to scope within sentence but
+    instruction never says 'same sentence' or 'same line'. This is an
+    undisclosed representation requirement."""
+    instruction = _load_instruction(tf)
+    if not instruction:
+        return
+    # Check if instruction mentions "same sentence" or "same line"
+    says_same_sentence = any(phrase in instruction.lower() for phrase in [
+        "same sentence", "same line", "one sentence", "within one sentence",
+        "in the same paragraph", "single sentence",
+    ])
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        path, stype = _source_path_and_type(v)
+        if not _is_prose_target(name, path, stype):
+            continue
+        # Check for sentence-scoping patterns [^.] or [^.\n]
+        if re.search(r"\[\^\.\\?n?\]\{0,\d+\}\??", pattern) and not says_same_sentence:
+            res.findings.append(Finding(
+                check_id="D12.undisclosed_sentence_scope",
+                family=FAMILIES["D12"],
+                severity=2,
+                title="Prose regex uses sentence scope not disclosed in instruction",
+                detail=(
+                    f"Verifier '{name}' uses [^.] or [^.\\n] to scope label-figure "
+                    f"within a sentence, but instruction never says 'same sentence' "
+                    f"or 'same line'. This is an undisclosed representation requirement "
+                    f"that rejects valid memos where label and figure are in "
+                    f"separate sentences. Either disclose it in instruction or "
+                    f"use unbounded [\\s\\S] co-occurrence."
+                ),
+                evidence=f"pattern={pattern[:160]}",
+                verifier=name,
+                fixability="fixable",
+            ))
+
+
+# ── D13: no rubric for prose deliverable ──────────────────────────────────────
+
+def check_no_rubric_for_prose(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D13 — a .md/.txt deliverable has only regex/exists checks and no rubric/judge.
+    The pipeline flags this as shallow_prose_grading / coverage_depth / rollout_legitimacy."""
+    has_rubric = any(
+        (v.get("assertion", {}) or {}).get("type") == "rubric"
+        for v in _verifier_items(spec)
+    )
+    if has_rubric:
+        return
+    # Find prose deliverables
+    prose_paths = set()
+    for v in _verifier_items(spec):
+        path, stype = _source_path_and_type(v)
+        if _is_prose_target(str(v.get("name", "")), path, stype):
+            prose_paths.add(path)
+    for ppath in prose_paths:
+        # Count checks on this prose file
+        prose_checks = [
+            v for v in _verifier_items(spec)
+            if _source_path_and_type(v)[0] == ppath
+        ]
+        # If all checks are regex_match or equals (no rubric)
+        all_regex = all(
+            (v.get("assertion", {}).get("deterministic", {}).get("comparison", "") in ("regex_match", "equals"))
+            for v in prose_checks
+        )
+        if all_regex and len(prose_checks) >= 2:
+            res.findings.append(Finding(
+                check_id="D13.no_rubric_for_prose",
+                family=FAMILIES["D13"],
+                severity=2,
+                title=f"Prose deliverable '{ppath}' has no rubric/judge check",
+                detail=(
+                    f"'{ppath}' has {len(prose_checks)} checks, all regex/equals — "
+                    f"no LLM rubric judges content quality. Pipeline will flag as "
+                    f"shallow_prose_grading / coverage_depth / rollout_legitimacy. "
+                    f"Either add a rubric-type verifier or accept these findings "
+                    f"as dismissible."
+                ),
+                evidence=f"checks={[v.get('name','') for v in prose_checks]}",
+                verifier=ppath,
+                fixability="structural",
+            ))
+
+
+# ── D14: shared /tests readable by agent ─────────────────────────────────────
+
+def check_shared_tests_readable(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D14 — Dockerfile runs as root and /tests is not protected. Agent can
+    read verifier answer keys. Pipeline flags as sanctioned_interface_use."""
+    dpath = tf.find("environment/Dockerfile") or tf.find("Dockerfile")
+    if not dpath:
+        return
+    dockerfile = tf.read_text(dpath)
+    users = re.findall(r"^\s*USER\s+(\S+)", dockerfile, re.M)
+    effective_user = users[-1] if users else "(none)"
+    is_root = effective_user.lower() in ("root", "0", "(none)")
+    has_tests_protection = "chmod 700 /tests" in dockerfile or "chmod 700 /tests/" in dockerfile
+    if is_root and not has_tests_protection:
+        res.findings.append(Finding(
+            check_id="D14.shared_tests_readable",
+            family=FAMILIES["D14"],
+            severity=2,
+            title="Dockerfile runs as root and /tests is not protected",
+            detail=(
+                "Dockerfile ends as root and has no 'chmod 700 /tests' or equivalent. "
+                "The agent can read verifier.json and test_outputs.py from /tests, "
+                "which contain answer keys. Pipeline flags as "
+                "sanctioned_interface_use / exploitable_environment. "
+                "Add 'RUN chmod 700 /tests' before the final USER instruction."
+            ),
+            evidence=f"effective USER={effective_user}, tests_protection={has_tests_protection}",
+            fixability="fixable",
+        ))
+
+
+# ── D15: hardcoded value mismatch ────────────────────────────────────────────
+
+def check_hardcoded_value_mismatch(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D15 — test_outputs.py has hardcoded values (ce_value, cp_value, expected)
+    that don't match verifier.json. This causes Oracle to fail."""
+    tpath = tf.find("tests/test_outputs.py")
+    if not tpath:
+        return
+    test_py = tf.read_text(tpath)
+    # Extract hardcoded values from test_outputs.py
+    hardcoded = {}
+    for m in re.finditer(r"(ce_value|cp_value|expected)\s*=\s*(\d+)", test_py):
+        hardcoded[m.group(1)] = int(m.group(2))
+    if not hardcoded:
+        return
+    # Extract expected values from verifier.json
+    verifier_values = {}
+    for v in _verifier_items(spec):
+        if v.get("name") == "results_figures":
+            for k, val in (v.get("assertion", {}).get("expected", {}).get("keys", {}) or {}).items():
+                verifier_values[k] = val.get("value", 0)
+    # Check mismatches
+    for py_key, py_val in hardcoded.items():
+        # Map test_outputs.py keys to verifier keys
+        ver_key = None
+        if py_key == "ce_value":
+            ver_key = "conversion_effect_streams"
+        elif py_key == "cp_value":
+            ver_key = "counted_placement_count"
+        if ver_key and ver_key in verifier_values:
+            if py_val != verifier_values[ver_key]:
+                res.findings.append(Finding(
+                    check_id="D15.hardcoded_value_mismatch",
+                    family=FAMILIES["D15"],
+                    severity=3,
+                    title=f"test_outputs.py {py_key}={py_val} != verifier.json {ver_key}={verifier_values[ver_key]}",
+                    detail=(
+                        f"test_outputs.py has {py_key}={py_val} but verifier.json "
+                        f"expects {ver_key}={verifier_values[ver_key]}. Oracle WILL FAIL "
+                        f"because the test checks the wrong value. "
+                        f"Update test_outputs.py to match."
+                    ),
+                    evidence=f"{py_key}={py_val} vs {ver_key}={verifier_values[ver_key]}",
+                    verifier="test_outputs.py",
+                    fixability="fixable",
+                ))
+
+
+# ── D16: missing row in register_table ────────────────────────────────────────
+
+def check_missing_row_in_table(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D16 — register_table expected rows is missing a channel that's in row_set.
+    This causes Oracle to fail on that channel."""
+    for v in _verifier_items(spec):
+        if v.get("name") == "register_table":
+            expected = v.get("assertion", {}).get("expected", {})
+            row_set = set(expected.get("row_set", []))
+            rows_keys = set(expected.get("rows", {}).keys())
+            missing = row_set - rows_keys
+            if missing:
+                res.findings.append(Finding(
+                    check_id="D16.missing_row_in_table",
+                    family=FAMILIES["D16"],
+                    severity=3,
+                    title=f"register_table missing {len(missing)} row(s) from rows dict",
+                    detail=(
+                        f"row_set contains {len(row_set)} channels but rows dict "
+                        f"only has {len(rows_keys)}. Missing: {sorted(missing)[:5]}. "
+                        f"Oracle WILL FAIL because the channel has no expected values."
+                    ),
+                    evidence=f"missing={sorted(missing)[:5]}",
+                    verifier="register_table",
+                    fixability="fixable",
+                ))
+
+
+# ── D17: float value in verifier ──────────────────────────────────────────────
+
+def check_float_value_in_verifier(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D17 — verifier.json has float values (e.g. '7411.0') instead of ints ('7411').
+    Oracle will fail because CSV cells are strings and '7411.0' != '7411'."""
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        if name == "register_table":
+            for ch, row in (v.get("assertion", {}).get("expected", {}).get("rows", {}) or {}).items():
+                for col, val in row.items():
+                    if isinstance(val, str) and "." in val:
+                        res.findings.append(Finding(
+                            check_id="D17.float_value_in_verifier",
+                            family=FAMILIES["D17"],
+                            severity=3,
+                            title=f"register_table {ch}.{col} has float value '{val}'",
+                            detail=(
+                                f"verifier.json has {ch}.{col}='{val}' (float) but "
+                                f"CSV cells are string integers. Oracle WILL FAIL. "
+                                f"Change to int: '{val}'.split('.')[0]."
+                            ),
+                            evidence=f"{ch}.{col}={val}",
+                            verifier=name,
+                            fixability="fixable",
+                        ))
+        if name == "results_figures":
+            for k, val in (v.get("assertion", {}).get("expected", {}).get("keys", {}) or {}).items():
+                if isinstance(val.get("value"), float):
+                    res.findings.append(Finding(
+                        check_id="D17.float_value_in_verifier",
+                        family=FAMILIES["D17"],
+                        severity=3,
+                        title=f"results_figures {k} has float value {val['value']}",
+                        detail=(
+                            f"verifier.json has {k}={val['value']} (float) but "
+                            f"results.json has int. Oracle WILL FAIL. "
+                            f"Change to int."
+                        ),
+                        evidence=f"{k}={val['value']}",
+                        verifier=name,
+                        fixability="fixable",
+                    ))
+
+
 # ── per-task orchestration ──────────────────────────────────────────────────
 
 def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
@@ -843,6 +1090,12 @@ def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
             check_decimal_escape(tf, vpath or "", spec, res)
             check_all_core_aggregation(tf, vpath or "", spec, res)
             check_dotall_co_occurrence(tf, vpath or "", spec, res)
+            check_undisclosed_sentence_scope(tf, vpath or "", spec, res)
+            check_no_rubric_for_prose(tf, vpath or "", spec, res)
+            check_shared_tests_readable(tf, vpath or "", spec, res)
+            check_hardcoded_value_mismatch(tf, vpath or "", spec, res)
+            check_missing_row_in_table(tf, vpath or "", spec, res)
+            check_float_value_in_verifier(tf, vpath or "", spec, res)
         elif vpath:
             res.error = f"verifier.json present but unparseable: {vpath}"
         else:

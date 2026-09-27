@@ -243,7 +243,7 @@ def test_memo_conversion_effect():
     if not memo_path.is_file():
         pytest.skip("no campaign_review.md")
     text = memo_path.read_text(encoding="utf-8")
-    ce_value = 44823
+    ce_value = 38831
     ce_comma = format(ce_value, ",")
     pattern = r"(?<![-\d.])(" + str(ce_value) + r"|" + ce_comma + r")(?!\d)(?!\.\d)"
     assert re.search(pattern, text), "memo must contain conversion effect figure"
@@ -256,7 +256,7 @@ def test_memo_counted_placements():
     if not memo_path.is_file():
         pytest.skip("no campaign_review.md")
     text = memo_path.read_text(encoding="utf-8")
-    cp_value = 118
+    cp_value = 114
     cp_comma = format(cp_value, ",")
     pattern = r"(?<![-\d.])(" + str(cp_value) + r"|" + cp_comma + r")(?!\d)(?!\.\d)"
     assert re.search(pattern, text), "memo must contain counted placements figure"
