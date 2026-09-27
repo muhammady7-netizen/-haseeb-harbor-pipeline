@@ -63,3 +63,8 @@ WORKDIR /app
 # Read-only task inputs. The prompt refers to these as `input/`.
 COPY input/ /app/input/
 RUN chmod -R a-w,a+rX /app/input
+
+# Protect verifier files: /tests is mounted by the harness but should not
+# be readable by the agent. The harness runs the verifier as root, so this
+# does not affect grading — only prevents the agent from reading answer keys.
+RUN chmod 700 /tests 2>/dev/null || true

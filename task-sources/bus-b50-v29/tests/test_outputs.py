@@ -243,7 +243,7 @@ def test_memo_conversion_effect():
     if not memo_path.is_file():
         pytest.skip("no campaign_review.md")
     text = memo_path.read_text(encoding="utf-8")
-    ce_value = 61054
+    ce_value = 44823
     ce_comma = format(ce_value, ",")
     pattern = r"(?<![-\d.])(" + str(ce_value) + r"|" + ce_comma + r")(?!\d)(?!\.\d)"
     assert re.search(pattern, text), "memo must contain conversion effect figure"

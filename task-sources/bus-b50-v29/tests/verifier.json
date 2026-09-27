@@ -150,9 +150,9 @@
             "CH-03": {
               "counted_placements": "4",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "610",
-              "residual_reach_effect_streams": "414",
-              "shortfall_to_target_streams": "1024"
+              "conversion_effect_streams": "396",
+              "residual_reach_effect_streams": "428",
+              "shortfall_to_target_streams": "824"
             },
             "CH-04": {
               "counted_placements": "6",
@@ -164,9 +164,9 @@
             "CH-05": {
               "counted_placements": "8",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "7063",
-              "residual_reach_effect_streams": "-423",
-              "shortfall_to_target_streams": "6640"
+              "conversion_effect_streams": "6873",
+              "residual_reach_effect_streams": "567",
+              "shortfall_to_target_streams": "7440"
             },
             "CH-06": {
               "counted_placements": "5",
@@ -199,9 +199,9 @@
             "CH-10": {
               "counted_placements": "2",
               "placements_effect_streams": "2000",
-              "conversion_effect_streams": "788",
-              "residual_reach_effect_streams": "112",
-              "shortfall_to_target_streams": "2900"
+              "conversion_effect_streams": "800",
+              "residual_reach_effect_streams": "400",
+              "shortfall_to_target_streams": "3200"
             },
             "CH-11": {
               "counted_placements": "2",
@@ -241,9 +241,9 @@
             "CH-16": {
               "counted_placements": "0",
               "placements_effect_streams": "12000",
-              "conversion_effect_streams": "125",
-              "residual_reach_effect_streams": "-1625",
-              "shortfall_to_target_streams": "10500"
+              "conversion_effect_streams": "0",
+              "residual_reach_effect_streams": "-500",
+              "shortfall_to_target_streams": "11500"
             },
             "CH-17": {
               "counted_placements": "2",
@@ -262,9 +262,9 @@
             "CH-19": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "190",
-              "residual_reach_effect_streams": "-90",
-              "shortfall_to_target_streams": "100"
+              "conversion_effect_streams": "185",
+              "residual_reach_effect_streams": "315",
+              "shortfall_to_target_streams": "500"
             },
             "CH-20": {
               "counted_placements": "3",
@@ -311,16 +311,16 @@
             "CH-26": {
               "counted_placements": "1",
               "placements_effect_streams": "1800",
-              "conversion_effect_streams": "158",
-              "residual_reach_effect_streams": "-1458",
-              "shortfall_to_target_streams": "500"
+              "conversion_effect_streams": "115",
+              "residual_reach_effect_streams": "-1215",
+              "shortfall_to_target_streams": "700"
             },
             "CH-27": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "268",
-              "residual_reach_effect_streams": "2482",
-              "shortfall_to_target_streams": "2750"
+              "conversion_effect_streams": "50",
+              "residual_reach_effect_streams": "2500",
+              "shortfall_to_target_streams": "2550"
             },
             "CH-28": {
               "counted_placements": "2",
@@ -332,9 +332,9 @@
             "CH-29": {
               "counted_placements": "1",
               "placements_effect_streams": "2000",
-              "conversion_effect_streams": "-46",
-              "residual_reach_effect_streams": "-1504",
-              "shortfall_to_target_streams": "450"
+              "conversion_effect_streams": "0",
+              "residual_reach_effect_streams": "-1000",
+              "shortfall_to_target_streams": "1000"
             },
             "CH-31": {
               "counted_placements": "2",
@@ -367,23 +367,23 @@
             "CH-35": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "869",
-              "residual_reach_effect_streams": "1251",
-              "shortfall_to_target_streams": "2120"
+              "conversion_effect_streams": "819",
+              "residual_reach_effect_streams": "1701",
+              "shortfall_to_target_streams": "2520"
             },
             "CH-36": {
               "counted_placements": "1",
               "placements_effect_streams": "0",
               "conversion_effect_streams": "0",
-              "residual_reach_effect_streams": "0",
-              "shortfall_to_target_streams": "0"
+              "residual_reach_effect_streams": "1",
+              "shortfall_to_target_streams": "1"
             },
             "CH-37": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "2177",
-              "residual_reach_effect_streams": "204",
-              "shortfall_to_target_streams": "2381"
+              "conversion_effect_streams": "2201",
+              "residual_reach_effect_streams": "600",
+              "shortfall_to_target_streams": "2801"
             },
             "CH-38": {
               "counted_placements": "2",
@@ -395,9 +395,9 @@
             "CH-39": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "22400",
-              "residual_reach_effect_streams": "-22401",
-              "shortfall_to_target_streams": "-1"
+              "conversion_effect_streams": "6900",
+              "residual_reach_effect_streams": "-6201",
+              "shortfall_to_target_streams": "699"
             },
             "CH-41": {
               "counted_placements": "1",
@@ -430,9 +430,9 @@
             "CH-45": {
               "counted_placements": "0",
               "placements_effect_streams": "4000",
-              "conversion_effect_streams": "-32",
-              "residual_reach_effect_streams": "-868",
-              "shortfall_to_target_streams": "3100"
+              "conversion_effect_streams": "0",
+              "residual_reach_effect_streams": "0",
+              "shortfall_to_target_streams": "4000"
             },
             "CH-76": {
               "counted_placements": "2",
@@ -574,7 +574,7 @@
       "name": "memo_prose_floor",
       "metadata": {
         "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match.",
-        "why_justification": "The note is written for a reader, not a dump of the totals the register produced.",
+        "why_justification": "The note is written for a reader, not a dump of the totals the register produced. Requires at least 100 words of substantive prose with domain vocabulary, preventing hollow or fabricated memos.",
         "tag": "core"
       },
       "source": {
@@ -589,7 +589,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){60,}",
+        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){100,}",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -641,7 +641,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[^.]{0,100}?\\b(?:61054|61,054)\\b|\\b(?:61054|61,054)\\b[^.]{0,100}?\\bconversion[\\s*]+effect\\b)",
+        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[^.]{0,100}?\\b(?:44823|44,823)\\b|\\b(?:44823|44,823)\\b[^.]{0,100}?\\bconversion[\\s*]+effect\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -704,15 +704,15 @@
               "tolerance": null
             },
             "conversion_effect_streams": {
-              "value": 61054,
+              "value": 44823,
               "tolerance": null
             },
             "residual_reach_effect_streams": {
-              "value": 15596,
+              "value": 37098,
               "tolerance": null
             },
             "shortfall_to_target_streams": {
-              "value": 95770,
+              "value": 101041,
               "tolerance": null
             }
           },
