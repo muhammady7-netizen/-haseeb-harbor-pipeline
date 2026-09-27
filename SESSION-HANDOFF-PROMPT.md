@@ -169,15 +169,18 @@ The solver at `local-qc/task-sources/bus-b50-v29/solve_gold.py` implements the f
 
 ## What To Do Right Now
 
-1. **bus-b50**: Fix the memo regexes to match gold format `"Conversion effect: 33551"` (label colon number) while rejecting "NOT 38831 but 50000" (alternative-candidate). Test against gold memo. Build v11 zip. Upload to portal. Dismiss v10's 2 findings OR re-run on v11.
+1. **bus-b50 v25**: Oracle PASSED, GLM 4/4 TOO_EASY. Still 4/4 with fair rules across 15 versions. Need fundamentally different difficulty approach.
+2. **gen-g806 v4**: Oracle running (30+ min, 2493 checks). Added 5 tricky non-pivot patterns (That not It, contractions). Waiting for results.
+3. **health-h34 v24**: Oracle PASSED, GLM 4/4 TOO_EASY. Needs data traps.
+4. **health-h40 v3**: Oracle PASSED, GLM 4/4 TOO_EASY. Needs data traps.
 
-2. **gen-g806**: Read the task files, identify what makes it too easy, add data traps for coupled reasoning.
+## Key Learning
 
-3. **health-h34**: Check v24 results on portal (may still be running or completed with findings).
-
-4. **health-h40**: Read the task files, add data traps.
-
-5. **Improve local QC**: Add a check for "shallow_prose_grading via document-wide DOTALL co-occurrence" — when a regex uses `.+` under DOTALL to match two concepts anywhere in the document, it's a shallow check. The fix is to scope to sentence/paragraph (`[^.\n]{0,N}` instead of `.+`).
+GLM-5.3 handles ALL fair computation rules correctly. The difficulty in earlier versions came from UNFAIR memo regexes, which the pipeline rejects. To get fair difficulty:
+- Need coupled reasoning where correctness depends on INTERACTIONS between rules
+- Need non-scriptable reasoning (interpretation, judgment)
+- Need cross-file synthesis (rule in one file, data in another)
+- Adding more computation rules doesn't help — GLM writes a Python script and gets everything right
 
 ## Git Commands
 
