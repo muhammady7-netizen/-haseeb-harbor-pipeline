@@ -136,8 +136,8 @@
             "CH-01": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "2410",
-              "residual_reach_effect_streams": "7210",
+              "conversion_effect_streams": "10652",
+              "residual_reach_effect_streams": "-1032",
               "shortfall_to_target_streams": "9620"
             },
             "CH-02": {
@@ -164,15 +164,15 @@
             "CH-05": {
               "counted_placements": "8",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "8105",
-              "residual_reach_effect_streams": "-1166",
-              "shortfall_to_target_streams": "6939"
+              "conversion_effect_streams": "6873",
+              "residual_reach_effect_streams": "567",
+              "shortfall_to_target_streams": "7440"
             },
             "CH-06": {
               "counted_placements": "5",
               "placements_effect_streams": "-1845",
-              "conversion_effect_streams": "2616",
-              "residual_reach_effect_streams": "-2341",
+              "conversion_effect_streams": "-682",
+              "residual_reach_effect_streams": "957",
               "shortfall_to_target_streams": "-1570"
             },
             "CH-07": {
@@ -185,9 +185,9 @@
             "CH-08": {
               "counted_placements": "4",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "235",
-              "residual_reach_effect_streams": "5065",
-              "shortfall_to_target_streams": "5300"
+              "conversion_effect_streams": "-590",
+              "residual_reach_effect_streams": "6190",
+              "shortfall_to_target_streams": "5600"
             },
             "CH-09": {
               "counted_placements": "2",
@@ -204,32 +204,32 @@
               "shortfall_to_target_streams": "3200"
             },
             "CH-11": {
-              "counted_placements": "2",
-              "placements_effect_streams": "0",
+              "counted_placements": "1",
+              "placements_effect_streams": "4999",
               "conversion_effect_streams": "1498",
-              "residual_reach_effect_streams": "3491",
+              "residual_reach_effect_streams": "-1508",
               "shortfall_to_target_streams": "4989"
             },
             "CH-12": {
               "counted_placements": "2",
               "placements_effect_streams": "4800",
-              "conversion_effect_streams": "1790",
-              "residual_reach_effect_streams": "-690",
-              "shortfall_to_target_streams": "5900"
+              "conversion_effect_streams": "310",
+              "residual_reach_effect_streams": "390",
+              "shortfall_to_target_streams": "5500"
             },
             "CH-13": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-1181",
-              "residual_reach_effect_streams": "6681",
+              "conversion_effect_streams": "-1599",
+              "residual_reach_effect_streams": "7099",
               "shortfall_to_target_streams": "5500"
             },
             "CH-14": {
               "counted_placements": "3",
-              "placements_effect_streams": "-1354",
-              "conversion_effect_streams": "457",
-              "residual_reach_effect_streams": "756",
-              "shortfall_to_target_streams": "-141"
+              "placements_effect_streams": "-1355",
+              "conversion_effect_streams": "100",
+              "residual_reach_effect_streams": "1364",
+              "shortfall_to_target_streams": "109"
             },
             "CH-15": {
               "counted_placements": "2",
@@ -269,9 +269,9 @@
             "CH-20": {
               "counted_placements": "3",
               "placements_effect_streams": "-2000",
-              "conversion_effect_streams": "5379",
-              "residual_reach_effect_streams": "320",
-              "shortfall_to_target_streams": "3699"
+              "conversion_effect_streams": "5100",
+              "residual_reach_effect_streams": "1400",
+              "shortfall_to_target_streams": "4500"
             },
             "CH-21": {
               "counted_placements": "2",
@@ -437,36 +437,36 @@
             "CH-76": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-48",
-              "residual_reach_effect_streams": "948",
+              "conversion_effect_streams": "-90",
+              "residual_reach_effect_streams": "990",
               "shortfall_to_target_streams": "900"
             },
             "CH-77": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-484",
-              "residual_reach_effect_streams": "1384",
+              "conversion_effect_streams": "-520",
+              "residual_reach_effect_streams": "1420",
               "shortfall_to_target_streams": "900"
             },
             "CH-78": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-804",
-              "residual_reach_effect_streams": "1704",
+              "conversion_effect_streams": "-837",
+              "residual_reach_effect_streams": "1737",
               "shortfall_to_target_streams": "900"
             },
             "CH-79": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-674",
-              "residual_reach_effect_streams": "2774",
+              "conversion_effect_streams": "-737",
+              "residual_reach_effect_streams": "2837",
               "shortfall_to_target_streams": "2100"
             },
             "CH-80": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "1340",
-              "residual_reach_effect_streams": "-440",
+              "conversion_effect_streams": "1200",
+              "residual_reach_effect_streams": "-300",
               "shortfall_to_target_streams": "900"
             }
           },
@@ -641,7 +641,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bconversion\\s+effect\\b[^.]{0,200}?\\b(?:38792|38,792)\\b|\\b(?:38792|38,792)\\b[^.]{0,200}?\\bconversion\\s+effect\\b)",
+        "expected": "(?is)(?:\\bconversion\\s+effect\\b[^.]{0,100}?\\b(?:38831|38,831)\\b|\\b(?:38831|38,831)\\b[^.]{0,100}?\\bconversion\\s+effect\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -667,7 +667,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bcounted\\s+placements\\b[^.]{0,200}?\\b(?:115)\\b|\\b(?:115)\\b[^.]{0,200}?\\bcounted\\s+placements\\b)",
+        "expected": "(?is)(?:\\bcounted\\s+placements\\b[^.]{0,100}?\\b(?:114)\\b|\\b(?:114)\\b[^.]{0,100}?\\bcounted\\s+placements\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -696,23 +696,23 @@
         "expected": {
           "keys": {
             "counted_placement_count": {
-              "value": 115,
+              "value": 114,
               "tolerance": null
             },
             "placements_effect_streams": {
-              "value": 24901,
+              "value": 29899,
               "tolerance": null
             },
             "conversion_effect_streams": {
-              "value": 38792,
+              "value": 38831,
               "tolerance": null
             },
             "residual_reach_effect_streams": {
-              "value": 36901,
+              "value": 33316,
               "tolerance": null
             },
             "shortfall_to_target_streams": {
-              "value": 100594,
+              "value": 102046,
               "tolerance": null
             }
           },

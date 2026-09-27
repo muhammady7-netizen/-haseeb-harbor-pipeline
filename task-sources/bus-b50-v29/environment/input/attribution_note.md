@@ -109,25 +109,6 @@ through W7. Each ledger row's contribution to the conversion effect is
 is one for weeks W1-W3 and nine-tenths for weeks W4-W7, and the row's
 `campaign_week` determines which rate applies.
 
-**5.9 Amendment-dependent time rate.** For channels that have a
-mid-campaign amendment in section 7, the time-dependent rate for campaign
-weeks W4 through W7 is ninety-five per cent (0.95) instead of the standard
-ninety per cent (0.90). For channels without any amendment, the standard
-ninety per cent (0.90) applies. This means a channel with an amendment
-uses rate=1.0 for W1-W3 and rate=0.95 for W4-W7, while a channel without
-an amendment uses rate=1.0 for W1-W3 and rate=0.90 for W4-W7.
-
-**5.10 Amendment direction time rate.** Among channels with a
-mid-campaign amendment, the time rate for W4-W7 further depends on
-whether the amendment increases or decreases the rate. If the amended
-`planned_streams_per_1000_reach` is HIGHER than the original (an
-increase, e.g. CH-80: 40 to 50), the time rate for W4-W7 is 97% (0.97).
-If the amended rate is LOWER than the original (a decrease, e.g. CH-76:
-40 to 35), the time rate for W4-W7 is 93% (0.93). If the amended rate
-equals the original (no change), the time rate remains 95% (0.95) per
-rule 5.9. For channels with dual amendments where the final rate differs
-from the original, use the final rate to determine increase or decrease.
-
 **5.7 Conditional placements-effect rounding.** The placements effect is
 rounded to the nearest whole stream, halves away from zero when the
 channel's shortfall to target is positive, and halves toward zero when the
@@ -178,15 +159,3 @@ takes precedence for ALL weeks.
 **A5** For CH-80, the `planned_streams_per_1000_reach` is amended to 50
 (from 40) effective from W4. The amended rate of 50 applies to ALL weeks.
 This amendment INCREASES the rate, which increases the conversion effect.
-
-**A6** For CH-01, the `planned_streams_per_1000_reach` is amended to 45
-(from 50) effective from W3. The amended rate of 45 applies to ALL weeks
-(W1 through W7), not just W3 onwards.
-
-**A7** For CH-06, the `planned_streams_per_1000_reach` is amended to 55
-(from 50) effective from W2. The amended rate of 55 applies to ALL weeks.
-This amendment INCREASES the rate.
-
-**A8** For CH-13, TWO amendments apply: rate amended to 45 effective from
-W3, then to 55 effective from W5. Per rule 7.3, the later amendment (55)
-takes precedence for ALL weeks.
