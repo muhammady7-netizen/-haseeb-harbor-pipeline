@@ -91,6 +91,9 @@ expected of them, and no amount of better creative reaches it.
 halves away from zero when the shortfall is positive and halves toward
 zero when the shortfall is negative (see 5.7). The conversion effect is
 taken to the nearest whole stream, halves toward zero, always. The
+rounding in this section applies to the final conversion effect value
+(the sum of per-row contributions less the channel's delivered streams),
+not to the sum of per-row contributions themselves. The
 residual is then the balance of the shortfall, so the three parts add
 back to the shortfall exactly, per channel and across the campaign.
 
@@ -107,7 +110,8 @@ is one for weeks W1-W3 and nine-tenths for weeks W4-W7, and the row's
 rounded to the nearest whole stream, halves away from zero when the
 channel's shortfall to target is positive, and halves toward zero when the
 shortfall is negative. The conversion effect is always rounded halves
-toward zero.
+toward zero. The rounding applies to the final conversion effect value,
+not to intermediate per-row contributions.
 
 ## 6. Recording it
 
