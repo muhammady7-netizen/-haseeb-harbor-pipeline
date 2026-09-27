@@ -461,6 +461,13 @@
               "conversion_effect_streams": "1200",
               "residual_reach_effect_streams": "-300",
               "shortfall_to_target_streams": "900"
+            },
+            "CH-04": {
+              "counted_placements": "6",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "3245",
+              "residual_reach_effect_streams": "695",
+              "shortfall_to_target_streams": "3940"
             }
           },
           "row_set": [
