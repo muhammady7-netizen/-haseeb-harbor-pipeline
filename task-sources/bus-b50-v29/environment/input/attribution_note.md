@@ -117,6 +117,17 @@ ninety per cent (0.90) applies. This means a channel with an amendment
 uses rate=1.0 for W1-W3 and rate=0.95 for W4-W7, while a channel without
 an amendment uses rate=1.0 for W1-W3 and rate=0.90 for W4-W7.
 
+**5.10 Amendment direction time rate.** Among channels with a
+mid-campaign amendment, the time rate for W4-W7 further depends on
+whether the amendment increases or decreases the rate. If the amended
+`planned_streams_per_1000_reach` is HIGHER than the original (an
+increase, e.g. CH-80: 40 to 50), the time rate for W4-W7 is 97% (0.97).
+If the amended rate is LOWER than the original (a decrease, e.g. CH-76:
+40 to 35), the time rate for W4-W7 is 93% (0.93). If the amended rate
+equals the original (no change), the time rate remains 95% (0.95) per
+rule 5.9. For channels with dual amendments where the final rate differs
+from the original, use the final rate to determine increase or decrease.
+
 **5.7 Conditional placements-effect rounding.** The placements effect is
 rounded to the nearest whole stream, halves away from zero when the
 channel's shortfall to target is positive, and halves toward zero when the
