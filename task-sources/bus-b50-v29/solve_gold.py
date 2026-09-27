@@ -158,7 +158,7 @@ def compute_channel_values(channel_id, plan_rows, ledger_rows, placement_rows, c
     else:
         placements_effect = int(Decimal(str(placements_effect_raw)).quantize(Decimal("1"), rounding=ROUND_HALF_DOWN))
     
-    # Conversion effect: always halves toward zero
+    # Conversion effect: always halves toward zero (ROUND_HALF_DOWN)
     conversion_effect = int(Decimal(str(conversion_effect_raw)).quantize(Decimal("1"), rounding=ROUND_HALF_DOWN))
     
     # Residual is the balance
