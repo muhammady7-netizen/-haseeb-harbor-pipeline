@@ -136,8 +136,8 @@
             "CH-01": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "2209",
-              "residual_reach_effect_streams": "7411",
+              "conversion_effect_streams": "2543",
+              "residual_reach_effect_streams": "7077",
               "shortfall_to_target_streams": "9620"
             },
             "CH-02": {
@@ -171,8 +171,8 @@
             "CH-06": {
               "counted_placements": "5",
               "placements_effect_streams": "-1845",
-              "conversion_effect_streams": "2141",
-              "residual_reach_effect_streams": "-1866",
+              "conversion_effect_streams": "2480",
+              "residual_reach_effect_streams": "-2205",
               "shortfall_to_target_streams": "-1570"
             },
             "CH-07": {
@@ -220,8 +220,8 @@
             "CH-13": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-1259",
-              "residual_reach_effect_streams": "6759",
+              "conversion_effect_streams": "-1203",
+              "residual_reach_effect_streams": "6703",
               "shortfall_to_target_streams": "5500"
             },
             "CH-14": {
@@ -437,36 +437,36 @@
             "CH-76": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-90",
-              "residual_reach_effect_streams": "990",
+              "conversion_effect_streams": "-20",
+              "residual_reach_effect_streams": "920",
               "shortfall_to_target_streams": "900"
             },
             "CH-77": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-520",
-              "residual_reach_effect_streams": "1420",
+              "conversion_effect_streams": "-460",
+              "residual_reach_effect_streams": "1360",
               "shortfall_to_target_streams": "900"
             },
             "CH-78": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-837",
-              "residual_reach_effect_streams": "1737",
+              "conversion_effect_streams": "-781",
+              "residual_reach_effect_streams": "1681",
               "shortfall_to_target_streams": "900"
             },
             "CH-79": {
               "counted_placements": "3",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "-737",
-              "residual_reach_effect_streams": "2837",
+              "conversion_effect_streams": "-631",
+              "residual_reach_effect_streams": "2731",
               "shortfall_to_target_streams": "2100"
             },
             "CH-80": {
               "counted_placements": "2",
               "placements_effect_streams": "0",
-              "conversion_effect_streams": "1200",
-              "residual_reach_effect_streams": "-300",
+              "conversion_effect_streams": "1300",
+              "residual_reach_effect_streams": "-400",
               "shortfall_to_target_streams": "900"
             }
           },
@@ -641,7 +641,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bconversion\\s+effect\\b[^.]{0,200}?\\b(?:37724|37,724)\\b|\\b(?:37724|37,724)\\b[^.]{0,200}?\\bconversion\\s+effect\\b)",
+        "expected": "(?is)(?:\\bconversion\\s+effect\\b[^.]{0,200}?\\b(?:38845|38,845)\\b|\\b(?:38845|38,845)\\b[^.]{0,200}?\\bconversion\\s+effect\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -704,11 +704,11 @@
               "tolerance": null
             },
             "conversion_effect_streams": {
-              "value": 37724,
+              "value": 38845,
               "tolerance": null
             },
             "residual_reach_effect_streams": {
-              "value": 37969,
+              "value": 36848,
               "tolerance": null
             },
             "shortfall_to_target_streams": {

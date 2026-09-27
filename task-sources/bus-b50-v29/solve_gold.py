@@ -125,10 +125,11 @@ def compute_channel_values(channel_id, plan_rows, ledger_rows, placement_rows, c
         # Conversion effect contribution (rule 5.6, 5.8)
         rate = amended_rate  # Use amended rate for conversion effect (rule 7.4)
         # Time-dependent rate (rule 5.6): W1-W3 full rate, W4-W7 90%
+        # Rule 5.9: amended channels use 95% for W4-W7 instead of 90%
         if week in ("W1", "W2", "W3"):
             time_rate = 1.0
         else:
-            time_rate = 0.9
+            time_rate = 0.95 if channel_id in amendments else 0.9
         
         # Per-row contribution: delivered_reach * rate * planned_streams_per_1000_reach / 1000
         # Using amended_rate for conversion effect

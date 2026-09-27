@@ -109,6 +109,14 @@ through W7. Each ledger row's contribution to the conversion effect is
 is one for weeks W1-W3 and nine-tenths for weeks W4-W7, and the row's
 `campaign_week` determines which rate applies.
 
+**5.9 Amendment-dependent time rate.** For channels that have a
+mid-campaign amendment in section 7, the time-dependent rate for campaign
+weeks W4 through W7 is ninety-five per cent (0.95) instead of the standard
+ninety per cent (0.90). For channels without any amendment, the standard
+ninety per cent (0.90) applies. This means a channel with an amendment
+uses rate=1.0 for W1-W3 and rate=0.95 for W4-W7, while a channel without
+an amendment uses rate=1.0 for W1-W3 and rate=0.90 for W4-W7.
+
 **5.7 Conditional placements-effect rounding.** The placements effect is
 rounded to the nearest whole stream, halves away from zero when the
 channel's shortfall to target is positive, and halves toward zero when the
