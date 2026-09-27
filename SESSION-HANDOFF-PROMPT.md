@@ -54,9 +54,12 @@ You are working on Harbor/Shannon QC task repair for 4 benchmark tasks. The goal
 ### 2. gen-g806 (gen-g806-leadership-brief-rhetorical-style-audit)
 - **Source**: `local-qc/gen-g806-leadership-brief-rhetorical-style-audit/`
 - **Latest portal version**: v3 (content-08aafeb661e799b1aea68382fd491b48-v3)
-- **Status**: Oracle PASSED, GLM 4/4 TOO_EASY — needs hardening with data traps
-- **Has**: instruction.md, environment/input/leadership_brief_style_guide.md, environment/input/policy_errata_v4.md, tests/test_outputs.py, solution/files/style_audit_memo.md
-- **Next step**: Read the task files, identify what makes it too easy, add coupled reasoning traps (cross-source synthesis, chained derivations, data-shape sabotage)
+- **Status**: Oracle PASSED, GLM 4/4 TOO_EASY — needs hardening
+- **Task structure**: 2472 scripts, 12 input files, complex cross-source rules (style guide + errata v4)
+- **Key rules**: recording clearance, retirement, air window, negation-pivot (with testimony exemption + presenter endorsement exception), scripture citation format (registry matching), runtime band (with timing adjustment cap)
+- **Existing edge cases**: 30+ scripts with 50% timing cap, 373 third-party testimony, 40 with presenter endorsement
+- **Local QC**: Clean (0 blockers)
+- **Next step**: Add coupled reasoning traps — e.g., ambiguous negation-pivot patterns, unusual scripture citation formats, scripts where multiple rules interact
 
 ### 3. health-h34 (health-h34-randomisation-balance)
 - **Source**: `C:\Users\Haseeb Mirza\OneDrive\Documents\-haseeb-harbor-pipeline\task-sources\health-h34-randomisation-balance\`
