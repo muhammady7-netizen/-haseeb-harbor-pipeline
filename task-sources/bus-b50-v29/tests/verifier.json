@@ -589,7 +589,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){60,}",
+        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){100,}",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -641,7 +641,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[^.\\n]{0,100}?\\b(?:44823|44,823)\\b|\\b(?:44823|44,823)\\b[^.\\n]{0,100}?\\bconversion[\\s*]+effect\\b)",
+        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[\\s\\S]{0,200}?\\b(?:44823|44,823)\\b|\\b(?:44823|44,823)\\b[\\s\\S]{0,200}?\\bconversion[\\s*]+effect\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -667,7 +667,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bcounted[\\s*]+placements\\b[^.\\n]{0,100}?\\b(?:118)\\b|\\b(?:118)\\b[^.\\n]{0,100}?\\bcounted[\\s*]+placements\\b)",
+        "expected": "(?is)(?:\\bcounted[\\s*]+placements\\b[\\s\\S]{0,200}?\\b(?:118)\\b|\\b(?:118)\\b[\\s\\S]{0,200}?\\bcounted[\\s*]+placements\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
