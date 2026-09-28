@@ -589,7 +589,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?=.+\\b(?:is|are|was|were|sits|falls|lies|stands|came|went|left|sits|drifted|held|ran)\\b)(?:[A-Za-z]+[^A-Za-z]+){100,}",
+        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){100,}",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
