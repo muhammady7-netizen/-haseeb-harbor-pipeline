@@ -675,6 +675,32 @@
       }
     },
     {
+      "name": "memo_has_sentences",
+      "metadata": {
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match to verify the memo contains at least 5 sentence-ending punctuation marks followed by a capital letter, ensuring coherent prose rather than token stuffing.",
+        "why_justification": "A review note for the label head must contain actual sentences, not just repeated domain keywords. This check rejects hollow memos that lack sentence structure.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?:.*?[.!?]\\s+){5,}",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
       "name": "results_figures",
       "metadata": {
         "how_justification": "Reads results.json with json.read_file and applies object_equals over the 5 graded keys with the key set closed; numeric keys compare within an absolute tolerance and a failure names the exact key.",

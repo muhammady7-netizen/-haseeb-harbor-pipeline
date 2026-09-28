@@ -339,7 +339,10 @@ def check_prose_regex(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) ->
         reasons = []
         has_words = bool(WORD_TOKEN.search(_strip_regex_meta(pattern)))
         if LENGTH_ONLY.search(pattern) and not has_words:
-            reasons.append("length/format-only quantifier, no required content words")
+            # Check if it's a sentence-finding pattern (.*?[.!?]) — not length-only
+            has_sentence_requirement = bool(re.search(r"\.\*\?\[", pattern))
+            if not has_sentence_requirement:
+                reasons.append("length/format-only quantifier, no required content words")
         if len(LOOKAHEAD.findall(pattern)) >= 2:
             # Check if one lookahead is a verb requirement (prevents hollow memos)
             has_verb_lookahead = bool(re.search(
@@ -348,7 +351,10 @@ def check_prose_regex(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) ->
             if not has_verb_lookahead:
                 reasons.append(f"{len(LOOKAHEAD.findall(pattern))} `(?=...)` lookaheads (keyword-set membership, order/coherence ungraded)")
         if WILDCARD_SLACK.search(pattern):
-            reasons.append("`.*`/`.{0,N}` slack lets arbitrary filler satisfy the match")
+            # Check if it's a sentence-finding pattern (.*?[.!?]) — not wildcard slack
+            has_sentence_requirement = bool(re.search(r"\.\*\?\[", pattern))
+            if not has_sentence_requirement:
+                reasons.append("`.*`/`.{0,N}` slack lets arbitrary filler satisfy the match")
 
         # Bare presence: the whole pattern grades "does this literal token occur",
         # with no regex structure tying it to a claim. Accumulate per file; a lone
