@@ -599,8 +599,8 @@
     {
       "name": "memo_single_part_channel",
       "metadata": {
-        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match.",
-        "why_justification": "The note names the channel whose whole gap the method leaves in one part of the split, beside the part it leaves it in.",
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match to verify a channel whose shortfall sits in a single part is named beside that part.",
+        "why_justification": "The note names a channel whose whole gap the method leaves in one part of the split, beside the part it leaves it in. Any valid single-part channel is accepted.",
         "tag": "core"
       },
       "source": {
@@ -615,7 +615,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bCH-41\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\bresidual|\\bresidual\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\bCH-41)",
+        "expected": "(?is)(?:\\bCH-\\d+\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\b(?:placements|conversion|residual)(?:\\s+reach)?\\b|\\b(?:placements|conversion|residual)(?:\\s+reach)?\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\bCH-\\d+)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

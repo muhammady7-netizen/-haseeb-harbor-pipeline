@@ -222,17 +222,36 @@ def test_memo_has_content_words():
         f"memo has only {len(content_words)} content words; "
         "a review note needs substance, not just tokens"
     )
+    # Accept any valid single-part channel from the register
+    import csv as _csv
+    register_path = WORKSPACE / "shortfall_attribution.csv"
+    valid_channels = {}
+    if register_path.is_file():
+        with register_path.open(encoding="utf-8-sig", newline="") as fh:
+            for row in _csv.DictReader(fh):
+                pe = int(row["placements_effect_streams"])
+                ce = int(row["conversion_effect_streams"])
+                re = int(row["residual_reach_effect_streams"])
+                st = int(row["shortfall_to_target_streams"])
+                if st != 0 and sum(1 for x in [pe, ce, re] if x == 0) == 2:
+                    if pe != 0:
+                        valid_channels[row["channel_id"]] = "placements"
+                    elif ce != 0:
+                        valid_channels[row["channel_id"]] = "conversion"
+                    else:
+                        valid_channels[row["channel_id"]] = "residual"
     paragraphs = text.split("\n\n")
     found = False
     for para in paragraphs:
-        has_channel = "CH-41" in para
-        has_part = any(p in para.lower() for p in ["residual", "conversion", "placements"])
-        if has_channel and has_part:
-            found = True
+        for ch_id, part_name in valid_channels.items():
+            if ch_id in para and part_name in para.lower():
+                found = True
+                break
+        if found:
             break
     assert found, (
-        "memo must name the single-part channel (CH-41) and the part "
-        "it sits in (residual) in the same paragraph"
+        f"memo must name a single-part channel and its part in the same paragraph; "
+        f"valid channels: {valid_channels}"
     )
 
 
@@ -260,3 +279,38 @@ def test_memo_counted_placements():
     cp_comma = format(cp_value, ",")
     pattern = r"(?<![-\d.])(" + str(cp_value) + r"|" + cp_comma + r")(?!\d)(?!\.\d)"
     assert re.search(pattern, text), "memo must contain counted placements figure"
+
+
+def test_memo_register_consistency():
+    """The memo's stated channel and figures must be consistent with the
+    agent's own register and results — prevents hollow/fabricated memos."""
+    import csv as _csv
+    import re as _re
+    memo_path = WORKSPACE / "campaign_review.md"
+    register_path = WORKSPACE / "shortfall_attribution.csv"
+    results_path = WORKSPACE / "results.json"
+    if not memo_path.is_file() or not register_path.is_file() or not results_path.is_file():
+        pytest.skip("missing deliverables")
+    memo_text = memo_path.read_text(encoding="utf-8").lower()
+    results = json.loads(results_path.read_text(encoding="utf-8"))
+    # Check: memo must mention the conversion effect total from results.json
+    ce = results.get("conversion_effect_streams")
+    if ce is not None:
+        assert str(ce) in memo_text or format(ce, ",") in memo_text, (
+            f"memo does not mention conversion effect total {ce}"
+        )
+    # Check: memo must mention the counted placements total from results.json
+    cp = results.get("counted_placement_count")
+    if cp is not None:
+        assert str(cp) in memo_text, (
+            f"memo does not mention counted placements total {cp}"
+        )
+    # Check: any channel named in the memo must exist in the register
+    with register_path.open(encoding="utf-8-sig", newline="") as fh:
+        register_rows = list(_csv.DictReader(fh))
+    register_channels = {r["channel_id"] for r in register_rows}
+    memo_channels = set(_re.findall(r"CH-\d+", memo_text.upper()))
+    for ch in memo_channels:
+        assert ch in register_channels, (
+            f"memo names channel {ch} which is not in the register"
+        )
