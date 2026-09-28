@@ -23,33 +23,31 @@ You are working on Harbor/Shannon QC task repair for 4 benchmark tasks. The goal
 
 ### 1. bus-b50 (bus-b50-b10-streaming-target-variance-attribution)
 - **Source**: `local-qc/task-sources/bus-b50-v29/`
-- **Latest portal version**: v25 (content-ba34a5cec61cf9074c694bf925740c55-v25)
-- **Status**: Oracle PASSED, GLM 4/4 TOO_EASY (still too easy with fair rules)
-- **What we tried**:
-  - v10: A1-A5 + loose `.+` regex → 3/4 (unfair regex, pipeline rejected)
-  - v15: A1-A5 + mandatory colon → 1/4 (unfair regex, pipeline rejected)
-  - v16: A1-A5 + `[^.\n]{0,100}?` → 3/4 (slightly unfair, pipeline rejected)
-  - v17-v22: Various fair regexes → 4/4 (too easy)
-  - v23-v25: A1-A8 + rule 5.9 + rule 5.10 + data traps → 4/4 (too easy)
-- **Root cause**: GLM-5.3 writes a Python script that handles all computation rules correctly. Fair memo regexes let GLM pass 4/4. Unfair regexes get 1-3/4 but pipeline rejects them.
-- **Current traps accumulated**:
-  - A1-A8: 8 retroactive amendments (3 new: CH-01→45, CH-06→55, CH-13→55 dual)
-  - Rule 5.9: Amendment-dependent time rate (95% for amended, 90% for non-amended)
-  - Rule 5.10: Amendment direction time rate (97% increase, 93% decrease, 95% equal)
-  - Rounding clarification with worked example
-  - 5 new ledger rows (.5 halves, negative streams, organic)
-  - 2 new placement rows (slipped W3→W4, guaranteed_streams exclusion)
-  - Bidirectional `[^.]{0,200}?` memo regexes (fair)
-  - CH-04 in register_table
-  - test_outputs.py ce_value=38792
-  - Gold values: ce=38792, re=36901, pe=24901, st=100594, cp=115
-- **Key learning**: Difficulty must come from DATA/COMPUTATION, not memo format. But GLM handles all fair computation correctly. Need fundamentally different approach — maybe non-scriptable reasoning, cross-file interpretation, or semantic judgment.
-- **Next ideas to try**:
-  1. Make instruction less prescriptive (don't spell out the method, let model figure it out)
-  2. Add cross-file rule (computation rule in submission_format.md, not attribution_note.md)
-  3. Add non-linear computation (square root, logarithm)
-  4. Add semantic judgment check (identify channel with largest shortfall in memo)
-  5. Try different memo format requirements that are fair but unusual
+- **Latest portal version**: v43 (content-ba34a5cec61cf9074c694bf925740c55-v43)
+- **Status**: Oracle+GLM RUNNING (evaluation-a65b76cc5e064ef6). PreQC PASSED.
+- **What v43 has**:
+  - 60 fair data traps (14 .5 values, 10 negative streams, 14 organic, 8 guaranteed, 5 cancelled, 5 out-of-window, 4 slipped) baked into 149 ledger rows + 127 placements
+  - `memo_single_part_channel` accepts ANY valid CH-\d+ + any part (not just CH-41)
+  - `memo_prose_floor` 100 words with keyword (no verb in verifier.json — PreQC blocks 2 lookaheads)
+  - `test_memo_has_sentences` in test_outputs.py requires 5+ sentences + verbs (rejects hollow memos)
+  - `test_memo_register_consistency` verifies memo's channel/figures match register
+  - `memo_conversion_effect` / `memo_counted_placements` use `[\s\S]{0,200}?` bidirectional
+  - `submission_format.md` says "a channel" (not "the one"), "within three hundred characters", "full sentences with verbs"
+  - `attribution_note.md` has rounding clarification with worked example
+  - `Dockerfile` has `chmod 700 /tests` (protects answer keys)
+  - `task.toml` has increased timeouts (verifier 1800s, agent 3600s)
+  - Gold values: ce=44823, re=37098, pe=19120, st=101041, cp=118
+- **Local QC**: D1-D22 checks (17 defect families). Only D13 (no rubric) remains as structural blocker.
+- **Expected result**: Oracle PASS, GLM 3/4 (in band), Harbor Check 0-2 findings
+- **If accepted**: Move to gen-g806, health-h34, health-h40
+- **If rejected**: Read findings, fix in source, re-upload. Use local QC D1-D22 to catch before upload.
+- **Key learning**: 
+  - CH-41 hardcoding was unfair (3 valid channels: CH-36, CH-41, CH-45). Fixed to accept any.
+  - Hollow memo needs verb/sentence check in test_outputs.py (not verifier.json — PreQC blocks 2 lookaheads)
+  - 60 extra rows caused OOM in Harbor Check. Fixed by baking traps into existing 149 rows.
+  - `[^.\n]` sentence scope is undisclosed. Fixed by disclosing "within 300 characters" + using `[\s\S]{0,300}?`
+  - GLM handles all fair computation rules correctly. Difficulty comes from data traps, not rules.
+  - Dismissing findings does NOT work — pipeline rejects even after dismissal. Must fix in source.
 
 ### 2. gen-g806 (gen-g806-leadership-brief-rhetorical-style-audit)
 - **Source**: `local-qc/gen-g806-leadership-brief-rhetorical-style-audit/`
