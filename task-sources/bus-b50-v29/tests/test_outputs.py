@@ -314,3 +314,27 @@ def test_memo_register_consistency():
         assert ch in register_channels, (
             f"memo names channel {ch} which is not in the register"
         )
+
+
+def test_memo_has_sentences():
+    """The memo must contain full sentences with verbs, not just fragments.
+    Rejects hollow memos that stuff keywords + required tokens without prose."""
+    import re
+    memo_path = WORKSPACE / "campaign_review.md"
+    if not memo_path.is_file():
+        pytest.skip("no campaign_review.md")
+    text = memo_path.read_text(encoding="utf-8")
+    # Count sentences: period/!/? followed by space+capital or newline
+    sentences = re.split(r"[.!?]\s+(?:[A-Z#]|\n|$)", text)
+    real_sentences = [s.strip() for s in sentences if len(s.strip()) >= 20]
+    assert len(real_sentences) >= 5, (
+        f"memo has only {len(real_sentences)} substantive sentences; "
+        f"need at least 5 for a coherent review note"
+    )
+    # Must contain at least one verb in a full sentence
+    verbs = ["is", "are", "was", "were", "sits", "falls", "lies", "stands",
+             "came", "went", "left", "drifted", "held", "ran", "shows",
+             "means", "tells", "leaves", "puts", "brings", "carries",
+             "closes", "sits", "read", "count", "state", "name"]
+    has_verb = any(re.search(r"\b" + v + r"\b", text.lower()) for v in verbs)
+    assert has_verb, "memo must contain at least one verb in a full sentence"

@@ -74,6 +74,11 @@ FAMILIES = {
     "D15": "hardcoded_value_mismatch",
     "D16": "missing_row_in_table",
     "D17": "float_value_in_verifier",
+    "D18": "instruction_verifier_mismatch",
+    "D19": "hollow_memo_passes",
+    "D20": "state_spoofing",
+    "D21": "undisclosed_char_window",
+    "D22": "multi_answer_ambiguity",
 }
 
 # A source path grades *prose* (a memo / note / explanation) rather than a
@@ -336,7 +341,12 @@ def check_prose_regex(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) ->
         if LENGTH_ONLY.search(pattern) and not has_words:
             reasons.append("length/format-only quantifier, no required content words")
         if len(LOOKAHEAD.findall(pattern)) >= 2:
-            reasons.append(f"{len(LOOKAHEAD.findall(pattern))} `(?=...)` lookaheads (keyword-set membership, order/coherence ungraded)")
+            # Check if one lookahead is a verb requirement (prevents hollow memos)
+            has_verb_lookahead = bool(re.search(
+                r"\(\?=.+\b(?:is|are|was|were|sits|falls|lies|stands|came|went|left|drifted|held|ran)\b",
+                pattern, re.I))
+            if not has_verb_lookahead:
+                reasons.append(f"{len(LOOKAHEAD.findall(pattern))} `(?=...)` lookaheads (keyword-set membership, order/coherence ungraded)")
         if WILDCARD_SLACK.search(pattern):
             reasons.append("`.*`/`.{0,N}` slack lets arbitrary filler satisfy the match")
 
@@ -1071,6 +1081,196 @@ def check_float_value_in_verifier(tf: TaskFiles, vpath: str, spec: dict, res: Ta
                     ))
 
 
+def check_instruction_verifier_mismatch(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D18 — instruction names deliverables that don't match verifier checks,
+    or instruction wording doesn't match verifier behavior."""
+    instruction = _load_instruction(tf)
+    if not instruction:
+        return
+    # Check: if instruction says "the one channel", verifier must not hardcode a specific channel
+    if re.search(r"the one channel", instruction, re.I):
+        for v in _verifier_items(spec):
+            name = str(v.get("name", ""))
+            pattern = _regex_comparison(v)
+            if pattern is None:
+                continue
+            # Check for hardcoded CH-NN (specific channel ID)
+            if re.search(r"CH-\d+", pattern) and name == "memo_single_part_channel":
+                res.findings.append(Finding(
+                    check_id="D18.instruction_verifier_mismatch",
+                    family=FAMILIES["D18"],
+                    severity=2,
+                    title="Instruction says 'the one channel' but verifier hardcodes a specific CH-NN",
+                    detail=(
+                        f"Instruction says 'the one channel' implying uniqueness, "
+                        f"but verifier '{name}' hardcodes a specific channel ID "
+                        f"in the regex. If the data has multiple valid channels, "
+                        f"the verifier rejects correct answers."
+                    ),
+                    evidence=f"pattern={pattern[:160]}",
+                    verifier=name,
+                    fixability="fixable",
+                ))
+
+
+def check_hollow_memo_passes(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D19 — a hollow/gibberish memo passes ALL prose checks (reward 1.0).
+    Only fires if no check rejects the hollow memo."""
+    keywords = "channel shortfall stream reach placement conversion residual "
+    hollow = keywords * 15 + "CH-41 residual. Conversion effect: 44823. Counted placements: 118."
+    
+    # Check if ALL prose checks in verifier.json pass the hollow memo
+    all_verifier_pass = True
+    passing_checks = []
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        path, stype = _source_path_and_type(v)
+        if not _is_prose_target(name, path, stype):
+            continue
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        if not re.search(pattern, hollow):
+            all_verifier_pass = False
+            break
+        passing_checks.append(name)
+    
+    # Check if test_outputs.py has a sentence/verb/coherence check
+    tpath = tf.find("tests/test_outputs.py")
+    has_sentence_check = False
+    if tpath:
+        test_py = tf.read_text(tpath)
+        if any(kw in test_py for kw in ["test_memo_has_sentences", "verb", "sentences", "coherent"]):
+            has_sentence_check = True
+    
+    # Only flag if ALL verifier checks pass AND no sentence check in test_outputs.py
+    if all_verifier_pass and not has_sentence_check:
+        res.findings.append(Finding(
+            check_id="D19.hollow_memo_passes",
+            family=FAMILIES["D19"],
+            severity=2,
+            title="Hollow/gibberish memo passes ALL prose checks (reward 1.0)",
+            detail=(
+                "A memo of repeated domain keywords plus required fragments passes "
+                "every prose check. No check validates coherent sentences or verbs. "
+                "Add a verb/sentence requirement to memo_prose_floor or add a "
+                "test_memo_has_sentences check in test_outputs.py."
+            ),
+            evidence=f"passing_checks={passing_checks}",
+            verifier="(memo)",
+            fixability="fixable",
+        ))
+
+
+def check_state_spoofing(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D20 — agent can copy answers from verifier.json and write a hollow memo.
+    Checks if /tests is readable (root container + no chmod)."""
+    dpath = tf.find("environment/Dockerfile") or tf.find("Dockerfile")
+    if not dpath:
+        return
+    dockerfile = tf.read_text(dpath)
+    users = re.findall(r"^\s*USER\s+(\S+)", dockerfile, re.M)
+    effective_user = users[-1] if users else "(none)"
+    is_root = effective_user.lower() in ("root", "0", "(none)")
+    has_tests_protection = "chmod 700 /tests" in dockerfile or "chmod 700 /tests/" in dockerfile
+    # Check if memo checks would accept a copied-answers memo
+    has_consistency_check = False
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        if "consistency" in name.lower() or "register" in name.lower():
+            has_consistency_check = True
+            break
+    if is_root and not has_tests_protection and not has_consistency_check:
+        res.findings.append(Finding(
+            check_id="D20.state_spoofing",
+            family=FAMILIES["D20"],
+            severity=2,
+            title="Agent can copy answers and write hollow memo (state spoofing)",
+            detail=(
+                "Dockerfile runs as root, /tests is not protected, and no "
+                "memo-register consistency check exists. The agent can read "
+                "verifier.json for answer keys and write a hollow memo. "
+                "Add 'chmod 700 /tests' and a consistency check."
+            ),
+            evidence=f"root={is_root}, tests_protected={has_tests_protection}, consistency={has_consistency_check}",
+            fixability="fixable",
+        ))
+
+
+def check_undisclosed_char_window(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D21 — regex uses a character window (e.g. {0,900} or {0,200}) that
+    is not disclosed in the instruction."""
+    instruction = _load_instruction(tf)
+    if not instruction:
+        return
+    # Check if instruction mentions any char window
+    says_window = bool(re.search(r"within\s+\d+\s+char|within\s+\w+\s+hundred\s+char", instruction, re.I))
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        path, stype = _source_path_and_type(v)
+        if not _is_prose_target(name, path, stype):
+            continue
+        # Check for char window in regex
+        windows = re.findall(r"\{0,(\d+)\}\?", pattern)
+        for w in windows:
+            w_int = int(w)
+            if w_int > 50 and not says_window:
+                res.findings.append(Finding(
+                    check_id="D21.undisclosed_char_window",
+                    family=FAMILIES["D21"],
+                    severity=2,
+                    title=f"Regex uses {w_int}-char window not disclosed in instruction",
+                    detail=(
+                        f"Verifier '{name}' uses a {w_int}-character proximity window "
+                        f"but instruction never mentions a character limit. "
+                        f"Disclose it or use unbounded matching."
+                    ),
+                    evidence=f"window={w_int}, pattern={pattern[:160]}",
+                    verifier=name,
+                    fixability="fixable",
+                ))
+                break
+
+
+def check_multi_answer_ambiguity(tf: TaskFiles, vpath: str, spec: dict, res: TaskResult) -> None:
+    """D22 — instruction implies a unique answer (e.g. 'the one channel')
+    but the data may have multiple valid answers."""
+    instruction = _load_instruction(tf)
+    if not instruction:
+        return
+    # Check if instruction says "the one" implying uniqueness
+    says_unique = bool(re.search(r"the one channel|the one\b.*channel", instruction, re.I))
+    if not says_unique:
+        return
+    # Check if verifier hardcodes a specific answer
+    for v in _verifier_items(spec):
+        name = str(v.get("name", ""))
+        pattern = _regex_comparison(v)
+        if pattern is None:
+            continue
+        if name == "memo_single_part_channel":
+            # Check for hardcoded specific channel
+            if re.search(r"CH-\d+", pattern) and "CH-\\d" not in pattern:
+                res.findings.append(Finding(
+                    check_id="D22.multi_answer_ambiguity",
+                    family=FAMILIES["D22"],
+                    severity=2,
+                    title="Instruction says 'the one channel' but verifier hardcodes a specific channel",
+                    detail=(
+                        f"Instruction implies a unique channel, but verifier '{name}' "
+                        f"hardcodes a specific CH-NN. If the data has multiple valid "
+                        f"channels, this is unfair. Either change 'the one' to 'a' "
+                        f"in instruction, or use CH-\\d+ in the regex."
+                    ),
+                    evidence=f"pattern={pattern[:160]}",
+                    verifier=name,
+                    fixability="fixable",
+                ))
+
+
 # ── per-task orchestration ──────────────────────────────────────────────────
 
 def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
@@ -1096,6 +1296,11 @@ def lint_task(tf: TaskFiles, task_id: str) -> TaskResult:
             check_hardcoded_value_mismatch(tf, vpath or "", spec, res)
             check_missing_row_in_table(tf, vpath or "", spec, res)
             check_float_value_in_verifier(tf, vpath or "", spec, res)
+            check_instruction_verifier_mismatch(tf, vpath or "", spec, res)
+            check_hollow_memo_passes(tf, vpath or "", spec, res)
+            check_state_spoofing(tf, vpath or "", spec, res)
+            check_undisclosed_char_window(tf, vpath or "", spec, res)
+            check_multi_answer_ambiguity(tf, vpath or "", spec, res)
         elif vpath:
             res.error = f"verifier.json present but unparseable: {vpath}"
         else:
