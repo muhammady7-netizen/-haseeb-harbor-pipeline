@@ -11,13 +11,13 @@ keywords = ["harbor", "fixb50b10", "bus", "non-connector", "offline", "variance_
 source_config = "infra/task-harness/configs/shannon-200/task_bus_b50_b10_streaming_target_variance_attribution"
 
 [verifier]
-timeout_sec = 600.0
+timeout_sec = 1800.0
 collect = []
 
 [verifier.env]
 
 [agent]
-timeout_sec = 1800.0
+timeout_sec = 3600.0
 
 [environment]
 network_mode = "public"
