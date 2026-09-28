@@ -1,0 +1,530 @@
+{
+  "task_id": "NONC-B1-1000145",
+  "verifiers": [
+    {
+      "name": "result_active_proportion_pct",
+      "metadata": {
+        "how_justification": "Opens results.json and checks active_proportion_pct.",
+        "why_justification": "Derived figure active_proportion_pct after ledger reconcile."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 56.9,
+        "deterministic": {
+          "path": "$.active_proportion_pct",
+          "comparison": "approx_equals"
+        }
+      }
+    },
+    {
+      "name": "result_strata_outside_tolerance",
+      "metadata": {
+        "how_justification": "Opens results.json and checks strata_outside_tolerance.",
+        "why_justification": "Derived figure strata_outside_tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 5,
+        "deterministic": {
+          "path": "$.strata_outside_tolerance",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_blocks_assessed",
+      "metadata": {
+        "how_justification": "Opens results.json and checks blocks_assessed.",
+        "why_justification": "Derived figure blocks_assessed."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 150,
+        "deterministic": {
+          "path": "$.blocks_assessed",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_blocks_outside_tolerance",
+      "metadata": {
+        "how_justification": "Opens results.json and checks blocks_outside_tolerance.",
+        "why_justification": "Derived figure blocks_outside_tolerance."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 139,
+        "deterministic": {
+          "path": "$.blocks_outside_tolerance",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "result_out_of_sequence_allocations",
+      "metadata": {
+        "how_justification": "Opens results.json and checks out_of_sequence_allocations.",
+        "why_justification": "Derived figure out_of_sequence_allocations."
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 472,
+        "deterministic": {
+          "path": "$.out_of_sequence_allocations",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "pytest_stratum_recompute",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "factor.*level.*subjects",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_stratum_recompute.",
+        "why_justification": "pytest_stratum_recompute"
+      }
+    },
+    {
+      "name": "pytest_block_recompute",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "stratum.*block_id.*subjects",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_block_recompute.",
+        "why_justification": "pytest_block_recompute"
+      }
+    },
+    {
+      "name": "pytest_results_reconcile",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": 0,
+        "deterministic": {
+          "path": "$.strata_outside_tolerance",
+          "comparison": "greater_than"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_results_reconcile.",
+        "why_justification": "pytest_results_reconcile"
+      }
+    },
+    {
+      "name": "pytest_findings_oos_names",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "SUBJ-",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_oos_names.",
+        "why_justification": "pytest_findings_oos_names"
+      }
+    },
+    {
+      "name": "pytest_findings_sequence",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "sequence",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_sequence.",
+        "why_justification": "pytest_findings_sequence"
+      }
+    },
+    {
+      "name": "pytest_findings_tolerances",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "toleran",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_tolerances.",
+        "why_justification": "pytest_findings_tolerances"
+      }
+    },
+    {
+      "name": "pytest_findings_overfill",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "over-fill",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_overfill.",
+        "why_justification": "pytest_findings_overfill"
+      }
+    },
+    {
+      "name": "pytest_findings_boundary",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "outside tolerance",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_boundary.",
+        "why_justification": "pytest_findings_boundary"
+      }
+    },
+    {
+      "name": "pytest_findings_ledger",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "ledger",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_ledger.",
+        "why_justification": "pytest_findings_ledger"
+      }
+    },
+    {
+      "name": "pytest_findings_strata",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "severe",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_strata.",
+        "why_justification": "pytest_findings_strata"
+      }
+    },
+    {
+      "name": "pytest_findings_drift",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "text",
+          "command": "extract_text",
+          "arguments": {
+            "path": "randomisation_findings.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "drift",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_findings_drift.",
+        "why_justification": "pytest_findings_drift"
+      }
+    },
+    {
+      "name": "pytest_balance_cols",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "active_pct",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_balance_cols.",
+        "why_justification": "pytest_balance_cols"
+      }
+    },
+    {
+      "name": "pytest_blocks_cols",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "block_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "block_status",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_blocks_cols.",
+        "why_justification": "pytest_blocks_cols"
+      }
+    },
+    {
+      "name": "pytest_covers_factors",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "severity",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_covers_factors.",
+        "why_justification": "pytest_covers_factors"
+      }
+    },
+    {
+      "name": "pytest_site_codes",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "S[123]",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_site_codes.",
+        "why_justification": "pytest_site_codes"
+      }
+    },
+    {
+      "name": "pytest_oos_blank",
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "extract_text",
+          "arguments": {
+            "path": "stratum_balance.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "out_of_sequence",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "contains"
+        }
+      },
+      "metadata": {
+        "how_justification": "Declared for pytest_oos_blank.",
+        "why_justification": "pytest_oos_blank"
+      }
+    }
+  ]
+}
