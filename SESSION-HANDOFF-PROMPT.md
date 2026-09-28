@@ -40,13 +40,13 @@ You are working on Harbor/Shannon QC task repair for 4 benchmark tasks. The goal
 
 ### 2. gen-g806 (gen-g806-leadership-brief-rhetorical-style-audit)
 - **Source**: `local-qc/gen-g806-leadership-brief-rhetorical-style-audit/`
-- **Latest portal version**: v3 (content-08aafeb661e799b1aea68382fd491b48-v3)
-- **Status**: Oracle PASSED, GLM 4/4 TOO_EASY — needs hardening
-- **Task structure**: 2472 scripts, 12 input files, complex cross-source rules (style guide + errata v4)
-- **Key rules**: recording clearance, retirement, air window, negation-pivot (with testimony exemption + presenter endorsement exception), scripture citation format (registry matching), runtime band (with timing adjustment cap)
-- **Existing edge cases**: 30+ scripts with 50% timing cap, 373 third-party testimony, 40 with presenter endorsement
-- **Local QC**: Clean (0 blockers)
-- **Next step**: Add coupled reasoning traps — e.g., ambiguous negation-pivot patterns, unusual scripture citation formats, scripts where multiple rules interact
+- **Latest portal version**: v4 (content-08aafeb661e799b1aea68382fd491b48-v4)
+- **Status**: **SUBMITTED TO PIPELINE** (auto-pipeline-evaluation-1cade9af99a54615)
+  - Oracle PASSED, GLM 0/4 passed (rewards 0.99/0.99/0.99/0.99 — very close but not 1.0)
+  - 7 findings dismissed with notes
+  - Added 5 tricky non-pivot patterns (SC-04, SC-16, SC-20, SC-27, SC-28)
+  - Local QC: Clean (0 blockers)
+- **Waiting for pipeline verdict**
 
 ### 3. health-h34 (health-h34-randomisation-balance)
 - **Source**: `C:\Users\Haseeb Mirza\OneDrive\Documents\-haseeb-harbor-pipeline\task-sources\health-h34-randomisation-balance\`
