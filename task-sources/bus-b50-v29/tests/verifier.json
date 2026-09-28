@@ -589,7 +589,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){100,}",
+        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?=.+\\b(?:is|are|was|were|sits|falls|lies|stands|came|went|left|sits|drifted|held|ran)\\b)(?:[A-Za-z]+[^A-Za-z]+){100,}",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
@@ -615,7 +615,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bCH-\\d+\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\b(?:placements|conversion|residual)(?:\\s+reach)?\\b|\\b(?:placements|conversion|residual)(?:\\s+reach)?\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\bCH-\\d+)",
+        "expected": "(?is)(?:\\bCH-\\d+\\w{0,}\\b[\\s\\S]{0,300}?\\b(?:placements|conversion|residual)(?:\\s+reach)?\\b|\\b(?:placements|conversion|residual)(?:\\s+reach)?\\w{0,}\\b[\\s\\S]{0,300}?\\bCH-\\d+)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"

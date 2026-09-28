@@ -23,7 +23,7 @@ CH-00,0,0,0,0,0
 
 ## `campaign_review.md`
 
-A short prose note for the label head. Name, by its id as the channel plan prints it, a channel whose shortfall the method leaves entirely to a single part of the split, and name that part — beside it in the same paragraph. State two figures as findings, each one taken from the register you deliver: `Conversion effect`, the campaign total of the conversion part, and `Counted placements`, the number of placements counted across every channel. At least one hundred words of prose. Each figure stands beside its label once, stated as the finding — not offered as one of two candidates.
+A short prose note for the label head. Name, by its id as the channel plan prints it, a channel whose shortfall the method leaves entirely to a single part of the split, and name that part — beside it in the same paragraph, within three hundred characters. State two figures as findings, each one taken from the register you deliver: `Conversion effect`, the campaign total of the conversion part, and `Counted placements`, the number of placements counted across every channel. At least one hundred words of prose, with full sentences that explain the shortfall using verbs. Each figure stands beside its label once, stated as the finding — not offered as one of two candidates.
 
 ## `results.json`
 
