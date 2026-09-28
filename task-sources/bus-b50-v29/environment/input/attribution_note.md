@@ -90,7 +90,13 @@ expected of them, and no amount of better creative reaches it.
 **5.4 Rounding and additivity.** The placements effect is taken to the nearest whole stream,
 halves away from zero when the shortfall is positive and halves toward
 zero when the shortfall is negative (see 5.7). The conversion effect is
-taken to the nearest whole stream, halves toward zero, always. The
+computed as (sum of per-row contributions) minus (delivered streams), and
+this final value is then taken to the nearest whole stream, halves toward
+zero, always. For example, if the per-row contributions sum to 1.5 and
+delivered streams is 2, the conversion effect is 1.5 - 2 = -0.5, which
+rounds to 0 (halves toward zero). The per-row contributions themselves
+are not individually rounded to whole streams; only the final conversion
+effect value is rounded. The
 residual is then the balance of the shortfall, so the three parts add
 back to the shortfall exactly, per channel and across the campaign.
 
@@ -107,7 +113,9 @@ is one for weeks W1-W3 and nine-tenths for weeks W4-W7, and the row's
 rounded to the nearest whole stream, halves away from zero when the
 channel's shortfall to target is positive, and halves toward zero when the
 shortfall is negative. The conversion effect is always rounded halves
-toward zero.
+toward zero, applied to the final conversion effect value (sum of per-row
+contributions minus delivered streams), not to the sum of per-row
+contributions themselves.
 
 ## 6. Recording it
 
@@ -151,11 +159,3 @@ takes precedence for ALL weeks.
 **A5** For CH-80, the `planned_streams_per_1000_reach` is amended to 50
 (from 40) effective from W4. The amended rate of 50 applies to ALL weeks.
 This amendment INCREASES the rate, which increases the conversion effect.
-
-**5.8** Each ledger row's conversion effect contribution is computed as
-the row's (per-row rounded) delivered_reach multiplied by the applicable
-rate and planned_streams_per_1000_reach, divided by one thousand. The
-conversion effect is the sum of these per-row contributions less the
-channel's delivered streams, rounded once to the nearest whole stream
-per 5.4. Per-row contributions are NOT individually rounded; only the
-final total is rounded.
