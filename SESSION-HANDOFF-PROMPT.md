@@ -22,32 +22,21 @@ You are working on Harbor/Shannon QC task repair for 4 benchmark tasks. The goal
 ## The 4 Tasks
 
 ### 1. bus-b50 (bus-b50-b10-streaming-target-variance-attribution)
-- **Source**: `local-qc/task-sources/bus-b50-v29/`
-- **Latest portal version**: v43 (content-ba34a5cec61cf9074c694bf925740c55-v43)
-- **Status**: Oracle+GLM RUNNING (evaluation-a65b76cc5e064ef6). PreQC PASSED.
-- **What v43 has**:
-  - 60 fair data traps (14 .5 values, 10 negative streams, 14 organic, 8 guaranteed, 5 cancelled, 5 out-of-window, 4 slipped) baked into 149 ledger rows + 127 placements
-  - `memo_single_part_channel` accepts ANY valid CH-\d+ + any part (not just CH-41)
-  - `memo_prose_floor` 100 words with keyword (no verb in verifier.json — PreQC blocks 2 lookaheads)
-  - `test_memo_has_sentences` in test_outputs.py requires 5+ sentences + verbs (rejects hollow memos)
-  - `test_memo_register_consistency` verifies memo's channel/figures match register
-  - `memo_conversion_effect` / `memo_counted_placements` use `[\s\S]{0,200}?` bidirectional
-  - `submission_format.md` says "a channel" (not "the one"), "within three hundred characters", "full sentences with verbs"
-  - `attribution_note.md` has rounding clarification with worked example
-  - `Dockerfile` has `chmod 700 /tests` (protects answer keys)
-  - `task.toml` has increased timeouts (verifier 1800s, agent 3600s)
-  - Gold values: ce=44823, re=37098, pe=19120, st=101041, cp=118
-- **Local QC**: D1-D22 checks (17 defect families). Only D13 (no rubric) remains as structural blocker.
-- **Expected result**: Oracle PASS, GLM 3/4 (in band), Harbor Check 0-2 findings
-- **If accepted**: Move to gen-g806, health-h34, health-h40
-- **If rejected**: Read findings, fix in source, re-upload. Use local QC D1-D22 to catch before upload.
-- **Key learning**: 
-  - CH-41 hardcoding was unfair (3 valid channels: CH-36, CH-41, CH-45). Fixed to accept any.
-  - Hollow memo needs verb/sentence check in test_outputs.py (not verifier.json — PreQC blocks 2 lookaheads)
-  - 60 extra rows caused OOM in Harbor Check. Fixed by baking traps into existing 149 rows.
-  - `[^.\n]` sentence scope is undisclosed. Fixed by disclosing "within 300 characters" + using `[\s\S]{0,300}?`
-  - GLM handles all fair computation rules correctly. Difficulty comes from data traps, not rules.
-  - Dismissing findings does NOT work — pipeline rejects even after dismissal. Must fix in source.
+- **Source**: `local-qc/task-sources\bus-b50-v29/`
+- **Latest portal version**: v45 (content-ba34a5cec61cf9074c694bf925740c55-v45)
+- **Status**: STUCK on fundamental tension. See below.
+- **The tension**:
+  - `[^.\n]{0,100}?` regex → 3/4 (good!) but pipeline rejects `surface_form_brittleness`
+  - `[\s\S]{0,200}?` regex → 4/4 (TOO_EASY) pipeline rejects
+  - Verb requirement in verifier.json → PreQC blocks (2 lookaheads)
+  - Verb requirement without lookahead → 4/4 (GLM writes with verbs)
+  - Rubric judge → needs JUDGE_MODEL setup (not configured)
+- **v43 was submitted to pipeline**: Oracle PASS, GLM 3/4, Harbor Check completed, 1 finding (coverage_depth), dismissed, SUBMITTED. Pipeline REJECTED for shallow_prose_grading.
+- **v45**: 4/4 TOO_EASY (verb requirement made it too easy)
+- **Current source state**: v45 source (verb in memo_prose_floor, 60 traps, CH-\d+ regex, test_memo_has_sentences, test_memo_register_consistency, chmod 700 /tests, increased timeouts)
+- **Gold values**: ce=44823, re=37098, pe=19120, st=101041, cp=118
+- **To unblock**: Either (a) set up JUDGE_MODEL and add rubric check, or (b) wait for provider fix and re-run v43, or (c) find a regex that gives 3/4 without `[^.\n]` (seems impossible)
+- **Local QC**: D1-D22 (17 defect families). Trained on all findings.
 
 ### 2. gen-g806 (gen-g806-leadership-brief-rhetorical-style-audit)
 - **Source**: `local-qc/gen-g806-leadership-brief-rhetorical-style-audit/`
