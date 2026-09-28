@@ -1,0 +1,755 @@
+{
+  "task_id": "bus-b50_b10-streaming-target-variance-attribution",
+  "verifiers": [
+    {
+      "name": "register_exists",
+      "metadata": {
+        "how_justification": "Checks shortfall_attribution.csv is present as a file in the workspace.",
+        "why_justification": "The per-channel attribution register is delivered.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "shortfall_attribution.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "register_header",
+      "metadata": {
+        "how_justification": "Opens shortfall_attribution.csv with csv.extract_text and applies regex_match.",
+        "why_justification": "The contract document pins the header verbatim. Entailed by: \"Header, exactly: `channel_id,counted_placements,placements_effect_streams,conversion_effect_streams,residual_reach_effect_streams,shortfall_to_target_streams`\"",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "inspect_table",
+          "arguments": {
+            "path": "shortfall_attribution.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": [
+          "channel_id",
+          "counted_placements",
+          "placements_effect_streams",
+          "conversion_effect_streams",
+          "residual_reach_effect_streams",
+          "shortfall_to_target_streams"
+        ],
+        "deterministic": {
+          "path": "$.header",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "register_table_trap_ch04",
+      "metadata": {
+        "how_justification": "Parses shortfall_attribution.csv with csv.read_rows and applies table_equals to every graded cell of the CH-04 row (matched by 'channel_id'); a failure names the exact cell.",
+        "why_justification": "Every channel's counted placement count, three parts and shortfall to target are graded, and the row population is locked to the channels in the plan file's order, so a register that drops a channel, duplicates one or invents one cannot pass; the parts re-adding to the shortfall is graded cell by cell rather than as a tolerance. Entailed by: \"One row per channel in `input/channel_plan.csv`, in that file's order. `counted_placements` is a whole number of placements; every other figure is a whole number of streams, a part that is zero written `0` and a part that ran the other way written with a leading minus sign.\"",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "read_rows",
+          "arguments": {
+            "path": "shortfall_attribution.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": {
+          "id_column": "channel_id",
+          "rows": {
+            "CH-03": {
+              "channel_id": "CH-03",
+              "counted_placements": "4",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "3781",
+              "residual_reach_effect_streams": "-7651",
+              "shortfall_to_target_streams": "-3870"
+            }
+          },
+          "cell_types": {
+            "counted_placements": "number",
+            "placements_effect_streams": "number",
+            "conversion_effect_streams": "number",
+            "residual_reach_effect_streams": "number",
+            "shortfall_to_target_streams": "number"
+          }
+        },
+        "deterministic": {
+          "path": "$",
+          "comparison": "table_equals"
+        }
+      }
+    },
+    {
+      "name": "register_table",
+      "metadata": {
+        "how_justification": "Parses shortfall_attribution.csv with csv.read_rows and applies table_equals: every graded cell of 5 rows plus the full 6-row population as a row_set lock (duplicate-row and cross-product dumps fail the lock; a duplicated graded id is rejected outright), the delivered row order equal to the stated order, and the delivered column set closed to the stated header, with declared cell types {'counted_placements': 'number', 'placements_effect_streams': 'number', 'conversion_effect_streams': 'number', 'residual_reach_effect_streams': 'number', 'shortfall_to_target_streams': 'number'} normalised on both sides. A failure names the exact row and column.",
+        "why_justification": "Every channel's counted placement count, three parts and shortfall to target are graded, and the row population is locked to the channels in the plan file's order, so a register that drops a channel, duplicates one or invents one cannot pass; the parts re-adding to the shortfall is graded cell by cell rather than as a tolerance. Entailed by: \"One row per channel in `input/channel_plan.csv`, in that file's order. `counted_placements` is a whole number of placements; every other figure is a whole number of streams, a part that is zero written `0` and a part that ran the other way written with a leading minus sign.\"",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "csv",
+          "command": "read_rows",
+          "arguments": {
+            "path": "shortfall_attribution.csv"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": {
+          "id_column": "channel_id",
+          "rows": {
+            "CH-30": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-12668",
+              "residual_reach_effect_streams": "-196",
+              "shortfall_to_target_streams": "-12864"
+            },
+            "CH-01": {
+              "counted_placements": "2",
+              "placements_effect_streams": "9920",
+              "conversion_effect_streams": "11667",
+              "residual_reach_effect_streams": "-22388",
+              "shortfall_to_target_streams": "-801"
+            },
+            "CH-02": {
+              "counted_placements": "4",
+              "placements_effect_streams": "1800",
+              "conversion_effect_streams": "-17814",
+              "residual_reach_effect_streams": "-13752",
+              "shortfall_to_target_streams": "-29766"
+            },
+            "CH-03": {
+              "counted_placements": "4",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "3781",
+              "residual_reach_effect_streams": "-7651",
+              "shortfall_to_target_streams": "-3870"
+            },
+            "CH-04": {
+              "counted_placements": "5",
+              "placements_effect_streams": "1900",
+              "conversion_effect_streams": "-1764",
+              "residual_reach_effect_streams": "-12970",
+              "shortfall_to_target_streams": "-12834"
+            },
+            "CH-05": {
+              "counted_placements": "6",
+              "placements_effect_streams": "8250",
+              "conversion_effect_streams": "24193",
+              "residual_reach_effect_streams": "-20058",
+              "shortfall_to_target_streams": "12385"
+            },
+            "CH-06": {
+              "counted_placements": "4",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-12263",
+              "residual_reach_effect_streams": "-18177",
+              "shortfall_to_target_streams": "-30440"
+            },
+            "CH-07": {
+              "counted_placements": "3",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-6171",
+              "residual_reach_effect_streams": "-8864",
+              "shortfall_to_target_streams": "-15035"
+            },
+            "CH-08": {
+              "counted_placements": "3",
+              "placements_effect_streams": "4500",
+              "conversion_effect_streams": "1474",
+              "residual_reach_effect_streams": "-14361",
+              "shortfall_to_target_streams": "-8387"
+            },
+            "CH-09": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "2",
+              "residual_reach_effect_streams": "-17012",
+              "shortfall_to_target_streams": "-17010"
+            },
+            "CH-10": {
+              "counted_placements": "1",
+              "placements_effect_streams": "4000",
+              "conversion_effect_streams": "8149",
+              "residual_reach_effect_streams": "-11772",
+              "shortfall_to_target_streams": "377"
+            },
+            "CH-11": {
+              "counted_placements": "1",
+              "placements_effect_streams": "4998",
+              "conversion_effect_streams": "20147",
+              "residual_reach_effect_streams": "-26850",
+              "shortfall_to_target_streams": "-1705"
+            },
+            "CH-12": {
+              "counted_placements": "1",
+              "placements_effect_streams": "9600",
+              "conversion_effect_streams": "2788",
+              "residual_reach_effect_streams": "-9892",
+              "shortfall_to_target_streams": "2496"
+            },
+            "CH-13": {
+              "counted_placements": "2",
+              "placements_effect_streams": "3500",
+              "conversion_effect_streams": "-6423",
+              "residual_reach_effect_streams": "-2413",
+              "shortfall_to_target_streams": "-5336"
+            },
+            "CH-14": {
+              "counted_placements": "3",
+              "placements_effect_streams": "-1354",
+              "conversion_effect_streams": "239",
+              "residual_reach_effect_streams": "-4755",
+              "shortfall_to_target_streams": "-5870"
+            },
+            "CH-15": {
+              "counted_placements": "3",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-21114",
+              "residual_reach_effect_streams": "-16254",
+              "shortfall_to_target_streams": "-37368"
+            },
+            "CH-16": {
+              "counted_placements": "1",
+              "placements_effect_streams": "8000",
+              "conversion_effect_streams": "-2533",
+              "residual_reach_effect_streams": "-5958",
+              "shortfall_to_target_streams": "-491"
+            },
+            "CH-17": {
+              "counted_placements": "0",
+              "placements_effect_streams": "4000",
+              "conversion_effect_streams": "-9531",
+              "residual_reach_effect_streams": "-6200",
+              "shortfall_to_target_streams": "-11731"
+            },
+            "CH-18": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-5981",
+              "residual_reach_effect_streams": "-11870",
+              "shortfall_to_target_streams": "-17851"
+            },
+            "CH-19": {
+              "counted_placements": "1",
+              "placements_effect_streams": "1800",
+              "conversion_effect_streams": "-6992",
+              "residual_reach_effect_streams": "-12979",
+              "shortfall_to_target_streams": "-18171"
+            },
+            "CH-20": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-4816",
+              "residual_reach_effect_streams": "-8889",
+              "shortfall_to_target_streams": "-13705"
+            },
+            "CH-21": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-14404",
+              "residual_reach_effect_streams": "-13541",
+              "shortfall_to_target_streams": "-27945"
+            },
+            "CH-22": {
+              "counted_placements": "1",
+              "placements_effect_streams": "1800",
+              "conversion_effect_streams": "-6184",
+              "residual_reach_effect_streams": "-12090",
+              "shortfall_to_target_streams": "-16474"
+            },
+            "CH-23": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-2930",
+              "residual_reach_effect_streams": "-6926",
+              "shortfall_to_target_streams": "-9856"
+            },
+            "CH-24": {
+              "counted_placements": "3",
+              "placements_effect_streams": "-1200",
+              "conversion_effect_streams": "-4780",
+              "residual_reach_effect_streams": "-8408",
+              "shortfall_to_target_streams": "-14388"
+            },
+            "CH-25": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-27764",
+              "residual_reach_effect_streams": "-16855",
+              "shortfall_to_target_streams": "-44619"
+            },
+            "CH-26": {
+              "counted_placements": "0",
+              "placements_effect_streams": "3600",
+              "conversion_effect_streams": "-7687",
+              "residual_reach_effect_streams": "-16938",
+              "shortfall_to_target_streams": "-21025"
+            },
+            "CH-27": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-1351",
+              "residual_reach_effect_streams": "-6700",
+              "shortfall_to_target_streams": "-8051"
+            },
+            "CH-28": {
+              "counted_placements": "1",
+              "placements_effect_streams": "1600",
+              "conversion_effect_streams": "-774",
+              "residual_reach_effect_streams": "-9915",
+              "shortfall_to_target_streams": "-9089"
+            },
+            "CH-29": {
+              "counted_placements": "1",
+              "placements_effect_streams": "2000",
+              "conversion_effect_streams": "-8776",
+              "residual_reach_effect_streams": "-12745",
+              "shortfall_to_target_streams": "-19521"
+            },
+            "CH-31": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "4631",
+              "residual_reach_effect_streams": "-12515",
+              "shortfall_to_target_streams": "-7884"
+            },
+            "CH-32": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-13815",
+              "residual_reach_effect_streams": "-5635",
+              "shortfall_to_target_streams": "-19450"
+            },
+            "CH-33": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-17719",
+              "residual_reach_effect_streams": "-11422",
+              "shortfall_to_target_streams": "-29141"
+            },
+            "CH-34": {
+              "counted_placements": "1",
+              "placements_effect_streams": "2475",
+              "conversion_effect_streams": "-7817",
+              "residual_reach_effect_streams": "-5615",
+              "shortfall_to_target_streams": "-10957"
+            },
+            "CH-35": {
+              "counted_placements": "0",
+              "placements_effect_streams": "3600",
+              "conversion_effect_streams": "-4426",
+              "residual_reach_effect_streams": "-15604",
+              "shortfall_to_target_streams": "-16430"
+            },
+            "CH-36": {
+              "counted_placements": "1",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-22000",
+              "residual_reach_effect_streams": "-240",
+              "shortfall_to_target_streams": "-22240"
+            },
+            "CH-37": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "1999",
+              "residual_reach_effect_streams": "-12336",
+              "shortfall_to_target_streams": "-10337"
+            },
+            "CH-38": {
+              "counted_placements": "0",
+              "placements_effect_streams": "4000",
+              "conversion_effect_streams": "-9212",
+              "residual_reach_effect_streams": "-10431",
+              "shortfall_to_target_streams": "-15643"
+            },
+            "CH-39": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "337303",
+              "residual_reach_effect_streams": "-351057",
+              "shortfall_to_target_streams": "-13754"
+            },
+            "CH-41": {
+              "counted_placements": "1",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-22034",
+              "residual_reach_effect_streams": "-189",
+              "shortfall_to_target_streams": "-22223"
+            },
+            "CH-42": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-2662",
+              "residual_reach_effect_streams": "-9727",
+              "shortfall_to_target_streams": "-12389"
+            },
+            "CH-43": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-5058",
+              "residual_reach_effect_streams": "-5021",
+              "shortfall_to_target_streams": "-10079"
+            },
+            "CH-44": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "6867",
+              "residual_reach_effect_streams": "-3941",
+              "shortfall_to_target_streams": "2926"
+            },
+            "CH-45": {
+              "counted_placements": "0",
+              "placements_effect_streams": "4000",
+              "conversion_effect_streams": "-4636",
+              "residual_reach_effect_streams": "-10272",
+              "shortfall_to_target_streams": "-10908"
+            },
+            "CH-76": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-2557",
+              "residual_reach_effect_streams": "-4705",
+              "shortfall_to_target_streams": "-7262"
+            },
+            "CH-77": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "6120",
+              "residual_reach_effect_streams": "-6383",
+              "shortfall_to_target_streams": "-263"
+            },
+            "CH-78": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-2139",
+              "residual_reach_effect_streams": "-6202",
+              "shortfall_to_target_streams": "-8341"
+            },
+            "CH-79": {
+              "counted_placements": "3",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "7084",
+              "residual_reach_effect_streams": "-1585",
+              "shortfall_to_target_streams": "5499"
+            },
+            "CH-80": {
+              "counted_placements": "2",
+              "placements_effect_streams": "0",
+              "conversion_effect_streams": "-11721",
+              "residual_reach_effect_streams": "-15388",
+              "shortfall_to_target_streams": "-27109"
+            }
+          },
+          "row_set": [
+            "CH-30",
+            "CH-01",
+            "CH-02",
+            "CH-03",
+            "CH-04",
+            "CH-05",
+            "CH-06",
+            "CH-07",
+            "CH-08",
+            "CH-09",
+            "CH-10",
+            "CH-11",
+            "CH-12",
+            "CH-13",
+            "CH-14",
+            "CH-15",
+            "CH-16",
+            "CH-17",
+            "CH-18",
+            "CH-19",
+            "CH-20",
+            "CH-21",
+            "CH-22",
+            "CH-23",
+            "CH-24",
+            "CH-25",
+            "CH-26",
+            "CH-27",
+            "CH-28",
+            "CH-29",
+            "CH-31",
+            "CH-32",
+            "CH-33",
+            "CH-34",
+            "CH-35",
+            "CH-36",
+            "CH-37",
+            "CH-38",
+            "CH-39",
+            "CH-41",
+            "CH-42",
+            "CH-43",
+            "CH-44",
+            "CH-45",
+            "CH-76",
+            "CH-77",
+            "CH-78",
+            "CH-79",
+            "CH-80"
+          ],
+          "row_set_ordered": true,
+          "columns": [
+            "channel_id",
+            "counted_placements",
+            "placements_effect_streams",
+            "conversion_effect_streams",
+            "residual_reach_effect_streams",
+            "shortfall_to_target_streams"
+          ],
+          "cell_types": {
+            "counted_placements": "number",
+            "placements_effect_streams": "number",
+            "conversion_effect_streams": "number",
+            "residual_reach_effect_streams": "number",
+            "shortfall_to_target_streams": "number"
+          }
+        },
+        "deterministic": {
+          "path": "$",
+          "comparison": "table_equals"
+        }
+      }
+    },
+    {
+      "name": "memo_exists",
+      "metadata": {
+        "how_justification": "Checks campaign_review.md is present as a file in the workspace.",
+        "why_justification": "The note for the label head is delivered.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    },
+    {
+      "name": "memo_prose_floor",
+      "metadata": {
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match.",
+        "why_justification": "The note is written for a reader, not a dump of the totals the register produced. Requires at least 100 words of substantive prose with domain vocabulary, preventing hollow or fabricated memos.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?=.+\\b(?:conversion|placement|reach|shortfall|channel|stream)\\b)(?:[A-Za-z]+[^A-Za-z]+){100,}",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_single_part_channel",
+      "metadata": {
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match to verify a channel whose shortfall sits in a single part is named beside that part.",
+        "why_justification": "The note names a channel whose whole gap the method leaves in one part of the split, beside the part it leaves it in. Any valid single-part channel is accepted.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?:\\bCH-\\d+\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\b(?:placements|conversion|residual)(?:\\s+reach)?\\b|\\b(?:placements|conversion|residual)(?:\\s+reach)?\\w{0,}\\b(?:(?!(?:\\n[ \\t]*\\n|\\[Slide \\d)).){0,900}?\\bCH-\\d+)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_conversion_effect",
+      "metadata": {
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match to verify the conversion effect figure appears beside its label. Accepts both bare digits and comma-grouped numbers.",
+        "why_justification": "The campaign total of the conversion part is a material disclosed requirement the memo must state.",
+        "tag": "incidental"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[\\s\\S]{0,200}?\\b(?:127928|44,823)\\b|\\b(?:127928|44,823)\\b[\\s\\S]{0,200}?\\bconversion[\\s*]+effect\\b)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "memo_counted_placements",
+      "metadata": {
+        "how_justification": "Opens campaign_review.md with md.extract_text and applies regex_match to verify the counted placements figure appears beside its label. Accepts both bare digits and comma-grouped numbers.",
+        "why_justification": "The number of placements counted across every channel is a material disclosed requirement the memo must state.",
+        "tag": "incidental"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "md",
+          "command": "extract_text",
+          "arguments": {
+            "path": "campaign_review.md"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": "(?is)(?:\\bcounted[\\s*]+placements\\b[\\s\\S]{0,96}?\\b(?:96)\\b|\\b(?:96)\\b[\\s\\S]{0,96}?\\bcounted[\\s*]+placements\\b)",
+        "deterministic": {
+          "path": "$.text",
+          "comparison": "regex_match"
+        }
+      }
+    },
+    {
+      "name": "results_figures",
+      "metadata": {
+        "how_justification": "Reads results.json with json.read_file and applies object_equals over the 5 graded keys with the key set closed; numeric keys compare within an absolute tolerance and a failure names the exact key.",
+        "why_justification": "The five campaign totals, recomputed from the delivered register; the contract document closes the key set, and the memo's two stated figures are two of these same values.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "json",
+          "command": "read_file",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": {
+          "keys": {
+            "counted_placement_count": {
+              "value": 96,
+              "tolerance": null
+            },
+            "placements_effect_streams": {
+              "value": 82789,
+              "tolerance": null
+            },
+            "conversion_effect_streams": {
+              "value": 127928,
+              "tolerance": null
+            },
+            "residual_reach_effect_streams": {
+              "value": -845647,
+              "tolerance": null
+            },
+            "shortfall_to_target_streams": {
+              "value": -634930,
+              "tolerance": null
+            }
+          },
+          "closed": true
+        },
+        "deterministic": {
+          "path": "$",
+          "comparison": "object_equals"
+        }
+      }
+    },
+    {
+      "name": "results_exists",
+      "metadata": {
+        "how_justification": "Checks results.json is present as a file in the workspace.",
+        "why_justification": "Derived figures delivered.",
+        "tag": "core"
+      },
+      "source": {
+        "type": "file",
+        "file": {
+          "type": "filesystem",
+          "command": "check_path_exists",
+          "arguments": {
+            "path": "results.json"
+          }
+        }
+      },
+      "assertion": {
+        "type": "deterministic",
+        "expected": true,
+        "deterministic": {
+          "path": "$.is_file",
+          "comparison": "equals"
+        }
+      }
+    }
+  ]
+}

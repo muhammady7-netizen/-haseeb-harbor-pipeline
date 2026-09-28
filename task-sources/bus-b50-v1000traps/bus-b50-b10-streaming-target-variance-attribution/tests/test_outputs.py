@@ -1,0 +1,338 @@
+"""Replays the harness `file_check` spec against the task workspace.
+
+Four labelled lanes (the battery the client preflight requires SHIPPED — its
+counterfactual_strength criterion failed every b29t bundle for replaying
+positive-only):
+
+  test_deliverable (positive)     every graded assertion passes on the workspace.
+  test_incomplete_output          each graded file DELETED -> a check bound to it
+                                  must fail. An answer may not omit a deliverable.
+  test_negative_corrupted_value   each results.json figure corrupted -> its bound
+                                  check(s) must fail. The numbers are load-bearing.
+  test_adversarial_extra_key      an unrequested key injected into results.json ->
+                                  the key-set guard must fail. Dumping extra output
+                                  does not score.
+
+The negative lanes mutate COPIES; the workspace itself is never modified. One
+pytest per assertion/case, so Harbor's per-test grid (and the CTRF report) names
+exactly what failed. The spec in `verifier.json` and the engine in
+`rl_world_verifiers/` are copies of what the task harness runs, so a result here
+means the same thing it means there.
+"""
+
+import json
+import os
+import shutil
+import sys
+import tempfile
+from pathlib import Path
+
+import pytest
+
+TESTS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(TESTS_DIR))
+
+from rl_world_verifiers.models import VerifierSpec, effective_weights  # noqa: E402
+from rl_world_verifiers.sources.registry import SourceRegistry  # noqa: E402
+from rl_world_verifiers.verifiers import verify_definition  # noqa: E402
+
+WORKSPACE = Path(os.environ.get("HARBOR_TASK_WORKSPACE", "/app"))
+SPEC = VerifierSpec.model_validate_json(
+    (TESTS_DIR / "verifier.json").read_text(encoding="utf-8")
+)
+WEIGHTS = effective_weights(SPEC.verifiers)
+REGISTRY = SourceRegistry(WORKSPACE)
+
+RESULTS_FILE = "results.json"
+_RAW = SPEC.model_dump()["verifiers"]
+
+
+def _src(raw):
+    return ((raw.get("source") or {}).get("file") or {})
+
+
+def _det(raw):
+    return ((raw.get("assertion") or {}).get("deterministic") or {})
+
+
+#: every file some check grades
+GRADED_PATHS = sorted(
+    {_src(raw).get("arguments", {}).get("path") for raw in _RAW} - {None}
+)
+#: check names per graded file
+CHECKS_ON = {
+    path: sorted(raw["name"] for raw in _RAW
+                 if _src(raw).get("arguments", {}).get("path") == path)
+    for path in GRADED_PATHS
+}
+#: results.json figure -> the check name(s) that pay it
+BOUND = {}
+#: per-key corruption step: 1, or past the widest declared absolute tolerance among the
+#: bound checks — a +1 bump inside a declared tolerance of 1.0 PASSES the check and the
+#: lane reads a fully correct gold as "figure is decorative" (measured on the corpus:
+#: five tolerance-1.0 checks made three negative tests red on gold, 2026-09-02 review).
+TOL_BUMP = {}
+for raw in _RAW:
+    if (_src(raw).get("type") == "json"
+            and _src(raw).get("arguments", {}).get("path") == RESULTS_FILE
+            and _det(raw).get("comparison") in ("equals", "approx_equals")):
+        key = _det(raw).get("path", "")
+        if key.startswith("$.") and "." not in key[2:]:
+            BOUND.setdefault(key[2:], set()).add(raw["name"])
+            tol = (_det(raw).get("tolerance") or {}).get("absolute") or 0
+            TOL_BUMP[key[2:]] = max(TOL_BUMP.get(key[2:], 1), 2 * tol + 1)
+    if (_src(raw).get("type") == "json"
+            and _src(raw).get("arguments", {}).get("path") == RESULTS_FILE
+            and _det(raw).get("comparison") == "object_equals"):
+        # compact dialect: one closed object_equals carries every graded key, so
+        # each key binds to the object check — the negative lane fires per key
+        # either way, and the bump clears the engine's per-key tolerance
+        # (default 1e-3 when null)
+        for key, key_spec in (
+                ((raw.get("assertion") or {}).get("expected") or {})
+                .get("keys") or {}).items():
+            BOUND.setdefault(key, set()).add(raw["name"])
+            tol = (key_spec or {}).get("tolerance")
+            tol = 0.001 if tol is None else tol
+            TOL_BUMP[key] = max(TOL_BUMP.get(key, 1), 2 * tol + 1)
+#: the key-set guard(s) on results.json, if the spec carries one (the legacy
+#: not_regex_match guard, or a compact object_equals with the key set closed)
+KEYSET_GUARDS = sorted(
+    raw["name"] for raw in _RAW
+    if _src(raw).get("arguments", {}).get("path") == RESULTS_FILE
+    and (_det(raw).get("comparison") in ("not_regex_match", "not_contains")
+         or (_det(raw).get("comparison") == "object_equals"
+             and (((raw.get("assertion") or {}).get("expected") or {})
+                  .get("closed"))))
+)
+
+
+def _failed(root):
+    """Names of the checks that fail when the spec replays against `root`."""
+    registry = SourceRegistry(Path(root))
+    failed = set()
+    for definition in SPEC.verifiers:
+        outcome = verify_definition(
+            definition, registry, WEIGHTS[definition.name],
+            config=SPEC.config, completion_fn=None,
+        )["result"]
+        if not outcome["success"]:
+            failed.add(definition.name)
+    return failed
+
+
+def _workspace_copy(tmp):
+    dst = Path(tmp) / "mutant"
+    shutil.copytree(WORKSPACE, dst)
+    return dst
+
+
+@pytest.mark.parametrize(
+    "definition",
+    SPEC.verifiers,
+    ids=[definition.name for definition in SPEC.verifiers],
+)
+def test_deliverable(definition):
+    outcome = verify_definition(
+        definition,
+        REGISTRY,
+        WEIGHTS[definition.name],
+        config=SPEC.config,
+        completion_fn=None,
+    )["result"]
+    detail = outcome.get("error") or outcome.get("reason") or "assertion failed"
+    assert outcome["success"], f"{definition.name}: {detail}"
+
+
+@pytest.mark.parametrize("path", GRADED_PATHS)
+def test_incomplete_output(path):
+    with tempfile.TemporaryDirectory() as tmp:
+        mutant = _workspace_copy(tmp)
+        target = mutant / path
+        if not target.is_file():
+            pytest.skip(f"{path} not present in this workspace")
+        target.unlink()
+        failed = _failed(mutant)
+    assert failed & set(CHECKS_ON[path]), (
+        f"deleted {path} and no check bound to it failed — the deliverable "
+        "is optional to the grader"
+    )
+
+
+@pytest.mark.parametrize("key", sorted(BOUND))
+def test_negative_corrupted_value(key):
+    with tempfile.TemporaryDirectory() as tmp:
+        mutant = _workspace_copy(tmp)
+        results = mutant / RESULTS_FILE
+        if not results.is_file():
+            pytest.skip("no results.json in this workspace")
+        data = json.loads(results.read_text(encoding="utf-8"))
+        if key not in data:
+            pytest.skip(f"results.json carries no {key!r}")
+        value = data[key]
+        if isinstance(value, bool):
+            data[key] = not value
+        elif isinstance(value, (int, float)):
+            bump = TOL_BUMP.get(key, 1)
+            data[key] = round(value + bump, 6)
+        elif isinstance(value, list):
+            data[key] = value + ["__corrupted__"]
+        else:
+            data[key] = str(value) + "_corrupted"
+        results.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+        failed = _failed(mutant)
+    assert failed & BOUND[key], (
+        f"corrupted results.json:{key} and none of {sorted(BOUND[key])} failed — "
+        "the figure is decorative, not load-bearing"
+    )
+
+
+def test_adversarial_extra_key():
+    if not KEYSET_GUARDS:
+        pytest.skip("spec carries no key-set guard on results.json")
+    with tempfile.TemporaryDirectory() as tmp:
+        mutant = _workspace_copy(tmp)
+        results = mutant / RESULTS_FILE
+        if not results.is_file():
+            pytest.skip("no results.json in this workspace")
+        data = json.loads(results.read_text(encoding="utf-8"))
+        data["unrequested_extra_key"] = 0
+        results.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+        failed = _failed(mutant)
+    assert failed & set(KEYSET_GUARDS), (
+        "injected an unrequested results.json key and the key-set guard "
+        f"{KEYSET_GUARDS} did not fail — extra output is unbounded"
+    )
+
+def test_memo_has_content_words():
+    """The memo must contain substantive content, not just tokens."""
+    memo_path = WORKSPACE / "campaign_review.md"
+    if not memo_path.is_file():
+        pytest.skip("no campaign_review.md")
+    import re
+    text = memo_path.read_text(encoding="utf-8")
+    words = re.findall(r"\b[A-Za-z][A-Za-z]{2,}\b", text)
+    stopwords = {"the", "and", "for", "with", "that", "this", "from",
+                 "are", "was", "but", "not", "all", "can", "has", "had",
+                 "its", "one", "two", "per", "out", "our", "who", "how",
+                 "did", "got", "set", "put", "let", "yet", "any", "own",
+                 "too", "run", "may", "way", "use", "few", "off"}
+    content_words = [w for w in words if w.lower() not in stopwords]
+    assert len(content_words) >= 30, (
+        f"memo has only {len(content_words)} content words; "
+        "a review note needs substance, not just tokens"
+    )
+    # Accept any valid single-part channel from the register
+    import csv as _csv
+    register_path = WORKSPACE / "shortfall_attribution.csv"
+    valid_channels = {}
+    if register_path.is_file():
+        with register_path.open(encoding="utf-8-sig", newline="") as fh:
+            for row in _csv.DictReader(fh):
+                pe = int(row["placements_effect_streams"])
+                ce = int(row["conversion_effect_streams"])
+                re = int(row["residual_reach_effect_streams"])
+                st = int(row["shortfall_to_target_streams"])
+                if st != 0 and sum(1 for x in [pe, ce, re] if x == 0) == 2:
+                    if pe != 0:
+                        valid_channels[row["channel_id"]] = "placements"
+                    elif ce != 0:
+                        valid_channels[row["channel_id"]] = "conversion"
+                    else:
+                        valid_channels[row["channel_id"]] = "residual"
+    paragraphs = text.split("\n\n")
+    found = False
+    for para in paragraphs:
+        for ch_id, part_name in valid_channels.items():
+            if ch_id in para and part_name in para.lower():
+                found = True
+                break
+        if found:
+            break
+    assert found, (
+        f"memo must name a single-part channel and its part in the same paragraph; "
+        f"valid channels: {valid_channels}"
+    )
+
+
+def test_memo_conversion_effect():
+    """The memo must name the conversion effect figure correctly."""
+    import re
+    memo_path = WORKSPACE / "campaign_review.md"
+    if not memo_path.is_file():
+        pytest.skip("no campaign_review.md")
+    text = memo_path.read_text(encoding="utf-8")
+    ce_value = 127928
+    ce_comma = format(ce_value, ",")
+    pattern = r"(?<![-\d.])(" + str(ce_value) + r"|" + ce_comma + r")(?!\d)(?!\.\d)"
+    assert re.search(pattern, text), "memo must contain conversion effect figure"
+
+
+def test_memo_counted_placements():
+    """The memo must name the counted placements figure correctly."""
+    import re
+    memo_path = WORKSPACE / "campaign_review.md"
+    if not memo_path.is_file():
+        pytest.skip("no campaign_review.md")
+    text = memo_path.read_text(encoding="utf-8")
+    cp_value = 96
+    cp_comma = format(cp_value, ",")
+    pattern = r"(?<![-\d.])(" + str(cp_value) + r"|" + cp_comma + r")(?!\d)(?!\.\d)"
+    assert re.search(pattern, text), "memo must contain counted placements figure"
+
+
+def test_memo_register_consistency():
+    """The memo's stated channel and figures must be consistent with the
+    agent's own register and results — prevents hollow/fabricated memos."""
+    import csv as _csv
+    import re as _re
+    memo_path = WORKSPACE / "campaign_review.md"
+    register_path = WORKSPACE / "shortfall_attribution.csv"
+    results_path = WORKSPACE / "results.json"
+    if not memo_path.is_file() or not register_path.is_file() or not results_path.is_file():
+        pytest.skip("missing deliverables")
+    memo_text = memo_path.read_text(encoding="utf-8").lower()
+    results = json.loads(results_path.read_text(encoding="utf-8"))
+    # Check: memo must mention the conversion effect total from results.json
+    ce = results.get("conversion_effect_streams")
+    if ce is not None:
+        assert str(ce) in memo_text or format(ce, ",") in memo_text, (
+            f"memo does not mention conversion effect total {ce}"
+        )
+    # Check: memo must mention the counted placements total from results.json
+    cp = results.get("counted_placement_count")
+    if cp is not None:
+        assert str(cp) in memo_text, (
+            f"memo does not mention counted placements total {cp}"
+        )
+    # Check: any channel named in the memo must exist in the register
+    with register_path.open(encoding="utf-8-sig", newline="") as fh:
+        register_rows = list(_csv.DictReader(fh))
+    register_channels = {r["channel_id"] for r in register_rows}
+    memo_channels = set(_re.findall(r"CH-\d+", memo_text.upper()))
+    for ch in memo_channels:
+        assert ch in register_channels, (
+            f"memo names channel {ch} which is not in the register"
+        )
+
+
+def test_memo_has_sentences():
+    """The memo must contain full sentences with verbs, not just fragments.
+    Rejects hollow memos that stuff keywords without coherent prose."""
+    import re
+    memo_path = WORKSPACE / "campaign_review.md"
+    if not memo_path.is_file():
+        pytest.skip("no campaign_review.md")
+    text = memo_path.read_text(encoding="utf-8")
+    sentences = re.split(r"[.!?]\s+(?:[A-Z#]|\n|$)", text)
+    real_sentences = [s.strip() for s in sentences if len(s.strip()) >= 20]
+    assert len(real_sentences) >= 5, (
+        f"memo has only {len(real_sentences)} substantive sentences; "
+        f"need at least 5 for a coherent review note"
+    )
+    verbs = ["is", "are", "was", "were", "sits", "falls", "lies", "stands",
+             "came", "went", "left", "drifted", "held", "ran", "shows",
+             "means", "tells", "leaves", "puts", "brings", "carries",
+             "closes", "read", "count", "state", "name"]
+    has_verb = any(re.search(r"\b" + v + r"\b", text.lower()) for v in verbs)
+    assert has_verb, "memo must contain at least one verb in a full sentence"
