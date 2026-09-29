@@ -10,12 +10,17 @@ All resources for working on Connector tasks. Compiled from Slack #shannon-conne
 |---|---|---|
 | **Main Guideline (5 tabs)** | https://docs.google.com/document/d/1nVBar4JGUSvADM-LCeXLrLGPCh5jlgwSZcYmKTr-1VQ/edit | `01-guideline-TOC.md` (full TOC extracted) |
 | **Main Tracker** | https://docs.google.com/spreadsheets/d/15iT-FxMS2ymoPn7bixNcb-d6m5NfnBWiKwu6za-1uOo/edit | `02-main-tracker.csv` (307 rows, all tasks) |
-| Non-Connector vs Connector Guidelines | docs.google.com/document/d/1my4Dan_ce38…/edit?tab=t.0 | (truncated URL — need full link) |
-| Company Bench Golden Analysis | docs.google.com/document/d/1W3JqkOW3Qsc…/edit?tab=t.0 | (truncated URL — need full link) |
-| Company Bench/Connector Tasks Guideline | docs.google.com/document/d/1jdmYao4I8HQ…/edit?tab=t.0 | (truncated URL — need full link) |
-| Findings collection | docs.google.com/document/d/1_bqiPgXY-3d…/edit?tab=t.0 | (truncated URL — need full link) |
-| Common issues | docs.google.com/document/d/1YKhvNcIce56…/edit?tab=t.0 | (truncated URL — need full link) |
-| Additional doc | docs.google.com/document/d/14Lk44mmisI2…/edit?tab=… | (truncated URL — need full link) |
+| Non-Connector vs Connector (Consolidated Findings) | https://docs.google.com/document/d/1my4Dan_ce38NaFM7ZbIAJkMN7uUFerEfU9qxNhyg9GI/edit?tab=t.0 | `06-consolidated-team-findings.md` |
+| Company Bench Golden Analysis | https://docs.google.com/document/d/1W3JqkOW3QscGi3B0qwFHXBvZghpg85P2UdhwNmExgtA/edit?tab=t.0 | `07-golden-task-analysis.md` |
+| Company Bench/Connector Tasks Guideline | https://docs.google.com/document/d/1jdmYao4I8HQdHZikLu2PmPz1Ye_JJC9EBpW2YfR-TgM/edit?tab=t.0 | `08-connector-tasks-guidelines.md` |
+| Findings collection | https://docs.google.com/document/d/1_bqiPgXY-3dqjdunCemyKysYrQXgub8-arurf53rObI/edit?tab=t.0 | Working doc (team findings) |
+| Common issues | https://docs.google.com/document/d/1YKhvNcIce56Qoe3la-ZL2b09eF0zglliBHUtCiw-lKY/edit?tab=t.0 | Tab 4 of `05-foundation-guidelines-complete.md` |
+| Trainer Guidelines (alt version) | https://docs.google.com/document/d/14Lk44mmisI2V007uRljtzOa8P8gPqgnyv5fE4ZEs-Zc/edit?tab=t.4l31xitik0r1 | Same as `05-foundation-guidelines-complete.md` |
+| Demo transcription | https://docs.google.com/document/d/1jUYMAv3f9_f2WhrWZ4x31y_WgzWN9_fRfdEaNHvVREY/edit?usp=sharing | `04-demo-notes-transcript.md` |
+| Demo recording (video) | https://drive.google.com/file/d/15kwFsafmXrGXizSS83M1pES7Ym-k77_8/view?usp=sharing | Notes in `04-demo-notes-transcript.md` |
+| Main Guideline (5 tabs) | https://docs.google.com/document/d/1nVBar4JGUSvADM-LCeXLrLGPCh5jlgwSZcYmKTr-1VQ/edit | `05-foundation-guidelines-complete.md` |
+| Main Tracker | https://docs.google.com/spreadsheets/d/15iT-FxMS2ymoPn7bixNcb-d6m5NfnBWiKwu6za-1uOo/edit | `02-main-tracker.csv` |
+| Slack Canvas | https://turing-company.slack.com/docs/T8YAVN6JJ/F0C4WD2J2SH | — |
 
 ## Golden reference tasks (accepted by client)
 
