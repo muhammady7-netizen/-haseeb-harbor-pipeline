@@ -642,7 +642,7 @@
       },
       "assertion": {
         "type": "deterministic",
-        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[\\s\\S]{0,200}?\\b(?:127928|44,823)\\b|\\b(?:127928|44,823)\\b[\\s\\S]{0,200}?\\bconversion[\\s*]+effect\\b)",
+        "expected": "(?is)(?:\\bconversion[\\s*]+effect\\b[\\s\\S]{0,200}?\\b(?:127928|127,928)\\b|\\b(?:127928|127,928)\\b[\\s\\S]{0,200}?\\bconversion[\\s*]+effect\\b)",
         "deterministic": {
           "path": "$.text",
           "comparison": "regex_match"
