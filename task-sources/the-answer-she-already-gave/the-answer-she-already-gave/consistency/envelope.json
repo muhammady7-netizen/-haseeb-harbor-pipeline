@@ -1,0 +1,21 @@
+{
+  "method": "RENDERER_N=3, real calls to claude-opus-5 via the live Anthropic API, single turn, no gym. Each given instruction.md PLUS the current gold values directly (not solving, just producing the deliverable). Raw transcripts in renderers_raw.json. Regenerated after the window-width fix (real_meetings_count 4, fully_confirmed_count 2) to keep the evidence file honestly matched to the CURRENT gold values, not a stale draft's.",
+  "what_varied": {
+    "json_shape": [
+      "renderer 1: exact 8-key object, wrapped in a ```json code fence",
+      "renderer 2: exact 8-key object, wrapped in a ```json code fence",
+      "renderer 3: exact 8-key object, wrapped in a ```json code fence"
+    ],
+    "key_order": "identical across all three renderers - real_meetings_count, fully_confirmed_count, still_pending_count, declined_required_count, still_pending_meeting, still_pending_attendee_email, declined_meeting, declined_attendee_email",
+    "value_formatting": "all three renderers emitted the four counts as bare JSON integers (no renderer chose to quote them or use a float like 4.0) and the four string fields as plain double-quoted strings, byte-identical across all three",
+    "surrounding_commentary": "none of the three added any commentary outside the JSON object itself, despite the prompt not explicitly forbidding it"
+  },
+  "tolerance_policy_check": {
+    "key_name": "pinned - all 8 keys are named explicitly in the instruction, and all three renderers independently used exactly those names with no variation",
+    "key_order": "free - the file_check assertions use a JSONPath equals on each key individually ($.real_meetings_count etc.), not a positional/ordered comparison, verified against all three renderers which happened to agree on order anyway",
+    "value_type": "free within reason (int vs numeric string) but not exercised here - all three renderers agreed on bare integers for the four counts and plain strings for the four identifiers, so no renderer produced a case that would have tested the deterministic 'equals' comparison's numeric-vs-string tolerance - separately exercised for real by consistency/mutations.json's control_4_cosmetic run (int -> float), which passed with reward 1.0",
+    "wrapping_or_fencing": "free - a real agent write via a file-write tool would not include markdown fencing at all (the code fence on all three renderers here is an artifact of chat-completion formatting, not something the JSON file source type needs to tolerate in practice, but the json file-type reader in tests/rl_world_verifiers/sources/json.py parses the file's own bytes directly, not chat output, so this variation is not actually reachable in a real run)",
+    "extra_keys_or_sections": "not exercised - the instruction explicitly says 'exactly these keys and no others', and none of the three renderers added an extra key, so this constraint was never tested to its limit by this batch of renderers alone (it is separately covered by control_3_granularity's mutation in mutations.json, though that mutation tests a wrong VALUE rather than an extra key specifically)"
+  },
+  "brittleness_risk_found": "none within what this renderer batch actually varied - the deliverable's flat, fully-pinned 8-key schema leaves very little surface for an honest renderer to vary (unlike a free-prose report.md), so the observed variation (none beyond formatting) is cosmetic and does not touch anything a real workspace-file write would produce. The genuinely load-bearing brittleness question for this task - whether extra keys, different value types, or reordered keys would still pass - is exercised for real by consistency/mutations.json's control_4_cosmetic run instead, which is the more decisive test for a JSON-only deliverable like this one and which passed with reward 1.0 against a real oracle run."
+}

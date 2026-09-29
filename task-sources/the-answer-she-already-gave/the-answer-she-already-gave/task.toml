@@ -1,0 +1,89 @@
+schema_version = "1.1"
+
+[task]
+name = "harbor/the-answer-she-already-gave"
+description = "the answer she already gave"
+keywords = [ "harbor",]
+
+[[task.authors]]
+name = "OBI RL Gym"
+email = "obi-rl-gym@turing.com"
+
+[metadata]
+scenario_name = "the answer she already gave"
+scenario_description = "=== INTENT ===\nMeeting-confirmation audit over a one-week window on the email-calendar-gym, with a\ntargeted confirmation-chase write-back. Mined from a client calendar-event-management\ntrajectory (searching upcoming events across email and calendar, then acting on a finding\nby creating/sending something new). Kept: reading real confirmation-status signal out of a\ncalendar that mixes real meetings with holds and out-of-office blocks, then drafting a\ntargeted follow-up from the finding. Dropped: the seed's specific family-calendar/camp\nsubject matter, which has no counterpart in this corpus.\n\n=== CONNECTOR ===\nemail-calendar-gym on container port 8016. Acting user 3cfb0d53-9e5e-4c40-9eaa-a1086697b05b\n(Nathan Thomas, nathan.thomas@maplewoodhospital.org, timezone America/Chicago). Header\nx-email-calendar-user-token with the token in metadata.mcp_servers_extended.access_token\n(the user's static_token row - static_token was chosen because it carries no embedded JWT\nexpiry, unlike the per-session token column). Tenancy header x-database-id; the proxy mints\na per-run database id and seeds it through /reset from the gym's built-in synthetic snapshot\n(GYM_DATASET=synthetic).\n\n=== WINDOW CHOICE (revised 2026-09-13 after a harbor_check finding) ===\nThe window is deliberately ONE WEEK (2026-05-19T00:00:00-05:00 to 2026-05-26T00:00:00-05:00,\nexclusive), not two. This user has two separate weekly recurring event series both titled\n'Weekly Risk Sync' (event_ids 721aab2d and 2b99b82f, each carrying its own\nrecurrence=[\"RRULE:FREQ=WEEKLY;COUNT=6\"]). A two-week window pulls in a SECOND expanded\noccurrence of each series (05-26 and 05-28), which the served search_calendar response returns\nas separate rows with recurring_event_id pointing back to the master - confirmed live against\nthe pinned image on 2026-09-13 (search_calendar over 05-19..06-02 returns 16 rows, not 14,\nincluding these two extra occurrences). Whether a recurring series should then be counted once\nor once per occurrence is a real, undisclosed judgment call that instruction.md does not resolve\n(a genuine finding from this task's own first harbor_check round). The one-week window sidesteps\nthe question entirely and honestly: confirmed live that search_calendar over 05-19..05-26 returns\nexactly 9 rows, with EVERY entry (including both Weekly Risk Sync masters) appearing exactly\nonce, so no recurring-series-collapsing rule is ever load-bearing. This is the fix, not a\nworkaround - the alternative (disclosing a series-collapsing rule in the instruction) would add a\nrule this connector's other mined tasks do not need and this specific data does not require once\nthe window excludes the second occurrence.\n\n=== HOPS ===\nhops=5, chain_depth=3, over 6 steps. This connector's own documented ceiling: search_calendar\nhands back full event objects (status, eventType, attendees all embedded) in one call, so there\nis no per-item fan-out to make artificially deeper - the same shallow-chain reality recorded\nagainst every email_calendar task mined so far in this batch (one search call already returns\nthe whole calendar window). Declared honestly rather than padded:\n  search_calendar (window)                    1  (foundational - returns all 9 events with\n                                                    organizer_email, status, eventType and\n                                                    attendees already embedded, not a hop itself)\n  search_calendar (2026-05-21 only)           1  (depends on step 1's classification - narrows to\n                                                    confirm Skip Level 1:1's exact attendee list\n                                                    and Morgan Thompson's declined status)\n  search_calendar (2026-05-22 only)           1  (depends on step 1's classification - narrows to\n                                                    confirm Technical Interview's exact attendee\n                                                    list and Morgan Thompson's tentative status)\n  search_email (Morgan Thompson)              1  (depends on steps 2-3's finding that the same\n                                                    person carries two different responses -\n                                                    confirms there is no existing thread with her\n                                                    to reply into, so the write-back must be a new\n                                                    draft, not a reply)\n  draft_email (confirmation chase)            1  (depends on step 3's confirmed still-tentative\n                                                    meeting and step 4's confirmation there is no\n                                                    thread to reply into - the write-back)\nComputed from the depends_on graph in solution/golden_trajectory.json under strict argument\nprovenance: a step depends only on the steps whose OUTPUT supplied its arguments. A genuine\nhonest floor (tool_execution, minimum_tool_calls) is set to 2, matching\nconsistency/shortcut_audit.md's own proven shortest passing path (one bulk read + the write),\nnot padded above it.\n\n=== HIDDEN RULES ===\n(the agent must infer these; none of them is stated in the prompt)\n  - A MEETING I RUN IS eventType='default' AND status='confirmed' AND organizer_self=1 (Nathan\n    is the organizer, not just an invitee). 'Backlog Grooming' (05-22) and 'Flexible Location'\n    (05-23) and the 'Hybrid' block (05-23) all sit on Nathan's calendar but are organized by\n    someone else - they are other people's commitments showing up on his calendar, not meetings\n    he runs.\n  - TENTATIVE IS NOT YET REAL. 'Backlog Grooming' (default/tentative, also not his to begin\n    with) and 'Story Refinement' (05-22, default/tentative, organized by Nathan) are not yet\n    confirmed meetings, even though 'Story Refinement' reads like an ordinary work meeting and\n    Nathan organizes it.\n  - REQUIRED VS OPTIONAL: only a non-optional (required) attendee's response can make a meeting\n    not-fully-confirmed. Optional attendees who are tentative or have not responded (Nicole\n    Washington on both Skip Level 1:1 and Technical Interview, Cynthia Nelson on Technical\n    Interview, Natalie Gardner on the first Weekly Risk Sync) never block anything and must\n    never become the target of the write-back.\n  - THE CENTRAL TRAP: a DECLINE is a definitive, already-resolved answer, not an outstanding\n    reply. Morgan Thompson is a required attendee on two different real meetings Nathan runs -\n    she has DECLINED 'Skip Level 1:1' (05-21) but is still TENTATIVE on 'Technical Interview'\n    (05-22). A method that treats every non-'accepted' response the same either chases her about\n    the meeting she already declined (wrong - she gave her answer, there is nothing to follow up\n    on) or merges the two meetings into one bucket and miscounts both the still-pending and the\n    already-declined tallies. Only the tentative one is genuinely still open.\n  - Both events titled 'Weekly Risk Sync' (05-19 and 05-21) are each the master row of their own\n    separate weekly recurring series (recurrence=RRULE:FREQ=WEEKLY;COUNT=6 on each), but this\n    one-week window includes only the first occurrence of each, so they are simply two distinct,\n    separate meetings within this window - no series-collapsing judgment call is load-bearing\n    here (see WINDOW CHOICE above).\n\n=== GOLD ===\n(grader metadata, NOT shown to the agent. Every figure below was derived by SQL against\n/gyms/email_calendar/app/data/Synthetic_db.db AND reproduced through the served gym (real\nsearch_calendar call, not the raw DB row view) as the acting user against the pinned image on\n2026-09-13. Both surfaces agree on every figure for THIS window.)\n\n{\n  \"window\": \"2026-05-19T00:00:00 to 2026-05-26T00:00:00, America/Chicago\",\n  \"total_calendar_entries_served\": 9,\n  \"real_meetings_count\": 4,\n  \"fully_confirmed_count\": 2,\n  \"still_pending_count\": 1,\n  \"declined_required_count\": 1,\n  \"still_pending_meeting\": \"Technical Interview\",\n  \"still_pending_attendee_email\": \"morgan.thompson@maplewoodhospital.org\",\n  \"declined_meeting\": \"Skip Level 1:1\",\n  \"declined_attendee_email\": \"morgan.thompson@maplewoodhospital.org\"\n}\n\nThe four real meetings (title, date, start-end, required attendees, verdict): Weekly Risk Sync\n05-19 16:00-18:00 (Nathan, Catherine Morgan, Nathan Boyd required, Natalie Gardner optional) -\nfully confirmed. Weekly Risk Sync 05-21 16:30-19:30 (Nathan, Nancy Garcia required) - fully\nconfirmed. Skip Level 1:1 05-21 17:34-18:04 (Nathan, Noah Brooks, Morgan Thompson, Olivia Myers\nrequired, Nicole Washington optional) - Morgan Thompson DECLINED, so declined-required, not\nfully confirmed. Technical Interview 05-22 16:00-17:00 (Nathan, Morgan Thompson required, Nicole\nWashington and Cynthia Nelson optional) - Morgan Thompson TENTATIVE, so still-pending, not fully\nconfirmed.\n\nThe five excluded entries in the window (title, why): Backlog Grooming (default/tentative,\norganized by nancy.garcia, not Nathan), Story Refinement (default/tentative, organized by\nNathan), Concentration Time (focusTime), Flexible Location (workingLocation, organized by\nnoah.brooks), Hybrid - Morning Office / Afternoon Home (workingLocation, organized by\nnancy.garcia).\n\nWrite-back: create ONE new draft (draft_email, never send_email) addressed to\nmorgan.thompson@maplewoodhospital.org, whose subject names 'Technical Interview' and whose\nsubject does NOT name 'Skip Level' anywhere, asking her to confirm attendance since she is still\nmarked tentative. No existing thread involves her, so this is a fresh draft, not a reply.\n\n=== DECOYS ===\n(one line per graded figure: the wrong value a plausible method yields; the same list as each\nverifier's metadata.why_justification, and every one of them proven against the corpus to differ\nfrom gold.)\n  real_meetings_count = 4\n      count every calendar entry in the window, no filtering at all                    -> 9\n      count every eventType='default' entry regardless of status or organizer (folds in\n        the tentative Backlog Grooming and Story Refinement)                           -> 6\n      count every status='confirmed' entry regardless of type or organizer (folds in the\n        two workingLocation blocks)                                                    -> 6\n  still_pending_count = 1, declined_required_count = 1\n      treat every non-'accepted' required response the same (declined counted as\n        pending too)                                                                   -> still_pending_count 2, declined_required_count 0\n      count optional attendees' non-acceptance as blocking too (Cynthia Nelson on\n        Technical Interview, Nicole Washington on Skip Level 1:1) - does not change the\n        totals here since both meetings are already flagged for their required attendee,\n        but changes who the write-back could wrongly target\n  write-back target = Technical Interview / morgan.thompson@maplewoodhospital.org\n      draft the confirmation chase to Morgan Thompson but reference 'Skip Level 1:1'\n        instead (chasing an answer she already gave)\n      draft to Cynthia Nelson or Nicole Washington instead (optional attendees, never\n        blocking, never the right target)\n\n=== SEED ===\nAdapted from a real client calendar-event-management trajectory (using a calendar skill to find\nexisting invites, then creating/enriching a calendar artifact from what was found); entities,\ndates and the specific classification/confirmation mechanism are this corpus's own, not the\nclient's.\n"
+
+source_task_id = "aster-email-calendar8b-meeting-confirmation-audit-2026-09-13"
+state_snapshot_enabled = false
+# metadata.agent left unset: setting it to "oracle" lets test_outputs.py score
+# a crashed agent against golden_trajectory.json.
+
+[[metadata.mcp_servers_extended]]
+name = "email-calendar-gym"
+image = "us-central1-docker.pkg.dev/delivery-g-obi/connectors-rl-gym/connectors-harness@sha256:b1374cd8a392ea66f9a649e700a1498e8fcb03ee35776362db7cc15dc3049b89"
+host_port = 8016
+container_port = 8016
+remote_url_env = "EMAIL_CALENDAR_GYM_MCP_REMOTE_URL"
+auth_header_name = "x-email-calendar-user-token"
+access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhcGkiLCJleHAiOjE3ODYwNTMzMjksImlhdCI6MTc1NDUxNzMyOSwiaXNzIjoibXNkMzY1IiwianRpIjoiYWNhOTJlMDU0YjA2Iiwic3ViIjoibmF0aGFuLnRob21hc0BtYXBsZXdvb2Rob3NwaXRhbC5vcmcifQ.f_F_GdedlQpKbBFcLyhn5zNBdW94lSUf_F7FfM_FQDI"
+db_id_header_name = "x-database-id"
+reset_on_run = true
+
+[solution.env]
+# HARBOR-LOCAL: injected by harbor ONLY around the oracle replay exec
+# (solution/solve.py), never into a real agent run - see solve.py and
+# environment/mcp/proxy/server.py for why this is the mechanism that lets the
+# oracle authenticate to the trusted /raw/{gym}/state and /raw/{gym}/step
+# routes while a real agent (same non-root OS user, confirmed live) cannot.
+INTERNAL_VERIFIER_SECRET = "7b1c9f0a4e6d2c8b5a3f1e9d7c6b4a2f0e8d6c4b2a9f7e5d3c1b0a9f8e7d6c5b"
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 4800.0
+# Non-root agent user; /app is root-only so the agent can't read
+# task.toml/solution/tests off disk.
+user = "rlgymagent"
+
+[environment]
+build_timeout_sec = 1200.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 65536
+gpus = 0
+allow_internet = true
+
+[[environment.mcp_servers]]
+name = "email-calendar-gym"
+transport = "streamable-http"
+url = "http://localhost:7000/mcp/email-calendar-gym"
+args = []
+
+[metadata.verifier_judge]
+# JUDGE_MODEL can override the default without editing the generated package.
+# Do not hardcode a model id here: different deployments resolve different ids.
+model = "${JUDGE_MODEL:-openai/zai-org/GLM-5.2}"
+api_key_env = "OPENAI_API_KEY"
+temperature = 0.0
+max_tokens = 65536
+
+[verifier.env]
+OPENAI_API_KEY = "${OPENAI_API_KEY:-}"
+OPENAI_BASE_URL = "${OPENAI_BASE_URL:-}"
+JUDGE_MODEL = "${JUDGE_MODEL:-openai/zai-org/GLM-5.2}"
+
+[environment.healthcheck]
+command = "curl -fsS http://localhost:7000/health"
+interval_sec = 15.0
+timeout_sec = 5.0
+retries = 40
+start_period_sec = 30.0
+start_interval_sec = 15.0
+
+[environment.env]
+HARBOR_MCP_MODE = "${HARBOR_MCP_MODE:-docker}"
+OPENAI_API_KEY = "${OPENAI_API_KEY:-}"
+GEMINI_API_KEY = "${GEMINI_API_KEY:-}"
+EMAIL_CALENDAR_GYM_MCP_REMOTE_URL = "${EMAIL_CALENDAR_GYM_MCP_REMOTE_URL:-}"
+EMAIL_CALENDAR_GYM_MCP_REMOTE_URL_TOKEN = "${EMAIL_CALENDAR_GYM_MCP_REMOTE_URL_TOKEN:-}"

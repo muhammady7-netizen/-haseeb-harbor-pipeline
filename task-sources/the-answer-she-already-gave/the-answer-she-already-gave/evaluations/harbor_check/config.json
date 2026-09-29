@@ -1,0 +1,22 @@
+{
+    "task": {
+        "path": "/tmp/harbor-check-q_oj16vg/check-task"
+    },
+    "trial_name": "check-task__7mHMm5G",
+    "trials_dir": "work/review/email8b-check-2",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5",
+        "kwargs": {
+            "reasoning_effort": "medium"
+        }
+    },
+    "environment": {
+        "type": "docker",
+        "kwargs": {
+            "keepalive": null
+        }
+    },
+    "job_id": "7f429f66-b88f-410a-99ac-4c3d0844c77a"
+}

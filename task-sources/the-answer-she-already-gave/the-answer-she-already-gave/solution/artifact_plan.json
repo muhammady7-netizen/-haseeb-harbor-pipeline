@@ -1,0 +1,14 @@
+{
+  "json_path": "meeting_confirmation_audit.json",
+  "json": {
+    "real_meetings_count": 4,
+    "fully_confirmed_count": 2,
+    "still_pending_count": 1,
+    "declined_required_count": 1,
+    "still_pending_meeting": "Technical Interview",
+    "still_pending_attendee_email": "morgan.thompson@maplewoodhospital.org",
+    "declined_meeting": "Skip Level 1:1",
+    "declined_attendee_email": "morgan.thompson@maplewoodhospital.org",
+    "pending_attendee_has_other_response": true
+  }
+}

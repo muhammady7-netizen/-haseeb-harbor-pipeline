@@ -1,0 +1,280 @@
+[
+  {
+    "requirement_id": "real_meetings_count",
+    "ask": "the count of calendar entries in the 2026-05-19 to 2026-05-26 window that are genuine meetings Nathan is organizing (organizer_email=nathan.thomas, eventType default, status confirmed)",
+    "prompt_span": "how many meetings I am actually running in the window",
+    "surface": "meeting_confirmation_audit.json",
+    "expected": 4,
+    "tolerance": {
+      "value": "pinned",
+      "key_name": "pinned (named explicitly in the instruction)",
+      "order": "free",
+      "extra_keys": "not allowed (instruction says exactly these keys and no others)"
+    },
+    "graded_by": [
+      "real_meetings_count"
+    ],
+    "evidence_path": [
+      "search_calendar (2026-05-19T00:00:00-05:00 to 2026-05-26T00:00:00-05:00, queries=[])"
+    ],
+    "reachability": "proven via the live proxy: one search_calendar call returns all 9 events for this user in the window, each with organizer_email, status and eventType embedded",
+    "discrimination": [
+      {
+        "wrong_method": "count every calendar entry in the window with no filtering at all",
+        "yields": 9
+      },
+      {
+        "wrong_method": "count every eventType='default' entry regardless of status or organizer",
+        "yields": 6
+      },
+      {
+        "wrong_method": "count every status='confirmed' entry regardless of type or organizer",
+        "yields": 6
+      }
+    ]
+  },
+  {
+    "requirement_id": "fully_confirmed_count",
+    "ask": "how many of the real meetings have every required (non-optional) attendee accepted",
+    "prompt_span": "how many of those have every required attendee accepted",
+    "surface": "meeting_confirmation_audit.json",
+    "expected": 2,
+    "tolerance": {
+      "value": "pinned",
+      "key_name": "pinned",
+      "order": "free",
+      "extra_keys": "not allowed"
+    },
+    "graded_by": [
+      "fully_confirmed_count"
+    ],
+    "evidence_path": [
+      "search_calendar (same bulk window call - attendees with optional/responseStatus already embedded)"
+    ],
+    "reachability": "proven live: Weekly Risk Sync (05-19) and Weekly Risk Sync (05-21) each have every required attendee accepted",
+    "discrimination": [
+      {
+        "wrong_method": "count an optional attendee's non-acceptance as blocking",
+        "yields": "does not change this specific count in this corpus (the only optional non-acceptance, Nicole Washington, sits on meetings already excluded by a required attendee), but is separately caught by no_draft_to_optional_attendees"
+      }
+    ]
+  },
+  {
+    "requirement_id": "still_pending_count",
+    "ask": "how many real meetings have a required attendee genuinely still undecided (tentative or no response)",
+    "prompt_span": "someone whose response is still tentative or has not responded at all is genuinely still undecided",
+    "surface": "meeting_confirmation_audit.json",
+    "expected": 1,
+    "tolerance": {
+      "value": "pinned",
+      "key_name": "pinned",
+      "order": "free",
+      "extra_keys": "not allowed"
+    },
+    "graded_by": [
+      "still_pending_count",
+      "still_pending_meeting_name",
+      "still_pending_attendee_email_value"
+    ],
+    "evidence_path": [
+      "search_calendar (2026-05-22 narrow, confirms Morgan Thompson tentative on Technical Interview)"
+    ],
+    "reachability": "proven live: Technical Interview's required attendee Morgan Thompson carries responseStatus=tentative",
+    "discrimination": [
+      {
+        "wrong_method": "treat Morgan Thompson's decline on Skip Level 1:1 as also still-pending",
+        "yields": 2
+      }
+    ]
+  },
+  {
+    "requirement_id": "declined_required_count",
+    "ask": "how many real meetings have a required attendee who has already declined",
+    "prompt_span": "someone who has DECLINED has already given a definitive answer and is not still waiting on anything",
+    "surface": "meeting_confirmation_audit.json",
+    "expected": 1,
+    "tolerance": {
+      "value": "pinned",
+      "key_name": "pinned",
+      "order": "free",
+      "extra_keys": "not allowed"
+    },
+    "graded_by": [
+      "declined_required_count",
+      "declined_meeting_name",
+      "declined_attendee_email_value"
+    ],
+    "evidence_path": [
+      "search_calendar (2026-05-21 narrow, confirms Morgan Thompson declined on Skip Level 1:1)"
+    ],
+    "reachability": "proven live: Skip Level 1:1's required attendee Morgan Thompson carries responseStatus=declined",
+    "discrimination": [
+      {
+        "wrong_method": "treat every non-accepted required response the same (merge declined into still-pending)",
+        "yields": 0
+      }
+    ]
+  },
+  {
+    "requirement_id": "confirmation_draft_created",
+    "ask": "create a new email draft (never send it) addressed to the still-undecided required attendee, subject naming the still-pending meeting and not the declined meeting",
+    "prompt_span": "draft an email (do not send it) to that attendee asking them to confirm their attendance",
+    "surface": "email-calendar-gym messages/drafts tables (write-back)",
+    "expected": {
+      "to": "morgan.thompson@maplewoodhospital.org",
+      "subject_contains": "Technical Interview",
+      "subject_excludes": "Skip Level"
+    },
+    "tolerance": {
+      "value": "pinned target and subject constraint",
+      "key_name": "n/a",
+      "order": "n/a",
+      "extra_keys": "n/a"
+    },
+    "graded_by": [
+      "draft_created_to_morgan_about_technical_interview",
+      "no_draft_chases_the_declined_meeting",
+      "no_draft_to_optional_attendees",
+      "mailbox_holds_seed_plus_one"
+    ],
+    "evidence_path": [
+      "search_email (Morgan Thompson - confirms no existing thread to reply into)",
+      "draft_email (to=[morgan.thompson@maplewoodhospital.org], subject naming Technical Interview)"
+    ],
+    "reachability": "proven live: the real oracle run (job email8b-oracle-1) created this exact draft through the sanctioned MCP interface and every database_state SQL check found it",
+    "discrimination": [
+      {
+        "wrong_method": "draft to Morgan Thompson but reference Skip Level 1:1 instead",
+        "yields": "chasing an answer she already gave"
+      },
+      {
+        "wrong_method": "draft to an optional attendee (Nicole Washington or Cynthia Nelson) instead",
+        "yields": "optional attendees never block a meeting and are never the right target"
+      },
+      {
+        "wrong_method": "send instead of draft",
+        "yields": "forbidden_tools blocks send_email outright at the trajectory level"
+      }
+    ]
+  },
+  {
+    "requirement_id": "calendar_untouched_floor",
+    "ask": "this is an audit-plus-email task, not a calendar write-back - the calendar must be left exactly as found",
+    "prompt_span": null,
+    "surface": "email-calendar-gym events table",
+    "expected": 14,
+    "tolerance": {
+      "value": "pinned",
+      "key_name": "n/a",
+      "order": "n/a",
+      "extra_keys": "n/a"
+    },
+    "graded_by": [
+      "calendar_untouched"
+    ],
+    "evidence_path": [
+      "n/a - negative/floor check"
+    ],
+    "reachability": "n/a - process check, category process",
+    "discrimination": []
+  },
+  {
+    "requirement_id": "real_meetings_count_floor",
+    "ask": "process floor - the answer has to come from a real read and a real write, not be fabricated",
+    "prompt_span": null,
+    "surface": "tool call trace",
+    "expected": ">=2 tool calls",
+    "tolerance": {
+      "value": "n/a",
+      "key_name": "n/a",
+      "order": "n/a",
+      "extra_keys": "n/a"
+    },
+    "graded_by": [
+      "the_search_and_write_actually_ran"
+    ],
+    "evidence_path": [
+      "n/a - process check"
+    ],
+    "reachability": "n/a - process check, category process",
+    "discrimination": []
+  },
+  {
+    "requirement_id": "real_meetings_count_method",
+    "ask": "a meeting Nathan runs must be told apart from everything else using the entry's own organizer/eventType/status fields, not its title text",
+    "prompt_span": "A meeting counts as one I'm running only if I am the organizer, it is a genuine meeting ... and it is actually confirmed",
+    "surface": "agent trace (method rubric)",
+    "expected": "holds on a genuine solve (judged, not a literal reference shown to the judge)",
+    "tolerance": {
+      "value": "n/a - judged, not pinned",
+      "key_name": "n/a",
+      "order": "n/a",
+      "extra_keys": "n/a"
+    },
+    "graded_by": [
+      "real_meeting_classified_by_structural_fields"
+    ],
+    "evidence_path": [
+      "n/a - rubric_check target=trace, graded post-hoc against the agent's own tool-call transcript"
+    ],
+    "reachability": "n/a - rubric check",
+    "discrimination": [
+      {
+        "wrong_method": "classify by title keywords alone",
+        "yields": "folds in Backlog Grooming or drops Story Refinement incorrectly since they read like plausible meeting titles"
+      }
+    ]
+  },
+  {
+    "requirement_id": "decline_vs_tentative_method",
+    "ask": "a decline must be reasoned about as a resolved, already-answered case, distinct from a genuinely still-open tentative response",
+    "prompt_span": "someone who has DECLINED has already given a definitive answer and is not still waiting on anything",
+    "surface": "agent trace (method rubric)",
+    "expected": "holds on a genuine solve (judged, not a literal reference shown to the judge)",
+    "tolerance": {
+      "value": "n/a - judged, not pinned",
+      "key_name": "n/a",
+      "order": "n/a",
+      "extra_keys": "n/a"
+    },
+    "graded_by": [
+      "decline_vs_tentative_correctly_distinguished"
+    ],
+    "evidence_path": [
+      "n/a - rubric_check target=trace"
+    ],
+    "reachability": "n/a - rubric check",
+    "discrimination": [
+      {
+        "wrong_method": "treat decline and tentative identically",
+        "yields": "either chases the declined meeting or drops the still-pending one, or miscounts both buckets"
+      }
+    ]
+  },
+  {
+    "requirement_id": "conclusion",
+    "ask": "the final reply must state a genuine conclusion, not just report that files were written",
+    "prompt_span": "State your conclusion in your reply",
+    "surface": "final chat reply",
+    "expected": "holds on a genuine solve (judged, not a literal reference shown to the judge)",
+    "tolerance": {
+      "value": "n/a - judged, not pinned",
+      "key_name": "n/a",
+      "order": "n/a",
+      "extra_keys": "n/a"
+    },
+    "graded_by": [
+      "final_reply_states_a_genuine_conclusion"
+    ],
+    "evidence_path": [
+      "n/a - rubric_check target=final_answer"
+    ],
+    "reachability": "n/a - rubric check",
+    "discrimination": [
+      {
+        "wrong_method": "reply only confirms files were written / task complete",
+        "yields": "FAIL - no substantive conclusion named"
+      }
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+[1/6] email-calendar-gym.search_calendar
+[2/6] email-calendar-gym.search_calendar
+[3/6] email-calendar-gym.search_calendar
+[4/6] email-calendar-gym.search_email
+[5/6] email-calendar-gym.draft_email
+[6/6] email-calendar-gym.search_calendar
+wrote captured responses to /tmp/tmp.4ZX2uVagBM/solution/golden_trajectory.json
+mirrored to /logs/verifier/golden_trajectory.json (for daytona artifact pull)
+wrote meeting_confirmation_audit.json keys ['declined_attendee_email', 'declined_meeting', 'declined_required_count', 'fully_confirmed_count', 'real_meetings_count', 'still_pending_attendee_email', 'still_pending_count', 'still_pending_meeting']
