@@ -1,0 +1,118 @@
+{
+  "method": "All four controls run through the REAL benchmark_runner path - a genuine harbor run -a oracle --n-attempts 1 against the live gym for each variant, not a local re-score. Each control edited solution/artifact_plan.json (the exact file write_artifacts.py stages into /workspace), ran a real oracle job under a new --job-name, and was reverted to the byte-identical original (diff-confirmed) before the next control. A final oracle re-run (job email8b-oracle-final-v2) after the last revert confirmed reward 1.0 on the clean bundle again, and evaluations/oracle/ is built from the separate email8b-oracle-fix1 run (the same unmodified artifact_plan.json, run immediately before this battery to confirm the corrected 1-week-window design).",
+  "control_1_positive": {
+    "mutation": "none - the oracle's own unmodified artifact_plan.json",
+    "job": "email8b-oracle-fix1 (evaluations/oracle/ is built from this run) and email8b-oracle-final-v2 (re-confirmed after the mutation battery reverted every edit)",
+    "result": "reward 1.0 on both runs, all 18 verifier_configs passed (8 file_check on the JSON's 8 keys, 5 database_state on the write-back and mailbox/calendar integrity, 1 tool_execution floor, 3 rubric_check) - see evaluations/oracle/verifier/reward.txt and verifier_summary.json for the exact run this evidence is drawn from.",
+    "required_outcome_met": true
+  },
+  "control_2_semantic": {
+    "mutation": "meeting_confirmation_audit.json's real_meetings_count changed from the correct 4 to the plausible-wrong 3. Every other field left untouched.",
+    "job": "email8b-mut-semantic-v2",
+    "result": "reward 0.9355. verifier_summary.json confirms exactly ONE verifier failed - real_meetings_count (passed: false) - and 17 of 18 other verifiers still show passed: true, including the other 7 file_check fields, all 5 database_state write-back checks, the tool_execution floor and all 3 rubric_checks.",
+    "required_outcome_met": true
+  },
+  "control_3_granularity": {
+    "mutation": "meeting_confirmation_audit.json's still_pending_meeting changed from the correct 'Technical Interview' to the wrong 'Skip Level 1:1' (the declined meeting's title). Every other field, including still_pending_attendee_email, left untouched.",
+    "job": "email8b-mut-granularity-v2",
+    "result": "reward 0.9355. verifier_summary.json confirms exactly ONE verifier failed - still_pending_meeting_name (passed: false) - real_meetings_count, fully_confirmed_count, still_pending_count, declined_required_count, still_pending_attendee_email_value, declined_meeting_name, declined_attendee_email_value, all 5 database_state checks, the tool_execution floor and all 3 rubric_checks still show passed: true. Reward dropped by roughly that entry's own weight share, not to zero.",
+    "required_outcome_met": true
+  },
+  "control_4_cosmetic": {
+    "mutation": "meeting_confirmation_audit.json's 8 keys reordered (alphabetical, not the instruction's listed order) and every numeric value changed from a bare int to a float (4 -> 4.0, 2 -> 2.0, 1 -> 1.0, 1 -> 1.0). No graded value's MEANING changed and no key was renamed, added, or removed.",
+    "job": "email8b-mut-cosmetic-v2",
+    "result": "reward 1.0, all 18 verifier_configs passed - confirms brittleness 0% across the two dimensions exercised (JSON key order, int vs float).",
+    "required_outcome_met": true
+  },
+  "strictness_pct": 100,
+  "brittleness_pct": 0,
+  "notes": "Strictness measured over the two semantic-shaped mutants actually run (one corrupted numeric field, one corrupted named-string field) - 2 of 2 caught cleanly with no collateral failures on either run. The 5 database_state write-back checks and the 3 rubric_checks were not separately semantic-mutated in this battery via artifact_plan.json, because artifact_plan.json only controls the JSON deliverable's content, not the live gym's database state or the agent's trace - their real behavior was instead independently exercised by: (a) the write-back checks' own positive proof, since the seed carries no draft addressed to Morgan Thompson at all (a run that never wrote back, or wrote to the wrong person/meeting, would score 0 on these regardless of the JSON file's content); and (b) the rubric_checks, validated separately against constructed adversarial and technically-correct-but-unreasoned trace/reply cases using the REAL production grading path (see rubric_validation_summary below), the appropriate validation method for a trace- or final-answer-graded check per connector-task-miner.md's guidance.",
+  "rubric_validation_summary": {
+    "note": "This task's three rubric checks (real_meeting_classified_by_structural_fields and decline_vs_tentative_correctly_distinguished, both target: trace; final_reply_states_a_genuine_conclusion, target: final_answer) were validated by calling the REAL, PRODUCTION grading path directly - tests/test_outputs.py's _model_response_from_evidence and _execute_rubric_check_verifier (which wraps verifier_engine.py's VerifierEngine._execute_rubric_check_verifier, the exact same code the live oracle/agent grading run executes), imported and invoked with a constructed evidence dict, calling the real GLM judge endpoint (http://34.41.10.8:4000/v1/chat/completions, model glm-5.2, temperature 0, via litellm) for real. This supersedes an earlier round's validation script, which fed the judge a hand-rolled prompt and a fabricated observation_note trace field that _build_trace_evidence never actually produces (a real harbor_check finding: layer5_verifier_fairness_static__counterfactual_strength) - the corrected script constructs trace evidence in the EXACT shape _build_trace_evidence emits (a JSON list of {name, args, result} tool-call entries) plus the real agent_messages narration field (also newly wired into the production trace-target path by this round's fix to verifier_engine.py/test_outputs.py, see task.toml/consistency/shortcut_audit.md and the layer5_llm_judge_design__judge_context_completeness fix). Nine constructed cases were tested (three per rubric: gold, adversarial-wrong, and technically-correct-but-unreasoned), plus two repeat runs of the gold case at temperature 0 to confirm stability, all against a genuinely live judge call. Raw results: consistency/rubric_validation_raw.json (shipped alongside this file) - the summary below quotes every verdict and motivation verbatim from that file.",
+    "real_meeting_classified_by_structural_fields": [
+      {
+        "case": "gold - trace includes the real 9-event search_calendar result plus agent narration that filters explicitly on organizer_email/eventType/status and names each exclusion by field (Backlog Grooming: wrong organizer; Story Refinement: tentative status; Concentration Time: focusTime; Flexible Location/Hybrid: workingLocation + wrong organizer)",
+        "expected": true,
+        "actual": true,
+        "match": true,
+        "justification": "The agent explicitly filtered on organizer_email, eventType, and status fields (excluding entries with wrong organizer, focusTime/workingLocation eventType, or tentative status), rather than relying on title keywords."
+      },
+      {
+        "case": "adversarial - agent narration explicitly classifies by how titles sound, folding in Backlog Grooming/Story Refinement by title alone and dropping the three workingLocation/focusTime entries only because their titles do not sound like meetings",
+        "expected": false,
+        "actual": false,
+        "match": true,
+        "justification": "The agent explicitly classified entries by whether their titles"
+      },
+      {
+        "case": "technically-correct-but-unreasoned - narration is the bare assertion 'real_meetings_count is 4.' with no field inspection stated at all",
+        "expected": false,
+        "actual": false,
+        "match": true,
+        "justification": "The agent's narrated reasoning merely states the final count without any evidence that it inspected the organizer, eventType, or status fields to distinguish Nathan's meetings."
+      },
+      {
+        "case": "repeat of gold at temperature 0 (stability check)",
+        "expected": true,
+        "actual": true,
+        "match": true,
+        "justification": "The agent explicitly filters by organizer_email, eventType, and status fields, correctly excluding entries based on these fields rather than title keywords."
+      }
+    ],
+    "decline_vs_tentative_correctly_distinguished": [
+      {
+        "case": "gold - narration explicitly states the decline is resolved/no chase needed and the tentative is genuinely open/needs a chase, trace shows the draft correctly addressed re: Technical Interview only",
+        "expected": true,
+        "actual": true,
+        "match": true,
+        "justification": "The agent's reasoning explicitly treats the DECLINED Skip Level 1:1 as a definitive, already-resolved answer not worth chasing, while treating the TENTATIVE Technical Interview as genuinely open and warranting a confirmation email\u2014exactly the differential handling the rubric requires."
+      },
+      {
+        "case": "adversarial - narration explicitly treats both non-accepted responses the same and the trace shows a draft wrongly addressed re: Skip Level 1:1",
+        "expected": false,
+        "actual": false,
+        "match": true,
+        "justification": "The agent's reasoning treats both meetings as equally pending and chases the declined Skip Level 1:1, rather than treating it as resolved and chasing the tentative Technical Interview."
+      },
+      {
+        "case": "technically-correct-but-unreasoned - trace shows the correct draft (Technical Interview only), narration states only the two counts and which single email was drafted, with no prose ever discussing WHY declined differs from tentative",
+        "expected": false,
+        "actual": true,
+        "match": false,
+        "justification": "The agent explicitly distinguishes between the two response types in its reasoning ("
+      },
+      {
+        "case": "repeat of gold at temperature 0 (stability check)",
+        "expected": true,
+        "actual": true,
+        "match": true,
+        "justification": "The agent explicitly treats the declined Skip Level 1:1 as a definitive, already-resolved answer not worth chasing, while treating the tentative Technical Interview as still open and requiring a confirmation request, which is evidenced by the drafted email about Technical Interview only."
+      }
+    ],
+    "final_reply_states_a_genuine_conclusion": [
+      {
+        "case": "gold - the task's real solution/final_answer.md text, naming the counts, the specific still-open meeting and recipient, and the specific already-resolved meeting",
+        "expected": true,
+        "actual": true,
+        "match": true,
+        "justification": "The reply states that 2 meetings are fully confirmed, names the Technical Interview on May 22 as still open with a drafted request to Morgan Thompson, and identifies the Skip Level 1:1 on May 21 as declined and therefore not chased."
+      },
+      {
+        "case": "adversarial - reply only confirms files were written",
+        "expected": false,
+        "actual": false,
+        "match": true,
+        "justification": "The reply merely states that files were written and a task was completed, naming no people, no meetings, and drawing no substantive conclusion about confirmations, open meetings, or declines."
+      },
+      {
+        "case": "technically-correct-but-unreasoned - reply is a bare key=value dump of the four counts with no names, no story, no mention of the write-back",
+        "expected": false,
+        "actual": false,
+        "match": true,
+        "justification": "The reply only provides numeric variable assignments and says 'Task complete,' without naming any specific meetings or people or stating a substantive conclusion in its own words."
+      }
+    ],
+    "mismatch_found_and_disposition": "Even against the corrected, real-production-path evidence shape, 10 of 11 constructed cases (including both stability repeats) matched expectation exactly. The one mismatch (decline_vs_tentative_correctly_distinguished's technically-correct-but-unreasoned case) reproduces identically to an earlier round's finding under the OLD (fabricated observation_note) evidence shape, which confirms it is a genuine property of the rubric's own PASS criterion, not an artifact of the counterfactual_strength bug that round's validation script had. On inspection, this rubric's PASS criterion ('any route to that outcome passes equally: reading fields off the bulk search response, or any per-entry follow-up' - the same 'any route passes equally' principle used identically in real_meeting_classified_by_structural_fields) treats a correct WRITE-BACK TARGET itself (drafting specifically about Technical Interview, addressed only to Morgan Thompson, with zero correspondence touching Skip Level 1:1) as sufficient behavioral evidence that decline was distinguished from tentative - a wrong method could not have produced that exact targeting by chance, since chasing the wrong meeting or drafting to nobody would have been the naive failure mode. This is not a discrimination gap unique to the constructed test case: the REAL oracle's own trace (emit_oracle_trajectory.py's output) contains no narrated reasoning prose at all - only raw tool-call names and arguments - and yet the real live GLM judge legitimately scored this exact rubric PASS against that real, narration-free trace in email8b-oracle-fix1 and email8b-oracle-final-v2. Tightening the rubric to require explicit narrated reasoning would make the task's own legitimate gold reference fail its own rubric, which would be a self-inflicted bug, not a fix. Disposition: no change made to this rubric. The mismatch is recorded here as a genuine, honestly-reported finding rather than silently omitted.",
+    "consistency_at_temperature_0": "Confirmed by two independent repeat calls of the gold case for both trace rubrics (rubric1_gold_repeat2, rubric2_gold_repeat2) - both returned the identical PASS verdict at temperature 0, and additionally by the real oracle run itself: the live rubric_check fired for real during email8b-oracle-fix1 and email8b-oracle-final-v2 and returned PASS both times against the same real (non-constructed) golden trajectory trace."
+  }
+}

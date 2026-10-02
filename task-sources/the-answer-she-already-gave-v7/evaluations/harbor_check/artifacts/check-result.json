@@ -1,0 +1,238 @@
+{
+ "layer1_package_consistency": {
+  "outcome": "pass",
+  "explanation": "task.toml, instruction.md, solution/ (solve.sh -> solve.py replay of solution/golden_trajectory.json + emit_oracle_trajectory.py + write_artifacts.py/artifact_plan.json), tests/manifest.json's 18 verifier_configs, the environment Dockerfile/proxy and the environment/_app mirror describe one executable, gradable task: window 2026-05-19..05-26 CT, 8-key /workspace/meeting_confirmation_audit.json, one draft to morgan.thompson. All mandatory subchecks pass."
+ },
+ "layer1_package_consistency__cross_artifact_consistency": {
+  "outcome": "pass",
+  "explanation": "Every required source is present and mutually consistent: instruction's 8 keys == artifact_plan.json's json block == the 8 file_check assertions; the gym in task.toml [[metadata.mcp_servers_extended]] (email-calendar-gym, port 8016) == environment.mcp_servers url http://localhost:7000/mcp/email-calendar-gym served by environment/mcp/proxy/server.py; `diff -rq tests environment/_app/tests` shows only __pycache__ and instruction.md/task.toml mirrors are byte-identical. Residual template fields (manifest.trajectory.forbidden_tools, state.expected_diff_file pointing at an empty {}) are inert but self-consistently declared zero-weight (scoring.weights state=0.0, trajectory=0.0)."
+ },
+ "layer1_package_consistency__instruction_verifier_consistency": {
+  "outcome": "pass",
+  "explanation": "Each of the 18 reward-bearing checks carries an evidence_span that maps to real instruction text: the 8 JSON fields, audit_file_exists (/workspace path), draft_created/no_draft_chases_the_declined_meeting (draft-to-that-attendee, subject naming the title, don't chase the declined one), no_draft_to_optional_attendees and mailbox_holds_seed_plus_one (a single draft), the tool floor, the two method rubrics (organizer/eventType/status rule and decline-vs-tentative rule are both stated verbatim in instruction.md) and final_reply_states_a_genuine_conclusion ('State your conclusion in your reply'). calendar_untouched only forbids an unrequested mutation, and 'exactly these keys and no others' is left ungraded (lenient, never rejects a correct answer). No verifier-only requirement is reward-bearing."
+ },
+ "layer1_package_consistency__solution_instruction_consistency": {
+  "outcome": "pass",
+  "explanation": "solution/artifact_plan.json writes exactly the 8 requested keys with the gold values (4/2/1/1, Technical Interview, Skip Level 1:1, morgan.thompson@maplewoodhospital.org); golden_trajectory.json step 5 is draft_email (never send_email) to Morgan with subject 'Confirming your attendance: Technical Interview (May 22)' which names the still-pending meeting and not 'Skip Level'; final_answer.md states the counts, the chased meeting/recipient and why the declined one was not chased. No undisclosed contract; the gold values are independently re-derivable from one search_calendar call."
+ },
+ "layer1_package_consistency__solution_verifier_consistency": {
+  "outcome": "pass",
+  "explanation": "solve.sh materialises both surfaces the verifier reads: emit_oracle_trajectory.py writes /logs/agent/trajectory.json (ATIF) and write_artifacts.py stages meeting_confirmation_audit.json into /workspace where _run_file_check looks. evaluations/oracle/verifier/verifier_summary.json shows all 18 verifiers passed with reward 1.0, and no check passes the golden through an unrelated shortcut (each file_check asserts a distinct JSONPath; the DB checks query the live gym drafts/messages/events tables)."
+ },
+ "layer1_package_consistency__manifest_environment_consistency": {
+  "outcome": "pass",
+  "explanation": "Dockerfile FROM image == task.toml mcp_servers_extended.image (connectors-harness:company-synthetic-20260910-1150-pt-main); healthcheck curl localhost:7000/health matches the proxy's /health route; WORKDIR /workspace matches _run_file_check's default workspace and Dockerfile chowns it to the declared [agent].user rlgymagent; litellm==1.82.0 is installed in the proxy venv and is what tests/test_requirements.txt pins for the judge; environment/_app mirror is in sync (sync_app_mirror.sh). RUBRIC_TRACE_RESULT_CHARS=25000 in the image matches the trace payload the rubrics need."
+ },
+ "layer1_package_consistency__declared_executed_verifier_consistency": {
+  "outcome": "pass",
+  "explanation": "test.sh -> test_gvs.sh -> tests/test_outputs.py; scoring.allowed_verifier_types includes agentic_llm_as_judge so _emit_engine_owned_reward is the sole scorer and runs every entry of manifest.verifier_configs (file_check, database_state, tool_execution, rubric_check) \u2014 evaluations/oracle/verifier/verifier_summary.json confirms all 18 items executed and produced results, with type_scores for all four types. No executable reward-bearing check is undeclared. The unused trajectory block (forbidden_tools/scoring_per_step) and state block are declared at weight 0.0 and contribute nothing, so no declared score bucket is misrepresented as active (reward.json reports sql/state scores as null); note consistency/requirements.json's prose claim that forbidden_tools 'blocks send_email at the trajectory level' is inaccurate \u2014 sending instead of drafting is actually caught by draft_created_to_morgan_about_technical_interview."
+ },
+ "layer1_package_consistency__artifact_contract_consistency": {
+  "outcome": "pass",
+  "explanation": "One deliverable path, consistently named everywhere: instruction says /workspace/meeting_confirmation_audit.json; artifact_plan.json json_path and the file_check specs both use the workspace-relative 'meeting_confirmation_audit.json'; _run_file_check resolves TH_WORKSPACE_DIR or /workspace (the agent's WORKDIR) and fails loudly if absent. The connector-side artifact (a draft row) is graded through the same gym the agent writes to, via the drafts/messages/message_headers join."
+ },
+ "layer1_clarity_scope": {
+  "outcome": "pass",
+  "explanation": "Instruction discloses the output surfaces (JSON file + draft + closing reply), the classification and decline-vs-tentative rules, and the exact-title/subject constraints; no applicable clarity subcheck fails."
+ },
+ "layer1_clarity_scope__output_surface_contract": {
+  "outcome": "pass",
+  "explanation": "All graded surfaces are requested: the workspace JSON file, the gym-side draft (address + subject constraints), and the final reply. The only unrequested side-effect check, calendar_untouched (weight 0.5), merely forbids a mutation the task never asks for and cannot be failed by a compliant run."
+ },
+ "layer1_clarity_scope__representation_contract": {
+  "outcome": "pass",
+  "explanation": "Key names, the 'number' vs string types, and the requirement for the EXACT meeting titles are all stated in instruction.md; compare.values_equal treats 4.0 == 4 (confirmed by consistency/mutations.json control_4 scoring 1.0 with floats and reordered keys), key order is free because each assertion is a separate JSONPath equals, and the subject match is a case-insensitive SQL LIKE substring, so no undisclosed representation choice moves reward."
+ },
+ "layer1_clarity_scope__process_requirement_disclosure": {
+  "outcome": "pass",
+  "explanation": "The tool_execution floor (minimum_tool_calls=2) is an anti-fabrication floor matching the proven shortest correct path (consistency/shortcut_audit.md), not a prescribed workflow; both trace rubrics say 'any route to that outcome passes equally' and the reasoning they look for is exactly what instruction.md asks the agent to state ('be specific about why the declined one doesn't need chasing'). The narration-free oracle trace passed both rubrics live, showing no hidden narration style is required."
+ },
+ "layer1_clarity_scope__redaction_readability": {
+  "outcome": "pass",
+  "explanation": "Nothing in instruction.md or the seeded data is redacted or placeholder-substituted; names, dates, timezone and the required actions read cleanly and unambiguously."
+ },
+ "layer1_realism_leakage": {
+  "outcome": "pass",
+  "explanation": "Domain semantics, references, workflow and golden isolation all hold; no applicable subcheck fails."
+ },
+ "layer1_realism_leakage__domain_correctness": {
+  "outcome": "pass",
+  "explanation": "The calendar model (eventType default/focusTime/workingLocation, status confirmed/tentative, organizer vs attendee, optional vs required attendee responseStatus) matches standard calendar-API semantics, and the gold figures (9 served entries, 4 real meetings, 2 fully confirmed, 1 tentative, 1 declined) are documented as reproduced both by SQL against Synthetic_db.db and through a live search_calendar call; the oracle run's DB checks (11 messages, 14 events) corroborate the seed figures."
+ },
+ "layer1_realism_leakage__authoritative_reference_validity": {
+  "outcome": "pass",
+  "explanation": "No external legal/policy authority is invoked; the authority is the seeded gym state, which the package re-derived live against the pinned image, and the one-week window matches instruction.md's own '2026-05-19 through 2026-05-25' wording (documented in consistency/shortcut_audit.md as the fix for the recurrence ambiguity)."
+ },
+ "layer1_realism_leakage__workflow_realism": {
+  "outcome": "pass",
+  "explanation": "Auditing a week of one's own calendar for unconfirmed meetings and drafting a single confirmation chase \u2014 while not re-chasing someone who already declined \u2014 is an ordinary assistant workflow with real user value; the distractors (focus time, working-location, someone else's meetings) are naturally occurring calendar noise, not contrived traps."
+ },
+ "layer1_realism_leakage__golden_isolation": {
+  "outcome": "pass",
+  "explanation": "The image copies only task.toml, instruction.md and tests/ into /app and then `chmod -R go-rwx /app`, while the agent runs as non-root rlgymagent; solution/ is never in the build context; the proxy's /raw/{gym}/state and /raw/{gym}/step are gated on a root-only 0600 secret (fail-closed if absent) so the agent cannot read gym state off-band or spoof steps; entrypoint.sh redacts the access token from its /logs/agent env dump. Grading state (/logs/agent, /logs/verifier) is root-created and not agent-writable."
+ },
+ "layer2_difficulty": {
+  "outcome": "fail",
+  "explanation": "evaluations/ contains only the single oracle trial (email8b-oracle-fix1). There are zero GLM 5.2 (non-oracle) trajectory/result pairs, so the required four-attempt difficulty evidence is missing entirely and no strict-pass distribution can be established."
+ },
+ "layer2_difficulty__evidence_pairing_count": {
+  "outcome": "fail",
+  "explanation": "Only one attempt exists under evaluations/: evaluations/oracle with config.json/lock.json/result.json (agent.name = 'oracle'), agent/trajectory.json and verifier/*. No second, third or fourth attempt directory exists \u2014 missing evidence, not merely weak evidence."
+ },
+ "layer2_difficulty__provenance_validity": {
+  "outcome": "fail",
+  "explanation": "evaluations/oracle/result.json and lock.json record agent 'oracle' with model_info null; the only model identity present is the judge (JUDGE_MODEL=openai/glm-5.2 at http://34.41.10.8:4000/v1), which is the grader, not a solver. Nothing in evaluations/ establishes any independent GLM 5.2 solving attempt."
+ },
+ "layer2_difficulty__strict_pass_distribution": {
+  "outcome": "fail",
+  "explanation": "Zero eligible (non-oracle) attempts are present, so the required 'exactly four eligible attempts, at most two at reward 1.0' cannot be satisfied. The only recorded reward is the oracle's 1.0 (evaluations/oracle/verifier/reward.txt), which is ineligible."
+ },
+ "layer2_difficulty__failure_cause_validity": {
+  "outcome": "fail",
+  "explanation": "No model attempts and therefore no failures are recorded in evaluations/; the failure-cause distribution cannot be assessed from the shipped evidence."
+ },
+ "layer2_solvability": {
+  "outcome": "fail",
+  "explanation": "evaluations/ holds only the oracle replay; no non-oracle trajectory/result pair earning reward 1.0 exists, so genuine solvability by an eligible agent is not demonstrated by the shipped evidence."
+ },
+ "layer2_solvability__eligible_strict_pass": {
+  "outcome": "fail",
+  "explanation": "The only reward 1.0 in evaluations/ belongs to the oracle solution replay (result.json agent.name='oracle', agent/oracle.txt showing solve.py's 6 replayed steps). That is explicitly ineligible evidence."
+ },
+ "layer2_solvability__saved_evidence_completeness": {
+  "outcome": "fail",
+  "explanation": "For the oracle trial the saved evidence is complete (trajectory.json, verifier_summary.json with all 18 per-verifier results, reward.txt/json, test-stdout.txt, trial.log), but no evidence at all is saved for any eligible agent attempt, so what an eligible agent did/submitted/had graded cannot be reconstructed."
+ },
+ "layer2_solvability__solution_legitimacy": {
+  "outcome": "fail",
+  "explanation": "Cannot be assessed: no eligible rollout exists in evaluations/. The oracle pass itself is legitimate (real gym calls through /raw/step, a real draft row found by the DB checks, real judge verdicts), but oracle legitimacy does not satisfy this subcheck."
+ },
+ "layer2_solvability__instruction_environment_sufficiency": {
+  "outcome": "fail",
+  "explanation": "No eligible-agent evidence exists in evaluations/ to show that the instruction plus environment suffice without hidden requirements or repair; only an oracle replay that uses the privileged /raw/{gym}/step route with [solution.env] INTERNAL_VERIFIER_SECRET is recorded."
+ },
+ "layer2_stability": {
+  "outcome": "fail",
+  "explanation": "Only one verifier execution is present in evaluations/ (evaluations/oracle/verifier). No repeat verifier runs over a frozen trajectory/artifact set are shipped, so reward and per-check stability are unevidenced."
+ },
+ "layer2_stability__frozen_identity": {
+  "outcome": "fail",
+  "explanation": "No hashes or immutable identity are provided for a repeated-grading bundle. result.json carries a task_checksum and lock.json a task digest, but these identify the task package, not a frozen agent trajectory/artifact set re-graded multiple times."
+ },
+ "layer2_stability__repeat_count": {
+  "outcome": "fail",
+  "explanation": "One complete verifier result exists (reward 1.0); the required minimum of three repeats is absent from evaluations/."
+ },
+ "layer2_stability__verifier_judge_config_identity": {
+  "outcome": "fail",
+  "explanation": "Judge config is recorded for the single run (JUDGE_MODEL=openai/glm-5.2, OPENAI_BASE_URL=http://34.41.10.8:4000/v1, temperature 0.0 from task.toml [metadata.verifier_judge]), but with no second or third run there is nothing to compare it against."
+ },
+ "layer2_stability__reward_equality": {
+  "outcome": "fail",
+  "explanation": "Only one aggregate reward (1.0) is recorded in evaluations/; reward equality across repeats cannot be established."
+ },
+ "layer2_stability__per_check_stability": {
+  "outcome": "fail",
+  "explanation": "verifier_summary.json gives a single per-check snapshot (18/18 passed). Without repeats, rubric-flip or deterministic-check drift cannot be evaluated from evaluations/."
+ },
+ "layer5_verifier_fairness_static": {
+  "outcome": "pass",
+  "explanation": "All mandatory verifier subchecks pass: 18 declared checks all execute, each traces to instruction text, field-level assertions plus live DB-state assertions plus judged method rubrics give real depth, matchers are either structural JSONPath equals or case-insensitive substring LIKE on an explicitly-required exact title, and the recomputed weighted math reproduces the observed rewards."
+ },
+ "layer5_verifier_fairness_static__requirement_traceability": {
+  "outcome": "pass",
+  "explanation": "Every material instruction requirement is graded: 8 JSON fields (8 file_check), the file's existence, the draft's existence/target/subject (draft_created), the do-not-chase-the-declined constraint (no_draft_chases_the_declined_meeting), one-draft-only (mailbox_holds_seed_plus_one), the classification and decline/tentative reasoning (2 trace rubrics) and the closing conclusion (final_answer rubric). No reward-bearing check imposes a requirement absent from instruction.md; consistency/requirements.json maps each requirement_id to its graders."
+ },
+ "layer5_verifier_fairness_static__coverage_depth": {
+  "outcome": "pass",
+  "explanation": "Checks are field-level and state-level, not existence-only: each of the 8 JSON keys is asserted individually ($.real_meetings_count == 4 etc.), and the write-back is verified against the live gym by joining drafts->messages->message_parts->message_headers on user_id, To and Subject, with negative counts for the declined meeting and for optional attendees plus absolute mailbox (11) and calendar (14) row counts. An empty file, a report-only run, or a draft to the wrong person all fail."
+ },
+ "layer5_verifier_fairness_static__evidence_routing": {
+  "outcome": "pass",
+  "explanation": "Artifact requirements are read from the workspace file (rl_world_verifiers json.read_file on meeting_confirmation_audit.json), connector requirements from the gym DB through the proxy's trusted /raw/state route, the method rubrics from the agent trace (tool calls + results + the agent_messages narration forwarded by _model_response_from_evidence), and the conclusion rubric from the final assistant message. No check reads trajectory data for an artifact-only requirement or vice versa."
+ },
+ "layer5_verifier_fairness_static__semantic_equivalence": {
+  "outcome": "pass",
+  "explanation": "The count fields tolerate int/float (values_equal: 4.0 == 4) and any key order (independent JSONPaths) \u2014 proven by consistency/mutations.json control_4 (reordered keys + floats) scoring 1.0. The title/email string equals are on values instruction.md explicitly requires verbatim ('the exact title'), and the subject check is a substring LIKE, so wording, punctuation and case around 'Technical Interview' are all free."
+ },
+ "layer5_verifier_fairness_static__surface_form_brittleness": {
+  "outcome": "pass",
+  "explanation": "The only lexical matchers are SQL LIKE '%morgan.thompson@maplewoodhospital.org%', LIKE '%Technical Interview%' and LIKE '%Skip Level%' on To/Subject headers \u2014 SQLite LIKE is ASCII case-insensitive and substring-based, so 'Re: technical interview \u2014 confirm?' passes and no formatting artefact rejects a correct draft. Conversely a wrong answer cannot pass by mimicking tokens: naming both meetings in the subject trips no_draft_chases_the_declined_meeting, and drafting to an optional attendee trips no_draft_to_optional_attendees plus the mailbox count. The genuinely semantic requirements (method, conclusion) are judged, not regexed."
+ },
+ "layer5_verifier_fairness_static__verifier_execution_completeness": {
+  "outcome": "pass",
+  "explanation": "tests/test.sh runs tests/test_gvs.sh which execs tests/test_outputs.py; engine_enabled is true (allowed_verifier_types includes agentic_llm_as_judge) so _emit_engine_owned_reward runs the whole verifier_configs list. Per-item exceptions are caught into a failing item, judge outages become unscored -> verifier_error rather than silent passes, and evaluations/oracle/verifier/verifier_summary.json shows all 18 items with results and unscored=0."
+ },
+ "layer5_verifier_fairness_static__score_bucket_activation": {
+  "outcome": "pass",
+  "explanation": "All four active buckets received evidence in the recorded run (type_scores: file_check, database_state, tool_execution, rubric_check all 1.0 over 18 items). The legacy state/sql/trajectory axes are inert under the engine path and are reported honestly (reward.json 'state'/'sql' scores are null, state disabled), so no empty bucket is presented as live coverage."
+ },
+ "layer5_verifier_fairness_static__aggregation_normalization": {
+  "outcome": "pass",
+  "explanation": "flat_verifier_scoring pools all items by weight: total weight = 0.5 + 8x1.0 + (1+1+1+0.5+0.5) + 0.5 + (1+1+0.5) = 15.5. Recomputation matches the shipped evidence exactly \u2014 all passing = 1.0 (oracle reward.txt), one weight-1.0 field failing = 14.5/15.5 = 0.9355, which is precisely the reward recorded for consistency/mutations.json control_2 and control_3. 'pass' is core_passed (every item), not a threshold."
+ },
+ "layer5_verifier_fairness_static__scoring_proportionality": {
+  "outcome": "pass",
+  "explanation": "No cosmetic issue dominates: file existence, mailbox/calendar integrity, the tool floor and the conclusion rubric are 0.5 each while every substantive answer field and every write-back constraint is 1.0. Skipping the entire write-back costs draft_created + mailbox + the decline/tentative rubric (2.5/15.5) and, because strict pass requires all items, still cannot yield a pass. A no-op run scores only ~0.16 from vacuously-true negative checks."
+ },
+ "layer5_verifier_fairness_static__check_independence": {
+  "outcome": "pass",
+  "explanation": "Each file_check reads a different JSONPath key that instruction.md separately requests; the DB checks split into existence (drafts to Morgan naming Technical Interview), two distinct negative constraints (declined meeting, optional attendees) and two integrity counts, each able to fail independently of the others; the two trace rubrics grade different claims (structural classification vs decline-versus-tentative). The partial overlap between draft_created and mailbox_holds_seed_plus_one is disclosed in their descriptions/why_justifications and the latter carries half weight."
+ },
+ "layer5_verifier_fairness_static__counterfactual_strength": {
+  "outcome": "pass",
+  "explanation": "consistency/mutations.json records real runs of positive (1.0), two semantic mutants (0.9355 each, exactly one verifier failing and correctly identified) and a cosmetic mutant (1.0) through the real benchmark path, and the three rubrics were exercised with gold / adversarial / correct-but-unreasoned cases against the live judge via the production _execute_rubric_check_verifier, with the one lenient mismatch reported rather than hidden. Decoys per graded figure (9, 6, 6; merged decline/pending) are enumerated in task.toml and each differs from gold."
+ },
+ "layer5_verifier_fairness_static__process_grading_justification": {
+  "outcome": "pass",
+  "explanation": "The only process check is minimum_tool_calls=2, justified against the proven shortest correct path so an efficient solve is not penalised; it blocks only a zero-or-one-call fabricated answer. The rubrics grade the substance of the classification and the decline/tentative distinction the instruction itself states, explicitly allow any route, and were shown to pass on a narration-free trace, so reward does not depend on a harness-specific trace shape."
+ },
+ "layer5_llm_judge_design": {
+  "outcome": "pass",
+  "explanation": "A judge exists (three rubric_check verifiers) and every mandatory judge subcheck passes: valid resolved model/endpoint, fail-to-unscored handling, complete and loudly-bounded context, grounded rubrics and a 3-vote majority at temperature 0."
+ },
+ "layer5_llm_judge_design__judge_execution_validity": {
+  "outcome": "pass",
+  "explanation": "task.toml [metadata.verifier_judge] resolves model ${JUDGE_MODEL:-openai/zai-org/GLM-5.2} with api_key_env OPENAI_API_KEY, temperature 0.0, max_tokens 65536; verifier.env plumbs OPENAI_BASE_URL. Requests go through litellm with response_format json_object and bounded retries, responses are parsed with a strict schema check, and evaluations/oracle (JUDGE_MODEL=openai/glm-5.2, base http://34.41.10.8:4000/v1) shows three real verdicts with motivations, proving the configuration is live and parseable."
+ },
+ "layer5_llm_judge_design__judge_failure_handling": {
+  "outcome": "pass",
+  "explanation": "A missing model/api key returns failure_mode 'verifier_error' with score None instead of a pass or a zero; judge exceptions or schema-invalid replies mark the item unscored, which makes the run incomplete (weighted=None) and sets verifier_error=true rather than blaming the agent. Content flakes are retried (TH_JUDGE_JSON_RETRY_MAX) and one outage cannot abort the other votes (gather with return_exceptions)."
+ },
+ "layer5_llm_judge_design__judge_context_completeness": {
+  "outcome": "pass",
+  "explanation": "The trace rubrics receive _build_trace_evidence (each call's name, args, accepted_by_gym flag and the tool result) plus the agent's full narrated transcript forwarded as model_response['agent_messages'] \u2014 the documented local fix specifically so a reasoning-about-decline rubric has reasoning to read. The final_answer rubric receives the agent's last message. Nothing a rubric asks about is absent from its prompt."
+ },
+ "layer5_llm_judge_design__judge_context_truncation": {
+  "outcome": "pass",
+  "explanation": "Budgets are explicit and marked: per-call results are clipped head+tail with a '[N chars clipped]' marker under a 200k evidence cap, with RUBRIC_TRACE_RESULT_CHARS raised to 25000 in the Dockerfile precisely because this task's 9-event search_calendar payload (~15.5k chars) exceeded the 4000 default; the narration transcript is tail-biased with a '[\u2026 earlier assistant messages omitted \u2026]' banner. No evidence disappears silently."
+ },
+ "layer5_llm_judge_design__artifact_grounding": {
+  "outcome": "pass",
+  "explanation": "Each rubric names the concrete entities and the failure modes to look for (Morgan Thompson's declined Skip Level 1:1 vs tentative Technical Interview; organizer/eventType/status vs title keywords) and the judge sees the actual trace/reply; the conclusion rubric explicitly forbids judging wording, length or formatting and forbids rewarding agreement with particular numbers, so generic plausibility alone cannot pass."
+ },
+ "layer5_llm_judge_design__repeat_stability": {
+  "outcome": "pass",
+  "explanation": "Three independent votes (_judge_vote_count, odd, majority-required; no majority => unscored, not a silent fail) at temperature 0.0 against a fixed model id and endpoint. consistency/mutations.json records temperature-0 repeat calls of the gold cases returning identical verdicts, and the live oracle runs reproduced PASS on all three rubrics."
+ },
+ "layer5_reward_hacking_static": {
+  "outcome": "pass",
+  "explanation": "All four exploitability subchecks pass: the graded surfaces are real gym state plus a workspace file whose values require actually reading the calendar, the off-band gym routes are secret-gated, the answer key is not reachable by the agent user, and grading state is not agent-writable."
+ },
+ "layer5_reward_hacking_static__rollout_legitimacy": {
+  "outcome": "pass",
+  "explanation": "A fabricated run cannot pass: the eight field values are only derivable from the live calendar, draft_created requires a real drafts row in the gym DB created through the MCP surface, the tool_execution floor (>=2 accepted gym calls, harness tools excluded, errored calls excluded) blocks answer-from-nothing, and the trace rubrics inspect the actual calls and narration. Destructive or looping behaviour additionally trips calendar_untouched (14 events) and mailbox_holds_seed_plus_one (exactly 11 messages)."
+ },
+ "layer5_reward_hacking_static__sanctioned_interface_use": {
+  "outcome": "pass",
+  "explanation": "The agent is given only http://localhost:7000/mcp/email-calendar-gym; the proxy's /raw/{gym}/state and /raw/{gym}/step passthroughs require the x-internal-verifier-secret header read from a root-only 0600 file and fail closed when absent, and the oracle obtains it only via task.toml [solution.env] which harbor scopes to the oracle exec. Direct DB or verifier access is therefore unavailable to the agent."
+ },
+ "layer5_reward_hacking_static__golden_or_internal_access": {
+  "outcome": "pass",
+  "explanation": "solution/ (golden trajectory, artifact_plan, expected values) is never copied into the image; task.toml's GOLD block and tests/ live under /app which is chmod -R go-rwx while the agent runs as rlgymagent; the entrypoint's /logs dump is limited to the mcp_servers_extended stanza with the access token redacted; the proxy explicitly never injects golden arguments or appends golden content to tool descriptions."
+ },
+ "layer5_reward_hacking_static__state_spoofing": {
+  "outcome": "pass",
+  "explanation": "Reward-bearing state is read from the gym itself through the trusted route, not from an agent-writable file: /logs/agent and /logs/verifier are root-created and not writable by rlgymagent, so the graded trajectory cannot be fabricated, and the deterministic per-run /reset seeding (reset_on_run=true, GYM_DATASET=synthetic) makes the hardcoded baselines (10 seed messages -> 11, 14 events, zero pre-existing drafts to Morgan) reliable rather than stale; the mailbox and calendar counts act as the before/after integrity guard."
+ }
+}

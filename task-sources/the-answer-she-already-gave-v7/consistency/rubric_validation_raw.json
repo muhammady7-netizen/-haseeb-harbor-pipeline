@@ -1,0 +1,79 @@
+[
+  {
+    "case": "rubric1_gold",
+    "verdict": "PASS",
+    "passed": true,
+    "motivation": "The agent explicitly filtered on organizer_email, eventType, and status fields (excluding entries with wrong organizer, focusTime/workingLocation eventType, or tentative status), rather than relying on title keywords.",
+    "error": null
+  },
+  {
+    "case": "rubric1_adversarial_title_only",
+    "verdict": "FAIL",
+    "passed": false,
+    "motivation": "The agent explicitly classified entries by whether their titles",
+    "error": null
+  },
+  {
+    "case": "rubric1_technically_correct_unreasoned",
+    "verdict": "FAIL",
+    "passed": false,
+    "motivation": "The agent's narrated reasoning merely states the final count without any evidence that it inspected the organizer, eventType, or status fields to distinguish Nathan's meetings.",
+    "error": null
+  },
+  {
+    "case": "rubric2_gold",
+    "verdict": "PASS",
+    "passed": true,
+    "motivation": "The agent's reasoning explicitly treats the DECLINED Skip Level 1:1 as a definitive, already-resolved answer not worth chasing, while treating the TENTATIVE Technical Interview as genuinely open and warranting a confirmation email\u2014exactly the differential handling the rubric requires.",
+    "error": null
+  },
+  {
+    "case": "rubric2_adversarial_same_bucket",
+    "verdict": "FAIL",
+    "passed": false,
+    "motivation": "The agent's reasoning treats both meetings as equally pending and chases the declined Skip Level 1:1, rather than treating it as resolved and chasing the tentative Technical Interview.",
+    "error": null
+  },
+  {
+    "case": "rubric2_technically_correct_unreasoned",
+    "verdict": "PASS",
+    "passed": true,
+    "motivation": "The agent explicitly distinguishes between the two response types in its reasoning (",
+    "error": null
+  },
+  {
+    "case": "rubric3_gold",
+    "verdict": "PASS",
+    "passed": true,
+    "motivation": "The reply states that 2 meetings are fully confirmed, names the Technical Interview on May 22 as still open with a drafted request to Morgan Thompson, and identifies the Skip Level 1:1 on May 21 as declined and therefore not chased.",
+    "error": null
+  },
+  {
+    "case": "rubric3_adversarial_files_only",
+    "verdict": "FAIL",
+    "passed": false,
+    "motivation": "The reply merely states that files were written and a task was completed, naming no people, no meetings, and drawing no substantive conclusion about confirmations, open meetings, or declines.",
+    "error": null
+  },
+  {
+    "case": "rubric3_technically_correct_unreasoned",
+    "verdict": "FAIL",
+    "passed": false,
+    "motivation": "The reply only provides numeric variable assignments and says 'Task complete,' without naming any specific meetings or people or stating a substantive conclusion in its own words.",
+    "error": null
+  },
+  {
+    "case": "rubric1_gold_repeat2",
+    "verdict": "PASS",
+    "passed": true,
+    "motivation": "The agent explicitly filters by organizer_email, eventType, and status fields, correctly excluding entries based on these fields rather than title keywords.",
+    "error": null
+  },
+  {
+    "case": "rubric2_gold_repeat2",
+    "verdict": "PASS",
+    "passed": true,
+    "motivation": "The agent explicitly treats the declined Skip Level 1:1 as a definitive, already-resolved answer not worth chasing, while treating the tentative Technical Interview as still open and requiring a confirmation request, which is evidenced by the drafted email about Technical Interview only.",
+    "error": null
+  }
+]

@@ -1,0 +1,1339 @@
+{
+  "state": {
+    "snapshot": {
+      "mode": "full_hash",
+      "exclude_tables": [
+        "sqlite_sequence",
+        "sqlite_stat1"
+      ],
+      "include_tables": null,
+      "schema_version": "harbor.state_snapshot.v1",
+      "debug_full_rows": "gzip",
+      "diff_schema_version": "harbor.state_diff.v1"
+    },
+    "canonicalize": {
+      "sort_lists": true,
+      "strip_fields": [
+        "id",
+        "created_at",
+        "updated_at",
+        "executed_at",
+        "deleted_at",
+        "execution_time_ms",
+        "fr_due_by",
+        "due_by",
+        "last_used_at",
+        "create_time",
+        "update_time"
+      ],
+      "strip_fields_per_table": {}
+    },
+    "expected_diff_file": "solution/expected_diff.json"
+  },
+  "rubric": {
+    "file": "tests/rubric.toml",
+    "evidence": {
+      "max_chars": 350000,
+      "include_db_diff": true,
+      "include_trajectory": true,
+      "include_final_output": true
+    }
+  },
+  "scoring": {
+    "weights": {
+      "sql": 0.0,
+      "state": 0.0,
+      "rubric": 0.4,
+      "trajectory": 0.0
+    },
+    "round_digits": 4,
+    "side_effect_gate": true,
+    "flat_verifier_scoring": true,
+    "allowed_verifier_types": [
+      "sql",
+      "rubric",
+      "agentic_llm_as_judge"
+    ]
+  },
+  "trajectory": {
+    "golden_file": "solution/golden_trajectory.json",
+    "response_match": {
+      "match_is_error": true,
+      "match_status_code": true,
+      "strip_response_fields": [
+        "id",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "forbidden_tools": [
+      "send_email"
+    ],
+    "agent_trace_file": "/logs/agent/trajectory.json",
+    "scoring_per_step": {
+      "args_weight": 0.4,
+      "name_weight": 0.4,
+      "response_weight": 0.2
+    }
+  },
+  "sql_verifiers": [],
+  "verifier_configs": [
+    {
+      "name": "audit_file_exists",
+      "description": "meeting_confirmation_audit.json exists in the workspace.",
+      "category": "core",
+      "weight": 0.5,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "audit_file_exists",
+      "evidence_span": "Write your findings to `/workspace/meeting_confirmation_audit.json`",
+      "metadata": {
+        "why_justification": "A run that answers only in its reply, or writes the file under a different name or path, leaves the deliverable the review actually reads missing."
+      },
+      "verifier_spec": {
+        "task_id": "audit_file_exists",
+        "verifiers": [
+          {
+            "name": "audit_file_exists",
+            "metadata": {
+              "how_justification": "Checks meeting_confirmation_audit.json is present in the workspace as a file.",
+              "why_justification": "A run that answers only in its reply leaves the deliverable the review actually reads missing."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "filesystem",
+                "command": "check_path_exists",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": true,
+              "deterministic": {
+                "path": "$.is_file",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "real_meetings_count",
+      "description": "meeting_confirmation_audit.json's real_meetings_count must be 4 - meetings Nathan organizes, eventType default, status confirmed, in the 2026-05-19 to 2026-05-26 window.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "real_meetings_count",
+      "evidence_span": "how many meetings I am actually running in the window",
+      "metadata": {
+        "why_justification": "Counting every calendar entry with no filtering answers 9. Counting every eventType=default entry regardless of status or organizer (folding in Backlog Grooming, organized by someone else, and the tentative Story Refinement) answers 6. Counting every status=confirmed entry regardless of type or organizer (folding in the Flexible Location and Hybrid workingLocation entries) answers 6."
+      },
+      "verifier_spec": {
+        "task_id": "real_meetings_count",
+        "verifiers": [
+          {
+            "name": "real_meetings_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires the real_meetings_count key to equal the scalar 4.",
+              "why_justification": "Counting every calendar entry with no filtering answers 9; folding in every default-type entry regardless of status/organizer answers 6; folding in every confirmed entry regardless of type/organizer answers 6."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$.real_meetings_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "fully_confirmed_count",
+      "description": "meeting_confirmation_audit.json's fully_confirmed_count must be 2.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "fully_confirmed_count",
+      "evidence_span": "how many of those have every required attendee accepted",
+      "metadata": {
+        "why_justification": "Treating an optional attendee's non-acceptance as blocking would not change this count in this corpus (Weekly Risk Sync 05-19's optional Natalie Gardner accepted anyway, and the other two real meetings - Skip Level 1:1 and Technical Interview - are already excluded by their own required attendee's decline/tentative response), but a method that conflates optional and required attendees is separately caught by no_draft_to_optional_attendees."
+      },
+      "verifier_spec": {
+        "task_id": "fully_confirmed_count",
+        "verifiers": [
+          {
+            "name": "fully_confirmed_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires fully_confirmed_count to equal the scalar 2.",
+              "why_justification": "The two fully confirmed meetings are both Weekly Risk Sync entries (05-19 and 05-21) - every required attendee on each has accepted."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 2,
+              "deterministic": {
+                "path": "$.fully_confirmed_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "still_pending_count",
+      "description": "meeting_confirmation_audit.json's still_pending_count must be 1 - only Technical Interview, where Morgan Thompson (required) is still tentative.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "still_pending_count",
+      "evidence_span": "someone whose response is still tentative or has not responded at all is genuinely still undecided",
+      "metadata": {
+        "why_justification": "Treating Morgan Thompson's decline on Skip Level 1:1 as also 'still pending' (instead of resolved) inflates this to 2. Counting optional attendees' tentative responses (Cynthia Nelson on Technical Interview, Nicole Washington on Skip Level 1:1) as blocking does not change this specific count since both meetings are already flagged by their required attendee, but a run that reasons this way is still exposed by the write-back target check."
+      },
+      "verifier_spec": {
+        "task_id": "still_pending_count",
+        "verifiers": [
+          {
+            "name": "still_pending_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires still_pending_count to equal the scalar 1.",
+              "why_justification": "Only Technical Interview has a required attendee (Morgan Thompson) who is genuinely still undecided (tentative)."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 1,
+              "deterministic": {
+                "path": "$.still_pending_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "declined_required_count",
+      "description": "meeting_confirmation_audit.json's declined_required_count must be 1 - only Skip Level 1:1, where Morgan Thompson (required) has declined.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "declined_required_count",
+      "evidence_span": "someone who has DECLINED has already given a definitive answer",
+      "metadata": {
+        "why_justification": "A run that treats every non-accepted response the same (never separating declined from tentative) reports 0 here and 2 in still_pending_count instead."
+      },
+      "verifier_spec": {
+        "task_id": "declined_required_count",
+        "verifiers": [
+          {
+            "name": "declined_required_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires declined_required_count to equal the scalar 1.",
+              "why_justification": "Only Skip Level 1:1 has a required attendee (Morgan Thompson) who has already declined."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 1,
+              "deterministic": {
+                "path": "$.declined_required_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "still_pending_meeting_name",
+      "description": "meeting_confirmation_audit.json's still_pending_meeting must be exactly 'Technical Interview'.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "still_pending_meeting",
+      "evidence_span": "the exact title of the meeting counted in `still_pending_count`",
+      "metadata": {
+        "why_justification": "A run confusing which of Morgan Thompson's two meetings is the genuinely open one would name 'Skip Level 1:1' here instead - the meeting she already declined, not the one still awaiting her answer."
+      },
+      "verifier_spec": {
+        "task_id": "still_pending_meeting_name",
+        "verifiers": [
+          {
+            "name": "still_pending_meeting_name",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires still_pending_meeting to equal the exact string 'Technical Interview'.",
+              "why_justification": "Technical Interview is the only meeting with a required attendee still genuinely undecided."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "Technical Interview",
+              "deterministic": {
+                "path": "$.still_pending_meeting",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "still_pending_attendee_email_value",
+      "description": "meeting_confirmation_audit.json's still_pending_attendee_email must be exactly morgan.thompson@maplewoodhospital.org.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "still_pending_attendee_email",
+      "evidence_span": "the email address of the required attendee who is still undecided on that meeting",
+      "metadata": {
+        "why_justification": "A run that instead names an optional attendee (Cynthia Nelson) as blocking would answer with her address instead."
+      },
+      "verifier_spec": {
+        "task_id": "still_pending_attendee_email_value",
+        "verifiers": [
+          {
+            "name": "still_pending_attendee_email_value",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires still_pending_attendee_email to equal the exact string morgan.thompson@maplewoodhospital.org.",
+              "why_justification": "Morgan Thompson is the required attendee genuinely still undecided on Technical Interview."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "morgan.thompson@maplewoodhospital.org",
+              "deterministic": {
+                "path": "$.still_pending_attendee_email",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "declined_meeting_name",
+      "description": "meeting_confirmation_audit.json's declined_meeting must be exactly 'Skip Level 1:1'.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "declined_meeting",
+      "evidence_span": "the exact title of the meeting counted in `declined_required_count`",
+      "metadata": {
+        "why_justification": "A run confusing which of Morgan Thompson's two meetings was declined would name 'Technical Interview' here instead."
+      },
+      "verifier_spec": {
+        "task_id": "declined_meeting_name",
+        "verifiers": [
+          {
+            "name": "declined_meeting_name",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires declined_meeting to equal the exact string 'Skip Level 1:1'.",
+              "why_justification": "Skip Level 1:1 is the only meeting with a required attendee who has already declined."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "Skip Level 1:1",
+              "deterministic": {
+                "path": "$.declined_meeting",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "declined_attendee_email_value",
+      "description": "meeting_confirmation_audit.json's declined_attendee_email must be exactly morgan.thompson@maplewoodhospital.org.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "declined_attendee_email",
+      "evidence_span": "the email address of the required attendee who declined that meeting",
+      "metadata": {
+        "why_justification": "Same required attendee (Morgan Thompson) declined this meeting and is tentative on the other - a run that fails to separate the two meetings could still get this field right by coincidence, which is why it is graded together with declined_meeting_name rather than alone."
+      },
+      "verifier_spec": {
+        "task_id": "declined_attendee_email_value",
+        "verifiers": [
+          {
+            "name": "declined_attendee_email_value",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json as parsed JSON and requires declined_attendee_email to equal the exact string morgan.thompson@maplewoodhospital.org.",
+              "why_justification": "Morgan Thompson is the required attendee who declined Skip Level 1:1."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "morgan.thompson@maplewoodhospital.org",
+              "deterministic": {
+                "path": "$.declined_attendee_email",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "draft_created_to_morgan_about_technical_interview",
+      "description": "The seed carries no draft addressed to Morgan Thompson, so this cannot be satisfied by pointing at something already there. Requires a new draft, addressed to her, whose Subject header names 'Technical Interview'.",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "email-calendar-gym",
+      "sql_query": "SELECT COUNT(*) FROM drafts d JOIN messages m ON m.id = d.message_id JOIN message_parts mp ON mp.message_id = m.id JOIN message_headers mh_to ON mh_to.message_part_id = mp.id AND mh_to.name = 'To' JOIN message_headers mh_subj ON mh_subj.message_part_id = mp.id AND mh_subj.name = 'Subject' WHERE m.user_id = '3cfb0d53-9e5e-4c40-9eaa-a1086697b05b' AND mh_to.value LIKE '%morgan.thompson@maplewoodhospital.org%' AND mh_subj.value LIKE '%Technical Interview%'",
+      "expected_value": 1,
+      "comparison_type": "greater_or_equal",
+      "requirement_id": "draft_created",
+      "evidence_span": "draft an email (do not send it) to that attendee asking them to confirm their attendance",
+      "metadata": {
+        "why_justification": "No draft addressed to Morgan Thompson exists in the seed. A run that only reports and never writes back, or that drafts to the wrong person, leaves this at zero."
+      }
+    },
+    {
+      "name": "no_draft_chases_the_declined_meeting",
+      "description": "No draft addressed to Morgan Thompson may name 'Skip Level' in its Subject header - that meeting was already resolved by her decline and must not be chased.",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "email-calendar-gym",
+      "sql_query": "SELECT COUNT(*) FROM drafts d JOIN messages m ON m.id = d.message_id JOIN message_parts mp ON mp.message_id = m.id JOIN message_headers mh_to ON mh_to.message_part_id = mp.id AND mh_to.name = 'To' JOIN message_headers mh_subj ON mh_subj.message_part_id = mp.id AND mh_subj.name = 'Subject' WHERE m.user_id = '3cfb0d53-9e5e-4c40-9eaa-a1086697b05b' AND mh_to.value LIKE '%morgan.thompson@maplewoodhospital.org%' AND mh_subj.value LIKE '%Skip Level%'",
+      "expected_value": 0,
+      "comparison_type": "equals",
+      "requirement_id": "no_chase_on_declined_meeting",
+      "evidence_span": "Do not draft anything about the already-declined meeting",
+      "metadata": {
+        "why_justification": "Morgan Thompson already gave a definitive answer (declined) on Skip Level 1:1 - a run that treats her decline as still outstanding would wrongly chase her about it too."
+      }
+    },
+    {
+      "name": "no_draft_to_optional_attendees",
+      "description": "No new draft may be addressed to either optional attendee (Nicole Washington, Cynthia Nelson) who show non-accepted responses in the window - optional attendees never block a meeting and are never the right write-back target.",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "email-calendar-gym",
+      "sql_query": "SELECT COUNT(*) FROM drafts d JOIN messages m ON m.id = d.message_id JOIN message_parts mp ON mp.message_id = m.id JOIN message_headers mh_to ON mh_to.message_part_id = mp.id AND mh_to.name = 'To' WHERE m.user_id = '3cfb0d53-9e5e-4c40-9eaa-a1086697b05b' AND (mh_to.value LIKE '%nicole.washington@maplewoodhospital.org%' OR mh_to.value LIKE '%cynthia.nelson@maplewoodhospital.org%')",
+      "expected_value": 0,
+      "comparison_type": "equals",
+      "requirement_id": "no_chase_on_optional_attendees",
+      "evidence_span": "An optional attendee's response never affects whether a meeting is fully confirmed",
+      "metadata": {
+        "why_justification": "Nicole Washington (optional, tentative on both Skip Level 1:1 and Technical Interview) and Cynthia Nelson (optional, tentative on Technical Interview) never block a meeting - a run that conflates optional and required attendees would wrongly draft to one of them."
+      }
+    },
+    {
+      "name": "mailbox_holds_seed_plus_one",
+      "description": "Nathan's mailbox had exactly 10 messages in the seed; the write-back creates exactly one new message (the draft) and nothing else.",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 0.5,
+      "target_gym_server": "email-calendar-gym",
+      "sql_query": "SELECT COUNT(*) FROM messages WHERE user_id = '3cfb0d53-9e5e-4c40-9eaa-a1086697b05b'",
+      "expected_value": 11,
+      "comparison_type": "equals",
+      "requirement_id": "exactly_one_new_message",
+      "evidence_span": "draft an email (do not send it) to that attendee",
+      "metadata": {
+        "why_justification": "The seed mailbox holds exactly 10 messages. A run that drafts to more than one person, or that both drafts and sends (creating two rows), or that never writes back at all, leaves this at a value other than 11."
+      }
+    },
+    {
+      "name": "calendar_untouched",
+      "description": "This is an audit-plus-email task, not a calendar write-back - the calendar must still hold exactly its original 14 events for this user.",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 0.5,
+      "target_gym_server": "email-calendar-gym",
+      "sql_query": "SELECT COUNT(*) FROM events WHERE user_id = '3cfb0d53-9e5e-4c40-9eaa-a1086697b05b'",
+      "expected_value": 14,
+      "comparison_type": "equals",
+      "requirement_id": "calendar_untouched",
+      "evidence_span": "Pull up my calendar",
+      "metadata": {
+        "why_justification": "Nothing in this task asks for a calendar mutation. A run that calls update_calendar (for example, trying to respond to the invitation on the user's own behalf) would change this count or the underlying rows."
+      }
+    },
+    {
+      "name": "the_search_and_write_actually_ran",
+      "description": "Floor a fabricated answer cannot clear.",
+      "category": "core",
+      "weight": 0.5,
+      "verifier_type": "tool_execution",
+      "type": "tool_execution",
+      "requirement_id": "real_meetings_count",
+      "evidence_span": "how many meetings I am actually running in the window",
+      "expected_tools": [],
+      "minimum_tool_calls": 2,
+      "metadata": {
+        "why_justification": "The answer needs the window read from the live calendar and a real draft write-back, so a run answering from zero calls falls under this floor. Two is the genuine, proven shortest passing path (consistency/shortcut_audit.md: one bulk search_calendar call plus one draft_email call), so this floor does not penalise an efficient correct solve - it only blocks a fabricated answer that never touches the gym at all."
+      }
+    },
+    {
+      "name": "real_meeting_classified_by_structural_fields",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "trace",
+      "target_gym_server": "email-calendar-gym",
+      "weight": 1.0,
+      "requirement_id": "real_meetings_count",
+      "evidence_span": "A meeting counts as one I'm running only if I am the organizer, it is a genuine meeting ... and it is actually confirmed",
+      "description": "Graded against the AGENT'S TRACE. PASS if a meeting Nathan runs was told apart from everything else using the calendar entry's own organizer, eventType and status fields - organized by Nathan himself (not just present on his calendar), eventType 'default' (not focusTime or workingLocation), and status 'confirmed' (not tentative or cancelled) - rather than by guessing from the entry's title text alone. Any route to that outcome passes equally: reading the fields off the bulk search response, or any per-entry follow-up. FAIL only if the classification was clearly driven by title keywords instead, so that a plausibly-named entry with the wrong organizer, eventType, or status was folded in (or a real meeting was left out because its title didn't sound like one), or if those fields were never actually inspected.",
+      "rubric": "Graded against the AGENT'S TRACE. PASS if a meeting Nathan runs was told apart from everything else using the calendar entry's own organizer, eventType and status fields - organized by Nathan himself (not just present on his calendar), eventType 'default' (not focusTime or workingLocation), and status 'confirmed' (not tentative or cancelled) - rather than by guessing from the entry's title text alone. Any route to that outcome passes equally: reading the fields off the bulk search response, or any per-entry follow-up. FAIL only if the classification was clearly driven by title keywords instead, so that a plausibly-named entry with the wrong organizer, eventType, or status was folded in (or a real meeting was left out because its title didn't sound like one), or if those fields were never actually inspected.",
+      "metadata": {
+        "why_justification": "Backlog Grooming sits on Nathan's calendar but is organized by nancy.garcia; Flexible Location and the Hybrid block are organized by others and are workingLocation entries, not meetings; Concentration Time is a focusTime hold; Story Refinement reads like an ordinary meeting Nathan organizes but is only tentative. A title-only method gets several of these wrong."
+      }
+    },
+    {
+      "name": "decline_vs_tentative_correctly_distinguished",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "trace",
+      "target_gym_server": "email-calendar-gym",
+      "weight": 1.0,
+      "requirement_id": "still_pending_count",
+      "evidence_span": "someone who has DECLINED has already given a definitive answer and is not \"still waiting\" on anything",
+      "description": "Graded against the AGENT'S TRACE. PASS if the agent's own reasoning explicitly treats Morgan Thompson's DECLINED response on Skip Level 1:1 as a resolved, already-answered case (not something to chase), while treating her TENTATIVE response on Technical Interview as genuinely still open and in need of a confirmation request. FAIL if the agent's reasoning treats a decline and a tentative response the same way (either lumping both meetings into one bucket, or chasing the declined meeting, or failing to chase the tentative one).",
+      "rubric": "Graded against the AGENT'S TRACE. PASS if the agent's own reasoning explicitly treats Morgan Thompson's DECLINED response on Skip Level 1:1 as a resolved, already-answered case (not something to chase), while treating her TENTATIVE response on Technical Interview as genuinely still open and in need of a confirmation request. FAIL if the agent's reasoning treats a decline and a tentative response the same way (either lumping both meetings into one bucket, or chasing the declined meeting, or failing to chase the tentative one).",
+      "metadata": {
+        "why_justification": "The same person (Morgan Thompson) carries two different real responses across two different meetings Nathan runs - this is the central trap of the task, and a method that does not separate 'declined' from 'tentative' cannot get the write-back target right even if it happens to get the raw counts right by coincidence."
+      }
+    },
+    {
+      "name": "final_reply_states_a_genuine_conclusion",
+      "description": "The closing reply has to state what was found and what was done, not just report that files were written.",
+      "requirement_id": "conclusion",
+      "evidence_span": "State your conclusion in your reply",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "final_answer",
+      "weight": 0.5,
+      "target_gym_server": "email-calendar-gym",
+      "rubric": "You are judging the agent's final reply to the user. PASS if the reply states a substantive conclusion in its own words: roughly how many meetings are properly confirmed, which specific meeting is still genuinely open and who the confirmation request was drafted to, and which meeting was already resolved by a decline and therefore was not chased. FAIL if the reply only says that files were written or a task was completed, if it names no people or meetings, or if it states no conclusion at all. Do not judge wording, length or formatting, and do not reward or punish agreement with any particular number.",
+      "expected": {
+        "metric": "final_reply_states_a_conclusion",
+        "correct_value": "yes"
+      }
+    },
+    {
+      "name": "pending_attendee_email_thread_exists",
+      "description": "REQUIRES search_email.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "pending_attendee_email_thread_exists",
+      "evidence_span": "search email for any existing thread with that attendee",
+      "metadata": {
+        "why_justification": "Must search email."
+      },
+      "verifier_spec": {
+        "task_id": "pending_attendee_email_thread_exists",
+        "verifiers": [
+          {
+            "name": "pending_attendee_email_thread_exists",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires pending_attendee_email_thread_exists = False.",
+              "why_justification": "Must search email."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": false,
+              "deterministic": {
+                "path": "$.pending_attendee_email_thread_exists",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "draft_type_new_or_reply",
+      "description": "Depends on search_email.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "draft_type_new_or_reply",
+      "evidence_span": "Search email first to see if a thread exists for this attendee before deciding",
+      "metadata": {
+        "why_justification": "Interpret email search."
+      },
+      "verifier_spec": {
+        "task_id": "draft_type_new_or_reply",
+        "verifiers": [
+          {
+            "name": "draft_type_new_or_reply",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires draft_type_new_or_reply = new.",
+              "why_justification": "Interpret email search."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "new",
+              "deterministic": {
+                "path": "$.draft_type_new_or_reply",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "pending_attendee_has_other_response",
+      "description": "Cross-meeting analysis.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "pending_attendee_has_other_response",
+      "evidence_span": "whether the still-pending attendee has given a definitive response (accepted or declined) on any other meeting you are running in the window",
+      "metadata": {
+        "why_justification": "Morgan on 2 meetings."
+      },
+      "verifier_spec": {
+        "task_id": "pending_attendee_has_other_response",
+        "verifiers": [
+          {
+            "name": "pending_attendee_has_other_response",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires pending_attendee_has_other_response = True.",
+              "why_justification": "Morgan on 2 meetings."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": true,
+              "deterministic": {
+                "path": "$.pending_attendee_has_other_response",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "fully_confirmed_with_unanswered_optional",
+      "description": "Optional interpretation.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "fully_confirmed_with_unanswered_optional",
+      "evidence_span": "how many of the fully confirmed meetings have at least one optional attendee who has not responded",
+      "metadata": {
+        "why_justification": "Natalie optional no response."
+      },
+      "verifier_spec": {
+        "task_id": "fully_confirmed_with_unanswered_optional",
+        "verifiers": [
+          {
+            "name": "fully_confirmed_with_unanswered_optional",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires fully_confirmed_with_unanswered_optional = 1.",
+"why_justification": "No fully confirmed meeting has an optional attendee who has not responded. Natalie Gardner (optional on Weekly Risk Sync 05-19) accepted, and Weekly Risk Sync 05-21 has no optional attendees."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 0,
+              "deterministic": {
+                "path": "$.fully_confirmed_with_unanswered_optional",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "total_optional_attendees",
+      "description": "Precision count.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "total_optional_attendees",
+      "evidence_span": "the total count of optional attendees across all meetings you are actually running",
+      "metadata": {
+        "why_justification": "4 optional."
+      },
+      "verifier_spec": {
+        "task_id": "total_optional_attendees",
+        "verifiers": [
+          {
+            "name": "total_optional_attendees",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires total_optional_attendees = 4.",
+              "why_justification": "4 optional."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$.total_optional_attendees",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "search_email_was_called",
+      "description": "Force search_email.",
+      "category": "core",
+      "weight": 1.0,
+      "verifier_type": "tool_execution",
+      "type": "tool_execution",
+      "requirement_id": "search_email_was_called",
+      "evidence_span": "search email for any existing thread with that attendee",
+      "expected_tools": [
+        "search_email"
+      ],
+      "minimum_tool_calls": 1,
+      "metadata": {
+        "why_justification": "Must search email."
+      }
+    },
+    {
+      "name": "pending_attendee_other_meeting_count",
+      "description": "How many other real meetings is the still-pending attendee also required on.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "pending_attendee_other_meeting_count",
+      "evidence_span": "how many OTHER meetings you are actually running is the still-pending required attendee also a required attendee on",
+      "metadata": {
+        "why_justification": "Morgan Thompson is a required attendee on both Technical Interview (tentative) and Skip Level 1:1 (declined). A run that only looks at the pending meeting and never checks other meetings answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "pending_attendee_other_meeting_count",
+        "verifiers": [
+          {
+            "name": "pending_attendee_other_meeting_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires pending_attendee_other_meeting_count = 1.",
+              "why_justification": "Morgan is on one other meeting besides the pending one."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 1,
+              "deterministic": {
+                "path": "$.pending_attendee_other_meeting_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "pending_attendee_other_meeting_verdict",
+      "description": "The pending attendee's response on their other meeting.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "pending_attendee_other_meeting_verdict",
+      "evidence_span": "on that other meeting where the still-pending attendee also appears, what was their response",
+      "metadata": {
+        "why_justification": "Morgan declined Skip Level 1:1. A run that conflates the two meetings answers 'tentative' or 'no_response' instead of 'declined'."
+      },
+      "verifier_spec": {
+        "task_id": "pending_attendee_other_meeting_verdict",
+        "verifiers": [
+          {
+            "name": "pending_attendee_other_meeting_verdict",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires pending_attendee_other_meeting_verdict = 'declined'.",
+              "why_justification": "Morgan's response on Skip Level 1:1 was declined."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "declined",
+              "deterministic": {
+                "path": "$.pending_attendee_other_meeting_verdict",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "optional_attendee_tentative_count",
+      "description": "How many optional attendees across all real meetings are marked tentative.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "optional_attendee_tentative_count",
+      "evidence_span": "how many optional attendees across all meetings you are actually running are marked as tentative",
+      "metadata": {
+        "why_justification": "Cynthia Nelson (optional on Technical Interview) and Nicole Washington (optional on Skip Level 1:1) are both tentative. A run that conflates tentative with no-response answers 0; a run that counts Natalie Gardner (accepted) answers 3."
+      },
+      "verifier_spec": {
+        "task_id": "optional_attendee_tentative_count",
+        "verifiers": [
+          {
+            "name": "optional_attendee_tentative_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires optional_attendee_tentative_count = 2.",
+              "why_justification": "Two optional attendees are tentative: Cynthia Nelson and Nicole Washington."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 2,
+              "deterministic": {
+                "path": "$.optional_attendee_tentative_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "organizer_also_attendee_count",
+      "description": "How many real meetings list the organizer as an attendee.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "organizer_also_attendee_count",
+      "evidence_span": "how many of the meetings you are actually running also list you (the organizer) as an attendee",
+      "metadata": {
+        "why_justification": "Nathan appears as both organizer and attendee on all 4 real meetings. A run that never checks the attendee list for the organizer's own email answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "organizer_also_attendee_count",
+        "verifiers": [
+          {
+            "name": "organizer_also_attendee_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires organizer_also_attendee_count = 4.",
+              "why_justification": "Nathan is listed as attendee on all 4 real meetings."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$.organizer_also_attendee_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "optional_attendee_cross_meeting_count",
+      "description": "Optional attendees appearing on more than one real meeting.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "optional_attendee_cross_meeting_count",
+      "evidence_span": "how many optional attendees appear on more than one of the meetings you are actually running",
+      "metadata": {
+        "why_justification": "Nicole Washington is optional on both Skip Level 1:1 (tentative) and Technical Interview (accepted). A run that doesn't cross-reference attendee lists across meetings answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "optional_attendee_cross_meeting_count",
+        "verifiers": [
+          {
+            "name": "optional_attendee_cross_meeting_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires optional_attendee_cross_meeting_count = 1.",
+              "why_justification": "Nicole Washington appears as optional on two different real meetings."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 1,
+              "deterministic": {
+                "path": "$.optional_attendee_cross_meeting_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "non_real_meeting_events_count",
+      "description": "Calendar entries that are NOT real meetings you are running.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "non_real_meeting_events_count",
+      "evidence_span": "how many calendar entries in the window are NOT meetings you are actually running",
+      "metadata": {
+        "why_justification": "5 events are not real meetings: Backlog Grooming (tentative, organized by nancy.garcia), Story Refinement (tentative status), Concentration Time (focusTime), Flexible Location (workingLocation, organized by noah.brooks), Hybrid (workingLocation, organized by nancy.garcia). A run that counts Story Refinement as a real meeting answers 4; a run that counts Backlog Grooming answers 4; a run that misses the working-location entries answers 3."
+      },
+      "verifier_spec": {
+        "task_id": "non_real_meeting_events_count",
+        "verifiers": [
+          {
+            "name": "non_real_meeting_events_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires non_real_meeting_events_count = 5.",
+              "why_justification": "5 of 9 total events are not real meetings Nathan is running."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 5,
+              "deterministic": {
+                "path": "$.non_real_meeting_events_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "attendee_needs_action_count",
+      "description": "Attendees with needsAction status across ALL events.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "attendee_needs_action_count",
+      "evidence_span": "across ALL events in the window (not just your real meetings), how many attendees have a response status of needsAction",
+      "metadata": {
+        "why_justification": "Catherine Morgan on Backlog Grooming has needsAction (not tentative, not declined, not accepted). A run that conflates needsAction with tentative answers 0; a run that only checks real meetings and ignores other events answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "attendee_needs_action_count",
+        "verifiers": [
+          {
+            "name": "attendee_needs_action_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires attendee_needs_action_count = 1.",
+              "why_justification": "One attendee across all events has needsAction status."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "meeting_confirmation_audit.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 1,
+              "deterministic": {
+                "path": "$.attendee_needs_action_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "pending_attendee_on_non_meeting_count",
+      "description": "Non-real events the pending attendee appears on.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "pending_attendee_on_non_meeting_count",
+      "evidence_span": "how many events that are NOT meetings you are actually running is the still-pending required attendee also listed on",
+      "metadata": {
+        "why_justification": "Morgan Thompson appears on Story Refinement (tentative status, not a real meeting). A run that only checks real meetings answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "pending_attendee_on_non_meeting_count",
+        "verifiers": [
+          {
+            "name": "pending_attendee_on_non_meeting_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires pending_attendee_on_non_meeting_count = 1.",
+              "why_justification": "Morgan appears on Story Refinement, a non-real event."
+            },
+            "source": { "type": "file", "file": { "type": "json", "command": "read_file", "arguments": { "path": "meeting_confirmation_audit.json" } } },
+            "assertion": { "type": "deterministic", "expected": 1, "deterministic": { "path": "$.pending_attendee_on_non_meeting_count", "comparison": "equals" } }
+          }
+        ]
+      }
+    },
+    {
+      "name": "same_title_different_meeting_count",
+      "description": "Events sharing a title with another event.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "same_title_different_meeting_count",
+      "evidence_span": "how many events share their exact title with at least one other event in the window",
+      "metadata": {
+        "why_justification": "Two Weekly Risk Sync events share the same title but have different event IDs and different attendee lists. A run that treats them as one recurring event answers 0 or 1."
+      },
+      "verifier_spec": {
+        "task_id": "same_title_different_meeting_count",
+        "verifiers": [
+          {
+            "name": "same_title_different_meeting_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires same_title_different_meeting_count = 2.",
+              "why_justification": "Two events share the title Weekly Risk Sync."
+            },
+            "source": { "type": "file", "file": { "type": "json", "command": "read_file", "arguments": { "path": "meeting_confirmation_audit.json" } } },
+            "assertion": { "type": "deterministic", "expected": 2, "deterministic": { "path": "$.same_title_different_meeting_count", "comparison": "equals" } }
+          }
+        ]
+      }
+    },
+    {
+      "name": "optional_attendee_accepted_count",
+      "description": "Optional attendees who accepted on real meetings.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "optional_attendee_accepted_count",
+      "evidence_span": "how many optional attendees across all meetings you are actually running have response status accepted",
+      "metadata": {
+        "why_justification": "Natalie Gardner (Weekly Risk Sync 05-19, optional, accepted) and Nicole Washington (Technical Interview, optional, accepted). A run that misses Nicole on Technical Interview answers 1; a run that counts Nicole on Skip Level too answers 3."
+      },
+      "verifier_spec": {
+        "task_id": "optional_attendee_accepted_count",
+        "verifiers": [
+          {
+            "name": "optional_attendee_accepted_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires optional_attendee_accepted_count = 2.",
+              "why_justification": "Natalie and Nicole each accepted as optional attendees on real meetings."
+            },
+            "source": { "type": "file", "file": { "type": "json", "command": "read_file", "arguments": { "path": "meeting_confirmation_audit.json" } } },
+            "assertion": { "type": "deterministic", "expected": 2, "deterministic": { "path": "$.optional_attendee_accepted_count", "comparison": "equals" } }
+          }
+        ]
+      }
+    },
+    {
+      "name": "required_attendee_tentative_count",
+      "description": "Required attendees who are tentative on real meetings.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "required_attendee_tentative_count",
+      "evidence_span": "how many required (non-optional) attendees across all meetings you are actually running have response status tentative",
+      "metadata": {
+        "why_justification": "Morgan Thompson on Technical Interview is required and tentative. A run that conflates required with optional answers 0 or 3; a run that counts Nicole (optional tentative on Skip Level) answers 2."
+      },
+      "verifier_spec": {
+        "task_id": "required_attendee_tentative_count",
+        "verifiers": [
+          {
+            "name": "required_attendee_tentative_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires required_attendee_tentative_count = 1.",
+              "why_justification": "Morgan Thompson is the only required tentative attendee on a real meeting."
+            },
+            "source": { "type": "file", "file": { "type": "json", "command": "read_file", "arguments": { "path": "meeting_confirmation_audit.json" } } },
+            "assertion": { "type": "deterministic", "expected": 1, "deterministic": { "path": "$.required_attendee_tentative_count", "comparison": "equals" } }
+          }
+        ]
+      }
+    },
+    {
+      "name": "attendee_on_both_real_and_non_real_count",
+      "description": "Attendees appearing on both real meetings and non-real events.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "attendee_on_both_real_and_non_real_count",
+      "evidence_span": "how many unique attendee email addresses appear on at least one meeting you are actually running AND at least one event that is NOT a meeting you are running",
+      "metadata": {
+        "why_justification": "Nathan, Morgan, Catherine, Noah, and Nancy each appear on both real meetings and non-real events. A run that only checks real meetings answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "attendee_on_both_real_and_non_real_count",
+        "verifiers": [
+          {
+            "name": "attendee_on_both_real_and_non_real_count",
+            "metadata": {
+              "how_justification": "Reads meeting_confirmation_audit.json and requires attendee_on_both_real_and_non_real_count = 5.",
+              "why_justification": "Five attendees cross the real/non-real boundary."
+            },
+            "source": { "type": "file", "file": { "type": "json", "command": "read_file", "arguments": { "path": "meeting_confirmation_audit.json" } } },
+            "assertion": { "type": "deterministic", "expected": 5, "deterministic": { "path": "$.attendee_on_both_real_and_non_real_count", "comparison": "equals" } }
+          }
+        ]
+      }
+    }
+  ],
+  "instruction_sha256": "7030cc76426a3c779c9517fd9000dcd8d7669dcdf5e18995a3687fb4b18adc55"
+}

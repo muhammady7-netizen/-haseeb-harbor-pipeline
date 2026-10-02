@@ -1,0 +1,34 @@
+{
+  "steps": [
+    {
+      "id": "step1_window_search",
+      "depends_on": [],
+      "name": "search_calendar"
+    },
+    {
+      "id": "step2_skip_level_narrow",
+      "depends_on": ["step1_window_search"],
+      "name": "search_calendar"
+    },
+    {
+      "id": "step3_technical_interview_narrow",
+      "depends_on": ["step1_window_search"],
+      "name": "search_calendar"
+    },
+    {
+      "id": "step4_confirm_no_existing_thread",
+      "depends_on": ["step2_skip_level_narrow", "step3_technical_interview_narrow"],
+      "name": "search_email"
+    },
+    {
+      "id": "step5_draft_confirmation_chase",
+      "depends_on": ["step3_technical_interview_narrow", "step4_confirm_no_existing_thread"],
+      "name": "draft_email"
+    },
+    {
+      "id": "step6_verify_calendar_untouched",
+      "depends_on": ["step5_draft_confirmation_chase"],
+      "name": "search_calendar"
+    }
+  ]
+}

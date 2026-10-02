@@ -1,0 +1,102 @@
+{
+  "task": "the-thread-that-outlived-its-own-start",
+  "acting_identity": "Vishal Desai Pawar (UVS1ZHNER2I5), Software Engineer, team TV5SVWDLOYCK -- pinned by the static token in task.toml, a member of all six rooms in scope",
+  "scope": "C62RIISXI1FD (general-marketing-analytics), CJWT99KXPLPI (perf-070), C5H1G0LC1A6C (mobile-090), CN20Z0W91YE0 (data-v2-062), CND2WYEK82X3 (perf-v2-020), CCO33YK6O6I8 (mobile-v2-024)",
+  "requirements": [
+    {
+      "requirement_id": "R1",
+      "ask": "count how many of the six rooms have a message that was retracted by its own author while still carrying at least one live reply",
+      "prompt_span": "check whether that specific message was later retracted by its own author ... A room only counts as having a live problem if a message that was retracted there still has at least one reply attached to it",
+      "surface": "metrics.json (channels_with_live_orphaned_threads) + orphaned_thread_audit.csv (row_count) + the trace",
+      "expected": 4,
+      "graded_by": ["channels_with_live_orphaned_threads", "csv_header_is_the_pinned_columns_in_order"],
+      "evidence_path": [
+        "slack_read_channel + slack_read_thread on every thread with reply_count>=1 in all 6 rooms (27 threads) -> deleted_ts is only visible on the message record itself, and is populated on 4 of those 27 thread-root messages",
+        "confirmed live through the proxy on :7000 2026-09-13 with the pinned token: general-marketing-analytics, perf-070, mobile-090 and data-v2-062 each carry exactly one retracted thread-root with a live reply"
+      ],
+      "reachability": "proven live: every one of the 6 rooms' channel views and every thread with reply_count>=1 in them was read through slack_read_channel/slack_read_thread and deleted_ts came back set exactly where SQL against the grounding db says it should.",
+      "discrimination": [
+        {"wrong_method": "treat any retraction as the signal, regardless of reply_count", "yields": 5}
+      ]
+    },
+    {
+      "requirement_id": "R2",
+      "ask": "add up how many replies in total are now attached to a retracted message, across the affected rooms",
+      "prompt_span": "add up how many replies in total are now attached to a retracted message",
+      "surface": "metrics.json (total_stranded_replies)",
+      "expected": 5,
+      "graded_by": ["total_stranded_replies"],
+      "evidence_path": [
+        "reply_count on each of the 4 qualifying (deleted_ts set AND reply_count>=1) messages: 1 (general-marketing-analytics) + 1 (perf-070) + 1 (mobile-090) + 2 (data-v2-062) = 5"
+      ],
+      "reachability": "reply_count is present directly on the channel-view row for each qualifying message, and independently confirmed by opening each of the 4 threads and counting the live replies returned.",
+      "discrimination": [
+        {"wrong_method": "count total retractions in scope instead of stranded replies (data-v2-062 has 2 retractions, only 1 with a reply)", "yields": 6},
+        {"wrong_method": "sum reply_count across every thread in all six rooms, not just the orphaned ones", "yields": 38}
+      ]
+    },
+    {
+      "requirement_id": "R3",
+      "ask": "identify the single worst room by stranded-reply count",
+      "prompt_span": "find the single worst room - the one with the most such replies",
+      "surface": "metrics.json (worst_channel_id, worst_channel_stranded_reply_count) + the write-back target",
+      "expected": "CN20Z0W91YE0 (data-v2-062), 2 stranded replies",
+      "graded_by": ["worst_channel_id", "worst_channel_stranded_reply_count", "exactly_one_new_message_in_the_target_room__state", "no_message_posted_in_any_other_room__state"],
+      "evidence_path": [
+        "per-room stranded-reply counts: general-marketing-analytics 1, perf-070 1, mobile-090 1, data-v2-062 2, perf-v2-020 0, mobile-v2-024 0"
+      ],
+      "reachability": "reply_count on the channel view already carries this number correctly for every qualifying message; no additional call is needed once R1/R2's thread reads are done.",
+      "discrimination": [
+        {"wrong_method": "pick a 1-reply orphaned room without comparing counts across rooms (e.g. whichever was checked first)", "yields": "general-marketing-analytics, perf-070, or mobile-090, any of which is wrong"}
+      ]
+    },
+    {
+      "requirement_id": "R4",
+      "ask": "in the worst room, identify who should be notified -- the stranded-reply author who is NOT the same account that retracted the message",
+      "prompt_span": "figure out, in that room specifically, who should actually be told their reply is hanging off a retracted message. Don't tell me to notify the person who retracted the message themselves - they already know",
+      "surface": "metrics.json (notify_candidate_id, notify_candidate_name) + the write-back message's `notify:` line",
+      "expected": "UNN2VSEY3JSW (Mitali Naidu)",
+      "graded_by": ["notify_candidate_id", "notify_candidate_name", "message_ends_with_the_pinned_lines__state", "notify_candidate_excluded_the_retracting_author"],
+      "evidence_path": [
+        "slack_read_thread on data-v2-062's retracted-and-replied-to thread (message_ts 1771353970.549001) returns two replies: one from UNN2VSEY3JSW (Mitali Naidu), one from UYIAYBC7FYCG (Levi Francis Nguyen)",
+        "the retracted root message's own user field is UYIAYBC7FYCG -- the same account as one of the two repliers",
+        "slack_read_user_profile on UNN2VSEY3JSW confirms the real name Mitali Naidu"
+      ],
+      "reachability": "only reachable by opening the specific thread (slack_read_thread) and cross-referencing the retracted message's own user field against both repliers' ids; neither the channel view nor reply_count alone reveals reply authorship.",
+      "discrimination": [
+        {"wrong_method": "pick a reply author in the worst room without checking whether they are the same account that authored the retracted message", "yields": "UYIAYBC7FYCG / Levi Francis Nguyen, who does not need notifying since he retracted the message himself"}
+      ]
+    },
+    {
+      "requirement_id": "R5",
+      "ask": "list every affected room, its retracted message's real author, and the room's real stranded-reply count",
+      "prompt_span": "List every room that has this problem in `/workspace/orphaned_thread_audit.csv`",
+      "surface": "orphaned_thread_audit.csv (header, row_count, and per-row cell values)",
+      "expected": "4 rows, exact author ids/names and counts -- see csv_rows_are_right's rubric prompt",
+      "graded_by": ["csv_header_is_the_pinned_columns_in_order", "csv_rows_are_right"],
+      "evidence_path": [
+        "slack_read_user_profile on each of the 4 qualifying retracted messages' own author id: UJCPV75HKG9V (Prakash Pillai Mehta), UWGCP00XPDCQ (Ellie Wendy Brown), UPLCK9I5ENM9 (Martha Yvonne Nguyen), UYIAYBC7FYCG (Levi Francis Nguyen)"
+      ],
+      "reachability": "author ids come directly off each qualifying message's own user field (already visible from the channel-view/thread-read calls in R1); real names require one slack_read_user_profile call per distinct author.",
+      "discrimination": [
+        {"wrong_method": "include perf-v2-020, whose retraction has zero replies", "yields": "a 5th row for a non-problem room"},
+        {"wrong_method": "report data-v2-062's stranded_reply_count as 1 (channel-view-only undercount, or counting only one of its two retractions)", "yields": 1}
+      ]
+    },
+    {
+      "requirement_id": "R6",
+      "ask": "post exactly one summary message, in the worst room only, ending with the two pinned lines",
+      "prompt_span": "post one message - in the single worst room only, nowhere else ... end the message with exactly these two lines, filled in: orphaned: <...> notify: <...>",
+      "surface": "the live gym's slack_messages table (verified independently of anything the agent's own trajectory claims)",
+      "expected": "exactly 1 new message in CN20Z0W91YE0, authored by UVS1ZHNER2I5, ending 'orphaned: 4' / 'notify: Mitali Naidu'; 0 new messages in any of the other 5 rooms; total messages across all 6 rooms = 86 (85 seed + 1)",
+      "graded_by": ["exactly_one_new_message_in_the_target_room__state", "message_ends_with_the_pinned_lines__state", "no_message_posted_in_any_other_room__state", "seed_messages_across_all_six_rooms_left_intact__state"],
+      "evidence_path": [
+        "database_state verifier_type queries the live per-trial database directly through the trusted /raw/slack-gym/state route -- independent of anything the agent's own trajectory.json claims, so a fabricated trajectory cannot satisfy this"
+      ],
+      "reachability": "the gym's /state endpoint accepts arbitrary verify_queries SQL (confirmed for slack-gym per this project's established pattern), so database_state is the correct exactness mechanism here, not a trace-target rubric_check alone (gotcha 29's write-back guidance).",
+      "discrimination": [
+        {"wrong_method": "post into any room other than data-v2-062, or post more than one message", "yields": "0 or >1 rows matching the exact SQL predicate"}
+      ]
+    }
+  ]
+}

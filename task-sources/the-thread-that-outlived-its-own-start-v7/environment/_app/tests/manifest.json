@@ -1,0 +1,938 @@
+{
+  "state": {
+    "snapshot": {
+      "mode": "full_hash",
+      "exclude_tables": [
+        "sqlite_sequence",
+        "sqlite_stat1"
+      ],
+      "include_tables": null,
+      "schema_version": "harbor.state_snapshot.v1",
+      "debug_full_rows": "gzip",
+      "diff_schema_version": "harbor.state_diff.v1"
+    },
+    "canonicalize": {
+      "sort_lists": true,
+      "strip_fields": [
+        "id",
+        "created_at",
+        "updated_at",
+        "executed_at",
+        "deleted_at",
+        "execution_time_ms",
+        "create_time",
+        "update_time",
+        "last_used_at"
+      ],
+      "strip_fields_per_table": {}
+    },
+    "expected_diff_file": "solution/expected_diff.json"
+  },
+  "rubric": {
+    "file": "tests/rubric.toml",
+    "evidence": {
+      "max_chars": 350000,
+      "include_db_diff": true,
+      "include_trajectory": true,
+      "include_final_output": true
+    }
+  },
+  "scoring": {
+    "weights": {
+      "sql": 0.0,
+      "state": 0.0,
+      "rubric": 0.4,
+      "trajectory": 0.0
+    },
+    "round_digits": 4,
+    "side_effect_gate": true,
+    "flat_verifier_scoring": true,
+    "allowed_verifier_types": [
+      "rubric",
+      "agentic_llm_as_judge"
+    ]
+  },
+  "trajectory": {
+    "golden_file": "solution/golden_trajectory.json",
+    "response_match": {
+      "match_is_error": true,
+      "match_status_code": true,
+      "strip_response_fields": [
+        "id",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "forbidden_tools": [],
+    "agent_trace_file": "/logs/agent/trajectory.json",
+    "scoring_per_step": {
+      "args_weight": 0.4,
+      "name_weight": 0.4,
+      "response_weight": 0.2
+    }
+  },
+  "verifier_configs": [
+    {
+      "name": "did_real_work_not_one_shot",
+      "description": "Floor: the episode must contain real gym traffic, not a zero-effort short circuit. Names no tool and sets no workflow requirement beyond that -- a genuine solve needs 40+ calls (6 channel reads, 27 thread reads, up to 6 profile reads, 1 write), so this floor never constrains a legitimate run.",
+      "requirement_id": "R0",
+      "evidence_span": "Give me your conclusion and the evidence for it in your final reply.",
+      "category": "core",
+      "verifier_type": "tool_execution",
+      "type": "tool_execution",
+      "weight": 0.25,
+      "target_gym_server": "slack-gym",
+      "expected_tools": [],
+      "minimum_tool_calls": 10
+    },
+    {
+      "name": "channels_with_live_orphaned_threads",
+      "description": "channels with live orphaned threads",
+      "requirement_id": "R1",
+      "evidence_span": "check whether that specific message was later retracted by its own author",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 1.0,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "channels_with_live_orphaned_threads",
+            "metadata": {
+              "how_justification": "Addresses the value by the key the prompt pins, by recursive descent, and requires equality. Nesting, key order and number formatting are free; only the pinned key and its value are fixed.",
+              "why_justification": "The population the whole audit rests on. Gold 4. A run that treats any retraction (regardless of whether it has a reply) as the signal answers 5: perf-v2-020's retraction has zero replies and is not a live problem."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$..channels_with_live_orphaned_threads",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "total_stranded_replies",
+      "description": "total stranded replies",
+      "requirement_id": "R2",
+      "evidence_span": "add up how many replies in total are now attached to a retracted message",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 1.0,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "total_stranded_replies",
+            "metadata": {
+              "how_justification": "Recursive-descent key match against metrics.json, equality on the numeric value.",
+              "why_justification": "Gold 5 (1+1+1+2 across the four orphaned threads). Counting every retraction in scope instead (5 messages retracted, one room has two) answers 6. Summing every reply in every thread across all six rooms instead of just the orphaned ones answers 38."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 5,
+              "deterministic": {
+                "path": "$..total_stranded_replies",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "worst_channel_id",
+      "description": "worst channel id",
+      "requirement_id": "R3",
+      "evidence_span": "find the single worst room - the one with the most such replies",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 1.0,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "worst_channel_id",
+            "metadata": {
+              "how_justification": "Recursive-descent key match on the channel id, equality.",
+              "why_justification": "data-v2-062 (CN20Z0W91YE0) is the real worst room at 2 stranded replies, ahead of the other three orphaned rooms on 1 each. There is no tie to break here, but a run that never actually compares counts across rooms -- picking whichever orphaned room it checked first -- can land on any of the three 1-reply rooms instead."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "CN20Z0W91YE0",
+              "deterministic": {
+                "path": "$..worst_channel_id",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "worst_channel_stranded_reply_count",
+      "description": "worst channel stranded reply count",
+      "requirement_id": "R3",
+      "evidence_span": "the one with the most such replies",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 1.0,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "worst_channel_stranded_reply_count",
+            "metadata": {
+              "how_justification": "Recursive-descent key match, equality.",
+              "why_justification": "Gold 2. The channel view's reply_count field already carries this correctly, so the only way to get this wrong is to also count perf-v2-020's inert (no-reply) retraction as if it added another orphaned thread somewhere, or to miscount which room is worst."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 2,
+              "deterministic": {
+                "path": "$..worst_channel_stranded_reply_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "notify_candidate_id",
+      "description": "notify candidate id",
+      "requirement_id": "R4",
+      "evidence_span": "figure out, in that room specifically, who should actually be told",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 1.0,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "notify_candidate_id",
+            "metadata": {
+              "how_justification": "Recursive-descent key match on the account id, equality, string comparison.",
+              "why_justification": "Gold UNN2VSEY3JSW (Mitali Naidu), the one reply in data-v2-062's orphaned thread from an account that never touched the retraction. The thread's other reply and its retracted root both belong to the same account (UYIAYBC7FYCG, Levi Francis Nguyen) -- a run that picks a reply author without checking whether they are the retracting author themselves lands on Levi instead, who does not need notifying since he retracted the message himself."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "UNN2VSEY3JSW",
+              "deterministic": {
+                "path": "$..notify_candidate_id",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "notify_candidate_name",
+      "description": "notify candidate name",
+      "requirement_id": "R4",
+      "evidence_span": "who should actually be told their reply is hanging off a retracted message",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 1.0,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "notify_candidate_name",
+            "metadata": {
+              "how_justification": "Recursive-descent key match, equality, string comparison.",
+              "why_justification": "The real name behind UNN2VSEY3JSW, only obtainable via slack_read_user_profile since the thread reply only carries the account id."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "Mitali Naidu",
+              "deterministic": {
+                "path": "$..notify_candidate_name",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "csv_header_is_the_pinned_columns_in_order",
+      "description": "orphaned_thread_audit.csv carries exactly the five pinned columns, in the pinned order",
+      "requirement_id": "R5",
+      "evidence_span": "with exactly these columns in this order: channel_id, channel_name, retracted_message_author_id, retracted_message_author_name, stranded_reply_count",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 0.5,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "header_is_the_pinned_columns_in_order",
+            "metadata": {
+              "how_justification": "Reads the CSV's real header through csv.inspect_table and requires the header list to EQUAL the five pinned names, in the pinned order, exactly as the prompt writes them.",
+              "why_justification": "The prompt says 'exactly these columns in this order'. A substring check would pass a file with the columns in any order."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "csv",
+                "command": "inspect_table",
+                "arguments": {
+                  "path": "orphaned_thread_audit.csv"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": [
+                "channel_id",
+                "channel_name",
+                "retracted_message_author_id",
+                "retracted_message_author_name",
+                "stranded_reply_count"
+              ],
+              "deterministic": {
+                "path": "$.header",
+                "comparison": "equals"
+              }
+            }
+          },
+          {
+            "name": "csv_has_exactly_four_data_rows",
+            "metadata": {
+              "how_justification": "Reads the CSV's real row count through csv.inspect_table.",
+              "why_justification": "Exactly four rooms have a live orphaned thread; a CSV with more or fewer rows means the population itself was gotten wrong."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "csv",
+                "command": "inspect_table",
+                "arguments": {
+                  "path": "orphaned_thread_audit.csv"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$.row_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "csv_rows_are_right",
+      "description": "Every row of orphaned_thread_audit.csv names the right room, the right retracted message's real author and the right stranded reply count for that room, and no non-problem room appears.",
+      "requirement_id": "R6",
+      "evidence_span": "List every room that has this problem in `/workspace/orphaned_thread_audit.csv`",
+      "category": "core",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "target": "artifacts",
+      "weight": 1.0,
+      "verifier_spec": {
+        "task_id": "slack-the-thread-that-outlived-its-own-start",
+        "verifiers": [
+          {
+            "name": "csv_rows_are_right",
+            "metadata": {
+              "how_justification": "A native rubric ASSERTION over the CSV's own raw text, judged by the task's configured judge at temperature 0. It grades the CELL VALUES the prompt pins for each of the four rooms -- which account's retracted message is the one with replies, that account's real name, and the room's real stranded-reply count -- none of which a deterministic comparator on this source can address, since csv.extract_text exposes the file only as raw text. Row order, quoting, whitespace and letter case are explicitly free; the twenty pinned values (4 rows x 5 fields) are not.",
+              "why_justification": "Without this a CSV listing the right four channel ids with an invented author or a made-up reply count still satisfies the header and row-count checks. The stranded-reply count in particular is only obtainable by opening the specific retracted message's thread, so a run that never did that cannot fill it in correctly."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "csv",
+                "command": "extract_text",
+                "arguments": {
+                  "path": "orphaned_thread_audit.csv"
+                }
+              }
+            },
+            "assertion": {
+              "type": "rubric",
+              "expected": true,
+              "rubric": {
+                "prompt": "PASS only if the CSV contains exactly these four rooms, each correctly paired with the real author of that room's own retracted-and-replied-to message, that author's real name, and that room's real stranded-reply count:\n  C62RIISXI1FD,general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\n  CJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\n  C5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\n  CN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\nRow order, header capitalization variance beyond the pinned names, quoting style and incidental whitespace are all free. FAIL if any of the four rooms is missing, if perf-v2-020 or mobile-v2-024 is listed (neither has a live orphaned thread), if any author id or name is paired with the wrong room, or if any stranded_reply_count value does not match the real count above (a value of 1 for data-v2-062, matching only its inert second retraction or an undercount of its real two stranded replies, is a common wrong answer and must FAIL)."
+              }
+            }
+          }
+        ],
+        "config": {
+          "models": [
+            "openai/zai-org/GLM-5.2"
+          ],
+          "temperature": 0.0
+        }
+      }
+    },
+    {
+      "name": "exactly_one_new_message_in_the_target_room__state",
+      "description": "exactly one new message in the target room  state",
+      "requirement_id": "R7",
+      "evidence_span": "post one message - in the single worst room only, nowhere else",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000",
+      "expected_value": 1,
+      "comparison_type": "equals"
+    },
+    {
+      "name": "message_ends_with_the_pinned_lines__state",
+      "description": "message ends with the pinned lines  state",
+      "requirement_id": "R8",
+      "evidence_span": "end the message with exactly these two lines, filled in: orphaned: <...> notify: <...>",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000 AND REPLACE(RTRIM(text, char(10)||char(13)||char(9)||' '), ' ', '') LIKE '%orphaned:4'||char(10)||'notify:MitaliNaidu'",
+      "expected_value": 1,
+      "comparison_type": "equals"
+    },
+    {
+      "name": "no_message_posted_in_any_other_room__state",
+      "description": "no message posted in any other room  state",
+      "requirement_id": "R9",
+      "evidence_span": "in the single worst room only, nowhere else",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE channel != 'CN20Z0W91YE0' AND CAST(ts AS REAL) > 1771400000",
+      "expected_value": 0,
+      "comparison_type": "equals"
+    },
+    {
+      "name": "seed_messages_across_all_six_rooms_left_intact__state",
+      "description": "seed messages across all six rooms left intact  state",
+      "requirement_id": "R10",
+      "evidence_span": "in the single worst room only, nowhere else",
+      "category": "core",
+      "verifier_type": "database_state",
+      "type": "database_state",
+      "weight": 1.0,
+      "target_gym_server": "slack-gym",
+      "sql_query": "SELECT COUNT(*) FROM slack_messages WHERE channel IN ('C62RIISXI1FD','CJWT99KXPLPI','C5H1G0LC1A6C','CN20Z0W91YE0','CND2WYEK82X3','CCO33YK6O6I8')",
+      "expected_value": 86,
+      "comparison_type": "equals"
+    },
+    {
+      "name": "every_thread_with_a_reply_was_actually_opened",
+      "description": "Whether every message with a reply, in every one of the six rooms, was actually opened via slack_read_thread before the room was called clean or flagged -- since reply_count alone on the channel view cannot reveal a retraction.",
+      "requirement_id": "R11",
+      "evidence_span": "you have to actually open every thread with a reply and look",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "trace",
+      "weight": 0.5,
+      "target_gym_server": "slack-gym",
+      "rubric": "Judge this from which TOOL CALLS were made -- their names and channel_id/message_ts arguments -- not from the content of what each call returned; call arguments are what this rubric needs and they stay small regardless of how long a trace gets, so evidence truncation on large tool RESULTS should not affect this verdict. PASS if, for every one of the six rooms (C62RIISXI1FD, CJWT99KXPLPI, C5H1G0LC1A6C, CN20Z0W91YE0, CND2WYEK82X3, CCO33YK6O6I8), a slack_read_channel call for that room appears, AND a slack_read_thread call appears for every message in that room's channel view that shows reply_count >= 1, before the run reaches its final flagged/clean verdict for that room. The exact number of such messages varies per room and you should judge this from what the trace actually shows was called, not from a fixed count. FAIL if any room's flagged/clean verdict is reached without a slack_read_channel call for that room, or if any message shown with reply_count >= 1 in a room's channel view has no matching slack_read_thread call anywhere in the trace. If the evidence given to you does not show enough of the trace to tell which slack_read_thread calls were made for a specific room, treat that as insufficient evidence for that room only, not as an automatic FAIL of the whole verdict.",
+      "expected": {
+        "metric": "method",
+        "correct_value": "see rubric"
+      }
+    },
+    {
+      "name": "notify_candidate_excluded_the_retracting_author",
+      "description": "Whether the notify candidate was chosen by actually comparing the worst room's stranded reply authors against the retracted message's own author, not just picked from the thread.",
+      "requirement_id": "R12",
+      "evidence_span": "Don't tell me to notify the person who retracted the message themselves - they already know",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "trace",
+      "weight": 0.5,
+      "target_gym_server": "slack-gym",
+      "rubric": "Judge this from which TOOL CALLS were made and their arguments, not from deep inspection of every returned payload. PASS if the trace shows a slack_read_thread call on CN20Z0W91YE0's retracted-and-replied-to thread (message_ts 1771353970.549001, or a call covering that same thread), AND a slack_read_user_profile call on UNN2VSEY3JSW (the account eventually used as the notify candidate) happening before that identity is used anywhere in the final output. FAIL if the final output's notify candidate is UYIAYBC7FYCG (the retracting author) or any account other than UNN2VSEY3JSW, or if UNN2VSEY3JSW is used as the notify candidate with no slack_read_user_profile call on that id anywhere in the trace, or if the run never actually opened data-v2-062's specific retracted thread before naming a notify candidate.",
+      "expected": {
+        "metric": "method",
+        "correct_value": "see rubric"
+      }
+    },
+    {
+      "name": "final_reply_states_a_conclusion",
+      "description": "Whether the final reply actually answers the question rather than describing the work.",
+      "requirement_id": "R13",
+      "evidence_span": "Give me your conclusion and the evidence for it in your final reply.",
+      "category": "core",
+      "verifier_type": "rubric_check",
+      "type": "rubric_check",
+      "target": "final_answer",
+      "weight": 0.5,
+      "target_gym_server": "slack-gym",
+      "rubric": "PASS if the final reply states a real conclusion -- how many rooms have a live orphaned thread, roughly how big the problem is, which room is worst, and who should be notified there -- and points at the evidence behind it. FAIL if it only narrates the steps taken or lists figures with no stated conclusion.",
+      "expected": {
+        "metric": "conclusion",
+        "correct_value": "a stated verdict, not a description of the process"
+      }
+    },
+    {
+      "name": "retracted_msg_author_also_replied",
+      "description": "Self-reply detection.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "retracted_msg_author_also_replied",
+      "evidence_span": "figure out who should actually be told",
+      "metadata": {
+        "why_justification": "Levi retracted AND replied."
+      },
+      "verifier_spec": {
+        "task_id": "retracted_msg_author_also_replied",
+        "verifiers": [
+          {
+            "name": "retracted_msg_author_also_replied",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires retracted_msg_author_also_replied = True.",
+              "why_justification": "Levi retracted AND replied."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": true,
+              "deterministic": {
+                "path": "$.retracted_msg_author_also_replied",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "worst_room_has_self_reply",
+      "description": "Self vs external.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "worst_room_has_self_reply",
+      "evidence_span": "figure out who should actually be told",
+      "metadata": {
+        "why_justification": "Worst room has self AND external reply."
+      },
+      "verifier_spec": {
+        "task_id": "worst_room_has_self_reply",
+        "verifiers": [
+          {
+            "name": "worst_room_has_self_reply",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires worst_room_has_self_reply = True.",
+              "why_justification": "Worst room has self AND external reply."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": true,
+              "deterministic": {
+                "path": "$.worst_room_has_self_reply",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "notify_candidate_is_not_retractor",
+      "description": "Dont notify retractor.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "notify_candidate_is_not_retractor",
+      "evidence_span": "figure out who should actually be told",
+      "metadata": {
+        "why_justification": "Retractor already knows."
+      },
+      "verifier_spec": {
+        "task_id": "notify_candidate_is_not_retractor",
+        "verifiers": [
+          {
+            "name": "notify_candidate_is_not_retractor",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires notify_candidate_is_not_retractor = True.",
+              "why_justification": "Retractor already knows."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": true,
+              "deterministic": {
+                "path": "$.notify_candidate_is_not_retractor",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "worst_room_retractor_id",
+      "description": "WHO retracted.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "worst_room_retractor_id",
+      "evidence_span": "figure out who should actually be told",
+      "metadata": {
+        "why_justification": "Read user field on retracted msg."
+      },
+      "verifier_spec": {
+        "task_id": "worst_room_retractor_id",
+        "verifiers": [
+          {
+            "name": "worst_room_retractor_id",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires worst_room_retractor_id = UYIAYBC7FYCG.",
+              "why_justification": "Read user field on retracted msg."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "UYIAYBC7FYCG",
+              "deterministic": {
+                "path": "$.worst_room_retractor_id",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "retractor_also_notifiable",
+      "description": "Whether the retractor should also be notified (always false).",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "retractor_also_notifiable",
+      "evidence_span": "whether the retractor should also be notified about the retracted message. This is always false",
+      "metadata": {
+        "why_justification": "The retractor already knows they retracted their own message, so they do not need to be told."
+      },
+      "verifier_spec": {
+        "task_id": "retractor_also_notifiable",
+        "verifiers": [
+          {
+            "name": "retractor_also_notifiable",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires retractor_also_notifiable = False.",
+              "why_justification": "The retractor already knows they retracted their own message."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": false,
+              "deterministic": {
+                "path": "$.retractor_also_notifiable",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "read_user_profile_was_called",
+      "description": "Force profile lookup.",
+      "category": "core",
+      "weight": 1.0,
+      "verifier_type": "tool_execution",
+      "type": "tool_execution",
+      "requirement_id": "read_user_profile_was_called",
+      "evidence_span": "Use `slack_read_user_profile` to look up the real name of the person you identify as the notify candidate",
+      "expected_tools": [
+        "slack_read_user_profile"
+      ],
+      "minimum_tool_calls": 1,
+      "metadata": {
+        "why_justification": "Name only from profile."
+      }
+    },
+    {
+      "name": "clean_rooms_count",
+      "description": "How many of the six checked rooms do NOT have a live orphaned thread.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "clean_rooms_count",
+      "evidence_span": "how many of the six checked rooms do NOT have a live orphaned thread",
+      "metadata": {
+        "why_justification": "Two rooms are clean: perf-v2-020 has a retraction with zero replies, and mobile-v2-024 has no retracted messages at all. A run that counts perf-v2-020 as having a problem answers 1; a run that never checked all six rooms answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "clean_rooms_count",
+        "verifiers": [
+          {
+            "name": "clean_rooms_count",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires clean_rooms_count = 2.",
+              "why_justification": "Two of six rooms have no live orphaned thread."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 2,
+              "deterministic": {
+                "path": "$.clean_rooms_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "clean_room_ids",
+      "description": "Channel IDs of rooms without a live orphaned thread, in alphabetical order.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "clean_room_ids",
+      "evidence_span": "the channel IDs of every room you checked that does NOT have a live orphaned thread, in alphabetical order",
+      "metadata": {
+        "why_justification": "Tests whether the agent correctly distinguishes no-retraction rooms from retraction-without-replies rooms and returns the exact IDs."
+      },
+      "verifier_spec": {
+        "task_id": "clean_room_ids",
+        "verifiers": [
+          {
+            "name": "clean_room_ids",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires clean_room_ids = [\"CCO33YK6O6I8\", \"CND2WYEK82X3\"].",
+              "why_justification": "CCO33YK6O6I8 (mobile-v2-024) has no retracted messages; CND2WYEK82X3 (perf-v2-020) has a retraction with zero replies."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": ["CCO33YK6O6I8", "CND2WYEK82X3"],
+              "deterministic": {
+                "path": "$.clean_room_ids",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "retractor_self_reply_count",
+      "description": "Across all rooms with a live orphaned thread, how many stranded replies were written by the retractor themselves.",
+      "category": "core",
+      "weight": 1.0,
+      "target": "workspace_files",
+      "verifier_type": "file_check",
+      "type": "file_check",
+      "pass_threshold": 1.0,
+      "requirement_id": "retractor_self_reply_count",
+      "evidence_span": "how many of the total stranded replies were written by the same person who retracted the original message",
+      "metadata": {
+        "why_justification": "Both Ellie (UWGCP00XPDCQ) in perf-070 and Levi (UYIAYBC7FYCG) in data-v2-062 replied to their own retracted threads. A run that counts all replies as external answers 0."
+      },
+      "verifier_spec": {
+        "task_id": "retractor_self_reply_count",
+        "verifiers": [
+          {
+            "name": "retractor_self_reply_count",
+            "metadata": {
+              "how_justification": "Reads metrics.json and requires retractor_self_reply_count = 2.",
+              "why_justification": "Both Ellie (perf-070) and Levi (data-v2-062) self-replied to their own retracted threads."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 2,
+              "deterministic": {
+                "path": "$.retractor_self_reply_count",
+                "comparison": "equals"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "instruction_sha256": "acf72bf9c5690df63d02fd5745319b8b0e28c11160789740a827c4f990d3b361"
+}

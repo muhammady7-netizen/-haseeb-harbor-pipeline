@@ -1,0 +1,311 @@
+{
+  "steps": [
+    {
+      "id": "s1",
+      "depends_on": [],
+      "name": "slack_search_channels"
+    },
+    {
+      "id": "s2",
+      "depends_on": [],
+      "name": "slack_search_channels"
+    },
+    {
+      "id": "s3",
+      "depends_on": [],
+      "name": "slack_search_channels"
+    },
+    {
+      "id": "s4",
+      "depends_on": [],
+      "name": "slack_search_channels"
+    },
+    {
+      "id": "s5",
+      "depends_on": [],
+      "name": "slack_search_channels"
+    },
+    {
+      "id": "s6",
+      "depends_on": [],
+      "name": "slack_search_channels"
+    },
+    {
+      "id": "s7",
+      "depends_on": [
+        "s1"
+      ],
+      "name": "slack_read_channel"
+    },
+    {
+      "id": "s8",
+      "depends_on": [
+        "s2"
+      ],
+      "name": "slack_read_channel"
+    },
+    {
+      "id": "s9",
+      "depends_on": [
+        "s3"
+      ],
+      "name": "slack_read_channel"
+    },
+    {
+      "id": "s10",
+      "depends_on": [
+        "s4"
+      ],
+      "name": "slack_read_channel"
+    },
+    {
+      "id": "s11",
+      "depends_on": [
+        "s5"
+      ],
+      "name": "slack_read_channel"
+    },
+    {
+      "id": "s12",
+      "depends_on": [
+        "s6"
+      ],
+      "name": "slack_read_channel"
+    },
+    {
+      "id": "s13",
+      "depends_on": [
+        "s7"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s14",
+      "depends_on": [
+        "s7"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s15",
+      "depends_on": [
+        "s7"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s16",
+      "depends_on": [
+        "s7"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s17",
+      "depends_on": [
+        "s8"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s18",
+      "depends_on": [
+        "s8"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s19",
+      "depends_on": [
+        "s8"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s20",
+      "depends_on": [
+        "s8"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s21",
+      "depends_on": [
+        "s8"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s22",
+      "depends_on": [
+        "s8"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s23",
+      "depends_on": [
+        "s8"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s24",
+      "depends_on": [
+        "s9"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s25",
+      "depends_on": [
+        "s9"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s26",
+      "depends_on": [
+        "s9"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s27",
+      "depends_on": [
+        "s9"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s28",
+      "depends_on": [
+        "s10"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s29",
+      "depends_on": [
+        "s10"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s30",
+      "depends_on": [
+        "s10"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s31",
+      "depends_on": [
+        "s10"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s32",
+      "depends_on": [
+        "s10"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s33",
+      "depends_on": [
+        "s10"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s34",
+      "depends_on": [
+        "s11"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s35",
+      "depends_on": [
+        "s11"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s36",
+      "depends_on": [
+        "s11"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s37",
+      "depends_on": [
+        "s11"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s38",
+      "depends_on": [
+        "s12"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s39",
+      "depends_on": [
+        "s12"
+      ],
+      "name": "slack_read_thread"
+    },
+    {
+      "id": "s40",
+      "depends_on": [
+        "s13"
+      ],
+      "name": "slack_read_user_profile"
+    },
+    {
+      "id": "s41",
+      "depends_on": [
+        "s19"
+      ],
+      "name": "slack_read_user_profile"
+    },
+    {
+      "id": "s42",
+      "depends_on": [
+        "s26"
+      ],
+      "name": "slack_read_user_profile"
+    },
+    {
+      "id": "s43",
+      "depends_on": [
+        "s33"
+      ],
+      "name": "slack_read_user_profile"
+    },
+    {
+      "id": "s44",
+      "depends_on": [
+        "s33"
+      ],
+      "name": "slack_read_user_profile"
+    },
+    {
+      "id": "s45",
+      "depends_on": [
+        "s40",
+        "s41",
+        "s42",
+        "s43",
+        "s44"
+      ],
+      "name": "slack_send_message"
+    }
+  ]
+}

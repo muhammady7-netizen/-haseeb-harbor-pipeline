@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "/workspace/task"
+    },
+    "trial_name": "task__VVhG9vr",
+    "trials_dir": "/workspace/harbor-jobs/email8b-oracle-fix1",
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        }
+    },
+    "job_id": "63094946-9e5e-43cb-a907-05a6c8c41ee0"
+}
