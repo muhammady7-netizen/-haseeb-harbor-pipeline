@@ -1,0 +1,612 @@
+[
+  {
+    "id": "s1",
+    "depends_on": [],
+    "purpose": "Resolve general-marketing-analytics to its channel id.",
+    "name": "slack_search_channels",
+    "server": "slack-gym",
+    "arguments": {
+      "query": "general-marketing-analytics",
+      "channel_types": "public_channel,private_channel",
+      "limit": 10
+    }
+  },
+  {
+    "id": "s2",
+    "depends_on": [],
+    "purpose": "Resolve perf-070 to its channel id.",
+    "name": "slack_search_channels",
+    "server": "slack-gym",
+    "arguments": {
+      "query": "perf-070",
+      "channel_types": "public_channel,private_channel",
+      "limit": 10
+    }
+  },
+  {
+    "id": "s3",
+    "depends_on": [],
+    "purpose": "Resolve mobile-090 to its channel id.",
+    "name": "slack_search_channels",
+    "server": "slack-gym",
+    "arguments": {
+      "query": "mobile-090",
+      "channel_types": "public_channel,private_channel",
+      "limit": 10
+    }
+  },
+  {
+    "id": "s4",
+    "depends_on": [],
+    "purpose": "Resolve data-v2-062 to its channel id.",
+    "name": "slack_search_channels",
+    "server": "slack-gym",
+    "arguments": {
+      "query": "data-v2-062",
+      "channel_types": "public_channel,private_channel",
+      "limit": 10
+    }
+  },
+  {
+    "id": "s5",
+    "depends_on": [],
+    "purpose": "Resolve perf-v2-020 to its channel id.",
+    "name": "slack_search_channels",
+    "server": "slack-gym",
+    "arguments": {
+      "query": "perf-v2-020",
+      "channel_types": "public_channel,private_channel",
+      "limit": 10
+    }
+  },
+  {
+    "id": "s6",
+    "depends_on": [],
+    "purpose": "Resolve mobile-v2-024 to its channel id.",
+    "name": "slack_search_channels",
+    "server": "slack-gym",
+    "arguments": {
+      "query": "mobile-v2-024",
+      "channel_types": "public_channel,private_channel",
+      "limit": 10
+    }
+  },
+  {
+    "id": "s7",
+    "depends_on": [
+      "s1"
+    ],
+    "purpose": "Read general-marketing-analytics's channel view -- every top-level message, including any that carry a deleted_ts, and each one's reply_count.",
+    "name": "slack_read_channel",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C62RIISXI1FD",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s8",
+    "depends_on": [
+      "s2"
+    ],
+    "purpose": "Read perf-070's channel view -- every top-level message, including any that carry a deleted_ts, and each one's reply_count.",
+    "name": "slack_read_channel",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s9",
+    "depends_on": [
+      "s3"
+    ],
+    "purpose": "Read mobile-090's channel view -- every top-level message, including any that carry a deleted_ts, and each one's reply_count.",
+    "name": "slack_read_channel",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C5H1G0LC1A6C",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s10",
+    "depends_on": [
+      "s4"
+    ],
+    "purpose": "Read data-v2-062's channel view -- every top-level message, including any that carry a deleted_ts, and each one's reply_count.",
+    "name": "slack_read_channel",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s11",
+    "depends_on": [
+      "s5"
+    ],
+    "purpose": "Read perf-v2-020's channel view -- every top-level message, including any that carry a deleted_ts, and each one's reply_count.",
+    "name": "slack_read_channel",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CND2WYEK82X3",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s12",
+    "depends_on": [
+      "s6"
+    ],
+    "purpose": "Read mobile-v2-024's channel view -- every top-level message, including any that carry a deleted_ts, and each one's reply_count.",
+    "name": "slack_read_channel",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CCO33YK6O6I8",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s13",
+    "depends_on": [
+      "s7"
+    ],
+    "purpose": "Open the thread under 1771205137.727441 in general-marketing-analytics -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C62RIISXI1FD",
+      "message_ts": "1771205137.727441",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s14",
+    "depends_on": [
+      "s7"
+    ],
+    "purpose": "Open the thread under 1771227272.997362 in general-marketing-analytics -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C62RIISXI1FD",
+      "message_ts": "1771227272.997362",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s15",
+    "depends_on": [
+      "s7"
+    ],
+    "purpose": "Open the thread under 1771273286.056030 in general-marketing-analytics -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C62RIISXI1FD",
+      "message_ts": "1771273286.056030",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s16",
+    "depends_on": [
+      "s7"
+    ],
+    "purpose": "Open the thread under 1771340075.497392 in general-marketing-analytics -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C62RIISXI1FD",
+      "message_ts": "1771340075.497392",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s17",
+    "depends_on": [
+      "s8"
+    ],
+    "purpose": "Open the thread under 1771198210.044729 in perf-070 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "message_ts": "1771198210.044729",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s18",
+    "depends_on": [
+      "s8"
+    ],
+    "purpose": "Open the thread under 1771220483.875841 in perf-070 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "message_ts": "1771220483.875841",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s19",
+    "depends_on": [
+      "s8"
+    ],
+    "purpose": "Open the thread under 1771242547.626273 in perf-070 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "message_ts": "1771242547.626273",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s20",
+    "depends_on": [
+      "s8"
+    ],
+    "purpose": "Open the thread under 1771266163.715801 in perf-070 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "message_ts": "1771266163.715801",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s21",
+    "depends_on": [
+      "s8"
+    ],
+    "purpose": "Open the thread under 1771287964.879239 in perf-070 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "message_ts": "1771287964.879239",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s22",
+    "depends_on": [
+      "s8"
+    ],
+    "purpose": "Open the thread under 1771332914.391554 in perf-070 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "message_ts": "1771332914.391554",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s23",
+    "depends_on": [
+      "s8"
+    ],
+    "purpose": "Open the thread under 1771355417.268573 in perf-070 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CJWT99KXPLPI",
+      "message_ts": "1771355417.268573",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s24",
+    "depends_on": [
+      "s9"
+    ],
+    "purpose": "Open the thread under 1771224738.466293 in mobile-090 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C5H1G0LC1A6C",
+      "message_ts": "1771224738.466293",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s25",
+    "depends_on": [
+      "s9"
+    ],
+    "purpose": "Open the thread under 1771247453.788782 in mobile-090 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C5H1G0LC1A6C",
+      "message_ts": "1771247453.788782",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s26",
+    "depends_on": [
+      "s9"
+    ],
+    "purpose": "Open the thread under 1771292430.437230 in mobile-090 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C5H1G0LC1A6C",
+      "message_ts": "1771292430.437230",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s27",
+    "depends_on": [
+      "s9"
+    ],
+    "purpose": "Open the thread under 1771315260.282819 in mobile-090 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "C5H1G0LC1A6C",
+      "message_ts": "1771315260.282819",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s28",
+    "depends_on": [
+      "s10"
+    ],
+    "purpose": "Open the thread under 1771196626.119882 in data-v2-062 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "message_ts": "1771196626.119882",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s29",
+    "depends_on": [
+      "s10"
+    ],
+    "purpose": "Open the thread under 1771241007.793708 in data-v2-062 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "message_ts": "1771241007.793708",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s30",
+    "depends_on": [
+      "s10"
+    ],
+    "purpose": "Open the thread under 1771264282.658603 in data-v2-062 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "message_ts": "1771264282.658603",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s31",
+    "depends_on": [
+      "s10"
+    ],
+    "purpose": "Open the thread under 1771308537.058449 in data-v2-062 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "message_ts": "1771308537.058449",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s32",
+    "depends_on": [
+      "s10"
+    ],
+    "purpose": "Open the thread under 1771331279.806465 in data-v2-062 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "message_ts": "1771331279.806465",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s33",
+    "depends_on": [
+      "s10"
+    ],
+    "purpose": "Open the thread under 1771353970.549001 in data-v2-062 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "message_ts": "1771353970.549001",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s34",
+    "depends_on": [
+      "s11"
+    ],
+    "purpose": "Open the thread under 1771209070.881968 in perf-v2-020 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CND2WYEK82X3",
+      "message_ts": "1771209070.881968",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s35",
+    "depends_on": [
+      "s11"
+    ],
+    "purpose": "Open the thread under 1771230960.997646 in perf-v2-020 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CND2WYEK82X3",
+      "message_ts": "1771230960.997646",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s36",
+    "depends_on": [
+      "s11"
+    ],
+    "purpose": "Open the thread under 1771277666.122118 in perf-v2-020 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CND2WYEK82X3",
+      "message_ts": "1771277666.122118",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s37",
+    "depends_on": [
+      "s11"
+    ],
+    "purpose": "Open the thread under 1771344187.345258 in perf-v2-020 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CND2WYEK82X3",
+      "message_ts": "1771344187.345258",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s38",
+    "depends_on": [
+      "s12"
+    ],
+    "purpose": "Open the thread under 1771322817.836784 in mobile-v2-024 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CCO33YK6O6I8",
+      "message_ts": "1771322817.836784",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s39",
+    "depends_on": [
+      "s12"
+    ],
+    "purpose": "Open the thread under 1771345117.808939 in mobile-v2-024 -- reply_count alone on the channel view cannot say whether this specific root message was also retracted, and if it was, whether its replies are still live.",
+    "name": "slack_read_thread",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CCO33YK6O6I8",
+      "message_ts": "1771345117.808939",
+      "limit": 100
+    }
+  },
+  {
+    "id": "s40",
+    "depends_on": [
+      "s13"
+    ],
+    "purpose": "resolve general-marketing-analytics's retracted-and-replied-to message author to a real name for the CSV",
+    "name": "slack_read_user_profile",
+    "server": "slack-gym",
+    "arguments": {
+      "user_id": "UJCPV75HKG9V",
+      "response_format": "detailed"
+    }
+  },
+  {
+    "id": "s41",
+    "depends_on": [
+      "s19"
+    ],
+    "purpose": "resolve perf-070's retracted-and-replied-to message author to a real name for the CSV",
+    "name": "slack_read_user_profile",
+    "server": "slack-gym",
+    "arguments": {
+      "user_id": "UWGCP00XPDCQ",
+      "response_format": "detailed"
+    }
+  },
+  {
+    "id": "s42",
+    "depends_on": [
+      "s26"
+    ],
+    "purpose": "resolve mobile-090's retracted-and-replied-to message author to a real name for the CSV",
+    "name": "slack_read_user_profile",
+    "server": "slack-gym",
+    "arguments": {
+      "user_id": "UPLCK9I5ENM9",
+      "response_format": "detailed"
+    }
+  },
+  {
+    "id": "s43",
+    "depends_on": [
+      "s33"
+    ],
+    "purpose": "resolve data-v2-062's retracted message author to a real name, and to confirm this is the SAME account as one of that thread's two repliers -- the account to exclude from the notify decision",
+    "name": "slack_read_user_profile",
+    "server": "slack-gym",
+    "arguments": {
+      "user_id": "UYIAYBC7FYCG",
+      "response_format": "detailed"
+    }
+  },
+  {
+    "id": "s44",
+    "depends_on": [
+      "s33"
+    ],
+    "purpose": "resolve the other reply in data-v2-062's orphaned thread to a real name -- this account never touched the retraction and is the real notify candidate",
+    "name": "slack_read_user_profile",
+    "server": "slack-gym",
+    "arguments": {
+      "user_id": "UNN2VSEY3JSW",
+      "response_format": "detailed"
+    }
+  },
+  {
+    "id": "s45",
+    "depends_on": [
+      "s40",
+      "s41",
+      "s42",
+      "s43",
+      "s44"
+    ],
+    "purpose": "Post the one summary note, in data-v2-062, the worst orphaned room by stranded replies.",
+    "name": "slack_send_message",
+    "server": "slack-gym",
+    "arguments": {
+      "channel_id": "CN20Z0W91YE0",
+      "message": "Retracted-message audit across the six rooms: 4 of six have at least one message that was retracted by its own author while still carrying a live reply -- general-marketing-analytics (1 stranded reply, retracted message by Prakash Pillai Mehta), perf-070 (1 stranded reply, retracted message by Ellie Wendy Brown -- her own reply is the only one), mobile-090 (1 stranded reply, retracted message by Martha Yvonne Nguyen), and this room, data-v2-062 (2 stranded replies, retracted message by Levi Francis Nguyen -- the busiest of the four). perf-v2-020 has a retraction too but it never picked up a reply, so it is not a live problem. data-v2-062 is the worst room. One of its two stranded replies is Levi's own follow-up to the message he retracted himself, so he does not need telling. The other is from Mitali Naidu, who replied to a message that is no longer part of the record and should be told.\norphaned: 4\nnotify: Mitali Naidu"
+    }
+  }
+]
