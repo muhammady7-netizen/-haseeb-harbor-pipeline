@@ -1,0 +1,49 @@
+[1/45] slack-gym.slack_search_channels
+[2/45] slack-gym.slack_search_channels
+[3/45] slack-gym.slack_search_channels
+[4/45] slack-gym.slack_search_channels
+[5/45] slack-gym.slack_search_channels
+[6/45] slack-gym.slack_search_channels
+[7/45] slack-gym.slack_read_channel
+[8/45] slack-gym.slack_read_channel
+[9/45] slack-gym.slack_read_channel
+[10/45] slack-gym.slack_read_channel
+[11/45] slack-gym.slack_read_channel
+[12/45] slack-gym.slack_read_channel
+[13/45] slack-gym.slack_read_thread
+[14/45] slack-gym.slack_read_thread
+[15/45] slack-gym.slack_read_thread
+[16/45] slack-gym.slack_read_thread
+[17/45] slack-gym.slack_read_thread
+[18/45] slack-gym.slack_read_thread
+[19/45] slack-gym.slack_read_thread
+[20/45] slack-gym.slack_read_thread
+[21/45] slack-gym.slack_read_thread
+[22/45] slack-gym.slack_read_thread
+[23/45] slack-gym.slack_read_thread
+[24/45] slack-gym.slack_read_thread
+[25/45] slack-gym.slack_read_thread
+[26/45] slack-gym.slack_read_thread
+[27/45] slack-gym.slack_read_thread
+[28/45] slack-gym.slack_read_thread
+[29/45] slack-gym.slack_read_thread
+[30/45] slack-gym.slack_read_thread
+[31/45] slack-gym.slack_read_thread
+[32/45] slack-gym.slack_read_thread
+[33/45] slack-gym.slack_read_thread
+[34/45] slack-gym.slack_read_thread
+[35/45] slack-gym.slack_read_thread
+[36/45] slack-gym.slack_read_thread
+[37/45] slack-gym.slack_read_thread
+[38/45] slack-gym.slack_read_thread
+[39/45] slack-gym.slack_read_thread
+[40/45] slack-gym.slack_read_user_profile
+[41/45] slack-gym.slack_read_user_profile
+[42/45] slack-gym.slack_read_user_profile
+[43/45] slack-gym.slack_read_user_profile
+[44/45] slack-gym.slack_read_user_profile
+[45/45] slack-gym.slack_send_message
+wrote captured responses to /tmp/tmp.JZILXPfXPd/solution/golden_trajectory.json
+mirrored to /logs/verifier/golden_trajectory.json (for daytona artifact pull)
+wrote metrics.json keys ['channels_with_live_orphaned_threads', 'notify_candidate_id', 'notify_candidate_name', 'total_stranded_replies', 'worst_channel_id', 'worst_channel_stranded_reply_count']
+wrote orphaned_thread_audit.csv rows 4

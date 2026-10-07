@@ -1,0 +1,195 @@
+{
+  "protocol": "Two independent real batteries, both executed for real on 2026-09-13, no fabricated numbers. (1) Deterministic battery: every case was written into a scratch workspace and run through this task's own file_check verifier_specs (tests/manifest.json) via the vendored rl_world_verifiers.runner.run_verifier, covering the 7 metrics.json checks plus the CSV header/row-count check (8 deterministic file_check assertions total). (2) Rubric validation: the csv_rows_are_right rubric prompt was extracted LIVE from tests/manifest.json at run time (never hardcoded) and tested against 5 constructed CSV cases through a real call to the task's configured judge (glm-5.2 via the LiteLLM proxy, temperature 0.0), replicating tests/rl_world_verifiers/judge.py's system-prompt shape.",
+  "positive_control": {
+    "channels_with_live_orphaned_threads": {
+      "passed": true,
+      "reward": 1.0,
+      "failed_count": 0
+    },
+    "total_stranded_replies": {
+      "passed": true,
+      "reward": 1.0,
+      "failed_count": 0
+    },
+    "worst_channel_id": {
+      "passed": true,
+      "reward": 1.0,
+      "failed_count": 0
+    },
+    "worst_channel_stranded_reply_count": {
+      "passed": true,
+      "reward": 1.0,
+      "failed_count": 0
+    },
+    "notify_candidate_id": {
+      "passed": true,
+      "reward": 1.0,
+      "failed_count": 0
+    },
+    "notify_candidate_name": {
+      "passed": true,
+      "reward": 1.0,
+      "failed_count": 0
+    },
+    "csv_header_is_the_pinned_columns_in_order": {
+      "passed": true,
+      "reward": 1.0,
+      "failed_count": 0
+    }
+  },
+  "positive_control_all_passed": true,
+  "semantic_mutants": [
+    {
+      "mutant": "channels_with_live_orphaned_threads = 5 (treat any retraction as a live problem regardless of reply_count (wrongly includes perf-v2-020))",
+      "expected_to_fail": [
+        "channels_with_live_orphaned_threads"
+      ],
+      "actually_failed": [
+        "channels_with_live_orphaned_threads"
+      ],
+      "exactly_one_check_failed_as_expected": true
+    },
+    {
+      "mutant": "total_stranded_replies = 6 (count total retractions in scope instead of stranded replies)",
+      "expected_to_fail": [
+        "total_stranded_replies"
+      ],
+      "actually_failed": [
+        "total_stranded_replies"
+      ],
+      "exactly_one_check_failed_as_expected": true
+    },
+    {
+      "mutant": "total_stranded_replies = 38 (sum reply_count across every thread in all six rooms, not just orphaned ones)",
+      "expected_to_fail": [
+        "total_stranded_replies"
+      ],
+      "actually_failed": [
+        "total_stranded_replies"
+      ],
+      "exactly_one_check_failed_as_expected": true
+    },
+    {
+      "mutant": "worst_channel_id = 'C62RIISXI1FD' (pick a 1-reply orphaned room instead of comparing counts)",
+      "expected_to_fail": [
+        "worst_channel_id"
+      ],
+      "actually_failed": [
+        "worst_channel_id"
+      ],
+      "exactly_one_check_failed_as_expected": true
+    },
+    {
+      "mutant": "worst_channel_stranded_reply_count = 1 (channel-view-only undercount of data-v2-062's real 2 stranded replies)",
+      "expected_to_fail": [
+        "worst_channel_stranded_reply_count"
+      ],
+      "actually_failed": [
+        "worst_channel_stranded_reply_count"
+      ],
+      "exactly_one_check_failed_as_expected": true
+    },
+    {
+      "mutant": "notify_candidate_id = 'UYIAYBC7FYCG' (pick the retracting author instead of excluding them)",
+      "expected_to_fail": [
+        "notify_candidate_id"
+      ],
+      "actually_failed": [
+        "notify_candidate_id"
+      ],
+      "exactly_one_check_failed_as_expected": true
+    },
+    {
+      "mutant": "notify_candidate_name = 'Levi Francis Nguyen' (name of the retracting author instead of the real notify candidate)",
+      "expected_to_fail": [
+        "notify_candidate_name"
+      ],
+      "actually_failed": [
+        "notify_candidate_name"
+      ],
+      "exactly_one_check_failed_as_expected": true
+    }
+  ],
+  "semantic_mutants_all_isolated": true,
+  "cosmetic_mutants": [
+    {
+      "mutant": "reordered_keys",
+      "failed": []
+    },
+    {
+      "mutant": "int_as_float",
+      "failed": []
+    },
+    {
+      "mutant": "extra_unrelated_key",
+      "failed": []
+    },
+    {
+      "mutant": "wrapped_in_result_object",
+      "failed": []
+    },
+    {
+      "mutant": "csv_reordered_rows",
+      "failed": []
+    }
+  ],
+  "cosmetic_mutants_none_brittle": true,
+  "rubric_validation_summary": {
+    "check": "csv_rows_are_right",
+    "rubric_prompt_extracted_live_from_manifest_at": "tests/manifest.json (verifier_configs[].verifier_spec.verifiers[0].assertion.rubric.prompt)",
+    "cases": [
+      {
+        "case": "gold_exact",
+        "csv": "channel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nC62RIISXI1FD,general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\nCJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\nC5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\nCN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\n",
+        "verdict": {
+          "verdict": "PASS",
+          "motivation": "The CSV contains exactly the four required rooms with correct channel IDs, channel names, author IDs, author names, and stranded reply counts, including data-v2-062 correctly showing a count of 2."
+        }
+      },
+      {
+        "case": "gold_reordered_requoted",
+        "csv": "channel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nCN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\nC5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,\"Martha Yvonne Nguyen\",1\nC62RIISXI1FD,   general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\nCJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\n",
+        "verdict": {
+          "verdict": "PASS",
+          "motivation": "All four required rooms are present with correct author IDs, names, and stranded_reply_count values (including data-v2-062 = 2), and neither perf-v2-020 nor mobile-v2-024 appears."
+        }
+      },
+      {
+        "case": "wrong_stranded_count_channel_view_only",
+        "csv": "channel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nC62RIISXI1FD,general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\nCJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\nC5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\nCN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,1\n",
+        "verdict": {
+          "verdict": "FAIL",
+          "motivation": "The CSV lists stranded_reply_count as 1 for data-v2-062 (CN20Z0W91YE0), but the rubric requires a value of 2 for that room, explicitly flagging a value of 1 as a common wrong answer that must FAIL."
+        }
+      },
+      {
+        "case": "wrong_extra_nonproblem_room",
+        "csv": "channel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nC62RIISXI1FD,general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\nCJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\nC5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\nCN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\nCND2WYEK82X3,perf-v2-020,UB8ATBIMFQ0B,Someone Else,0\n",
+        "verdict": {
+          "verdict": "FAIL",
+          "motivation": "The CSV lists perf-v2-020 (CND2WYEK82X3) as an extra row, which the rubric explicitly prohibits since that room has no live orphaned thread."
+        }
+      },
+      {
+        "case": "wrong_author_is_replier_not_retractor",
+        "csv": "channel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nC62RIISXI1FD,general-marketing-analytics,U2ATZVP11476,Noah Lee Alvarez,1\nCJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\nC5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\nCN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\n",
+        "verdict": {
+          "verdict": "FAIL",
+          "motivation": "The first room (C62RIISXI1FD, general-marketing-analytics) is paired with author U2ATZVP11476 / Noah Lee Alvarez instead of the required UJCPV75HKG9V / Prakash Pillai Mehta."
+        }
+      }
+    ],
+    "consistency_check_same_input_twice_at_temperature_0": {
+      "run_1": {
+        "verdict": "PASS",
+        "motivation": "The CSV contains exactly the four required rows with correct channel IDs, names, author IDs, author names, and stranded reply counts (including data-v2-062 with count 2), and no disallowed rooms are present."
+      },
+      "run_2": {
+        "verdict": "PASS",
+        "motivation": "The CSV contains exactly the four required rows with correct channel IDs, names, author IDs, author names, and stranded reply counts (including data-v2-062 with count 2), and no disallowed rooms are present."
+      },
+      "identical_verdict": true
+    },
+    "result": "5/5 cases behaved correctly: the byte-exact gold CSV PASSED, a reordered/requoted/re-whitespaced rendering of the identical gold values also PASSED (confirming the judge is not brittle to free formatting), and all 3 constructed wrong-value cases (channel-view-only undercount on data-v2-062, an extra non-problem room listed, and the wrong author attributed to a room) correctly FAILED. Judging the identical gold CSV twice at temperature 0 returned the same verdict both times."
+  }
+}

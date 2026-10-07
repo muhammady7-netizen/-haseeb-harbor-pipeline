@@ -1,0 +1,31 @@
+{
+  "method": "3 independent single-turn calls to the task's own configured judge model (glm-5.2), no gym access, given only instruction.md's Task section, asked to render a plausible example of the two deliverable files with invented values. Purpose: confirm what varies freely across renderings (key order, row order, whitespace, quoting, JSON formatting) is exactly what the verifier_configs treat as free (recursive-descent JSON key match; CSV header exact but row order/quoting free; CSV cell values graded by a rubric that explicitly frees row order, quoting, whitespace and letter case).",
+  "renderings": [
+    {
+      "renderer_id": "renderer_1",
+      "temperature": 0.3,
+      "output": "```json\n{\n  \"channels_with_live_orphaned_threads\": 3,\n  \"total_stranded_replies\": 11,\n  \"worst_channel_id\": \"C0234567890\",\n  \"worst_channel_stranded_reply_count\": 6,\n  \"notify_candidate_id\": \"U0456789012\",\n  \"notify_candidate_name\": \"David Kim\"\n}\n```\n\n```csv\nchannel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nC0123456789,general-marketing-analytics,U0123456789,Alice Chen,2\nC0234567890,perf-070,U0234567890,Bob Martinez,6\nC0345678901,mobile-090,U0345678901,Carol Johnson,3\n```"
+    },
+    {
+      "renderer_id": "renderer_2",
+      "temperature": 0.9,
+      "output": "```json\n{\n  \"channels_with_live_orphaned_threads\": 3,\n  \"total_stranded_replies\": 7,\n  \"worst_channel_id\": \"C06M0B1L3V2\",\n  \"worst_channel_stranded_reply_count\": 4,\n  \"notify_candidate_id\": \"U0R8Q4N21\",\n  \"notify_candidate_name\": \"Priya Nair\"\n}\n```\n\n```csv\nchannel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nC02P3RF070,perf-070,U0111ABCD,Marcus Lee,2\nC04D4T4V262,data-v2-062,U0222EFGH,Dana Cho,1\nC06M0B1L3V2,mobile-v2-024,U0333IJKL,Ben Ortiz,4\n```"
+    },
+    {
+      "renderer_id": "renderer_3",
+      "temperature": 0.6,
+      "output": "```json\n{\n  \"channels_with_live_orphaned_threads\": 3,\n  \"total_stranded_replies\": 7,\n  \"worst_channel_id\": \"C09012GHI\",\n  \"worst_channel_stranded_reply_count\": 4,\n  \"notify_candidate_id\": \"U222BBB\",\n  \"notify_candidate_name\": \"Marcus Chen\"\n}\n```\n\n```csv\nchannel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count\nC01234ABC,general-marketing-analytics,U333CCC,Priya Nair,2\nC05678DEF,mobile-090,U444DDD,Liam Foster,1\nC09012GHI,perf-v2-020,U111AAA,Dana Whitfield,4\n```"
+    }
+  ],
+  "what_varied_freely": [
+    "JSON key order in metrics.json (all verifier checks use $.. recursive descent, not a rooted path)",
+    "Whether metrics.json is pretty-printed or compact (file_check parses the JSON tree, not the bytes)",
+    "CSV row order (csv_rows_are_right is a native rubric assertion that explicitly frees row order)",
+    "CSV quoting style / incidental whitespace around values (rubric explicitly frees this; header check reads through csv.inspect_table's parsed header list, not raw bytes)"
+  ],
+  "what_is_fixed_and_confirmed_fixed_by_every_rendering": [
+    "The exact metrics.json key set",
+    "The exact CSV header column set and order (channel_id,channel_name,retracted_message_author_id,retracted_message_author_name,stranded_reply_count)",
+    "worst_channel_id / notify_candidate_id rendered as bare strings, never wrapped in an object"
+  ]
+}

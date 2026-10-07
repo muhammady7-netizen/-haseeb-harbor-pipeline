@@ -1,0 +1,99 @@
+schema_version = "1.1"
+
+[task]
+name = "harbor/the-thread-that-outlived-its-own-start"
+description = "the_thread_that_outlived_its_own_start"
+keywords = [ "harbor",]
+
+[[task.authors]]
+name = "OBI RL Gym"
+email = "obi-rl-gym@turing.com"
+
+[metadata]
+scenario_name = "the_thread_that_outlived_its_own_start"
+scenario_description = "=== INTENT ===\nAcross six rooms the acting identity belongs to, find threads where the ORIGINAL message that\nstarted the thread has since been retracted (marked deleted) by its own author, while the replies\nit collected before that happened are still live and visible -- a message people already acted on\nthat is no longer part of the record. Size the problem, name the single worst room, and tell ops\nwho should actually be told their reply is now hanging off a retracted message -- not the person\nwho retracted it, since they already know.\n\n=== SHAPE ===\nreconciliation (declared/visible state vs a retraction signal buried in message metadata) plus a\nranked worst-case and a single flagging write-back. Genuinely different from this project's other\nshipped slack tasks (channel ownership by creator absence, guest/membership auditing,\nout-of-office coverage, cross-department answering, approval clearance, name disambiguation) --\nthis one turns on a per-MESSAGE retraction flag (deleted_ts) that the read tools still surface in\nfull, not on who created a room or who is currently away. The trap is arithmetic/attribution, not\nabsence.\n\n=== HOPS ===\nhops=39 chain_depth=4 graded_hops=39 over 45 trajectory steps\n(6 channel reads + 27 thread reads covering every thread with at least one reply across all six\nrooms, since a room's own channel view never reveals whether a top-level message was later\nretracted in a way that matters until you confirm which threads are real vs decoys, plus 5\nread_user_profile resolutions: one per distinct account needed to answer the notify question and\nto write the CSV (the four rooms' retracted-message authors, one of whom -- Levi Francis Nguyen --\nis also the account that has to be ruled OUT as the notify candidate, plus Mitali Naidu, the real\nnotify candidate), then the one write-back call. Not counted\nas hops: the six slack_search_channels calls to resolve each of the six room names to ids -- their\nown results feed no gold value beyond the id, which the prompt could have handed over directly.\nEvery thread in every one of the six rooms has to be opened, not just the ones that turn out to\nmatter, because reply_count on the channel-view row does not distinguish a thread whose root is\nstill live from one whose root has been retracted -- deleted_ts only shows up once you actually\nread the message record itself, and the channel view returns it too, so the real discipline this\ntask tests is checking deleted_ts on every root message that has replies, not skipping ahead once\na room looks clean.)\n\n=== HIDDEN RULES ===\n(the agent must infer these; none of them is stated in the prompt)\n  - No tool marks a thread as orphaned directly. slack_read_channel and slack_read_thread both\n    still return a retracted message's full text and its deleted_ts field exactly like a live\n    message -- retraction is not a visibility change in this workspace, it is a metadata flag on\n    the record. A room is only really affected if a message with deleted_ts set ALSO has\n    reply_count >= 1 -- a retraction with no replies attached is not a live problem for anyone,\n    it just means someone deleted their own message and nothing else happened.\n  - Retraction count and orphaned-thread count are NOT the same thing, even within a single room.\n    data-v2-062 has two retracted messages: one with zero replies (a non-event) and one with two\n    live replies (the real, worst orphaned thread in scope). A check that treats \"this room has a\n    retraction\" as the signal answers 5 rooms with a problem instead of 4, and a check that counts\n    every retraction in that one room as its own orphaned thread overcounts within the same room.\n  - Being private is not the signal either: three of the four real orphaned rooms are private and\n    one is public, and one of the two rooms with an inert (no-reply) retraction is private too --\n    there is no split on privacy that recovers the right four.\n  - Two of the four orphaned threads are pure self-replies: the same account that retracted the\n    original message also wrote the only reply to it (perf-070's Ellie Wendy Brown, and one of the\n    two replies in data-v2-062, also from the account that retracted that thread's root). A person\n    who already deleted their own message and then replied to their own thread does not need to be\n    told anything -- they know. The one genuine \"notify\" case in the room with the most stranded\n    replies is the OTHER reply, from an account that never touched the retraction at all.\n  - data-v2-062 is the busiest orphaned room by stranded replies (2, both live, one self-reply and\n    one from an uninvolved account) -- ahead of the other three orphaned rooms, which each carry\n    exactly one stranded reply. This is a clean win, not a tie, but only once every thread is\n    actually opened; reply_count on the channel view already carries this number correctly, so the\n    only way to get the count wrong here is to also count non-orphaned threads or extra retractions\n    that never generated a reply.\n\n=== GOLD ===\n(grader metadata, NOT shown to the agent. Computed by SQL against /root/Database/slack/\nsynthetic_data.db == the bytes the image serves at /gyms/slack/app/data/Synthetic_db.db, then\nre-verified through the served gym on :7000 by replaying the whole discovery path -- 6\nslack_search_channels + 6 slack_read_channel + 27 slack_read_thread + 5\nslack_read_user_profile -- and recomputing every value from the tool responses alone, 2026-09-13.)\n\nSQL:\nWITH ch(id) AS (VALUES ('C62RIISXI1FD'),('CJWT99KXPLPI'),('C5H1G0LC1A6C'),('CN20Z0W91YE0'),\n                       ('CND2WYEK82X3'),('CCO33YK6O6I8')),\n     retracted AS (SELECT m.channel, m.ts, m.user, m.reply_count FROM slack_messages m\n                    JOIN ch ON ch.id = m.channel WHERE m.deleted_ts IS NOT NULL),\n     orphaned AS (SELECT * FROM retracted WHERE reply_count >= 1)\nSELECT (SELECT COUNT(DISTINCT channel) FROM orphaned)         AS channels_with_live_orphaned_threads,\n       (SELECT SUM(reply_count) FROM orphaned)                AS total_stranded_replies;\n-- worst room = the orphaned channel with the highest single reply_count among its own orphaned\n-- (deleted_ts IS NOT NULL AND reply_count >= 1) rows.\n-- notify candidate = among the worst room's stranded replies, the reply author(s) who are NOT the\n-- same account as that room's orphaned message's own author.\n\nVALUES:\n  channels_with_live_orphaned_threads = 4   [R1] general-marketing-analytics (C62RIISXI1FD),\n      perf-070 (CJWT99KXPLPI), mobile-090 (C5H1G0LC1A6C), data-v2-062 (CN20Z0W91YE0)\n  total_stranded_replies = 5   [R2] 1+1+1+2 across the four orphaned threads\n  worst_channel_id = CN20Z0W91YE0   [R3] data-v2-062, 2 stranded replies, ahead of the other three\n      orphaned rooms on 1 each\n  worst_channel_stranded_reply_count = 2   [R3]\n  notify_candidate_id = UNN2VSEY3JSW (Mitali Naidu)   [R4] the one reply in data-v2-062's orphaned\n      thread from an account that never touched the retraction -- the thread's OTHER reply and its\n      retracted root both belong to UYIAYBC7FYCG (Levi Francis Nguyen), who does not need notifying\n  notify_candidate_name = Mitali Naidu   [R4]\n  (context, not graded) acting_user = Vishal Desai Pawar (UVS1ZHNER2I5), Software Engineer, team\n      TV5SVWDLOYCK, member of all six rooms in scope\n  (context, not graded) the six rooms = general-marketing-analytics (C62RIISXI1FD, public,\n      orphaned, retracted msg by Prakash Pillai Mehta UJCPV75HKG9V, 1 stranded reply from Noah Lee\n      Alvarez U2ATZVP11476), perf-070 (CJWT99KXPLPI, public, orphaned, retracted msg by Ellie\n      Wendy Brown UWGCP00XPDCQ, 1 stranded reply -- a self-reply, also Ellie), mobile-090\n      (C5H1G0LC1A6C, private, orphaned, retracted msg by Martha Yvonne Nguyen UPLCK9I5ENM9, 1\n      stranded reply from Amy Nicole Morgan U4TC63N47PUS), data-v2-062 (CN20Z0W91YE0, private,\n      orphaned + one inert retraction, orphaned msg by Levi Francis Nguyen UYIAYBC7FYCG, 2\n      stranded replies -- one self-reply from Levi, one from Mitali Naidu UNN2VSEY3JSW), perf-v2-020\n      (CND2WYEK82X3, private, one inert retraction only -- zero replies, by UB8ATBIMFQ0B, not a\n      problem room), mobile-v2-024 (CCO33YK6O6I8, public, completely clean -- no retractions at all)\n  (context, not graded) per-room stranded-reply counts: general-marketing-analytics 1, perf-070 1,\n      mobile-090 1, data-v2-062 2, perf-v2-020 0, mobile-v2-024 0\n  (context, not graded) seed messages across the six rooms before the run = 85\n  (context, not graded) the note goes into CN20Z0W91YE0, the worst orphaned room\n\n=== WRONG ANSWERS (each is a real method producing a real number) ===\n  channels_with_live_orphaned_threads: 5  <- treat any room with a retraction as affected,\n      regardless of whether that retraction has any replies; wrongly includes perf-v2-020\n  total_stranded_replies: 6  <- count total retractions in scope instead of stranded replies\n      (5 messages retracted across the six rooms, not the 5 real stranded replies -- close enough\n      to look plausible, wrong for a different reason than the obvious inflated count below)\n  total_stranded_replies: 38  <- sum reply_count across every thread in all six rooms, not just\n      the orphaned ones\n  worst_channel_id: general-marketing-analytics (or perf-070, or mobile-090)  <- any of the three\n      1-reply orphaned rooms, if ranked without actually comparing counts or by picking whichever\n      was checked first\n  notify_candidate_id: UYIAYBC7FYCG (Levi Francis Nguyen)  <- pick a reply author in the worst\n      room without checking whether they are the same account that authored the retracted message\n      itself; Levi is technically \"a reply author\" in that thread but already knows, since he\n      deleted his own message\n\n=== REACHABILITY ===\n(one row per graded number; the gym calls that produce it, proven through the proxy on :7000\n 2026-09-13 with the pinned token)\n  channels_with_live_orphaned_threads: slack_search_channels x6 -> slack_read_channel x6 ->\n      slack_read_thread on every thread with reply_count >= 1 in every room (27 total) | deleted_ts\n      is only visible on the message record itself, and reply_count alone on the channel view\n      cannot tell you whether that root message was ALSO retracted -- both facts must be read from\n      the same message object\n  total_stranded_replies: the same path, filtered to messages with deleted_ts set and reply_count\n      >= 1, summing reply_count\n  worst_channel_id / worst_channel_stranded_reply_count: same path, grouped by channel\n  notify_candidate_id / notify_candidate_name: slack_read_thread on data-v2-062's orphaned thread\n      to see both replies' real authors, cross-checked against the retracted root message's own\n      user field, then slack_read_user_profile on the one that differs | the channel view never\n      shows reply authors at all\n  (write-back) slack_send_message into CN20Z0W91YE0 | confirmed live: ok=true, a new ts above the\n      seed high-water mark, the acting identity UVS1ZHNER2I5 as author\n\n=== SEED ===\nclient_query_trajectory_4.jsonl, context_uuid cc10cc42-b716-5888-a9d2-7ab7aa0944dd (connectors:\nslack_direct; category: slack-thread-reading-for-task-context; 75 messages). The client's own ask\nin this trajectory is to open a specific Slack thread and read through it for real context before\nacting, rather than trusting a surface summary. The shape kept is that one -- the answer is not in\nany single message or field, it only shows up once you actually open the thread and read what is\nreally there, including a detail (here, a retraction) that a shortcut read would miss entirely --\nre-grounded on a mechanism this corpus actually supports: slack_messages.deleted_ts, a real column\nthe seed data populates on 28 messages workspace-wide, which every read tool still surfaces in full\n(confirmed live by reading a known-retracted message through the proxy) rather than hiding, so the\ntask is to notice and reason about the flag correctly, not to recover hidden content.\n\n=== DATASET ===\ncompany-synthetic-20260910-1150-pt-main: every gym serves GYM_DATASET=synthetic. Gold computed\nagainst the grounding file above; the served bytes are identical, so the SQL is valid gold, and\nevery value was re-read through the gym before it was pinned."
+source_task_id = "cc10cc42-b716-5888-a9d2-7ab7aa0944dd"
+state_snapshot_enabled = false
+# GCE override 1: true makes the proxy dump every gym's state at boot and
+# :7000 never binds. There is therefore no state-diff axis in this batch.
+
+[[metadata.mcp_servers_extended]]
+name = "slack-gym"
+image = "us-central1-docker.pkg.dev/delivery-g-obi/connectors-rl-gym/connectors-harness@sha256:b1374cd8a392ea66f9a649e700a1498e8fcb03ee35776362db7cc15dc3049b89"
+host_port = 8008
+container_port = 8008
+remote_url_env = "SLACK_GYM_MCP_REMOTE_URL"
+auth_header_name = "x-slack-user-token"
+access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aXNoYWwucGF3YXI3MEBob3RtYWlsLmNvbSIsImlhdCI6MTc3MTMxMDI3NywiZXhwIjoxODAyODQ2Mjc3LCJqdGkiOiI4ODk3ODA2MzAwZGQiLCJpc3MiOiJtc2QzNjUiLCJhdWQiOiJhcGkifQ.oJZISb8glJQCf7YpoOgNtTsoe00V1DNrzOe5DQvtxXs"
+db_id_header_name = "x-database-id"
+reset_on_run = true
+allowed_tools = [
+    "slack_send_message",
+    "slack_schedule_message",
+    "slack_create_canvas",
+    "slack_update_canvas",
+    "slack_search_public",
+    "slack_search_public_and_private",
+    "slack_search_channels",
+    "slack_search_users",
+    "slack_read_channel",
+    "slack_read_thread",
+    "slack_read_canvas",
+    "slack_read_user_profile",
+    "slack_send_message_draft",
+    "slack_delete_message",
+]
+
+
+[solution.env]
+INTERNAL_VERIFIER_SECRET = "7b1c9f0a4e6d2c8b5a3f1e9d7c6b4a2f0e8d6c4b2a9f7e5d3c1b0a9f8e7d6c5b"
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 4800.0
+# Non-root agent user; /app is root-only so the agent can't read
+# task.toml/solution/tests off disk.
+user = "rlgymagent"
+
+[environment]
+build_timeout_sec = 1200.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 65536
+gpus = 0
+allow_internet = true
+
+[[environment.mcp_servers]]
+name = "slack-gym"
+transport = "streamable-http"
+url = "http://localhost:7000/mcp/slack-gym"
+args = []
+
+[metadata.verifier_judge]
+# The environment picks the judge; the bundle must not. Leave the default alone.
+model = "${JUDGE_MODEL:-openai/zai-org/GLM-5.2}"
+api_key_env = "OPENAI_API_KEY"
+temperature = 0.0
+max_tokens = 65536
+
+[verifier.env]
+OPENAI_API_KEY = "${OPENAI_API_KEY:-}"
+OPENAI_BASE_URL = "${OPENAI_BASE_URL:-}"
+JUDGE_MODEL = "${JUDGE_MODEL:-openai/zai-org/GLM-5.2}"
+
+[environment.healthcheck]
+command = "curl -fsS http://localhost:7000/health"
+interval_sec = 15.0
+timeout_sec = 5.0
+retries = 40
+start_period_sec = 30.0
+start_interval_sec = 15.0
+
+[environment.env]
+HARBOR_MCP_MODE = "${HARBOR_MCP_MODE:-docker}"
+OPENAI_API_KEY = "${OPENAI_API_KEY:-}"
+GEMINI_API_KEY = "${GEMINI_API_KEY:-}"
+SLACK_GYM_MCP_REMOTE_URL = "${SLACK_GYM_MCP_REMOTE_URL:-}"
+SLACK_GYM_MCP_REMOTE_URL_TOKEN = "${SLACK_GYM_MCP_REMOTE_URL_TOKEN:-}"

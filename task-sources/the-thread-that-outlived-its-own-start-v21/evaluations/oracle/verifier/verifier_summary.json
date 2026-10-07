@@ -1,0 +1,2704 @@
+{
+  "reward": {
+    "total": 1.0,
+    "pass": true,
+    "threshold": 1.0,
+    "composite": 1.0,
+    "mode": "benchmark",
+    "allowed_verifier_types": [
+      "agentic_llm_as_judge",
+      "rubric"
+    ],
+    "weights": {
+      "state": 0.0,
+      "sql": 0.0,
+      "rubric": 0.4
+    },
+    "state": {
+      "enabled": false,
+      "score": null,
+      "matched_expected": 0,
+      "soft_unauthorized": 0,
+      "hard_unauthorized": 0
+    },
+    "sql": {
+      "enabled": false,
+      "score": null,
+      "passed": 0,
+      "total": 0,
+      "verifiers": []
+    },
+    "rubric": {
+      "enabled": true,
+      "score": 1.0,
+      "prompt_version": "v2.1-likert",
+      "mode": "benchmark",
+      "core_passed": true,
+      "weighted_pass_rate": 1.0,
+      "failure_mode": "pass",
+      "items": [
+        {
+          "passed": true,
+          "expected_tools": [],
+          "tools_called": [
+            "slack_search_channels",
+            "slack_search_channels",
+            "slack_search_channels",
+            "slack_search_channels",
+            "slack_search_channels",
+            "slack_search_channels",
+            "slack_read_channel",
+            "slack_read_channel",
+            "slack_read_channel",
+            "slack_read_channel",
+            "slack_read_channel",
+            "slack_read_channel",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_thread",
+            "slack_read_user_profile",
+            "slack_read_user_profile",
+            "slack_read_user_profile",
+            "slack_read_user_profile",
+            "slack_read_user_profile",
+            "slack_send_message",
+            "finish"
+          ],
+          "missing_tools": [],
+          "minimum_tool_calls": 10,
+          "actual_tool_calls": 46,
+          "occurrence_check": null,
+          "call_bounds": null,
+          "exclude_errored_calls": true,
+          "errored_calls": [],
+          "verifier_type": "tool_execution",
+          "category": "core",
+          "weight": 0.25,
+          "score": 1.0,
+          "name": "did_real_work_not_one_shot",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 1,
+            "passed": 1,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "channels_with_live_orphaned_threads",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Addresses the value by the key the prompt pins, by recursive descent, and requires equality. Nesting, key order and number formatting are free; only the pinned key and its value are fixed.",
+                  "why_justification": "The population the whole audit rests on. Gold 4. A run that treats any retraction (regardless of whether it has a reply) as the signal answers 5: perf-v2-020's retraction has zero replies and is not a live problem."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "json",
+                    "command": "read_file",
+                    "arguments": {
+                      "path": "metrics.json"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": 4,
+                  "deterministic": {
+                    "path": "$..channels_with_live_orphaned_threads",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": 4,
+                "actual": 4,
+                "effective_weight": 1.0,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$..channels_with_live_orphaned_threads",
+                  "matched_values": [
+                    4
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "channels_with_live_orphaned_threads",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 1,
+            "passed": 1,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "total_stranded_replies",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Recursive-descent key match against metrics.json, equality on the numeric value.",
+                  "why_justification": "Gold 5 (1+1+1+2 across the four orphaned threads). Counting every retraction in scope instead (5 messages retracted, one room has two) answers 6. Summing every reply in every thread across all six rooms instead of just the orphaned ones answers 38."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "json",
+                    "command": "read_file",
+                    "arguments": {
+                      "path": "metrics.json"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": 5,
+                  "deterministic": {
+                    "path": "$..total_stranded_replies",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": 5,
+                "actual": 5,
+                "effective_weight": 1.0,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$..total_stranded_replies",
+                  "matched_values": [
+                    5
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "total_stranded_replies",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 1,
+            "passed": 1,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "worst_channel_id",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Recursive-descent key match on the channel id, equality.",
+                  "why_justification": "data-v2-062 (CN20Z0W91YE0) is the real worst room at 2 stranded replies, ahead of the other three orphaned rooms on 1 each. There is no tie to break here, but a run that never actually compares counts across rooms -- picking whichever orphaned room it checked first -- can land on any of the three 1-reply rooms instead."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "json",
+                    "command": "read_file",
+                    "arguments": {
+                      "path": "metrics.json"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": "CN20Z0W91YE0",
+                  "deterministic": {
+                    "path": "$..worst_channel_id",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": "CN20Z0W91YE0",
+                "actual": "CN20Z0W91YE0",
+                "effective_weight": 1.0,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$..worst_channel_id",
+                  "matched_values": [
+                    "CN20Z0W91YE0"
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "worst_channel_id",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 1,
+            "passed": 1,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "worst_channel_stranded_reply_count",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Recursive-descent key match, equality.",
+                  "why_justification": "Gold 2. The channel view's reply_count field already carries this correctly, so the only way to get this wrong is to also count perf-v2-020's inert (no-reply) retraction as if it added another orphaned thread somewhere, or to miscount which room is worst."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "json",
+                    "command": "read_file",
+                    "arguments": {
+                      "path": "metrics.json"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": 2,
+                  "deterministic": {
+                    "path": "$..worst_channel_stranded_reply_count",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": 2,
+                "actual": 2,
+                "effective_weight": 1.0,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$..worst_channel_stranded_reply_count",
+                  "matched_values": [
+                    2
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "worst_channel_stranded_reply_count",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 1,
+            "passed": 1,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "notify_candidate_id",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Recursive-descent key match on the account id, equality, string comparison.",
+                  "why_justification": "Gold UNN2VSEY3JSW (Mitali Naidu), the one reply in data-v2-062's orphaned thread from an account that never touched the retraction. The thread's other reply and its retracted root both belong to the same account (UYIAYBC7FYCG, Levi Francis Nguyen) -- a run that picks a reply author without checking whether they are the retracting author themselves lands on Levi instead, who does not need notifying since he retracted the message himself."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "json",
+                    "command": "read_file",
+                    "arguments": {
+                      "path": "metrics.json"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": "UNN2VSEY3JSW",
+                  "deterministic": {
+                    "path": "$..notify_candidate_id",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": "UNN2VSEY3JSW",
+                "actual": "UNN2VSEY3JSW",
+                "effective_weight": 1.0,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$..notify_candidate_id",
+                  "matched_values": [
+                    "UNN2VSEY3JSW"
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "notify_candidate_id",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 1,
+            "passed": 1,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "notify_candidate_name",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Recursive-descent key match, equality, string comparison.",
+                  "why_justification": "The real name behind UNN2VSEY3JSW, only obtainable via slack_read_user_profile since the thread reply only carries the account id."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "json",
+                    "command": "read_file",
+                    "arguments": {
+                      "path": "metrics.json"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": "Mitali Naidu",
+                  "deterministic": {
+                    "path": "$..notify_candidate_name",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": "Mitali Naidu",
+                "actual": "Mitali Naidu",
+                "effective_weight": 1.0,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$..notify_candidate_name",
+                  "matched_values": [
+                    "Mitali Naidu"
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "notify_candidate_name",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 2,
+            "passed": 2,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "header_is_the_pinned_columns_in_order",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Reads the CSV's real header through csv.inspect_table and requires the header list to EQUAL the five pinned names, in the pinned order, exactly as the prompt writes them.",
+                  "why_justification": "The prompt says 'exactly these columns in this order'. A substring check would pass a file with the columns in any order."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "csv",
+                    "command": "inspect_table",
+                    "arguments": {
+                      "path": "orphaned_thread_audit.csv"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": [
+                    "channel_id",
+                    "channel_name",
+                    "retracted_message_author_id",
+                    "retracted_message_author_name",
+                    "stranded_reply_count"
+                  ],
+                  "deterministic": {
+                    "path": "$.header",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": [
+                  "channel_id",
+                  "channel_name",
+                  "retracted_message_author_id",
+                  "retracted_message_author_name",
+                  "stranded_reply_count"
+                ],
+                "actual": [
+                  "channel_id",
+                  "channel_name",
+                  "retracted_message_author_id",
+                  "retracted_message_author_name",
+                  "stranded_reply_count"
+                ],
+                "effective_weight": 0.5,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$.header",
+                  "matched_values": [
+                    [
+                      "channel_id",
+                      "channel_name",
+                      "retracted_message_author_id",
+                      "retracted_message_author_name",
+                      "stranded_reply_count"
+                    ]
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            },
+            {
+              "name": "csv_has_exactly_four_data_rows",
+              "definition": {
+                "metadata": {
+                  "how_justification": "Reads the CSV's real row count through csv.inspect_table.",
+                  "why_justification": "Exactly four rooms have a live orphaned thread; a CSV with more or fewer rows means the population itself was gotten wrong."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "csv",
+                    "command": "inspect_table",
+                    "arguments": {
+                      "path": "orphaned_thread_audit.csv"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "deterministic",
+                  "expected": 4,
+                  "deterministic": {
+                    "path": "$.row_count",
+                    "comparison": "equals"
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": 4,
+                "actual": 4,
+                "effective_weight": 0.5,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "path": "$.row_count",
+                  "matched_values": [
+                    4
+                  ],
+                  "comparison": "equals"
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 0.5,
+          "score": 1.0,
+          "name": "csv_header_is_the_pinned_columns_in_order",
+          "id": null
+        },
+        {
+          "passed": true,
+          "reward": 1.0,
+          "threshold": 1.0,
+          "workspace_files": [
+            "metrics.json",
+            "orphaned_thread_audit.csv"
+          ],
+          "summary": {
+            "total_verifiers": 1,
+            "passed": 1,
+            "failed": 0,
+            "errored": 0,
+            "total_weight": 1.0,
+            "passed_weight": 1.0
+          },
+          "assertion_results": [
+            {
+              "name": "csv_rows_are_right",
+              "definition": {
+                "metadata": {
+                  "how_justification": "A native rubric ASSERTION over the CSV's own raw text, judged by the task's configured judge at temperature 0. It grades the CELL VALUES the prompt pins for each of the four rooms -- which account's retracted message is the one with replies, that account's real name, and the room's real stranded-reply count -- none of which a deterministic comparator on this source can address, since csv.extract_text exposes the file only as raw text. Row order, quoting, whitespace and letter case are explicitly free; the twenty pinned values (4 rows x 5 fields) are not.",
+                  "why_justification": "Without this a CSV listing the right four channel ids with an invented author or a made-up reply count still satisfies the header and row-count checks. The stranded-reply count in particular is only obtainable by opening the specific retracted message's thread, so a run that never did that cannot fill it in correctly."
+                },
+                "source": {
+                  "type": "file",
+                  "file": {
+                    "type": "csv",
+                    "command": "extract_text",
+                    "arguments": {
+                      "path": "orphaned_thread_audit.csv"
+                    }
+                  }
+                },
+                "assertion": {
+                  "type": "rubric",
+                  "expected": true,
+                  "rubric": {
+                    "prompt": "PASS only if the CSV contains exactly these four rooms, each correctly paired with the real author of that room's own retracted-and-replied-to message, that author's real name, and that room's real stranded-reply count:\n  C62RIISXI1FD,general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\n  CJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\n  C5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\n  CN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\nRow order, header capitalization variance beyond the pinned names, quoting style and incidental whitespace are all free. FAIL if any of the four rooms is missing, if perf-v2-020 or mobile-v2-024 is listed (neither has a live orphaned thread), if any author id or name is paired with the wrong room, or if any stranded_reply_count value does not match the real count above (a value of 1 for data-v2-062, matching only its inert second retraction or an undercount of its real two stranded replies, is a common wrong answer and must FAIL)."
+                  }
+                }
+              },
+              "result": {
+                "success": true,
+                "expected": true,
+                "actual": true,
+                "effective_weight": 1.0,
+                "error": null,
+                "reason": null,
+                "evaluation": {
+                  "judge_models": [
+                    "openai/glm-5.2"
+                  ],
+                  "true_count": 1,
+                  "false_count": 0,
+                  "attempts": [
+                    {
+                      "model": "openai/glm-5.2",
+                      "verdict": true,
+                      "justification": "The CSV contains exactly the four required rooms with correct channel IDs, names, author IDs, author names, and stranded-reply counts: C62RIISXI1FD (count 1), CJWT99KXPLPI (count 1), C5H1G0LC1A6C (count 1), and CN20Z0W91YE0/data-v2-062 (count 2). No disallowed rooms (perf-v2-020 or mobile-v2-024) are present, and all pairings match the rubric.",
+                      "error": null
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "gym_name": null,
+          "verifier_type": "file_check",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "csv_rows_are_right",
+          "id": null
+        },
+        {
+          "passed": true,
+          "expected": 1,
+          "actual": 1,
+          "comparison_type": "equals",
+          "query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000",
+          "gym_name": "slack-gym",
+          "details": "Comparison equals: 1 vs 1",
+          "verifier_type": "database_state",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "exactly_one_new_message_in_the_target_room__state",
+          "id": null
+        },
+        {
+          "passed": true,
+          "expected": 1,
+          "actual": 1,
+          "comparison_type": "equals",
+          "query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000 AND REPLACE(RTRIM(text, char(10)||char(13)||char(9)||' '), ' ', '') LIKE '%orphaned:4%notify:MitaliNaidu'",
+          "gym_name": "slack-gym",
+          "details": "Comparison equals: 1 vs 1",
+          "verifier_type": "database_state",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "message_ends_with_the_pinned_lines__state",
+          "id": null
+        },
+        {
+          "passed": true,
+          "expected": 0,
+          "actual": 0,
+          "comparison_type": "equals",
+          "query": "SELECT COUNT(*) FROM slack_messages WHERE channel IN ('C62RIISXI1FD','CJWT99KXPLPI','C5H1G0LC1A6C','CND2WYEK82X3','CCO33YK6O6I8') AND CAST(ts AS REAL) > 1771400000",
+          "gym_name": "slack-gym",
+          "details": "Comparison equals: 0 vs 0",
+          "verifier_type": "database_state",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "no_message_posted_in_any_other_room__state",
+          "id": null
+        },
+        {
+          "passed": true,
+          "expected": 86,
+          "actual": 86,
+          "comparison_type": "equals",
+          "query": "SELECT COUNT(*) FROM slack_messages WHERE channel IN ('C62RIISXI1FD','CJWT99KXPLPI','C5H1G0LC1A6C','CN20Z0W91YE0','CND2WYEK82X3','CCO33YK6O6I8')",
+          "gym_name": "slack-gym",
+          "details": "Comparison equals: 86 vs 86",
+          "verifier_type": "database_state",
+          "category": "core",
+          "weight": 1.0,
+          "score": 1.0,
+          "name": "seed_messages_across_all_six_rooms_left_intact__state",
+          "id": null
+        },
+        {
+          "passed": true,
+          "verdict": "PASS",
+          "rubric": "Judge this from which TOOL CALLS were made -- their names and channel_id/message_ts arguments -- not from the content of what each call returned; call arguments are what this rubric needs and they stay small regardless of how long a trace gets, so evidence truncation on large tool RESULTS should not affect this verdict. PASS if, for every one of the six rooms (C62RIISXI1FD, CJWT99KXPLPI, C5H1G0LC1A6C, CN20Z0W91YE0, CND2WYEK82X3, CCO33YK6O6I8), a slack_read_channel call for that room appears, AND a slack_read_thread call appears for every message in that room's channel view that shows reply_count >= 1, before the run reaches its final flagged/clean verdict for that room. The exact number of such messages varies per room and you should judge this from what the trace actually shows was called, not from a fixed count. FAIL if any room's flagged/clean verdict is reached without a slack_read_channel call for that room, or if any message shown with reply_count >= 1 in a room's channel view has no matching slack_read_thread call anywhere in the trace. If the evidence given to you does not show enough of the trace to tell which slack_read_thread calls were made for a specific room, treat that as insufficient evidence for that room only, not as an automatic FAIL of the whole verdict.",
+          "target": "trace",
+          "motivation": "All six rooms received slack_read_channel calls, and every message visible in each channel view with reply_count >= 1 has a corresponding slack_read_thread call before the final finish verdict.",
+          "judge_votes": {
+            "usable": 3,
+            "pass": 3,
+            "fail": 0,
+            "errors": []
+          },
+          "verifier_type": "rubric_check",
+          "category": "core",
+          "weight": 0.5,
+          "score": 1.0,
+          "name": "every_thread_with_a_reply_was_actually_opened",
+          "id": null
+        },
+        {
+          "passed": true,
+          "verdict": "PASS",
+          "rubric": "Judge this from which TOOL CALLS were made and their arguments, not from deep inspection of every returned payload. PASS if the trace shows a slack_read_thread call on CN20Z0W91YE0's retracted-and-replied-to thread (message_ts 1771353970.549001, or a call covering that same thread), AND a slack_read_user_profile call on UNN2VSEY3JSW (the account eventually used as the notify candidate) happening before that identity is used anywhere in the final output. FAIL if the final output's notify candidate is UYIAYBC7FYCG (the retracting author) or any account other than UNN2VSEY3JSW, or if UNN2VSEY3JSW is used as the notify candidate with no slack_read_user_profile call on that id anywhere in the trace, or if the run never actually opened data-v2-062's specific retracted thread before naming a notify candidate.",
+          "target": "trace",
+          "motivation": "The trace shows a slack_read_thread call on channel CN20Z0W91YE0 with message_ts 1771353970.549001 (the retracted-and-replied-to thread), and a slack_read_user_profile call on UNN2VSEY3JSW (Mitali Naidu) that occurs before the final output names Mitali Naidu as the notify candidate.",
+          "judge_votes": {
+            "usable": 3,
+            "pass": 3,
+            "fail": 0,
+            "errors": []
+          },
+          "verifier_type": "rubric_check",
+          "category": "core",
+          "weight": 0.5,
+          "score": 1.0,
+          "name": "notify_candidate_excluded_the_retracting_author",
+          "id": null
+        },
+        {
+          "passed": true,
+          "verdict": "PASS",
+          "rubric": "PASS if the final reply states a real conclusion -- how many rooms have a live orphaned thread, roughly how big the problem is, which room is worst, and who should be notified there -- and points at the evidence behind it. FAIL if it only narrates the steps taken or lists figures with no stated conclusion.",
+          "target": "final_answer",
+          "motivation": "The reply states a concrete conclusion \u2014 four affected rooms, five stranded replies, data-v2-062 as the worst room, and Mitali Naidu as the person to notify \u2014 while pointing at the specific evidence (named accounts and their actions) behind it.",
+          "judge_votes": {
+            "usable": 3,
+            "pass": 3,
+            "fail": 0,
+            "errors": []
+          },
+          "verifier_type": "rubric_check",
+          "category": "core",
+          "weight": 0.5,
+          "score": 1.0,
+          "name": "final_reply_states_a_conclusion",
+          "id": null
+        }
+      ]
+    },
+    "verification_results": {
+      "did_real_work_not_one_shot": {
+        "passed": true,
+        "expected_tools": [],
+        "tools_called": [
+          "slack_search_channels",
+          "slack_search_channels",
+          "slack_search_channels",
+          "slack_search_channels",
+          "slack_search_channels",
+          "slack_search_channels",
+          "slack_read_channel",
+          "slack_read_channel",
+          "slack_read_channel",
+          "slack_read_channel",
+          "slack_read_channel",
+          "slack_read_channel",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_thread",
+          "slack_read_user_profile",
+          "slack_read_user_profile",
+          "slack_read_user_profile",
+          "slack_read_user_profile",
+          "slack_read_user_profile",
+          "slack_send_message",
+          "finish"
+        ],
+        "missing_tools": [],
+        "minimum_tool_calls": 10,
+        "actual_tool_calls": 46,
+        "occurrence_check": null,
+        "call_bounds": null,
+        "exclude_errored_calls": true,
+        "errored_calls": [],
+        "verifier_type": "tool_execution",
+        "category": "core",
+        "weight": 0.25,
+        "score": 1.0,
+        "name": "did_real_work_not_one_shot",
+        "id": null
+      },
+      "channels_with_live_orphaned_threads": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 1,
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "channels_with_live_orphaned_threads",
+            "definition": {
+              "metadata": {
+                "how_justification": "Addresses the value by the key the prompt pins, by recursive descent, and requires equality. Nesting, key order and number formatting are free; only the pinned key and its value are fixed.",
+                "why_justification": "The population the whole audit rests on. Gold 4. A run that treats any retraction (regardless of whether it has a reply) as the signal answers 5: perf-v2-020's retraction has zero replies and is not a live problem."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "json",
+                  "command": "read_file",
+                  "arguments": {
+                    "path": "metrics.json"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": 4,
+                "deterministic": {
+                  "path": "$..channels_with_live_orphaned_threads",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": 4,
+              "actual": 4,
+              "effective_weight": 1.0,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$..channels_with_live_orphaned_threads",
+                "matched_values": [
+                  4
+                ],
+                "comparison": "equals"
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "channels_with_live_orphaned_threads",
+        "id": null
+      },
+      "total_stranded_replies": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 1,
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "total_stranded_replies",
+            "definition": {
+              "metadata": {
+                "how_justification": "Recursive-descent key match against metrics.json, equality on the numeric value.",
+                "why_justification": "Gold 5 (1+1+1+2 across the four orphaned threads). Counting every retraction in scope instead (5 messages retracted, one room has two) answers 6. Summing every reply in every thread across all six rooms instead of just the orphaned ones answers 38."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "json",
+                  "command": "read_file",
+                  "arguments": {
+                    "path": "metrics.json"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": 5,
+                "deterministic": {
+                  "path": "$..total_stranded_replies",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": 5,
+              "actual": 5,
+              "effective_weight": 1.0,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$..total_stranded_replies",
+                "matched_values": [
+                  5
+                ],
+                "comparison": "equals"
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "total_stranded_replies",
+        "id": null
+      },
+      "worst_channel_id": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 1,
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "worst_channel_id",
+            "definition": {
+              "metadata": {
+                "how_justification": "Recursive-descent key match on the channel id, equality.",
+                "why_justification": "data-v2-062 (CN20Z0W91YE0) is the real worst room at 2 stranded replies, ahead of the other three orphaned rooms on 1 each. There is no tie to break here, but a run that never actually compares counts across rooms -- picking whichever orphaned room it checked first -- can land on any of the three 1-reply rooms instead."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "json",
+                  "command": "read_file",
+                  "arguments": {
+                    "path": "metrics.json"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": "CN20Z0W91YE0",
+                "deterministic": {
+                  "path": "$..worst_channel_id",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": "CN20Z0W91YE0",
+              "actual": "CN20Z0W91YE0",
+              "effective_weight": 1.0,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$..worst_channel_id",
+                "matched_values": [
+                  "CN20Z0W91YE0"
+                ],
+                "comparison": "equals"
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "worst_channel_id",
+        "id": null
+      },
+      "worst_channel_stranded_reply_count": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 1,
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "worst_channel_stranded_reply_count",
+            "definition": {
+              "metadata": {
+                "how_justification": "Recursive-descent key match, equality.",
+                "why_justification": "Gold 2. The channel view's reply_count field already carries this correctly, so the only way to get this wrong is to also count perf-v2-020's inert (no-reply) retraction as if it added another orphaned thread somewhere, or to miscount which room is worst."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "json",
+                  "command": "read_file",
+                  "arguments": {
+                    "path": "metrics.json"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": 2,
+                "deterministic": {
+                  "path": "$..worst_channel_stranded_reply_count",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": 2,
+              "actual": 2,
+              "effective_weight": 1.0,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$..worst_channel_stranded_reply_count",
+                "matched_values": [
+                  2
+                ],
+                "comparison": "equals"
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "worst_channel_stranded_reply_count",
+        "id": null
+      },
+      "notify_candidate_id": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 1,
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "notify_candidate_id",
+            "definition": {
+              "metadata": {
+                "how_justification": "Recursive-descent key match on the account id, equality, string comparison.",
+                "why_justification": "Gold UNN2VSEY3JSW (Mitali Naidu), the one reply in data-v2-062's orphaned thread from an account that never touched the retraction. The thread's other reply and its retracted root both belong to the same account (UYIAYBC7FYCG, Levi Francis Nguyen) -- a run that picks a reply author without checking whether they are the retracting author themselves lands on Levi instead, who does not need notifying since he retracted the message himself."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "json",
+                  "command": "read_file",
+                  "arguments": {
+                    "path": "metrics.json"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": "UNN2VSEY3JSW",
+                "deterministic": {
+                  "path": "$..notify_candidate_id",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": "UNN2VSEY3JSW",
+              "actual": "UNN2VSEY3JSW",
+              "effective_weight": 1.0,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$..notify_candidate_id",
+                "matched_values": [
+                  "UNN2VSEY3JSW"
+                ],
+                "comparison": "equals"
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "notify_candidate_id",
+        "id": null
+      },
+      "notify_candidate_name": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 1,
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "notify_candidate_name",
+            "definition": {
+              "metadata": {
+                "how_justification": "Recursive-descent key match, equality, string comparison.",
+                "why_justification": "The real name behind UNN2VSEY3JSW, only obtainable via slack_read_user_profile since the thread reply only carries the account id."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "json",
+                  "command": "read_file",
+                  "arguments": {
+                    "path": "metrics.json"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": "Mitali Naidu",
+                "deterministic": {
+                  "path": "$..notify_candidate_name",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": "Mitali Naidu",
+              "actual": "Mitali Naidu",
+              "effective_weight": 1.0,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$..notify_candidate_name",
+                "matched_values": [
+                  "Mitali Naidu"
+                ],
+                "comparison": "equals"
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "notify_candidate_name",
+        "id": null
+      },
+      "csv_header_is_the_pinned_columns_in_order": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 2,
+          "passed": 2,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "header_is_the_pinned_columns_in_order",
+            "definition": {
+              "metadata": {
+                "how_justification": "Reads the CSV's real header through csv.inspect_table and requires the header list to EQUAL the five pinned names, in the pinned order, exactly as the prompt writes them.",
+                "why_justification": "The prompt says 'exactly these columns in this order'. A substring check would pass a file with the columns in any order."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "csv",
+                  "command": "inspect_table",
+                  "arguments": {
+                    "path": "orphaned_thread_audit.csv"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": [
+                  "channel_id",
+                  "channel_name",
+                  "retracted_message_author_id",
+                  "retracted_message_author_name",
+                  "stranded_reply_count"
+                ],
+                "deterministic": {
+                  "path": "$.header",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": [
+                "channel_id",
+                "channel_name",
+                "retracted_message_author_id",
+                "retracted_message_author_name",
+                "stranded_reply_count"
+              ],
+              "actual": [
+                "channel_id",
+                "channel_name",
+                "retracted_message_author_id",
+                "retracted_message_author_name",
+                "stranded_reply_count"
+              ],
+              "effective_weight": 0.5,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$.header",
+                "matched_values": [
+                  [
+                    "channel_id",
+                    "channel_name",
+                    "retracted_message_author_id",
+                    "retracted_message_author_name",
+                    "stranded_reply_count"
+                  ]
+                ],
+                "comparison": "equals"
+              }
+            }
+          },
+          {
+            "name": "csv_has_exactly_four_data_rows",
+            "definition": {
+              "metadata": {
+                "how_justification": "Reads the CSV's real row count through csv.inspect_table.",
+                "why_justification": "Exactly four rooms have a live orphaned thread; a CSV with more or fewer rows means the population itself was gotten wrong."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "csv",
+                  "command": "inspect_table",
+                  "arguments": {
+                    "path": "orphaned_thread_audit.csv"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "deterministic",
+                "expected": 4,
+                "deterministic": {
+                  "path": "$.row_count",
+                  "comparison": "equals"
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": 4,
+              "actual": 4,
+              "effective_weight": 0.5,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "path": "$.row_count",
+                "matched_values": [
+                  4
+                ],
+                "comparison": "equals"
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 0.5,
+        "score": 1.0,
+        "name": "csv_header_is_the_pinned_columns_in_order",
+        "id": null
+      },
+      "csv_rows_are_right": {
+        "passed": true,
+        "reward": 1.0,
+        "threshold": 1.0,
+        "workspace_files": [
+          "metrics.json",
+          "orphaned_thread_audit.csv"
+        ],
+        "summary": {
+          "total_verifiers": 1,
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "total_weight": 1.0,
+          "passed_weight": 1.0
+        },
+        "assertion_results": [
+          {
+            "name": "csv_rows_are_right",
+            "definition": {
+              "metadata": {
+                "how_justification": "A native rubric ASSERTION over the CSV's own raw text, judged by the task's configured judge at temperature 0. It grades the CELL VALUES the prompt pins for each of the four rooms -- which account's retracted message is the one with replies, that account's real name, and the room's real stranded-reply count -- none of which a deterministic comparator on this source can address, since csv.extract_text exposes the file only as raw text. Row order, quoting, whitespace and letter case are explicitly free; the twenty pinned values (4 rows x 5 fields) are not.",
+                "why_justification": "Without this a CSV listing the right four channel ids with an invented author or a made-up reply count still satisfies the header and row-count checks. The stranded-reply count in particular is only obtainable by opening the specific retracted message's thread, so a run that never did that cannot fill it in correctly."
+              },
+              "source": {
+                "type": "file",
+                "file": {
+                  "type": "csv",
+                  "command": "extract_text",
+                  "arguments": {
+                    "path": "orphaned_thread_audit.csv"
+                  }
+                }
+              },
+              "assertion": {
+                "type": "rubric",
+                "expected": true,
+                "rubric": {
+                  "prompt": "PASS only if the CSV contains exactly these four rooms, each correctly paired with the real author of that room's own retracted-and-replied-to message, that author's real name, and that room's real stranded-reply count:\n  C62RIISXI1FD,general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\n  CJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\n  C5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\n  CN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\nRow order, header capitalization variance beyond the pinned names, quoting style and incidental whitespace are all free. FAIL if any of the four rooms is missing, if perf-v2-020 or mobile-v2-024 is listed (neither has a live orphaned thread), if any author id or name is paired with the wrong room, or if any stranded_reply_count value does not match the real count above (a value of 1 for data-v2-062, matching only its inert second retraction or an undercount of its real two stranded replies, is a common wrong answer and must FAIL)."
+                }
+              }
+            },
+            "result": {
+              "success": true,
+              "expected": true,
+              "actual": true,
+              "effective_weight": 1.0,
+              "error": null,
+              "reason": null,
+              "evaluation": {
+                "judge_models": [
+                  "openai/glm-5.2"
+                ],
+                "true_count": 1,
+                "false_count": 0,
+                "attempts": [
+                  {
+                    "model": "openai/glm-5.2",
+                    "verdict": true,
+                    "justification": "The CSV contains exactly the four required rooms with correct channel IDs, names, author IDs, author names, and stranded-reply counts: C62RIISXI1FD (count 1), CJWT99KXPLPI (count 1), C5H1G0LC1A6C (count 1), and CN20Z0W91YE0/data-v2-062 (count 2). No disallowed rooms (perf-v2-020 or mobile-v2-024) are present, and all pairings match the rubric.",
+                    "error": null
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "gym_name": null,
+        "verifier_type": "file_check",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "csv_rows_are_right",
+        "id": null
+      },
+      "exactly_one_new_message_in_the_target_room__state": {
+        "passed": true,
+        "expected": 1,
+        "actual": 1,
+        "comparison_type": "equals",
+        "query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000",
+        "gym_name": "slack-gym",
+        "details": "Comparison equals: 1 vs 1",
+        "verifier_type": "database_state",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "exactly_one_new_message_in_the_target_room__state",
+        "id": null
+      },
+      "message_ends_with_the_pinned_lines__state": {
+        "passed": true,
+        "expected": 1,
+        "actual": 1,
+        "comparison_type": "equals",
+        "query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000 AND REPLACE(RTRIM(text, char(10)||char(13)||char(9)||' '), ' ', '') LIKE '%orphaned:4%notify:MitaliNaidu'",
+        "gym_name": "slack-gym",
+        "details": "Comparison equals: 1 vs 1",
+        "verifier_type": "database_state",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "message_ends_with_the_pinned_lines__state",
+        "id": null
+      },
+      "no_message_posted_in_any_other_room__state": {
+        "passed": true,
+        "expected": 0,
+        "actual": 0,
+        "comparison_type": "equals",
+        "query": "SELECT COUNT(*) FROM slack_messages WHERE channel IN ('C62RIISXI1FD','CJWT99KXPLPI','C5H1G0LC1A6C','CND2WYEK82X3','CCO33YK6O6I8') AND CAST(ts AS REAL) > 1771400000",
+        "gym_name": "slack-gym",
+        "details": "Comparison equals: 0 vs 0",
+        "verifier_type": "database_state",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "no_message_posted_in_any_other_room__state",
+        "id": null
+      },
+      "seed_messages_across_all_six_rooms_left_intact__state": {
+        "passed": true,
+        "expected": 86,
+        "actual": 86,
+        "comparison_type": "equals",
+        "query": "SELECT COUNT(*) FROM slack_messages WHERE channel IN ('C62RIISXI1FD','CJWT99KXPLPI','C5H1G0LC1A6C','CN20Z0W91YE0','CND2WYEK82X3','CCO33YK6O6I8')",
+        "gym_name": "slack-gym",
+        "details": "Comparison equals: 86 vs 86",
+        "verifier_type": "database_state",
+        "category": "core",
+        "weight": 1.0,
+        "score": 1.0,
+        "name": "seed_messages_across_all_six_rooms_left_intact__state",
+        "id": null
+      },
+      "every_thread_with_a_reply_was_actually_opened": {
+        "passed": true,
+        "verdict": "PASS",
+        "rubric": "Judge this from which TOOL CALLS were made -- their names and channel_id/message_ts arguments -- not from the content of what each call returned; call arguments are what this rubric needs and they stay small regardless of how long a trace gets, so evidence truncation on large tool RESULTS should not affect this verdict. PASS if, for every one of the six rooms (C62RIISXI1FD, CJWT99KXPLPI, C5H1G0LC1A6C, CN20Z0W91YE0, CND2WYEK82X3, CCO33YK6O6I8), a slack_read_channel call for that room appears, AND a slack_read_thread call appears for every message in that room's channel view that shows reply_count >= 1, before the run reaches its final flagged/clean verdict for that room. The exact number of such messages varies per room and you should judge this from what the trace actually shows was called, not from a fixed count. FAIL if any room's flagged/clean verdict is reached without a slack_read_channel call for that room, or if any message shown with reply_count >= 1 in a room's channel view has no matching slack_read_thread call anywhere in the trace. If the evidence given to you does not show enough of the trace to tell which slack_read_thread calls were made for a specific room, treat that as insufficient evidence for that room only, not as an automatic FAIL of the whole verdict.",
+        "target": "trace",
+        "motivation": "All six rooms received slack_read_channel calls, and every message visible in each channel view with reply_count >= 1 has a corresponding slack_read_thread call before the final finish verdict.",
+        "judge_votes": {
+          "usable": 3,
+          "pass": 3,
+          "fail": 0,
+          "errors": []
+        },
+        "verifier_type": "rubric_check",
+        "category": "core",
+        "weight": 0.5,
+        "score": 1.0,
+        "name": "every_thread_with_a_reply_was_actually_opened",
+        "id": null
+      },
+      "notify_candidate_excluded_the_retracting_author": {
+        "passed": true,
+        "verdict": "PASS",
+        "rubric": "Judge this from which TOOL CALLS were made and their arguments, not from deep inspection of every returned payload. PASS if the trace shows a slack_read_thread call on CN20Z0W91YE0's retracted-and-replied-to thread (message_ts 1771353970.549001, or a call covering that same thread), AND a slack_read_user_profile call on UNN2VSEY3JSW (the account eventually used as the notify candidate) happening before that identity is used anywhere in the final output. FAIL if the final output's notify candidate is UYIAYBC7FYCG (the retracting author) or any account other than UNN2VSEY3JSW, or if UNN2VSEY3JSW is used as the notify candidate with no slack_read_user_profile call on that id anywhere in the trace, or if the run never actually opened data-v2-062's specific retracted thread before naming a notify candidate.",
+        "target": "trace",
+        "motivation": "The trace shows a slack_read_thread call on channel CN20Z0W91YE0 with message_ts 1771353970.549001 (the retracted-and-replied-to thread), and a slack_read_user_profile call on UNN2VSEY3JSW (Mitali Naidu) that occurs before the final output names Mitali Naidu as the notify candidate.",
+        "judge_votes": {
+          "usable": 3,
+          "pass": 3,
+          "fail": 0,
+          "errors": []
+        },
+        "verifier_type": "rubric_check",
+        "category": "core",
+        "weight": 0.5,
+        "score": 1.0,
+        "name": "notify_candidate_excluded_the_retracting_author",
+        "id": null
+      },
+      "final_reply_states_a_conclusion": {
+        "passed": true,
+        "verdict": "PASS",
+        "rubric": "PASS if the final reply states a real conclusion -- how many rooms have a live orphaned thread, roughly how big the problem is, which room is worst, and who should be notified there -- and points at the evidence behind it. FAIL if it only narrates the steps taken or lists figures with no stated conclusion.",
+        "target": "final_answer",
+        "motivation": "The reply states a concrete conclusion \u2014 four affected rooms, five stranded replies, data-v2-062 as the worst room, and Mitali Naidu as the person to notify \u2014 while pointing at the specific evidence (named accounts and their actions) behind it.",
+        "judge_votes": {
+          "usable": 3,
+          "pass": 3,
+          "fail": 0,
+          "errors": []
+        },
+        "verifier_type": "rubric_check",
+        "category": "core",
+        "weight": 0.5,
+        "score": 1.0,
+        "name": "final_reply_states_a_conclusion",
+        "id": null
+      }
+    },
+    "verification_summary": {
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "pass_rate": 1.0,
+      "core_total": 16,
+      "core_passed": true,
+      "weighted_pass_rate": 1.0,
+      "scored_weighted_pass_rate": 1.0,
+      "unscored": 0,
+      "type_scores": {
+        "tool_execution": 1.0,
+        "file_check": 1.0,
+        "database_state": 1.0,
+        "rubric_check": 1.0
+      }
+    },
+    "failure_mode": "pass",
+    "statistics": {
+      "total_runs": 1,
+      "gradable_runs": 1,
+      "successful_runs": 1,
+      "overall_success_rate": 1.0,
+      "pass_at_1": 1.0,
+      "verifier_level_pass_rate": 1.0,
+      "weighted_pass_rate": 1.0,
+      "failure_modes": {
+        "pass": 1
+      },
+      "exhausted_runs": 0,
+      "total_verifiers_checked": 16,
+      "total_verifiers_passed": 16,
+      "individual_verifier_stats": {
+        "did_real_work_not_one_shot": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "channels_with_live_orphaned_threads": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "total_stranded_replies": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "worst_channel_id": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "worst_channel_stranded_reply_count": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "notify_candidate_id": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "notify_candidate_name": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "csv_header_is_the_pinned_columns_in_order": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "csv_rows_are_right": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "exactly_one_new_message_in_the_target_room__state": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "message_ends_with_the_pinned_lines__state": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "no_message_posted_in_any_other_room__state": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "seed_messages_across_all_six_rooms_left_intact__state": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "every_thread_with_a_reply_was_actually_opened": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "notify_candidate_excluded_the_retracting_author": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        },
+        "final_reply_states_a_conclusion": {
+          "passed": 1,
+          "total": 1,
+          "pass_rate": 1.0
+        }
+      },
+      "mean_execution_time_ms": 0.0,
+      "tool_usage": {
+        "finish": 1,
+        "slack_read_channel": 1,
+        "slack_read_thread": 1,
+        "slack_read_user_profile": 1,
+        "slack_search_channels": 1,
+        "slack_send_message": 1
+      },
+      "tool_available": [],
+      "tool_unused": []
+    },
+    "rubric_score": 1.0,
+    "state_score": null,
+    "side_effect_gate": 1.0,
+    "judge_prompt_version": "v2.1-likert",
+    "rubric.uncategorised": 1.0
+  },
+  "verification_results": {
+    "did_real_work_not_one_shot": {
+      "passed": true,
+      "expected_tools": [],
+      "tools_called": [
+        "slack_search_channels",
+        "slack_search_channels",
+        "slack_search_channels",
+        "slack_search_channels",
+        "slack_search_channels",
+        "slack_search_channels",
+        "slack_read_channel",
+        "slack_read_channel",
+        "slack_read_channel",
+        "slack_read_channel",
+        "slack_read_channel",
+        "slack_read_channel",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_thread",
+        "slack_read_user_profile",
+        "slack_read_user_profile",
+        "slack_read_user_profile",
+        "slack_read_user_profile",
+        "slack_read_user_profile",
+        "slack_send_message",
+        "finish"
+      ],
+      "missing_tools": [],
+      "minimum_tool_calls": 10,
+      "actual_tool_calls": 46,
+      "occurrence_check": null,
+      "call_bounds": null,
+      "exclude_errored_calls": true,
+      "errored_calls": [],
+      "verifier_type": "tool_execution",
+      "category": "core",
+      "weight": 0.25,
+      "score": 1.0,
+      "name": "did_real_work_not_one_shot",
+      "id": null
+    },
+    "channels_with_live_orphaned_threads": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 1,
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "channels_with_live_orphaned_threads",
+          "definition": {
+            "metadata": {
+              "how_justification": "Addresses the value by the key the prompt pins, by recursive descent, and requires equality. Nesting, key order and number formatting are free; only the pinned key and its value are fixed.",
+              "why_justification": "The population the whole audit rests on. Gold 4. A run that treats any retraction (regardless of whether it has a reply) as the signal answers 5: perf-v2-020's retraction has zero replies and is not a live problem."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$..channels_with_live_orphaned_threads",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": 4,
+            "actual": 4,
+            "effective_weight": 1.0,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$..channels_with_live_orphaned_threads",
+              "matched_values": [
+                4
+              ],
+              "comparison": "equals"
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "channels_with_live_orphaned_threads",
+      "id": null
+    },
+    "total_stranded_replies": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 1,
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "total_stranded_replies",
+          "definition": {
+            "metadata": {
+              "how_justification": "Recursive-descent key match against metrics.json, equality on the numeric value.",
+              "why_justification": "Gold 5 (1+1+1+2 across the four orphaned threads). Counting every retraction in scope instead (5 messages retracted, one room has two) answers 6. Summing every reply in every thread across all six rooms instead of just the orphaned ones answers 38."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 5,
+              "deterministic": {
+                "path": "$..total_stranded_replies",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": 5,
+            "actual": 5,
+            "effective_weight": 1.0,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$..total_stranded_replies",
+              "matched_values": [
+                5
+              ],
+              "comparison": "equals"
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "total_stranded_replies",
+      "id": null
+    },
+    "worst_channel_id": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 1,
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "worst_channel_id",
+          "definition": {
+            "metadata": {
+              "how_justification": "Recursive-descent key match on the channel id, equality.",
+              "why_justification": "data-v2-062 (CN20Z0W91YE0) is the real worst room at 2 stranded replies, ahead of the other three orphaned rooms on 1 each. There is no tie to break here, but a run that never actually compares counts across rooms -- picking whichever orphaned room it checked first -- can land on any of the three 1-reply rooms instead."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "CN20Z0W91YE0",
+              "deterministic": {
+                "path": "$..worst_channel_id",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": "CN20Z0W91YE0",
+            "actual": "CN20Z0W91YE0",
+            "effective_weight": 1.0,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$..worst_channel_id",
+              "matched_values": [
+                "CN20Z0W91YE0"
+              ],
+              "comparison": "equals"
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "worst_channel_id",
+      "id": null
+    },
+    "worst_channel_stranded_reply_count": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 1,
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "worst_channel_stranded_reply_count",
+          "definition": {
+            "metadata": {
+              "how_justification": "Recursive-descent key match, equality.",
+              "why_justification": "Gold 2. The channel view's reply_count field already carries this correctly, so the only way to get this wrong is to also count perf-v2-020's inert (no-reply) retraction as if it added another orphaned thread somewhere, or to miscount which room is worst."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 2,
+              "deterministic": {
+                "path": "$..worst_channel_stranded_reply_count",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": 2,
+            "actual": 2,
+            "effective_weight": 1.0,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$..worst_channel_stranded_reply_count",
+              "matched_values": [
+                2
+              ],
+              "comparison": "equals"
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "worst_channel_stranded_reply_count",
+      "id": null
+    },
+    "notify_candidate_id": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 1,
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "notify_candidate_id",
+          "definition": {
+            "metadata": {
+              "how_justification": "Recursive-descent key match on the account id, equality, string comparison.",
+              "why_justification": "Gold UNN2VSEY3JSW (Mitali Naidu), the one reply in data-v2-062's orphaned thread from an account that never touched the retraction. The thread's other reply and its retracted root both belong to the same account (UYIAYBC7FYCG, Levi Francis Nguyen) -- a run that picks a reply author without checking whether they are the retracting author themselves lands on Levi instead, who does not need notifying since he retracted the message himself."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "UNN2VSEY3JSW",
+              "deterministic": {
+                "path": "$..notify_candidate_id",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": "UNN2VSEY3JSW",
+            "actual": "UNN2VSEY3JSW",
+            "effective_weight": 1.0,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$..notify_candidate_id",
+              "matched_values": [
+                "UNN2VSEY3JSW"
+              ],
+              "comparison": "equals"
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "notify_candidate_id",
+      "id": null
+    },
+    "notify_candidate_name": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 1,
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "notify_candidate_name",
+          "definition": {
+            "metadata": {
+              "how_justification": "Recursive-descent key match, equality, string comparison.",
+              "why_justification": "The real name behind UNN2VSEY3JSW, only obtainable via slack_read_user_profile since the thread reply only carries the account id."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "json",
+                "command": "read_file",
+                "arguments": {
+                  "path": "metrics.json"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": "Mitali Naidu",
+              "deterministic": {
+                "path": "$..notify_candidate_name",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": "Mitali Naidu",
+            "actual": "Mitali Naidu",
+            "effective_weight": 1.0,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$..notify_candidate_name",
+              "matched_values": [
+                "Mitali Naidu"
+              ],
+              "comparison": "equals"
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "notify_candidate_name",
+      "id": null
+    },
+    "csv_header_is_the_pinned_columns_in_order": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 2,
+        "passed": 2,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "header_is_the_pinned_columns_in_order",
+          "definition": {
+            "metadata": {
+              "how_justification": "Reads the CSV's real header through csv.inspect_table and requires the header list to EQUAL the five pinned names, in the pinned order, exactly as the prompt writes them.",
+              "why_justification": "The prompt says 'exactly these columns in this order'. A substring check would pass a file with the columns in any order."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "csv",
+                "command": "inspect_table",
+                "arguments": {
+                  "path": "orphaned_thread_audit.csv"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": [
+                "channel_id",
+                "channel_name",
+                "retracted_message_author_id",
+                "retracted_message_author_name",
+                "stranded_reply_count"
+              ],
+              "deterministic": {
+                "path": "$.header",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": [
+              "channel_id",
+              "channel_name",
+              "retracted_message_author_id",
+              "retracted_message_author_name",
+              "stranded_reply_count"
+            ],
+            "actual": [
+              "channel_id",
+              "channel_name",
+              "retracted_message_author_id",
+              "retracted_message_author_name",
+              "stranded_reply_count"
+            ],
+            "effective_weight": 0.5,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$.header",
+              "matched_values": [
+                [
+                  "channel_id",
+                  "channel_name",
+                  "retracted_message_author_id",
+                  "retracted_message_author_name",
+                  "stranded_reply_count"
+                ]
+              ],
+              "comparison": "equals"
+            }
+          }
+        },
+        {
+          "name": "csv_has_exactly_four_data_rows",
+          "definition": {
+            "metadata": {
+              "how_justification": "Reads the CSV's real row count through csv.inspect_table.",
+              "why_justification": "Exactly four rooms have a live orphaned thread; a CSV with more or fewer rows means the population itself was gotten wrong."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "csv",
+                "command": "inspect_table",
+                "arguments": {
+                  "path": "orphaned_thread_audit.csv"
+                }
+              }
+            },
+            "assertion": {
+              "type": "deterministic",
+              "expected": 4,
+              "deterministic": {
+                "path": "$.row_count",
+                "comparison": "equals"
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": 4,
+            "actual": 4,
+            "effective_weight": 0.5,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "path": "$.row_count",
+              "matched_values": [
+                4
+              ],
+              "comparison": "equals"
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 0.5,
+      "score": 1.0,
+      "name": "csv_header_is_the_pinned_columns_in_order",
+      "id": null
+    },
+    "csv_rows_are_right": {
+      "passed": true,
+      "reward": 1.0,
+      "threshold": 1.0,
+      "workspace_files": [
+        "metrics.json",
+        "orphaned_thread_audit.csv"
+      ],
+      "summary": {
+        "total_verifiers": 1,
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "total_weight": 1.0,
+        "passed_weight": 1.0
+      },
+      "assertion_results": [
+        {
+          "name": "csv_rows_are_right",
+          "definition": {
+            "metadata": {
+              "how_justification": "A native rubric ASSERTION over the CSV's own raw text, judged by the task's configured judge at temperature 0. It grades the CELL VALUES the prompt pins for each of the four rooms -- which account's retracted message is the one with replies, that account's real name, and the room's real stranded-reply count -- none of which a deterministic comparator on this source can address, since csv.extract_text exposes the file only as raw text. Row order, quoting, whitespace and letter case are explicitly free; the twenty pinned values (4 rows x 5 fields) are not.",
+              "why_justification": "Without this a CSV listing the right four channel ids with an invented author or a made-up reply count still satisfies the header and row-count checks. The stranded-reply count in particular is only obtainable by opening the specific retracted message's thread, so a run that never did that cannot fill it in correctly."
+            },
+            "source": {
+              "type": "file",
+              "file": {
+                "type": "csv",
+                "command": "extract_text",
+                "arguments": {
+                  "path": "orphaned_thread_audit.csv"
+                }
+              }
+            },
+            "assertion": {
+              "type": "rubric",
+              "expected": true,
+              "rubric": {
+                "prompt": "PASS only if the CSV contains exactly these four rooms, each correctly paired with the real author of that room's own retracted-and-replied-to message, that author's real name, and that room's real stranded-reply count:\n  C62RIISXI1FD,general-marketing-analytics,UJCPV75HKG9V,Prakash Pillai Mehta,1\n  CJWT99KXPLPI,perf-070,UWGCP00XPDCQ,Ellie Wendy Brown,1\n  C5H1G0LC1A6C,mobile-090,UPLCK9I5ENM9,Martha Yvonne Nguyen,1\n  CN20Z0W91YE0,data-v2-062,UYIAYBC7FYCG,Levi Francis Nguyen,2\nRow order, header capitalization variance beyond the pinned names, quoting style and incidental whitespace are all free. FAIL if any of the four rooms is missing, if perf-v2-020 or mobile-v2-024 is listed (neither has a live orphaned thread), if any author id or name is paired with the wrong room, or if any stranded_reply_count value does not match the real count above (a value of 1 for data-v2-062, matching only its inert second retraction or an undercount of its real two stranded replies, is a common wrong answer and must FAIL)."
+              }
+            }
+          },
+          "result": {
+            "success": true,
+            "expected": true,
+            "actual": true,
+            "effective_weight": 1.0,
+            "error": null,
+            "reason": null,
+            "evaluation": {
+              "judge_models": [
+                "openai/glm-5.2"
+              ],
+              "true_count": 1,
+              "false_count": 0,
+              "attempts": [
+                {
+                  "model": "openai/glm-5.2",
+                  "verdict": true,
+                  "justification": "The CSV contains exactly the four required rooms with correct channel IDs, names, author IDs, author names, and stranded-reply counts: C62RIISXI1FD (count 1), CJWT99KXPLPI (count 1), C5H1G0LC1A6C (count 1), and CN20Z0W91YE0/data-v2-062 (count 2). No disallowed rooms (perf-v2-020 or mobile-v2-024) are present, and all pairings match the rubric.",
+                  "error": null
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "gym_name": null,
+      "verifier_type": "file_check",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "csv_rows_are_right",
+      "id": null
+    },
+    "exactly_one_new_message_in_the_target_room__state": {
+      "passed": true,
+      "expected": 1,
+      "actual": 1,
+      "comparison_type": "equals",
+      "query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000",
+      "gym_name": "slack-gym",
+      "details": "Comparison equals: 1 vs 1",
+      "verifier_type": "database_state",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "exactly_one_new_message_in_the_target_room__state",
+      "id": null
+    },
+    "message_ends_with_the_pinned_lines__state": {
+      "passed": true,
+      "expected": 1,
+      "actual": 1,
+      "comparison_type": "equals",
+      "query": "SELECT COUNT(*) FROM slack_messages WHERE channel='CN20Z0W91YE0' AND user='UVS1ZHNER2I5' AND CAST(ts AS REAL) > 1771400000 AND REPLACE(RTRIM(text, char(10)||char(13)||char(9)||' '), ' ', '') LIKE '%orphaned:4%notify:MitaliNaidu'",
+      "gym_name": "slack-gym",
+      "details": "Comparison equals: 1 vs 1",
+      "verifier_type": "database_state",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "message_ends_with_the_pinned_lines__state",
+      "id": null
+    },
+    "no_message_posted_in_any_other_room__state": {
+      "passed": true,
+      "expected": 0,
+      "actual": 0,
+      "comparison_type": "equals",
+      "query": "SELECT COUNT(*) FROM slack_messages WHERE channel IN ('C62RIISXI1FD','CJWT99KXPLPI','C5H1G0LC1A6C','CND2WYEK82X3','CCO33YK6O6I8') AND CAST(ts AS REAL) > 1771400000",
+      "gym_name": "slack-gym",
+      "details": "Comparison equals: 0 vs 0",
+      "verifier_type": "database_state",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "no_message_posted_in_any_other_room__state",
+      "id": null
+    },
+    "seed_messages_across_all_six_rooms_left_intact__state": {
+      "passed": true,
+      "expected": 86,
+      "actual": 86,
+      "comparison_type": "equals",
+      "query": "SELECT COUNT(*) FROM slack_messages WHERE channel IN ('C62RIISXI1FD','CJWT99KXPLPI','C5H1G0LC1A6C','CN20Z0W91YE0','CND2WYEK82X3','CCO33YK6O6I8')",
+      "gym_name": "slack-gym",
+      "details": "Comparison equals: 86 vs 86",
+      "verifier_type": "database_state",
+      "category": "core",
+      "weight": 1.0,
+      "score": 1.0,
+      "name": "seed_messages_across_all_six_rooms_left_intact__state",
+      "id": null
+    },
+    "every_thread_with_a_reply_was_actually_opened": {
+      "passed": true,
+      "verdict": "PASS",
+      "rubric": "Judge this from which TOOL CALLS were made -- their names and channel_id/message_ts arguments -- not from the content of what each call returned; call arguments are what this rubric needs and they stay small regardless of how long a trace gets, so evidence truncation on large tool RESULTS should not affect this verdict. PASS if, for every one of the six rooms (C62RIISXI1FD, CJWT99KXPLPI, C5H1G0LC1A6C, CN20Z0W91YE0, CND2WYEK82X3, CCO33YK6O6I8), a slack_read_channel call for that room appears, AND a slack_read_thread call appears for every message in that room's channel view that shows reply_count >= 1, before the run reaches its final flagged/clean verdict for that room. The exact number of such messages varies per room and you should judge this from what the trace actually shows was called, not from a fixed count. FAIL if any room's flagged/clean verdict is reached without a slack_read_channel call for that room, or if any message shown with reply_count >= 1 in a room's channel view has no matching slack_read_thread call anywhere in the trace. If the evidence given to you does not show enough of the trace to tell which slack_read_thread calls were made for a specific room, treat that as insufficient evidence for that room only, not as an automatic FAIL of the whole verdict.",
+      "target": "trace",
+      "motivation": "All six rooms received slack_read_channel calls, and every message visible in each channel view with reply_count >= 1 has a corresponding slack_read_thread call before the final finish verdict.",
+      "judge_votes": {
+        "usable": 3,
+        "pass": 3,
+        "fail": 0,
+        "errors": []
+      },
+      "verifier_type": "rubric_check",
+      "category": "core",
+      "weight": 0.5,
+      "score": 1.0,
+      "name": "every_thread_with_a_reply_was_actually_opened",
+      "id": null
+    },
+    "notify_candidate_excluded_the_retracting_author": {
+      "passed": true,
+      "verdict": "PASS",
+      "rubric": "Judge this from which TOOL CALLS were made and their arguments, not from deep inspection of every returned payload. PASS if the trace shows a slack_read_thread call on CN20Z0W91YE0's retracted-and-replied-to thread (message_ts 1771353970.549001, or a call covering that same thread), AND a slack_read_user_profile call on UNN2VSEY3JSW (the account eventually used as the notify candidate) happening before that identity is used anywhere in the final output. FAIL if the final output's notify candidate is UYIAYBC7FYCG (the retracting author) or any account other than UNN2VSEY3JSW, or if UNN2VSEY3JSW is used as the notify candidate with no slack_read_user_profile call on that id anywhere in the trace, or if the run never actually opened data-v2-062's specific retracted thread before naming a notify candidate.",
+      "target": "trace",
+      "motivation": "The trace shows a slack_read_thread call on channel CN20Z0W91YE0 with message_ts 1771353970.549001 (the retracted-and-replied-to thread), and a slack_read_user_profile call on UNN2VSEY3JSW (Mitali Naidu) that occurs before the final output names Mitali Naidu as the notify candidate.",
+      "judge_votes": {
+        "usable": 3,
+        "pass": 3,
+        "fail": 0,
+        "errors": []
+      },
+      "verifier_type": "rubric_check",
+      "category": "core",
+      "weight": 0.5,
+      "score": 1.0,
+      "name": "notify_candidate_excluded_the_retracting_author",
+      "id": null
+    },
+    "final_reply_states_a_conclusion": {
+      "passed": true,
+      "verdict": "PASS",
+      "rubric": "PASS if the final reply states a real conclusion -- how many rooms have a live orphaned thread, roughly how big the problem is, which room is worst, and who should be notified there -- and points at the evidence behind it. FAIL if it only narrates the steps taken or lists figures with no stated conclusion.",
+      "target": "final_answer",
+      "motivation": "The reply states a concrete conclusion \u2014 four affected rooms, five stranded replies, data-v2-062 as the worst room, and Mitali Naidu as the person to notify \u2014 while pointing at the specific evidence (named accounts and their actions) behind it.",
+      "judge_votes": {
+        "usable": 3,
+        "pass": 3,
+        "fail": 0,
+        "errors": []
+      },
+      "verifier_type": "rubric_check",
+      "category": "core",
+      "weight": 0.5,
+      "score": 1.0,
+      "name": "final_reply_states_a_conclusion",
+      "id": null
+    }
+  },
+  "verification_summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "pass_rate": 1.0,
+    "core_total": 16,
+    "core_passed": true,
+    "weighted_pass_rate": 1.0,
+    "scored_weighted_pass_rate": 1.0,
+    "unscored": 0,
+    "type_scores": {
+      "tool_execution": 1.0,
+      "file_check": 1.0,
+      "database_state": 1.0,
+      "rubric_check": 1.0
+    }
+  },
+  "statistics": {
+    "total_runs": 1,
+    "gradable_runs": 1,
+    "successful_runs": 1,
+    "overall_success_rate": 1.0,
+    "pass_at_1": 1.0,
+    "verifier_level_pass_rate": 1.0,
+    "weighted_pass_rate": 1.0,
+    "failure_modes": {
+      "pass": 1
+    },
+    "exhausted_runs": 0,
+    "total_verifiers_checked": 16,
+    "total_verifiers_passed": 16,
+    "individual_verifier_stats": {
+      "did_real_work_not_one_shot": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "channels_with_live_orphaned_threads": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "total_stranded_replies": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "worst_channel_id": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "worst_channel_stranded_reply_count": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "notify_candidate_id": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "notify_candidate_name": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "csv_header_is_the_pinned_columns_in_order": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "csv_rows_are_right": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "exactly_one_new_message_in_the_target_room__state": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "message_ends_with_the_pinned_lines__state": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "no_message_posted_in_any_other_room__state": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "seed_messages_across_all_six_rooms_left_intact__state": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "every_thread_with_a_reply_was_actually_opened": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "notify_candidate_excluded_the_retracting_author": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "final_reply_states_a_conclusion": {
+        "passed": 1,
+        "total": 1,
+        "pass_rate": 1.0
+      }
+    },
+    "mean_execution_time_ms": 0.0,
+    "tool_usage": {
+      "finish": 1,
+      "slack_read_channel": 1,
+      "slack_read_thread": 1,
+      "slack_read_user_profile": 1,
+      "slack_search_channels": 1,
+      "slack_send_message": 1
+    },
+    "tool_available": [],
+    "tool_unused": []
+  },
+  "allowed_verifier_types": [
+    "agentic_llm_as_judge",
+    "rubric"
+  ]
+}
