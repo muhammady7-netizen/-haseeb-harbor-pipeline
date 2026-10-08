@@ -1,0 +1,238 @@
+{
+  "layer1_package_consistency": {
+    "outcome": "pass",
+    "explanation": "task.toml, instruction.md, solution/ (solve.sh, solve.py, golden_trajectory.json 45 steps, write_artifacts.py + artifact_plan.json, final_answer.md, emit_oracle_trajectory.py), tests/ (manifest.json 16 verifier_configs, test.sh -> test_gvs.sh -> test_outputs.py + verifier_engine.py + vendored rl_world_verifiers) and environment/ (Dockerfile, entrypoint.sh, proxy) jointly describe one executable, gradable task. manifest.instruction_sha256 63c2c3a6... equals the sha256 of instruction.md, and environment/_app/ is byte-identical to task.toml/instruction.md/tests (verified by diff -r). All mandatory subchecks pass."
+  },
+  "layer1_package_consistency__cross_artifact_consistency": {
+    "outcome": "pass",
+    "explanation": "No source is missing. Deliverable paths (/workspace/metrics.json, /workspace/orphaned_thread_audit.csv), the gym write-back into CN20Z0W91YE0, and the final reply are all produced by solution/ and read by tests/manifest.json. The gym data is served by the pinned image (company-synthetic-20260910-1150-pt-main) via the proxy at localhost:7000 declared in [[environment.mcp_servers]]; no separate input fixtures are declared or needed (tests/task_inputs.py is unused template code, and file_check explicitly refuses specs that read seeded inputs)."
+  },
+  "layer1_package_consistency__instruction_verifier_consistency": {
+    "outcome": "pass",
+    "explanation": "Every reward-bearing check traces to instruction text: R1/R2/R3/R4 -> the six metrics.json keys the prompt pins; R5 -> 'exactly these columns in this order' + 'List every room that has this problem'; R6 -> per-row cell values; R7/R9 -> 'post one message - in the single worst room only, nowhere else'; R8 -> 'end the message with exactly these two lines'; R11 -> 'you have to actually open every thread with a reply and look'; R12 -> 'Don't tell me to notify the person who retracted the message themselves'; R13 -> 'Give me your conclusion and the evidence for it'. R0 (>=10 gym calls) is a floor implied by the mandated per-thread walk. The only near-verifier-only item is R10 (86 messages across the six rooms = 85 seed + 1), a do-no-harm side-effect gate no correct solve can trip. No material instruction requirement is ungraded (only the free-form body of the posted message beyond the two pinned lines is unscored)."
+  },
+  "layer1_package_consistency__solution_instruction_consistency": {
+    "outcome": "pass",
+    "explanation": "solution/ produces every requested deliverable: write_artifacts.py materialises metrics.json with exactly the six pinned keys (numbers as numbers, ids/names as strings) and orphaned_thread_audit.csv with the five pinned columns and four rows; golden_trajectory.json step s45 posts one slack_send_message into CN20Z0W91YE0 ending 'orphaned: 4\\nnotify: Mitali Naidu'; final_answer.md states the conclusion and evidence. The derivation uses only tool-reachable facts (deleted_ts on thread-root messages, reply_count, slack_read_user_profile real_name) — confirmed against the replayed tool payloads in evaluations/oracle/verifier/golden_trajectory.json."
+  },
+  "layer1_package_consistency__solution_verifier_consistency": {
+    "outcome": "pass",
+    "explanation": "solve.sh stages the oracle's deliverables into /workspace (the exact directory _run_file_check grades) and emits an ATIF trace to /logs/agent/trajectory.json so the trace/tool_execution verifiers see the replay; test_outputs.py additionally falls back to the augmented golden only for agent name 'oracle'. Checked-in evidence (evaluations/oracle/verifier/verifier_summary.json) shows all 16 verifiers pass on the golden with no shortcut: each check fired on its own evidence (file_check rewards 1.0, database_state actual==expected, three rubric_check verdicts with substantive motivations)."
+  },
+  "layer1_package_consistency__manifest_environment_consistency": {
+    "outcome": "pass",
+    "explanation": "Dockerfile FROM matches metadata.mcp_servers_extended.image; healthcheck curls the same :7000 the [[environment.mcp_servers]] URL uses; WORKDIR /workspace matches the instruction's deliverable paths and _run_file_check's default; TASK_DIR=/app matches test_gvs.sh and TASK_DIR in test_outputs.py; /app is chmod go-rwx with agent user rlgymagent as declared in [agent].user; environment/_app mirror is byte-identical to the task root. state_snapshot_enabled=false is consistent with the engine-owned scoring path (state/sql weights 0.0, allowed_verifier_types = rubric + agentic_llm_as_judge). tests/test_requirements.txt only pins litellm while the vendored verifiers also need pydantic/jsonpath_ng/tenacity, but the checked-in oracle verification ran those code paths successfully in this image, so the declaration gap is not contradictory in practice."
+  },
+  "layer1_package_consistency__declared_executed_verifier_consistency": {
+    "outcome": "pass",
+    "explanation": "test.sh runs test_gvs.sh which execs tests/test_outputs.py; with allowed_verifier_types containing 'agentic_llm_as_judge' the engine path (_emit_engine_owned_reward -> score_benchmark_verifiers -> run_benchmark_verifiers) is the sole scorer and consumes manifest.verifier_configs. All 16 declared verifiers appear in the oracle's verification_results with total=16, unscored=0. rubric.toml carries only a system preamble (no criteria items), so it contributes zero verifiers — declared but inert, and it is not represented as coverage. No executable reward-bearing check exists outside the declarations."
+  },
+  "layer1_package_consistency__artifact_contract_consistency": {
+    "outcome": "pass",
+    "explanation": "Instruction names /workspace/metrics.json and /workspace/orphaned_thread_audit.csv; verifier_specs read the same relative names under the resolved workspace (/workspace, overridable via TH_WORKSPACE_DIR, failing loudly if absent). The connector-side surface (one new message in CN20Z0W91YE0 by UVS1ZHNER2I5) is graded from the live gym DB, the same surface slack_send_message writes. No filename, path or output-surface drift between produced and graded submission."
+  },
+  "layer1_clarity_scope": {
+    "outcome": "pass",
+    "explanation": "All four clarity subchecks pass: output surfaces, representation rules, and the process requirements the verifier grades are each stated in instruction.md, and the prompt is clean, unredacted prose. The vendor's own reader study (consistency/readers.json) shows independent readers recovering the exact deliverable shape and field semantics."
+  },
+  "layer1_clarity_scope__output_surface_contract": {
+    "outcome": "pass",
+    "explanation": "Graded surfaces are exactly the instructed ones: two workspace files (pinned by path and key/column name), one Slack message in the single worst room ending with two pinned lines, and a final reply containing the conclusion. Nothing is graded on a location the instruction does not require; the do-no-harm state check (R10, seed messages intact) is a side-effect guard on the same write-back the instruction scopes to one room."
+  },
+  "layer1_clarity_scope__representation_contract": {
+    "outcome": "pass",
+    "explanation": "The prompt pins the key names, that numbers are 'plain numbers' and identifiers 'plain strings', the CSV column names and order, and the exact two trailing lines. Free choices are genuinely free in the verifier: metrics.json key order/nesting/pretty-printing (recursive-descent $.. paths), CSV row order/quoting/whitespace/letter case (explicitly freed in the rubric), and SQL LIKE that strips spaces and is case-insensitive. consistency/mutations.json records cosmetic mutants (reordered keys, int-as-float, extra key, wrapped-in-object, reordered rows) all passing."
+  },
+  "layer1_clarity_scope__process_requirement_disclosure": {
+    "outcome": "pass",
+    "explanation": "The two trace-graded rubrics correspond to explicitly stated work. R11 ('a slack_read_thread for every message with reply_count >= 1 in each of the six rooms') restates 'you have to actually open every thread with a reply and look'. R12 requires opening data-v2-062's retracted thread and a profile read on UNN2VSEY3JSW before naming them; the thread payload only exposes the handle ('Mii'), and the real name 'Mitali Naidu' comes only from slack_read_user_profile (verified in the replayed payloads), so the profile call is a necessary consequence of the instructed answer, not an extra workflow. R0's floor of 10 gym calls cannot bind a legitimate run."
+  },
+  "layer1_clarity_scope__redaction_readability": {
+    "outcome": "pass",
+    "explanation": "instruction.md contains no placeholders, elisions or broken grammar. Identities (six named rooms), relationships (retracting author vs reply author) and the exclusion rule ('Don't tell me to notify the person who retracted the message themselves') are stated plainly."
+  },
+  "layer1_realism_leakage": {
+    "outcome": "pass",
+    "explanation": "Domain model, references, workflow realism and golden isolation all hold; no subcheck fails."
+  },
+  "layer1_realism_leakage__domain_correctness": {
+    "outcome": "pass",
+    "explanation": "The Slack mechanics are coherent with the served gym: deleted_ts is a per-message metadata flag, reply_count carries the stranded count, and real names require slack_read_user_profile. I recomputed the gold from the replayed tool payloads in evaluations/oracle/verifier/golden_trajectory.json: 27 threads with reply_count>=1 across six rooms (4+7+4+6+4+2), the data-v2-062 root ts 1771353970.549001 by UYIAYBC7FYCG carries deleted_ts with replies from UNN2VSEY3JSW and UYIAYBC7FYCG, and UNN2VSEY3JSW's profile real_name is 'Mitali Naidu' — consistent with 4 rooms / 5 stranded replies / worst CN20Z0W91YE0 (2) / notify UNN2VSEY3JSW. One inaccurate author-side note in task.toml metadata ('the channel view returns it too') — the replayed slack_read_channel payloads do not include deleted_ts — but it is grader-only prose that errs toward requiring more work, and the agent-facing instruction correctly says the flag is only visible on the message record."
+  },
+  "layer1_realism_leakage__authoritative_reference_validity": {
+    "outcome": "pass",
+    "explanation": "No external laws/standards are cited. The only authority is the pinned dataset image and the gym's own records; task.toml documents the SQL used against the grounding DB and states the values were re-read through the served gym, which the checked-in oracle replay corroborates tool-call by tool-call."
+  },
+  "layer1_realism_leakage__workflow_realism": {
+    "outcome": "pass",
+    "explanation": "A data-governance retraction audit across six rooms the acting identity belongs to, with a sized problem, a worst room, a notify candidate and a single flagging write-back, is a plausible real request with real user value. Decoys (an inert no-reply retraction, a self-reply) are natural data conditions, not contrived traps, and every needed fact is reachable through the 14 allowlisted Slack tools."
+  },
+  "layer1_realism_leakage__golden_isolation": {
+    "outcome": "pass",
+    "explanation": "The image copies only task.toml, instruction.md and tests/ into /app and then chmod -R go-rwx /app; the agent runs as rlgymagent with only /workspace writable, and solution/ is never copied into the image. The gold values live in task.toml (root-only). entrypoint.sh's env dump to agent-readable /logs redacts the access token and prints only the mcp_servers_extended block, not the GOLD section. The proxy's /raw/{name}/state SQL route is gated behind a per-boot secret at root-only /app/.raw_state_secret, and /raw/{name}/step enforces the same allowed_tools list as the MCP path."
+  },
+  "layer2_difficulty": {
+    "outcome": "fail",
+    "explanation": "evaluations/ contains only evaluations/oracle (one oracle trial: config.json/lock.json/result.json with agent.name='oracle', trajectory, verifier outputs). There are zero GLM 5.2 model attempts, so the required four eligible trajectory/result pairs, their provenance and the strict-pass distribution cannot be established. This is missing evidence, not evidence of an easy task."
+  },
+  "layer2_difficulty__evidence_pairing_count": {
+    "outcome": "fail",
+    "explanation": "Only one attempt directory exists (evaluations/oracle) and it is the oracle replay, not a model rollout. Zero of the four claimed/expected eligible attempts are present, so pairing, duplication and orphan checks cannot be satisfied."
+  },
+  "layer2_difficulty__provenance_validity": {
+    "outcome": "fail",
+    "explanation": "The only provenance in evaluations/ (oracle/config.json, oracle/lock.json, oracle/result.json) records agent.name='oracle', model_name=null and agent_info.model_info=null. Nothing establishes four independent GLM 5.2 attempts; the only GLM 5.2 reference is the verifier's JUDGE_MODEL (openai/glm-5.2), which is the judge, not the solving model."
+  },
+  "layer2_difficulty__strict_pass_distribution": {
+    "outcome": "fail",
+    "explanation": "Zero eligible (non-oracle) attempts exist, so the required 'exactly four eligible attempts, at most two at reward exactly 1.0' cannot hold. The single recorded reward, {\"reward\": 1.0} in oracle/result.json and verifier/reward.txt, belongs to the oracle replay and is ineligible."
+  },
+  "layer2_difficulty__failure_cause_validity": {
+    "outcome": "fail",
+    "explanation": "No model failures are recorded in evaluations/, so no failure cause can be attributed to task difficulty rather than defects. Missing evidence."
+  },
+  "layer2_solvability": {
+    "outcome": "fail",
+    "explanation": "No non-oracle trajectory/result pair exists in evaluations/. The only reward of exactly 1.0 comes from the oracle replay of solution/golden_trajectory.json (agent 'oracle', trial slack-4__fYHZHen), which is solution-replay evidence and cannot demonstrate solvability by an eligible agent."
+  },
+  "layer2_solvability__eligible_strict_pass": {
+    "outcome": "fail",
+    "explanation": "The single strict pass (reward 1.0, core_passed true, 16/16 verifiers) is evaluations/oracle — an oracle/solution replay. No eligible agent run earning 1.0 is saved."
+  },
+  "layer2_solvability__saved_evidence_completeness": {
+    "outcome": "fail",
+    "explanation": "For the oracle the evidence is complete (agent/trajectory.json, agent/oracle.txt replay log, verifier/golden_trajectory.json with full tool payloads, verifier_summary.json, test-stdout.txt, reward.json/txt, artifacts/manifest.json). But there is no eligible attempt whose submission and grading could be reconstructed, so the criterion's subject is entirely absent."
+  },
+  "layer2_solvability__solution_legitimacy": {
+    "outcome": "fail",
+    "explanation": "The only passing run is the golden replay itself: solve.sh replays the 45 recorded gym calls and write_artifacts.py copies solution/artifact_plan.json's pinned values into /workspace. That is legitimate as an oracle check (no spoofing, no verifier false positive — the DB-state checks queried the live gym), but by construction it is golden access, so it cannot establish that an independent solve is legitimate."
+  },
+  "layer2_solvability__instruction_environment_sufficiency": {
+    "outcome": "pass",
+    "explanation": "Within evaluations/, the oracle trial shows every graded value is obtainable through sanctioned MCP tools alone: 6 slack_search_channels, 6 slack_read_channel, 27 slack_read_thread (deleted_ts present on the qualifying roots), 5 slack_read_user_profile (real_name 'Mitali Naidu'), 1 slack_send_message — with no auditor repair, no hidden data source and no unsanctioned interface, and the verifier ran to completion (test-stdout.txt, failure_mode 'pass')."
+  },
+  "layer2_stability": {
+    "outcome": "fail",
+    "explanation": "evaluations/ holds exactly one verifier execution. There are no repeat verifier runs over a frozen trajectory/artifact identity, so reward equality and per-check consistency are unevidenced."
+  },
+  "layer2_stability__frozen_identity": {
+    "outcome": "fail",
+    "explanation": "lock.json records a task digest (sha256:72cd67fd...) and result.json a task_checksum (8dedc9ac...), but there is no second run to compare against and no hash over the graded trajectory/artifacts themselves; frozen identity across repeats is asserted nowhere and evidenced nowhere."
+  },
+  "layer2_stability__repeat_count": {
+    "outcome": "fail",
+    "explanation": "One complete verifier result exists (evaluations/oracle/verifier/), fewer than the required three repeats."
+  },
+  "layer2_stability__verifier_judge_config_identity": {
+    "outcome": "fail",
+    "explanation": "The single run's judge config is fully recorded (OPENAI_BASE_URL http://34.41.10.8:4000/v1, JUDGE_MODEL openai/glm-5.2, temperature 0.0, judge_models ['openai/glm-5.2'] in the nested rubric evaluation), but with no second run there is nothing to compare, so config identity across repeats cannot be established."
+  },
+  "layer2_stability__reward_equality": {
+    "outcome": "fail",
+    "explanation": "Only one aggregate reward (1.0) is recorded; equality across repeats on frozen evidence is unevidenced."
+  },
+  "layer2_stability__per_check_stability": {
+    "outcome": "fail",
+    "explanation": "Only one per-check breakdown exists (16/16 passed, type_scores all 1.0). With no repeats, rubric flip and offsetting-change analysis is impossible."
+  },
+  "layer5_verifier_fairness_static": {
+    "outcome": "pass",
+    "explanation": "All mandatory verifier subchecks pass. The 16-verifier set is traceable to instruction text, grades field-level values, CSV cell semantics, live DB side effects and the trace, uses appropriate matchers, and the vendor's mutation battery shows semantic mutants each failing exactly one check while cosmetic mutants pass."
+  },
+  "layer5_verifier_fairness_static__requirement_traceability": {
+    "outcome": "pass",
+    "explanation": "Each verifier carries a requirement_id and an evidence_span quoting instruction.md (R0-R13), and consistency/requirements.json maps R1-R6 to the checks that grade them. No material requirement is untested; no reward-bearing check imposes a requirement absent from the prompt (R10's 'seed messages intact = 86' is a do-no-harm guard on the instructed single write-back)."
+  },
+  "layer5_verifier_fairness_static__coverage_depth": {
+    "outcome": "pass",
+    "explanation": "Depth is real: six field-level equality checks on metrics.json values; csv.inspect_table asserting the exact header list and row_count==4; a rubric over the CSV's raw text grading all 20 pinned cell values (ids, real names, per-room counts); four database_state SQL checks against the live gym (message present, exact trailing lines, none elsewhere, total 86); and three trace/final-answer rubrics. An empty or hand-waved output cannot satisfy these — an empty CSV fails header/row_count, a right-channel/invented-author CSV fails csv_rows_are_right."
+  },
+  "layer5_verifier_fairness_static__evidence_routing": {
+    "outcome": "pass",
+    "explanation": "Artifact requirements read the workspace files (file_check resolves /workspace and fails loudly if absent, and refuses specs pointing at seeded inputs); the side-effect requirement reads the gym DB through the trusted /raw/state route rather than the agent's own trace; trace rubrics read tool calls/args; the conclusion rubric reads the final assistant message via _extract_final_output. No requirement is graded from the wrong surface."
+  },
+  "layer5_verifier_fairness_static__semantic_equivalence": {
+    "outcome": "pass",
+    "explanation": "Numbers are compared as JSON numbers (4 vs 4.0 both pass — bool/number confusion is explicitly blocked), JSON nesting/key order/formatting are free via $.. recursive descent, and CSV row order, quoting, whitespace and letter case are explicitly freed by the rubric. Identifiers and the real name are compared exactly, which the prompt pins ('plain strings', 'the real name'). consistency/mutations.json records the gold_reordered_requoted CSV case passing the live judge."
+  },
+  "layer5_verifier_fairness_static__surface_form_brittleness": {
+    "outcome": "pass",
+    "explanation": "The only lexical matcher is R8's SQL predicate: REPLACE(RTRIM(text, LF/CR/TAB/space), ' ', '') LIKE '%orphaned:4%notify:MitaliNaidu'. It is space-insensitive, case-insensitive (SQLite LIKE), tolerant of trailing whitespace/newlines and of arbitrary text before and between the two tokens, so 'orphaned: 4' / 'notify: Mitali Naidu' passes with any line spacing or capitalisation. It requires the message to END on the notify name, which the instruction pins verbatim ('end the message with exactly these two lines, filled in'). A wrong answer cannot mimic tokens without knowing the gold values, and the gold appears nowhere agent-readable. The header check uses a parsed header list rather than raw bytes, avoiding BOM/quoting brittleness (utf-8-sig decoding)."
+  },
+  "layer5_verifier_fairness_static__verifier_execution_completeness": {
+    "outcome": "pass",
+    "explanation": "test.sh -> test_gvs.sh -> test_outputs.py executes every manifest verifier through run_benchmark_verifiers; each type has an adapter (file_check, database_state, tool_execution, rubric_check) and an unknown type would be marked unscored and force failure_mode 'verifier_error'. The oracle run shows total=16, unscored=0, no errors and no exceptions in test-stdout.txt. Infrastructure failures inside a nested file_check rubric are explicitly reclassified as verifier_error rather than silently charged to the agent."
+  },
+  "layer5_verifier_fairness_static__score_bucket_activation": {
+    "outcome": "pass",
+    "explanation": "Under the engine path the active buckets are the 16 per-verifier weights, all of which received evidence in the oracle run. The scoring.weights axis block (state 0.0, sql 0.0, rubric 0.4, trajectory 0.0) is legacy display only in this path, and rubric.toml contributes no items — neither is presented as coverage in verification_summary/type_scores."
+  },
+  "layer5_verifier_fairness_static__aggregation_normalization": {
+    "outcome": "pass",
+    "explanation": "With flat_verifier_scoring=true the score is sum(passed weights)/sum(weights) over 0.25 + 6*1.0 + 0.5 + 1.0 + 4*1.0 + 3*0.5 = 13.25. Recomputed: all pass -> 1.0 (matches the oracle's total/composite 1.0 and reward.txt); losing worst_channel_id alone -> 12.25/13.25 = 0.9245; losing the CSV-rows rubric -> 0.9245; losing the 0.25 floor -> 0.9811. 'pass' is the core-based all-verifiers-passed flag, not a threshold on the scalar, exactly as documented, and reward.json is written as the single canonical {\"reward\": total} scalar."
+  },
+  "layer5_verifier_fairness_static__scoring_proportionality": {
+    "outcome": "pass",
+    "explanation": "Weights track materiality: the four analytic values and the CSV content carry 1.0 each, the purely structural header/row-count check 0.5, the effort floor 0.25, and the trace/conclusion rubrics 0.5 each. No cosmetic issue can dominate, and because overall pass requires every verifier to pass, a fatal omission cannot be masked by partial credit. The four write-back state checks total 4.0, which is defensible since the write-back is one of three instructed deliverables and each check asserts a distinct predicate (right room/exactly one, exact trailing lines, nowhere else, nothing destroyed)."
+  },
+  "layer5_verifier_fairness_static__check_independence": {
+    "outcome": "pass",
+    "explanation": "There is deliberate overlap — the value 4 appears in metrics.json (R1), the CSV row count (R5) and the posted 'orphaned: 4' line (R8); R7/R9/R10 all touch the write-back — but each instance is a separately instructed surface or a distinct predicate (count in target room, absence elsewhere, no collateral deletion), and the duplication is disclosed in the manifest's why_justification fields. No hidden single-fact double counting drives the score."
+  },
+  "layer5_verifier_fairness_static__counterfactual_strength": {
+    "outcome": "pass",
+    "explanation": "Concrete cases exist: positive control (all 8 deterministic file_check assertions pass on gold, oracle 16/16); negative cases run for real in consistency/mutations.json — channels=5, total=6, total=38, worst=C62RIISXI1FD, worst_count=1, notify id/name = Levi — each failing exactly the one intended check; incomplete cases (missing file -> 'required file missing', missing key -> 'required key missing'); adversarial cases (right channel ids with invented author/count fail csv_rows_are_right; a fabricated trajectory cannot satisfy the live-DB state checks)."
+  },
+  "layer5_verifier_fairness_static__process_grading_justification": {
+    "outcome": "pass",
+    "explanation": "The three process-flavoured checks rest on instructed work, not harness trace shape: R0 is a 10-call floor far below any real solve; R11 restates the prompt's explicit 'open every thread with a reply'; R12 requires the specific retracted thread read and the profile lookup that is the only source of the requested real name. Both trace rubrics tell the judge to grade call names/arguments (which are never clipped), not narration."
+  },
+  "layer5_llm_judge_design": {
+    "outcome": "pass",
+    "explanation": "Two judge paths exist (the engine's rubric_check judge and the nested rl_world_verifiers rubric assertion). Both have verified configuration, loud infrastructure-failure handling, complete and explicitly-marked context, grounded rubrics and deterministic settings. No subcheck fails."
+  },
+  "layer5_llm_judge_design__judge_execution_validity": {
+    "outcome": "pass",
+    "explanation": "Engine judge: model ${JUDGE_MODEL:-openai/zai-org/GLM-5.2} with OPENAI_API_KEY/OPENAI_BASE_URL from [verifier.env], invoked via litellm with response_format json_object, transport retries and a temperature-rejection retry; responses must parse to {verdict, motivation} with verdict in PASS/FAIL. Nested rubric: litellm completion with a strict json_schema response format, 60s timeout and 3 tenacity retries. The checked-in oracle run proves the endpoint/model/auth/parsing work end to end (three rubric verdicts with motivations, nested verdict true). Caveat noted: the nested assertion hardcodes config.models=['openai/glm-5.2'] instead of the ${JUDGE_MODEL} indirection task.toml asks for — harmless here (the run's JUDGE_MODEL was the same id) and any mismatch surfaces as a verifier_error, not an agent failure."
+  },
+  "layer5_llm_judge_design__judge_failure_handling": {
+    "outcome": "pass",
+    "explanation": "Engine path: no usable votes or no majority returns unscored=True, which makes the run incomplete and sets failure_mode 'verifier_error' rather than scoring the agent wrong. Nested path: any judge exception becomes JudgeInfrastructureError -> VerifierInfrastructureError, and _classify_failure was explicitly patched to treat 'file_check: ...' errors as verifier_error precisely so judge/endpoint failures are not charged to the agent. Judge ties fail pessimistically but are recorded as an error string, and raw judge output is persisted to judge_raw.txt."
+  },
+  "layer5_llm_judge_design__judge_context_completeness": {
+    "outcome": "pass",
+    "explanation": "csv_rows_are_right receives the CSV's full raw text (csv.extract_text, 90k cap) — exactly what its rubric grades. R11/R12 receive the full ordered tool-call list with names and arguments plus accepted_by_gym flags — the evidence their rubrics name. R13 receives the final assistant message. No rubric asks for evidence absent from its prompt."
+  },
+  "layer5_llm_judge_design__judge_context_truncation": {
+    "outcome": "pass",
+    "explanation": "Trace evidence uses a 200k budget divided per call with head+tail clipping of tool RESULTS only, and every clip inserts a visible '… [N chars clipped] …' marker; call names and arguments are never truncated, and both trace rubrics instruct the judge to decide from arguments for this reason. R11 further instructs that insufficient evidence for a room be treated as insufficient rather than an automatic fail. Three-vote majority further damps any single truncated sample."
+  },
+  "layer5_llm_judge_design__artifact_grounding": {
+    "outcome": "pass",
+    "explanation": "Rubrics pin concrete, checkable facts (the twenty CSV cell values; the specific message_ts 1771353970.549001 and account UNN2VSEY3JSW; named failure modes such as data-v2-062 counted as 1). The nested judge's system prompt forbids inferring extra requirements, fails on empty evidence and treats the <data> block as untrusted content, blocking both generic plausibility and prompt injection from the graded artifact."
+  },
+  "layer5_llm_judge_design__repeat_stability": {
+    "outcome": "pass",
+    "explanation": "Engine rubric_checks use an odd-numbered vote count (default 3) with majority aggregation and temperature 0.0; the nested rubric forces temperature 0.0 regardless of authored temperature and constrains output with a strict JSON schema. Model and endpoint ids are explicit and were exercised successfully in the recorded run, so the design is controlled rather than free-running."
+  },
+  "layer5_reward_hacking_static": {
+    "outcome": "pass",
+    "explanation": "No plausible shortcut passes: the gold values are not agent-readable, the answer must be written to files whose cell-level content is judged, the write-back is verified against the live gym database, and two trace rubrics plus a call floor require the investigation to have actually happened."
+  },
+  "layer5_reward_hacking_static__rollout_legitimacy": {
+    "outcome": "pass",
+    "explanation": "Final-surface-only gaming is blocked. Fabricated or looping runs cannot produce the correct four-room/five-reply/2-in-data-v2-062/Mitali Naidu combination, and R11/R12 additionally require slack_read_channel for all six rooms, slack_read_thread on every reply-bearing message and a profile read on UNN2VSEY3JSW before that identity is used. Gym-rejected calls are excluded from the effort floor (exclude_errored_calls default true), so spamming failing calls does not count as work."
+  },
+  "layer5_reward_hacking_static__sanctioned_interface_use": {
+    "outcome": "pass",
+    "explanation": "The proxy's /raw/{name}/state SQL route — the one interface that could compute the gold directly — is gated behind a per-boot random secret stored at root-only /app/.raw_state_secret, unreadable by the rlgymagent user; /raw/{name}/step enforces the same allowed_tools allowlist as the MCP path, so it grants no capability beyond the 14 sanctioned tools, and calls made outside the MCP session would not appear in the trajectory the trace rubrics grade. No direct DB, verifier or hidden-file access is available to the agent."
+  },
+  "layer5_reward_hacking_static__golden_or_internal_access": {
+    "outcome": "pass",
+    "explanation": "solution/ is never copied into the image; task.toml (which carries the GOLD block) and tests/ live under /app with chmod -R go-rwx while the agent runs as rlgymagent from /workspace. The agent-readable entrypoint env dump redacts the gym token and emits only the mcp_servers_extended block. No answer-bearing fixture is seeded into the workspace, and file_check refuses any spec that would grade seeded inputs."
+  },
+  "layer5_reward_hacking_static__state_spoofing": {
+    "outcome": "pass",
+    "explanation": "The side-effect checks are SQL against the live per-trial gym database via the secret-gated trusted route, not against anything the agent writes: they assert exactly one new message in CN20Z0W91YE0 authored by the pinned acting identity UVS1ZHNER2I5 above the seed high-water mark, zero new messages in the other five rooms, the exact trailing lines, and 86 total messages so a delete-and-repost or collateral deletion is caught. Reward artifacts are written by the verifier after the agent phase, and the grading key is decrypted only in the verifier phase using HARBOR_ANSWER_KEY, which is not exposed to the agent."
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "task": {
+        "path": "/tmp/harbor-check-o24y6_us/check-slack-4"
+    },
+    "trial_name": "check-slack-4__XgzuoAA",
+    "trials_dir": "/workspace/harbor-check-jobs/work/review/b7-slack4-check-r1",
+    "agent_setup_timeout_multiplier": 3.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5",
+        "kwargs": {
+            "reasoning_effort": "medium"
+        }
+    },
+    "environment": {
+        "type": "docker",
+        "kwargs": {
+            "keepalive": null
+        }
+    },
+    "job_id": "cefbfcd3-299d-4a4a-af0b-a55b8b929bd5"
+}

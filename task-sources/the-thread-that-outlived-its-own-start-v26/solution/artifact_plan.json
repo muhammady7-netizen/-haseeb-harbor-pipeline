@@ -1,0 +1,80 @@
+{
+  "report_path": null,
+  "report": null,
+  "json_path": "metrics.json",
+  "json": {
+    "channels_with_live_orphaned_threads": 4,
+    "total_stranded_replies": 5,
+    "worst_channel_id": "CN20Z0W91YE0",
+    "worst_channel_stranded_reply_count": 2,
+    "notify_candidate_id": "UNN2VSEY3JSW",
+    "notify_candidate_name": "Mitali Naidu",
+    "retracted_msg_author_also_replied": true,
+    "worst_room_has_self_reply": true,
+    "notify_candidate_is_not_retractor": true,
+    "worst_room_retractor_id": "UYIAYBC7FYCG",
+    "retractor_also_notifiable": false,
+    "clean_rooms_count": 2,
+    "clean_room_ids": [
+      "CCO33YK6O6I8",
+      "CND2WYEK82X3"
+    ],
+    "retractor_self_reply_count": 2,
+    "total_retractions_across_all_rooms": 5,
+    "worst_room_total_retractions": 1,
+    "rooms_with_retraction_but_no_reply": 1,
+    "external_stranded_reply_count": 3,
+    "retractor_replied_in_same_room": true,
+    "notify_candidate_also_retracted_somewhere": false,
+    "worst_room_retractor_also_posted_in_clean_room": false,
+    "rooms_with_notify_candidate": 3,
+    "rooms_with_no_external_reply": 1,
+    "self_reply_room_ids": [
+      "CJWT99KXPLPI",
+      "CN20Z0W91YE0"
+    ],
+    "worst_room_external_reply_count": 1,
+    "non_worst_room_external_reply_count": 2,
+    "problem_rooms_with_only_external_replies": 2
+  },
+  "csv_path": "orphaned_thread_audit.csv",
+  "csv": [
+    [
+      "channel_id",
+      "channel_name",
+      "retracted_message_author_id",
+      "retracted_message_author_name",
+      "stranded_reply_count"
+    ],
+    [
+      "C62RIISXI1FD",
+      "general-marketing-analytics",
+      "UJCPV75HKG9V",
+      "Prakash Pillai Mehta",
+      1
+    ],
+    [
+      "CJWT99KXPLPI",
+      "perf-070",
+      "UWGCP00XPDCQ",
+      "Ellie Wendy Brown",
+      1
+    ],
+    [
+      "C5H1G0LC1A6C",
+      "mobile-090",
+      "UPLCK9I5ENM9",
+      "Martha Yvonne Nguyen",
+      1
+    ],
+    [
+      "CN20Z0W91YE0",
+      "data-v2-062",
+      "UYIAYBC7FYCG",
+      "Levi Francis Nguyen",
+      2
+    ]
+  ],
+  "xlsx_path": null,
+  "xlsx": null
+}
