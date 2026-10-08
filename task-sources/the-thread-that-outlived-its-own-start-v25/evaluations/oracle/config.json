@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "/workspace/task"
+    },
+    "trial_name": "slack-4__fYHZHen",
+    "trials_dir": "/workspace/harbor-jobs/b7-slack4-oracle-r1-20260913",
+    "verifier": {
+        "env": {
+            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+            "OPENAI_BASE_URL": "http://34.41.10.8:4000/v1",
+            "JUDGE_MODEL": "openai/glm-5.2"
+        }
+    },
+    "job_id": "3bd00391-7cae-4dfb-a76b-c274365517d9"
+}

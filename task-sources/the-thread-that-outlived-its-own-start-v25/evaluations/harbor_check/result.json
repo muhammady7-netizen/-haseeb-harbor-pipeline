@@ -1,0 +1,121 @@
+{
+    "id": "4efb2ec6-c251-4b40-99f1-11c5c063bfdf",
+    "task_name": "check-slack-4",
+    "trial_name": "check-slack-4__XgzuoAA",
+    "trial_uri": "file:///workspace/harbor-check-jobs/work/review/b7-slack4-check-r1/check-slack-4__XgzuoAA",
+    "task_id": {
+        "path": "/tmp/harbor-check-o24y6_us/check-slack-4"
+    },
+    "source": null,
+    "task_checksum": "61c31f12a44ed4190e0ee2d4220e0fbc2e1bfc9e4c90aea5c8897e8c0df573a8",
+    "config": {
+        "task": {
+            "path": "/tmp/harbor-check-o24y6_us/check-slack-4",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "check-slack-4__XgzuoAA",
+        "trials_dir": "/workspace/harbor-check-jobs/work/review/b7-slack4-check-r1",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": 3.0,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "claude-code",
+            "import_path": null,
+            "model_name": "anthropic/claude-opus-5",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "reasoning_effort": "medium"
+            },
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "keepalive": null
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "cefbfcd3-299d-4a4a-af0b-a55b8b929bd5",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "claude-code",
+        "version": "2.1.270",
+        "model_info": {
+            "name": "claude-opus-5",
+            "provider": "anthropic"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 5339940,
+        "n_cache_tokens": 5147349,
+        "n_output_tokens": 36052,
+        "cost_usd": 4.678563250000001,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-09-13T10:37:27.773564Z",
+    "finished_at": "2026-09-13T10:48:56.775165Z",
+    "environment_setup": {
+        "started_at": "2026-09-13T10:37:27.820402Z",
+        "finished_at": "2026-09-13T10:37:29.716375Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-09-13T10:37:29.716461Z",
+        "finished_at": "2026-09-13T10:40:09.489728Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-09-13T10:40:09.490152Z",
+        "finished_at": "2026-09-13T10:48:33.588439Z"
+    },
+    "verifier": {
+        "started_at": "2026-09-13T10:48:35.172944Z",
+        "finished_at": "2026-09-13T10:48:36.221923Z"
+    },
+    "step_results": null
+}

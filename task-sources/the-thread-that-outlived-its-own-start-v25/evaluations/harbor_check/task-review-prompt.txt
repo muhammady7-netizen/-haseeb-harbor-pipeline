@@ -1,0 +1,20 @@
+You are auditing one Harbor task package as static source evidence.
+
+The copied task is at {task_path}. Its complete file tree is:
+
+<file_tree>
+{file_tree}
+</file_tree>
+
+Read every relevant file before evaluating any criterion. At minimum, read task.toml, instruction.md, every file under solution/ and tests/, and all environment, input, output, connector, manifest, and support files needed to understand them. For Layer 2 criteria, read the relevant files under evaluations/** completely; mounting or listing that directory is not evidence of inspection.
+
+Keep evidence origins separate. Task source and checked-in evaluations/** are vendor evidence. Do not infer auditor Oracle results, auditor model rollouts, or runtime behavior that is absent from this tree. Layer 2 conclusions must use only evaluations/** and must validate trajectory/result pairing, exact provenance, frozen-deliverable identity, artifacts, verifier outputs, reward semantics, and failure causes rather than trusting filenames or summary metadata.
+
+Build requirement traceability across the instruction, golden solution, verifier, task manifest, environment, inputs, and outputs. Identify hidden verifier requirements, golden/verifier contradictions, unavailable tools or data, invalid references, leakage, and exploitable grading paths. This check covers static criteria in Layers 1, 2, and 5 only. Do not report Layer 3 Oracle acceptance or Layer 4 runtime outcomes.
+
+Inspect every regex, exact-string comparison, SQL LIKE/REPLACE expression, token whitelist, and other surface-form matcher used for grading. Test whether materially equivalent correct answers survive differences in Markdown, whitespace, punctuation, ordering, aliases, abbreviations, singular/plural, dates, numeric formatting, and negation, and whether materially wrong answers can pass by copying expected tokens. Distinguish representation requirements explicitly disclosed by the instruction from incidental lexical assumptions introduced only by the verifier.
+
+Criteria named AREA__SUBCHECK are mandatory independent subchecks. Return one outcome and evidence-grounded explanation for every criterion. Fail an AREA aggregate when any applicable mandatory subcheck fails; never average away a failed subcheck. Cite concrete relative paths and requirement or check identities. Distinguish missing evidence from failed evidence. Do not modify task files.
+
+Guidance:
+{criteria_guidance}
