@@ -2996,14 +2996,14 @@ def run_benchmark_verifiers(
             (sum(type_scores.values()) / len(type_scores)) if type_scores else 0.0
         )
     weighted = scored_weighted if complete else None
+    # Single-tier: every verifier is in the gate (category is metadata only).
+    scored = items_out
+    core_passed = overall_success
     # HARBOR-LOCAL: binary reward — terminal reward must be exactly 0 or 1.
     # The pipeline's layer1_package_consistency gate rejects fractional rewards.
     # A run that passes 100% of verifiers gets 1.0; anything else gets 0.0.
     if weighted is not None:
         weighted = 1.0 if core_passed else 0.0
-    # Single-tier: every verifier is in the gate (category is metadata only).
-    scored = items_out
-    core_passed = overall_success
     failure_mode = (
         "verifier_error"
         if (not failures and unscored_n)
