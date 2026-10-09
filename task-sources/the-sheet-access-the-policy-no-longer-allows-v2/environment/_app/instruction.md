@@ -9,6 +9,13 @@ Wherever a spreadsheet's sharing gives someone more than the policy allows, fix 
 policy allows, or remove it when the policy allows no access at all. Leave every grant the policy allows exactly as it is, keep my own
 ownership, add no sharing, do not change sharing on any other file, and do not edit any spreadsheet's content.
 
+Work through this systematically:
+1. Start by listing all your spreadsheets with `gws drive files list`. The response includes permissions inline — identify the shared ones (any file with a non-owner grant).
+2. For each shared spreadsheet, read its full grid data with `gws sheets spreadsheets get` — include all tabs, not just the first. Classify it by matching its cell labels against the policy tiers.
+3. For each grant that exceeds the policy, fix it with `gws drive permissions update` (to reduce to reader/commenter) or `gws drive permissions delete` (to remove entirely).
+4. Do not re-read or re-process any spreadsheet you have already classified. Work through the list once, in order.
+5. Read the policy document, roster, and exceptions register once at the start, then apply them to every grant. Do not re-read these files for each spreadsheet.
+
 Then write the review up in two files.
 
 1. /workspace/access_review.xlsx with three sheets:
