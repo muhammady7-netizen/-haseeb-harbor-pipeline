@@ -1,0 +1,174 @@
+{
+  "layer1_package_consistency": {
+    "outcome": "pass",
+    "explanation": "task.toml, instruction.md, solution/*, tests/* (manifest.json + frozen test_outputs.py/verifier_engine.py/rl_world_verifiers), environment/Dockerfile + entrypoint.sh + mcp/proxy/server.py, the three provided inputs and the environment/_app mirror jointly describe one executable, gradable task. The mirror is byte-identical to the task root (diff -r clean) and manifest.instruction_sha256 (9d8fa4bf...) equals the sha256 of instruction.md. Deliverable paths (/workspace/access_review.xlsx, /workspace/restricted_access_memo.docx), sheet/header names, the 70/61 populations and the 65 permission-level SQL checks all line up with solution/artifact_plan.json and solution/golden_trajectory.json."
+  },
+  "layer1_package_consistency__cross_artifact_consistency": {
+    "outcome": "pass",
+    "explanation": "No source is missing. instruction.md names the three fixtures that environment/Dockerfile COPYs to /workspace/provided (access_classification_policy.docx, collaborator_roster.csv, access_exceptions.xlsx); the gws-gym connector in [environment.mcp_servers] is mounted by environment/mcp/proxy/server.py at /mcp/gws-gym; tests/test.sh -> tests/test_gvs.sh -> /app/tests/test_outputs.py reads tests/manifest.json whose 75 verifier_configs match solution/artifact_plan.json and the 132-step golden trajectory (1 files.list + 70 spreadsheets.get + 29 deletes + 32 updates)."
+  },
+  "layer1_package_consistency__instruction_verifier_consistency": {
+    "outcome": "pass",
+    "explanation": "All 75 verifier_configs carry a requirement_id and consistency/requirements.json maps each 1:1 to a verbatim instruction span (ids match the manifest exactly, 75/75). Reward-bearing checks: Classification/Changes/Summary registers, memo table + one-page cap, 61 per-grant remediation states, and 4 'leave allowed grants / other files untouched' locks — each is an explicit instruction sentence; the tier rules, roster window and exception rules come from the policy docx the instruction names by path. The only instruction clause with no check is 'do not edit any spreadsheet's content' (the state axis is disabled and expected_diff.json is {}); that is a non-reward-bearing guardrail with no gaming incentive, so no material requirement is ungraded and no verifier-only requirement exists."
+  },
+  "layer1_package_consistency__solution_instruction_consistency": {
+    "outcome": "pass",
+    "explanation": "solution/solve.sh reads the three named inputs, replays solution/golden_trajectory.json through the same public MCP surface an agent uses (gws CLI commands only, no privileged endpoint), then write_artifacts.py materialises both requested deliverables from artifact_plan.json: access_review.xlsx with exactly the Classification/Changes/Summary sheets and headers the prompt specifies (70+1, 61+1, 5+1 rows, plain numbers) and restricted_access_memo.docx with the 'Spreadsheet ID | People with access after review' table over the 26 Restricted sheets (4 body paragraphs). No deliverable is omitted and no undisclosed knowledge is used — every gold figure derives from the policy, roster, exceptions register and the gym's own data."
+  },
+  "layer1_package_consistency__solution_verifier_consistency": {
+    "outcome": "pass",
+    "explanation": "I re-derived the Changes table from the golden trajectory's 61 delete/update commands: all 61 permission ids, file ids and actions match the manifest's changes_register expectations exactly (0 mismatches), and the Summary/Classification/memo rows in artifact_plan.json equal the pinned gold. Both files land in /workspace, which _run_file_check resolves as the workspace. evaluations/oracle/verifier/verifier_summary.json records 75/75 verifiers passed, weighted 1.0, with no unscored items and no shortcut path (every check actually executed its own source read or SQL)."
+  },
+  "layer1_package_consistency__manifest_environment_consistency": {
+    "outcome": "pass",
+    "explanation": "Dockerfile FROM digest sha256:eac5acca... equals metadata.mcp_servers_extended.image; port 8021 / x-gws-auth-token / binary 'gws' match the proxy's CLI bridge; [environment.mcp_servers] url http://localhost:7000/mcp/gws-gym matches the proxy's Mount and the healthcheck curl http://localhost:7000/health; [agent].user rlgymagent is created in the Dockerfile and used by entrypoint.sh; TASK_DIR=/app matches test_outputs.py's default and the location of tests/. The environment/_app build-context mirror is identical to the task root (sync_app_mirror.sh), so nothing stale is baked into the image. state_snapshot_enabled=false is consistent with expected_diff.json={} and the state axis being absent from allowed_verifier_types."
+  },
+  "layer1_package_consistency__declared_executed_verifier_consistency": {
+    "outcome": "pass",
+    "explanation": "tests/test.sh runs tests/test_gvs.sh which execs /app/tests/test_outputs.py; allowed_verifier_types includes agentic_llm_as_judge so main() takes the engine-owned path and run_benchmark_verifiers dispatches every entry of manifest.verifier_configs by verifier_type (file_check -> rl_world_verifiers, database_state -> gym SQL). No declared check is unreachable: the oracle run executed 65 database_state + 10 file_check = 75/75 with unscored=0. The state and sql buckets are reported enabled:false in reward.json rather than being presented as coverage, and the rubric bucket carries the engine items (rubric.toml declares no criteria, so no empty judge bucket is claimed as active)."
+  },
+  "layer1_package_consistency__artifact_contract_consistency": {
+    "outcome": "pass",
+    "explanation": "The instruction's absolute paths (/workspace/access_review.xlsx, /workspace/restricted_access_memo.docx) and the verifier's workspace-relative paths (access_review.xlsx, restricted_access_memo.docx graded under TH_WORKSPACE_DIR or /workspace) denote the same files; the Dockerfile sets WORKDIR /workspace owned by rlgymagent and _run_file_check fails loudly rather than silently zeroing if that directory is absent. Sheet names, header text, action strings and the memo header regex all match what the instruction tells the agent to produce, and the connector-side surface graded by SQL is exactly the Drive permission state the instruction tells the agent to fix."
+  },
+  "layer1_clarity_scope": {
+    "outcome": "pass",
+    "explanation": "All four clarity subchecks pass: the graded output surfaces (two workspace files plus Drive permission state) are exactly what the instruction asks for, every representation choice that can move reward is disclosed in the instruction or the named policy, no workflow/narration is graded, and the instruction and fixtures are complete readable prose with no redaction artefacts."
+  },
+  "layer1_clarity_scope__output_surface_contract": {
+    "outcome": "pass",
+    "explanation": "Graded surfaces are (a) /workspace/access_review.xlsx and /workspace/restricted_access_memo.docx via file_check and (b) the Drive permission rows via 65 database_state queries. The instruction explicitly requires both ('fix it in Drive ...' and 'write the review up in two files'). The agent's chat response is not graded at all (no response_check, no rubric items, trajectory weight 0), so no undisclosed output location or side effect carries reward."
+  },
+  "layer1_clarity_scope__representation_contract": {
+    "outcome": "pass",
+    "explanation": "Every representation constraint that can change reward is stated: file names and paths, the three sheet names, the exact header rows, 'exactly five rows, numbers not formulas', the five measure labels, 'Removed' / 'Reduced to <reader|commenter|writer> as Drive names it', ids 'as Drive reports it', tier names 'as the policy names it', and 'as a plain number' in the memo. The matchers are deliberately tolerant beyond that (casefold + whitespace collapse for text, uuid/perm_* extraction from decorated cells, numeric tolerance 0.005, row order free, extra columns allowed), so no incidental formatting choice decides the score."
+  },
+  "layer1_clarity_scope__process_requirement_disclosure": {
+    "outcome": "pass",
+    "explanation": "No check reads the trajectory: manifest.trajectory weight is 0 in the active engine path, forbidden_tools is empty, and there is no rubric_check/response_check verifier. Reward depends only on the end state of Drive and on the two produced documents, never on which tool calls were made, in what order, or on any narration."
+  },
+  "layer1_clarity_scope__redaction_readability": {
+    "outcome": "pass",
+    "explanation": "instruction.md is complete, grammatical prose with no placeholders or elided spans. The provided fixtures are fully readable: the policy docx states scope, the 31 March 2026 review date, the label/tier table, the per-tier caps, the roster-based PHI rule, the exception rule and the remediation rule; the roster csv and exceptions xlsx carry full names, emails, departments, approvals, training dates, roles and expiry dates."
+  },
+  "layer1_realism_leakage": {
+    "outcome": "pass",
+    "explanation": "All four realism/leakage subchecks pass: the domain rules are internally correct and self-consistent, the only authority is the supplied in-world policy (version 3, effective 1 Jan 2026) which is applicable and current for the stated review date, the workflow is a plausible quarterly Drive access review, and the golden solution/answer key is unreadable to the agent."
+  },
+  "layer1_realism_leakage__domain_correctness": {
+    "outcome": "pass",
+    "explanation": "The policy's rules and the pinned gold agree arithmetically. The 365-day HIPAA window against the 31 March 2026 review date makes Cameron Shaw (2025-04-01, 364 days) eligible and Diana Reyes (2025-03-30, 366 days) and Avery Taylor (2025-01-20) ineligible, exactly as the per-grant metadata states; 'in force when the review date is on or before its expiry date' makes the 2026-03-31 exception live and the 2026-02-28 / 2026-01-31 exceptions expired. Drive role vocabulary (reader/commenter/writer, owner untouched, anyone/domain grants) matches the gym's permission model, and the Restricted/Confidential label sets are normalised consistently with the policy's 'ignore case, spaces, underscores and punctuation' sentence (e.g. 'SSN#' == 'SSN'). The memo's People counts sum to 30, matching the final answer."
+  },
+  "layer1_realism_leakage__authoritative_reference_validity": {
+    "outcome": "pass",
+    "explanation": "The only authority relied on is the in-world Healthpii policy shipped at /workspace/provided/access_classification_policy.docx (version 3, effective 1 January 2026, review date 31 March 2026) plus the roster and exception register it references by name — all three exist, are mounted at the paths the instruction cites, and are applicable to the review being performed. No external or stale standard is invoked, and no reference is dangling."
+  },
+  "layer1_realism_leakage__workflow_realism": {
+    "outcome": "pass",
+    "explanation": "A compliance analyst doing a quarterly Drive access review against a classification policy, remediating over-broad grants through the Drive API and producing an xlsx register plus a one-page memo to the Privacy Officer is a realistic deliverable with obvious user value. The hard cases (a label below row 1, a label on a seventh tab, 364- vs 366-day training, an exception expiring on the review date, an exception naming a differently titled copy, link/domain grants) are ordinary real-world edge cases, all resolvable from the supplied policy text, not contrived traps; access to the data is via the sanctioned gws connector acting as the Drive owner."
+  },
+  "layer1_realism_leakage__golden_isolation": {
+    "outcome": "pass",
+    "explanation": "The image never copies solution/ ; the answer key (tests/manifest.json, rubric.toml) lives under /app, which the Dockerfile makes root-only (chmod -R go-rwx /app) while the agent runs as rlgymagent. entrypoint.sh locks /logs/verifier to root 0700, mirrors only task.toml + manifest.json to a harborproxy-group-readable path, and chmod 710 /gyms so connector databases are unreadable to the agent. The agent-visible /workspace contains only the three provided fixtures. The verifier's raw state/step endpoints are bound to a 0600 root-owned unix socket behind a capability file, not the TCP surface the agent sees."
+  },
+  "layer5_verifier_fairness_static": {
+    "outcome": "pass",
+    "explanation": "Every mandatory verifier subcheck passes: 1:1 requirement traceability, row-level/field-level depth with population locks, correct evidence routing (files for document requirements, gym SQL for Drive state), tolerant equivalence handling, no fragile lexical matcher, all 75 checks executed in the recorded run, no dead score bucket, weights that reproduce the reported total, defensible proportionality, disclosed overlap between the per-grant checks and the four locks, and a documented counterfactual suite the matchers independently support."
+  },
+  "layer5_verifier_fairness_static__requirement_traceability": {
+    "outcome": "pass",
+    "explanation": "consistency/requirements.json carries one row per requirement_id with a verbatim instruction span and the verifier(s) grading it; its 75 ids equal the manifest's 75 verifier_config requirement_ids exactly. Nothing reward-bearing is verifier-only: the registers, memo, remediation of each over-policy grant, the 'leave allowed grants as they are' lock and the 'do not change sharing on any other file / keep my ownership' lock are all instruction sentences. Only the non-reward-bearing 'do not edit spreadsheet content' clause lacks a check."
+  },
+  "layer5_verifier_fairness_static__coverage_depth": {
+    "outcome": "pass",
+    "explanation": "The file checks are field-level, not existence-level: table_equals keys Classification on 70 uuids with a closed row_set, Changes on 61 perm ids with Spreadsheet ID and Action cells graded, Summary on five locked measures with typed numeric values, and the memo table on 26 uuids with numeric People counts. The Drive side asserts, per permission id, either non-existence or existence with the exact role and file_id, plus Drive-wide role tallies (523/3059/577/509, total 4668). An empty or hand-waved deliverable fails every population lock; a wholesale 'remove everything' world fails all three untouched locks."
+  },
+  "layer5_verifier_fairness_static__evidence_routing": {
+    "outcome": "pass",
+    "explanation": "Document requirements are read from the produced artifacts via xlsx.read_rows / docx.read_table / docx.inspect_document against the agent workspace (_run_file_check resolves TH_WORKSPACE_DIR or /workspace and errors loudly if absent, and verifier_engine refuses specs that read seeded input files). State requirements are read with SQL against the post-run gym database through the capability-gated trusted socket. No artifact requirement is graded from the trajectory and no state requirement is graded from text; stop_at_blank_row=false prevents a lossy truncated read."
+  },
+  "layer5_verifier_fairness_static__semantic_equivalence": {
+    "outcome": "pass",
+    "explanation": "compare.value_matches normalises text by strip+casefold+whitespace collapse, ids by the declared id_pattern (first uuid / first perm_* token, so 'Title (uuid)' or '**Restricted:**' still key correctly), numbers through a tolerant parser (2, 2.0, ' 2 ', 1,200, $, %) with tolerance 0.005. Row order is free, extra columns and extra tables are ignored, header matching is casefolded, and the memo header regex tolerates rewording after 'People'. The only exact forms required — file names, the three sheet names, the measure labels and the Removed/Reduced-to-<role> wording — are stated verbatim in the instruction."
+  },
+  "layer5_verifier_fairness_static__surface_form_brittleness": {
+    "outcome": "pass",
+    "explanation": "I inspected every matcher. id_pattern '(?i)([0-9a-f]{8}-...)' and '(?i)\\b(perm_[a-z]+_\\d+)\\b' extract the canonical token from a decorated cell; the Summary id_pattern '^[\\s*_:\\-]*(.*?)[\\s*_:.\\-]*$' strips markdown bullets/emphasis/colons around a measure label; the memo header_match '(?i)spreadsheet\\W*id\\W*\\|.*people' matches the joined header row with positional column keys so a reworded second header still reads. None of these can be gamed by mimicking tokens: a row that names every id at once, or extra invented rows, fail the row_set multiset lock (consistency/mutations.json records exactly those adversarial cases failing). No matcher checks less than its criterion claims — each grades the full keyed population it describes."
+  },
+  "layer5_verifier_fairness_static__verifier_execution_completeness": {
+    "outcome": "pass",
+    "explanation": "The entrypoint chain test.sh -> test_gvs.sh -> test_outputs.py main() -> _emit_engine_owned_reward -> score_benchmark_verifiers -> run_benchmark_verifiers dispatches every manifest verifier; unsupported types would be marked unscored and make the run ungradable rather than silently skipped, and an infrastructure failure raises instead of emitting a zero. evaluations/oracle/verifier/verifier_summary.json shows total 75, passed 75, unscored 0, failure_mode 'pass', with per-type scores for file_check and database_state — i.e. every declared check actually executed."
+  },
+  "layer5_verifier_fairness_static__score_bucket_activation": {
+    "outcome": "pass",
+    "explanation": "The active bucket is the flat engine pool (flat_verifier_scoring=true): 75 weighted items summing to ~1.004. The state and sql axes are reported enabled:false (expected_diff.json is {} and state_snapshot_enabled=false), so they are not represented as coverage. rubric.toml declares no criteria, so no empty judge bucket is counted; the legacy 'rubric' block in reward.json merely carries the engine's own 75 items. No zero-weight or unreachable verifier exists (minimum weight 0.004098, every one evidenced in the recorded run)."
+  },
+  "layer5_verifier_fairness_static__aggregation_normalization": {
+    "outcome": "pass",
+    "explanation": "With flat_verifier_scoring the score is sum(weight of passed)/sum(weight). Recomputed weights: 2x0.14 + 5x0.03 + 2x0.02 + 0.08 + 61x~0.004098 + 0.00412 + 4x0.05 = 1.0041, so an all-pass run yields 1.0 — matching evaluations/oracle (reward.txt 1.0, result.json rewards {'reward': 1.0}). A documents-only run computes to 0.56 and a hedge-all removal world to ~0.12, consistent with the mutation suite's '<= 0.2' note. scoring.weights (rubric 1.0, others 0) is display-only on this path and does not contradict the effective math, and 'pass' is core-based (all 75) rather than a threshold."
+  },
+  "layer5_verifier_fairness_static__scoring_proportionality": {
+    "outcome": "pass",
+    "explanation": "Weight tracks materiality: the two full registers 0.14 each, the memo table 0.08, the five summary figures 0.03 each, the cosmetic one-page cap only 0.02, the 61 individual remediations ~0.25 in total, and the four correctness locks 0.20. No cosmetic item dominates. The locks deliberately read -1 until all 61 fixes are in place, so one missed fix costs 0.204 rather than 0.004 — a sharp but documented and necessary design (otherwise a do-nothing agent would collect the three 'untouched' locks for free), and the metadata on each lock states this precondition explicitly."
+  },
+  "layer5_verifier_fairness_static__check_independence": {
+    "outcome": "pass",
+    "explanation": "The 61 per-grant checks each read a distinct permission id; the three tier locks read disjoint sets of allowed grants and the fourth reads Drive-wide tallies. The overlap — all four locks are additionally gated on the same 61-fix predicate — is disclosed verbatim in each lock's why_justification ('Counted only once every one of the 61 fixes is in place (-1 before that), so partial work never earns it'), and serves a distinct purpose (precision cannot be bought without recall). No other check pair rewards the same fact twice."
+  },
+  "layer5_verifier_fairness_static__counterfactual_strength": {
+    "outcome": "pass",
+    "explanation": "The matchers themselves distinguish the cases: positive (oracle artifacts + writes = 1.0, recorded in evaluations/oracle); negative (swapped tier/action, every summary figure off by one, every People count off by one fail precisely their own check); incomplete (a missing spreadsheet, grant or memo row fails the row_set multiset lock; a missing fix fails its grant check and all four locks); adversarial (invented rows, one row naming every id, hedge rows fail the population/row locks; do-nothing scores 0 on all state checks; hedge-all removal fails the three untouched locks). consistency/mutations.json documents 43 such cases with all controls passing, consistent with my own reading of compare.table_equals and the SQL."
+  },
+  "layer5_verifier_fairness_static__process_grading_justification": {
+    "outcome": "pass",
+    "explanation": "No reward depends on workflow or trace shape: trajectory scoring is inactive on the engine path, forbidden_tools is empty, and the evidence passed to the engine is used only to build a model_response whose tool_calls no verifier reads. Reward comes solely from the requested outcomes — the Drive permission end state and the two documents."
+  },
+  "layer5_llm_judge_design": {
+    "outcome": "not_applicable",
+    "explanation": "No LLM judge grades anything in this task. tests/rubric.toml declares only a [system] preamble and no criteria, so _rubric_check_verifiers_from_rubric yields zero verifiers, and the 75 manifest verifier_configs are all file_check or database_state. The oracle run confirms it: 65 database_state + 10 file_check items, no judge item. (Noted, not scored here: score_benchmark_verifiers still requires metadata.verifier_judge and a non-empty OPENAI_API_KEY to exist, and a missing key raises rather than emitting a zero, so the degenerate case fails loudly as UNSCORED.)"
+  },
+  "layer5_llm_judge_design__judge_execution_validity": {
+    "outcome": "not_applicable",
+    "explanation": "No judge call is made during grading — there are no rubric items and no response_check/rubric_check verifiers, so model id, endpoint, request and parsing are never exercised for reward."
+  },
+  "layer5_llm_judge_design__judge_failure_handling": {
+    "outcome": "not_applicable",
+    "explanation": "No judge is invoked. For completeness, _emit_engine_owned_reward raises on any judge/infrastructure error instead of converting it to a zero, so the degenerate configuration would be recorded as unscored, not as an agent mistake."
+  },
+  "layer5_llm_judge_design__judge_context_completeness": {
+    "outcome": "not_applicable",
+    "explanation": "No judge prompt is constructed because rubric.toml declares no criteria."
+  },
+  "layer5_llm_judge_design__judge_context_truncation": {
+    "outcome": "not_applicable",
+    "explanation": "No judge context is built; the rubric evidence block (max_chars 350000) is never used on this scoring path."
+  },
+  "layer5_llm_judge_design__artifact_grounding": {
+    "outcome": "not_applicable",
+    "explanation": "No judge rubric language exists; all grading is deterministic against the produced artifacts and the gym database."
+  },
+  "layer5_llm_judge_design__repeat_stability": {
+    "outcome": "not_applicable",
+    "explanation": "No judge sampling occurs, so there is nothing stochastic to stabilise; the 75 deterministic checks are reproducible."
+  },
+  "layer5_reward_hacking_static": {
+    "outcome": "pass",
+    "explanation": "All four exploitability subchecks pass: fabricated or lazy rollouts cannot satisfy the keyed population locks or the Drive-wide state assertions, the only mutation path is the sanctioned gws connector, the answer key and golden solution are unreadable to the agent, and grading state is not writable by the agent."
+  },
+  "layer5_reward_hacking_static__rollout_legitimacy": {
+    "outcome": "pass",
+    "explanation": "Reward is final-surface based, but the surfaces are not fabricable: the registers must contain exactly the right 70 ids with the right tiers, the right 61 permission ids with the right actions and the right 26 post-change head-counts, all of which require actually reading each spreadsheet's tabs and applying the policy; and 65 SQL checks read the real Drive permission rows, so claiming changes without making them scores zero on 0.449 of the weight and fails 'pass'. Destructive behaviour is penalised: removing or re-roling an allowed grant, or touching any other file, breaks the four locks."
+  },
+  "layer5_reward_hacking_static__sanctioned_interface_use": {
+    "outcome": "pass",
+    "explanation": "The agent's only reachable surfaces are the proxy's public /mcp/{server} and /cli/{name} routes (command input validated by _validated_bridge_command, identity limited to the x-gws-auth-token header). The raw /raw/{name}/state and /raw/{name}/step endpoints live on a separate Starlette app bound to a 0600 root-owned unix socket and additionally require a root-only capability file, so no direct database or verifier access exists. Connector state under /gyms is chmod 710 root:gym and unreadable to rlgymagent."
+  },
+  "layer5_reward_hacking_static__golden_or_internal_access": {
+    "outcome": "pass",
+    "explanation": "solution/ is never copied into the image; the expectations live in /app/tests/manifest.json inside a tree the Dockerfile makes root-only (chmod -R go-rwx /app), and the proxy's mirrored copy is root:harborproxy 0640. /logs/verifier is root 0700 and is pre-created by the entrypoint so the agent cannot pre-seed or symlink it. The agent-visible /workspace holds only the three legitimate input fixtures, which contain no answers (they are the policy, roster and exception register the task expects the agent to apply)."
+  },
+  "layer5_reward_hacking_static__state_spoofing": {
+    "outcome": "pass",
+    "explanation": "The documents are the deliverable, so their being agent-written is expected; they are checked against fixed keyed expectations rather than against anything the agent controls. Drive state is read by SQL from the gym database the agent cannot write except through the connector, each check pins a specific permission id plus role and file_id (not a count that a compensating change could fake), and the Drive-wide tallies plus the owner count catch additions, deletions and re-roles elsewhere. Seeded state cannot satisfy the checks: each per-grant query is documented to read 0 on the pre-run seed and each lock to read -1, so a passing value can only come from work actually done during the run."
+  }
+}

@@ -1,0 +1,2461 @@
+{
+ "state": {
+  "snapshot": {
+   "mode": "full_hash",
+   "exclude_tables": [
+    "sqlite_sequence",
+    "sqlite_stat1"
+   ],
+   "include_tables": null,
+   "schema_version": "harbor.state_snapshot.v1",
+   "debug_full_rows": "gzip",
+   "diff_schema_version": "harbor.state_diff.v1"
+  },
+  "canonicalize": {
+   "sort_lists": true,
+   "strip_fields": [
+    "id",
+    "created_at",
+    "updated_at",
+    "executed_at",
+    "deleted_at",
+    "execution_time_ms",
+    "fr_due_by",
+    "due_by",
+    "last_used_at",
+    "create_time",
+    "update_time"
+   ],
+   "strip_fields_per_table": {}
+  },
+  "expected_diff_file": "solution/expected_diff.json"
+ },
+ "rubric": {
+  "file": "tests/rubric.toml",
+  "evidence": {
+   "max_chars": 350000,
+   "include_db_diff": true,
+   "include_trajectory": true,
+   "include_final_output": true
+  }
+ },
+ "scoring": {
+  "weights": {
+   "sql": 0.0,
+   "state": 0.0,
+   "rubric": 1.0,
+   "trajectory": 0.0
+  },
+  "round_digits": 4,
+  "side_effect_gate": true,
+  "flat_verifier_scoring": true,
+  "allowed_verifier_types": [
+   "rubric",
+   "agentic_llm_as_judge"
+  ]
+ },
+ "trajectory": {
+  "golden_file": "solution/golden_trajectory.json",
+  "response_match": {
+   "match_is_error": true,
+   "match_status_code": true,
+   "strip_response_fields": [
+    "id",
+    "created_at",
+    "updated_at"
+   ]
+  },
+  "forbidden_tools": [],
+  "agent_trace_file": "/logs/agent/trajectory.json",
+  "scoring_per_step": {
+   "args_weight": 0.4,
+   "name_weight": 0.4,
+   "response_weight": 0.2
+  }
+ },
+ "verifier_configs": [
+  {
+   "name": "classification_register",
+   "description": "Sheet Classification lists exactly the 70 shared spreadsheets, each with its tier.",
+   "category": "core",
+   "weight": 0.14,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-CLASS",
+   "evidence_span": "one row per spreadsheet you reviewed, by Drive file id, with its",
+   "metadata": {
+    "why_justification": "Tiers derived by SQL on the seed: every cell of every tab of each live spreadsheet with a non-owner grant, compared to the policy labels (letters only, casefolded): Restricted 26 (patientName/Patient Name/Dob/Client DOB/SSN#/Date of Birth), Confidential 16 (Email/Email Address/Customer Email/Owner email, including the Swebench tracker whose 7th tab has Owner email and ICP Outreach/Port Setup whose Email header sits below row 1), Internal 28 (incl. empty and SYN-token sheets)."
+   },
+   "verifier_spec": {
+    "task_id": "classification_register",
+    "verifiers": [
+     {
+      "name": "classification_register",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Classification; table_equals keyed on Spreadsheet ID (first uuid in the cell, casefolded), Classification compared as text (case/space-insensitive); row_set locks the population: a missing, extra or duplicated spreadsheet fails.",
+       "why_justification": "Tiers derived by SQL on the seed: every cell of every tab of each live spreadsheet with a non-owner grant, compared to the policy labels (letters only, casefolded): Restricted 26 (patientName/Patient Name/Dob/Client DOB/SSN#/Date of Birth), Confidential 16 (Email/Email Address/Customer Email/Owner email, including the Swebench tracker whose 7th tab has Owner email and ICP Outreach/Port Setup whose Email header sits below row 1), Internal 28 (incl. empty and SYN-token sheets)."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Classification",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Spreadsheet ID",
+        "id_pattern": "(?i)([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+        "cell_types": {
+         "Classification": "text"
+        },
+        "rows": {
+         "02323a06-1e00-562f-9d43-73186a6d8537": {
+          "Classification": "Restricted"
+         },
+         "027d987c-01e3-5074-9b46-51c46d4a5cbd": {
+          "Classification": "Confidential"
+         },
+         "0412e4bb-f090-50db-8f74-1d8c93df59a3": {
+          "Classification": "Confidential"
+         },
+         "130ee2fb-9af1-5df0-a67d-bf174cdd6012": {
+          "Classification": "Internal"
+         },
+         "150ad41f-9acd-5aaf-827c-292d21fc2479": {
+          "Classification": "Confidential"
+         },
+         "176c1a2a-c4a3-50b7-8448-ba1126ac8e44": {
+          "Classification": "Confidential"
+         },
+         "1bfee342-0a24-5e57-8dcb-f62356c43924": {
+          "Classification": "Internal"
+         },
+         "206cf9e7-6a0f-5461-be42-2d6871cb7180": {
+          "Classification": "Internal"
+         },
+         "220667f8-44fb-5f94-af0d-16431e622c12": {
+          "Classification": "Internal"
+         },
+         "22f89b97-437c-5a43-bff7-0b576a1b4fb8": {
+          "Classification": "Restricted"
+         },
+         "26963313-4361-5426-a15f-8348f963720e": {
+          "Classification": "Internal"
+         },
+         "27c844ee-b123-5d9e-a082-1f693bbcd772": {
+          "Classification": "Restricted"
+         },
+         "2af84645-86b3-5e8b-b9af-f2eea4657817": {
+          "Classification": "Internal"
+         },
+         "2c24723f-8d9e-5b00-89b6-88d8689192c1": {
+          "Classification": "Confidential"
+         },
+         "3061440a-f396-561a-aac6-f014926909cd": {
+          "Classification": "Confidential"
+         },
+         "3a15438b-8f6a-523b-bb31-21ddb6ca3a02": {
+          "Classification": "Confidential"
+         },
+         "411c864f-2dc0-5f5b-9d1e-d08d9972cdd2": {
+          "Classification": "Restricted"
+         },
+         "43a62930-d525-5a15-8240-b1d425824a44": {
+          "Classification": "Internal"
+         },
+         "47e85f86-28ee-5966-87cc-44cbe336de04": {
+          "Classification": "Restricted"
+         },
+         "4d96160c-7968-5427-92ce-2812f8c43d37": {
+          "Classification": "Restricted"
+         },
+         "4f6b8e6b-d724-5d24-bc24-3884476e1ffb": {
+          "Classification": "Restricted"
+         },
+         "5cc7d34c-798a-524e-9805-573c645332e3": {
+          "Classification": "Internal"
+         },
+         "65708c25-2991-5211-a3b6-cb8f71559512": {
+          "Classification": "Confidential"
+         },
+         "66530a72-6c0a-5aa0-81a6-80304ac76a42": {
+          "Classification": "Restricted"
+         },
+         "67145fec-f787-5780-9850-e24b146df249": {
+          "Classification": "Internal"
+         },
+         "6790ba2a-ef27-533c-bd08-c9a9adba4be1": {
+          "Classification": "Restricted"
+         },
+         "68201a33-1a8e-5794-b219-87d2a88bcc4a": {
+          "Classification": "Restricted"
+         },
+         "6ce85c05-6606-5e7c-bc0e-76e504063845": {
+          "Classification": "Internal"
+         },
+         "6f69c585-b796-53b9-b3a8-5e7c79361f9c": {
+          "Classification": "Restricted"
+         },
+         "701ae7ce-3a60-5833-a047-1705704a671e": {
+          "Classification": "Restricted"
+         },
+         "7b13907b-3251-596c-a9ab-74ae19b97d50": {
+          "Classification": "Internal"
+         },
+         "7ee56feb-69fd-52e2-8b27-b698605a5f72": {
+          "Classification": "Internal"
+         },
+         "86642e0a-5cc5-5102-b37f-14041f1fd299": {
+          "Classification": "Confidential"
+         },
+         "86673f24-f722-5256-a741-a2842201eab9": {
+          "Classification": "Internal"
+         },
+         "86b5573e-67dd-556b-a258-107a920b383f": {
+          "Classification": "Internal"
+         },
+         "88ba72a7-cae0-5bb9-89c1-52693c74820a": {
+          "Classification": "Confidential"
+         },
+         "8e824cfb-94b4-5a51-8e03-d2fece8d647e": {
+          "Classification": "Restricted"
+         },
+         "94232171-8fdd-58fb-a7ce-addd702cceb3": {
+          "Classification": "Internal"
+         },
+         "9a9abbfa-d7fc-5d69-844b-d3c17b48916b": {
+          "Classification": "Internal"
+         },
+         "9f9ae58f-7d28-512f-aaf4-68739646cdc5": {
+          "Classification": "Restricted"
+         },
+         "a0a8b4bf-1821-5c12-9b0c-bbcab9b1fe93": {
+          "Classification": "Confidential"
+         },
+         "a488c0a2-e118-5964-87e8-880506561f46": {
+          "Classification": "Internal"
+         },
+         "ab168be3-84ab-5da0-bd0b-e42c2bbe48a3": {
+          "Classification": "Restricted"
+         },
+         "ab915804-26cd-5690-807c-e432319d8049": {
+          "Classification": "Restricted"
+         },
+         "b0d95c98-504d-5d2c-b670-fc435c64ad5c": {
+          "Classification": "Internal"
+         },
+         "b2dd5d8e-55a4-5b1a-ab4e-731af0303905": {
+          "Classification": "Confidential"
+         },
+         "b6cf5ed9-a873-5e14-8a6a-be063458544d": {
+          "Classification": "Restricted"
+         },
+         "c4b3493b-de2c-5486-b065-5875a8bee1c2": {
+          "Classification": "Restricted"
+         },
+         "c6752b59-17a6-55e8-baa7-f76b3db10660": {
+          "Classification": "Restricted"
+         },
+         "c8046149-740c-569a-82a6-ae80db0be61d": {
+          "Classification": "Internal"
+         },
+         "cb681984-f8eb-5748-82d1-e1be1b4e9f30": {
+          "Classification": "Internal"
+         },
+         "d1bac28d-c2a3-598f-9b4f-fc6b7a23350a": {
+          "Classification": "Internal"
+         },
+         "d234bfc9-7243-536c-96c2-e32c33c0eda3": {
+          "Classification": "Restricted"
+         },
+         "d43b6842-074c-5dd5-8517-1a90140c34ab": {
+          "Classification": "Internal"
+         },
+         "d9f405be-dbfa-5c28-8264-16ef9ce71204": {
+          "Classification": "Confidential"
+         },
+         "dcc10fe1-69e9-596d-a207-fccf1d3427c1": {
+          "Classification": "Confidential"
+         },
+         "e0ebc122-57f2-5886-a312-d5c77ade490d": {
+          "Classification": "Internal"
+         },
+         "e272ee4c-8446-55f9-bdb5-42703492bc16": {
+          "Classification": "Internal"
+         },
+         "e2afb034-4b39-527c-92d6-c81bc2529a40": {
+          "Classification": "Restricted"
+         },
+         "e353bccc-3a55-5f46-98e6-8ae7131fadc9": {
+          "Classification": "Internal"
+         },
+         "e42f3676-5517-5c6e-975d-679e7ae489e5": {
+          "Classification": "Confidential"
+         },
+         "e62c8293-3b53-5277-b607-8c92bdff3a23": {
+          "Classification": "Internal"
+         },
+         "e8d4f190-930b-5149-9ef1-a4109e278a77": {
+          "Classification": "Internal"
+         },
+         "ebfbbe85-4df5-5d68-90f2-55c5a20bc80a": {
+          "Classification": "Internal"
+         },
+         "f04633d2-ea86-5b41-a52a-e22e1d6b1948": {
+          "Classification": "Restricted"
+         },
+         "f07876c0-3141-51c7-91b4-7ff3632fe69a": {
+          "Classification": "Restricted"
+         },
+         "f43a86b6-c21c-5553-be06-5c0af1fd0b8e": {
+          "Classification": "Restricted"
+         },
+         "f46dc5c7-e2ef-5d48-8340-8a7f89a04ad2": {
+          "Classification": "Confidential"
+         },
+         "f63554e7-db69-5b70-a0a5-965d556af125": {
+          "Classification": "Restricted"
+         },
+         "f6f95d9e-1ec9-58bf-831b-46bfdd8c0565": {
+          "Classification": "Restricted"
+         }
+        },
+        "row_set": [
+         "02323a06-1e00-562f-9d43-73186a6d8537",
+         "027d987c-01e3-5074-9b46-51c46d4a5cbd",
+         "0412e4bb-f090-50db-8f74-1d8c93df59a3",
+         "130ee2fb-9af1-5df0-a67d-bf174cdd6012",
+         "150ad41f-9acd-5aaf-827c-292d21fc2479",
+         "176c1a2a-c4a3-50b7-8448-ba1126ac8e44",
+         "1bfee342-0a24-5e57-8dcb-f62356c43924",
+         "206cf9e7-6a0f-5461-be42-2d6871cb7180",
+         "220667f8-44fb-5f94-af0d-16431e622c12",
+         "22f89b97-437c-5a43-bff7-0b576a1b4fb8",
+         "26963313-4361-5426-a15f-8348f963720e",
+         "27c844ee-b123-5d9e-a082-1f693bbcd772",
+         "2af84645-86b3-5e8b-b9af-f2eea4657817",
+         "2c24723f-8d9e-5b00-89b6-88d8689192c1",
+         "3061440a-f396-561a-aac6-f014926909cd",
+         "3a15438b-8f6a-523b-bb31-21ddb6ca3a02",
+         "411c864f-2dc0-5f5b-9d1e-d08d9972cdd2",
+         "43a62930-d525-5a15-8240-b1d425824a44",
+         "47e85f86-28ee-5966-87cc-44cbe336de04",
+         "4d96160c-7968-5427-92ce-2812f8c43d37",
+         "4f6b8e6b-d724-5d24-bc24-3884476e1ffb",
+         "5cc7d34c-798a-524e-9805-573c645332e3",
+         "65708c25-2991-5211-a3b6-cb8f71559512",
+         "66530a72-6c0a-5aa0-81a6-80304ac76a42",
+         "67145fec-f787-5780-9850-e24b146df249",
+         "6790ba2a-ef27-533c-bd08-c9a9adba4be1",
+         "68201a33-1a8e-5794-b219-87d2a88bcc4a",
+         "6ce85c05-6606-5e7c-bc0e-76e504063845",
+         "6f69c585-b796-53b9-b3a8-5e7c79361f9c",
+         "701ae7ce-3a60-5833-a047-1705704a671e",
+         "7b13907b-3251-596c-a9ab-74ae19b97d50",
+         "7ee56feb-69fd-52e2-8b27-b698605a5f72",
+         "86642e0a-5cc5-5102-b37f-14041f1fd299",
+         "86673f24-f722-5256-a741-a2842201eab9",
+         "86b5573e-67dd-556b-a258-107a920b383f",
+         "88ba72a7-cae0-5bb9-89c1-52693c74820a",
+         "8e824cfb-94b4-5a51-8e03-d2fece8d647e",
+         "94232171-8fdd-58fb-a7ce-addd702cceb3",
+         "9a9abbfa-d7fc-5d69-844b-d3c17b48916b",
+         "9f9ae58f-7d28-512f-aaf4-68739646cdc5",
+         "a0a8b4bf-1821-5c12-9b0c-bbcab9b1fe93",
+         "a488c0a2-e118-5964-87e8-880506561f46",
+         "ab168be3-84ab-5da0-bd0b-e42c2bbe48a3",
+         "ab915804-26cd-5690-807c-e432319d8049",
+         "b0d95c98-504d-5d2c-b670-fc435c64ad5c",
+         "b2dd5d8e-55a4-5b1a-ab4e-731af0303905",
+         "b6cf5ed9-a873-5e14-8a6a-be063458544d",
+         "c4b3493b-de2c-5486-b065-5875a8bee1c2",
+         "c6752b59-17a6-55e8-baa7-f76b3db10660",
+         "c8046149-740c-569a-82a6-ae80db0be61d",
+         "cb681984-f8eb-5748-82d1-e1be1b4e9f30",
+         "d1bac28d-c2a3-598f-9b4f-fc6b7a23350a",
+         "d234bfc9-7243-536c-96c2-e32c33c0eda3",
+         "d43b6842-074c-5dd5-8517-1a90140c34ab",
+         "d9f405be-dbfa-5c28-8264-16ef9ce71204",
+         "dcc10fe1-69e9-596d-a207-fccf1d3427c1",
+         "e0ebc122-57f2-5886-a312-d5c77ade490d",
+         "e272ee4c-8446-55f9-bdb5-42703492bc16",
+         "e2afb034-4b39-527c-92d6-c81bc2529a40",
+         "e353bccc-3a55-5f46-98e6-8ae7131fadc9",
+         "e42f3676-5517-5c6e-975d-679e7ae489e5",
+         "e62c8293-3b53-5277-b607-8c92bdff3a23",
+         "e8d4f190-930b-5149-9ef1-a4109e278a77",
+         "ebfbbe85-4df5-5d68-90f2-55c5a20bc80a",
+         "f04633d2-ea86-5b41-a52a-e22e1d6b1948",
+         "f07876c0-3141-51c7-91b4-7ff3632fe69a",
+         "f43a86b6-c21c-5553-be06-5c0af1fd0b8e",
+         "f46dc5c7-e2ef-5d48-8340-8a7f89a04ad2",
+         "f63554e7-db69-5b70-a0a5-965d556af125",
+         "f6f95d9e-1ec9-58bf-831b-46bfdd8c0565"
+        ]
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "changes_register",
+   "description": "Sheet Changes lists exactly the 61 changed grants with the right action.",
+   "category": "core",
+   "weight": 0.14,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-CHANGES",
+   "evidence_span": "then one row per grant you changed",
+   "metadata": {
+    "why_justification": "Per grant: tier cap, roster (PHI approved + training within 365 days of 2026-03-31), Growth writer rule, exceptions in force on the review date and naming the exact title; link/domain grants on Restricted/Confidential removed. 29 removed, 32 reduced to reader."
+   },
+   "verifier_spec": {
+    "task_id": "changes_register",
+    "verifiers": [
+     {
+      "name": "changes_register",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Changes; table_equals keyed on Permission ID (perm_* token in the cell, casefolded); Spreadsheet ID and Action compared as text; row_set locks the population (no extra, missing or duplicated grant).",
+       "why_justification": "Per grant: tier cap, roster (PHI approved + training within 365 days of 2026-03-31), Growth writer rule, exceptions in force on the review date and naming the exact title; link/domain grants on Restricted/Confidential removed. 29 removed, 32 reduced to reader."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Changes",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Permission ID",
+        "id_pattern": "(?i)\\b(perm_[a-z]+_\\d+)\\b",
+        "cell_types": {
+         "Spreadsheet ID": "text",
+         "Action": "text"
+        },
+        "rows": {
+         "perm_collab_878": {
+          "Spreadsheet ID": "f6f95d9e-1ec9-58bf-831b-46bfdd8c0565",
+          "Action": "Removed"
+         },
+         "perm_anyone_1633": {
+          "Spreadsheet ID": "f46dc5c7-e2ef-5d48-8340-8a7f89a04ad2",
+          "Action": "Removed"
+         },
+         "perm_collab_55": {
+          "Spreadsheet ID": "02323a06-1e00-562f-9d43-73186a6d8537",
+          "Action": "Removed"
+         },
+         "perm_collab_376": {
+          "Spreadsheet ID": "c6752b59-17a6-55e8-baa7-f76b3db10660",
+          "Action": "Removed"
+         },
+         "perm_collab_377": {
+          "Spreadsheet ID": "c6752b59-17a6-55e8-baa7-f76b3db10660",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_378": {
+          "Spreadsheet ID": "c6752b59-17a6-55e8-baa7-f76b3db10660",
+          "Action": "Removed"
+         },
+         "perm_collab_1603": {
+          "Spreadsheet ID": "22f89b97-437c-5a43-bff7-0b576a1b4fb8",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1604": {
+          "Spreadsheet ID": "22f89b97-437c-5a43-bff7-0b576a1b4fb8",
+          "Action": "Removed"
+         },
+         "perm_collab_1605": {
+          "Spreadsheet ID": "22f89b97-437c-5a43-bff7-0b576a1b4fb8",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_591": {
+          "Spreadsheet ID": "411c864f-2dc0-5f5b-9d1e-d08d9972cdd2",
+          "Action": "Removed"
+         },
+         "perm_collab_592": {
+          "Spreadsheet ID": "411c864f-2dc0-5f5b-9d1e-d08d9972cdd2",
+          "Action": "Removed"
+         },
+         "perm_collab_249": {
+          "Spreadsheet ID": "8e824cfb-94b4-5a51-8e03-d2fece8d647e",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_250": {
+          "Spreadsheet ID": "8e824cfb-94b4-5a51-8e03-d2fece8d647e",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_251": {
+          "Spreadsheet ID": "8e824cfb-94b4-5a51-8e03-d2fece8d647e",
+          "Action": "Removed"
+         },
+         "perm_collab_1311": {
+          "Spreadsheet ID": "4f6b8e6b-d724-5d24-bc24-3884476e1ffb",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1360": {
+          "Spreadsheet ID": "f04633d2-ea86-5b41-a52a-e22e1d6b1948",
+          "Action": "Removed"
+         },
+         "perm_collab_1216": {
+          "Spreadsheet ID": "27c844ee-b123-5d9e-a082-1f693bbcd772",
+          "Action": "Removed"
+         },
+         "perm_collab_1285": {
+          "Spreadsheet ID": "701ae7ce-3a60-5833-a047-1705704a671e",
+          "Action": "Removed"
+         },
+         "perm_collab_1286": {
+          "Spreadsheet ID": "701ae7ce-3a60-5833-a047-1705704a671e",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_3": {
+          "Spreadsheet ID": "ab915804-26cd-5690-807c-e432319d8049",
+          "Action": "Removed"
+         },
+         "perm_collab_4": {
+          "Spreadsheet ID": "ab915804-26cd-5690-807c-e432319d8049",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1426": {
+          "Spreadsheet ID": "e2afb034-4b39-527c-92d6-c81bc2529a40",
+          "Action": "Removed"
+         },
+         "perm_collab_1427": {
+          "Spreadsheet ID": "e2afb034-4b39-527c-92d6-c81bc2529a40",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1428": {
+          "Spreadsheet ID": "e2afb034-4b39-527c-92d6-c81bc2529a40",
+          "Action": "Removed"
+         },
+         "perm_collab_701": {
+          "Spreadsheet ID": "3061440a-f396-561a-aac6-f014926909cd",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_808": {
+          "Spreadsheet ID": "6790ba2a-ef27-533c-bd08-c9a9adba4be1",
+          "Action": "Removed"
+         },
+         "perm_collab_809": {
+          "Spreadsheet ID": "6790ba2a-ef27-533c-bd08-c9a9adba4be1",
+          "Action": "Removed"
+         },
+         "perm_collab_810": {
+          "Spreadsheet ID": "6790ba2a-ef27-533c-bd08-c9a9adba4be1",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_757": {
+          "Spreadsheet ID": "f07876c0-3141-51c7-91b4-7ff3632fe69a",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1068": {
+          "Spreadsheet ID": "4d96160c-7968-5427-92ce-2812f8c43d37",
+          "Action": "Removed"
+         },
+         "perm_collab_710": {
+          "Spreadsheet ID": "dcc10fe1-69e9-596d-a207-fccf1d3427c1",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1570": {
+          "Spreadsheet ID": "176c1a2a-c4a3-50b7-8448-ba1126ac8e44",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_831": {
+          "Spreadsheet ID": "65708c25-2991-5211-a3b6-cb8f71559512",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_677": {
+          "Spreadsheet ID": "f63554e7-db69-5b70-a0a5-965d556af125",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_109": {
+          "Spreadsheet ID": "0412e4bb-f090-50db-8f74-1d8c93df59a3",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1608": {
+          "Spreadsheet ID": "66530a72-6c0a-5aa0-81a6-80304ac76a42",
+          "Action": "Reduced to reader"
+         },
+         "perm_domain_1624": {
+          "Spreadsheet ID": "66530a72-6c0a-5aa0-81a6-80304ac76a42",
+          "Action": "Removed"
+         },
+         "perm_collab_922": {
+          "Spreadsheet ID": "b6cf5ed9-a873-5e14-8a6a-be063458544d",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_923": {
+          "Spreadsheet ID": "b6cf5ed9-a873-5e14-8a6a-be063458544d",
+          "Action": "Removed"
+         },
+         "perm_collab_228": {
+          "Spreadsheet ID": "6f69c585-b796-53b9-b3a8-5e7c79361f9c",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_473": {
+          "Spreadsheet ID": "9f9ae58f-7d28-512f-aaf4-68739646cdc5",
+          "Action": "Removed"
+         },
+         "perm_collab_474": {
+          "Spreadsheet ID": "9f9ae58f-7d28-512f-aaf4-68739646cdc5",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_433": {
+          "Spreadsheet ID": "027d987c-01e3-5074-9b46-51c46d4a5cbd",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_540": {
+          "Spreadsheet ID": "ab168be3-84ab-5da0-bd0b-e42c2bbe48a3",
+          "Action": "Removed"
+         },
+         "perm_collab_541": {
+          "Spreadsheet ID": "ab168be3-84ab-5da0-bd0b-e42c2bbe48a3",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_163": {
+          "Spreadsheet ID": "c4b3493b-de2c-5486-b065-5875a8bee1c2",
+          "Action": "Removed"
+         },
+         "perm_collab_164": {
+          "Spreadsheet ID": "c4b3493b-de2c-5486-b065-5875a8bee1c2",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_165": {
+          "Spreadsheet ID": "c4b3493b-de2c-5486-b065-5875a8bee1c2",
+          "Action": "Removed"
+         },
+         "perm_collab_530": {
+          "Spreadsheet ID": "68201a33-1a8e-5794-b219-87d2a88bcc4a",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_381": {
+          "Spreadsheet ID": "b2dd5d8e-55a4-5b1a-ab4e-731af0303905",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_382": {
+          "Spreadsheet ID": "b2dd5d8e-55a4-5b1a-ab4e-731af0303905",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_494": {
+          "Spreadsheet ID": "d9f405be-dbfa-5c28-8264-16ef9ce71204",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_835": {
+          "Spreadsheet ID": "150ad41f-9acd-5aaf-827c-292d21fc2479",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_836": {
+          "Spreadsheet ID": "150ad41f-9acd-5aaf-827c-292d21fc2479",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_837": {
+          "Spreadsheet ID": "150ad41f-9acd-5aaf-827c-292d21fc2479",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_503": {
+          "Spreadsheet ID": "88ba72a7-cae0-5bb9-89c1-52693c74820a",
+          "Action": "Reduced to reader"
+         },
+         "perm_collab_1379": {
+          "Spreadsheet ID": "d234bfc9-7243-536c-96c2-e32c33c0eda3",
+          "Action": "Removed"
+         },
+         "perm_collab_1380": {
+          "Spreadsheet ID": "d234bfc9-7243-536c-96c2-e32c33c0eda3",
+          "Action": "Removed"
+         },
+         "perm_collab_1381": {
+          "Spreadsheet ID": "d234bfc9-7243-536c-96c2-e32c33c0eda3",
+          "Action": "Removed"
+         },
+         "perm_anyone_1635": {
+          "Spreadsheet ID": "f43a86b6-c21c-5553-be06-5c0af1fd0b8e",
+          "Action": "Removed"
+         },
+         "perm_collab_1404": {
+          "Spreadsheet ID": "47e85f86-28ee-5966-87cc-44cbe336de04",
+          "Action": "Removed"
+         }
+        },
+        "row_set": [
+         "perm_collab_878",
+         "perm_anyone_1633",
+         "perm_collab_55",
+         "perm_collab_376",
+         "perm_collab_377",
+         "perm_collab_378",
+         "perm_collab_1603",
+         "perm_collab_1604",
+         "perm_collab_1605",
+         "perm_collab_591",
+         "perm_collab_592",
+         "perm_collab_249",
+         "perm_collab_250",
+         "perm_collab_251",
+         "perm_collab_1311",
+         "perm_collab_1360",
+         "perm_collab_1216",
+         "perm_collab_1285",
+         "perm_collab_1286",
+         "perm_collab_3",
+         "perm_collab_4",
+         "perm_collab_1426",
+         "perm_collab_1427",
+         "perm_collab_1428",
+         "perm_collab_701",
+         "perm_collab_808",
+         "perm_collab_809",
+         "perm_collab_810",
+         "perm_collab_757",
+         "perm_collab_1068",
+         "perm_collab_710",
+         "perm_collab_1570",
+         "perm_collab_831",
+         "perm_collab_677",
+         "perm_collab_109",
+         "perm_collab_1608",
+         "perm_domain_1624",
+         "perm_collab_922",
+         "perm_collab_923",
+         "perm_collab_228",
+         "perm_collab_473",
+         "perm_collab_474",
+         "perm_collab_433",
+         "perm_collab_540",
+         "perm_collab_541",
+         "perm_collab_163",
+         "perm_collab_164",
+         "perm_collab_165",
+         "perm_collab_530",
+         "perm_collab_381",
+         "perm_collab_382",
+         "perm_collab_494",
+         "perm_collab_835",
+         "perm_collab_836",
+         "perm_collab_837",
+         "perm_collab_503",
+         "perm_collab_1379",
+         "perm_collab_1380",
+         "perm_collab_1381",
+         "perm_anyone_1635",
+         "perm_collab_1404"
+        ]
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "summary_reviewed",
+   "description": "Spreadsheets reviewed: 70 in the Measure | Value table on sheet Summary.",
+   "category": "core",
+   "weight": 0.03,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-SUM-REVIEWED",
+   "evidence_span": "Spreadsheets reviewed",
+   "metadata": {
+    "why_justification": "Live spreadsheets with at least one non-owner grant: 70 by seed SQL and by the served files list (233 live sheets, permissions inline, no next page). Rules out counting all 233 sheets or including trashed copies."
+   },
+   "verifier_spec": {
+    "task_id": "summary_reviewed",
+    "verifiers": [
+     {
+      "name": "summary_reviewed",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Summary; the row whose Measure is 'Spreadsheets reviewed' (casefolded, whitespace collapsed) carries 70 parsed as a number; other rows not read here (population locked by summary_rows).",
+       "why_justification": "Live spreadsheets with at least one non-owner grant: 70 by seed SQL and by the served files list (233 live sheets, permissions inline, no next page). Rules out counting all 233 sheets or including trashed copies."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Summary",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Measure",
+        "id_pattern": "^[\\s*_:\\-]*(.*?)[\\s*_:.\\-]*$",
+        "cell_types": {
+         "Measure": "text",
+         "Value": "number"
+        },
+        "numeric_tolerance": 0.005,
+        "rows": {
+         "Spreadsheets reviewed": {
+          "Value": "70"
+         }
+        }
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "summary_restricted",
+   "description": "Restricted: 26 in the Measure | Value table on sheet Summary.",
+   "category": "core",
+   "weight": 0.03,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-SUM-RESTRICTED",
+   "evidence_span": "Restricted",
+   "metadata": {
+    "why_justification": "Spreadsheets with a patient-identifier label in any cell of any tab: 26 by seed SQL and by served grid reads (0/70 mismatches). A first-row-only or first-tab-only read finds fewer (Patient demographics labels sit in row 2)."
+   },
+   "verifier_spec": {
+    "task_id": "summary_restricted",
+    "verifiers": [
+     {
+      "name": "summary_restricted",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Summary; the row whose Measure is 'Restricted' (casefolded, whitespace collapsed) carries 26 parsed as a number; other rows not read here (population locked by summary_rows).",
+       "why_justification": "Spreadsheets with a patient-identifier label in any cell of any tab: 26 by seed SQL and by served grid reads (0/70 mismatches). A first-row-only or first-tab-only read finds fewer (Patient demographics labels sit in row 2)."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Summary",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Measure",
+        "id_pattern": "^[\\s*_:\\-]*(.*?)[\\s*_:.\\-]*$",
+        "cell_types": {
+         "Measure": "text",
+         "Value": "number"
+        },
+        "numeric_tolerance": 0.005,
+        "rows": {
+         "Restricted": {
+          "Value": "26"
+         }
+        }
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "summary_confidential",
+   "description": "Confidential: 16 in the Measure | Value table on sheet Summary.",
+   "category": "core",
+   "weight": 0.03,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-SUM-CONFIDENTIAL",
+   "evidence_span": "Confidential",
+   "metadata": {
+    "why_justification": "Spreadsheets with an email label and no patient label: 16. A first-tab-only read misses the Swebench tracker (Owner email on its 7th tab) and NPWH; a row-1-only read misses ICP Outreach and Port Setup."
+   },
+   "verifier_spec": {
+    "task_id": "summary_confidential",
+    "verifiers": [
+     {
+      "name": "summary_confidential",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Summary; the row whose Measure is 'Confidential' (casefolded, whitespace collapsed) carries 16 parsed as a number; other rows not read here (population locked by summary_rows).",
+       "why_justification": "Spreadsheets with an email label and no patient label: 16. A first-tab-only read misses the Swebench tracker (Owner email on its 7th tab) and NPWH; a row-1-only read misses ICP Outreach and Port Setup."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Summary",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Measure",
+        "id_pattern": "^[\\s*_:\\-]*(.*?)[\\s*_:.\\-]*$",
+        "cell_types": {
+         "Measure": "text",
+         "Value": "number"
+        },
+        "numeric_tolerance": 0.005,
+        "rows": {
+         "Confidential": {
+          "Value": "16"
+         }
+        }
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "summary_removed",
+   "description": "Grants removed: 29 in the Measure | Value table on sheet Summary.",
+   "category": "core",
+   "weight": 0.03,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-SUM-REMOVED",
+   "evidence_span": "Grants removed",
+   "metadata": {
+    "why_justification": "Grants with no allowed access: 29 (28 on Restricted sheets incl. one domain and one link grant, plus the AABC link grant). Expired exceptions (Diana, Birth Sanctuary) and the 366-day training date remove rather than keep."
+   },
+   "verifier_spec": {
+    "task_id": "summary_removed",
+    "verifiers": [
+     {
+      "name": "summary_removed",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Summary; the row whose Measure is 'Grants removed' (casefolded, whitespace collapsed) carries 29 parsed as a number; other rows not read here (population locked by summary_rows).",
+       "why_justification": "Grants with no allowed access: 29 (28 on Restricted sheets incl. one domain and one link grant, plus the AABC link grant). Expired exceptions (Diana, Birth Sanctuary) and the 366-day training date remove rather than keep."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Summary",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Measure",
+        "id_pattern": "^[\\s*_:\\-]*(.*?)[\\s*_:.\\-]*$",
+        "cell_types": {
+         "Measure": "text",
+         "Value": "number"
+        },
+        "numeric_tolerance": 0.005,
+        "rows": {
+         "Grants removed": {
+          "Value": "29"
+         }
+        }
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "summary_reduced",
+   "description": "Grants reduced: 32 in the Measure | Value table on sheet Summary.",
+   "category": "core",
+   "weight": 0.03,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-SUM-REDUCED",
+   "evidence_span": "Grants reduced",
+   "metadata": {
+    "why_justification": "Grants above the allowed role reduced to reader: 32 (19 Restricted, 13 Confidential). Ignoring the Growth writer rule or the exception that names the unshared Q3 Q4 copy changes this count."
+   },
+   "verifier_spec": {
+    "task_id": "summary_reduced",
+    "verifiers": [
+     {
+      "name": "summary_reduced",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Summary; the row whose Measure is 'Grants reduced' (casefolded, whitespace collapsed) carries 32 parsed as a number; other rows not read here (population locked by summary_rows).",
+       "why_justification": "Grants above the allowed role reduced to reader: 32 (19 Restricted, 13 Confidential). Ignoring the Growth writer rule or the exception that names the unshared Q3 Q4 copy changes this count."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Summary",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Measure",
+        "id_pattern": "^[\\s*_:\\-]*(.*?)[\\s*_:.\\-]*$",
+        "cell_types": {
+         "Measure": "text",
+         "Value": "number"
+        },
+        "numeric_tolerance": 0.005,
+        "rows": {
+         "Grants reduced": {
+          "Value": "32"
+         }
+        }
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "summary_rows",
+   "description": "The Summary table holds exactly the five stated measures.",
+   "category": "core",
+   "weight": 0.02,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-SUM-ROWS",
+   "evidence_span": "then exactly five rows",
+   "metadata": {
+    "why_justification": "A second reading of a figure or an extra measure states two answers at once; this population lock refuses it."
+   },
+   "verifier_spec": {
+    "task_id": "summary_rows",
+    "verifiers": [
+     {
+      "name": "summary_rows",
+      "metadata": {
+       "how_justification": "xlsx.read_rows on sheet Summary, table_equals keyed on the Measure column with row_set equal to the five named measures: an extra, hedged or duplicated measure row fails.",
+       "why_justification": "A second reading of a figure or an extra measure states two answers at once; this population lock refuses it."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "xlsx",
+        "command": "read_rows",
+        "arguments": {
+         "path": "access_review.xlsx",
+         "sheet": "Summary",
+         "stop_at_blank_row": false
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Measure",
+        "id_pattern": "^[\\s*_:\\-]*(.*?)[\\s*_:.\\-]*$",
+        "cell_types": {
+         "Measure": "text"
+        },
+        "rows": {
+         "Spreadsheets reviewed": {},
+         "Restricted": {},
+         "Confidential": {},
+         "Grants removed": {},
+         "Grants reduced": {}
+        },
+        "row_set": [
+         "Spreadsheets reviewed",
+         "Restricted",
+         "Confidential",
+         "Grants removed",
+         "Grants reduced"
+        ]
+       },
+       "deterministic": {
+        "path": "$.rows",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "memo_restricted_table",
+   "description": "The memo table gives, for each of the 26 Restricted spreadsheets, the people left with access.",
+   "category": "core",
+   "weight": 0.08,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-MEMO",
+   "evidence_span": "one row per Restricted spreadsheet giving, as a plain number, how many people other than me can still open it",
+   "metadata": {
+    "why_justification": "People keeping a user grant on each Restricted sheet after the gold changes (link/domain grants are not people and are removed anyway)."
+   },
+   "verifier_spec": {
+    "task_id": "memo_restricted_table",
+    "verifiers": [
+     {
+      "name": "memo_restricted_table",
+      "metadata": {
+       "how_justification": "docx.read_table: the table whose header row matches Spreadsheet ID ... People (any table position, other tables ignored), columns keyed positionally under it; table_equals keyed on the uuid in Spreadsheet ID, People compared as a number; row_set locks the population.",
+       "why_justification": "People keeping a user grant on each Restricted sheet after the gold changes (link/domain grants are not people and are removed anyway)."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "docx",
+        "command": "read_table",
+        "arguments": {
+         "path": "restricted_access_memo.docx",
+         "header_match": "(?i)spreadsheet\\W*id\\W*\\|.*people",
+         "columns": [
+          "Spreadsheet ID",
+          "People"
+         ]
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": {
+        "id_column": "Spreadsheet ID",
+        "id_pattern": "(?i)([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+        "cell_types": {
+         "People": "number"
+        },
+        "numeric_tolerance": 0.005,
+        "rows": {
+         "02323a06-1e00-562f-9d43-73186a6d8537": {
+          "People": "2"
+         },
+         "22f89b97-437c-5a43-bff7-0b576a1b4fb8": {
+          "People": "2"
+         },
+         "27c844ee-b123-5d9e-a082-1f693bbcd772": {
+          "People": "1"
+         },
+         "411c864f-2dc0-5f5b-9d1e-d08d9972cdd2": {
+          "People": "0"
+         },
+         "47e85f86-28ee-5966-87cc-44cbe336de04": {
+          "People": "1"
+         },
+         "4d96160c-7968-5427-92ce-2812f8c43d37": {
+          "People": "1"
+         },
+         "4f6b8e6b-d724-5d24-bc24-3884476e1ffb": {
+          "People": "1"
+         },
+         "66530a72-6c0a-5aa0-81a6-80304ac76a42": {
+          "People": "3"
+         },
+         "6790ba2a-ef27-533c-bd08-c9a9adba4be1": {
+          "People": "1"
+         },
+         "68201a33-1a8e-5794-b219-87d2a88bcc4a": {
+          "People": "1"
+         },
+         "6f69c585-b796-53b9-b3a8-5e7c79361f9c": {
+          "People": "1"
+         },
+         "701ae7ce-3a60-5833-a047-1705704a671e": {
+          "People": "2"
+         },
+         "8e824cfb-94b4-5a51-8e03-d2fece8d647e": {
+          "People": "2"
+         },
+         "9f9ae58f-7d28-512f-aaf4-68739646cdc5": {
+          "People": "1"
+         },
+         "ab168be3-84ab-5da0-bd0b-e42c2bbe48a3": {
+          "People": "1"
+         },
+         "ab915804-26cd-5690-807c-e432319d8049": {
+          "People": "1"
+         },
+         "b6cf5ed9-a873-5e14-8a6a-be063458544d": {
+          "People": "1"
+         },
+         "c4b3493b-de2c-5486-b065-5875a8bee1c2": {
+          "People": "1"
+         },
+         "c6752b59-17a6-55e8-baa7-f76b3db10660": {
+          "People": "1"
+         },
+         "d234bfc9-7243-536c-96c2-e32c33c0eda3": {
+          "People": "0"
+         },
+         "e2afb034-4b39-527c-92d6-c81bc2529a40": {
+          "People": "1"
+         },
+         "f04633d2-ea86-5b41-a52a-e22e1d6b1948": {
+          "People": "0"
+         },
+         "f07876c0-3141-51c7-91b4-7ff3632fe69a": {
+          "People": "2"
+         },
+         "f43a86b6-c21c-5553-be06-5c0af1fd0b8e": {
+          "People": "0"
+         },
+         "f63554e7-db69-5b70-a0a5-965d556af125": {
+          "People": "2"
+         },
+         "f6f95d9e-1ec9-58bf-831b-46bfdd8c0565": {
+          "People": "1"
+         }
+        },
+        "row_set": [
+         "02323a06-1e00-562f-9d43-73186a6d8537",
+         "22f89b97-437c-5a43-bff7-0b576a1b4fb8",
+         "27c844ee-b123-5d9e-a082-1f693bbcd772",
+         "411c864f-2dc0-5f5b-9d1e-d08d9972cdd2",
+         "47e85f86-28ee-5966-87cc-44cbe336de04",
+         "4d96160c-7968-5427-92ce-2812f8c43d37",
+         "4f6b8e6b-d724-5d24-bc24-3884476e1ffb",
+         "66530a72-6c0a-5aa0-81a6-80304ac76a42",
+         "6790ba2a-ef27-533c-bd08-c9a9adba4be1",
+         "68201a33-1a8e-5794-b219-87d2a88bcc4a",
+         "6f69c585-b796-53b9-b3a8-5e7c79361f9c",
+         "701ae7ce-3a60-5833-a047-1705704a671e",
+         "8e824cfb-94b4-5a51-8e03-d2fece8d647e",
+         "9f9ae58f-7d28-512f-aaf4-68739646cdc5",
+         "ab168be3-84ab-5da0-bd0b-e42c2bbe48a3",
+         "ab915804-26cd-5690-807c-e432319d8049",
+         "b6cf5ed9-a873-5e14-8a6a-be063458544d",
+         "c4b3493b-de2c-5486-b065-5875a8bee1c2",
+         "c6752b59-17a6-55e8-baa7-f76b3db10660",
+         "d234bfc9-7243-536c-96c2-e32c33c0eda3",
+         "e2afb034-4b39-527c-92d6-c81bc2529a40",
+         "f04633d2-ea86-5b41-a52a-e22e1d6b1948",
+         "f07876c0-3141-51c7-91b4-7ff3632fe69a",
+         "f43a86b6-c21c-5553-be06-5c0af1fd0b8e",
+         "f63554e7-db69-5b70-a0a5-965d556af125",
+         "f6f95d9e-1ec9-58bf-831b-46bfdd8c0565"
+        ]
+       },
+       "deterministic": {
+        "path": "$",
+        "comparison": "table_equals"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "memo_one_page",
+   "description": "The memo keeps to one page: at most 40 body paragraphs with visible text (tables not counted).",
+   "category": "core",
+   "weight": 0.02,
+   "target": "workspace_files",
+   "verifier_type": "file_check",
+   "type": "file_check",
+   "pass_threshold": 1.0,
+   "requirement_id": "REQ-AR-MEMO-PAGE",
+   "evidence_span": "a one-page memo",
+   "metadata": {
+    "why_justification": "The requester caps the memo at one page; refuses a dump of every grant considered."
+   },
+   "verifier_spec": {
+    "task_id": "memo_one_page",
+    "verifiers": [
+     {
+      "name": "memo_one_page",
+      "metadata": {
+       "how_justification": "docx.inspect_document $.paragraph_count (body paragraphs with visible text, table cells excluded) compared less_than_equal 40: a memo that dumps every grant considered fails.",
+       "why_justification": "The requester caps the memo at one page; refuses a dump of every grant considered."
+      },
+      "source": {
+       "type": "file",
+       "file": {
+        "type": "docx",
+        "command": "inspect_document",
+        "arguments": {
+         "path": "restricted_access_memo.docx"
+        }
+       }
+      },
+      "assertion": {
+       "type": "deterministic",
+       "expected": 40,
+       "deterministic": {
+        "path": "$.paragraph_count",
+        "comparison": "less_than_equal"
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "grant_perm_collab_878",
+   "description": "08-18-25 - Patient demographics (Restricted): avery.taylor@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_878' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_878",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Avery Taylor: PHI approved Yes, HIPAA training 2025-01-20 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_anyone_1633",
+   "description": "AABC Lead Generation • Tracker [Final] (Confidential): anyone grant reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_anyone_1633' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_anyone_1633",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "A anyone grant on a Confidential spreadsheet: the policy allows no link or domain-wide sharing on that tier, so it is removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_55",
+   "description": "Beyond Birth Midwifery Associates - December 2024 (Restricted): sam.okonkwo@healthpii.example reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_55' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_55",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Sam Okonkwo: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_376",
+   "description": "Beyond Birth Midwifery Mar 2025 (Restricted): sam.okonkwo@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_376' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_376",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Sam Okonkwo: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_377",
+   "description": "Beyond Birth Midwifery Mar 2025 (Restricted): drew.martin@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_377' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c6752b59-17a6-55e8-baa7-f76b3db10660') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_377",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_378",
+   "description": "Beyond Birth Midwifery Mar 2025 (Restricted): avery.brooks@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_378' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_378",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Avery Brooks: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1603",
+   "description": "Birth Sanctuary October 2025 (Restricted): jamie.ross@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_1603' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1603",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Jamie Ross: PHI approved Yes, HIPAA training 2025-09-18, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1604",
+   "description": "Birth Sanctuary October 2025 (Restricted): diana.reyes@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1604' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1604",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Diana Reyes: PHI approved Yes, HIPAA training 2025-03-30 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1605",
+   "description": "Birth Sanctuary October 2025 (Restricted): cameron.shaw@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_1605' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1605",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Cameron Shaw: PHI approved Yes, HIPAA training 2025-04-01, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_591",
+   "description": "BirthStone July 2025 (Restricted): casey.rivers@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_591' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_591",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Casey Rivers: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_592",
+   "description": "BirthStone July 2025 (Restricted): jordan.smith@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_592' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_592",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_249",
+   "description": "CBC July 2025 (Restricted): river.cohen@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_249' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_249",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "River Cohen: PHI approved Yes, HIPAA training 2026-01-14, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_250",
+   "description": "CBC July 2025 (Restricted): cameron.shaw@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_250' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_250",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Cameron Shaw: PHI approved Yes, HIPAA training 2025-04-01, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_251",
+   "description": "CBC July 2025 (Restricted): jordan.smith@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_251' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_251",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1311",
+   "description": "Canyon Midwifery LLC - December 2024 (Restricted): cameron.shaw@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_1311' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '4f6b8e6b-d724-5d24-bc24-3884476e1ffb') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1311",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Cameron Shaw: PHI approved Yes, HIPAA training 2025-04-01, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1360",
+   "description": "Cincinnati Birth Center Apr 2025 (Restricted): lee.anderson@healthpii.example reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1360' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1360",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Lee Anderson: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1216",
+   "description": "Cincinnati Birth Center October 2025 (Restricted): riley.nguyen@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1216' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1216",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Riley Nguyen: PHI approved Yes, HIPAA training 2024-11-15 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1285",
+   "description": "Greenwood Midwifery August 2025 (Restricted): phoenix.wright@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1285' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1285",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Phoenix Wright: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1286",
+   "description": "Greenwood Midwifery August 2025 (Restricted): drew.martin@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_1286' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '701ae7ce-3a60-5833-a047-1705704a671e') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1286",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_3",
+   "description": "Greenwood Midwifery and Integrative Health June 2025 (Restricted): sky.adams@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_3' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_3",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Sky Adams: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_4",
+   "description": "Greenwood Midwifery and Integrative Health June 2025 (Restricted): drew.martin@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_4' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab915804-26cd-5690-807c-e432319d8049') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_4",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1426",
+   "description": "HM Birth August 2025 (Restricted): avery.brooks@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1426' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1426",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Avery Brooks: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1427",
+   "description": "HM Birth August 2025 (Restricted): alex.chen@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_1427' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e2afb034-4b39-527c-92d6-c81bc2529a40') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1427",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1428",
+   "description": "HM Birth August 2025 (Restricted): lee.anderson@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1428' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1428",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Lee Anderson: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_701",
+   "description": "ICP Outreach [August 2025] (Confidential): riley.nguyen@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_701' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '3061440a-f396-561a-aac6-f014926909cd') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_701",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Riley Nguyen is in Engineering, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_808",
+   "description": "Jamii Birth and Wellness Services, LLC (Restricted): sam.okonkwo@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_808' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_808",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Sam Okonkwo: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_809",
+   "description": "Jamii Birth and Wellness Services, LLC (Restricted): diana.reyes@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_809' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_809",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Diana Reyes: PHI approved Yes, HIPAA training 2025-03-30 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_810",
+   "description": "Jamii Birth and Wellness Services, LLC (Restricted): alex.chen@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_810' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6790ba2a-ef27-533c-bd08-c9a9adba4be1') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_810",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_757",
+   "description": "Johnson & Associates Midwifery Group August 2025 (Restricted): nico.vasquez@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_757' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f07876c0-3141-51c7-91b4-7ff3632fe69a') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_757",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Nico Vasquez: PHI approved Yes, HIPAA training 2025-12-09, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1068",
+   "description": "Kindred Space LA Mar 2025 (Restricted): casey.rivers@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1068' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1068",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Casey Rivers: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_710",
+   "description": "Leads New Leads ICP 2 1760636660 (Confidential): jamie.ross@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_710' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'dcc10fe1-69e9-596d-a207-fccf1d3427c1') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_710",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Jamie Ross is in Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1570",
+   "description": "M&A Conversation & Outbound Tracker (Confidential): cameron.shaw@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_1570' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '176c1a2a-c4a3-50b7-8448-ba1126ac8e44') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1570",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Cameron Shaw is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_831",
+   "description": "NPWH Lead Generation • Tracker (Confidential): phoenix.wright@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_831' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '65708c25-2991-5211-a3b6-cb8f71559512') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_831",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Phoenix Wright is in Product, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_677",
+   "description": "Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway (Restricted): river.cohen@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_677' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f63554e7-db69-5b70-a0a5-965d556af125') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_677",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "River Cohen: PHI approved Yes, HIPAA training 2026-01-14, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_109",
+   "description": "Port Setup Spreadsheet 2022 CCSI (Confidential): sky.adams@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_109' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '0412e4bb-f090-50db-8f74-1d8c93df59a3') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_109",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Sky Adams is in Operations, so Viewer at most on a Confidential sheet; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1608",
+   "description": "Prattville Midwifery (Restricted): quinn.pemberton@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_1608' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '66530a72-6c0a-5aa0-81a6-80304ac76a42') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1608",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Quinn Pemberton: PHI approved Yes, HIPAA training 2025-10-21, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_domain_1624",
+   "description": "Prattville Midwifery (Restricted): domain grant reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_domain_1624' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_domain_1624",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "A domain grant on a Restricted spreadsheet: the policy allows no link or domain-wide sharing on that tier, so it is removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_922",
+   "description": "Prattville Midwifery August 2025 (Restricted): alex.chen@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_922' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b6cf5ed9-a873-5e14-8a6a-be063458544d') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_922",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_923",
+   "description": "Prattville Midwifery August 2025 (Restricted): jordan.smith@healthpii.example reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_923' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_923",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role reader -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_228",
+   "description": "Premier Birth Center Client List (3) - Kim Pekin (Restricted): quinn.pemberton@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_228' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6f69c585-b796-53b9-b3a8-5e7c79361f9c') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_228",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Quinn Pemberton: PHI approved Yes, HIPAA training 2025-10-21, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_473",
+   "description": "Rooted Birth Midwifery & Wellness June 2025 (Restricted): avery.taylor@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_473' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_473",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Avery Taylor: PHI approved Yes, HIPAA training 2025-01-20 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_474",
+   "description": "Rooted Birth Midwifery & Wellness June 2025 (Restricted): drew.martin@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_474' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '9f9ae58f-7d28-512f-aaf4-68739646cdc5') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_474",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_433",
+   "description": "Swebench - external private repos - Healthpii Batch 1 (Confidential): quinn.pemberton@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_433' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '027d987c-01e3-5074-9b46-51c46d4a5cbd') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_433",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Quinn Pemberton is in Clinical Operations, so Viewer at most on a Confidential sheet; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_540",
+   "description": "Transitions Birth Center (Restricted): casey.rivers@healthpii.example reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_540' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_540",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Casey Rivers: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_541",
+   "description": "Transitions Birth Center (Restricted): alex.chen@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_541' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab168be3-84ab-5da0-bd0b-e42c2bbe48a3') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_541",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_163",
+   "description": "Transitions Birth Center June 2025 (Restricted): jordan.smith@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_163' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_163",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_164",
+   "description": "Transitions Birth Center June 2025 (Restricted): alex.chen@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_164' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c4b3493b-de2c-5486-b065-5875a8bee1c2') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_164",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_165",
+   "description": "Transitions Birth Center June 2025 (Restricted): diana.reyes@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_165' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_165",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Diana Reyes: PHI approved Yes, HIPAA training 2025-03-30 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_530",
+   "description": "Transitions Birth Center October 2025 (Restricted): nico.vasquez@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_530' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '68201a33-1a8e-5794-b219-87d2a88bcc4a') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_530",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Nico Vasquez: PHI approved Yes, HIPAA training 2025-12-09, so Viewer at most; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_381",
+   "description": "Untitled spreadsheet (Confidential): cameron.shaw@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_381' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_381",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Cameron Shaw is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_382",
+   "description": "Untitled spreadsheet (Confidential): sam.okonkwo@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_382' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_382",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Sam Okonkwo is in Finance, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_494",
+   "description": "Untitled spreadsheet(2) (Confidential): drew.martin@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_494' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd9f405be-dbfa-5c28-8264-16ef9ce71204') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_494",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Drew Martin is in Finance, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_835",
+   "description": "[External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025 (Confidential): lee.anderson@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_835' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_835",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Lee Anderson is in Finance, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_836",
+   "description": "[External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025 (Confidential): diana.reyes@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_836' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_836",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Diana Reyes is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_837",
+   "description": "[External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025 (Confidential): sky.adams@healthpii.example writer -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_837' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_837",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Sky Adams is in Operations, so Viewer at most on a Confidential sheet; current role writer -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_503",
+   "description": "[Fellow Founders Copy] Healthpii Health   Pre-Seed Investor Tracker (Confidential): quinn.pemberton@healthpii.example commenter -> Reduced to reader.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when exists (select 1 from permissions p where p.id = 'perm_collab_503' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '88ba72a7-cae0-5bb9-89c1-52693c74820a') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_503",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Quinn Pemberton is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1379",
+   "description": "j8lghvv51re0e787xpdvnpaj (Restricted): phoenix.wright@healthpii.example reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1379' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1379",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Phoenix Wright: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1380",
+   "description": "j8lghvv51re0e787xpdvnpaj (Restricted): avery.taylor@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1380' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1380",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Avery Taylor: PHI approved Yes, HIPAA training 2025-01-20 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1381",
+   "description": "j8lghvv51re0e787xpdvnpaj (Restricted): morgan.blake@healthpii.example writer -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1381' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1381",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Morgan Blake: PHI approved Yes, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_anyone_1635",
+   "description": "qlbbdp31iqa04y7f9mjb2nf2 (Restricted): anyone grant reader -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.004098,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_anyone_1635' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_anyone_1635",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "A anyone grant on a Restricted spreadsheet: the policy allows no link or domain-wide sharing on that tier, so it is removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "grant_perm_collab_1404",
+   "description": "y8cq6qnli9y4y91vvpclhfux (Restricted): morgan.blake@healthpii.example commenter -> Removed.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.00412,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not exists (select 1 from permissions p where p.id = 'perm_collab_1404' and coalesce(p.deleted, 0) = 0) then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-G-perm_collab_1404",
+   "evidence_span": "reduce that grant to the highest role the policy allows, or remove it",
+   "metadata": {
+    "why_justification": "Morgan Blake: PHI approved Yes, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed. Measured against the seed before the run, this query reads 0."
+   }
+  },
+  {
+   "name": "allowed_restricted_grants_untouched",
+   "description": "All 11 grants the policy allows on Restricted spreadsheets keep their role (none removed or re-roled).",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.05,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not (not exists (select 1 from permissions p where p.id = 'perm_collab_878' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1633' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_55' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_376' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_377' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c6752b59-17a6-55e8-baa7-f76b3db10660') and not exists (select 1 from permissions p where p.id = 'perm_collab_378' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1603' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_1604' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1605' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_591' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_592' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_249' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and exists (select 1 from permissions p where p.id = 'perm_collab_250' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and not exists (select 1 from permissions p where p.id = 'perm_collab_251' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1311' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '4f6b8e6b-d724-5d24-bc24-3884476e1ffb') and not exists (select 1 from permissions p where p.id = 'perm_collab_1360' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1216' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1285' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1286' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '701ae7ce-3a60-5833-a047-1705704a671e') and not exists (select 1 from permissions p where p.id = 'perm_collab_3' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_4' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab915804-26cd-5690-807c-e432319d8049') and not exists (select 1 from permissions p where p.id = 'perm_collab_1426' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1427' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e2afb034-4b39-527c-92d6-c81bc2529a40') and not exists (select 1 from permissions p where p.id = 'perm_collab_1428' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_701' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '3061440a-f396-561a-aac6-f014926909cd') and not exists (select 1 from permissions p where p.id = 'perm_collab_808' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_809' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_810' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6790ba2a-ef27-533c-bd08-c9a9adba4be1') and exists (select 1 from permissions p where p.id = 'perm_collab_757' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f07876c0-3141-51c7-91b4-7ff3632fe69a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1068' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_710' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'dcc10fe1-69e9-596d-a207-fccf1d3427c1') and exists (select 1 from permissions p where p.id = 'perm_collab_1570' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '176c1a2a-c4a3-50b7-8448-ba1126ac8e44') and exists (select 1 from permissions p where p.id = 'perm_collab_831' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '65708c25-2991-5211-a3b6-cb8f71559512') and exists (select 1 from permissions p where p.id = 'perm_collab_677' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f63554e7-db69-5b70-a0a5-965d556af125') and exists (select 1 from permissions p where p.id = 'perm_collab_109' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '0412e4bb-f090-50db-8f74-1d8c93df59a3') and exists (select 1 from permissions p where p.id = 'perm_collab_1608' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '66530a72-6c0a-5aa0-81a6-80304ac76a42') and not exists (select 1 from permissions p where p.id = 'perm_domain_1624' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_922' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b6cf5ed9-a873-5e14-8a6a-be063458544d') and not exists (select 1 from permissions p where p.id = 'perm_collab_923' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_228' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6f69c585-b796-53b9-b3a8-5e7c79361f9c') and not exists (select 1 from permissions p where p.id = 'perm_collab_473' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_474' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '9f9ae58f-7d28-512f-aaf4-68739646cdc5') and exists (select 1 from permissions p where p.id = 'perm_collab_433' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '027d987c-01e3-5074-9b46-51c46d4a5cbd') and not exists (select 1 from permissions p where p.id = 'perm_collab_540' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_541' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab168be3-84ab-5da0-bd0b-e42c2bbe48a3') and not exists (select 1 from permissions p where p.id = 'perm_collab_163' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_164' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c4b3493b-de2c-5486-b065-5875a8bee1c2') and not exists (select 1 from permissions p where p.id = 'perm_collab_165' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_530' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '68201a33-1a8e-5794-b219-87d2a88bcc4a') and exists (select 1 from permissions p where p.id = 'perm_collab_381' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_382' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_494' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd9f405be-dbfa-5c28-8264-16ef9ce71204') and exists (select 1 from permissions p where p.id = 'perm_collab_835' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_836' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_837' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_503' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '88ba72a7-cae0-5bb9-89c1-52693c74820a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1379' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1380' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1381' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1635' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1404' and coalesce(p.deleted, 0) = 0)) then -1 when exists (select 1 from permissions p where p.id = 'perm_collab_879' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = 'f6f95d9e-1ec9-58bf-831b-46bfdd8c0565') and exists (select 1 from permissions p where p.id = 'perm_collab_54' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '02323a06-1e00-562f-9d43-73186a6d8537') and exists (select 1 from permissions p where p.id = 'perm_collab_56' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '02323a06-1e00-562f-9d43-73186a6d8537') and exists (select 1 from permissions p where p.id = 'perm_collab_1215' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '27c844ee-b123-5d9e-a082-1f693bbcd772') and exists (select 1 from permissions p where p.id = 'perm_collab_1287' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '701ae7ce-3a60-5833-a047-1705704a671e') and exists (select 1 from permissions p where p.id = 'perm_collab_758' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f07876c0-3141-51c7-91b4-7ff3632fe69a') and exists (select 1 from permissions p where p.id = 'perm_collab_1069' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '4d96160c-7968-5427-92ce-2812f8c43d37') and exists (select 1 from permissions p where p.id = 'perm_collab_678' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f63554e7-db69-5b70-a0a5-965d556af125') and exists (select 1 from permissions p where p.id = 'perm_collab_1606' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '66530a72-6c0a-5aa0-81a6-80304ac76a42') and exists (select 1 from permissions p where p.id = 'perm_collab_1607' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '66530a72-6c0a-5aa0-81a6-80304ac76a42') and exists (select 1 from permissions p where p.id = 'perm_collab_1405' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '47e85f86-28ee-5966-87cc-44cbe336de04') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-LOCK-ALLOWED_RESTRICTED_GRANTS_UNTOUCHED",
+   "evidence_span": "Leave every grant the policy allows exactly as it is",
+   "metadata": {
+    "why_justification": "Over-reach on Restricted sheets (removing or reducing a grant the policy allows, e.g. an in-force exception or a Growth editor) is refused here; a hedge-all world that removes everything fails it. Counted only once every one of the 61 fixes is in place (-1 before that), so partial work never earns it; measured against the seed before the run, the gate reads -1."
+   }
+  },
+  {
+   "name": "allowed_confidential_grants_untouched",
+   "description": "All 19 grants the policy allows on Confidential spreadsheets keep their role (none removed or re-roled).",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.05,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not (not exists (select 1 from permissions p where p.id = 'perm_collab_878' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1633' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_55' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_376' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_377' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c6752b59-17a6-55e8-baa7-f76b3db10660') and not exists (select 1 from permissions p where p.id = 'perm_collab_378' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1603' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_1604' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1605' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_591' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_592' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_249' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and exists (select 1 from permissions p where p.id = 'perm_collab_250' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and not exists (select 1 from permissions p where p.id = 'perm_collab_251' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1311' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '4f6b8e6b-d724-5d24-bc24-3884476e1ffb') and not exists (select 1 from permissions p where p.id = 'perm_collab_1360' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1216' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1285' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1286' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '701ae7ce-3a60-5833-a047-1705704a671e') and not exists (select 1 from permissions p where p.id = 'perm_collab_3' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_4' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab915804-26cd-5690-807c-e432319d8049') and not exists (select 1 from permissions p where p.id = 'perm_collab_1426' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1427' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e2afb034-4b39-527c-92d6-c81bc2529a40') and not exists (select 1 from permissions p where p.id = 'perm_collab_1428' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_701' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '3061440a-f396-561a-aac6-f014926909cd') and not exists (select 1 from permissions p where p.id = 'perm_collab_808' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_809' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_810' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6790ba2a-ef27-533c-bd08-c9a9adba4be1') and exists (select 1 from permissions p where p.id = 'perm_collab_757' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f07876c0-3141-51c7-91b4-7ff3632fe69a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1068' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_710' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'dcc10fe1-69e9-596d-a207-fccf1d3427c1') and exists (select 1 from permissions p where p.id = 'perm_collab_1570' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '176c1a2a-c4a3-50b7-8448-ba1126ac8e44') and exists (select 1 from permissions p where p.id = 'perm_collab_831' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '65708c25-2991-5211-a3b6-cb8f71559512') and exists (select 1 from permissions p where p.id = 'perm_collab_677' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f63554e7-db69-5b70-a0a5-965d556af125') and exists (select 1 from permissions p where p.id = 'perm_collab_109' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '0412e4bb-f090-50db-8f74-1d8c93df59a3') and exists (select 1 from permissions p where p.id = 'perm_collab_1608' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '66530a72-6c0a-5aa0-81a6-80304ac76a42') and not exists (select 1 from permissions p where p.id = 'perm_domain_1624' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_922' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b6cf5ed9-a873-5e14-8a6a-be063458544d') and not exists (select 1 from permissions p where p.id = 'perm_collab_923' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_228' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6f69c585-b796-53b9-b3a8-5e7c79361f9c') and not exists (select 1 from permissions p where p.id = 'perm_collab_473' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_474' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '9f9ae58f-7d28-512f-aaf4-68739646cdc5') and exists (select 1 from permissions p where p.id = 'perm_collab_433' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '027d987c-01e3-5074-9b46-51c46d4a5cbd') and not exists (select 1 from permissions p where p.id = 'perm_collab_540' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_541' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab168be3-84ab-5da0-bd0b-e42c2bbe48a3') and not exists (select 1 from permissions p where p.id = 'perm_collab_163' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_164' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c4b3493b-de2c-5486-b065-5875a8bee1c2') and not exists (select 1 from permissions p where p.id = 'perm_collab_165' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_530' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '68201a33-1a8e-5794-b219-87d2a88bcc4a') and exists (select 1 from permissions p where p.id = 'perm_collab_381' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_382' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_494' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd9f405be-dbfa-5c28-8264-16ef9ce71204') and exists (select 1 from permissions p where p.id = 'perm_collab_835' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_836' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_837' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_503' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '88ba72a7-cae0-5bb9-89c1-52693c74820a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1379' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1380' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1381' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1635' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1404' and coalesce(p.deleted, 0) = 0)) then -1 when exists (select 1 from permissions p where p.id = 'perm_collab_1562' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '86642e0a-5cc5-5102-b37f-14041f1fd299') and exists (select 1 from permissions p where p.id = 'perm_collab_1563' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '86642e0a-5cc5-5102-b37f-14041f1fd299') and exists (select 1 from permissions p where p.id = 'perm_collab_1564' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '86642e0a-5cc5-5102-b37f-14041f1fd299') and exists (select 1 from permissions p where p.id = 'perm_collab_632' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '2c24723f-8d9e-5b00-89b6-88d8689192c1') and exists (select 1 from permissions p where p.id = 'perm_collab_633' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '2c24723f-8d9e-5b00-89b6-88d8689192c1') and exists (select 1 from permissions p where p.id = 'perm_collab_634' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '2c24723f-8d9e-5b00-89b6-88d8689192c1') and exists (select 1 from permissions p where p.id = 'perm_collab_739' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e42f3676-5517-5c6e-975d-679e7ae489e5') and exists (select 1 from permissions p where p.id = 'perm_collab_700' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '3061440a-f396-561a-aac6-f014926909cd') and exists (select 1 from permissions p where p.id = 'perm_collab_564' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '3a15438b-8f6a-523b-bb31-21ddb6ca3a02') and exists (select 1 from permissions p where p.id = 'perm_collab_565' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '3a15438b-8f6a-523b-bb31-21ddb6ca3a02') and exists (select 1 from permissions p where p.id = 'perm_collab_1275' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'a0a8b4bf-1821-5c12-9b0c-bbcab9b1fe93') and exists (select 1 from permissions p where p.id = 'perm_collab_1569' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '176c1a2a-c4a3-50b7-8448-ba1126ac8e44') and exists (select 1 from permissions p where p.id = 'perm_collab_1571' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '176c1a2a-c4a3-50b7-8448-ba1126ac8e44') and exists (select 1 from permissions p where p.id = 'perm_collab_108' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '0412e4bb-f090-50db-8f74-1d8c93df59a3') and exists (select 1 from permissions p where p.id = 'perm_collab_110' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '0412e4bb-f090-50db-8f74-1d8c93df59a3') and exists (select 1 from permissions p where p.id = 'perm_collab_431' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '027d987c-01e3-5074-9b46-51c46d4a5cbd') and exists (select 1 from permissions p where p.id = 'perm_collab_432' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '027d987c-01e3-5074-9b46-51c46d4a5cbd') and exists (select 1 from permissions p where p.id = 'perm_collab_495' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd9f405be-dbfa-5c28-8264-16ef9ce71204') and exists (select 1 from permissions p where p.id = 'perm_collab_502' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '88ba72a7-cae0-5bb9-89c1-52693c74820a') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-LOCK-ALLOWED_CONFIDENTIAL_GRANTS_UNTOUCHED",
+   "evidence_span": "Leave every grant the policy allows exactly as it is",
+   "metadata": {
+    "why_justification": "Over-reach on Confidential sheets (removing or reducing a grant the policy allows, e.g. an in-force exception or a Growth editor) is refused here; a hedge-all world that removes everything fails it. Counted only once every one of the 61 fixes is in place (-1 before that), so partial work never earns it; measured against the seed before the run, the gate reads -1."
+   }
+  },
+  {
+   "name": "allowed_internal_grants_untouched",
+   "description": "All 59 grants the policy allows on Internal spreadsheets keep their role (none removed or re-roled).",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.05,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not (not exists (select 1 from permissions p where p.id = 'perm_collab_878' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1633' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_55' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_376' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_377' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c6752b59-17a6-55e8-baa7-f76b3db10660') and not exists (select 1 from permissions p where p.id = 'perm_collab_378' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1603' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_1604' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1605' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_591' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_592' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_249' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and exists (select 1 from permissions p where p.id = 'perm_collab_250' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and not exists (select 1 from permissions p where p.id = 'perm_collab_251' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1311' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '4f6b8e6b-d724-5d24-bc24-3884476e1ffb') and not exists (select 1 from permissions p where p.id = 'perm_collab_1360' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1216' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1285' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1286' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '701ae7ce-3a60-5833-a047-1705704a671e') and not exists (select 1 from permissions p where p.id = 'perm_collab_3' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_4' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab915804-26cd-5690-807c-e432319d8049') and not exists (select 1 from permissions p where p.id = 'perm_collab_1426' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1427' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e2afb034-4b39-527c-92d6-c81bc2529a40') and not exists (select 1 from permissions p where p.id = 'perm_collab_1428' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_701' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '3061440a-f396-561a-aac6-f014926909cd') and not exists (select 1 from permissions p where p.id = 'perm_collab_808' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_809' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_810' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6790ba2a-ef27-533c-bd08-c9a9adba4be1') and exists (select 1 from permissions p where p.id = 'perm_collab_757' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f07876c0-3141-51c7-91b4-7ff3632fe69a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1068' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_710' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'dcc10fe1-69e9-596d-a207-fccf1d3427c1') and exists (select 1 from permissions p where p.id = 'perm_collab_1570' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '176c1a2a-c4a3-50b7-8448-ba1126ac8e44') and exists (select 1 from permissions p where p.id = 'perm_collab_831' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '65708c25-2991-5211-a3b6-cb8f71559512') and exists (select 1 from permissions p where p.id = 'perm_collab_677' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f63554e7-db69-5b70-a0a5-965d556af125') and exists (select 1 from permissions p where p.id = 'perm_collab_109' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '0412e4bb-f090-50db-8f74-1d8c93df59a3') and exists (select 1 from permissions p where p.id = 'perm_collab_1608' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '66530a72-6c0a-5aa0-81a6-80304ac76a42') and not exists (select 1 from permissions p where p.id = 'perm_domain_1624' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_922' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b6cf5ed9-a873-5e14-8a6a-be063458544d') and not exists (select 1 from permissions p where p.id = 'perm_collab_923' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_228' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6f69c585-b796-53b9-b3a8-5e7c79361f9c') and not exists (select 1 from permissions p where p.id = 'perm_collab_473' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_474' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '9f9ae58f-7d28-512f-aaf4-68739646cdc5') and exists (select 1 from permissions p where p.id = 'perm_collab_433' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '027d987c-01e3-5074-9b46-51c46d4a5cbd') and not exists (select 1 from permissions p where p.id = 'perm_collab_540' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_541' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab168be3-84ab-5da0-bd0b-e42c2bbe48a3') and not exists (select 1 from permissions p where p.id = 'perm_collab_163' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_164' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c4b3493b-de2c-5486-b065-5875a8bee1c2') and not exists (select 1 from permissions p where p.id = 'perm_collab_165' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_530' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '68201a33-1a8e-5794-b219-87d2a88bcc4a') and exists (select 1 from permissions p where p.id = 'perm_collab_381' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_382' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_494' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd9f405be-dbfa-5c28-8264-16ef9ce71204') and exists (select 1 from permissions p where p.id = 'perm_collab_835' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_836' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_837' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_503' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '88ba72a7-cae0-5bb9-89c1-52693c74820a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1379' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1380' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1381' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1635' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1404' and coalesce(p.deleted, 0) = 0)) then -1 when exists (select 1 from permissions p where p.id = 'perm_collab_293' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e8d4f190-930b-5149-9ef1-a4109e278a77') and exists (select 1 from permissions p where p.id = 'perm_collab_944' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '94232171-8fdd-58fb-a7ce-addd702cceb3') and exists (select 1 from permissions p where p.id = 'perm_collab_945' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '94232171-8fdd-58fb-a7ce-addd702cceb3') and exists (select 1 from permissions p where p.id = 'perm_collab_946' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '94232171-8fdd-58fb-a7ce-addd702cceb3') and exists (select 1 from permissions p where p.id = 'perm_collab_1436' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e0ebc122-57f2-5886-a312-d5c77ade490d') and exists (select 1 from permissions p where p.id = 'perm_collab_694' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '5cc7d34c-798a-524e-9805-573c645332e3') and exists (select 1 from permissions p where p.id = 'perm_collab_1528' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b0d95c98-504d-5d2c-b670-fc435c64ad5c') and exists (select 1 from permissions p where p.id = 'perm_collab_1529' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = 'b0d95c98-504d-5d2c-b670-fc435c64ad5c') and exists (select 1 from permissions p where p.id = 'perm_collab_1185' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '67145fec-f787-5780-9850-e24b146df249') and exists (select 1 from permissions p where p.id = 'perm_collab_476' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '2af84645-86b3-5e8b-b9af-f2eea4657817') and exists (select 1 from permissions p where p.id = 'perm_collab_477' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '2af84645-86b3-5e8b-b9af-f2eea4657817') and exists (select 1 from permissions p where p.id = 'perm_collab_1304' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '220667f8-44fb-5f94-af0d-16431e622c12') and exists (select 1 from permissions p where p.id = 'perm_collab_1305' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '220667f8-44fb-5f94-af0d-16431e622c12') and exists (select 1 from permissions p where p.id = 'perm_collab_368' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '1bfee342-0a24-5e57-8dcb-f62356c43924') and exists (select 1 from permissions p where p.id = 'perm_collab_369' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '1bfee342-0a24-5e57-8dcb-f62356c43924') and exists (select 1 from permissions p where p.id = 'perm_collab_298' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '26963313-4361-5426-a15f-8348f963720e') and exists (select 1 from permissions p where p.id = 'perm_collab_299' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '26963313-4361-5426-a15f-8348f963720e') and exists (select 1 from permissions p where p.id = 'perm_collab_300' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '26963313-4361-5426-a15f-8348f963720e') and exists (select 1 from permissions p where p.id = 'perm_collab_1301' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'e353bccc-3a55-5f46-98e6-8ae7131fadc9') and exists (select 1 from permissions p where p.id = 'perm_collab_773' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'd1bac28d-c2a3-598f-9b4f-fc6b7a23350a') and exists (select 1 from permissions p where p.id = 'perm_collab_774' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd1bac28d-c2a3-598f-9b4f-fc6b7a23350a') and exists (select 1 from permissions p where p.id = 'perm_collab_920' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ebfbbe85-4df5-5d68-90f2-55c5a20bc80a') and exists (select 1 from permissions p where p.id = 'perm_collab_921' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'ebfbbe85-4df5-5d68-90f2-55c5a20bc80a') and exists (select 1 from permissions p where p.id = 'perm_collab_35' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'a488c0a2-e118-5964-87e8-880506561f46') and exists (select 1 from permissions p where p.id = 'perm_collab_36' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'a488c0a2-e118-5964-87e8-880506561f46') and exists (select 1 from permissions p where p.id = 'perm_collab_37' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'a488c0a2-e118-5964-87e8-880506561f46') and exists (select 1 from permissions p where p.id = 'perm_collab_799' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '9a9abbfa-d7fc-5d69-844b-d3c17b48916b') and exists (select 1 from permissions p where p.id = 'perm_collab_800' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '9a9abbfa-d7fc-5d69-844b-d3c17b48916b') and exists (select 1 from permissions p where p.id = 'perm_collab_25' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '7b13907b-3251-596c-a9ab-74ae19b97d50') and exists (select 1 from permissions p where p.id = 'perm_collab_26' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '7b13907b-3251-596c-a9ab-74ae19b97d50') and exists (select 1 from permissions p where p.id = 'perm_collab_1107' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '6ce85c05-6606-5e7c-bc0e-76e504063845') and exists (select 1 from permissions p where p.id = 'perm_collab_1108' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6ce85c05-6606-5e7c-bc0e-76e504063845') and exists (select 1 from permissions p where p.id = 'perm_collab_1109' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6ce85c05-6606-5e7c-bc0e-76e504063845') and exists (select 1 from permissions p where p.id = 'perm_collab_388' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e62c8293-3b53-5277-b607-8c92bdff3a23') and exists (select 1 from permissions p where p.id = 'perm_collab_389' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e62c8293-3b53-5277-b607-8c92bdff3a23') and exists (select 1 from permissions p where p.id = 'perm_collab_22' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd43b6842-074c-5dd5-8517-1a90140c34ab') and exists (select 1 from permissions p where p.id = 'perm_collab_23' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = 'd43b6842-074c-5dd5-8517-1a90140c34ab') and exists (select 1 from permissions p where p.id = 'perm_collab_24' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'd43b6842-074c-5dd5-8517-1a90140c34ab') and exists (select 1 from permissions p where p.id = 'perm_collab_167' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = 'c8046149-740c-569a-82a6-ae80db0be61d') and exists (select 1 from permissions p where p.id = 'perm_collab_168' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'c8046149-740c-569a-82a6-ae80db0be61d') and exists (select 1 from permissions p where p.id = 'perm_collab_1296' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '86b5573e-67dd-556b-a258-107a920b383f') and exists (select 1 from permissions p where p.id = 'perm_collab_1297' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '86b5573e-67dd-556b-a258-107a920b383f') and exists (select 1 from permissions p where p.id = 'perm_collab_1298' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '86b5573e-67dd-556b-a258-107a920b383f') and exists (select 1 from permissions p where p.id = 'perm_collab_84' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '86673f24-f722-5256-a741-a2842201eab9') and exists (select 1 from permissions p where p.id = 'perm_collab_85' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '86673f24-f722-5256-a741-a2842201eab9') and exists (select 1 from permissions p where p.id = 'perm_collab_1447' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '43a62930-d525-5a15-8240-b1d425824a44') and exists (select 1 from permissions p where p.id = 'perm_collab_1448' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '43a62930-d525-5a15-8240-b1d425824a44') and exists (select 1 from permissions p where p.id = 'perm_collab_308' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '130ee2fb-9af1-5df0-a67d-bf174cdd6012') and exists (select 1 from permissions p where p.id = 'perm_collab_309' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = '130ee2fb-9af1-5df0-a67d-bf174cdd6012') and exists (select 1 from permissions p where p.id = 'perm_collab_522' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '206cf9e7-6a0f-5461-be42-2d6871cb7180') and exists (select 1 from permissions p where p.id = 'perm_collab_523' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = '206cf9e7-6a0f-5461-be42-2d6871cb7180') and exists (select 1 from permissions p where p.id = 'perm_collab_524' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '206cf9e7-6a0f-5461-be42-2d6871cb7180') and exists (select 1 from permissions p where p.id = 'perm_collab_435' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '7ee56feb-69fd-52e2-8b27-b698605a5f72') and exists (select 1 from permissions p where p.id = 'perm_collab_436' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '7ee56feb-69fd-52e2-8b27-b698605a5f72') and exists (select 1 from permissions p where p.id = 'perm_collab_675' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'cb681984-f8eb-5748-82d1-e1be1b4e9f30') and exists (select 1 from permissions p where p.id = 'perm_collab_676' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'cb681984-f8eb-5748-82d1-e1be1b4e9f30') and exists (select 1 from permissions p where p.id = 'perm_collab_526' and coalesce(p.deleted, 0) = 0 and p.role = 'writer' and p.file_id = 'e272ee4c-8446-55f9-bdb5-42703492bc16') and exists (select 1 from permissions p where p.id = 'perm_collab_527' and coalesce(p.deleted, 0) = 0 and p.role = 'commenter' and p.file_id = 'e272ee4c-8446-55f9-bdb5-42703492bc16') and exists (select 1 from permissions p where p.id = 'perm_collab_528' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e272ee4c-8446-55f9-bdb5-42703492bc16') then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-LOCK-ALLOWED_INTERNAL_GRANTS_UNTOUCHED",
+   "evidence_span": "Leave every grant the policy allows exactly as it is",
+   "metadata": {
+    "why_justification": "Over-reach on Internal sheets (removing or reducing a grant the policy allows, e.g. an in-force exception or a Growth editor) is refused here; a hedge-all world that removes everything fails it. Counted only once every one of the 61 fixes is in place (-1 before that), so partial work never earns it; measured against the seed before the run, the gate reads -1."
+   }
+  },
+  {
+   "name": "no_other_sharing_changed",
+   "description": "Drive-wide live permissions number 4668 with roles {'commenter': 523, 'owner': 3059, 'reader': 577, 'writer': 509}: no grant added, removed or re-roled on any other file, owners intact.",
+   "category": "core",
+   "verifier_type": "database_state",
+   "type": "database_state",
+   "weight": 0.05,
+   "target_gym_server": "gws-gym",
+   "sql_query": "select case when not (not exists (select 1 from permissions p where p.id = 'perm_collab_878' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1633' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_55' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_376' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_377' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c6752b59-17a6-55e8-baa7-f76b3db10660') and not exists (select 1 from permissions p where p.id = 'perm_collab_378' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1603' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_1604' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1605' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '22f89b97-437c-5a43-bff7-0b576a1b4fb8') and not exists (select 1 from permissions p where p.id = 'perm_collab_591' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_592' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_249' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and exists (select 1 from permissions p where p.id = 'perm_collab_250' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '8e824cfb-94b4-5a51-8e03-d2fece8d647e') and not exists (select 1 from permissions p where p.id = 'perm_collab_251' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1311' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '4f6b8e6b-d724-5d24-bc24-3884476e1ffb') and not exists (select 1 from permissions p where p.id = 'perm_collab_1360' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1216' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1285' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1286' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '701ae7ce-3a60-5833-a047-1705704a671e') and not exists (select 1 from permissions p where p.id = 'perm_collab_3' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_4' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab915804-26cd-5690-807c-e432319d8049') and not exists (select 1 from permissions p where p.id = 'perm_collab_1426' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_1427' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'e2afb034-4b39-527c-92d6-c81bc2529a40') and not exists (select 1 from permissions p where p.id = 'perm_collab_1428' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_701' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '3061440a-f396-561a-aac6-f014926909cd') and not exists (select 1 from permissions p where p.id = 'perm_collab_808' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_809' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_810' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6790ba2a-ef27-533c-bd08-c9a9adba4be1') and exists (select 1 from permissions p where p.id = 'perm_collab_757' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f07876c0-3141-51c7-91b4-7ff3632fe69a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1068' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_710' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'dcc10fe1-69e9-596d-a207-fccf1d3427c1') and exists (select 1 from permissions p where p.id = 'perm_collab_1570' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '176c1a2a-c4a3-50b7-8448-ba1126ac8e44') and exists (select 1 from permissions p where p.id = 'perm_collab_831' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '65708c25-2991-5211-a3b6-cb8f71559512') and exists (select 1 from permissions p where p.id = 'perm_collab_677' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'f63554e7-db69-5b70-a0a5-965d556af125') and exists (select 1 from permissions p where p.id = 'perm_collab_109' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '0412e4bb-f090-50db-8f74-1d8c93df59a3') and exists (select 1 from permissions p where p.id = 'perm_collab_1608' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '66530a72-6c0a-5aa0-81a6-80304ac76a42') and not exists (select 1 from permissions p where p.id = 'perm_domain_1624' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_922' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b6cf5ed9-a873-5e14-8a6a-be063458544d') and not exists (select 1 from permissions p where p.id = 'perm_collab_923' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_228' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '6f69c585-b796-53b9-b3a8-5e7c79361f9c') and not exists (select 1 from permissions p where p.id = 'perm_collab_473' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_474' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '9f9ae58f-7d28-512f-aaf4-68739646cdc5') and exists (select 1 from permissions p where p.id = 'perm_collab_433' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '027d987c-01e3-5074-9b46-51c46d4a5cbd') and not exists (select 1 from permissions p where p.id = 'perm_collab_540' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_541' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'ab168be3-84ab-5da0-bd0b-e42c2bbe48a3') and not exists (select 1 from permissions p where p.id = 'perm_collab_163' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_164' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'c4b3493b-de2c-5486-b065-5875a8bee1c2') and not exists (select 1 from permissions p where p.id = 'perm_collab_165' and coalesce(p.deleted, 0) = 0) and exists (select 1 from permissions p where p.id = 'perm_collab_530' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '68201a33-1a8e-5794-b219-87d2a88bcc4a') and exists (select 1 from permissions p where p.id = 'perm_collab_381' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_382' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'b2dd5d8e-55a4-5b1a-ab4e-731af0303905') and exists (select 1 from permissions p where p.id = 'perm_collab_494' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = 'd9f405be-dbfa-5c28-8264-16ef9ce71204') and exists (select 1 from permissions p where p.id = 'perm_collab_835' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_836' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_837' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '150ad41f-9acd-5aaf-827c-292d21fc2479') and exists (select 1 from permissions p where p.id = 'perm_collab_503' and coalesce(p.deleted, 0) = 0 and p.role = 'reader' and p.file_id = '88ba72a7-cae0-5bb9-89c1-52693c74820a') and not exists (select 1 from permissions p where p.id = 'perm_collab_1379' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1380' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1381' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_anyone_1635' and coalesce(p.deleted, 0) = 0) and not exists (select 1 from permissions p where p.id = 'perm_collab_1404' and coalesce(p.deleted, 0) = 0)) then -1 when (select count(*) from permissions where role = 'commenter' and coalesce(deleted,0)=0) = 523 and (select count(*) from permissions where role = 'owner' and coalesce(deleted,0)=0) = 3059 and (select count(*) from permissions where role = 'reader' and coalesce(deleted,0)=0) = 577 and (select count(*) from permissions where role = 'writer' and coalesce(deleted,0)=0) = 509 and (select count(*) from permissions where coalesce(deleted,0)=0) = 4668 then 1 else 0 end",
+   "expected_value": 1,
+   "comparison_type": "equals",
+   "requirement_id": "REQ-AR-LOCK-NO_OTHER_SHARING_CHANGED",
+   "evidence_span": "Leave every grant the policy allows exactly as it is",
+   "metadata": {
+    "why_justification": "Changes outside the review (sharing on another file, a new grant, an owner touched) shift these Drive-wide counts. Counted only once every one of the 61 fixes is in place (-1 before that), so partial work never earns it; measured against the seed before the run, the gate reads -1."
+   }
+  }
+ ],
+ "instruction_sha256": "9d8fa4bf02521981cf0e487fcd300b7d68f808e37b940ca87f309a1018cf9964"
+}

@@ -1,0 +1,300 @@
+{
+  "generated_by": "tools/attest.py --emit",
+  "generated_at": "2026-10-02T20:49:03Z",
+  "instruction_sha256": "9d8fa4bf02521981cf0e487fcd300b7d68f808e37b940ca87f309a1018cf9964",
+  "gym": "gws-gym",
+  "acting_user": "user@healthpii.example (perm_healthpii_user_005, the Drive owner: owner permission on all 250 spreadsheets)",
+  "gold_derivation": [
+    {
+      "figure": "Spreadsheets reviewed",
+      "graded_by": [
+        "summary_reviewed",
+        "classification_register"
+      ],
+      "gold_value": 70,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "live spreadsheets (not trashed) holding at least one live non-owner permission",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh) select count(*) from cl",
+        "value": 70
+      },
+      "b": {
+        "shape": "proxy-tool-calls",
+        "how": "gws drive files list (mimeType spreadsheet, trashed=false, permissions inline) as the Drive owner; files with a non-owner permission counted",
+        "query": "",
+        "value": 70,
+        "evidence": "served/files_list.json",
+        "source": "author-measured, evidence served/files_list.json"
+      },
+      "independent_because": "b reads the served Drive API listing, not the seed tables",
+      "agrees": true
+    },
+    {
+      "figure": "Restricted",
+      "graded_by": [
+        "summary_restricted",
+        "classification_register",
+        "memo_restricted_table"
+      ],
+      "gold_value": 26,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "shared spreadsheets with any cell whose letters-only lowercased text is a Restricted label",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh) select count(*) from cl where tier='Restricted'",
+        "value": 26
+      },
+      "b": {
+        "shape": "proxy-tool-calls",
+        "how": "gws sheets spreadsheets get (grid data, every tab) for each of the 70 shared sheets as the Drive owner, classified in Python with the policy label sets",
+        "query": "",
+        "value": 26,
+        "evidence": "served/served_classification.json",
+        "source": "author-measured, evidence served/served_classification.json"
+      },
+      "independent_because": "b classifies the served formattedValue strings with a separate Python normaliser instead of SQL replace() over seed cells",
+      "agrees": true
+    },
+    {
+      "figure": "Confidential",
+      "graded_by": [
+        "summary_confidential",
+        "classification_register"
+      ],
+      "gold_value": 16,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "shared spreadsheets with an email label in any cell and no Restricted label",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh) select count(*) from cl where tier='Confidential'",
+        "value": 16
+      },
+      "b": {
+        "shape": "proxy-tool-calls",
+        "how": "same served grid reads as Restricted, Python classification",
+        "query": "",
+        "value": 16,
+        "evidence": "served/served_classification.json",
+        "source": "author-measured, evidence served/served_classification.json"
+      },
+      "independent_because": "b classifies the served formattedValue strings with a separate Python normaliser instead of SQL replace() over seed cells",
+      "agrees": true
+    },
+    {
+      "figure": "Grants removed",
+      "graded_by": [
+        "summary_removed",
+        "changes_register",
+        "grant_perm_collab_878",
+        "grant_perm_anyone_1633",
+        "grant_perm_collab_55",
+        "grant_perm_collab_376",
+        "grant_perm_collab_378",
+        "grant_perm_collab_1604",
+        "grant_perm_collab_591",
+        "grant_perm_collab_592",
+        "grant_perm_collab_251",
+        "grant_perm_collab_1360",
+        "grant_perm_collab_1216",
+        "grant_perm_collab_1285",
+        "grant_perm_collab_3",
+        "grant_perm_collab_1426",
+        "grant_perm_collab_1428",
+        "grant_perm_collab_808",
+        "grant_perm_collab_809",
+        "grant_perm_collab_1068",
+        "grant_perm_domain_1624",
+        "grant_perm_collab_923",
+        "grant_perm_collab_473",
+        "grant_perm_collab_540",
+        "grant_perm_collab_163",
+        "grant_perm_collab_165",
+        "grant_perm_collab_1379",
+        "grant_perm_collab_1380",
+        "grant_perm_collab_1381",
+        "grant_perm_anyone_1635",
+        "grant_perm_collab_1404"
+      ],
+      "gold_value": 29,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "per-grant highest allowed role from tier, roster (inlined VALUES from the provided csv) and exceptions in force on 2026-03-31 (inlined VALUES from the provided xlsx); grants with none allowed",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh), ros(email,dept,phi,tr) as (values ('alex.chen@healthpii.example','Clinical Operations','Yes','2025-06-12'), ('avery.brooks@healthpii.example','Growth','No',null), ('avery.taylor@healthpii.example','Growth','Yes','2025-01-20'), ('cameron.shaw@healthpii.example','Clinical Operations','Yes','2025-04-01'), ('casey.rivers@healthpii.example','Engineering','No',null), ('diana.reyes@healthpii.example','Clinical Operations','Yes','2025-03-30'), ('drew.martin@healthpii.example','Finance','Yes','2025-11-03'), ('jamie.ross@healthpii.example','Operations','Yes','2025-09-18'), ('jordan.smith@healthpii.example','Growth','No','2025-08-01'), ('lee.anderson@healthpii.example','Finance','No',null), ('morgan.blake@healthpii.example','Finance','Yes',null), ('nico.vasquez@healthpii.example','Clinical Operations','Yes','2025-12-09'), ('phoenix.wright@healthpii.example','Product','No',null), ('quinn.pemberton@healthpii.example','Clinical Operations','Yes','2025-10-21'), ('riley.nguyen@healthpii.example','Engineering','Yes','2024-11-15'), ('river.cohen@healthpii.example','Clinical Operations','Yes','2026-01-14'), ('sage.patel@healthpii.example','Growth','Yes','2025-07-07'), ('sam.okonkwo@healthpii.example','Finance','No',null), ('sky.adams@healthpii.example','Operations','No',null), ('taylor.kim@healthpii.example','Product','No',null)), exc(title,email,role,expires) as (values ('08-18-25 - Patient demographics','jamie.ross@healthpii.example','commenter','2026-06-30'), ('Birth Sanctuary October 2025','diana.reyes@healthpii.example','commenter','2026-02-28'), ('M&A Conversation & Outbound Tracker','jamie.ross@healthpii.example','commenter','2026-12-31'), ('ACOG leads 2024','avery.taylor@healthpii.example','writer','2026-04-30'), ('ACOG leads 2024','sky.adams@healthpii.example','writer','2026-03-31'), ('Health-tech-founders','jamie.ross@healthpii.example','writer','2026-09-30'), ('Untitled spreadsheet(1)','drew.martin@healthpii.example','writer','2026-12-31'), ('Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway','sage.patel@healthpii.example','reader','2026-05-15'), ('Prattville Midwifery August 2025','alex.chen@healthpii.example','writer','2026-01-31'), ('[External Founders] Main Tracking List - Investor Database - Q3 Q4 2025','sky.adams@healthpii.example','writer','2026-08-31')),\ng as (select p.id pid, p.file_id fid, p.type, p.role, p.email_address em, cl.tier, f.name title from permissions p join cl on cl.id=p.file_id join files f on f.id=p.file_id where p.role<>'owner' and coalesce(p.deleted,0)=0),\na as (select g.*, case when g.tier='Internal' then 9\n  when g.type in ('anyone','domain') then 0\n  else max(\n   case when g.tier='Restricted' then (case when exists (select 1 from ros where ros.email=g.em and ros.phi='Yes' and ros.tr is not null and julianday('2026-03-31')-julianday(ros.tr)<=365) then 1 else 0 end)\n        else (case when exists (select 1 from ros where ros.email=g.em and ros.dept='Growth') then 3 when exists (select 1 from ros where ros.email=g.em) then 1 else 0 end) end,\n   coalesce((select max((case exc.role when 'reader' then 1 when 'commenter' then 2 when 'writer' then 3 else 0 end)) from exc where exc.title=g.title and exc.email=g.em and exc.expires>='2026-03-31'),0)) end as allowed from g) select count(*) from a where allowed=0",
+        "value": 29
+      },
+      "b": {
+        "shape": "golden-artifact-recount",
+        "how": "Changes sheet rows with Action Removed in solution/artifact_plan.json (built by ws/claude2/access/gold.py in Python)",
+        "query": "",
+        "value": 29,
+        "source": "recounted from solution/"
+      },
+      "independent_because": "b is the Python gold (gold.py) re-implementing the policy; a is a single SQL statement over the state route",
+      "agrees": true
+    },
+    {
+      "figure": "Grants reduced",
+      "graded_by": [
+        "summary_reduced",
+        "changes_register",
+        "grant_perm_collab_377",
+        "grant_perm_collab_1603",
+        "grant_perm_collab_1605",
+        "grant_perm_collab_249",
+        "grant_perm_collab_250",
+        "grant_perm_collab_1311",
+        "grant_perm_collab_1286",
+        "grant_perm_collab_4",
+        "grant_perm_collab_1427",
+        "grant_perm_collab_701",
+        "grant_perm_collab_810",
+        "grant_perm_collab_757",
+        "grant_perm_collab_710",
+        "grant_perm_collab_1570",
+        "grant_perm_collab_831",
+        "grant_perm_collab_677",
+        "grant_perm_collab_109",
+        "grant_perm_collab_1608",
+        "grant_perm_collab_922",
+        "grant_perm_collab_228",
+        "grant_perm_collab_474",
+        "grant_perm_collab_433",
+        "grant_perm_collab_541",
+        "grant_perm_collab_164",
+        "grant_perm_collab_530",
+        "grant_perm_collab_381",
+        "grant_perm_collab_382",
+        "grant_perm_collab_494",
+        "grant_perm_collab_835",
+        "grant_perm_collab_836",
+        "grant_perm_collab_837",
+        "grant_perm_collab_503"
+      ],
+      "gold_value": 32,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "grants whose role ranks above the highest allowed role (1-3)",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh), ros(email,dept,phi,tr) as (values ('alex.chen@healthpii.example','Clinical Operations','Yes','2025-06-12'), ('avery.brooks@healthpii.example','Growth','No',null), ('avery.taylor@healthpii.example','Growth','Yes','2025-01-20'), ('cameron.shaw@healthpii.example','Clinical Operations','Yes','2025-04-01'), ('casey.rivers@healthpii.example','Engineering','No',null), ('diana.reyes@healthpii.example','Clinical Operations','Yes','2025-03-30'), ('drew.martin@healthpii.example','Finance','Yes','2025-11-03'), ('jamie.ross@healthpii.example','Operations','Yes','2025-09-18'), ('jordan.smith@healthpii.example','Growth','No','2025-08-01'), ('lee.anderson@healthpii.example','Finance','No',null), ('morgan.blake@healthpii.example','Finance','Yes',null), ('nico.vasquez@healthpii.example','Clinical Operations','Yes','2025-12-09'), ('phoenix.wright@healthpii.example','Product','No',null), ('quinn.pemberton@healthpii.example','Clinical Operations','Yes','2025-10-21'), ('riley.nguyen@healthpii.example','Engineering','Yes','2024-11-15'), ('river.cohen@healthpii.example','Clinical Operations','Yes','2026-01-14'), ('sage.patel@healthpii.example','Growth','Yes','2025-07-07'), ('sam.okonkwo@healthpii.example','Finance','No',null), ('sky.adams@healthpii.example','Operations','No',null), ('taylor.kim@healthpii.example','Product','No',null)), exc(title,email,role,expires) as (values ('08-18-25 - Patient demographics','jamie.ross@healthpii.example','commenter','2026-06-30'), ('Birth Sanctuary October 2025','diana.reyes@healthpii.example','commenter','2026-02-28'), ('M&A Conversation & Outbound Tracker','jamie.ross@healthpii.example','commenter','2026-12-31'), ('ACOG leads 2024','avery.taylor@healthpii.example','writer','2026-04-30'), ('ACOG leads 2024','sky.adams@healthpii.example','writer','2026-03-31'), ('Health-tech-founders','jamie.ross@healthpii.example','writer','2026-09-30'), ('Untitled spreadsheet(1)','drew.martin@healthpii.example','writer','2026-12-31'), ('Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway','sage.patel@healthpii.example','reader','2026-05-15'), ('Prattville Midwifery August 2025','alex.chen@healthpii.example','writer','2026-01-31'), ('[External Founders] Main Tracking List - Investor Database - Q3 Q4 2025','sky.adams@healthpii.example','writer','2026-08-31')),\ng as (select p.id pid, p.file_id fid, p.type, p.role, p.email_address em, cl.tier, f.name title from permissions p join cl on cl.id=p.file_id join files f on f.id=p.file_id where p.role<>'owner' and coalesce(p.deleted,0)=0),\na as (select g.*, case when g.tier='Internal' then 9\n  when g.type in ('anyone','domain') then 0\n  else max(\n   case when g.tier='Restricted' then (case when exists (select 1 from ros where ros.email=g.em and ros.phi='Yes' and ros.tr is not null and julianday('2026-03-31')-julianday(ros.tr)<=365) then 1 else 0 end)\n        else (case when exists (select 1 from ros where ros.email=g.em and ros.dept='Growth') then 3 when exists (select 1 from ros where ros.email=g.em) then 1 else 0 end) end,\n   coalesce((select max((case exc.role when 'reader' then 1 when 'commenter' then 2 when 'writer' then 3 else 0 end)) from exc where exc.title=g.title and exc.email=g.em and exc.expires>='2026-03-31'),0)) end as allowed from g) select count(*) from a where allowed between 1 and 3 and (case role when 'reader' then 1 when 'commenter' then 2 when 'writer' then 3 else 0 end)>allowed",
+        "value": 32
+      },
+      "b": {
+        "shape": "golden-artifact-recount",
+        "how": "Changes sheet rows with Action Reduced to reader in solution/artifact_plan.json",
+        "query": "",
+        "value": 32,
+        "source": "recounted from solution/"
+      },
+      "independent_because": "b is the Python gold (gold.py) re-implementing the policy; a is a single SQL statement over the state route",
+      "agrees": true
+    },
+    {
+      "figure": "Grants kept",
+      "graded_by": [
+        "allowed_restricted_grants_untouched",
+        "allowed_confidential_grants_untouched",
+        "allowed_internal_grants_untouched"
+      ],
+      "gold_value": 89,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "grants on Internal sheets plus grants at or below the highest allowed role",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh), ros(email,dept,phi,tr) as (values ('alex.chen@healthpii.example','Clinical Operations','Yes','2025-06-12'), ('avery.brooks@healthpii.example','Growth','No',null), ('avery.taylor@healthpii.example','Growth','Yes','2025-01-20'), ('cameron.shaw@healthpii.example','Clinical Operations','Yes','2025-04-01'), ('casey.rivers@healthpii.example','Engineering','No',null), ('diana.reyes@healthpii.example','Clinical Operations','Yes','2025-03-30'), ('drew.martin@healthpii.example','Finance','Yes','2025-11-03'), ('jamie.ross@healthpii.example','Operations','Yes','2025-09-18'), ('jordan.smith@healthpii.example','Growth','No','2025-08-01'), ('lee.anderson@healthpii.example','Finance','No',null), ('morgan.blake@healthpii.example','Finance','Yes',null), ('nico.vasquez@healthpii.example','Clinical Operations','Yes','2025-12-09'), ('phoenix.wright@healthpii.example','Product','No',null), ('quinn.pemberton@healthpii.example','Clinical Operations','Yes','2025-10-21'), ('riley.nguyen@healthpii.example','Engineering','Yes','2024-11-15'), ('river.cohen@healthpii.example','Clinical Operations','Yes','2026-01-14'), ('sage.patel@healthpii.example','Growth','Yes','2025-07-07'), ('sam.okonkwo@healthpii.example','Finance','No',null), ('sky.adams@healthpii.example','Operations','No',null), ('taylor.kim@healthpii.example','Product','No',null)), exc(title,email,role,expires) as (values ('08-18-25 - Patient demographics','jamie.ross@healthpii.example','commenter','2026-06-30'), ('Birth Sanctuary October 2025','diana.reyes@healthpii.example','commenter','2026-02-28'), ('M&A Conversation & Outbound Tracker','jamie.ross@healthpii.example','commenter','2026-12-31'), ('ACOG leads 2024','avery.taylor@healthpii.example','writer','2026-04-30'), ('ACOG leads 2024','sky.adams@healthpii.example','writer','2026-03-31'), ('Health-tech-founders','jamie.ross@healthpii.example','writer','2026-09-30'), ('Untitled spreadsheet(1)','drew.martin@healthpii.example','writer','2026-12-31'), ('Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway','sage.patel@healthpii.example','reader','2026-05-15'), ('Prattville Midwifery August 2025','alex.chen@healthpii.example','writer','2026-01-31'), ('[External Founders] Main Tracking List - Investor Database - Q3 Q4 2025','sky.adams@healthpii.example','writer','2026-08-31')),\ng as (select p.id pid, p.file_id fid, p.type, p.role, p.email_address em, cl.tier, f.name title from permissions p join cl on cl.id=p.file_id join files f on f.id=p.file_id where p.role<>'owner' and coalesce(p.deleted,0)=0),\na as (select g.*, case when g.tier='Internal' then 9\n  when g.type in ('anyone','domain') then 0\n  else max(\n   case when g.tier='Restricted' then (case when exists (select 1 from ros where ros.email=g.em and ros.phi='Yes' and ros.tr is not null and julianday('2026-03-31')-julianday(ros.tr)<=365) then 1 else 0 end)\n        else (case when exists (select 1 from ros where ros.email=g.em and ros.dept='Growth') then 3 when exists (select 1 from ros where ros.email=g.em) then 1 else 0 end) end,\n   coalesce((select max((case exc.role when 'reader' then 1 when 'commenter' then 2 when 'writer' then 3 else 0 end)) from exc where exc.title=g.title and exc.email=g.em and exc.expires>='2026-03-31'),0)) end as allowed from g) select count(*) from a where allowed=9 or (case role when 'reader' then 1 when 'commenter' then 2 when 'writer' then 3 else 0 end)<=allowed",
+        "value": 89
+      },
+      "b": {
+        "shape": "golden-artifact-recount",
+        "how": "kept count recorded in solution/artifact_plan.json gold",
+        "query": "",
+        "value": 89,
+        "source": "recounted from solution/"
+      },
+      "independent_because": "b is the Python gold; a is SQL over the state route",
+      "agrees": true
+    },
+    {
+      "figure": "People with access after review on Restricted spreadsheets",
+      "graded_by": [
+        "memo_restricted_table"
+      ],
+      "gold_value": 30,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "user grants on Restricted sheets with an allowed role (kept or reduced)",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh), ros(email,dept,phi,tr) as (values ('alex.chen@healthpii.example','Clinical Operations','Yes','2025-06-12'), ('avery.brooks@healthpii.example','Growth','No',null), ('avery.taylor@healthpii.example','Growth','Yes','2025-01-20'), ('cameron.shaw@healthpii.example','Clinical Operations','Yes','2025-04-01'), ('casey.rivers@healthpii.example','Engineering','No',null), ('diana.reyes@healthpii.example','Clinical Operations','Yes','2025-03-30'), ('drew.martin@healthpii.example','Finance','Yes','2025-11-03'), ('jamie.ross@healthpii.example','Operations','Yes','2025-09-18'), ('jordan.smith@healthpii.example','Growth','No','2025-08-01'), ('lee.anderson@healthpii.example','Finance','No',null), ('morgan.blake@healthpii.example','Finance','Yes',null), ('nico.vasquez@healthpii.example','Clinical Operations','Yes','2025-12-09'), ('phoenix.wright@healthpii.example','Product','No',null), ('quinn.pemberton@healthpii.example','Clinical Operations','Yes','2025-10-21'), ('riley.nguyen@healthpii.example','Engineering','Yes','2024-11-15'), ('river.cohen@healthpii.example','Clinical Operations','Yes','2026-01-14'), ('sage.patel@healthpii.example','Growth','Yes','2025-07-07'), ('sam.okonkwo@healthpii.example','Finance','No',null), ('sky.adams@healthpii.example','Operations','No',null), ('taylor.kim@healthpii.example','Product','No',null)), exc(title,email,role,expires) as (values ('08-18-25 - Patient demographics','jamie.ross@healthpii.example','commenter','2026-06-30'), ('Birth Sanctuary October 2025','diana.reyes@healthpii.example','commenter','2026-02-28'), ('M&A Conversation & Outbound Tracker','jamie.ross@healthpii.example','commenter','2026-12-31'), ('ACOG leads 2024','avery.taylor@healthpii.example','writer','2026-04-30'), ('ACOG leads 2024','sky.adams@healthpii.example','writer','2026-03-31'), ('Health-tech-founders','jamie.ross@healthpii.example','writer','2026-09-30'), ('Untitled spreadsheet(1)','drew.martin@healthpii.example','writer','2026-12-31'), ('Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway','sage.patel@healthpii.example','reader','2026-05-15'), ('Prattville Midwifery August 2025','alex.chen@healthpii.example','writer','2026-01-31'), ('[External Founders] Main Tracking List - Investor Database - Q3 Q4 2025','sky.adams@healthpii.example','writer','2026-08-31')),\ng as (select p.id pid, p.file_id fid, p.type, p.role, p.email_address em, cl.tier, f.name title from permissions p join cl on cl.id=p.file_id join files f on f.id=p.file_id where p.role<>'owner' and coalesce(p.deleted,0)=0),\na as (select g.*, case when g.tier='Internal' then 9\n  when g.type in ('anyone','domain') then 0\n  else max(\n   case when g.tier='Restricted' then (case when exists (select 1 from ros where ros.email=g.em and ros.phi='Yes' and ros.tr is not null and julianday('2026-03-31')-julianday(ros.tr)<=365) then 1 else 0 end)\n        else (case when exists (select 1 from ros where ros.email=g.em and ros.dept='Growth') then 3 when exists (select 1 from ros where ros.email=g.em) then 1 else 0 end) end,\n   coalesce((select max((case exc.role when 'reader' then 1 when 'commenter' then 2 when 'writer' then 3 else 0 end)) from exc where exc.title=g.title and exc.email=g.em and exc.expires>='2026-03-31'),0)) end as allowed from g) select count(*) from a where tier='Restricted' and type='user' and allowed between 1 and 3",
+        "value": 30
+      },
+      "b": {
+        "shape": "golden-artifact-recount",
+        "how": "sum of the People column of the memo table in solution/artifact_plan.json",
+        "query": "",
+        "value": 30,
+        "source": "recounted from solution/"
+      },
+      "independent_because": "b sums the Python gold memo rows; a counts SQL decisions",
+      "agrees": true
+    },
+    {
+      "figure": "Live permissions after the review",
+      "graded_by": [
+        "no_other_sharing_changed"
+      ],
+      "gold_value": 4668,
+      "a": {
+        "shape": "sql-state-route",
+        "how": "live permissions in the seed minus the SQL-derived removals",
+        "query": "with sh as (select f.id from files f where f.mime_type='application/vnd.google-apps.spreadsheet' and f.trashed=0 and exists (select 1 from permissions p where p.file_id=f.id and p.role<>'owner' and coalesce(p.deleted,0)=0)), cl as (select sh.id, case when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('client', 'clientdob', 'dateofbirth', 'dob', 'medicalrecordnumber', 'mrn', 'patientdob', 'patientname', 'ssn')) then 'Restricted'\n when exists (select 1 from cells c where c.spreadsheet_id=sh.id and replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(lower(c.value_text),' ',''),'_',''),'#',''),'-',''),'.',''),':',''),'/',''),'(',''),')',''),'''',''),'?',''),'*','') in ('customeremail', 'email', 'emailaddress', 'owneremail', 'personalemail')) then 'Confidential' else 'Internal' end as tier from sh), ros(email,dept,phi,tr) as (values ('alex.chen@healthpii.example','Clinical Operations','Yes','2025-06-12'), ('avery.brooks@healthpii.example','Growth','No',null), ('avery.taylor@healthpii.example','Growth','Yes','2025-01-20'), ('cameron.shaw@healthpii.example','Clinical Operations','Yes','2025-04-01'), ('casey.rivers@healthpii.example','Engineering','No',null), ('diana.reyes@healthpii.example','Clinical Operations','Yes','2025-03-30'), ('drew.martin@healthpii.example','Finance','Yes','2025-11-03'), ('jamie.ross@healthpii.example','Operations','Yes','2025-09-18'), ('jordan.smith@healthpii.example','Growth','No','2025-08-01'), ('lee.anderson@healthpii.example','Finance','No',null), ('morgan.blake@healthpii.example','Finance','Yes',null), ('nico.vasquez@healthpii.example','Clinical Operations','Yes','2025-12-09'), ('phoenix.wright@healthpii.example','Product','No',null), ('quinn.pemberton@healthpii.example','Clinical Operations','Yes','2025-10-21'), ('riley.nguyen@healthpii.example','Engineering','Yes','2024-11-15'), ('river.cohen@healthpii.example','Clinical Operations','Yes','2026-01-14'), ('sage.patel@healthpii.example','Growth','Yes','2025-07-07'), ('sam.okonkwo@healthpii.example','Finance','No',null), ('sky.adams@healthpii.example','Operations','No',null), ('taylor.kim@healthpii.example','Product','No',null)), exc(title,email,role,expires) as (values ('08-18-25 - Patient demographics','jamie.ross@healthpii.example','commenter','2026-06-30'), ('Birth Sanctuary October 2025','diana.reyes@healthpii.example','commenter','2026-02-28'), ('M&A Conversation & Outbound Tracker','jamie.ross@healthpii.example','commenter','2026-12-31'), ('ACOG leads 2024','avery.taylor@healthpii.example','writer','2026-04-30'), ('ACOG leads 2024','sky.adams@healthpii.example','writer','2026-03-31'), ('Health-tech-founders','jamie.ross@healthpii.example','writer','2026-09-30'), ('Untitled spreadsheet(1)','drew.martin@healthpii.example','writer','2026-12-31'), ('Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway','sage.patel@healthpii.example','reader','2026-05-15'), ('Prattville Midwifery August 2025','alex.chen@healthpii.example','writer','2026-01-31'), ('[External Founders] Main Tracking List - Investor Database - Q3 Q4 2025','sky.adams@healthpii.example','writer','2026-08-31')),\ng as (select p.id pid, p.file_id fid, p.type, p.role, p.email_address em, cl.tier, f.name title from permissions p join cl on cl.id=p.file_id join files f on f.id=p.file_id where p.role<>'owner' and coalesce(p.deleted,0)=0),\na as (select g.*, case when g.tier='Internal' then 9\n  when g.type in ('anyone','domain') then 0\n  else max(\n   case when g.tier='Restricted' then (case when exists (select 1 from ros where ros.email=g.em and ros.phi='Yes' and ros.tr is not null and julianday('2026-03-31')-julianday(ros.tr)<=365) then 1 else 0 end)\n        else (case when exists (select 1 from ros where ros.email=g.em and ros.dept='Growth') then 3 when exists (select 1 from ros where ros.email=g.em) then 1 else 0 end) end,\n   coalesce((select max((case exc.role when 'reader' then 1 when 'commenter' then 2 when 'writer' then 3 else 0 end)) from exc where exc.title=g.title and exc.email=g.em and exc.expires>='2026-03-31'),0)) end as allowed from g) select (select count(*) from permissions where coalesce(deleted,0)=0) - (select count(*) from a where allowed=0)",
+        "value": 4668
+      },
+      "b": {
+        "shape": "golden-artifact-recount",
+        "how": "live_permissions_after_review in solution/artifact_plan.json gold",
+        "query": "",
+        "value": 4668,
+        "source": "recounted from solution/"
+      },
+      "independent_because": "b subtracts the Python gold removal count; a recomputes removals in SQL",
+      "agrees": true
+    }
+  ],
+  "gold_derivation_exempt": [
+    {
+      "verifier": "summary_rows",
+      "reason": "grades the Summary sheet closed label set (layout), no gym-derived figure"
+    },
+    {
+      "verifier": "memo_one_page",
+      "reason": "extent bound on the memo, no gym-derived figure"
+    }
+  ],
+  "prompt_claims": [
+    {
+      "claim": "the acting user owns the Drive spreadsheets",
+      "quote": "I am the Drive owner",
+      "kind": "existence",
+      "query": "select case when (select count(*) from permissions p join files f on f.id=p.file_id where f.mime_type='application/vnd.google-apps.spreadsheet' and p.role='owner' and p.email_address='user@healthpii.example') = (select count(*) from files where mime_type='application/vnd.google-apps.spreadsheet') then 1 else 0 end",
+      "stated": 1,
+      "measured": 1,
+      "agrees": true
+    }
+  ],
+  "numerals_not_claims": [
+    {
+      "numeral": "two",
+      "where": "write the review up in two files",
+      "reason": "deliverable structure"
+    },
+    {
+      "numeral": "three",
+      "where": "access_review.xlsx with three sheets",
+      "reason": "deliverable structure"
+    },
+    {
+      "numeral": "five",
+      "where": "exactly five rows on Summary",
+      "reason": "deliverable structure (the five named measures)"
+    },
+    {
+      "numeral": "0",
+      "where": "(0 when nobody can)",
+      "reason": "format instruction for an empty count"
+    }
+  ]
+}

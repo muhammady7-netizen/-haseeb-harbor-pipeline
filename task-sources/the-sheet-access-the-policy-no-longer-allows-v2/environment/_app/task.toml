@@ -1,0 +1,89 @@
+schema_version = "1.1"
+
+[task]
+name = "harbor/the-sheet-access-the-policy-no-longer-allows"
+description = "Drive sharing that the data-classification policy no longer allows"
+keywords = [ "access", "classification", "connector", "docx", "gws", "online", "review", "write-back", "xlsx",]
+[[task.authors]]
+name = "OBI RL Gym"
+email = "obi-rl-gym@turing.com"
+
+[metadata]
+scenario_name = "Quarterly Drive access review under the data-classification policy"
+scenario_description = "=== INTENT ===\nQuarterly Drive access review under the company's data-classification policy (environment/provided/access_classification_policy.docx): every live spreadsheet shared beyond the owner is classified by its cell labels (Restricted / Confidential / Internal), each grant is checked against the tier's cap, the collaborator roster (provided csv: department, PHI approval, HIPAA training date; 365-day window to the 31 March 2026 review date) and the approved-exceptions register (environment/provided/access_exceptions.xlsx: expiry dates, exact titles); grants above the cap are reduced or removed in Drive and the review is written up as an xlsx register and a docx memo.\n\n=== CONNECTOR ===\ngws-gym on container port 8021, header x-gws-auth-token, acting as the Drive owner. CLI bridge: one `gws` tool. Reads: drive files list (permissions inline), sheets spreadsheets get with grid data per shared spreadsheet (70). Writes: drive permissions update / delete, one per non-compliant grant (61).\n\n=== HOPS ===\nsteps=132 chain_depth=3. list -> read each shared spreadsheet -> fix each grant.\n\n=== GOLD ===\n(grader metadata; SQL on the v7 seed, ws/claude2/access/gold.py)\n70 shared spreadsheets: Restricted 26, Confidential 16, Internal 28. 150 non-owner grants: removed 29, reduced 32, kept 89. Levers: header below row 1 (Patient demographics, Port Setup, ICP Outreach), label on a later tab (Swebench Owner email, NPWH), training 364 vs 366 days, approved-but-untrained and trained-but-unapproved people, an exception expiring on the review date (in force), two expired exceptions, an exception naming the unshared Q3 Q4 copy, link/domain grants.\nGraded scalar expectations (state checks read 1 when the grant/lock holds; memo paragraph cap): {memo_one_page: 40, grant_perm_collab_878: 1, grant_perm_anyone_1633: 1, grant_perm_collab_55: 1, grant_perm_collab_376: 1, grant_perm_collab_377: 1, grant_perm_collab_378: 1, grant_perm_collab_1603: 1, grant_perm_collab_1604: 1, grant_perm_collab_1605: 1, grant_perm_collab_591: 1, grant_perm_collab_592: 1, grant_perm_collab_249: 1, grant_perm_collab_250: 1, grant_perm_collab_251: 1, grant_perm_collab_1311: 1, grant_perm_collab_1360: 1, grant_perm_collab_1216: 1, grant_perm_collab_1285: 1, grant_perm_collab_1286: 1, grant_perm_collab_3: 1, grant_perm_collab_4: 1, grant_perm_collab_1426: 1, grant_perm_collab_1427: 1, grant_perm_collab_1428: 1, grant_perm_collab_701: 1, grant_perm_collab_808: 1, grant_perm_collab_809: 1, grant_perm_collab_810: 1, grant_perm_collab_757: 1, grant_perm_collab_1068: 1, grant_perm_collab_710: 1, grant_perm_collab_1570: 1, grant_perm_collab_831: 1, grant_perm_collab_677: 1, grant_perm_collab_109: 1, grant_perm_collab_1608: 1, grant_perm_domain_1624: 1, grant_perm_collab_922: 1, grant_perm_collab_923: 1, grant_perm_collab_228: 1, grant_perm_collab_473: 1, grant_perm_collab_474: 1, grant_perm_collab_433: 1, grant_perm_collab_540: 1, grant_perm_collab_541: 1, grant_perm_collab_163: 1, grant_perm_collab_164: 1, grant_perm_collab_165: 1, grant_perm_collab_530: 1, grant_perm_collab_381: 1, grant_perm_collab_382: 1, grant_perm_collab_494: 1, grant_perm_collab_835: 1, grant_perm_collab_836: 1, grant_perm_collab_837: 1, grant_perm_collab_503: 1, grant_perm_collab_1379: 1, grant_perm_collab_1380: 1, grant_perm_collab_1381: 1, grant_perm_anyone_1635: 1, grant_perm_collab_1404: 1, allowed_restricted_grants_untouched: 1, allowed_confidential_grants_untouched: 1, allowed_internal_grants_untouched: 1, no_other_sharing_changed: 1}.\n\nDeliverables: /workspace/access_review.xlsx (Classification / Changes / Summary; xlsx.read_rows + table_equals) and /workspace/restricted_access_memo.docx (docx.read_table by header + table_equals; inspect_document page cap).\n\n=== SEED ===\nseed f0e1a291-5b71-409d-8a85-aa2cef6e7197 (gws_cli drive-file-organization: 'flag files that need attention' across the user's own Drive), nearest seed by connector + request category, assigned at the 2026-10-02 audit; designed from the Oct 3 claude2 Legal & Compliance lane survey #1 (document in, document out).\n\n=== HARDENING ===\nLEVER: A (unit of audit: the spreadsheet file is tiered by the cells of every one of its tabs)\nENTITY: spreadsheet file (Drive file id); rows assessed = its tabs and their cells\nSENTENCE: 'Every tab counts, and the spreadsheet takes the highest tier that any of its tabs qualifies for.'\nLIVES IN: /workspace/provided/access_classification_policy.docx section 2 (the policy instruction.md names by path and applies), with the preceding sentence 'A tab qualifies for a tier when any cell in it, in any row and any column, reads as one of that tier's labels.'\nCOUNTS MOVED: summary_restricted 26 [25 under the default], summary_confidential 16 [9], summary_removed 29 [28], summary_reduced 32 [26]; grant_perm_collab_878 1 (0), grant_perm_collab_701 1 (0), grant_perm_collab_710 1 (0), grant_perm_collab_831 1 (0), grant_perm_collab_109 1 (0), grant_perm_collab_433 1 (0), grant_perm_collab_494 1 (0)\nDEFAULT MISREADING: tier read from the first tab's header row only -> Restricted 25, Confidential 9, Grants removed 28, Grants reduced 26, and 7 over-policy grants left in place; 8 spreadsheets change tier (the Patient demographics sheet Restricted->Internal; ICP Outreach, the two Leads exports, NPWH Lead Generation, Port Setup, the Swebench tracker and one Untitled spreadsheet Confidential->Internal); fails classification_register, changes_register, summary_restricted, summary_confidential, summary_removed, summary_reduced, memo_restricted_table, grant_perm_collab_878, grant_perm_collab_701, grant_perm_collab_710, grant_perm_collab_831, grant_perm_collab_109, grant_perm_collab_433, grant_perm_collab_494 and the allowed_*_grants_untouched locks' recall gate.\nPER-ROW COVERAGE: the Classification sheet still lists all 70 shared spreadsheets and every grant on them is assessed; only which cells decide a spreadsheet's tier changes.\nBLIND READER SPLIT: 0 of 4 took the default reading (all four deferred the classification rule to the policy they did not see), readers-20261002-225723\nDECLARED FROM: the task author's own Levers line in NOTES.md ('label below row 1', 'label on a later tab'); no prompt, verifier or gold change. Default-misreading counts measured on the seed (ws/claude2/tmp/sheet_default.py)."
+
+source_task_id = "f0e1a291-5b71-409d-8a85-aa2cef6e7197"
+domain = "Legal & Compliance"
+subdomain = "data classification and access review"
+expert_time_estimate_hours = 1.7
+tags = [ "access", "classification", "connector", "docx", "gws", "online", "review", "write-back", "xlsx",]
+category = "knowledge_management"
+task_type = "Connector data audit with document and spreadsheet and tracked write-back"
+sector = "health_care_social_assistance"
+occupation = "Compliance Analyst"
+state_snapshot_enabled = false
+# metadata.agent left unset: setting it to "oracle" lets test_outputs.py score
+# a crashed agent against golden_trajectory.json.
+
+[[metadata.mcp_servers_extended]]
+name = "gws-gym"
+binary = "gws"
+image = "kuzphi/connectors-harness-aster@sha256:eac5acca5dbeddca340babc31ba4b4047bc0e5a880f66fef97181609da4a826a"
+host_port = 8021
+container_port = 8021
+remote_url_env = "GWS_GYM_MCP_REMOTE_URL"
+auth_header_name = "x-gws-auth-token"
+access_token = "tokHealthpiiUserSeedV5Auth"
+db_id_header_name = "x-database-id"
+reset_on_run = true
+
+[verifier]
+timeout_sec = 1500.0
+
+[agent]
+timeout_sec = 4800.0
+# Non-root agent user; /app is root-only so the agent can't read
+# task.toml/solution/tests off disk.
+user = "rlgymagent"
+
+[environment]
+build_timeout_sec = 1200.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 65536
+gpus = 0
+allow_internet = true
+
+[[environment.mcp_servers]]
+name = "gws-gym"
+transport = "streamable-http"
+url = "http://localhost:7000/mcp/gws-gym"
+args = []
+
+[metadata.verifier_judge]
+# JUDGE_MODEL can override the default without editing the generated package.
+# Do not hardcode a model id here: different deployments resolve different ids.
+model = "${JUDGE_MODEL:-openai/zai-org/GLM-5.2}"
+api_key_env = "OPENAI_API_KEY"
+temperature = 0.0
+max_tokens = 65536
+
+[verifier.env]
+OPENAI_API_KEY = "${OPENAI_API_KEY:-}"
+OPENAI_BASE_URL = "${OPENAI_BASE_URL:-}"
+JUDGE_MODEL = "${JUDGE_MODEL:-openai/zai-org/GLM-5.2}"
+
+[environment.healthcheck]
+command = "curl -fsS http://localhost:7000/health"
+interval_sec = 15.0
+timeout_sec = 5.0
+retries = 160
+start_period_sec = 30.0
+start_interval_sec = 15.0
+
+[environment.env]
+HARBOR_MCP_MODE = "${HARBOR_MCP_MODE:-docker}"
+OPENAI_API_KEY = "${OPENAI_API_KEY:-}"
+GEMINI_API_KEY = "${GEMINI_API_KEY:-}"
+GWS_GYM_MCP_REMOTE_URL = "${GWS_GYM_MCP_REMOTE_URL:-}"
+GWS_GYM_MCP_REMOTE_URL_TOKEN = "${GWS_GYM_MCP_REMOTE_URL_TOKEN:-}"

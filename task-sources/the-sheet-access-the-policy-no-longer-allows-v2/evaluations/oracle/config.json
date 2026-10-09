@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/home/podlead2/aster-oct3/bundles/claude2/the-sheet-access-the-policy-no-longer-allows-v2"
+    },
+    "trial_name": "the-sheet-access-the-policy-no-l__bSsXhZF",
+    "trials_dir": "/home/podlead2/aster-oct3/bundles/_evidence/the-sheet-access-the-policy-no-longer-allows-v2/oracle-local/oracle-audit-v2-r1",
+    "environment": {
+        "type": "docker",
+        "override_cpus": 8
+    },
+    "job_id": "931b5be1-a6c3-4acb-8e25-ba00bc0c63bd"
+}

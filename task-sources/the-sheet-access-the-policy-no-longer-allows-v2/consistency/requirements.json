@@ -1,0 +1,756 @@
+{
+  "task": "the-sheet-access-the-policy-no-longer-allows",
+  "note": "One row per requirement_id in tests/manifest.json. prompt_span is a verbatim span of instruction.md (whitespace folded); graded_by names every verifier_config carrying that requirement_id. Expected values are the gold the manifest pins (SQL on the seed, ws/claude2/access/gold.py); consistency/attestation.json records how each gym-derived figure was measured two ways.",
+  "requirements": [
+    {
+      "requirement_id": "REQ-AR-CLASS",
+      "ask": "Sheet Classification lists every live Google Sheets spreadsheet in the owner's Drive that is shared beyond the owner, by Drive file id, once each, with the tier the policy gives it (any cell on any tab).",
+      "prompt_span": "one row per spreadsheet you reviewed, by Drive file id, with its tier as the policy names it",
+      "surface": "access_review.xlsx / Classification",
+      "expected": "70 rows: Restricted 26, Confidential 16, Internal 28",
+      "graded_by": [
+        "classification_register"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-CHANGES",
+      "ask": "Sheet Changes lists exactly the grants changed in Drive, keyed on the Drive permission id, with the spreadsheet id and the action Removed or Reduced to <role>.",
+      "prompt_span": "then one row per grant you changed: the permission id as Drive reports it",
+      "surface": "access_review.xlsx / Changes",
+      "expected": "61 rows: 29 Removed, 32 Reduced to reader",
+      "graded_by": [
+        "changes_register"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-SUM-REVIEWED",
+      "ask": "Summary row Spreadsheets reviewed carries the number of spreadsheets reviewed, as a number.",
+      "prompt_span": "Spreadsheets reviewed",
+      "surface": "access_review.xlsx / Summary",
+      "expected": 70,
+      "graded_by": [
+        "summary_reviewed"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-SUM-RESTRICTED",
+      "ask": "Summary row Restricted carries the number of reviewed spreadsheets the policy tiers Restricted.",
+      "prompt_span": "Restricted, Confidential, Grants removed",
+      "surface": "access_review.xlsx / Summary",
+      "expected": 26,
+      "graded_by": [
+        "summary_restricted"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-SUM-CONFIDENTIAL",
+      "ask": "Summary row Confidential carries the number of reviewed spreadsheets the policy tiers Confidential.",
+      "prompt_span": "Confidential, Grants removed, Grants reduced",
+      "surface": "access_review.xlsx / Summary",
+      "expected": 16,
+      "graded_by": [
+        "summary_confidential"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-SUM-REMOVED",
+      "ask": "Summary row Grants removed carries the number of grants removed in Drive.",
+      "prompt_span": "Grants removed",
+      "surface": "access_review.xlsx / Summary",
+      "expected": 29,
+      "graded_by": [
+        "summary_removed"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-SUM-REDUCED",
+      "ask": "Summary row Grants reduced carries the number of grants reduced to a lower role in Drive.",
+      "prompt_span": "Grants reduced",
+      "surface": "access_review.xlsx / Summary",
+      "expected": 32,
+      "graded_by": [
+        "summary_reduced"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-SUM-ROWS",
+      "ask": "The Summary sheet holds exactly the five named measures and nothing else.",
+      "prompt_span": "then exactly five rows, numbers not formulas",
+      "surface": "access_review.xlsx / Summary",
+      "expected": "5 measure rows",
+      "graded_by": [
+        "summary_rows"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-MEMO",
+      "ask": "The memo table has one row per Restricted spreadsheet giving how many people other than the owner can still open it after the changes (0 when nobody can).",
+      "prompt_span": "one row per Restricted spreadsheet giving, as a plain number, how many people other than me can still open it once your changes are made (0 when nobody can)",
+      "surface": "restricted_access_memo.docx / table",
+      "expected": "26 rows",
+      "graded_by": [
+        "memo_restricted_table"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-MEMO-PAGE",
+      "ask": "The memo to the Privacy Officer keeps to one page.",
+      "prompt_span": "a one-page memo to our Privacy Officer",
+      "surface": "restricted_access_memo.docx",
+      "expected": "at most 40 body paragraphs",
+      "graded_by": [
+        "memo_one_page"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_878",
+      "ask": "Grant perm_collab_878: 08-18-25 - Patient demographics (Restricted): avery.taylor@healthpii.example writer -> Removed. Policy reason: Avery Taylor: PHI approved Yes, HIPAA training 2025-01-20 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_878"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_anyone_1633",
+      "ask": "Grant perm_anyone_1633: AABC Lead Generation \u2022 Tracker [Final] (Confidential): anyone grant reader -> Removed. Policy reason: A anyone grant on a Confidential spreadsheet: the policy allows no link or domain-wide sharing on that tier, so it is removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_anyone_1633"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_55",
+      "ask": "Grant perm_collab_55: Beyond Birth Midwifery Associates - December 2024 (Restricted): sam.okonkwo@healthpii.example reader -> Removed. Policy reason: Sam Okonkwo: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_55"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_376",
+      "ask": "Grant perm_collab_376: Beyond Birth Midwifery Mar 2025 (Restricted): sam.okonkwo@healthpii.example commenter -> Removed. Policy reason: Sam Okonkwo: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_376"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_377",
+      "ask": "Grant perm_collab_377: Beyond Birth Midwifery Mar 2025 (Restricted): drew.martin@healthpii.example commenter -> Reduced to reader. Policy reason: Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_377"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_378",
+      "ask": "Grant perm_collab_378: Beyond Birth Midwifery Mar 2025 (Restricted): avery.brooks@healthpii.example commenter -> Removed. Policy reason: Avery Brooks: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_378"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1603",
+      "ask": "Grant perm_collab_1603: Birth Sanctuary October 2025 (Restricted): jamie.ross@healthpii.example writer -> Reduced to reader. Policy reason: Jamie Ross: PHI approved Yes, HIPAA training 2025-09-18, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_1603"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1604",
+      "ask": "Grant perm_collab_1604: Birth Sanctuary October 2025 (Restricted): diana.reyes@healthpii.example commenter -> Removed. Policy reason: Diana Reyes: PHI approved Yes, HIPAA training 2025-03-30 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1604"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1605",
+      "ask": "Grant perm_collab_1605: Birth Sanctuary October 2025 (Restricted): cameron.shaw@healthpii.example writer -> Reduced to reader. Policy reason: Cameron Shaw: PHI approved Yes, HIPAA training 2025-04-01, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_1605"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_591",
+      "ask": "Grant perm_collab_591: BirthStone July 2025 (Restricted): casey.rivers@healthpii.example commenter -> Removed. Policy reason: Casey Rivers: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_591"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_592",
+      "ask": "Grant perm_collab_592: BirthStone July 2025 (Restricted): jordan.smith@healthpii.example writer -> Removed. Policy reason: Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_592"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_249",
+      "ask": "Grant perm_collab_249: CBC July 2025 (Restricted): river.cohen@healthpii.example commenter -> Reduced to reader. Policy reason: River Cohen: PHI approved Yes, HIPAA training 2026-01-14, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_249"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_250",
+      "ask": "Grant perm_collab_250: CBC July 2025 (Restricted): cameron.shaw@healthpii.example commenter -> Reduced to reader. Policy reason: Cameron Shaw: PHI approved Yes, HIPAA training 2025-04-01, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_250"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_251",
+      "ask": "Grant perm_collab_251: CBC July 2025 (Restricted): jordan.smith@healthpii.example writer -> Removed. Policy reason: Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_251"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1311",
+      "ask": "Grant perm_collab_1311: Canyon Midwifery LLC - December 2024 (Restricted): cameron.shaw@healthpii.example writer -> Reduced to reader. Policy reason: Cameron Shaw: PHI approved Yes, HIPAA training 2025-04-01, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_1311"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1360",
+      "ask": "Grant perm_collab_1360: Cincinnati Birth Center Apr 2025 (Restricted): lee.anderson@healthpii.example reader -> Removed. Policy reason: Lee Anderson: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1360"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1216",
+      "ask": "Grant perm_collab_1216: Cincinnati Birth Center October 2025 (Restricted): riley.nguyen@healthpii.example writer -> Removed. Policy reason: Riley Nguyen: PHI approved Yes, HIPAA training 2024-11-15 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1216"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1285",
+      "ask": "Grant perm_collab_1285: Greenwood Midwifery August 2025 (Restricted): phoenix.wright@healthpii.example commenter -> Removed. Policy reason: Phoenix Wright: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1285"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1286",
+      "ask": "Grant perm_collab_1286: Greenwood Midwifery August 2025 (Restricted): drew.martin@healthpii.example commenter -> Reduced to reader. Policy reason: Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_1286"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_3",
+      "ask": "Grant perm_collab_3: Greenwood Midwifery and Integrative Health June 2025 (Restricted): sky.adams@healthpii.example writer -> Removed. Policy reason: Sky Adams: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_3"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_4",
+      "ask": "Grant perm_collab_4: Greenwood Midwifery and Integrative Health June 2025 (Restricted): drew.martin@healthpii.example commenter -> Reduced to reader. Policy reason: Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_4"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1426",
+      "ask": "Grant perm_collab_1426: HM Birth August 2025 (Restricted): avery.brooks@healthpii.example writer -> Removed. Policy reason: Avery Brooks: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1426"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1427",
+      "ask": "Grant perm_collab_1427: HM Birth August 2025 (Restricted): alex.chen@healthpii.example writer -> Reduced to reader. Policy reason: Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_1427"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1428",
+      "ask": "Grant perm_collab_1428: HM Birth August 2025 (Restricted): lee.anderson@healthpii.example writer -> Removed. Policy reason: Lee Anderson: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1428"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_701",
+      "ask": "Grant perm_collab_701: ICP Outreach [August 2025] (Confidential): riley.nguyen@healthpii.example commenter -> Reduced to reader. Policy reason: Riley Nguyen is in Engineering, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_701"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_808",
+      "ask": "Grant perm_collab_808: Jamii Birth and Wellness Services, LLC (Restricted): sam.okonkwo@healthpii.example commenter -> Removed. Policy reason: Sam Okonkwo: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_808"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_809",
+      "ask": "Grant perm_collab_809: Jamii Birth and Wellness Services, LLC (Restricted): diana.reyes@healthpii.example commenter -> Removed. Policy reason: Diana Reyes: PHI approved Yes, HIPAA training 2025-03-30 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_809"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_810",
+      "ask": "Grant perm_collab_810: Jamii Birth and Wellness Services, LLC (Restricted): alex.chen@healthpii.example commenter -> Reduced to reader. Policy reason: Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_810"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_757",
+      "ask": "Grant perm_collab_757: Johnson & Associates Midwifery Group August 2025 (Restricted): nico.vasquez@healthpii.example commenter -> Reduced to reader. Policy reason: Nico Vasquez: PHI approved Yes, HIPAA training 2025-12-09, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_757"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1068",
+      "ask": "Grant perm_collab_1068: Kindred Space LA Mar 2025 (Restricted): casey.rivers@healthpii.example writer -> Removed. Policy reason: Casey Rivers: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1068"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_710",
+      "ask": "Grant perm_collab_710: Leads New Leads ICP 2 1760636660 (Confidential): jamie.ross@healthpii.example commenter -> Reduced to reader. Policy reason: Jamie Ross is in Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_710"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1570",
+      "ask": "Grant perm_collab_1570: M&A Conversation & Outbound Tracker (Confidential): cameron.shaw@healthpii.example commenter -> Reduced to reader. Policy reason: Cameron Shaw is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_1570"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_831",
+      "ask": "Grant perm_collab_831: NPWH Lead Generation \u2022 Tracker (Confidential): phoenix.wright@healthpii.example commenter -> Reduced to reader. Policy reason: Phoenix Wright is in Product, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_831"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_677",
+      "ask": "Grant perm_collab_677: Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway (Restricted): river.cohen@healthpii.example writer -> Reduced to reader. Policy reason: River Cohen: PHI approved Yes, HIPAA training 2026-01-14, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_677"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_109",
+      "ask": "Grant perm_collab_109: Port Setup Spreadsheet 2022 CCSI (Confidential): sky.adams@healthpii.example writer -> Reduced to reader. Policy reason: Sky Adams is in Operations, so Viewer at most on a Confidential sheet; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_109"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1608",
+      "ask": "Grant perm_collab_1608: Prattville Midwifery (Restricted): quinn.pemberton@healthpii.example writer -> Reduced to reader. Policy reason: Quinn Pemberton: PHI approved Yes, HIPAA training 2025-10-21, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_1608"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_domain_1624",
+      "ask": "Grant perm_domain_1624: Prattville Midwifery (Restricted): domain grant reader -> Removed. Policy reason: A domain grant on a Restricted spreadsheet: the policy allows no link or domain-wide sharing on that tier, so it is removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_domain_1624"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_922",
+      "ask": "Grant perm_collab_922: Prattville Midwifery August 2025 (Restricted): alex.chen@healthpii.example writer -> Reduced to reader. Policy reason: Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_922"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_923",
+      "ask": "Grant perm_collab_923: Prattville Midwifery August 2025 (Restricted): jordan.smith@healthpii.example reader -> Removed. Policy reason: Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role reader -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_923"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_228",
+      "ask": "Grant perm_collab_228: Premier Birth Center Client List (3) - Kim Pekin (Restricted): quinn.pemberton@healthpii.example commenter -> Reduced to reader. Policy reason: Quinn Pemberton: PHI approved Yes, HIPAA training 2025-10-21, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_228"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_473",
+      "ask": "Grant perm_collab_473: Rooted Birth Midwifery & Wellness June 2025 (Restricted): avery.taylor@healthpii.example commenter -> Removed. Policy reason: Avery Taylor: PHI approved Yes, HIPAA training 2025-01-20 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_473"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_474",
+      "ask": "Grant perm_collab_474: Rooted Birth Midwifery & Wellness June 2025 (Restricted): drew.martin@healthpii.example writer -> Reduced to reader. Policy reason: Drew Martin: PHI approved Yes, HIPAA training 2025-11-03, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_474"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_433",
+      "ask": "Grant perm_collab_433: Swebench - external private repos - Healthpii Batch 1 (Confidential): quinn.pemberton@healthpii.example writer -> Reduced to reader. Policy reason: Quinn Pemberton is in Clinical Operations, so Viewer at most on a Confidential sheet; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_433"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_540",
+      "ask": "Grant perm_collab_540: Transitions Birth Center (Restricted): casey.rivers@healthpii.example reader -> Removed. Policy reason: Casey Rivers: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_540"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_541",
+      "ask": "Grant perm_collab_541: Transitions Birth Center (Restricted): alex.chen@healthpii.example commenter -> Reduced to reader. Policy reason: Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_541"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_163",
+      "ask": "Grant perm_collab_163: Transitions Birth Center June 2025 (Restricted): jordan.smith@healthpii.example commenter -> Removed. Policy reason: Jordan Smith: PHI approved No, HIPAA training 2025-08-01, so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_163"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_164",
+      "ask": "Grant perm_collab_164: Transitions Birth Center June 2025 (Restricted): alex.chen@healthpii.example commenter -> Reduced to reader. Policy reason: Alex Chen: PHI approved Yes, HIPAA training 2025-06-12, so Viewer at most; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_164"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_165",
+      "ask": "Grant perm_collab_165: Transitions Birth Center June 2025 (Restricted): diana.reyes@healthpii.example commenter -> Removed. Policy reason: Diana Reyes: PHI approved Yes, HIPAA training 2025-03-30 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_165"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_530",
+      "ask": "Grant perm_collab_530: Transitions Birth Center October 2025 (Restricted): nico.vasquez@healthpii.example writer -> Reduced to reader. Policy reason: Nico Vasquez: PHI approved Yes, HIPAA training 2025-12-09, so Viewer at most; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_530"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_381",
+      "ask": "Grant perm_collab_381: Untitled spreadsheet (Confidential): cameron.shaw@healthpii.example commenter -> Reduced to reader. Policy reason: Cameron Shaw is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_381"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_382",
+      "ask": "Grant perm_collab_382: Untitled spreadsheet (Confidential): sam.okonkwo@healthpii.example commenter -> Reduced to reader. Policy reason: Sam Okonkwo is in Finance, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_382"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_494",
+      "ask": "Grant perm_collab_494: Untitled spreadsheet(2) (Confidential): drew.martin@healthpii.example commenter -> Reduced to reader. Policy reason: Drew Martin is in Finance, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_494"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_835",
+      "ask": "Grant perm_collab_835: [External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025 (Confidential): lee.anderson@healthpii.example commenter -> Reduced to reader. Policy reason: Lee Anderson is in Finance, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_835"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_836",
+      "ask": "Grant perm_collab_836: [External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025 (Confidential): diana.reyes@healthpii.example commenter -> Reduced to reader. Policy reason: Diana Reyes is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_836"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_837",
+      "ask": "Grant perm_collab_837: [External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025 (Confidential): sky.adams@healthpii.example writer -> Reduced to reader. Policy reason: Sky Adams is in Operations, so Viewer at most on a Confidential sheet; current role writer -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_837"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_503",
+      "ask": "Grant perm_collab_503: [Fellow Founders Copy] Healthpii Health   Pre-Seed Investor Tracker (Confidential): quinn.pemberton@healthpii.example commenter -> Reduced to reader. Policy reason: Quinn Pemberton is in Clinical Operations, so Viewer at most on a Confidential sheet; current role commenter -> Reduced to reader.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Reduced to reader",
+      "graded_by": [
+        "grant_perm_collab_503"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1379",
+      "ask": "Grant perm_collab_1379: j8lghvv51re0e787xpdvnpaj (Restricted): phoenix.wright@healthpii.example reader -> Removed. Policy reason: Phoenix Wright: PHI approved No, HIPAA training none, so no access on a Restricted sheet; current role reader -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1379"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1380",
+      "ask": "Grant perm_collab_1380: j8lghvv51re0e787xpdvnpaj (Restricted): avery.taylor@healthpii.example writer -> Removed. Policy reason: Avery Taylor: PHI approved Yes, HIPAA training 2025-01-20 (more than 365 days before 31 March 2026), so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1380"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1381",
+      "ask": "Grant perm_collab_1381: j8lghvv51re0e787xpdvnpaj (Restricted): morgan.blake@healthpii.example writer -> Removed. Policy reason: Morgan Blake: PHI approved Yes, HIPAA training none, so no access on a Restricted sheet; current role writer -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1381"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_anyone_1635",
+      "ask": "Grant perm_anyone_1635: qlbbdp31iqa04y7f9mjb2nf2 (Restricted): anyone grant reader -> Removed. Policy reason: A anyone grant on a Restricted spreadsheet: the policy allows no link or domain-wide sharing on that tier, so it is removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_anyone_1635"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-G-perm_collab_1404",
+      "ask": "Grant perm_collab_1404: y8cq6qnli9y4y91vvpclhfux (Restricted): morgan.blake@healthpii.example commenter -> Removed. Policy reason: Morgan Blake: PHI approved Yes, HIPAA training none, so no access on a Restricted sheet; current role commenter -> Removed.",
+      "prompt_span": "reduce that grant to the highest role the policy allows, or remove it when the policy allows no access at all",
+      "surface": "Drive permissions (state)",
+      "expected": "Removed",
+      "graded_by": [
+        "grant_perm_collab_1404"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-LOCK-ALLOWED_RESTRICTED_GRANTS_UNTOUCHED",
+      "ask": "Every grant the policy allows on a Restricted spreadsheet keeps its role and stays live.",
+      "prompt_span": "Leave every grant the policy allows exactly as it is",
+      "surface": "Drive permissions (state)",
+      "expected": "11 grants unchanged",
+      "graded_by": [
+        "allowed_restricted_grants_untouched"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-LOCK-ALLOWED_CONFIDENTIAL_GRANTS_UNTOUCHED",
+      "ask": "Every grant the policy allows on a Confidential spreadsheet keeps its role and stays live.",
+      "prompt_span": "Leave every grant the policy allows exactly as it is",
+      "surface": "Drive permissions (state)",
+      "expected": "19 grants unchanged",
+      "graded_by": [
+        "allowed_confidential_grants_untouched"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-LOCK-ALLOWED_INTERNAL_GRANTS_UNTOUCHED",
+      "ask": "Every grant on an Internal spreadsheet keeps its role and stays live (Internal is unrestricted).",
+      "prompt_span": "Leave every grant the policy allows exactly as it is",
+      "surface": "Drive permissions (state)",
+      "expected": "59 grants unchanged",
+      "graded_by": [
+        "allowed_internal_grants_untouched"
+      ]
+    },
+    {
+      "requirement_id": "REQ-AR-LOCK-NO_OTHER_SHARING_CHANGED",
+      "ask": "No sharing is added, no other file's sharing changes and the owner keeps ownership: Drive-wide live permission counts by role are exactly the expected ones.",
+      "prompt_span": "keep my own ownership, add no sharing, do not change sharing on any other file",
+      "surface": "Drive permissions (state)",
+      "expected": "4668 live permissions: commenter 523, owner 3059, reader 577, writer 509",
+      "graded_by": [
+        "no_other_sharing_changed"
+      ]
+    }
+  ]
+}

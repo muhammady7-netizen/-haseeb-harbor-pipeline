@@ -1,0 +1,614 @@
+{
+ "task": "the-sheet-access-the-policy-no-longer-allows-v2",
+ "harness": "file_check: the bundle's own tests/manifest.json verifier_specs run through the vendored tests/rl_world_verifiers engine against a workspace built per case; database_state: each verifier's SQL run against a copy of the immutable v7 gws seed with the case's Drive writes applied (permissions.delete removes the row, permissions.update changes role in place: measured on the served gym)",
+ "scope": "10 file_check + 65 database_state verifiers",
+ "deliverables": {
+  "xlsx_path": "access_review.xlsx",
+  "docx_path": "restricted_access_memo.docx"
+ },
+ "controls": {
+  "positive": "the oracle artifacts and writes score everything",
+  "cosmetic": "another writer (LibreOffice), To/From table first, reordered sheets/rows, extra columns, case changes, \"name (id)\" cells still pass",
+  "semantic": "a swapped or off-by-one value fails exactly its verifier",
+  "granularity": "one corrupted figure or one missed fix fails only what grades it",
+  "incompleteness": "a missing entity fails the population lock",
+  "adversarial_acceptance": "+5/10/20 invented rows, one row naming every entity, hedge rows, hedge-all writes (<= 0.2), do-nothing all fail"
+ },
+ "all_controls_pass": true,
+ "superset_report_accepted": false,
+ "cases": [
+  {
+   "control": "positive",
+   "mutation": "xlsx+docx: oracle artifacts verbatim",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "xlsx: LibreOffice round-trip (another writer)",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "docx: LibreOffice round-trip (another writer)",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "docx: To/From header table placed first in the memo",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "docx: extra Note column and reworded header (People with access after review (count))",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "xlsx: sheets written in another order, rows reversed",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "xlsx: extra Name / Person / Old role columns, upper-case headers, lower-case tiers and actions",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "xlsx: Spreadsheet ID written as \"name (id)\" and numbers as floats",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "docx: counts written as 2.0 and with surrounding spaces",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "cosmetic",
+   "mutation": "docx: Spreadsheet ID cells written as \"title (id)\"",
+   "expected_failures": [],
+   "observed_failures": [],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: Classification plus 5 invented spreadsheet rows",
+   "expected_failures": [
+    "classification_register"
+   ],
+   "observed_failures": [
+    "classification_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: Changes plus 5 invented grant rows",
+   "expected_failures": [
+    "changes_register"
+   ],
+   "observed_failures": [
+    "changes_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "docx: memo table plus 5 invented spreadsheet rows",
+   "expected_failures": [
+    "memo_restricted_table"
+   ],
+   "observed_failures": [
+    "memo_restricted_table"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: Classification plus 10 invented spreadsheet rows",
+   "expected_failures": [
+    "classification_register"
+   ],
+   "observed_failures": [
+    "classification_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: Changes plus 10 invented grant rows",
+   "expected_failures": [
+    "changes_register"
+   ],
+   "observed_failures": [
+    "changes_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "docx: memo table plus 10 invented spreadsheet rows",
+   "expected_failures": [
+    "memo_restricted_table"
+   ],
+   "observed_failures": [
+    "memo_restricted_table"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: Classification plus 20 invented spreadsheet rows",
+   "expected_failures": [
+    "classification_register"
+   ],
+   "observed_failures": [
+    "classification_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: Changes plus 20 invented grant rows",
+   "expected_failures": [
+    "changes_register"
+   ],
+   "observed_failures": [
+    "changes_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "docx: memo table plus 20 invented spreadsheet rows",
+   "expected_failures": [
+    "memo_restricted_table"
+   ],
+   "observed_failures": [
+    "memo_restricted_table"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: one Changes row naming every permission id",
+   "expected_failures": [
+    "changes_register"
+   ],
+   "observed_failures": [
+    "changes_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: one Classification row naming every spreadsheet id",
+   "expected_failures": [
+    "classification_register"
+   ],
+   "observed_failures": [
+    "classification_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "semantic",
+   "mutation": "xlsx: Action swapped between a removed and a reduced grant",
+   "expected_failures": [
+    "changes_register"
+   ],
+   "observed_failures": [
+    "changes_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "semantic",
+   "mutation": "xlsx: tiers swapped between a Restricted and an Internal spreadsheet",
+   "expected_failures": [
+    "classification_register"
+   ],
+   "observed_failures": [
+    "classification_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "incompleteness",
+   "mutation": "xlsx: one changed grant missing from Changes",
+   "expected_failures": [
+    "changes_register"
+   ],
+   "observed_failures": [
+    "changes_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "incompleteness",
+   "mutation": "xlsx: one spreadsheet missing from Classification",
+   "expected_failures": [
+    "classification_register"
+   ],
+   "observed_failures": [
+    "classification_register"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "incompleteness",
+   "mutation": "docx: one Restricted spreadsheet missing from the memo",
+   "expected_failures": [
+    "memo_restricted_table"
+   ],
+   "observed_failures": [
+    "memo_restricted_table"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "semantic",
+   "mutation": "xlsx: every Summary figure off by one",
+   "expected_failures": [
+    "summary_confidential",
+    "summary_reduced",
+    "summary_removed",
+    "summary_restricted",
+    "summary_reviewed"
+   ],
+   "observed_failures": [
+    "summary_confidential",
+    "summary_reduced",
+    "summary_removed",
+    "summary_restricted",
+    "summary_reviewed"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "granularity",
+   "mutation": "xlsx: only Summary \"Spreadsheets reviewed\" off by one",
+   "expected_failures": [
+    "summary_reviewed"
+   ],
+   "observed_failures": [
+    "summary_reviewed"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "granularity",
+   "mutation": "xlsx: only Summary \"Restricted\" off by one",
+   "expected_failures": [
+    "summary_restricted"
+   ],
+   "observed_failures": [
+    "summary_restricted"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "granularity",
+   "mutation": "xlsx: only Summary \"Confidential\" off by one",
+   "expected_failures": [
+    "summary_confidential"
+   ],
+   "observed_failures": [
+    "summary_confidential"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "granularity",
+   "mutation": "xlsx: only Summary \"Grants removed\" off by one",
+   "expected_failures": [
+    "summary_removed"
+   ],
+   "observed_failures": [
+    "summary_removed"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "granularity",
+   "mutation": "xlsx: only Summary \"Grants reduced\" off by one",
+   "expected_failures": [
+    "summary_reduced"
+   ],
+   "observed_failures": [
+    "summary_reduced"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "xlsx: Summary with a hedge row (Grants removed incl. reduced)",
+   "expected_failures": [
+    "summary_rows"
+   ],
+   "observed_failures": [
+    "summary_rows"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "semantic",
+   "mutation": "docx: every People count off by one",
+   "expected_failures": [
+    "memo_restricted_table"
+   ],
+   "observed_failures": [
+    "memo_restricted_table"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "docx: memo dumps 45 paragraphs of every grant considered",
+   "expected_failures": [
+    "memo_one_page"
+   ],
+   "observed_failures": [
+    "memo_one_page"
+   ],
+   "outcome": "PASS"
+  },
+  {
+   "control": "positive",
+   "mutation": "state: oracle writes (gold changes)",
+   "expected_failures": [],
+   "observed_failures": [],
+   "n_observed_failures": 0,
+   "state_reward": 0.45,
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "state: do nothing",
+   "expected_failures": null,
+   "observed_failures": [
+    "allowed_confidential_grants_untouched",
+    "allowed_internal_grants_untouched",
+    "allowed_restricted_grants_untouched",
+    "grant_perm_anyone_1633",
+    "grant_perm_anyone_1635",
+    "grant_perm_collab_1068",
+    "grant_perm_collab_109",
+    "grant_perm_collab_1216",
+    "grant_perm_collab_1285",
+    "grant_perm_collab_1286",
+    "grant_perm_collab_1311",
+    "grant_perm_collab_1360",
+    "grant_perm_collab_1379",
+    "grant_perm_collab_1380",
+    "grant_perm_collab_1381",
+    "grant_perm_collab_1404",
+    "grant_perm_collab_1426",
+    "grant_perm_collab_1427",
+    "grant_perm_collab_1428",
+    "grant_perm_collab_1570",
+    "grant_perm_collab_1603",
+    "grant_perm_collab_1604",
+    "grant_perm_collab_1605",
+    "grant_perm_collab_1608",
+    "grant_perm_collab_163",
+    "grant_perm_collab_164",
+    "grant_perm_collab_165",
+    "grant_perm_collab_228",
+    "grant_perm_collab_249",
+    "grant_perm_collab_250",
+    "grant_perm_collab_251",
+    "grant_perm_collab_3",
+    "grant_perm_collab_376",
+    "grant_perm_collab_377",
+    "grant_perm_collab_378",
+    "grant_perm_collab_381",
+    "grant_perm_collab_382",
+    "grant_perm_collab_4",
+    "grant_perm_collab_433",
+    "grant_perm_collab_473",
+    "grant_perm_collab_474",
+    "grant_perm_collab_494",
+    "grant_perm_collab_503",
+    "grant_perm_collab_530",
+    "grant_perm_collab_540",
+    "grant_perm_collab_541",
+    "grant_perm_collab_55",
+    "grant_perm_collab_591",
+    "grant_perm_collab_592",
+    "grant_perm_collab_677",
+    "grant_perm_collab_701",
+    "grant_perm_collab_710",
+    "grant_perm_collab_757",
+    "grant_perm_collab_808",
+    "grant_perm_collab_809",
+    "grant_perm_collab_810",
+    "grant_perm_collab_831",
+    "grant_perm_collab_835",
+    "grant_perm_collab_836",
+    "grant_perm_collab_837",
+    "grant_perm_collab_878",
+    "grant_perm_collab_922",
+    "grant_perm_collab_923",
+    "grant_perm_domain_1624",
+    "no_other_sharing_changed"
+   ],
+   "n_observed_failures": 65,
+   "state_reward": 0,
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "state: hedge-all, remove every non-owner grant on the reviewed spreadsheets",
+   "expected_failures": null,
+   "observed_failures": [
+    "allowed_confidential_grants_untouched",
+    "allowed_internal_grants_untouched",
+    "allowed_restricted_grants_untouched",
+    "grant_perm_collab_109",
+    "grant_perm_collab_1286",
+    "grant_perm_collab_1311",
+    "grant_perm_collab_1427",
+    "grant_perm_collab_1570",
+    "grant_perm_collab_1603",
+    "grant_perm_collab_1605",
+    "grant_perm_collab_1608",
+    "grant_perm_collab_164",
+    "grant_perm_collab_228",
+    "grant_perm_collab_249",
+    "grant_perm_collab_250",
+    "grant_perm_collab_377",
+    "grant_perm_collab_381",
+    "grant_perm_collab_382",
+    "grant_perm_collab_4",
+    "grant_perm_collab_433",
+    "grant_perm_collab_474",
+    "grant_perm_collab_494",
+    "grant_perm_collab_503",
+    "grant_perm_collab_530",
+    "grant_perm_collab_541",
+    "grant_perm_collab_677",
+    "grant_perm_collab_701",
+    "grant_perm_collab_710",
+    "grant_perm_collab_757",
+    "grant_perm_collab_810",
+    "grant_perm_collab_831",
+    "grant_perm_collab_835",
+    "grant_perm_collab_836",
+    "grant_perm_collab_837",
+    "grant_perm_collab_922",
+    "no_other_sharing_changed"
+   ],
+   "n_observed_failures": 36,
+   "state_reward": 0.1189,
+   "outcome": "PASS"
+  },
+  {
+   "control": "adversarial_acceptance",
+   "mutation": "state: hedge, reduce every grant on the reviewed spreadsheets to reader (links removed)",
+   "expected_failures": null,
+   "observed_failures": [
+    "allowed_confidential_grants_untouched",
+    "allowed_internal_grants_untouched",
+    "allowed_restricted_grants_untouched",
+    "grant_perm_collab_1068",
+    "grant_perm_collab_1216",
+    "grant_perm_collab_1285",
+    "grant_perm_collab_1360",
+    "grant_perm_collab_1379",
+    "grant_perm_collab_1380",
+    "grant_perm_collab_1381",
+    "grant_perm_collab_1404",
+    "grant_perm_collab_1426",
+    "grant_perm_collab_1428",
+    "grant_perm_collab_1604",
+    "grant_perm_collab_163",
+    "grant_perm_collab_165",
+    "grant_perm_collab_251",
+    "grant_perm_collab_3",
+    "grant_perm_collab_376",
+    "grant_perm_collab_378",
+    "grant_perm_collab_473",
+    "grant_perm_collab_540",
+    "grant_perm_collab_55",
+    "grant_perm_collab_591",
+    "grant_perm_collab_592",
+    "grant_perm_collab_808",
+    "grant_perm_collab_809",
+    "grant_perm_collab_878",
+    "grant_perm_collab_923",
+    "no_other_sharing_changed"
+   ],
+   "n_observed_failures": 30,
+   "state_reward": 0.1434,
+   "outcome": "PASS"
+  },
+  {
+   "control": "semantic",
+   "mutation": "state: gold plus one allowed writer grant reduced",
+   "expected_failures": [
+    "allowed_confidential_grants_untouched",
+    "no_other_sharing_changed"
+   ],
+   "observed_failures": [
+    "allowed_confidential_grants_untouched",
+    "no_other_sharing_changed"
+   ],
+   "n_observed_failures": 2,
+   "state_reward": 0.35,
+   "outcome": "PASS"
+  },
+  {
+   "control": "semantic",
+   "mutation": "state: gold plus a grant removed on a file outside the review",
+   "expected_failures": [
+    "no_other_sharing_changed"
+   ],
+   "observed_failures": [
+    "no_other_sharing_changed"
+   ],
+   "n_observed_failures": 1,
+   "state_reward": 0.4,
+   "outcome": "PASS"
+  },
+  {
+   "control": "granularity",
+   "mutation": "state: gold minus one fix (perm_collab_878)",
+   "expected_failures": [
+    "allowed_confidential_grants_untouched",
+    "allowed_internal_grants_untouched",
+    "allowed_restricted_grants_untouched",
+    "grant_perm_collab_878",
+    "no_other_sharing_changed"
+   ],
+   "observed_failures": [
+    "allowed_confidential_grants_untouched",
+    "allowed_internal_grants_untouched",
+    "allowed_restricted_grants_untouched",
+    "grant_perm_collab_878",
+    "no_other_sharing_changed"
+   ],
+   "n_observed_failures": 5,
+   "state_reward": 0.2459,
+   "outcome": "PASS"
+  },
+  {
+   "control": "semantic",
+   "mutation": "state: one removal done as a reduction to reader (perm_collab_878)",
+   "expected_failures": [
+    "allowed_confidential_grants_untouched",
+    "allowed_internal_grants_untouched",
+    "allowed_restricted_grants_untouched",
+    "grant_perm_collab_878",
+    "no_other_sharing_changed"
+   ],
+   "observed_failures": [
+    "allowed_confidential_grants_untouched",
+    "allowed_internal_grants_untouched",
+    "allowed_restricted_grants_untouched",
+    "grant_perm_collab_878",
+    "no_other_sharing_changed"
+   ],
+   "n_observed_failures": 5,
+   "state_reward": 0.2459,
+   "outcome": "PASS"
+  }
+ ]
+}

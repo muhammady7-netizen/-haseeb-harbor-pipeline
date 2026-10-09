@@ -1,0 +1,22 @@
+{
+    "task": {
+        "path": "/tmp/harbor-check-1ai8a3lw/check-the-sheet-access-the-policy-no-longer-allows-v2"
+    },
+    "trial_name": "check-the-sheet-access-the-polic__ASzoPqT",
+    "trials_dir": "/home/podlead2/aster-client-qc/client_qc/oct3-q09/review/oct3-q09-client-qc",
+    "agent_setup_timeout_multiplier": 4.0,
+    "agent": {
+        "name": "claude-code",
+        "model_name": "anthropic/claude-opus-5",
+        "kwargs": {
+            "reasoning_effort": "medium"
+        }
+    },
+    "environment": {
+        "type": "docker",
+        "kwargs": {
+            "keepalive": null
+        }
+    },
+    "job_id": "36c499eb-3ab9-40e2-9db8-22e1b66d21f2"
+}

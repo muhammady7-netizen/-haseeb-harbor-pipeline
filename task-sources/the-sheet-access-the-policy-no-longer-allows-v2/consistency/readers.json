@@ -1,0 +1,59 @@
+{
+  "reader_n": 4,
+  "instruction_sha256": "9d8fa4bf02521981cf0e487fcd300b7d68f808e37b940ca87f309a1018cf9964",
+  "protocol": "Four independent readers (tools/readers.py --only readers; model glm-5.2; temperatures 0.2, 0.6, 1.0, 1.0), single turn, no tools, no gym. Each received instruction.md VERBATIM and NOTHING else - not the provided policy, roster or exceptions register, no gold, no verifiers - and answered GOAL and METHOD separately. Run 2026-10-02 22:57 UTC against instruction.md sha256 9d8fa4bf0252; raw outputs and _status.txt in _evidence/the-sheet-access-the-policy-no-longer-allows-v2/readers-20261002-225723/ (all four ok on the first attempt).",
+  "models": [
+    "glm-5.2 t0.2",
+    "glm-5.2 t0.6",
+    "glm-5.2 t1.0",
+    "glm-5.2 t1.0"
+  ],
+  "goal_agreement": {
+    "deliverable_set": "4 of 4 - /workspace/access_review.xlsx with sheets Classification (Spreadsheet ID, Classification), Changes (Permission ID, Spreadsheet ID, Action) and Summary (Measure, Value; exactly the five named rows, numbers), plus /workspace/restricted_access_memo.docx (one-page memo, table Spreadsheet ID | People with access after review, one row per Restricted spreadsheet); and the in-Drive remediation (reduce or remove over-policy grants, leave the rest). Reader-1 and reader-3 named the remediation as a deliverable outright; reader-2 and reader-4 put it in METHOD steps 5.",
+    "per_figure_meaning": {
+      "Classification rows": "4 of 4 - one row per live Google Sheets spreadsheet shared beyond the owner, with the tier the policy assigns (Restricted, Confidential or Internal)",
+      "Changes rows": "4 of 4 - one row per grant actually changed in Drive, keyed on the Drive permission id, Action 'Removed' or 'Reduced to <role>'",
+      "Spreadsheets reviewed": "4 of 4 - the number of spreadsheets in the reviewed set (the Classification rows)",
+      "Restricted": "4 of 4 - the number of reviewed spreadsheets tiered Restricted",
+      "Confidential": "4 of 4 - the number of reviewed spreadsheets tiered Confidential",
+      "Grants removed": "4 of 4 - the number of grants deleted (Changes rows with Action Removed)",
+      "Grants reduced": "4 of 4 - the number of grants downgraded (Changes rows with Action Reduced to ...)",
+      "People with access after review": "4 of 4 - per Restricted spreadsheet, the people other than the owner who can still open it after the changes, 0 when none",
+      "Drive state": "4 of 4 - over-policy grants reduced to the highest allowed role or removed; allowed grants, ownership, other files and content untouched"
+    },
+    "verdict": "PASSES the 3-of-4 bar on the deliverable set and on every figure's meaning."
+  },
+  "method_divergences_kept": [
+    {
+      "axis": "who counts as a person who can still open a Restricted spreadsheet in the memo (distinct grantees of any kind vs distinct email-address grantees)",
+      "split": "1 of 4 (reader-4) counted only distinct individual grantees by email address; 3 of 4 (reader-1, reader-2, reader-3) counted every remaining non-owner grantee with reader, commenter or writer.",
+      "gold_reading": "policy section 3 identifies people by roster email; the policy's Restricted cap allows no link or domain sharing, so after a correct remediation every remaining grant on a Restricted spreadsheet is a person grant and both readings count the same grants",
+      "value_under_gold": "26 memo rows, per-spreadsheet counts as graded by memo_restricted_table",
+      "value_under_the_other_reading": "26 memo rows, per-spreadsheet counts as graded by memo_restricted_table",
+      "graded_figure": "REQ-AR-MEMO",
+      "action": "KEPT as value-neutral: measured on the gold end state (gold.json), no Restricted spreadsheet keeps an anyone or domain grant (perm_anyone_1635 and perm_domain_1624 are removed), so the two counting rules give identical cells; no prompt edit."
+    }
+  ],
+  "lever_record": {
+    "lever": "A (unit of audit: the spreadsheet file is tiered by every cell of every tab)",
+    "blind_reader_split": "0 of 4 took the default reading (tier read from the first tab's header row only). All four deferred the classification rule to the provided policy, which they did not see (reader-1/2/4: 'apply the policy's classification criteria'; reader-3: 'per whatever signals the policy specifies - metadata, name, content markers'). The rule is policy section 2, which no blind reader had.",
+    "default_misreading_values": "Restricted 25 instead of 26, Confidential 9 instead of 16, Grants removed 28 instead of 29, Grants reduced 26 instead of 32 (measured on the seed with ws/claude2/tmp/sheet_default.py)",
+    "note": "Recorded here, not under method_divergences_kept, because no reader actually diverged on it: the readers did not take the default, they deferred."
+  },
+  "underspec": [
+    {
+      "item": "how a spreadsheet's tier is decided (which cells, which tabs, title or content)",
+      "resolution": "policy section 2 (by content, any cell in any row and column of any tab, whole-cell label match ignoring case/spaces/punctuation, highest tier wins). 4 of 4 readers deferred to the policy, which the prompt names by path."
+    },
+    {
+      "item": "the highest role each person may hold per tier, and what the roster and exceptions contribute",
+      "resolution": "policy section 3 table and section 4 (PHI approval + HIPAA training within 365 days of the 31 March 2026 review date for Restricted; Growth up to Editor on Confidential; exceptions in force on the review date keep existing access up to the approved role, exact title only). All four readers said they would read it from the policy, roster and register."
+    },
+    {
+      "item": "link and domain grants",
+      "resolution": "policy section 3 table: no link or domain sharing on Restricted or Confidential; section 5 removes a grant where no access is allowed."
+    }
+  ],
+  "overspec": [],
+  "prompt_edits_after_this_stage": "none"
+}

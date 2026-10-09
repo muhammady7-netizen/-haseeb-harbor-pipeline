@@ -1,0 +1,6 @@
+Skipping image OS validation for hb__97ce949362d93b3989bd028ae96f5d70: docker inspect returned 1
+Running healthcheck: curl -fsS http://localhost:7000/health
+Healthcheck failed (rc=7, in_start_period=True)
+Healthcheck passed
+Collecting main service artifacts
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.

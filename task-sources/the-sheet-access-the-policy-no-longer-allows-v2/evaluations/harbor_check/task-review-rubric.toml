@@ -1,0 +1,214 @@
+[[criteria]]
+name = "layer1_package_consistency"
+description = "Do all task artifacts define one coherent executable and gradable task?"
+guidance = "Read the complete task tree. Compare task.toml, instruction.md, every solution and verifier file, inputs, outputs, environment, mirrors, and manifests. PASS only when paths, formats, requirements, behavior, and scoring align."
+
+[[criteria]]
+name = "layer1_package_consistency__cross_artifact_consistency"
+description = "Do all required package sources jointly define one task?"
+guidance = "Read task.toml, instruction.md, every solution and test file, inputs, outputs, and environment. FAIL when any source is missing or the complete set cannot jointly describe one executable and gradable task."
+
+[[criteria]]
+name = "layer1_package_consistency__instruction_verifier_consistency"
+description = "Does the verifier grade only disclosed instruction requirements?"
+guidance = "Trace every reward-bearing check to the instruction and every material instruction requirement to a suitable check. FAIL for verifier-only requirements or material ungraded requirements."
+
+[[criteria]]
+name = "layer1_package_consistency__solution_instruction_consistency"
+description = "Does the golden solution satisfy the instruction as written?"
+guidance = "Inspect every solution file. FAIL when the golden output omits a requested deliverable, uses undisclosed knowledge, or follows a materially different contract."
+
+[[criteria]]
+name = "layer1_package_consistency__solution_verifier_consistency"
+description = "Does the verifier accept the complete golden solution for the right reasons?"
+guidance = "FAIL when valid golden behavior is rejected, required golden files are not materialized, or the verifier passes the golden through an unrelated shortcut."
+
+[[criteria]]
+name = "layer1_package_consistency__manifest_environment_consistency"
+description = "Do manifests, task configuration, and environment definitions agree?"
+guidance = "Compare paths, images, mounts, ports, resources, dependencies, connector declarations, and mirrors. FAIL for stale or contradictory declarations."
+
+[[criteria]]
+name = "layer1_package_consistency__declared_executed_verifier_consistency"
+description = "Do declared verifier checks and score buckets match what the verifier actually executes?"
+guidance = "Trace test entrypoints and imports. FAIL when a declared check never runs, an executable reward-bearing check is absent from declarations, or a declared score bucket cannot receive evidence."
+
+[[criteria]]
+name = "layer1_package_consistency__artifact_contract_consistency"
+description = "Do instruction, solution, export, and grading paths identify the same artifacts and state?"
+guidance = "FAIL for filename, path, format, connector-state, or output-surface drift that can cause the produced submission and graded submission to differ."
+
+[[criteria]]
+name = "layer1_clarity_scope"
+description = "Is the task unambiguous and adequately scoped from agent-visible information?"
+guidance = "Aggregate the four mandatory clarity subchecks. FAIL when any applicable subcheck fails; do not let general comprehensibility compensate for a hidden output, representation, process, or redaction requirement."
+
+[[criteria]]
+name = "layer1_clarity_scope__output_surface_contract"
+description = "Does the instruction explicitly identify every required output surface?"
+guidance = "Check chat responses, workspace files, connector-side state, and combinations thereof. FAIL when the verifier grades an output location or side effect that the instruction does not require."
+
+[[criteria]]
+name = "layer1_clarity_scope__representation_contract"
+description = "Are material representation rules disclosed or semantically tolerant?"
+guidance = "Inspect ordering, rounding stage and precision, scalar types, names, dates, units, tab or sheet names, canonical IDs versus aliases, and formatting. FAIL when an undisclosed representation choice can change reward."
+
+[[criteria]]
+name = "layer1_clarity_scope__process_requirement_disclosure"
+description = "Are all graded process, narration, and tool-use requirements disclosed?"
+guidance = "FAIL when tests or judges grade intermediate narration, a particular tool, or a prescribed workflow that the instruction does not explicitly require."
+
+[[criteria]]
+name = "layer1_clarity_scope__redaction_readability"
+description = "Does masking or redaction preserve the task's meaning and usability?"
+guidance = "Inspect redacted instructions and inputs. FAIL when placeholders, removed text, or broken grammar obscure identities, relationships, constraints, or required actions."
+
+[[criteria]]
+name = "layer1_realism_leakage"
+description = "Is the task realistic and free of golden-answer or scoring leakage?"
+guidance = "Aggregate the four mandatory realism and leakage subchecks. FAIL when any applicable subcheck fails."
+
+[[criteria]]
+name = "layer1_realism_leakage__domain_correctness"
+description = "Are material domain claims correct?"
+guidance = "Check laws, policies, formulas, business rules, APIs, and technical assumptions against the task package and supplied authorities. FAIL for a material factual or domain error."
+
+[[criteria]]
+name = "layer1_realism_leakage__authoritative_reference_validity"
+description = "Are cited or embedded authoritative references current, resolvable, and applicable?"
+guidance = "FAIL for stale, nonexistent, mismatched, or inapplicable authorities that affect the expected answer or workflow."
+
+[[criteria]]
+name = "layer1_realism_leakage__workflow_realism"
+description = "Does the scenario, data, tool use, and requested artifact resemble useful real work?"
+guidance = "FAIL for contrived traps, impossible access assumptions, or toy outputs with no plausible user value."
+
+[[criteria]]
+name = "layer1_realism_leakage__golden_isolation"
+description = "Are golden answers and scoring internals isolated from the agent?"
+guidance = "Inspect mounts, permissions, filenames, solution visibility, test fixtures, and writable state. FAIL when an agent can read or infer answers or manipulate grading state directly."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static"
+description = "Is the verifier statically complete, fair, proportionate, and grounded in disclosed requirements?"
+guidance = "Aggregate all mandatory verifier subchecks. FAIL when any applicable subcheck fails; a broad verifier score must not hide a specific defect."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__requirement_traceability"
+description = "Can every material instruction requirement be traced to an appropriate check, and every check to a disclosed requirement?"
+guidance = "FAIL for an untested material requirement or a reward-bearing verifier-only requirement."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__coverage_depth"
+description = "Do checks validate substantive correctness rather than mere existence or superficial shape?"
+guidance = "Inspect field-level assertions, semantic content, executable behavior, rich artifacts, and required side effects. FAIL when a materially wrong or empty output can satisfy shallow checks."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__evidence_routing"
+description = "Does each check inspect the correct artifact, connector state, final answer, or trajectory?"
+guidance = "FAIL when a check reads the wrong path, a lossy conversion, incomplete context, or trajectory data for an artifact-only requirement, or vice versa."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__semantic_equivalence"
+description = "Does the verifier accept materially equivalent correct representations?"
+guidance = "Test plausible variants in Markdown, prose, lists, punctuation, singular/plural, hyphenation, clause order, aliases, dates, numbers, and negation. FAIL when any materially equivalent correct representation is rejected unless exact form is explicitly required."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__surface_form_brittleness"
+description = "Are regex, exact-string, SQL LIKE/REPLACE, and other surface-form matchers appropriate, normalized, and scoped safely?"
+guidance = "Inspect every regex and lexical matcher. Test Markdown, whitespace, punctuation, ordering, aliases, singular/plural, date and numeric formatting, abbreviations, and negation. FAIL when a semantically correct answer can be rejected for incidental wording or formatting, when a wrong answer can pass by mimicking tokens, or when the matcher checks less than its criterion claims. Prefer structured assertions or semantic grading for genuinely semantic requirements."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__verifier_execution_completeness"
+description = "Do all declared verifier checks execute, and are all reward-bearing executed checks declared?"
+guidance = "Trace entrypoints, imports, manifests, runtime results, and exceptions. FAIL for skipped, unreachable, silently failed, or undeclared executable checks."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__score_bucket_activation"
+description = "Can every declared score bucket receive evidence and affect reward?"
+guidance = "FAIL for disabled, empty, zero-weight, unreachable, or silently omitted buckets represented as active coverage."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__aggregation_normalization"
+description = "Do normalization, thresholds, gates, and partial-credit behavior match the declaration?"
+guidance = "Recompute representative cases. FAIL when declared weights or gates differ from effective reward math."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__scoring_proportionality"
+description = "Is score impact proportional to requirement importance?"
+guidance = "FAIL when a cosmetic issue dominates reward, a fatal omission is masked by partial credit, or materially unequal requirements receive unjustified equal impact."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__check_independence"
+description = "Do duplicate or correlated checks avoid multiplying one underlying requirement?"
+guidance = "Trace shared evidence and predicates. FAIL when multiple nominal checks reward or penalize the same fact without disclosed justification."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__counterfactual_strength"
+description = "Would representative wrong, incomplete, contradictory, and extra-output cases receive appropriate scores?"
+guidance = "Require concrete positive, negative, incomplete, and adversarial acceptance cases. FAIL when the verifier cannot distinguish a genuine solution from a plausible defective one."
+
+[[criteria]]
+name = "layer5_verifier_fairness_static__process_grading_justification"
+description = "Is any grading of process, narration, or tool calls disclosed, necessary, and harness-neutral?"
+guidance = "FAIL when reward depends on an unstated workflow, arbitrary narration, or harness-specific trace shape rather than the task's requested outcome."
+
+[[criteria]]
+name = "layer5_llm_judge_design"
+description = "Are LLM judge rubrics and configuration grounded, valid, and suitable for stable grading?"
+guidance = "Aggregate all mandatory LLM judge subchecks. FAIL when any applicable subcheck fails. NOT_APPLICABLE only when no LLM judge exists."
+
+[[criteria]]
+name = "layer5_llm_judge_design__judge_execution_validity"
+description = "Does the configured exact judge model execute successfully against the intended provider endpoint?"
+guidance = "Inspect model ID, endpoint, authentication, request, response, timeout, and parsing. FAIL for invalid or unverified configuration."
+
+[[criteria]]
+name = "layer5_llm_judge_design__judge_failure_handling"
+description = "Do judge execution and context failures become explicit ineligible or error outcomes rather than false rubric failures?"
+guidance = "FAIL when endpoint, authentication, timeout, missing-context, truncation, or parse failures are converted to zero scores or agent mistakes."
+
+[[criteria]]
+name = "layer5_llm_judge_design__judge_context_completeness"
+description = "Does the judge receive every artifact, state snapshot, and trajectory segment needed by its rubric?"
+guidance = "FAIL when a rubric asks the judge to assess evidence that is absent from its prompt or attachments."
+
+[[criteria]]
+name = "layer5_llm_judge_design__judge_context_truncation"
+description = "Is judge evidence protected from silent truncation or lossy conversion?"
+guidance = "Inspect context construction, size limits, ordering, conversions, and omission behavior. FAIL when relevant evidence can disappear without a loud error or explicit incomplete verdict."
+
+[[criteria]]
+name = "layer5_llm_judge_design__artifact_grounding"
+description = "Do judge criteria and explanations require claims grounded in the supplied artifacts?"
+guidance = "FAIL for unstated demands, unverifiable reasoning, or rubric language likely to reward generic plausibility over the actual submission."
+
+[[criteria]]
+name = "layer5_llm_judge_design__repeat_stability"
+description = "Does the design support materially stable outcomes on identical evidence?"
+guidance = "Inspect exact model/provider IDs, prompts, temperatures or effort controls, repeats, and aggregation. FAIL for invalid endpoints or uncontrolled designs likely to flip materially."
+
+[[criteria]]
+name = "layer5_reward_hacking_static"
+description = "Does static inspection reveal a path to high reward without genuine completion?"
+guidance = "Aggregate the four mandatory exploitability subchecks. FAIL when any plausible shortcut can pass."
+
+[[criteria]]
+name = "layer5_reward_hacking_static__rollout_legitimacy"
+description = "Would a high-scoring trajectory reflect coherent, grounded task work?"
+guidance = "Inspect whether fabricated claims, loops, destructive actions, or nonsensical steps could still pass because the verifier checks only the final surface."
+
+[[criteria]]
+name = "layer5_reward_hacking_static__sanctioned_interface_use"
+description = "Can the task be passed only through interfaces allowed by the instruction and environment contract?"
+guidance = "FAIL when direct backend, database, verifier, or hidden-file access can bypass the intended MCP, CLI, or user workflow."
+
+[[criteria]]
+name = "layer5_reward_hacking_static__golden_or_internal_access"
+description = "Can the agent access golden answers, expected values, tests, or scoring internals?"
+guidance = "FAIL for readable solution data, answer-bearing fixtures, exposed test expectations, or other direct answer leakage."
+
+[[criteria]]
+name = "layer5_reward_hacking_static__state_spoofing"
+description = "Can stale, fabricated, or writable state satisfy checks without the required work?"
+guidance = "FAIL for spoofable files, writable grading state, unchecked identifiers, stale seeded side effects, or missing before/after verification."

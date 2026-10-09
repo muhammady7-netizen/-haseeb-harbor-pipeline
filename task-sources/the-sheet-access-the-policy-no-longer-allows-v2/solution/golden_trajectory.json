@@ -1,0 +1,1584 @@
+[
+ {
+  "id": "s1_list",
+  "depends_on": [],
+  "purpose": "Every live spreadsheet with its sharing (permissions are inline in files list).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive files list --params '{\"q\": \"mimeType = \\u0027application/vnd.google-apps.spreadsheet\\u0027 and trashed = false\", \"fields\": \"files(id,name,permissions(id,type,role,emailAddress,domain))\", \"pageSize\": 1000}'"
+  }
+ },
+ {
+  "id": "s_read_02323a06",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Beyond Birth Midwifery Associates - December 2024\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"02323a06-1e00-562f-9d43-73186a6d8537\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_027d987c",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Swebench - external private repos - Healthpii Batch 1\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"027d987c-01e3-5074-9b46-51c46d4a5cbd\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_0412e4bb",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Port Setup Spreadsheet 2022 CCSI\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"0412e4bb-f090-50db-8f74-1d8c93df59a3\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_130ee2fb",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Travel and Events Itineraries\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"130ee2fb-9af1-5df0-a67d-bf174cdd6012\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_150ad41f",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"[External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"150ad41f-9acd-5aaf-827c-292d21fc2479\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_176c1a2a",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"M&A Conversation & Outbound Tracker\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"176c1a2a-c4a3-50b7-8448-ba1126ac8e44\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_1bfee342",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"EVa Homebirth May 2025\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"1bfee342-0a24-5e57-8dcb-f62356c43924\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_206cf9e7",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Untitled spreadsheet(1)\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"206cf9e7-6a0f-5461-be42-2d6871cb7180\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_220667f8",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Copy of Live  Funds for Female Founders\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"220667f8-44fb-5f94-af0d-16431e622c12\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_22f89b97",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Birth Sanctuary October 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"22f89b97-437c-5a43-bff7-0b576a1b4fb8\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_26963313",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Empowered Goddess Birth August 2025\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"26963313-4361-5426-a15f-8348f963720e\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_27c844ee",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Cincinnati Birth Center October 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"27c844ee-b123-5d9e-a082-1f693bbcd772\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_2af84645",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Concepts & Ideas Assesment\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"2af84645-86b3-5e8b-b9af-f2eea4657817\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_2c24723f",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Birth Centers Virginia Decision Makers\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"2c24723f-8d9e-5b00-89b6-88d8689192c1\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_3061440a",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"ICP Outreach [August 2025]\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"3061440a-f396-561a-aac6-f014926909cd\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_3a15438b",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"JPM  Women s Health Karaoke Event - Guest List\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"3a15438b-8f6a-523b-bb31-21ddb6ca3a02\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_411c864f",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"BirthStone July 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"411c864f-2dc0-5f5b-9d1e-d08d9972cdd2\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_43a62930",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"RoyaltiesReport Contract 105381 20250630 (1)\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"43a62930-d525-5a15-8240-b1d425824a44\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_47e85f86",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"y8cq6qnli9y4y91vvpclhfux\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"47e85f86-28ee-5966-87cc-44cbe336de04\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_4d96160c",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Kindred Space LA Mar 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"4d96160c-7968-5427-92ce-2812f8c43d37\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_4f6b8e6b",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Canyon Midwifery LLC - December 2024\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"4f6b8e6b-d724-5d24-bc24-3884476e1ffb\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_5cc7d34c",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Blueprint Intake form\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"5cc7d34c-798a-524e-9805-573c645332e3\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_65708c25",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"NPWH Lead Generation • Tracker\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"65708c25-2991-5211-a3b6-cb8f71559512\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_66530a72",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Prattville Midwifery\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"66530a72-6c0a-5aa0-81a6-80304ac76a42\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_67145fec",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Company Search Template [Healthpii Team]\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"67145fec-f787-5780-9850-e24b146df249\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_6790ba2a",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Jamii Birth and Wellness Services, LLC\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"6790ba2a-ef27-533c-bd08-c9a9adba4be1\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_68201a33",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Transitions Birth Center October 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"68201a33-1a8e-5794-b219-87d2a88bcc4a\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_6ce85c05",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Healthpii Software Subscriptions Q1 24\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"6ce85c05-6606-5e7c-bc0e-76e504063845\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_6f69c585",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Premier Birth Center Client List (3) - Kim Pekin\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"6f69c585-b796-53b9-b3a8-5e7c79361f9c\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_701ae7ce",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Greenwood Midwifery August 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"701ae7ce-3a60-5833-a047-1705704a671e\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_7b13907b",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Healthpii Pilot Study Database\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"7b13907b-3251-596c-a9ab-74ae19b97d50\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_7ee56feb",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"YC S23 - Healthpii Health Questions\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"7ee56feb-69fd-52e2-8b27-b698605a5f72\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_86642e0a",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"ACOG leads 2024\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"86642e0a-5cc5-5102-b37f-14041f1fd299\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_86673f24",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Market size and Buisness Model\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"86673f24-f722-5256-a741-a2842201eab9\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_86b5573e",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Healthtech Companies - Major Funding 2025\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"86b5573e-67dd-556b-a258-107a920b383f\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_88ba72a7",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"[Fellow Founders Copy] Healthpii Health   Pre-Seed Investor Tracker\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"88ba72a7-cae0-5bb9-89c1-52693c74820a\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_8e824cfb",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"CBC July 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"8e824cfb-94b4-5a51-8e03-d2fece8d647e\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_94232171",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Autopilot Worksheet   User Amanda Schmidt [July 2025]\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"94232171-8fdd-58fb-a7ce-addd702cceb3\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_9a9abbfa",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Healthpii   Pilot Tracker (2023)\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"9a9abbfa-d7fc-5d69-844b-d3c17b48916b\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_9f9ae58f",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Rooted Birth Midwifery & Wellness June 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"9f9ae58f-7d28-512f-aaf4-68739646cdc5\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_a0a8b4bf",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Leads 1737508391 (2)\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"a0a8b4bf-1821-5c12-9b0c-bbcab9b1fe93\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_a488c0a2",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Health-tech-founders\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"a488c0a2-e118-5964-87e8-880506561f46\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_ab168be3",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Transitions Birth Center\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"ab168be3-84ab-5da0-bd0b-e42c2bbe48a3\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_ab915804",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Greenwood Midwifery and Integrative Health June 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"ab915804-26cd-5690-807c-e432319d8049\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_b0d95c98",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Clinical and Sales Feedback & statistics\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"b0d95c98-504d-5d2c-b670-fc435c64ad5c\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_b2dd5d8e",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Untitled spreadsheet\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"b2dd5d8e-55a4-5b1a-ab4e-731af0303905\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_b6cf5ed9",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Prattville Midwifery August 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"b6cf5ed9-a873-5e14-8a6a-be063458544d\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_c4b3493b",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Transitions Birth Center June 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"c4b3493b-de2c-5486-b065-5875a8bee1c2\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_c6752b59",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Beyond Birth Midwifery Mar 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"c6752b59-17a6-55e8-baa7-f76b3db10660\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_c8046149",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Healthpii Solutions Inc. Wind Down Tracker [MASTER]\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"c8046149-740c-569a-82a6-ae80db0be61d\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_cb681984",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"n7ihqmovvt81l33341b82q34\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"cb681984-f8eb-5748-82d1-e1be1b4e9f30\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_d1bac28d",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Framer Form Submission\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"d1bac28d-c2a3-598f-9b4f-fc6b7a23350a\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_d234bfc9",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"j8lghvv51re0e787xpdvnpaj\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"d234bfc9-7243-536c-96c2-e32c33c0eda3\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_d43b6842",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Healthpii Solutions Inc. Financials as of Dec 31, 2024\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"d43b6842-074c-5dd5-8517-1a90140c34ab\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_d9f405be",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Untitled spreadsheet(2)\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"d9f405be-dbfa-5c28-8264-16ef9ce71204\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_dcc10fe1",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Leads New Leads ICP 2 1760636660\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"dcc10fe1-69e9-596d-a207-fccf1d3427c1\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_e0ebc122",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Beta Customer, Summer Update - 22nd July 2024\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"e0ebc122-57f2-5886-a312-d5c77ade490d\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_e272ee4c",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"zlpxi5bxdg2ssnkuhu1yrmzx\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"e272ee4c-8446-55f9-bdb5-42703492bc16\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_e2afb034",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"HM Birth August 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"e2afb034-4b39-527c-92d6-c81bc2529a40\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_e353bccc",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Engineering Recruitment\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"e353bccc-3a55-5f46-98e6-8ae7131fadc9\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_e42f3676",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"GFSA  Black Founders Registrants List - [Healthpii]\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"e42f3676-5517-5c6e-975d-679e7ae489e5\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_e62c8293",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Healthpii Solutions Inc.  - Cap Table June 2025\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"e62c8293-3b53-5277-b607-8c92bdff3a23\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_e8d4f190",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"113-119 S B Street   Furniture List\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"e8d4f190-930b-5149-9ef1-a4109e278a77\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_ebfbbe85",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"GFSA Healthpii   Pre-Seed Investor List [Last Updated  December 2023]\" to classify it (Internal).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"ebfbbe85-4df5-5d68-90f2-55c5a20bc80a\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_f04633d2",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Cincinnati Birth Center Apr 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"f04633d2-ea86-5b41-a52a-e22e1d6b1948\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_f07876c0",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Johnson & Associates Midwifery Group August 2025\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"f07876c0-3141-51c7-91b4-7ff3632fe69a\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_f43a86b6",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"qlbbdp31iqa04y7f9mjb2nf2\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"f43a86b6-c21c-5553-be06-5c0af1fd0b8e\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_f46dc5c7",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"AABC Lead Generation • Tracker [Final]\" to classify it (Confidential).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"f46dc5c7-e2ef-5d48-8340-8a7f89a04ad2\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_f63554e7",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"f63554e7-db69-5b70-a0a5-965d556af125\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_read_f6f95d9e",
+  "depends_on": [
+   "s1_list"
+  ],
+  "purpose": "Every tab and cell of \"08-18-25 - Patient demographics\" to classify it (Restricted).",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws sheets spreadsheets get --params '{\"spreadsheetId\": \"f6f95d9e-1ec9-58bf-831b-46bfdd8c0565\", \"includeGridData\": true, \"fields\": \"sheets(properties(title),data(rowData(values(formattedValue))))\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_878",
+  "depends_on": [
+   "s_read_f6f95d9e"
+  ],
+  "purpose": "Remove avery.taylor@healthpii.example (writer) from Restricted '08-18-25 - Patient demographics'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"f6f95d9e-1ec9-58bf-831b-46bfdd8c0565\", \"permissionId\": \"perm_collab_878\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_anyone_1633",
+  "depends_on": [
+   "s_read_f46dc5c7"
+  ],
+  "purpose": "Remove anyone (reader) from Confidential 'AABC Lead Generation • Tracker [Final]'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"f46dc5c7-e2ef-5d48-8340-8a7f89a04ad2\", \"permissionId\": \"perm_anyone_1633\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_55",
+  "depends_on": [
+   "s_read_02323a06"
+  ],
+  "purpose": "Remove sam.okonkwo@healthpii.example (reader) from Restricted 'Beyond Birth Midwifery Associates - December 2024'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"02323a06-1e00-562f-9d43-73186a6d8537\", \"permissionId\": \"perm_collab_55\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_376",
+  "depends_on": [
+   "s_read_c6752b59"
+  ],
+  "purpose": "Remove sam.okonkwo@healthpii.example (commenter) from Restricted 'Beyond Birth Midwifery Mar 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"c6752b59-17a6-55e8-baa7-f76b3db10660\", \"permissionId\": \"perm_collab_376\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_377",
+  "depends_on": [
+   "s_read_c6752b59"
+  ],
+  "purpose": "Reduce drew.martin@healthpii.example from commenter to reader on Restricted 'Beyond Birth Midwifery Mar 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"c6752b59-17a6-55e8-baa7-f76b3db10660\", \"permissionId\": \"perm_collab_377\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_378",
+  "depends_on": [
+   "s_read_c6752b59"
+  ],
+  "purpose": "Remove avery.brooks@healthpii.example (commenter) from Restricted 'Beyond Birth Midwifery Mar 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"c6752b59-17a6-55e8-baa7-f76b3db10660\", \"permissionId\": \"perm_collab_378\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1603",
+  "depends_on": [
+   "s_read_22f89b97"
+  ],
+  "purpose": "Reduce jamie.ross@healthpii.example from writer to reader on Restricted 'Birth Sanctuary October 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"22f89b97-437c-5a43-bff7-0b576a1b4fb8\", \"permissionId\": \"perm_collab_1603\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1604",
+  "depends_on": [
+   "s_read_22f89b97"
+  ],
+  "purpose": "Remove diana.reyes@healthpii.example (commenter) from Restricted 'Birth Sanctuary October 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"22f89b97-437c-5a43-bff7-0b576a1b4fb8\", \"permissionId\": \"perm_collab_1604\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1605",
+  "depends_on": [
+   "s_read_22f89b97"
+  ],
+  "purpose": "Reduce cameron.shaw@healthpii.example from writer to reader on Restricted 'Birth Sanctuary October 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"22f89b97-437c-5a43-bff7-0b576a1b4fb8\", \"permissionId\": \"perm_collab_1605\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_591",
+  "depends_on": [
+   "s_read_411c864f"
+  ],
+  "purpose": "Remove casey.rivers@healthpii.example (commenter) from Restricted 'BirthStone July 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"411c864f-2dc0-5f5b-9d1e-d08d9972cdd2\", \"permissionId\": \"perm_collab_591\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_592",
+  "depends_on": [
+   "s_read_411c864f"
+  ],
+  "purpose": "Remove jordan.smith@healthpii.example (writer) from Restricted 'BirthStone July 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"411c864f-2dc0-5f5b-9d1e-d08d9972cdd2\", \"permissionId\": \"perm_collab_592\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_249",
+  "depends_on": [
+   "s_read_8e824cfb"
+  ],
+  "purpose": "Reduce river.cohen@healthpii.example from commenter to reader on Restricted 'CBC July 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"8e824cfb-94b4-5a51-8e03-d2fece8d647e\", \"permissionId\": \"perm_collab_249\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_250",
+  "depends_on": [
+   "s_read_8e824cfb"
+  ],
+  "purpose": "Reduce cameron.shaw@healthpii.example from commenter to reader on Restricted 'CBC July 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"8e824cfb-94b4-5a51-8e03-d2fece8d647e\", \"permissionId\": \"perm_collab_250\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_251",
+  "depends_on": [
+   "s_read_8e824cfb"
+  ],
+  "purpose": "Remove jordan.smith@healthpii.example (writer) from Restricted 'CBC July 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"8e824cfb-94b4-5a51-8e03-d2fece8d647e\", \"permissionId\": \"perm_collab_251\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1311",
+  "depends_on": [
+   "s_read_4f6b8e6b"
+  ],
+  "purpose": "Reduce cameron.shaw@healthpii.example from writer to reader on Restricted 'Canyon Midwifery LLC - December 2024'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"4f6b8e6b-d724-5d24-bc24-3884476e1ffb\", \"permissionId\": \"perm_collab_1311\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1360",
+  "depends_on": [
+   "s_read_f04633d2"
+  ],
+  "purpose": "Remove lee.anderson@healthpii.example (reader) from Restricted 'Cincinnati Birth Center Apr 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"f04633d2-ea86-5b41-a52a-e22e1d6b1948\", \"permissionId\": \"perm_collab_1360\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1216",
+  "depends_on": [
+   "s_read_27c844ee"
+  ],
+  "purpose": "Remove riley.nguyen@healthpii.example (writer) from Restricted 'Cincinnati Birth Center October 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"27c844ee-b123-5d9e-a082-1f693bbcd772\", \"permissionId\": \"perm_collab_1216\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1285",
+  "depends_on": [
+   "s_read_701ae7ce"
+  ],
+  "purpose": "Remove phoenix.wright@healthpii.example (commenter) from Restricted 'Greenwood Midwifery August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"701ae7ce-3a60-5833-a047-1705704a671e\", \"permissionId\": \"perm_collab_1285\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1286",
+  "depends_on": [
+   "s_read_701ae7ce"
+  ],
+  "purpose": "Reduce drew.martin@healthpii.example from commenter to reader on Restricted 'Greenwood Midwifery August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"701ae7ce-3a60-5833-a047-1705704a671e\", \"permissionId\": \"perm_collab_1286\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_3",
+  "depends_on": [
+   "s_read_ab915804"
+  ],
+  "purpose": "Remove sky.adams@healthpii.example (writer) from Restricted 'Greenwood Midwifery and Integrative Health June 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"ab915804-26cd-5690-807c-e432319d8049\", \"permissionId\": \"perm_collab_3\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_4",
+  "depends_on": [
+   "s_read_ab915804"
+  ],
+  "purpose": "Reduce drew.martin@healthpii.example from commenter to reader on Restricted 'Greenwood Midwifery and Integrative Health June 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"ab915804-26cd-5690-807c-e432319d8049\", \"permissionId\": \"perm_collab_4\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1426",
+  "depends_on": [
+   "s_read_e2afb034"
+  ],
+  "purpose": "Remove avery.brooks@healthpii.example (writer) from Restricted 'HM Birth August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"e2afb034-4b39-527c-92d6-c81bc2529a40\", \"permissionId\": \"perm_collab_1426\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1427",
+  "depends_on": [
+   "s_read_e2afb034"
+  ],
+  "purpose": "Reduce alex.chen@healthpii.example from writer to reader on Restricted 'HM Birth August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"e2afb034-4b39-527c-92d6-c81bc2529a40\", \"permissionId\": \"perm_collab_1427\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1428",
+  "depends_on": [
+   "s_read_e2afb034"
+  ],
+  "purpose": "Remove lee.anderson@healthpii.example (writer) from Restricted 'HM Birth August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"e2afb034-4b39-527c-92d6-c81bc2529a40\", \"permissionId\": \"perm_collab_1428\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_701",
+  "depends_on": [
+   "s_read_3061440a"
+  ],
+  "purpose": "Reduce riley.nguyen@healthpii.example from commenter to reader on Confidential 'ICP Outreach [August 2025]'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"3061440a-f396-561a-aac6-f014926909cd\", \"permissionId\": \"perm_collab_701\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_808",
+  "depends_on": [
+   "s_read_6790ba2a"
+  ],
+  "purpose": "Remove sam.okonkwo@healthpii.example (commenter) from Restricted 'Jamii Birth and Wellness Services, LLC'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"6790ba2a-ef27-533c-bd08-c9a9adba4be1\", \"permissionId\": \"perm_collab_808\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_809",
+  "depends_on": [
+   "s_read_6790ba2a"
+  ],
+  "purpose": "Remove diana.reyes@healthpii.example (commenter) from Restricted 'Jamii Birth and Wellness Services, LLC'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"6790ba2a-ef27-533c-bd08-c9a9adba4be1\", \"permissionId\": \"perm_collab_809\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_810",
+  "depends_on": [
+   "s_read_6790ba2a"
+  ],
+  "purpose": "Reduce alex.chen@healthpii.example from commenter to reader on Restricted 'Jamii Birth and Wellness Services, LLC'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"6790ba2a-ef27-533c-bd08-c9a9adba4be1\", \"permissionId\": \"perm_collab_810\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_757",
+  "depends_on": [
+   "s_read_f07876c0"
+  ],
+  "purpose": "Reduce nico.vasquez@healthpii.example from commenter to reader on Restricted 'Johnson & Associates Midwifery Group August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"f07876c0-3141-51c7-91b4-7ff3632fe69a\", \"permissionId\": \"perm_collab_757\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1068",
+  "depends_on": [
+   "s_read_4d96160c"
+  ],
+  "purpose": "Remove casey.rivers@healthpii.example (writer) from Restricted 'Kindred Space LA Mar 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"4d96160c-7968-5427-92ce-2812f8c43d37\", \"permissionId\": \"perm_collab_1068\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_710",
+  "depends_on": [
+   "s_read_dcc10fe1"
+  ],
+  "purpose": "Reduce jamie.ross@healthpii.example from commenter to reader on Confidential 'Leads New Leads ICP 2 1760636660'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"dcc10fe1-69e9-596d-a207-fccf1d3427c1\", \"permissionId\": \"perm_collab_710\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1570",
+  "depends_on": [
+   "s_read_176c1a2a"
+  ],
+  "purpose": "Reduce cameron.shaw@healthpii.example from commenter to reader on Confidential 'M&A Conversation & Outbound Tracker'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"176c1a2a-c4a3-50b7-8448-ba1126ac8e44\", \"permissionId\": \"perm_collab_1570\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_831",
+  "depends_on": [
+   "s_read_65708c25"
+  ],
+  "purpose": "Reduce phoenix.wright@healthpii.example from commenter to reader on Confidential 'NPWH Lead Generation • Tracker'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"65708c25-2991-5211-a3b6-cb8f71559512\", \"permissionId\": \"perm_collab_831\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_677",
+  "depends_on": [
+   "s_read_f63554e7"
+  ],
+  "purpose": "Reduce river.cohen@healthpii.example from writer to reader on Restricted 'Nurse Nikki  Greenaway - Contacts Export - 20240307 - Nikki Greenaway'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"f63554e7-db69-5b70-a0a5-965d556af125\", \"permissionId\": \"perm_collab_677\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_109",
+  "depends_on": [
+   "s_read_0412e4bb"
+  ],
+  "purpose": "Reduce sky.adams@healthpii.example from writer to reader on Confidential 'Port Setup Spreadsheet 2022 CCSI'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"0412e4bb-f090-50db-8f74-1d8c93df59a3\", \"permissionId\": \"perm_collab_109\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1608",
+  "depends_on": [
+   "s_read_66530a72"
+  ],
+  "purpose": "Reduce quinn.pemberton@healthpii.example from writer to reader on Restricted 'Prattville Midwifery'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"66530a72-6c0a-5aa0-81a6-80304ac76a42\", \"permissionId\": \"perm_collab_1608\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_domain_1624",
+  "depends_on": [
+   "s_read_66530a72"
+  ],
+  "purpose": "Remove domain (reader) from Restricted 'Prattville Midwifery'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"66530a72-6c0a-5aa0-81a6-80304ac76a42\", \"permissionId\": \"perm_domain_1624\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_922",
+  "depends_on": [
+   "s_read_b6cf5ed9"
+  ],
+  "purpose": "Reduce alex.chen@healthpii.example from writer to reader on Restricted 'Prattville Midwifery August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"b6cf5ed9-a873-5e14-8a6a-be063458544d\", \"permissionId\": \"perm_collab_922\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_923",
+  "depends_on": [
+   "s_read_b6cf5ed9"
+  ],
+  "purpose": "Remove jordan.smith@healthpii.example (reader) from Restricted 'Prattville Midwifery August 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"b6cf5ed9-a873-5e14-8a6a-be063458544d\", \"permissionId\": \"perm_collab_923\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_228",
+  "depends_on": [
+   "s_read_6f69c585"
+  ],
+  "purpose": "Reduce quinn.pemberton@healthpii.example from commenter to reader on Restricted 'Premier Birth Center Client List (3) - Kim Pekin'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"6f69c585-b796-53b9-b3a8-5e7c79361f9c\", \"permissionId\": \"perm_collab_228\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_473",
+  "depends_on": [
+   "s_read_9f9ae58f"
+  ],
+  "purpose": "Remove avery.taylor@healthpii.example (commenter) from Restricted 'Rooted Birth Midwifery & Wellness June 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"9f9ae58f-7d28-512f-aaf4-68739646cdc5\", \"permissionId\": \"perm_collab_473\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_474",
+  "depends_on": [
+   "s_read_9f9ae58f"
+  ],
+  "purpose": "Reduce drew.martin@healthpii.example from writer to reader on Restricted 'Rooted Birth Midwifery & Wellness June 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"9f9ae58f-7d28-512f-aaf4-68739646cdc5\", \"permissionId\": \"perm_collab_474\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_433",
+  "depends_on": [
+   "s_read_027d987c"
+  ],
+  "purpose": "Reduce quinn.pemberton@healthpii.example from writer to reader on Confidential 'Swebench - external private repos - Healthpii Batch 1'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"027d987c-01e3-5074-9b46-51c46d4a5cbd\", \"permissionId\": \"perm_collab_433\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_540",
+  "depends_on": [
+   "s_read_ab168be3"
+  ],
+  "purpose": "Remove casey.rivers@healthpii.example (reader) from Restricted 'Transitions Birth Center'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"ab168be3-84ab-5da0-bd0b-e42c2bbe48a3\", \"permissionId\": \"perm_collab_540\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_541",
+  "depends_on": [
+   "s_read_ab168be3"
+  ],
+  "purpose": "Reduce alex.chen@healthpii.example from commenter to reader on Restricted 'Transitions Birth Center'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"ab168be3-84ab-5da0-bd0b-e42c2bbe48a3\", \"permissionId\": \"perm_collab_541\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_163",
+  "depends_on": [
+   "s_read_c4b3493b"
+  ],
+  "purpose": "Remove jordan.smith@healthpii.example (commenter) from Restricted 'Transitions Birth Center June 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"c4b3493b-de2c-5486-b065-5875a8bee1c2\", \"permissionId\": \"perm_collab_163\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_164",
+  "depends_on": [
+   "s_read_c4b3493b"
+  ],
+  "purpose": "Reduce alex.chen@healthpii.example from commenter to reader on Restricted 'Transitions Birth Center June 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"c4b3493b-de2c-5486-b065-5875a8bee1c2\", \"permissionId\": \"perm_collab_164\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_165",
+  "depends_on": [
+   "s_read_c4b3493b"
+  ],
+  "purpose": "Remove diana.reyes@healthpii.example (commenter) from Restricted 'Transitions Birth Center June 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"c4b3493b-de2c-5486-b065-5875a8bee1c2\", \"permissionId\": \"perm_collab_165\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_530",
+  "depends_on": [
+   "s_read_68201a33"
+  ],
+  "purpose": "Reduce nico.vasquez@healthpii.example from writer to reader on Restricted 'Transitions Birth Center October 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"68201a33-1a8e-5794-b219-87d2a88bcc4a\", \"permissionId\": \"perm_collab_530\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_381",
+  "depends_on": [
+   "s_read_b2dd5d8e"
+  ],
+  "purpose": "Reduce cameron.shaw@healthpii.example from commenter to reader on Confidential 'Untitled spreadsheet'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"b2dd5d8e-55a4-5b1a-ab4e-731af0303905\", \"permissionId\": \"perm_collab_381\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_382",
+  "depends_on": [
+   "s_read_b2dd5d8e"
+  ],
+  "purpose": "Reduce sam.okonkwo@healthpii.example from commenter to reader on Confidential 'Untitled spreadsheet'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"b2dd5d8e-55a4-5b1a-ab4e-731af0303905\", \"permissionId\": \"perm_collab_382\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_494",
+  "depends_on": [
+   "s_read_d9f405be"
+  ],
+  "purpose": "Reduce drew.martin@healthpii.example from commenter to reader on Confidential 'Untitled spreadsheet(2)'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"d9f405be-dbfa-5c28-8264-16ef9ce71204\", \"permissionId\": \"perm_collab_494\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_835",
+  "depends_on": [
+   "s_read_150ad41f"
+  ],
+  "purpose": "Reduce lee.anderson@healthpii.example from commenter to reader on Confidential '[External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"150ad41f-9acd-5aaf-827c-292d21fc2479\", \"permissionId\": \"perm_collab_835\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_836",
+  "depends_on": [
+   "s_read_150ad41f"
+  ],
+  "purpose": "Reduce diana.reyes@healthpii.example from commenter to reader on Confidential '[External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"150ad41f-9acd-5aaf-827c-292d21fc2479\", \"permissionId\": \"perm_collab_836\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_837",
+  "depends_on": [
+   "s_read_150ad41f"
+  ],
+  "purpose": "Reduce sky.adams@healthpii.example from writer to reader on Confidential '[External Founders] Main Tracking List - Investor Database - Healthpii Seed 2025'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"150ad41f-9acd-5aaf-827c-292d21fc2479\", \"permissionId\": \"perm_collab_837\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_503",
+  "depends_on": [
+   "s_read_88ba72a7"
+  ],
+  "purpose": "Reduce quinn.pemberton@healthpii.example from commenter to reader on Confidential '[Fellow Founders Copy] Healthpii Health   Pre-Seed Investor Tracker'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions update --params '{\"fileId\": \"88ba72a7-cae0-5bb9-89c1-52693c74820a\", \"permissionId\": \"perm_collab_503\"}' --json '{\"role\": \"reader\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1379",
+  "depends_on": [
+   "s_read_d234bfc9"
+  ],
+  "purpose": "Remove phoenix.wright@healthpii.example (reader) from Restricted 'j8lghvv51re0e787xpdvnpaj'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"d234bfc9-7243-536c-96c2-e32c33c0eda3\", \"permissionId\": \"perm_collab_1379\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1380",
+  "depends_on": [
+   "s_read_d234bfc9"
+  ],
+  "purpose": "Remove avery.taylor@healthpii.example (writer) from Restricted 'j8lghvv51re0e787xpdvnpaj'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"d234bfc9-7243-536c-96c2-e32c33c0eda3\", \"permissionId\": \"perm_collab_1380\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1381",
+  "depends_on": [
+   "s_read_d234bfc9"
+  ],
+  "purpose": "Remove morgan.blake@healthpii.example (writer) from Restricted 'j8lghvv51re0e787xpdvnpaj'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"d234bfc9-7243-536c-96c2-e32c33c0eda3\", \"permissionId\": \"perm_collab_1381\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_anyone_1635",
+  "depends_on": [
+   "s_read_f43a86b6"
+  ],
+  "purpose": "Remove anyone (reader) from Restricted 'qlbbdp31iqa04y7f9mjb2nf2'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"f43a86b6-c21c-5553-be06-5c0af1fd0b8e\", \"permissionId\": \"perm_anyone_1635\"}'"
+  }
+ },
+ {
+  "id": "s_fix_perm_collab_1404",
+  "depends_on": [
+   "s_read_47e85f86"
+  ],
+  "purpose": "Remove morgan.blake@healthpii.example (commenter) from Restricted 'y8cq6qnli9y4y91vvpclhfux'.",
+  "name": "gws",
+  "server": "gws-gym",
+  "arguments": {
+   "command": "gws drive permissions delete --params '{\"fileId\": \"47e85f86-28ee-5966-87cc-44cbe336de04\", \"permissionId\": \"perm_collab_1404\"}'"
+  }
+ }
+]
